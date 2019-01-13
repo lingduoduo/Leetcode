@@ -1,4 +1,3 @@
-
 def twoSum(rawList, target):
 	for k, v in enumerate(rawList):
 		i = k+1
