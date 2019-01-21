@@ -1,9 +1,15 @@
 # Method 1 
-def twoSum(rawList, target):
-	for k, v in enumerate(rawList):
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+	for k, v in enumerate(nums):
 		i = k+1
-		while i<len(rawList):
-			if v+rawList[i] == target:
+		while i<len(nums):
+			if v+nums[i] == target:
 				return([k, i])
 			else:
 				i=i+1
@@ -11,7 +17,7 @@ def twoSum(rawList, target):
 
 if __name__=="__main__":
 	numbers=[2, 7, 11, 15]
-	results = twoSum(numbers, 9)
+	results = Solution().twoSum(numbers, 9)
 	print(results)
 
 
