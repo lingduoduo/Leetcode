@@ -13,11 +13,11 @@ class Solution(object):
         """
         if t is None:
         	return ""
-        s = str(x)
+        s = str(t.val)
         if t.left is None and t.right is None:
         	return s
-        l = tree2str(root.left)
-        r = tree2str(root.right)
+        l = self.tree2str(t.left)
+        r = self.tree2str(t.right)
         if t.right is None:
         	return s+"("+l+")"
         return s+"("+l+")"+"("+r+")"
