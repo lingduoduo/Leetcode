@@ -21,7 +21,3 @@ class Solution(object):
             dummy.next = curr1
             curr1 = curr2
         return dummy.next
-
-
-        	
-
