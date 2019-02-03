@@ -8,15 +8,12 @@ class Solution(object):
 
         for op in ops:
         	if op =="+":
-        		num1 = s.pop()
-        		num2 = s.pop()
-        		s.appen(num1+num2)
+        		s.append(s[-1]+s[-2])
         	elif op =="C":
         		s.pop()
         	elif op =="D":
-        		num1 = s.pop()
-        		s.appen(num1*2)
+        		s.append(s[-1]*2)
         	else:
         		s.append(int(op))
         return sum(s)
- 
+
