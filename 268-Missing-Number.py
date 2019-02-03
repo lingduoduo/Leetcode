@@ -11,3 +11,4 @@ class Solution(object):
         	tot -= i
 
         return tot
+        
