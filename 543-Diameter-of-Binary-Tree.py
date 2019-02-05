@@ -11,8 +11,10 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        if root is None: return 0
         result = 0
 
+        
         def depth(root):
         	if root is None:
         		return 0
@@ -21,6 +23,8 @@ class Solution(object):
         	l = depth(root.left)
         	r = depth(root.right)
         	result = max(result, l+r)
-        	return max(l, r)
-
+        	return max(l, r)+1
+        
+        depth(root)
         return result
+
