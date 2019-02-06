@@ -7,19 +7,19 @@ class Solution(object):
         :type n: int
         :rtype: void Do not return anything, modify nums1 in-place instead.
         """
-        curr1 = m-1
-        curr2 = n-1
-        
-        for i in range(m+n-1,0,-1):
-        	if curr1<0:
-        		nums1[:curr2]=nums[curr1]
-        	elif curr2<0:
-        		break
-        	elif nums1[curr1] > nums2[curr2] and curr1>=0 and curr2>=0:
-        		nums1[i] = nums1[curr1]
-        		curr1-=1
-        	elif nums1[curr1] <= nums2[curr2] and curr1>=0 and curr2>=0:
-        		nums1[i] = nums2[curr2]
-        		curr2-=1
      
+        curr1, curr2 = m - 1, n - 1
+        k = m + n - 1
+        while curr1 >= 0 and curr2 >= 0:
+            if nums1[curr1] > nums2[curr2]:
+                nums1[k] = nums1[curr1]
+                curr1 -= 1
+            else:
+                nums1[k] = nums2[curr2]
+                curr2 -= 1
+            k -= 1
+        while curr2 >= 0:
+            nums1[k] = nums2[curr2]
+            curr2 -= 1
+            k -= 1
 
