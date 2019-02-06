@@ -32,14 +32,17 @@ class Solution(object):
         univalue(root)
         return self.result
 
-        longest = [0]
-        def dfs(root):
-            if not root:
-                return 0
-            left_len, right_len = dfs(root.left), dfs(root.right)
-            left = left_len + 1 if root.left and root.left.val == root.val else 0
-            right = right_len + 1 if root.right and root.right.val == root.val else 0
-            longest[0] = max(longest[0], left + right)
-            return max(left, right)
-        dfs(root)
-        return longest[0]
+        if not root: return 0
+        self.res = 0
+        self.getPath(root)
+        return self.res
+    
+    def getPath(self, root):
+        if not root: return 0
+        left = self.getPath(root.left)
+        right = self.getPath(root.right)
+        pl, pr = 0, 0
+        if root.left and root.left.val == root.val: pl = 1 + left
+        if root.right and root.right.val == root.val: pr = 1 + right
+        self.res = max(self.res, pl + pr)
+        return max(pl, pr)
