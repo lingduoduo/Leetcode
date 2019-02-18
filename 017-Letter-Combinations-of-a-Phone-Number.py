@@ -4,6 +4,9 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
+        if digits=="":
+            return []
+        
         d = dict()
         d['0'] = ''
         d['1'] = ''
@@ -15,7 +18,7 @@ class Solution(object):
         d['7'] = 'pqrs'
         d['8'] = 'tuv'
         d['9'] = 'wxyz'
-
+        
         result = []
 
         def dfs(num, path):
@@ -27,9 +30,3 @@ class Solution(object):
 
         dfs(0, '')
         return result
-
-if __name__=="__main__":
-	input = '23'
-	results = Solution().letterCombinations(input)
-	print(results)
-
