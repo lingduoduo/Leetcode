@@ -7,11 +7,8 @@ class Solution(object):
         """
         r = set()
         for email in emails:
-            e = email.split('@')
-            name = e[0]
-            domain = e[1]
+            name, domain = email.split('@')
 
-            
             name = re.sub('\.', '', name)
             if name.find('+'):
                 s = name.split('+')
