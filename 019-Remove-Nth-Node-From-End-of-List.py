@@ -27,3 +27,5 @@ class Solution(object):
         d[pos].next = d[pos].next.next
         return dummy.next
 
+        
+
