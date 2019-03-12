@@ -33,17 +33,3 @@ if __name__=="__main__":
 	numbers = 88888
 	results = Solution().isPalindrome(numbers)
 	print(results)
-
-
-    # def isPalindrome(self, x):
-    #     """
-    #     :type x: int
-    #     :rtype: bool
-    #     """
-    #     if x<0: 
-    #         return False
-    #     strX = str(x)
-    #     if strX == strX[::-1]:
-    #         return True
-    #     else:
-    #         return False
