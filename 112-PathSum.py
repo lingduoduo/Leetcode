@@ -12,12 +12,27 @@ class Solution(object):
         :type sum: int
         :rtype: bool
         """
-        if root is None:
-        	return False
-        if root.left is None and root.right is None and root.val == sum:
-        	return True
-        if self.hasPathSum(root.left, sum-root.val):
-        	return True
-        if self.hasPathSum(root.right, sum-root.val):
-        	return True
-        return False
+        ## First Try
+        # if root is None:
+        # 	return False
+        # if root.left is None and root.right is None and root.val == sum:
+        # 	return True
+        # if self.hasPathSum(root.left, sum-root.val):
+        # 	return True
+        # if self.hasPathSum(root.right, sum-root.val):
+        # 	return True
+        # return False
+
+        ## Second Try
+        if not root:
+            return False
+        if not root.left and not root.right and root.val == sum:
+            return True
+        left = right = False
+        if root.left:
+            left = self.hasPathSum(root.left, sum-root.val)
+        if root.right:
+            right = self.hasPathSum(root.right, sum-root.val)
+        return left or right
+
+        

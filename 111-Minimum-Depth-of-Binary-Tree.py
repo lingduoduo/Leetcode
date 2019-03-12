@@ -48,3 +48,4 @@ if __name__ == "__main__":
     root.left = TreeNode(2)
     result = Solution().minDepth(root)
     print(result)      
+    

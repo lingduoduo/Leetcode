@@ -38,3 +38,4 @@ if __name__ == "__main__":
     root.right.right = TreeNode(7)
     result = Solution().maxDepth(root)
     print(result)      
+    
