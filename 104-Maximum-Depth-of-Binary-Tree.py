@@ -22,7 +22,6 @@ class Solution(object):
         ## Second Try
         if not root:
             return 0
-        depth = 1
         left = 0
         right =0
         if root.left:
