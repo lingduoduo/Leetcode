@@ -13,7 +13,6 @@ class Solution(object):
         else:
         	for i in range(1,n//2+1):
         		s[mid+i], s[mid-i] = s[mid-i], s[mid+i]
-        print(s)
 
 if __name__ == "__main__":
 	input = ["h","e","l","l","o"]
