@@ -6,8 +6,8 @@ class Solution(object):
         """
         if not n:
         	return False
-        if n==1:
-            return True
+        if n<3:
+        	return False
 
         cnt = 0
         cur = n
