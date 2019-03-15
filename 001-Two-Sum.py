@@ -6,34 +6,37 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-	for k, v in enumerate(nums):
-		i = k+1
-		while i<len(nums):
-			if v+nums[i] == target:
-				return([k, i])
-			else:
-				i=i+1
-	return([])
+        
+        ## First Try
+    	# for k, v in enumerate(nums):
+    	# 	i = k+1
+    	# 	while i<len(nums):
+    	# 		if v+nums[i] == target:
+    	# 			return([k, i])
+    	# 		else:
+    	# 			i=i+1
 
-if __name__=="__main__":
-	numbers=[2, 7, 11, 15]
-	results = Solution().twoSum(numbers, 9)
-	print(results)
+         #    hash_map = {}
+         #    for i,v in enumerate(nums):
+         #    hash_map[v]=i
 
+         #    for index1, v in enumerate(nums):
+         #        if target-v in hash_map.keys():
+         #            index2 = hash_map[target-v]
+         #    return [index1+1, index2+1]
 
-class Solution:
-    def twoSum(self, nums, target):
-        hash_map = {}
-        for i,v in enumerate(nums):
-            hash_map[v]=i
+        ## second try
+        idx = dict()
+        for i in range(len(nums)):
+            idx[nums[i]] = i
+        
+        for i in range(len(nums)):
+            if target-nums[i] in idx.keys() and i!=idx[target-nums[i]]:
+                return([i, idx[target-nums[i]]])
+        return None
 
-        for index1, v in enumerate(nums):
-            if target-v in hash_map.keys():
-                index2 = hash_map[target-v]
-                return [index1+1, index2+1]
 
 if __name__ == "__main__":
-    numbers=[2,7,11,15]
-    result = Solution().twoSum(numbers, 9)
-    print result
-    print 'Done'
+    numbers=[3,2,4]
+    result = Solution().twoSum(numbers, 6)
+    print(result)
