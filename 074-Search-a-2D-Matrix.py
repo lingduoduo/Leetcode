@@ -12,24 +12,15 @@ class Solution(object):
         right = nrow*ncol
 
         while left<right:
+            mid = left + (right-left)//2
+            mid_value=matrix[mid//ncol][mid%ncol]
 
-        	mid = left + (right-left)//2
-        	# print([left, right, mid])
-
-        	# if nrow==1:
-        	# 	mid_value=matrix[0][mid]
-        	# elif ncol==1:
-        	# 	mid_value=matrix[mid][0]
-        	# else:
-        	mid_value=matrix[mid//ncol][mid%ncol]
-
-        	if mid_value==target:
-        		return True
-        	elif mid_value<target:
-        		left = mid+1
-        	else:
-        		right = mid
-
+            if mid_value==target:
+                return True
+            elif mid_value<target:
+                left = mid+1
+            else:
+                right = mid
         return False
 
 if __name__=="__main__":
