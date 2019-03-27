@@ -6,9 +6,10 @@ class Solution(object):
         :rtype: int
         """
         #return haystack.find(needle)
-        m=len(needle)
-
-        for i in range(len(haystack)-m+1):
-        	if haystack[i:i+m] == needle:
-        		return i
+        
+        h=len(haystack)
+        n=len(needle)
+        for i in range(h-n+1):
+            if haystack[i:i+n]==needle:
+                return i
         return -1
