@@ -18,6 +18,9 @@ class Solution(object):
                 d2[t[i]]+=[i]
             else:
                 d2[t[i]]=[i]
+            
+            if s[i]!=t[i]:
+                return False
 
         pos1=sorted([v for v in d1.values()])
         pos2=sorted([v for v in d2.values()])
