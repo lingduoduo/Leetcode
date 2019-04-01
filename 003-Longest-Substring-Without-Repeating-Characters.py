@@ -1,3 +1,13 @@
+if __name__ == "__main__":
+
+    result = Solution().lengthOfLongestSubstring("abcabcbb")
+    result = Solution().lengthOfLongestSubstring("au")
+    result = Solution().lengthOfLongestSubstring("abba")
+    print(result)
+
+
+
+
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         """
@@ -13,7 +23,7 @@ class Solution(object):
         # longest = 0
         # start = -1
         # location = [-1 for i in range(256)]
-        
+
         # for i,v in enumerate(s):
         #     if location[ord(v)] > start:
         #         start = location[ord(v)]
@@ -38,13 +48,3 @@ class Solution(object):
             d[s[i]]=i
             result = max(result, i-left)
         return result
-
-
-
-if __name__ == "__main__":    
-
-    result = Solution().lengthOfLongestSubstring("abcabcbb")
-    result = Solution().lengthOfLongestSubstring("au")
-    result = Solution().lengthOfLongestSubstring("abba")
-    print(result)
-

@@ -11,19 +11,20 @@ class Solution(object):
         left = 0
         right = len(nums)
 
-        while left<right:
-            mid = left + (right-left)//2
+        while left < right:
+            mid = left + (right - left) // 2
             if nums[mid] == target:
                 return mid
             elif nums[mid] < target:
-                left = mid+1
+                left = mid + 1
             else:
                 right = mid
         return -1
 
-if __name__=="__main__":
-    nums = [-1,0,3,5,9,12]
-    nums = [-1,0,3,5,9,12]
+
+if __name__ == "__main__":
+    nums = [-1, 0, 3, 5, 9, 12]
+    nums = [-1, 0, 3, 5, 9, 12]
     # nums = [5]
     result = Solution().search(nums, 5)
     print(result)

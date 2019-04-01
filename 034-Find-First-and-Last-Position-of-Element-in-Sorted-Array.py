@@ -25,12 +25,12 @@ class Solution(object):
         left = 0
         right = len(nums)
 
-        while left<right:
-            mid = left + (right-left)//2
-            if nums[mid]<target:
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] < target:
                 left = mid + 1
             else:
-                right = mid 
+                right = mid
         return left
 
     def upperBound(self, nums, target):
@@ -43,15 +43,16 @@ class Solution(object):
         left = 0
         right = len(nums)
 
-        while left<right:
-            mid = left + (right-left)//2
-            if nums[mid]<=target:
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] <= target:
                 left = mid + 1
             else:
-                right = mid 
+                right = mid
         return left
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     # nums = [-1,0,3,5,9,12]
     # nums = [-1,0,3,3,5,9,12]
     # nums = [5]
@@ -61,7 +62,7 @@ if __name__=="__main__":
     # result = Solution().upperBound(nums, 3)
     # result = Solution().searchRange(nums, 8)
     # result = Solution().searchRange(nums, 6)
-    nums=[1,1]
+    nums = [1, 1]
     result = Solution().lowerBound(nums, 1)
     print(result)
     result = Solution().upperBound(nums, 1)
