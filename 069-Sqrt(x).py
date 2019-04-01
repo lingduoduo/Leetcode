@@ -24,13 +24,13 @@ class Solution(object):
         # 		L = mid+1
         # return R
 
-## second Try
+# second Try
         L = 0
-        R = x+1
-        while L<R:
-            mid = L + (R-L)//2
+        R = x + 1
+        while L < R:
+            mid = L + (R - L) // 2
             if mid**2 <= x:
-                L = mid+1
+                L = mid + 1
             else:
                 R = mid
-        return L-1
+        return L - 1
