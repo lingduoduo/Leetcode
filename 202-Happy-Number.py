@@ -22,3 +22,4 @@ if __name__ == "__main__":
     n = 1111111
     result = Solution().isHappy(n)
     print(result)
+
