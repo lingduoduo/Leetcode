@@ -21,8 +21,9 @@ class Solution(object):
                 res = max(res, left[i] + right[i] + 1)
         return res
 
+
 if __name__ == '__main__':
     nums = [2, 1, 4, 7, 3, 2, 5]
-    nums = [2,2,2]
+    nums = [2, 2, 2]
     result = Solution().longestMountain(nums)
     print(result)
