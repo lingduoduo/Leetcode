@@ -5,6 +5,7 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
     def hasPathSum(self, root, sum):
         """
@@ -12,7 +13,7 @@ class Solution(object):
         :type sum: int
         :rtype: bool
         """
-        ## First Try
+        # First Try
         # if root is None:
         # 	return False
         # if root.left is None and root.right is None and root.val == sum:
@@ -23,16 +24,29 @@ class Solution(object):
         # 	return True
         # return False
 
-        ## Second Try
+        # Second Try
+        # if not root:
+        #     return False
+        # if not root.left and not root.right and root.val == sum:
+        #     return True
+        # left = right = False
+        # if root.left:
+        #     left = self.hasPathSum(root.left, sum-root.val)
+        # if root.right:
+        #     right = self.hasPathSum(root.right, sum-root.val)
+        # return left or right
+
+        # Third Try
         if not root:
             return False
-        if not root.left and not root.right and root.val == sum:
-            return True
-        left = right = False
-        if root.left:
-            left = self.hasPathSum(root.left, sum-root.val)
-        if root.right:
-            right = self.hasPathSum(root.right, sum-root.val)
-        return left or right
 
-        
+        if not root.left and not root.right:
+            return root.val == sum
+
+        return self.hasPathSum(
+            root.left,
+            sum -
+            root.val) or self.hasPathSum(
+            root.right,
+            sum -
+            root.val)

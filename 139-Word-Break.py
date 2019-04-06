@@ -19,15 +19,16 @@ class Solution(object):
 
         dp = [False] * (len(s) + 1)
         dp[0] = True
-        
+
         for i in range(1, len(s) + 1):
             for k in range(i):
                 if dp[k] and s[k:i] in wordDict:
                     dp[i] = True
         return dp.pop()
 
-if __name__=="__main__":
-	s = "leetcode"
-	wordDict = ["leet", "code"]
-	results = Solution().wordBreak(s, wordDict)
-	print(results)
+
+if __name__ == "__main__":
+    s = "leetcode"
+    wordDict = ["leet", "code"]
+    results = Solution().wordBreak(s, wordDict)
+    print(results)
