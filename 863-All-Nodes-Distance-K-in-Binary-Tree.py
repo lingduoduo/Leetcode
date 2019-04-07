@@ -20,8 +20,8 @@ class Solution(object):
         self.d = dict()
         self.buildGraph(None, root)
 
-        for k,v in enumerate(self.d):
-            print(k, v.val)
+        # for k,v in enumerate(self.d):
+        #     print(k, v.val)
 
         # BFS
         seen = list()
@@ -37,6 +37,9 @@ class Solution(object):
                 node = stack.pop(0)
                 if k == K:
                     res.append(node.val)
+
+                if node not in self.d:
+                    break
 
                 for child in self.d[node]:
                     if child not in seen:
