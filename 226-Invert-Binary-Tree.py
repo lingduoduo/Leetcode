@@ -5,6 +5,7 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
     def invertTree(self, root):
         """
@@ -12,7 +13,7 @@ class Solution(object):
         :rtype: TreeNode
         """
         if not root:
-        	return None
+            return None
 
         root.left, root.right = root.right, root.left
         self.invertTree(root.left)
