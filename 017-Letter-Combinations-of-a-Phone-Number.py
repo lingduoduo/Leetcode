@@ -4,9 +4,10 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
-        if digits=="":
+        # first try
+        if digits == "":
             return []
-        
+
         self.d = dict()
         self.d['0'] = ''
         self.d['1'] = ''
@@ -23,13 +24,25 @@ class Solution(object):
         self.dfs(0, '', digits)
         return self.result
 
+        def dfs(self, num, path, digits):
+            if num == len(digits):
+                self.result.append(path)
+                return
+            for letter in self.d[digits[num]]:
+                self.dfs(num + 1, path + letter, digits)
 
-    def dfs(self, num, path, digits):
-        if num == len(digits):
-            self.result.append(path)
-            return
-        for letter in self.d[digits[num]]:
-            self.dfs(num+1, path+letter, digits)
+        # second try
+        import itertools
+
+        res = self.d[digits[0]]
+        for i in range(1, len(digits)):
+            new_res = []
+            for x, y in itertools.product(res, self.d[digits[i]]):
+                new_res.append(x + y)
+            res = new_res
+
+        return res
+
 
 if __name__ == "__main__":
     digits = '23'
