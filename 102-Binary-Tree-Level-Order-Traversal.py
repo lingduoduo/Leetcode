@@ -11,6 +11,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        ## first try
         result = []
         level = 0
         
@@ -23,4 +24,24 @@ class Solution(object):
             bfs(root.right, level+1)
         
         bfs(root, 0)
+        return result
+
+        ## second try
+        if not root: return []
+        result = []
+        visited = []
+        visited.append(root)
+
+        while visited:
+            size = len(visited)
+            par = []
+            while size>0:
+                node = visited.pop(0)
+                par.append(node.val)
+                if node.left:
+                    visited.append(node.left)
+                if node.right:
+                    visited.append(node.right)
+                size -= 1
+            result.append(par)
         return result
