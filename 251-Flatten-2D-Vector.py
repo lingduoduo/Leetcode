@@ -31,14 +31,15 @@ class Vector2D(object):
         elif self.row < len(self.vec2d) - 1:
             self.row += 1
             self.col = 0
-
+        else:
+            self.col += 1
         return val
 
     # @return {boolean} true if it has next element
     # or false
     def hasNext(self):
         # Write your code here
-        if self.col < len(self.vec2d[self.row]) - 1:
+        if self.col <= len(self.vec2d[self.row]) - 1:
             return True
         elif self.row < len(self.vec2d) - 1:
             return True
