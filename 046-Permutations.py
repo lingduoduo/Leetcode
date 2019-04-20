@@ -4,16 +4,31 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # first try
+    #     res = []
+    #     self.dfs(nums, res, [])
+    #     return res
+
+    # def dfs(self, nums, res, path):
+    #     if not nums:
+    #         res.append(path)
+    #     else:
+    #         for i in range(len(nums)):
+    #             self.dfs(nums[:i] + nums[i + 1:], res, path + [nums[i]])
+
+        # second try
         res = []
-        self.dfs(nums, res, [])
+        self.tot = len(nums)
+        self.dfs(nums, res, 0, [])
         return res
 
-    def dfs(self, nums, res, path):
-        if not nums:
+    def dfs(self, nums, res, depth, path):
+        if depth == self.tot:
             res.append(path)
         else:
             for i in range(len(nums)):
-                self.dfs(nums[:i] + nums[i + 1:], res, path + [nums[i]])
+                self.dfs(nums[:i] + nums[i + 1:], res,
+                         depth + 1, path + [nums[i]])
 
 
 if __name__ == "__main__":
