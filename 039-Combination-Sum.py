@@ -27,3 +27,4 @@ if __name__ == "__main__":
     nums = [2, 3, 6, 7]
     result = Solution().combinationSum(nums, 7)
     print(result)
+
