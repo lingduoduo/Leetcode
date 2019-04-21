@@ -15,7 +15,7 @@ class Solution(object):
         colstart = 0
         colend = len(matrix[0]) - 1
 
-        while rowstart <= rowend and colstart <= colend:
+        while rowstart < rowend and colstart < colend:
             for j in range(colstart, colend):
                 res.append(matrix[rowstart][j])
             for i in range(rowstart, rowend):
@@ -37,7 +37,6 @@ class Solution(object):
             for i in range(rowstart, rowend + 1):
                 res.append(matrix[i][colend])
         return res
-
 
 if __name__ == '__main__':
     matrix = [
