@@ -5,6 +5,7 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
     def distributeCoins(self, root):
         """
@@ -16,9 +17,9 @@ class Solution(object):
         return self.result
 
     def balance(self, root):
-    	if root is None: return 0
-    	l = self.balance(root.left)
-    	r = self.balance(root.right)
-    	self.result += abs(l) + abs(r)
-    	return l+r+root.val - 1
-    	
+        if root is None:
+            return 0
+        l = self.balance(root.left)
+        r = self.balance(root.right)
+        self.result += abs(l) + abs(r)
+        return l + r + root.val - 1
