@@ -15,9 +15,9 @@ class Solution(object):
         :rtype: int
         """
         if not s:
-        	return 0
+            return 0
         if len(s) <=1:
-        	return 1
+            return 1
 
         ## First try
         # longest = 0

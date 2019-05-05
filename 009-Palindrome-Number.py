@@ -30,6 +30,6 @@ class Solution(object):
             return num[::-1]==num
 
 if __name__=="__main__":
-	numbers = 88888
-	results = Solution().isPalindrome(numbers)
-	print(results)
+    numbers = 88888
+    results = Solution().isPalindrome(numbers)
+    print(results)
