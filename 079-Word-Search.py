@@ -6,10 +6,10 @@ class Solution(object):
         :rtype: bool
         """
         for x in range(len(board)):
-        	for y in range(len(board[0])):
-        		if self.search(board, word, x, y, 0):
-        			return True
-        		
+            for y in range(len(board[0])):
+                if self.search(board, word, x, y, 0):
+                    return True
+                
         return False
      
     def search(self, board, word, i, j, d):
@@ -20,7 +20,7 @@ class Solution(object):
             return False
 
         if board[i][j] != word[d]:
-        	return False
+            return False
          
         board[i][j] = board[i][j].swapcase()
         result = self.search(board, word, i + 1, j, d+1) or\
@@ -30,4 +30,4 @@ class Solution(object):
         board[i][j] = board[i][j].swapcase() 
          
 
-    	return result
+        return result
