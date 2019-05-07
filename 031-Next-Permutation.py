@@ -7,22 +7,22 @@ class Solution(object):
         i = len(nums) - 1
         if i <= 0:
             return
-
+        
         targetIndex = 0
         while i > 1 and nums[i - 1] >= nums[i]:
             i -= 1
         if nums[i - 1] < nums[i]:
             targetIndex = i - 1
-
+        
         i = len(nums) - 1
         changeIndex = 0
         while i > 0 and nums[i] <= nums[targetIndex]:
             i -= 1
         if nums[i] > nums[targetIndex]:
             changeIndex = i
-
+        
         nums[targetIndex], nums[changeIndex] = nums[changeIndex], nums[targetIndex]
-
+        
         if targetIndex == changeIndex == 0:
             nums.reverse()
         else:

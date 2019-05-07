@@ -5,17 +5,17 @@ class Solution(object):
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
         nrow = len(matrix)
-
+        
         for i in range(nrow):
             for j in range(nrow - i):
                 matrix[i][j], matrix[nrow - 1 - j][nrow - 1 -
                                                    i] = matrix[nrow - 1 - j][nrow - 1 - i], matrix[i][j]
-
+        
         for i in range(nrow // 2):
             for j in range(nrow):
                 matrix[i][j], matrix[nrow - 1 - \
-                    i][j] = matrix[nrow - 1 - i][j], matrix[i][j]
-
+                                     i][j] = matrix[nrow - 1 - i][j], matrix[i][j]
+        
         return matrix
 
 

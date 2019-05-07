@@ -5,23 +5,23 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # first try
-    #     res = []
-    #     self.dfs(nums, res, [])
-    #     return res
-
-    # def dfs(self, nums, res, path):
-    #     if not nums:
-    #         res.append(path)
-    #     else:
-    #         for i in range(len(nums)):
-    #             self.dfs(nums[:i] + nums[i + 1:], res, path + [nums[i]])
-
+        #     res = []
+        #     self.dfs(nums, res, [])
+        #     return res
+        
+        # def dfs(self, nums, res, path):
+        #     if not nums:
+        #         res.append(path)
+        #     else:
+        #         for i in range(len(nums)):
+        #             self.dfs(nums[:i] + nums[i + 1:], res, path + [nums[i]])
+        
         # second try
         res = []
         self.tot = len(nums)
         self.dfs(nums, res, 0, [])
         return res
-
+    
     def dfs(self, nums, res, depth, path):
         if depth == self.tot:
             res.append(path)

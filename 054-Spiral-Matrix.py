@@ -38,6 +38,7 @@ class Solution(object):
                 res.append(matrix[i][colend])
         return res
 
+
 if __name__ == '__main__':
     matrix = [
         [1, 2, 3],

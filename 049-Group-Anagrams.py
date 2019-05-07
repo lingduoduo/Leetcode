@@ -13,6 +13,7 @@ class Solution(object):
             d[str_key] = d.get(str_key, []) + [strs[i]]
         return [v for v in d.values()]
 
+
 if __name__ == '__main__':
     strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
     result = Solution().groupAnagrams(strs)

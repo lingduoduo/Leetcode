@@ -7,24 +7,24 @@ class Solution(object):
         """
         if not nums:
             return [-1, -1]
-
+        
         lower = self.lowerBound(nums, target)
         upper = self.upperBound(nums, target)
-
+        
         if lower == upper:
             return [-1, -1]
         return [lower, upper - 1]
-
+    
     def lowerBound(self, nums, target):
         """
         return index such that target<=nums[index]
         """
         if not nums:
             return -1
-
+        
         left = 0
         right = len(nums)
-
+        
         while left < right:
             mid = left + (right - left) // 2
             if nums[mid] < target:
@@ -32,17 +32,17 @@ class Solution(object):
             else:
                 right = mid
         return left
-
+    
     def upperBound(self, nums, target):
         """
         return index such that target<nums[index]
         """
         if not nums:
             return -1
-
+        
         left = 0
         right = len(nums)
-
+        
         while left < right:
             mid = left + (right - left) // 2
             if nums[mid] <= target:

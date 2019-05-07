@@ -17,11 +17,12 @@ class Solution(object):
             i += 1
         return False
 
+
 if __name__ == '__main__':
-    nums = [2,3,1,1,4]
+    nums = [2, 3, 1, 1, 4]
     result = Solution().canJump(nums)
     print(result)
 
-    nums = [3,2,1,0,4]
+    nums = [3, 2, 1, 0, 4]
     result = Solution().canJump(nums)
     print(result)

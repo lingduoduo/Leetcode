@@ -5,9 +5,9 @@ class Solution(object):
         :type newInterval: List[int]
         :rtype: List[List[int]]
         """
-        ## Method 1
+        # Method 1
         intervals.append(newInterval)
-        intervals.sort(key=lambda x:x[0])
+        intervals.sort(key=lambda x: x[0])
 
         res = []
         for i in range(len(intervals)):
@@ -26,15 +26,14 @@ if __name__ == '__main__':
     newInterval = [2, 5]
     result = Solution().insert(intervals, newInterval)
     print(result)
-    
+
     intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]]
     newInterval = [4, 8]
     result = Solution().insert(intervals, newInterval)
     print(result)
 
-    intervals = [[1,5]]
+    intervals = [[1, 5]]
     # newInterval = [2,3]
-    newInterval = [0,3]
+    newInterval = [0, 3]
     result = Solution().insert(intervals, newInterval)
-    print(result)    
-
+    print(result)
