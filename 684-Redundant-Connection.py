@@ -42,48 +42,55 @@
 Input: [[1,2], [1,3], [2,3]]
 Output: [2,3]
 '''
-
-
 class Solution:
+    
     def findRedundantConnection(self, edges):
-        self.d = dict()
-        visited = set()
+        d = dict()
         
         for edge in edges:
             u = edge[0]
             v = edge[1]
-
-            if self.haspath(u, v, visited):
+            
+            if self.haspath(u, v, d, []):
                 return edge
             
-            self.d[u] = self.d.get(u, []) + [v]
-            self.d[v] = self.d.get(v, []) + [u]
-        return False
+            d[u] = d.get(u, []) + [v]
+            d[v] = d.get(v, []) + [u]
+        return []
     
-    def haspath(self, start, target, visited):
-        print(start)
-        print(target)
-        print(self.d)
-        
+    def haspath(self, start, target, d, visited):
         if start == target:
             return True
-        visited.add(start)
+        visited.append(start)
         
-        if start not in self.d or target not in self.d:
+        if start not in d or target not in d:
             return False
         
-        if start in self.d and target in self.d[start]:
+        if start in d and target in d[start]:
             return True
-        else:
-            for node in self.d[start]:
-                # if node in visited:
-                #     continue
-                if self.haspath(node, target, visited):
+        
+        while visited:
+            startnode = visited.pop(0)
+            visited += d[startnode]
+            
+            for node in d[startnode]:
+                d[startnode].remove(node)
+                d[node].remove(startnode)
+                
+                if self.haspath(node, target, d, visited):
                     return True
             return False
+
 
 if __name__ == '__main__':
     edges = [[1,2], [1,3], [2,3]]
     result = Solution().findRedundantConnection(edges)
     print(result)
-    
+    #
+    # edges = [[1,2], [2,3], [3,4], [1,4], [1,5]]
+    # result = Solution().findRedundantConnection(edges)
+    # print(result)
+
+    # edges = [[1,2],[2,3],[2,4],[4,5],[1,5]]
+    # result = Solution().findRedundantConnection(edges)
+    # print(result)
