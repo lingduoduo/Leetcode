@@ -23,18 +23,20 @@ class Solution(object):
         while dividend >= divisor:
             part = divisor
             cnt = 1
-            while part+part <= dividend:
-                part+=part
-                cnt+=cnt
+            while part + part <= dividend:
+                part += part
+                cnt += cnt
             dividend -= part
             res += cnt
-        if res * sign1 * sign2 >=MAX_INT: return MAX_INT
-        if res * sign1 * sign2 <=MIN_INT: return MIN_INT
+        if res * sign1 * sign2 >= MAX_INT:
+            return MAX_INT
+        if res * sign1 * sign2 <= MIN_INT:
+            return MIN_INT
         return res * sign1 * sign2
 
 
 if __name__ == '__main__':
     result = Solution().divide(100, 10)
     result = Solution().divide(-2147483648, -1)
-    result = Solution().divide(7,-3)
+    result = Solution().divide(7, -3)
     print(result)
