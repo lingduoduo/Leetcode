@@ -8,7 +8,7 @@ class Solution(object):
         """
         if not nums:
             return None
-
+        
         # i =0
         # while nums[i] != 0 and i<len(nums)-1:
         #     i += 1
@@ -26,11 +26,11 @@ class Solution(object):
         # k = len(nums) - 1
         #
         # print(nums)
-
+        
         i = 0
         j = 0
-        k = len(nums)-1
-        while j<=k:
+        k = len(nums) - 1
+        while j <= k:
             if nums[j] == 0:
                 nums[i], nums[j] = nums[j], nums[i]
                 i += 1
@@ -42,24 +42,24 @@ class Solution(object):
                 j += 1
         return nums
 
+
 if __name__ == '__main__':
-    nums = [2,0,2,1,1,0]
+    nums = [2, 0, 2, 1, 1, 0]
     result = Solution().sortColors(nums)
     print(result)
-
-    nums = [0,0,1,0,1,1]
+    
+    nums = [0, 0, 1, 0, 1, 1]
     result = Solution().sortColors(nums)
     print(result)
-
-    nums = [1,1,1,2]
+    
+    nums = [1, 1, 1, 2]
     result = Solution().sortColors(nums)
     print(result)
-
-    nums = [2,0,1]
+    
+    nums = [2, 0, 1]
     result = Solution().sortColors(nums)
     print(result)
-
-    nums = [1,0]
+    
+    nums = [1, 0]
     result = Solution().sortColors(nums)
     print(result)
-

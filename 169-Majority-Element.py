@@ -5,4 +5,4 @@ class Solution(object):
         :rtype: int
         """
         nums = sorted(nums)
-        return nums[len(nums)//2]
+        return nums[len(nums) // 2]

@@ -19,13 +19,12 @@ class Solution(object):
         # return False
         slow = fast = head
         if fast is None:
-        	return False
+            return False
         while fast is not None:
-        	if fast.next is None:
-        		return False
-        	fast = fast.next.next
-        	slow = slow.next
-        	if fast==slow:
-        		return True
+            if fast.next is None:
+                return False
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                return True
         return False
-

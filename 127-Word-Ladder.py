@@ -15,25 +15,25 @@ class Solution:
 
     Output: 0
     '''
-
+    
     def ladderLength(
             self,
             beginWord: str,
             endWord: str,
             wordList) -> int:
-
+        
         wordList = set(wordList)
         d = list()
         visited = set()
-
+        
         d.append([beginWord, 1])
         visited.add(beginWord)
-
+        
         while d:
             node, step = d.pop(0)
             if node == endWord:
                 return step
-
+            
             for i in range(len(node)):
                 for j in 'abcdefghijklmnopqrstuvwxyz':
                     w = node[:i] + j + node[i + 1:]
@@ -41,7 +41,7 @@ class Solution:
                         d.append([w, step + 1])
                         wordList.remove(w)
                         visited.add(w)
-
+        
         return 0
 
 
@@ -51,31 +51,31 @@ if __name__ == '__main__':
     wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)
-
+    
     beginWord = "hot"
     endWord = "dog"
     wordList = ["hot"]
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)
-
+    
     beginWord = "hot"
     endWord = "dog"
     wordList = ["hot", "cog", "dog", "tot", "hog", "hop", "pot", "dot"]
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)
-
+    
     beginWord = "hot"
     endWord = "dog"
     wordList = ["hot", "dog", "cog", "pot", "dot"]
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)
-
+    
     beginWord = 'a'
     endWord = 'c'
     wordList = ['a', 'b', 'c']
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)
-
+    
     beginWord = "nanny"
     endWord = "aloud"
     wordList = ["ricky", "grind", "cubic", "panic", "lover", "farce", "gofer", "sales", "flint", "omens", "lipid",
@@ -493,6 +493,6 @@ if __name__ == '__main__':
                 "spiel", "sleek", "anons", "pupae", "chiba", "hoops", "trash", "noted", "boris", "dough", "shirt",
                 "cowls", "seine", "spool", "miens", "yummy", "grade", "proxy", "hopes", "girth", "deter", "dowry",
                 "aorta", "paean", "corms", "giant", "shank", "where", "means", "years", "vegan", "derek", "tales"]
-
+    
     result = Solution().ladderLength(beginWord, endWord, wordList)
     print(result)

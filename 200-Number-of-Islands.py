@@ -9,7 +9,7 @@ class Solution(object):
         # if n == 0: return 0
         # m = len(grid[0])
         # result = 0
-
+        
         # def dfs(grid, x, y):
         # 	if x<0 or y<0 or x>=n or y>=m or grid[x][y]=='0':
         # 		return
@@ -18,14 +18,14 @@ class Solution(object):
         # 	dfs(grid, x-1, y)
         # 	dfs(grid, x, y+1)
         # 	dfs(grid, x, y-1)
-
+        
         # for i in range(n):
         # 	for j in range(m):
         # 		if grid[i][j] == '1':
         #  		dfs(grid, i, j)
         #  		result += 1
         # return result
-
+        
         # Second Try
         if not grid:
             return 0
@@ -38,7 +38,7 @@ class Solution(object):
                     res += 1
                     self.dfs(grid, i, j, n, m)
         return res
-
+    
     def dfs(self, grid, i, j, n, m):
         if i < 0 or j < 0 or i >= n or j >= m or grid[i][j] == '0':
             return

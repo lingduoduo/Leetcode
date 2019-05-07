@@ -8,7 +8,7 @@ class Solution(object):
         import collections
         d = collections.Counter(nums)
         l = sorted(d.values())[-k:]
-
+        
         res = list()
         for k, v in d.items():
             if v in l:
@@ -17,7 +17,7 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    nums=[1,1,1,2,2,3]
+    nums = [1, 1, 1, 2, 2, 3]
     result = Solution().topKFrequent(nums, 2)
     print(result)
     nums = [1]

@@ -7,16 +7,15 @@ class Solution(object):
         """
         # nums = sorted(nums)
         # return nums[-k]
-
-		from heapq import heappush, heappop
-
-		heap = []
-		for num in nums:
-			heappush(heap, num)
-
-		ordered =[]
-		while heap:
-			ordered.append(heappop(heap))
-
-		return ordered[-k]
-
+        
+        from heapq import heappush, heappop
+        
+        heap = []
+        for num in nums:
+            heappush(heap, num)
+        
+        ordered = []
+        while heap:
+            ordered.append(heappop(heap))
+        
+        return ordered[-k]

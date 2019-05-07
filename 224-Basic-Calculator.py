@@ -4,12 +4,12 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-
+        
         stack = []
-        res = 0   
+        res = 0
         curr = 0
         sign = 1
-
+        
         i = 0
         for i in range(len(s)):
             print([res, curr])
@@ -35,6 +35,7 @@ class Solution(object):
                 sign = -1
         res += curr * sign
         return res
+
 
 if __name__ == '__main__':
     s = '(4+5+2)'

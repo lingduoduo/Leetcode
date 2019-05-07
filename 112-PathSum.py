@@ -23,7 +23,7 @@ class Solution(object):
         # if self.hasPathSum(root.right, sum-root.val):
         # 	return True
         # return False
-
+        
         # Second Try
         # if not root:
         #     return False
@@ -35,14 +35,14 @@ class Solution(object):
         # if root.right:
         #     right = self.hasPathSum(root.right, sum-root.val)
         # return left or right
-
+        
         # Third Try
         if not root:
             return False
-
+        
         if not root.left and not root.right:
             return root.val == sum
-
+        
         return self.hasPathSum(
             root.left,
             sum -

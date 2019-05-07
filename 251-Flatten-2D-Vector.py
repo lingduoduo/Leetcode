@@ -13,19 +13,19 @@
 
 
 class Vector2D(object):
-
+    
     # @param vec2d {List[List[int]]}
     def __init__(self, vec2d):
         # Initialize your data structure here
         self.vec2d = vec2d
         self.row = 0
         self.col = 0
-
+    
     # @return {int} a next element
     def next(self):
         # Write your code here
         val = self.vec2d[self.row][self.col]
-
+        
         if self.col < len(self.vec2d[self.row]) - 1:
             self.col += 1
         elif self.row < len(self.vec2d) - 1:
@@ -34,7 +34,7 @@ class Vector2D(object):
         else:
             self.col += 1
         return val
-
+    
     # @return {boolean} true if it has next element
     # or false
     def hasNext(self):

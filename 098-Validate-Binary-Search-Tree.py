@@ -15,11 +15,10 @@ class Solution(object):
         def dfs(root, min, max):
             if not root:
                 return True
-            if root.val>= max:
+            if root.val >= max:
                 return False
-            if root.val<= min:
+            if root.val <= min:
                 return False
             return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)
-            
-        return dfs(root, float('-inf'), float('inf'))
         
+        return dfs(root, float('-inf'), float('inf'))

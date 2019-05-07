@@ -6,11 +6,11 @@ class Solution(object):
         :rtype: bool
         """
         left = 0
-        right = len(nums)-1
+        right = len(nums) - 1
         while left <= right:
             while left < right and nums[left] == nums[right]:
                 left += 1
-            mid = (left + right)//2 
+            mid = (left + right) // 2
             if nums[mid] == target:
                 return True
             if nums[left] <= nums[mid]:

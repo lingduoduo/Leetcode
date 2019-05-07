@@ -11,7 +11,7 @@ class Solution(object):
         #     return i
         # else:
         #     return i-1
-
+        
         # L = 0
         # R = x
         # while L<=R:
@@ -23,13 +23,13 @@ class Solution(object):
         # 	else:
         # 		L = mid+1
         # return R
-
-# second Try
+        
+        # second Try
         L = 0
         R = x + 1
         while L < R:
             mid = L + (R - L) // 2
-            if mid**2 <= x:
+            if mid ** 2 <= x:
                 L = mid + 1
             else:
                 R = mid

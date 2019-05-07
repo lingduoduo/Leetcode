@@ -12,7 +12,7 @@ class Solution(object):
         """
         left = 0
         right = n
-
+        
         while left < right:
             mid = left + (right - left) // 2
             if not isBadVersion(mid):

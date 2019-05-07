@@ -7,16 +7,16 @@ class Solution:
         bits = self.intToBit(n)
         return self.bitToInt(bits[::-1])
         # return bits
-
+    
     def intToBit(self, n):
         bits = ''
-        while(n > 0):
+        while (n > 0):
             bits = str(n % 2) + bits
             n = n // 2
         while len(bits) < 32:
             bits = '0' + bits
         return bits
-
+    
     def bitToInt(self, bits):
         res = 0
         for i in range(len(bits)):

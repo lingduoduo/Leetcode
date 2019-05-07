@@ -17,20 +17,21 @@ class Solution(object):
     def shortestDeistance(self, words, word1, word2):
         pos1 = pos2 = res = float('inf')
         res = float('inf')
-
+        
         for i in range(len(words)):
             if words[i] == word1:
                 pos1 = i
-                res = min(res, abs(i-pos2))
+                res = min(res, abs(i - pos2))
             if words[i] == word2:
                 pos2 = i
-                res = min(res, abs(i-pos1))
+                res = min(res, abs(i - pos1))
             print([i, pos1, pos2, res])
-
+        
         if res == float('inf'):
             return -1
         else:
             return res
+
 
 if __name__ == "__main__":
     words = ['practice', 'makes', 'perfect', 'coding', 'makes']
@@ -38,7 +39,7 @@ if __name__ == "__main__":
     # word2 = 'practice'
     # result = Solution().shortestDeistance(words, word1, word2)
     # print(result)
-
+    
     word1 = 'makes'
     word2 = 'coding'
     result = Solution().shortestDeistance(words, word1, word2)

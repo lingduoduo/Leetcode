@@ -15,7 +15,7 @@ class Solution(object):
         nodedict = dict()
         dummy = Node(0, None, None)
         nodedict[head] = dummy
-
+        
         newCurr, curr = dummy, head
         while curr:
             node = Node(curr.val, curr.next, None)

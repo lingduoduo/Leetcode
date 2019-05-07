@@ -5,6 +5,7 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+
 class Solution(object):
     def minDepth(self, root):
         """
@@ -23,7 +24,7 @@ class Solution(object):
         # if root.right is None:
         # 	retrun leftDepth+1
         # return min(leftDepth, rightDepth)+1
-
+        
         ## Second Try
         if not root:
             return 0
@@ -35,7 +36,8 @@ class Solution(object):
             left = self.minDepth(root.left)
         if root.right:
             right = self.minDepth(root.right)
-        return min(left, right)+1
+        return min(left, right) + 1
+
 
 if __name__ == "__main__":
     # root = TreeNode(3)
@@ -43,9 +45,8 @@ if __name__ == "__main__":
     # root.right = TreeNode(20)
     # root.right.left = TreeNode(15)
     # root.right.right = TreeNode(7)
-
+    
     root = TreeNode(1)
     root.left = TreeNode(2)
     result = Solution().minDepth(root)
-    print(result)      
-    
+    print(result)

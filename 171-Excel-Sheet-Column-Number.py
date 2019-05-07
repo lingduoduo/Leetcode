@@ -7,7 +7,7 @@ class Solution(object):
         d = {}
         for i in range(26):
             d[chr(ord('A') + i)] = i + 1
-
+        
         res = 0
         for i in range(len(s)):
             res = res * 26 + d[s[i]]

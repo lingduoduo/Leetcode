@@ -20,23 +20,23 @@ class Solution(object):
 			(((2*3)-4)*5) = 10		
         """
         res = list()
-
+        
         for i in range(len(input)):
-        	if input[i]=='+' or input[i]=='-' or input[i]=='*':
-        		left = input[:i]
-        		right = input[i+1:]
-
-        		l = self.diffWaysToCompute(left)
-        		r = self.diffWaysToCompute(right)
-
-        		for num1 in l:
-        			for num2 in r:
-        				if input[i]=='+':
-        					res.append(num1+num2)
-        				elif input[i]=='-':
-        					res.append(num1-num2)
-        				elif input[i]=='*':
-        					res.append(num1*num2)
+            if input[i] == '+' or input[i] == '-' or input[i] == '*':
+                left = input[:i]
+                right = input[i + 1:]
+                
+                l = self.diffWaysToCompute(left)
+                r = self.diffWaysToCompute(right)
+                
+                for num1 in l:
+                    for num2 in r:
+                        if input[i] == '+':
+                            res.append(num1 + num2)
+                        elif input[i] == '-':
+                            res.append(num1 - num2)
+                        elif input[i] == '*':
+                            res.append(num1 * num2)
         if not res:
-        	res.append(int(input))
+            res.append(int(input))
         return res

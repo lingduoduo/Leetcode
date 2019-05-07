@@ -17,25 +17,25 @@ class Solution(object):
         
         def bfs(root, level):
             if root is None: return
-            if len(result)==level: 
+            if len(result) == level:
                 result.append([])
             result[level].append(root.val)
-            bfs(root.left, level+1)
-            bfs(root.right, level+1)
+            bfs(root.left, level + 1)
+            bfs(root.right, level + 1)
         
         bfs(root, 0)
         return result
-
+        
         ## second try
         if not root: return []
         result = []
         visited = []
         visited.append(root)
-
+        
         while visited:
             size = len(visited)
             par = []
-            while size>0:
+            while size > 0:
                 node = visited.pop(0)
                 par.append(node.val)
                 if node.left:

@@ -14,7 +14,7 @@ class Solution(object):
         # first try
         stack1 = list()
         stack2 = list()
-
+        
         curr = headA
         while curr:
             stack1.append(curr)
@@ -23,7 +23,7 @@ class Solution(object):
         while curr:
             stack2.append(curr)
             curr = curr.next
-
+        
         result = None
         while stack1 and stack2:
             s1 = stack1.pop()
@@ -33,5 +33,5 @@ class Solution(object):
             else:
                 result = s1
         return result
-
+        
         # second try

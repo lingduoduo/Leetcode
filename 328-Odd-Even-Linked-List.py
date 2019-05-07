@@ -1,4 +1,4 @@
- # Definition for singly-linked list.
+# Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
 #         self.val = x
@@ -12,12 +12,12 @@ class Solution(object):
         """
         odd = ListNode(0)
         even = ListNode(0)
-
+        
         oddHead = odd
         evenHead = even
         index = 1
         while head:
-            if index%2 == 1:
+            if index % 2 == 1:
                 odd.next = head
                 odd = odd.next
             else:
@@ -28,6 +28,3 @@ class Solution(object):
         even.next = None
         odd.next = evenHead.next
         return oddHead.next
-        
-
-            

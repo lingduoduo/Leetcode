@@ -7,6 +7,8 @@ class Node(object):
         self.right = right
         self.next = next
 """
+
+
 class Solution(object):
     def connect(self, root):
         """
@@ -15,18 +17,17 @@ class Solution(object):
         """
         self.d = dict()
         self.dfs(root, 0)
-
+        
         for k in d.keys():
             for j in range(len(d[k])):
-                if j==len(d[k])-1:
-                    d[k][j].next=None
+                if j == len(d[k]) - 1:
+                    d[k][j].next = None
                 else:
-                    d[k][j].next = d[k][j+1]
+                    d[k][j].next = d[k][j + 1]
         return root
-
+    
     def dfs(self, root, level):
         if not root: return
         self.d[level] = self.d.get(level, []) + root
-        self.dfs(root.left, level+1)
-        self.dfs(root.right, level+1)
-
+        self.dfs(root.left, level + 1)
+        self.dfs(root.right, level + 1)

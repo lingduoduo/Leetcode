@@ -23,15 +23,16 @@ class Solution(object):
             for i in range(rowend, rowstart, -1):
                 res[i][colstart] = step
                 step += 1
-            rowstart+=1
-            rowend-=1
-            colstart+=1
-            colend-=1
+            rowstart += 1
+            rowend -= 1
+            colstart += 1
+            colend -= 1
         if rowstart == rowend and colstart == colend:
             res[rowstart][colstart] = step
             step += 1
-
+        
         return res
+
 
 if __name__ == '__main__':
     result = Solution().generateMatrix(4)

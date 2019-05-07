@@ -16,17 +16,17 @@ class Solution(object):
         if root is None:
             return []
         result = list()
-
+        
         def dfs(root):
             if root is None:
                 return
             dfs(root.left)
             result.append(root.val)
             dfs(root.right)
-
+        
         dfs(root)
         return result
-
+        
         # ## Second recursive solution
         res = []
         if root:
@@ -34,7 +34,7 @@ class Solution(object):
             res.append(root.val)
             res += self.inorderTraversal(root.right)
         return res
-
+        
         # iterative solution
         stack = []
         result = []
@@ -48,14 +48,14 @@ class Solution(object):
             curr = stack.pop()
             result.append(curr.val)
             curr = curr.right
-
+        
         # Third try
         if not root:
             return root
         visited = []
         res = []
         curr = root
-
+        
         while True:
             while curr:
                 visited.append(curr)
@@ -72,12 +72,12 @@ if __name__ == "__main__":
     root = TreeNode(1)
     root.left = TreeNode(2)
     root.right = TreeNode(2)
-
+    
     root.left.left = TreeNode(3)
     root.left.right = TreeNode(4)
-
+    
     root.right.left = TreeNode(4)
     root.right.right = TreeNode(3)
-
+    
     result = Solution().inorderTraversal(root)
     print(result)

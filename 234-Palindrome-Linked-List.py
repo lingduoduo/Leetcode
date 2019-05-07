@@ -13,8 +13,8 @@ class Solution(object):
         l = list()
         while head:
             l.append(head.val)
-            head=head.next
-        if l==l[::-1]:
+            head = head.next
+        if l == l[::-1]:
             return True
         else:
             return False

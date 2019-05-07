@@ -18,17 +18,18 @@ class Solution(object):
         # leftdepth = self.maxDepth(root.left)
         # rightdepth = self.maxDepth(root.right)
         # return max(leftdepth, rightdepth)+1
-
+        
         ## Second Try
         if not root:
             return 0
         left = 0
-        right =0
+        right = 0
         if root.left:
             left = self.maxDepth(root.left)
         if root.right:
             right = self.maxDepth(root.right)
         return max(left, right) + 1
+
 
 if __name__ == "__main__":
     root = TreeNode(3)
@@ -37,5 +38,4 @@ if __name__ == "__main__":
     root.right.left = TreeNode(15)
     root.right.right = TreeNode(7)
     result = Solution().maxDepth(root)
-    print(result)      
-    
+    print(result)

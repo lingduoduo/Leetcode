@@ -16,10 +16,10 @@ class Solution(object):
         # 		except:
         # 			break
         # return d
-
+        
         dp = [False] * (len(s) + 1)
         dp[0] = True
-
+        
         for i in range(1, len(s) + 1):
             for k in range(i):
                 if dp[k] and s[k:i] in wordDict:

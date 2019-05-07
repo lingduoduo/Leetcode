@@ -1,4 +1,6 @@
 import collections
+
+
 class Solution(object):
     def containsDuplicate(self, nums):
         """
@@ -7,11 +9,12 @@ class Solution(object):
         """
         d = collections.Counter(nums)
         for key, val in d.items():
-            if val>1:
+            if val > 1:
                 return True
         return False
 
+
 if __name__ == "__main__":
-    input = [1,2]
+    input = [1, 2]
     result = Solution().containsDuplicate(input)
-    print(result)   
+    print(result)

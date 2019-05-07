@@ -4,6 +4,7 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
     def rotateRight(self, head, k):
         """
@@ -11,27 +12,29 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        if head==None: return head
-        if k==0: return head
-        
+        if head is None:
+            return head
+        if k == 0:
+            return head
+
         fast = head
-        n=0
+        n = 0
         while fast:
             fast = fast.next
-            n+=1
-        k=k%n
-        
+            n += 1
+        k = k % n
+
         fast = head
         while k:
             fast = fast.next
-            k-=1
-        
+            k -= 1
+
         slow = head
         while fast.next:
-            fast=fast.next
+            fast = fast.next
             slow = slow.next
-            
-        fast.next=head
+
+        fast.next = head
         head = slow.next
         slow.next = None
         return head

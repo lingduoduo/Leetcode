@@ -14,14 +14,15 @@ class Solution(object):
         """
         self.cnt = 0
         self.result = 0
+        
         def DFS(root, k):
-        	if root is None:
-        		return
-        	DFS(root.left, k)
-        	self.cnt += 1
-        	if self.cnt == k:
-        		self.result = root.val
-        	DFS(root.right, k)
-
+            if root is None:
+                return
+            DFS(root.left, k)
+            self.cnt += 1
+            if self.cnt == k:
+                self.result = root.val
+            DFS(root.right, k)
+        
         DFS(root, k)
         return self.result

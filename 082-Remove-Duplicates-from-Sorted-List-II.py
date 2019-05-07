@@ -12,20 +12,20 @@ class Solution(object):
         """
         dummy = ListNode(0)
         dummy.next = head
-
+        
         curr = dummy.next
         v = dict()
         while curr:
-        	try:
-        		v[curr.val] += 1
-        	except:
-        		v[curr.val] = 1
-        	curr = curr.next
-
+            try:
+                v[curr.val] += 1
+            except:
+                v[curr.val] = 1
+            curr = curr.next
+        
         curr = dummy
         while curr and curr.next:
-        	if v[curr.next.val] == 1:
-        		curr = curr.next
-        	else:
-        		curr.next = curr.next.next
+            if v[curr.next.val] == 1:
+                curr = curr.next
+            else:
+                curr.next = curr.next.next
         return dummy.next

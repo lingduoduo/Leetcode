@@ -5,33 +5,34 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+
 class Solution(object):
     def flatten(self, root):
         """
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-    #     if not root:
-    #         return root
-    #
-    #     dummy = TreeNode(-1)
-    #     self.last = dummy
-    #     self.dfs(root)
-    #     return dummy.right
-    #
-    # def dfs(self, curr):
-    #     if not curr:
-    #         return
-    #
-    #     self.last.right = TreeNode(curr.val)
-    #     self.last = self.last.right
-    #
-    #     self.dfs(curr.left)
-    #     self.dfs(curr.right)
-
+        #     if not root:
+        #         return root
+        #
+        #     dummy = TreeNode(-1)
+        #     self.last = dummy
+        #     self.dfs(root)
+        #     return dummy.right
+        #
+        # def dfs(self, curr):
+        #     if not curr:
+        #         return
+        #
+        #     self.last.right = TreeNode(curr.val)
+        #     self.last = self.last.right
+        #
+        #     self.dfs(curr.left)
+        #     self.dfs(curr.right)
+        
         self.nodes = list()
         self.dfs(root)
-
+        
         dummy = TreeNode(-1)
         dummy.right = root
         curr = dummy
@@ -39,7 +40,7 @@ class Solution(object):
             curr.right = self.nodes.pop(0)
             curr = curr.right
         return dummy.right
-
+    
     def dfs(self, root):
         if not root:
             return
@@ -59,8 +60,8 @@ if __name__ == "__main__":
     p.left.left = TreeNode(3)
     p.left.right = TreeNode(4)
     p.right.right = TreeNode(6)
-
+    
     # Solution().printTree(p)
-
+    
     result = Solution().flatten(p)
     Solution().printTree(result)

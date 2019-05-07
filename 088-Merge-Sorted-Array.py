@@ -7,7 +7,7 @@ class Solution(object):
         :type n: int
         :rtype: void Do not return anything, modify nums1 in-place instead.
         """
-     
+        
         curr1, curr2 = m - 1, n - 1
         k = m + n - 1
         while curr1 >= 0 and curr2 >= 0:
@@ -22,4 +22,3 @@ class Solution(object):
             nums1[k] = nums2[curr2]
             curr2 -= 1
             k -= 1
-

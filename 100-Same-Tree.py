@@ -5,6 +5,7 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+
 class Solution(object):
     def isSameTree(self, p, q):
         """
@@ -24,7 +25,7 @@ class Solution(object):
         # if isSameTree(p.left, q.left) and isSameTree(p.right, q.right):
         # 	return True
         # return False
-
+        
         if not p and not q:
             return True
         if not p or not q:
@@ -34,15 +35,15 @@ class Solution(object):
         else:
             return False
 
+
 if __name__ == "__main__":
     p = TreeNode(1)
     p.left = TreeNode(2)
     p.right = TreeNode(3)
-
+    
     q = TreeNode(1)
     q.left = TreeNode(2)
     q.right = TreeNode(3)
-
-    result = Solution().isSameTree(p, q)
-    print(result)      
     
+    result = Solution().isSameTree(p, q)
+    print(result)

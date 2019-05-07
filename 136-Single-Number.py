@@ -6,6 +6,5 @@ class Solution(object):
         """
         d = collections.Counter(nums)
         for k, v in d.items():
-        	if v==1:
-        		return k
-
+            if v == 1:
+                return k

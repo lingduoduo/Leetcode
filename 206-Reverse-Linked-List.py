@@ -11,8 +11,8 @@ class Solution(object):
         :rtype: ListNode
         """
         if head is None:
-        	return None
-
+            return None
+        
         curr1 = head
         dummy = ListNode(-1)
         while curr1:

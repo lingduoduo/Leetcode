@@ -18,7 +18,7 @@ class Solution(object):
         self.res = []
         self.search(root, sum, [])
         return self.res
-
+    
     def search(self, root, sum, path):
         if not root:
             return
