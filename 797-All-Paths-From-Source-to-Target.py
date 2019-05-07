@@ -7,7 +7,7 @@ class Solution(object):
         self.res = []
         self.dfs(graph, 0, [0])
         return self.res
-
+    
     def dfs(self, graph, curr, path):
         if graph[curr] == []:
             self.res.append(path)

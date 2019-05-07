@@ -18,7 +18,7 @@ if __name__ == "__main__":
     B = 'cdeab'
     result = Solution().rotateString(A, B)
     print(result)
-
+    
     A = 'abcde'
     B = 'abced'
     result = Solution().rotateString(A, B)

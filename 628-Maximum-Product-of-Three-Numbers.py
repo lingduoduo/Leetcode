@@ -12,19 +12,19 @@ class Solution(object):
         MAX_1 = MAX_2 = MAX_3 = -1000
         MIN_1 = MIN_2 = 1000
         for i in range(n):
-        	if nums[i] > MAX_1:
-        		MAX_3 = MAX_2
-        		MAX_2 = MAX_1
-        		MAX_1 = nums[i]
-        	elif nums[i] > MAX_2:
-        		MAX_3 = MAX_2
-        		MAX_2 = nums[i]
-        	elif nums[i] > MAX_3:
-        		MAX_3 = nums[i]
-                
-        	if nums[i]<MIN_1:
-        		MIN_2 = MIN_1
-        		MIN_1 = nums[i]
-        	elif nums[i]<MIN_2:
-        		MIN_2 = nums[i]
-        return max(MAX_1*MAX_2*MAX_3, MAX_1*MIN_1*MIN_2)
+            if nums[i] > MAX_1:
+                MAX_3 = MAX_2
+                MAX_2 = MAX_1
+                MAX_1 = nums[i]
+            elif nums[i] > MAX_2:
+                MAX_3 = MAX_2
+                MAX_2 = nums[i]
+            elif nums[i] > MAX_3:
+                MAX_3 = nums[i]
+            
+            if nums[i] < MIN_1:
+                MIN_2 = MIN_1
+                MIN_1 = nums[i]
+            elif nums[i] < MIN_2:
+                MIN_2 = nums[i]
+        return max(MAX_1 * MAX_2 * MAX_3, MAX_1 * MIN_1 * MIN_2)

@@ -7,18 +7,18 @@ class Solution(object):
         if not nums:
             return -1
         
-        dp = [0]*(len(nums)+1)
-
+        dp = [0] * (len(nums) + 1)
+        
         for i in range(len(nums)):
-        	dp[i+1] = dp[i] + nums[i]
-
+            dp[i + 1] = dp[i] + nums[i]
+        
         result = -1
         for i in range(len(nums)):
-        	if dp[i] == dp[-1] - dp[i+1]:
-        		result = i
-
+            if dp[i] == dp[-1] - dp[i + 1]:
+                result = i
+        
         return result
-
+    
     def pivotIndex(self, nums):
         """
         :type nums: List[int]

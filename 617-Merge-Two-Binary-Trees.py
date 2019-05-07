@@ -13,11 +13,11 @@ class Solution(object):
         :rtype: TreeNode
         """
         if t1 is None:
-        	return t2
+            return t2
         if t2 is None:
-        	return t1
-
-        root = TreeNode(t1.val+t2.val)
+            return t1
+        
+        root = TreeNode(t1.val + t2.val)
         root.left = mergeTrees(t1.left, t2.left)
         root.right = mergeTrees(t1.right, t2.right)
         return root

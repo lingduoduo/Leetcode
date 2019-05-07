@@ -14,20 +14,20 @@ class Solution(object):
         """
         if not nums:
             return None
-
+        
         idx = i = 0
         max_num = nums[0]
-
+        
         while i < len(nums):
             if max_num < nums[i]:
                 idx = i
                 max_num = nums[i]
             i += 1
-
+        
         root = TreeNode(max_num)
         root.left = self.constructMaximumBinaryTree(nums[:idx])
         root.right = self..constructMaximumBinaryTree(nums[idx + 1:])
-
+        
         return root
 
 

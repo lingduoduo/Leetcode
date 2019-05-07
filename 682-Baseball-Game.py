@@ -5,15 +5,14 @@ class Solution(object):
         :rtype: int
         """
         s = list()
-
+        
         for op in ops:
-        	if op =="+":
-        		s.append(s[-1]+s[-2])
-        	elif op =="C":
-        		s.pop()
-        	elif op =="D":
-        		s.append(s[-1]*2)
-        	else:
-        		s.append(int(op))
+            if op == "+":
+                s.append(s[-1] + s[-2])
+            elif op == "C":
+                s.pop()
+            elif op == "D":
+                s.append(s[-1] * 2)
+            else:
+                s.append(int(op))
         return sum(s)
-

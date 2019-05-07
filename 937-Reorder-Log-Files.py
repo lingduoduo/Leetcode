@@ -6,7 +6,7 @@ class Solution(object):
         """
         letters = {}
         digits = []
-
+        
         for log in logs:
             items = log.split(" ")
             if items[1][0].isalpha():

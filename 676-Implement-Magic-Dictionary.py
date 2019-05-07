@@ -6,27 +6,27 @@ class MagicDictionary:
     Input: search("hell"), Output: False
     Input: search("leetcoded"), Output: False
     '''
-
+    
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.d = list()
-
+    
     def buildDict(self, dict) -> None:
         """
         Build a dictionary through a list of words
         """
-
+        
         for i in range(len(dict)):
             if dict[i] not in self.d:
                 self.d.append(dict[i])
-
+    
     def search(self, word) -> bool:
         """
         Returns if there is any word in the trie that equals to the given word after modifying exactly one character
         """
-
+        
         for i in range(len(self.d)):
             if len(self.d[i]) != len(word):
                 continue

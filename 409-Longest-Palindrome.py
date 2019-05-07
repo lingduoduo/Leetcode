@@ -10,7 +10,7 @@ class Solution(object):
                 freqs[i] += 1
             except BaseException:
                 freqs[i] = 1
-
+        
         result = 0
         odd = 0
         for v in freqs.values():

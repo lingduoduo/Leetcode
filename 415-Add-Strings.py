@@ -7,7 +7,7 @@ class Solution(object):
         """
         l1 = list(num1)
         l2 = list(num2)
-
+        
         result = []
         lead = 0
         while len(l1) > 0 and len(l2) > 0:

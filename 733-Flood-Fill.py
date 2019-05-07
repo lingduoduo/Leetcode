@@ -7,14 +7,14 @@ class Solution(object):
         :type newColor: int
         :rtype: List[List[int]]
         """
-      # Method 1
+        # Method 1
         if image[sr][sc] == newColor:
             return image
-
+        
         n = image
         m = image[0]
         oldColor = image[sr][sc]
-
+        
         def Fill(x, y):
             if x <= 0 or x >= n or y <= 0 or y >= m:
                 return
@@ -25,17 +25,17 @@ class Solution(object):
             Fill(x - 1, y)
             Fill(x, y - 1)
             Fill(x, y + 1)
-
+        
         Fill(sr, sc)
         return image
-
-      # Method 2
+        
+        # Method 2
         if image[sr][sc] == newColor:
             return image
-
+        
         self.dfs(image, sr, sc, image[sr][sc], newColor)
         return image
-
+    
     def dfs(self, image, sr, sc, oldColor, newColor):
         if image[sr][sc] == oldColor:
             image[sr][sc] = newColor

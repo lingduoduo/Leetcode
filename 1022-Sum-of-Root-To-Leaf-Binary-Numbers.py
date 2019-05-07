@@ -22,14 +22,14 @@ class Solution(object):
                 curr = curr * 2 + seq[i]
             val += curr
         return val
-
+    
     def dfs(self, root, path):
         if not root:
             return
         if not root.left and not root.right:
             path = path + [root.val]
             self.res.append(path)
-
+        
         self.dfs(root.left, path + [root.val])
         self.dfs(root.right, path + [root.val])
 
@@ -42,8 +42,8 @@ if __name__ == "__main__":
     p.left.right = TreeNode(1)
     p.right.left = TreeNode(0)
     p.right.right = TreeNode(1)
-
+    
     # Solution().printTree(p)
-
+    
     result = Solution().sumRootToLeaf(p)
     print(result)

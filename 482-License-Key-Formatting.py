@@ -5,10 +5,10 @@ class Solution(object):
         :type K: int
         :rtype: str
         """
-        S2 = S.replace("-","").upper()[::-1]
+        S2 = S.replace("-", "").upper()[::-1]
         result = ""
         for i in range(len(S2)):
-            result+=S2[i]
-            if (i+1)%K==0 and (i+1)<>len(S2):
-                result+="-"
+            result += S2[i]
+            if (i + 1) % K == 0 and (i + 1) <> len(S2):
+                result += "-"
         return result[::-1]

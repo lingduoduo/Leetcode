@@ -17,10 +17,10 @@ class Solution(object):
         idx = list()
         idx.append(1)
         result = 0
-
+        
         while q:
             size = len(q)
-
+            
             for i in range(size):
                 node = q.pop(0)
                 index = idx.pop(0)
@@ -28,7 +28,7 @@ class Solution(object):
                     left = index
                 if i == size - 1:
                     right = index
-
+                
                 if node.left:
                     q.append(node.left)
                     idx.append(index * 2)
@@ -40,13 +40,12 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-
     p = TreeNode(1)
     p.left = TreeNode(2)
     p.right = TreeNode(3)
     p.left.left = TreeNode(4)
     p.left.right = TreeNode(5)
     p.right.right = TreeNode(9)
-
+    
     result = Solution().widthOfBinaryTree(p)
     print(result)

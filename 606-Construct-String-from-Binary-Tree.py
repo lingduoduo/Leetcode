@@ -12,14 +12,12 @@ class Solution(object):
         :rtype: str
         """
         if t is None:
-        	return ""
+            return ""
         s = str(t.val)
         if t.left is None and t.right is None:
-        	return s
+            return s
         l = self.tree2str(t.left)
         r = self.tree2str(t.right)
         if t.right is None:
-        	return s+"("+l+")"
-        return s+"("+l+")"+"("+r+")"
-
-
+            return s + "(" + l + ")"
+        return s + "(" + l + ")" + "(" + r + ")"

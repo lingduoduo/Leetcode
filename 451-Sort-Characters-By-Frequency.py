@@ -5,14 +5,14 @@ class Solution(object):
         :rtype: str
         """
         d = dict()
-
+        
         res = ''
         for i in range(len(s)):
             d[s[i]] = d.get(s[i], 0) + 1
-
+        
         for key in sorted(d, key=d.get, reverse=True):
             res += ''.join([key] * d[key])
-
+        
         return res
 
 

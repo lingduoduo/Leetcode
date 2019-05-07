@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: int
         """
         dp = [1] + [0] * amount
-
+        
         for i in range(len(coins)):
             for j in range(1, amount + 1):
                 if coins[i] <= j:

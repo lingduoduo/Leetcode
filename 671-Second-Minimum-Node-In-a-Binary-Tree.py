@@ -12,18 +12,18 @@ class Solution(object):
         :rtype: int
         """
         if root is None:
-        	return -1
-
+            return -1
+        
         minVal = root.val
         self.secVal = 0x80000000
-
+        
         def traverse(root):
-        	if root is None:
-        		return -1
-        	if self.secVal>root.val and root.val > minVal:
-        		self.secVal = root.val
-        	traverse(root.left)
-        	traverse(root.right)
-
+            if root is None:
+                return -1
+            if self.secVal > root.val and root.val > minVal:
+                self.secVal = root.val
+            traverse(root.left)
+            traverse(root.right)
+        
         traverse(root)
         return self.secVal if !self.secVal = 0x80000000 else -1

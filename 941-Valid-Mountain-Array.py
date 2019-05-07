@@ -8,11 +8,11 @@ class Solution(object):
             return False
         if len(A) <= 2:
             return False
-
+        
         curr = 1
         pos = 0
         neg = 0
-
+        
         while curr < len(A):
             if A[curr - 1] < A[curr]:
                 pos += 1
@@ -25,7 +25,7 @@ class Solution(object):
                 curr += 1
             else:
                 break
-
+        
         return pos > 0 and neg > 0 and 1 + pos + neg == len(A)
         # return([pos, neg])
 

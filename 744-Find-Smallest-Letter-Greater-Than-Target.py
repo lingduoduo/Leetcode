@@ -6,6 +6,6 @@ class Solution(object):
         :rtype: str
         """
         for i in range(len(letters)):
-        	if letters[i] > target and i<len(letters)-1:
-        		return letters[i]
+            if letters[i] > target and i < len(letters) - 1:
+                return letters[i]
         return letters[0]

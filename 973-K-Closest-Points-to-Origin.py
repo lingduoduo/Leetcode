@@ -8,10 +8,10 @@ class Solution(object):
         d = dict()
         i = 0
         for point in points:
-            d[i] = point[0]**2 + point[1]**2
+            d[i] = point[0] ** 2 + point[1] ** 2
             i += 1
         k = sorted(d.values())
-
+        
         result = list()
         for j in range(len(points)):
             if d[j] <= k[K - 1]:

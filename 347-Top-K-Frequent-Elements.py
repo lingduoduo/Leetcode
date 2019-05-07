@@ -8,7 +8,7 @@ class Solution(object):
         import collections
         d = collections.Counter(nums)
         l = sorted(d.values())[-k:]
-        
+
         res = list()
         for k, v in d.items():
             if v in l:

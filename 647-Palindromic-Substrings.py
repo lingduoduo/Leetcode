@@ -4,17 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-## brute force
+        ## brute force
         result = list()
-
+        
         for i in range(len(s)):
-        	for j in range(i+1, len(s)+1):
-        		sub = s[i:j]
-        		if sub == sub[::-1]:
-        			result.append(sub)
+            for j in range(i + 1, len(s) + 1):
+                sub = s[i:j]
+                if sub == sub[::-1]:
+                    result.append(sub)
         return len(result)
-
-## dp
+        
+        ## dp
         n = len(s)
         count = 0
         start, end, maxL = 0, 0, 0
@@ -27,10 +27,9 @@ class Solution(object):
             dp[i][i] = 1
             count += 1
         return count
-   
 
-if __name__=='__main__':
-	s = "abc" 
-	results = Solution().countSubstrings(s)  
-	print(results)
 
+if __name__ == '__main__':
+    s = "abc"
+    results = Solution().countSubstrings(s)
+    print(results)

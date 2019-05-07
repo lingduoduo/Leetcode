@@ -20,12 +20,13 @@ class Solution(object):
         res = 0
         while l:
             curr = l.pop(0)
-            if curr not in s[:res] and curr not in s[res+1:]:
+            if curr not in s[:res] and curr not in s[res + 1:]:
                 return res
             res += 1
         return -1
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     # s = "leetcode"
     s = "loveleetcode"
     # s = "cc"

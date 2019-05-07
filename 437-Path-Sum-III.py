@@ -15,12 +15,12 @@ class Solution(object):
         """
         if not root:
             return 0
-
+        
         res = self.dfs(root, sum)
         res += self.pathSum(root.left, sum)
         res += self.pathSum(root.right, sum)
         return res
-
+    
     def dfs(self, root, sum):
         if not root:
             return 0

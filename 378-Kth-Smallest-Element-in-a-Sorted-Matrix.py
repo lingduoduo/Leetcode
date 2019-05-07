@@ -20,11 +20,11 @@ class Solution(object):
         #     ordered.append(heappop(heap))
         #
         # return ordered[k-1]
-
-       # Seond Try
+        
+        # Seond Try
         left = matrix[0][0]
         right = matrix[-1][-1]
-
+        
         while left < right:
             mid = left + (right - left) // 2
             tot = 0
@@ -35,17 +35,17 @@ class Solution(object):
             else:
                 right = mid
         return left
-
+    
     def upperBound(self, nums, target):
         """
         return index such that target<nums[index]
         """
         if not nums:
             return -1
-
+        
         left = 0
         right = len(nums)
-
+        
         while left < right:
             mid = left + (right - left) // 2
             if nums[mid] <= target:

@@ -27,7 +27,7 @@ class Solution(object):
                 a += 1
             if a > 1:
                 return False
-            i+=1
+            i += 1
         return True
 
 
@@ -35,15 +35,15 @@ if __name__ == "__main__":
     s = 'PPALLP'
     result = Solution().checkRecord(s)
     print(result)
-
+    
     s = 'LLLALL'
     result = Solution().checkRecord(s)
     print(result)
-
-    s="PPALLL"
+    
+    s = "PPALLL"
     result = Solution().checkRecord(s)
     print(result)
-
-    s="LLPPPLL"
+    
+    s = "LLPPPLL"
     result = Solution().checkRecord(s)
-    print(result)       
+    print(result)

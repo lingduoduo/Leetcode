@@ -14,12 +14,12 @@ class Solution(object):
         :rtype: TreeNode
         """
         if root is None:
-        	return None
+            return None
         if root.val < L:
-        	return self.trimBST(root.right, L, R)
+            return self.trimBST(root.right, L, R)
         if R < root.val:
-        	return self.trimBST(root.left, L, R)
+            return self.trimBST(root.left, L, R)
         
-        root.left = self.trimBST(root.left, L, R) 
+        root.left = self.trimBST(root.left, L, R)
         root.right = self.trimBST(root.right, L, R)
         return root

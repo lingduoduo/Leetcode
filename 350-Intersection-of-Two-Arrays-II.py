@@ -22,28 +22,27 @@ class Solution(object):
         # # return list(result)
         # if l1>l2:
         #     nums1, nums2 = nums2, nums1
-
-
+        
         ## second try
         cnt = dict()
         res = list()
         for i in range(len(nums1)):
             if nums1[i] in cnt:
-                cnt[nums1[i]]+=1
+                cnt[nums1[i]] += 1
             else:
-                cnt[nums1[i]]=1
-
+                cnt[nums1[i]] = 1
+        
         for i in range(len(nums2)):
-            if nums2[i] in cnt and cnt[nums2[i]]>0:
+            if nums2[i] in cnt and cnt[nums2[i]] > 0:
                 res.append(nums2[i])
-                cnt[nums2[i]]-=1
-        return(res)
+                cnt[nums2[i]] -= 1
+        return (res)
+
 
 if __name__ == "__main__":
-    nums1 = [1,2,2,1]
-    nums2 = [2,2]
-    nums1=[4,9,5]
-    nums2 = [9,4,9,8,4]
+    nums1 = [1, 2, 2, 1]
+    nums2 = [2, 2]
+    nums1 = [4, 9, 5]
+    nums2 = [9, 4, 9, 8, 4]
     result = Solution().intersection(nums1, nums2)
     print(result)
-

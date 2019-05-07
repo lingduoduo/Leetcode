@@ -7,14 +7,14 @@ class Solution(object):
         """
         s = list()
         t = list()
-
+        
         for i in range(len(S)):
             if S[i] != '#':
                 s.append(S[i])
             else:
                 if len(s) >= 1:
                     s.pop()
-
+        
         for i in range(len(T)):
             if T[i] != '#':
                 t.append(T[i])

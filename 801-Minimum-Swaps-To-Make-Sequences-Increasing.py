@@ -5,13 +5,13 @@ class Solution(object):
         :type B: List[int]
         :rtype: int
         """
-
+        
         keep = [float('inf')] * len(A)
         swap = [float('inf')] * len(A)
-
+        
         keep[0] = 0
         swap[0] = 1
-
+        
         for i in range(1, len(A)):
             if A[i] > A[i - 1] and B[i] > B[i - 1]:
                 keep[i] = keep[i - 1]
