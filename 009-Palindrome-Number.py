@@ -1,5 +1,5 @@
 class Solution(object):
-    def isPalindrome(self, x):
+    def isPalindrome(self, x: int) -> bool:
         """
         :type x: int
         :rtype: bool
@@ -23,13 +23,28 @@ class Solution(object):
         #     return False
 
         ## Second try
-        if x<0:
+        # if x<0:
+        #     return False
+        # else:
+        #     num = str(x)
+        #     return num[::-1]==num
+        
+        # third try
+        input = x
+        if x < 0:
             return False
+        res = 0
+        while x>0:
+            res = res*10 + x%10
+            x = x//10
+        if res == input:
+            return True
         else:
-            num = str(x)
-            return num[::-1]==num
+            return False
 
 if __name__=="__main__":
-    numbers = 88888
-    results = Solution().isPalindrome(numbers)
+    results = Solution().isPalindrome(88888)
     print(results)
+    results = Solution().isPalindrome(10)
+    print(results)
+

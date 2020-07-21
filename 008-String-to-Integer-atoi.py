@@ -1,5 +1,5 @@
-class Solution(object):
-    def myAtoi(self, str):
+class Solution:
+    def myAtoi(self, str: str) -> int:
         """
         :type str: str
         :rtype: int
@@ -7,8 +7,8 @@ class Solution(object):
         str = str.strip()
         if str == "":
             return 0
+        
         i = 0
-
         if str[i] == "-":
             flag = -1
             i += 1
@@ -25,8 +25,22 @@ class Solution(object):
             result = result * 10 + int(str[i])
             i += 1
         result = result * flag
-        if result > 2147483647:
-            return 2147483647
-        if result < -2147483647:
-            return -2147483648
+        if result <= -2**31:
+            return -2**31
+        if result >= 2**31:
+            return 2**31-1
         return result
+        
+if __name__ == "__main__":
+    print(Solution().myAtoi("    -41"))
+    print(Solution().myAtoi("4193 with words"))
+    print(Solution().myAtoi("words and 987"))
+    print(Solution().myAtoi("-91283472332"))
+    print(Solution().myAtoi("3.14"))
+    print('Done')
+    
+    
+    
+
+
+
