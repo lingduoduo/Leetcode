@@ -13,25 +13,61 @@ class ListNode(object):
 
 
 def addTwoNumbers(l1, l2):
-    head = ListNode(0)
-    current = head
-    carry = 0
-
-    while l1 or l2:
-        val = carry
-        if l1:
-            val += l1.val
-            l1 = l1.next
-        if l2:
-            val += l2.val
-            l2 = l2.next
-        carry, val = val / 10, val % 10
-        current.next = ListNode(val)
-        current = current.next
-    if carry == 1:
-        current.next = ListNode(1)
-    return head.next
-
+    # first try
+    # head = ListNode(0)
+    # current = head
+    # carry = 0
+    #
+    # while l1 or l2:
+    #     val = carry
+    #     if l1:
+    #         val += l1.val
+    #         l1 = l1.next
+    #     if l2:
+    #         val += l2.val
+    #         l2 = l2.next
+    #     carry, val = val / 10, val % 10
+    #     current.next = ListNode(val)
+    #     current = current.next
+    # if carry == 1:
+    #     current.next = ListNode(1)
+    # return head.next
+    
+    # second try
+    # dummy = tail = ListNode(0)
+    # carry = 0
+    # tmp = 0
+    # while l1 or l2 or carry>0:
+    #     if l1:
+    #         tmp += l1.val
+    #         l1 = l1.next
+    #     if l2:
+    #         tmp += l2.val
+    #         l2 = l2.next
+    #     if carry>0:
+    #         tmp += 1
+    #         carry = 0
+    #     if tmp>=10:
+    #         carry = 1
+    #         tmp -= 10
+    #     tail.next = ListNode(tmp)
+    #     tmp = 0
+    #     tail = tail.next
+    # if carry>0:
+    #     tail.next = ListNode(carry)
+    #     tail = tail.next
+    # return dummy.next
+    dummy = tail = ListNode(0)
+    s = 0
+    while l1 or l2 or s:
+        s += (l1.val if l1 else 0) + (l2.val if l2 else 0)
+        tail.next = ListNode( s % 10 )
+        tail = tail.next
+        s //= 10
+        l1 = l1.next if l1 else None
+        l2 = l2.next if l2 else None
+    return dummy.next
+    
 
 if __name__ == "__main__":
     l1 = ListNode(0)
