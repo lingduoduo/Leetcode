@@ -1,13 +1,3 @@
-if __name__ == "__main__":
-
-    result = Solution().lengthOfLongestSubstring("abcabcbb")
-    result = Solution().lengthOfLongestSubstring("au")
-    result = Solution().lengthOfLongestSubstring("abba")
-    print(result)
-
-
-
-
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         """
@@ -32,19 +22,42 @@ class Solution(object):
         # return longest
 
         ## Second try
+        # if not s:
+        #     return 0
+        # if len(s) <=1:
+        #     return 1
+        #
+        # result = 0
+        # left = -1
+        # n = len(s)
+        # d = {}
+        #
+        # for i in range(len(s)):
+        #     if s[i] in d and d[s[i]]>left:
+        #         left = d[s[i]]
+        #     d[s[i]]=i
+        #     result = max(result, i-left)
+        # return result
+        
+        ## third try:
         if not s:
             return 0
-        if len(s) <=1:
+        if len(s) == 1:
             return 1
+        dict = {}
+        start = -1
+        res = 0
+        for j in range(len(s)):
+            if s[j] in dict.keys() and dict[s[j]]>start:
+                start = dict[s[j]]
+            dict[s[j]] = j
+            res = max(res, j - start)
+        return res
 
-        result = 0
-        left = -1
-        n = len(s)
-        d = {}
-
-        for i in range(len(s)):
-            if s[i] in d and d[s[i]]>left:
-                left = d[s[i]]
-            d[s[i]]=i
-            result = max(result, i-left)
-        return result
+if __name__ == "__main__":
+    result = Solution().lengthOfLongestSubstring("abcabcbb")
+    print(result)
+    result = Solution().lengthOfLongestSubstring("au")
+    print(result)
+    result = Solution().lengthOfLongestSubstring("abba")
+    print(result)
