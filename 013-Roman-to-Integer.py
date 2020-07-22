@@ -1,5 +1,5 @@
-class Solution(object):
-    def intToRoman(self, num: int) -> str:
+class Solution:
+    def romanToInt(self, s: str) -> int:
         """
         :type s: str
         :rtype: int
@@ -16,16 +16,14 @@ class Solution(object):
         # return result
         
         # second try
-        k = ['M', 'CM', 'D', "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
-        v = [1000, 900, 500, 400, 100,   90,   50,  40,   10,  9,  5,  4, 1]
-        
-        res = ""
-        for i in range(len(v)):
-            while v[i] <= num:
-                res += k[i]
-                num -= v[i]
+        d = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        res = 0
+        for i in range(len(s)):
+            if i>0 and d[s[i]] > d[s[i-1]]:
+                res += d[s[i]] - 2 * d[s[i-1]]
+            else:
+                res += d[s[i]]
         return res
-       
-        
+
 if __name__=="__main__":
-    print(Solution().intToRoman(3))
+    print(Solution().romanToInt("III"))
