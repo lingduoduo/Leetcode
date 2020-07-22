@@ -11,21 +11,38 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        # first try
+        # dummy = ListNode(0)
+        # dummy.next = head
+        # curr = dummy
+        #
+        # d = dict()
+        # cnt = 1
+        # while curr:
+        #     d[cnt] = curr
+        #     cnt+=1
+        #     curr = curr.next
+        #
+        # pos = len(d.keys()) - n
+        #
+        # d[pos].next = d[pos].next.next
+        # return dummy.next
+
         dummy = ListNode(0)
+        slow = fast = dummy
         dummy.next = head
-        curr = dummy
 
-        d = dict()
-        cnt = 1
-        while curr:
-            d[cnt] = curr
-            cnt+=1
-            curr = curr.next
+        for i in range(n):
+            fast = fast.next
 
-        pos = len(d.keys()) - n 
+        while fast.next != None:
+            fast = fast.next
+            slow = slow.next
 
-        d[pos].next = d[pos].next.next
+        slow.next = slow.next.next
         return dummy.next
+    
+        
 
         
 
