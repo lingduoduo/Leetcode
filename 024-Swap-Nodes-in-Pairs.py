@@ -13,15 +13,15 @@ class Solution(object):
         dummy=ListNode(0)
         dummy.next=head
         current=dummy
-        
+
         while current.next and current.next.next:
             next_one=current.next
             next_two=next_one.next
             next_three=next_two.next
-            
+
             current.next=next_two
             next_two.next=next_one
             next_one.next=next_three
             current=next_one
-        
+
         return dummy.next
