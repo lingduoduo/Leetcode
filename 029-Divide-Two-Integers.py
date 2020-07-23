@@ -33,7 +33,8 @@ class Solution(object):
         # if res * sign1 * sign2 <= MIN_INT:
         #     return MIN_INT
         # return res * sign1 * sign2
-        #https: // blog.csdn.net / L141210113 / article / details / 88306238?utm_medium = distribute.pc_relevant.none - task - blog - baidujs - 7 & spm = 1001.2101
+        
+        # https: // blog.csdn.net / L141210113 / article / details / 88306238?utm_medium = distribute.pc_relevant.none - task - blog - baidujs - 7 & spm = 1001.2101
 
         res, flag = 0, 1
         if (dividend < 0 and divisor > 0) or (dividend > 0 and divisor < 0):
@@ -54,12 +55,6 @@ class Solution(object):
             return 2147483647
 
         return res
-
-            
-            
-            
-        
-        
 
 
 if __name__ == '__main__':
