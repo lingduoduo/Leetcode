@@ -5,17 +5,19 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        if nums is None:
-            return -1
-
-        n = len(nums)
-        i = 0
-        j = 0
-        for j in range(0, n):
-            if nums[j] != val:
-                nums[i] = nums[j]
-                i = i + 1
-        return i
+        # if nums is None:
+        #     return -1
+        #
+        # n = len(nums)
+        # i = 0
+        # j = 0
+        # for j in range(0, n):
+        #     if nums[j] != val:
+        #         nums[i] = nums[j]
+        #         i = i + 1
+        # return i
+        
+        
 
 
 if __name__ == "__main__":
