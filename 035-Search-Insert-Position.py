@@ -36,21 +36,28 @@ class Solution(object):
         # return left
         
         # Second Try
-        if not nums:
-            return 0
+        # if not nums:
+        #     return 0
+        #
+        # left = 0
+        # right = len(nums)
+        #
+        # while left < right:
+        #     mid = left + (right - left) // 2
+        #     if nums[mid] == target:
+        #         return mid
+        #     elif nums[mid] < target:
+        #         left = mid + 1
+        #     else:
+        #         right = mid
+        # return left
         
-        left = 0
-        right = len(nums)
-        
-        while left < right:
-            mid = left + (right - left) // 2
-            if nums[mid] == target:
-                return mid
-            elif nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid
-        return left
+        for i in range(len(nums)):
+            if nums[i] == target:
+                return i
+            elif nums[i]<target and target<nums[i+1]:
+                return i
+        return len(nums)
 
 
 if __name__ == "__main__":
