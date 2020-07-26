@@ -4,17 +4,29 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        carry = 1
-        for i in range(len(digits) - 1, -1, -1):
-            carry += digits[i]
-            if carry < 10:
-                digits[i] = carry
-                return digits
-            else:
-                carry = 1
+        # carry = 1
+        # for i in range(len(digits) - 1, -1, -1):
+        #     carry += digits[i]
+        #     if carry < 10:
+        #         digits[i] = carry
+        #         return digits
+        #     else:
+        #         carry = 1
+        #         digits[i] = 0
+        # if carry == 1:
+        #     return [1] + digits
+        
+        for i in reversed(range(len(digits))):
+            if digits[i] == 9:
                 digits[i] = 0
-        if carry == 1:
-            return [1] + digits
+            else:
+                digits[i] += 1
+                return digits
+        
+        digits[0] = 1
+        digits.append(0)
+        return digits
+        
 
 
 if __name__ == "__main__":

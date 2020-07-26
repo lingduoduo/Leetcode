@@ -20,15 +20,25 @@ class Solution(object):
         # return max(leftdepth, rightdepth)+1
         
         ## Second Try
+        # if not root:
+        #     return 0
+        # left = 0
+        # right = 0
+        # if root.left:
+        #     left = self.maxDepth(root.left)
+        # if root.right:
+        #     right = self.maxDepth(root.right)
+        # return max(left, right) + 1
+        
         if not root:
             return 0
-        left = 0
-        right = 0
-        if root.left:
-            left = self.maxDepth(root.left)
-        if root.right:
-            right = self.maxDepth(root.right)
-        return max(left, right) + 1
+        if not root.left and not root.right:
+            return 1
+        if not root.left:
+            return 1+self.maxDepth(root.right)
+        if not root.right:
+            return 1+self.maxDepth(root.left)
+        return 1+max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 
 if __name__ == "__main__":

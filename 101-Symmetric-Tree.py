@@ -48,10 +48,22 @@ class Solution(object):
         ## Second Try
         if not root:
             return True
-        if self.identicalTree(root.left, root.right):
+        
+        return self.issym(root.left, root.right)
+    
+    def issym(self, left, right):
+        if not left and not right:
             return True
-        return False
-
+        if not left and right:
+            return False
+        if left and not right:
+            return False
+        
+        if left.val==right.val and self.issym(left.left, right.right) and self.issym(left.right, right.left):
+            return True
+        else:
+            return False
+       
 
 if __name__ == "__main__":
     root = TreeNode(1)

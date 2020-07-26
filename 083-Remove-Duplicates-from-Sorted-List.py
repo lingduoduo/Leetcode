@@ -10,13 +10,21 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        dummy = ListNode(0)
-        dummy.next = head
-        
-        curr = dummy
-        while curr.next and curr.next.next:
-            if curr.next.val == curr.next.next.val:
-                curr.next = curr.next.next
-            else:
-                curr = curr.next
-        return dummy.next
+        # dummy = ListNode(0)
+        # dummy.next = head
+        #
+        # curr = dummy
+        # while curr.next and curr.next.next:
+        #     if curr.next.val == curr.next.next.val:
+        #         curr.next = curr.next.next
+        #     else:
+        #         curr = curr.next
+        # return dummy.next
+        current = head
+        while current:
+            runner = current.next
+            while runner and current.val == runner.val:
+                runner = runner.next
+            current.next = runner
+            current = runner
+        return head

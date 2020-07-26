@@ -25,12 +25,28 @@ class Solution(object):
         # return R
         
         # second Try
-        L = 0
-        R = x + 1
-        while L < R:
-            mid = L + (R - L) // 2
-            if mid ** 2 <= x:
-                L = mid + 1
+        # L = 0
+        # R = x + 1
+        # while L < R:
+        #     mid = L + (R - L) // 2
+        #     if mid ** 2 <= x:
+        #         L = mid + 1
+        #     else:
+        #         R = mid
+        # return L - 1
+        
+        if x<2:
+            return x
+        
+        left, right = 1, x//2
+        while left <= right:
+            mid = left + (right-left)//2
+            if (mid ** 2 == x):
+                return mid
+            elif mid ** 2 < x:
+                left = mid+1
             else:
-                R = mid
-        return L - 1
+                right = mid-1
+        return left-1
+                
+        
