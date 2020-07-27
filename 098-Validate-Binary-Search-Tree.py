@@ -12,13 +12,27 @@ class Solution(object):
         :rtype: bool
         """
         
-        def dfs(root, min, max):
-            if not root:
-                return True
-            if root.val >= max:
-                return False
-            if root.val <= min:
-                return False
-            return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)
+        # def dfs(root, min, max):
+        #     if not root:
+        #         return True
+        #     if root.val >= max:
+        #         return False
+        #     if root.val <= min:
+        #         return False
+        #     return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)
+        #
+        # return dfs(root, float('-inf'), float('inf'))
         
-        return dfs(root, float('-inf'), float('inf'))
+        if not root:
+            return True
+        
+        return self.valid(root, float("-inf"), float("inf"))
+        
+    def valid(self, root, min, max):
+        if not root:
+            return True
+        
+        if root.val >= max or root.val <= min:
+            return False
+        
+        return self.valid(root.left, min, root.val) and self.valid(root.right, root.val, max)

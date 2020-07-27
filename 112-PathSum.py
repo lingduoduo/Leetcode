@@ -37,16 +37,27 @@ class Solution(object):
         # return left or right
         
         # Third Try
+        # if not root:
+        #     return False
+        #
+        # if not root.left and not root.right:
+        #     return root.val == sum
+        #
+        # return self.hasPathSum(
+        #     root.left,
+        #     sum -
+        #     root.val) or self.hasPathSum(
+        #     root.right,
+        #     sum -
+        #     root.val)
+        
         if not root:
             return False
+        if not root.left and not root.right and root.val == sum:
+            return True
         
-        if not root.left and not root.right:
-            return root.val == sum
-        
-        return self.hasPathSum(
-            root.left,
-            sum -
-            root.val) or self.hasPathSum(
-            root.right,
-            sum -
-            root.val)
+        left = self.hasPathSum(root.left, sum-root.val)
+        right = self.hasPathSum(root.right, sum-root.val)
+        if left or right:
+            return True
+        return False

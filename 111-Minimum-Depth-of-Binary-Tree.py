@@ -26,17 +26,31 @@ class Solution(object):
         # return min(leftDepth, rightDepth)+1
         
         ## Second Try
+        # if not root:
+        #     return 0
+        # left = float('inf')
+        # right = float('inf')
+        # if not root.left and not root.right:
+        #     return 1
+        # if root.left:
+        #     left = self.minDepth(root.left)
+        # if root.right:
+        #     right = self.minDepth(root.right)
+        # return min(left, right) + 1
+        
+        ## Third Try
         if not root:
             return 0
-        left = float('inf')
-        right = float('inf')
         if not root.left and not root.right:
             return 1
-        if root.left:
-            left = self.minDepth(root.left)
-        if root.right:
-            right = self.minDepth(root.right)
-        return min(left, right) + 1
+            
+        left = self.minDepth(root.left)
+        right = self.minDepth(root.right)
+        if root.left and root.right:
+            return min(left, right) + 1
+        else:
+            return max(left, right) + 1
+        
 
 
 if __name__ == "__main__":

@@ -22,5 +22,21 @@ class Solution(object):
     #     result[level].append(root.val)
     #     self.DFS(root.left, res, level + 1)
     #     self.DFS(root.right, res, level + 1)
-    
+        if not root:
+            return []
+        res = []
+        curr = root
+        
+        while curr:
+            next_level, vals = [], []
+            for node in curr:
+                vals.append(node.val)
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            curr = next_level
+            res.append(vals)
+        
+        return res[::-1]
     
