@@ -4,7 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        d = collections.Counter(nums)
-        for k, v in d.items():
-            if v == 1:
-                return k
+        # d = collections.Counter(nums)
+        # for k, v in d.items():
+        #     if v == 1:
+        #         return k
+        
+        
