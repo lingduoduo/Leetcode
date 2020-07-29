@@ -8,5 +8,8 @@ class Solution(object):
         # for k, v in d.items():
         #     if v == 1:
         #         return k
+        res = 0
         
-        
+        for num in nums:
+            res ^= num
+        return res

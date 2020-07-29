@@ -22,7 +22,38 @@ class Solution:
         #     for i in range(n):
         #         matrix[i][col] = 0
         # return matrix
-
+        
+        nrow = len(matrix)
+        ncol = len(matrix[0])
+        zero_row, zero_col = False, False
+        
+        for i in range(nrow):
+            for j in range(ncol):
+                if matrix[i][j]==0:
+                    matrix[i][0] = matrix[0][j] = 0
+                    zero_row = True if i==0 else zero_row
+                    zero_col = True if j==0 else zero_col
+                    
+        for j in range(1, ncol):
+            if matrix[0][j] == 0:
+                for i in range(1, nrow):
+                    matrix[i][j] = 0
+        
+        for i in range(1, nrow):
+            if matrix[i][0] == 0:
+                for j in range(1, ncol):
+                    matrix[i][j] = 0
+                    
+        if zero_row:
+            for j in range(ncol):
+                matrix[0][j] = 0
+                
+        if zero_col:
+            for i in range(nrow):
+                matrix[i][0] = 0
+                
+        return matrix
+        
 
 if __name__ == '__main__':
     matrix = [

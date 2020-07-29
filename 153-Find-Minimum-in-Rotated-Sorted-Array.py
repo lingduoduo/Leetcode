@@ -4,11 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        start = 0
-        end = len(nums) - 1
-        mid = (start + end) // 2
+        if not nums:
+            return None
+        left = 0
+        right = len(nums)-1
+        res = nums[0]
         
-        while start < end:
-            if nums[start] < nums[mid]:
-                start = mid + 1
-            if nums[end] < nums[mid]:
+        while left <= right:
+            mid = left + (right-left)//2
+            if nums[left] <= nums[mid]:
+                res = min(res, nums[left])
+                left = mid + 1
+            else:
+                res = min(res, nums[mid])
+                right = mid -1
+        return res
+        
+        
+        
+        
