@@ -11,11 +11,23 @@ class Solution(object):
         :type val: int
         :rtype: ListNode
         """
-        dummy = ListNode(0)
+        # dummy = ListNode(0)
+        # dummy.next = head
+        #
+        # prev = dummy
+        # curr = head
+        #
+        # while curr:
+        #     if curr.val == val:
+        #         prev.next = curr.next
+        #     else:
+        #         prev = prev.next
+        #     curr = curr.next
+        #
+        # return dummy.next
+        dummy = ListNode(float("-inf"))
         dummy.next = head
-        
-        prev = dummy
-        curr = head
+        prev, curr = dummy, dummy.next
         
         while curr:
             if curr.val == val:
@@ -23,5 +35,4 @@ class Solution(object):
             else:
                 prev = prev.next
             curr = curr.next
-        
         return dummy.next
