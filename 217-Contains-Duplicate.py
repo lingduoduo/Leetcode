@@ -7,11 +7,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        d = collections.Counter(nums)
-        for key, val in d.items():
-            if val > 1:
-                return True
-        return False
+        # d = collections.Counter(nums)
+        # for key, val in d.items():
+        #     if val > 1:
+        #         return True
+        # return False
+        
+        return len(set(nums)) != len(nums)
 
 
 if __name__ == "__main__":
