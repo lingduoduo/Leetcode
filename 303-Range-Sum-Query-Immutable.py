@@ -14,6 +14,7 @@ class NumArray(object):
         """
         return sum(self.nums[i:(j + 1)])
 
+        
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
@@ -43,3 +44,23 @@ class NumArray(object):
             return self.sumPos(j)
         else:
             return self.sumPos(j) - self.sumPos(i - 1)
+
+
+class NumArray(object):
+    
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
+        self.nums = nums
+        self.parsum = [0]
+        for num in nums:
+            self.parsum.append(self.parsum[-1] + num)
+    
+    def sumRange(self, i, j):
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        return self.parsum[j+1] - self.parsum[i]

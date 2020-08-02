@@ -4,18 +4,37 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        if not n:
-            return False
-        if n < 3:
+        # if not n:
+        #     return False
+        # if n < 3:
+        #     return False
+        #
+        # cnt = 0
+        # cur = n
+        # while cur > 0:
+        #     cur = cur // 3
+        #     cnt += 1
+        #
+        # return 3 ** (cnt - 1) == n
+        
+        if n <= 1:
+            return True
+        elif n <= 2:
             return False
         
-        cnt = 0
-        cur = n
-        while cur > 0:
-            cur = cur // 3
-            cnt += 1
+        while n > 3:
+            if n % 3 == 0:
+                n /= 3
+            else:
+                return False
         
-        return 3 ** (cnt - 1) == n
+        if n == 3:
+            return True
+        else:
+            return False
+            
+        
+        
 
 
 if __name__ == "__main__":
