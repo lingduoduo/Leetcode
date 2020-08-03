@@ -55,3 +55,24 @@ def sumOfLeftLeaves(self, root):
     
     trav(root)
     return self.result
+
+
+class Solution:
+    def sumOfLeftLeaves(self, root: TreeNode) -> int:
+        def helper(root, direction = ""):
+            if not root:
+                return 0
+            if not root.left and not root.right:
+                if direction == "l":
+                    return root.val
+            left = 0
+            right = 0
+            if root.left:
+                left = helper(root.left, "l")
+            if root.right:
+                right = helper(root.right, "r")
+            return left + right
+        
+        return helper(root, "")
+    
+        

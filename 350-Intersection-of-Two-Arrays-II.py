@@ -24,19 +24,38 @@ class Solution(object):
         #     nums1, nums2 = nums2, nums1
         
         ## second try
-        cnt = dict()
-        res = list()
-        for i in range(len(nums1)):
-            if nums1[i] in cnt:
-                cnt[nums1[i]] += 1
-            else:
-                cnt[nums1[i]] = 1
+        # cnt = dict()
+        # res = list()
+        # for i in range(len(nums1)):
+        #     if nums1[i] in cnt:
+        #         cnt[nums1[i]] += 1
+        #     else:
+        #         cnt[nums1[i]] = 1
+        #
+        # for i in range(len(nums2)):
+        #     if nums2[i] in cnt and cnt[nums2[i]] > 0:
+        #         res.append(nums2[i])
+        #         cnt[nums2[i]] -= 1
+        # return (res)
         
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
+        
+        d = {}
         for i in range(len(nums2)):
-            if nums2[i] in cnt and cnt[nums2[i]] > 0:
-                res.append(nums2[i])
-                cnt[nums2[i]] -= 1
-        return (res)
+            if nums2[i] in d:
+                d[nums2[i]] += 1
+            else:
+                d[nums2[i]] = 1
+        print(d)
+        
+        res = []
+
+        for i in range(len(nums1)):
+            if nums1[i] in d and d[nums1[i]] > 0:
+                res.append(nums1[i])
+                d[nums1[i]] -= 1
+        return res
 
 
 if __name__ == "__main__":
