@@ -1,3 +1,12 @@
+l = [[1,2],[3],[4]]
+
+res = []
+for list in l:
+    for num in list:
+        res.append(num)
+print(res)
+
+
 # Definition for singly-linked list.
 
 # def buildPath(pathdict, word, path):
@@ -188,9 +197,9 @@
 #     return {**dict1, **dict2}
 # print(merge_dict({'a':1, 'b':2}, {'c':3, 'd':4}))
 
-from heapq import nlargest
-
-students=[{'names':'AA', 'score':80, 'height':198},
-          {'names':'BB', 'score':10, 'height':167},
-          {'names':'CC', 'score':90, 'height':179}]
-print(nlargest(2, students, key=lambda x: x['score']))
+# from heapq import nlargest
+#
+# students=[{'names':'AA', 'score':80, 'height':198},
+#           {'names':'BB', 'score':10, 'height':167},
+#           {'names':'CC', 'score':90, 'height':179}]
+# print(nlargest(2, students, key=lambda x: x['score']))
