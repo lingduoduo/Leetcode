@@ -1,11 +1,33 @@
-l = [[1,2],[3],[4]]
 
-res = []
-for list in l:
-    for num in list:
-        res.append(num)
-print(res)
 
+import os 
+  
+# Function to rename multiple files 
+def main(): 
+  
+    for count, filename in enumerate(os.listdir('.')): 
+        # dst ="Hostel" + str(count) + ".jpg"
+        # src =filename 
+        # dst ='0'+ dst 
+          
+        # rename() function will 
+        # rename all the files 
+
+        os.rename(filename, '0'+ filename) 
+  
+# Driver Code 
+if __name__ == '__main__': 
+      
+    # Calling main() function 
+    main() 
+
+# l = [[1,2],[3],[4]]
+
+# res = []
+# for list in l:
+#     for num in list:
+#         res.append(num)
+# print(res)
 
 # Definition for singly-linked list.
 
