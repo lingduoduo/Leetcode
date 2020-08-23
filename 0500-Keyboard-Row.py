@@ -10,12 +10,9 @@ class Solution:
 
         res = []
         for word in words:
+        	curr = []
         	for i in range(len(word)):
-        		if i == 0:
-        			curr = rowdict[word[i]]
-        		else:
-        			if curr != rowdict[word[i]]:
-        				break
-        	if i == len(word):
+        		curr.add(rowdict[word[i]])
+        	if len(set(curr)) == 1:
         		res.append(word)
         return res
