@@ -6,20 +6,32 @@ class Solution:
     
     def simplifyPath(self, path: str) -> str:
         
-        stack = []
-        parts = path.split('/')
+        # stack = []
+        # parts = path.split('/')
         
-        for part in parts:
-            if part in ['', '.']:
-                continue
-            elif part == '..':
-                if len(stack) > 0:
-                    stack.pop()
-            else:
-                stack.append(part)
+        # for part in parts:
+        #     if part in ['', '.']:
+        #         continue
+        #     elif part == '..':
+        #         if len(stack) > 0:
+        #             stack.pop()
+        #     else:
+        #         stack.append(part)
         
-        return '/' if len(stack) == 0 else '/'.join([''] + stack)
+        # return '/' if len(stack) == 0 else '/'.join([''] + stack)
 
+        res = []
+        path_list = path.split("/")
+        for p in path_list:
+            if p:
+                if p == '..':
+                    if res:
+                        res.pop()
+                elif p == '.':
+                    continue
+                else:
+                    res.append(p)
+        return '/'+'/'.join(res)
 
 if __name__ == '__main__':
     path = "/a/./b/../../c/"

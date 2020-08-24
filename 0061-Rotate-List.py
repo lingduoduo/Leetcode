@@ -39,4 +39,34 @@ class Solution(object):
         # slow.next = None
         # return head
 
+        curr = head
+        n = 0
+        while curr:
+            n+=1
+            curr = curr.next
+
+        if n<2:
+            return head
+
+        k=k%n
+        if k == 0:
+            return head
+
+        p1, p2 = head, head
+        for i in range(k):
+            p2 = p2.next
+
+        while p2 and p2.next:
+            p1 = p1.next
+            p2 = p2.next
+
+        output = p1.next
+        p1.next = None
+        p2.next = head
+
+        return output
         
+
+
+
+
