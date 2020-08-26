@@ -5,28 +5,54 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        for x in range(len(board)):
-            for y in range(len(board[0])):
-                if self.search(board, word, x, y, 0):
-                    return True
+    #     for x in range(len(board)):
+    #         for y in range(len(board[0])):
+    #             if self.search(board, word, x, y, 0):
+    #                 return True
         
-        return False
+    #     return False
     
-    def search(self, board, word, i, j, d):
-        if d == len(word):
+    # def search(self, board, word, i, j, d):
+    #     if d == len(word):
+    #         return True
+        
+    #     if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
+    #         return False
+        
+    #     if board[i][j] != word[d]:
+    #         return False
+        
+    #     board[i][j] = board[i][j].swapcase()
+    #     result = self.search(board, word, i + 1, j, d + 1) or \
+    #              self.search(board, word, i - 1, j, d + 1) or \
+    #              self.search(board, word, i, j + 1, d + 1) or \
+    #              self.search(board, word, i, j - 1, d + 1)
+    #     board[i][j] = board[i][j].swapcase()
+        
+    #     return result
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.helper(board, i, j, word, 0):
+                    return True
+        return False
+
+    def helper(board, i, j, word, wordinx):
+        if wordinx == len(word):
             return True
-        
-        if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
+
+        if i<0 or i>len(board)-1 or j<0 or j>len(board[0]):
             return False
-        
-        if board[i][j] != word[d]:
+
+        if word != board[i][j]:
             return False
+
+        board[i][j] = "#"    
+        found = self.helper(board, i+1, j, word, wordinx+1) \
+        or self.helper(board, i-1, j, word, wordinx+1) \
+        or self.helper(board, i, j-1, word, wordinx+1) \
+        or self.helper(board, i, j+1, word, wordinx+1) 
+        board[i][j] = word[wordinx]
+
+        return found
         
-        board[i][j] = board[i][j].swapcase()
-        result = self.search(board, word, i + 1, j, d + 1) or \
-                 self.search(board, word, i - 1, j, d + 1) or \
-                 self.search(board, word, i, j + 1, d + 1) or \
-                 self.search(board, word, i, j - 1, d + 1)
-        board[i][j] = board[i][j].swapcase()
-        
-        return result
