@@ -41,10 +41,10 @@ class Solution(object):
         if wordinx == len(word):
             return True
 
-        if i<0 or i>len(board)-1 or j<0 or j>len(board[0]):
+        if i<0 or i>len(board)-1 or j<0 or j>len(board[0])-1:
             return False
 
-        if word != board[i][j]:
+        if word[wordinx] != board[i][j]:
             return False
 
         board[i][j] = "#"    
@@ -55,4 +55,3 @@ class Solution(object):
         board[i][j] = word[wordinx]
 
         return found
-        
