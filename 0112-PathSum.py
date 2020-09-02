@@ -1,9 +1,9 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 class Solution(object):
@@ -61,3 +61,56 @@ class Solution(object):
         if left or right:
             return True
         return False
+
+    # def dfs(self, root, target):   
+    #     if not root:
+    #         return False
+        
+    #     if not root.left and not root.right and root.val == target:
+    #         return True
+        
+    #     if root.left: 
+    #         left = self.dfs(root.left, target-root.val)
+    #     if root.right:
+    #         right = self.dfs(root.right, target-root.val)
+    #     if left or right:
+    #         return True
+    #     return False
+
+
+    #     if not root: 
+    #             return False
+            
+    #     self.res = []
+        
+    #     self.dfs(root, 0)
+        
+    #     return self.res
+        
+    
+    # def dfs(self, root, partial):   
+    #     if not root:
+    #         return 0
+
+    #     if not root.left and not root.right:
+    #         self.res.append(partial+root.val)
+            
+        
+    #     if root.left:
+    #         return self.dfs(root.left, root.val)
+
+    #     if root.right:
+    #         return self.dfs(root.right, root.val)
+
+if __name__ == "__main__":
+    root = TreeNode(1)
+
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    
+    # root.left.left = TreeNode(3)
+    # root.left.right = TreeNode(4)
+
+    result = Solution().hasPathSum(root, 10)
+    print(result)
+

@@ -39,17 +39,37 @@ class Solution(object):
         # return min(left, right) + 1
         
         ## Third Try
+        # if not root:
+        #     return 0
+        # if not root.left and not root.right:
+        #     return 1
+            
+        # left = self.minDepth(root.left)
+        # right = self.minDepth(root.right)
+        # if root.left and root.right:
+        #     return min(left, right) + 1
+        # else:
+        #     return max(left, right) + 1
+        
+
         if not root:
             return 0
+        
+        self.res = []
+        
+        self.dfs(root, 1)
+        
+        return min(self.res)
+    
+    def dfs(self, root, level):
+        if not root:
+            return level
+        
         if not root.left and not root.right:
-            return 1
-            
-        left = self.minDepth(root.left)
-        right = self.minDepth(root.right)
-        if root.left and root.right:
-            return min(left, right) + 1
-        else:
-            return max(left, right) + 1
+            return self.res.append(level)
+        
+        self.dfs(root.left, level+1)
+        self.dfs(root.right, level+1)
         
 
 

@@ -19,7 +19,3 @@ class Solution(object):
                 res = min(res, nums[mid])
                 right = mid -1
         return res
-        
-        
-        
-        

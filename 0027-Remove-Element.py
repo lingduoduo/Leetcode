@@ -16,9 +16,7 @@ class Solution(object):
         #         nums[i] = nums[j]
         #         i = i + 1
         # return i
-        
-        
-
+    
 
 if __name__ == "__main__":
     numbers = [3, 2, 2, 3]
