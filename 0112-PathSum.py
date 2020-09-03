@@ -77,31 +77,6 @@ class Solution(object):
     #         return True
     #     return False
 
-
-    #     if not root: 
-    #             return False
-            
-    #     self.res = []
-        
-    #     self.dfs(root, 0)
-        
-    #     return self.res
-        
-    
-    # def dfs(self, root, partial):   
-    #     if not root:
-    #         return 0
-
-    #     if not root.left and not root.right:
-    #         self.res.append(partial+root.val)
-            
-        
-    #     if root.left:
-    #         return self.dfs(root.left, root.val)
-
-    #     if root.right:
-    #         return self.dfs(root.right, root.val)
-
 if __name__ == "__main__":
     root = TreeNode(1)
 
