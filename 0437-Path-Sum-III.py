@@ -22,11 +22,12 @@ class Solution(object):
         return res
     
     def dfs(self, root, sum):
-        if not root:
-            return 0
-        res = 0
+        if not root: return 0
+
+        partial = 0
         if root.val == sum:
-            res += 1
-        res += self.dfs(root.left, sum - root.val)
-        res += self.dfs(root.right, sum - root.val)
-        return res
+            partial += 1
+        partial += self.dfs(root.left, sum-root.val)
+        partial += self.dfs(root.right, sum-root.val)
+        return partial
+
