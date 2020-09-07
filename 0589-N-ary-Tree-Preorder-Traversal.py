@@ -23,7 +23,5 @@ class Solution:
         while stack:
             node =stack.pop()
             res.append(node.val)
-            for child in childen:
-                res.append(node.val)
-                stack.extend(node.children[::-1])
-            return res
+            stack.extend(node.children[::-1])
+        return res
