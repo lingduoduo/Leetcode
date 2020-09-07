@@ -22,38 +22,50 @@ class Solution(object):
         # return ordered[k-1]
         
         # Seond Try
+    #     left = matrix[0][0]
+    #     right = matrix[-1][-1]
+        
+    #     while left < right:
+    #         mid = left + (right - left) // 2
+    #         tot = 0
+    #         for row in matrix:
+    #             tot += self.upperBound(row, mid)
+    #         if tot < k:
+    #             left = mid + 1
+    #         else:
+    #             right = mid
+    #     return left
+    
+    # def upperBound(self, nums, target):
+    #     """
+    #     return index such that target<nums[index]
+    #     """
+    #     if not nums:
+    #         return -1
+        
+    #     left = 0
+    #     right = len(nums)
+        
+    #     while left < right:
+    #         mid = left + (right - left) // 2
+    #         if nums[mid] <= target:
+    #             left = mid + 1
+    #         else:
+    #             right = mid
+    #     return left
+
         left = matrix[0][0]
         right = matrix[-1][-1]
-        
-        while left < right:
-            mid = left + (right - left) // 2
-            tot = 0
-            for row in matrix:
-                tot += self.upperBound(row, mid)
-            if tot < k:
-                left = mid + 1
-            else:
-                right = mid
-        return left
-    
-    def upperBound(self, nums, target):
-        """
-        return index such that target<nums[index]
-        """
-        if not nums:
-            return -1
-        
-        left = 0
-        right = len(nums)
-        
-        while left < right:
-            mid = left + (right - left) // 2
-            if nums[mid] <= target:
-                left = mid + 1
-            else:
-                right = mid
-        return left
 
+        while left<right:
+            mid = left + (right-left)//2
+            position = sum(bisect.bisect_right(row, mid) for row in matrix)
+
+            if position<k:
+                left=mid+1
+            else:
+                right=mid
+        return left
 
 if __name__ == '__main__':
     matrix = [[1, 5, 9], [10, 11, 13], [12, 13, 15]]

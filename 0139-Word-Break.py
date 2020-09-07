@@ -20,6 +20,8 @@ class Solution(object):
         dp = [False] * (len(s) + 1)
         dp[0] = True
         
+        ## i length
+        ## break
         for i in range(1, len(s) + 1):
             for k in range(i):
                 if dp[k] and s[k:i] in wordDict:

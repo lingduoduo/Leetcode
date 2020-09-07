@@ -20,3 +20,4 @@ class Solution(object):
             else:
                 right = mid
         return left
+        
