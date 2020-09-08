@@ -20,25 +20,40 @@ class Solution(object):
         # result = result + odd
         # return result
 
-        d = {}
-        for cha in s:
-            if cha in d:
-                d[cha] += 1
-            else:
-                d[cha] = 1
+        # d = {}
+        # for cha in s:
+        #     if cha in d:
+        #         d[cha] += 1
+        #     else:
+        #         d[cha] = 1
 
-        even = odd = 0
-        for v in d.values():
-            if v % 2 == 0:
-                even += v
+        # even = odd = 0
+        # for v in d.values():
+        #     if v % 2 == 0:
+        #         even += v
+        #     else:
+        #         odd = max(odd, v)
+        #         even += v - 1
+        # if odd > 0:
+        #     return even + 1
+        # else:
+        #     return even
+
+        import collections
+
+        chars = [c for c in s]
+        d = collections.Counter(chars)
+        res = 0
+        flag = 0
+        print(d)
+        for k, v in d.items():
+            if v%2==0:
+                res += v
             else:
-                odd = max(odd, v)
-                even += v - 1
-        if odd > 0:
-            return even + 1
-        else:
-            return even
-        
+                res += v-1
+                flag = 1
+        return res + flag
+
 if __name__ == "__main__":
     # numbers = "abccccdd"
     # numbers = "ccc"
