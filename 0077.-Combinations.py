@@ -12,29 +12,42 @@ class Solution:
     ]
     '''
     
-    def combine(self, n, k):
+    # def combine(self, n, k):
         
-        nums = list()
-        for i in range(1, n + 1):
-            nums.append(i)
+    #     nums = list()
+    #     for i in range(1, n + 1):
+    #         nums.append(i)
         
-        self.res = []
+    #     self.res = []
         
-        self.dfs(nums, k, [])
-        return self.res
+    #     self.dfs(nums, k, [])
+    #     return self.res
     
-    def dfs(self, nums, k, path):
-        if k == 0:
-            if path not in self.res:
-                self.res.append(path)
-            # print(self.res)
-            # print(nums)
-            return
+    # def dfs(self, nums, k, path):
+    #     if k == 0:
+    #         if path not in self.res:
+    #             self.res.append(path)
+    #         # print(self.res)
+    #         # print(nums)
+    #         return
         
-        while len(nums) >= k:
-            self.dfs(nums[1:], k - 1, path + [nums[0]])
-            nums.pop(0)
+    #     while len(nums) >= k:
+    #         self.dfs(nums[1:], k - 1, path + [nums[0]])
+    #         nums.pop(0)
+    def combine(self, n, k):
+        self.res = []
+        self.dfs(range(1, n+1), k, [])
+        return self.res
 
+
+    def dfs(self, nums, k, path):
+        if k>len(nums):
+            return
+        elif k==0:
+            self.res.append(path)
+        else:
+            self.dfs(nums[1:], k-1, path+nums[0])
+            self.dfs(nums[1:], k, path)
 
 if __name__ == '__main__':
     n = 5
