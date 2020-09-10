@@ -1,25 +1,34 @@
-
-
 import os 
   
 # Function to rename multiple files 
 def main(): 
   
-    for count, filename in enumerate(os.listdir('.')): 
+    # for count, filename in enumerate(os.listdir('.')): 
+    # 	os.rename(filename, '0'+ filename) 
         # dst ="Hostel" + str(count) + ".jpg"
         # src =filename 
         # dst ='0'+ dst 
           
         # rename() function will 
         # rename all the files 
+        # a = [1, 2, 3, 4, 5]
+        # print(','.join(map(str, a)))
 
-        os.rename(filename, '0'+ filename) 
+        
+    d1 = {'hot': ['hit'], 'dot': ['hot']}
+    d2 = {'lot': ['hot'], 'dog': ['dot']}
+    d1.update(d2)
+    print(d1)
+
+
+
   
 # Driver Code 
 if __name__ == '__main__': 
       
     # Calling main() function 
     main() 
+
 
 # l = [[1,2],[3],[4]]
 
@@ -225,3 +234,4 @@ if __name__ == '__main__':
 #           {'names':'BB', 'score':10, 'height':167},
 #           {'names':'CC', 'score':90, 'height':179}]
 # print(nlargest(2, students, key=lambda x: x['score']))
+
