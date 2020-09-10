@@ -46,7 +46,7 @@ class Solution:
         elif k==0:
             self.res.append(path)
         else:
-            self.dfs(nums[1:], k-1, path+nums[0])
+            self.dfs(nums[1:], k-1, path+[nums[0]])
             self.dfs(nums[1:], k, path)
 
 if __name__ == '__main__':
