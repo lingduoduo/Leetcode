@@ -1,4 +1,4 @@
-# Definition for singly-linked list with a random pointer.
+###Definition for singly-linked list with a random pointer.
 class Node:
     def init(self, val, next, random):
         self.val = val

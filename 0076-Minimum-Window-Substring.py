@@ -20,12 +20,12 @@ class Solution(object):
         for i in range(len(s)):
             if s[i] in d:
                 d[s[i]] -= 1
-                ## from 1 to 0
+                ####from 1 to 0
                 if d[s[i]] == 0:
                     matchCount += 1
             
             while matchCount == len(d.keys()):
-                ## find a valid substring
+                ####find a valid substring
                 if i - slow + 1 < minLen:
                     minLen = i - slow + 1
                     index = slow
@@ -34,7 +34,7 @@ class Solution(object):
                 if leftmost not in d:
                     continue
                 else:
-                    ## from 0 to 1
+                    ####from 0 to 1
                     d[leftmost] += 1
                     if d[leftmost] > 0:
                         matchCount -= 1

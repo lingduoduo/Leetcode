@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -12,23 +12,23 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-        #     if not root:
-        #         return root
+        ###    if not root:
+        ###        return root
         #
-        #     dummy = TreeNode(-1)
-        #     self.last = dummy
-        #     self.dfs(root)
-        #     return dummy.right
+        ###    dummy = TreeNode(-1)
+        ###    self.last = dummy
+        ###    self.dfs(root)
+        ###    return dummy.right
         #
-        # def dfs(self, curr):
-        #     if not curr:
-        #         return
+        ###def dfs(self, curr):
+        ###    if not curr:
+        ###        return
         #
-        #     self.last.right = TreeNode(curr.val)
-        #     self.last = self.last.right
+        ###    self.last.right = TreeNode(curr.val)
+        ###    self.last = self.last.right
         #
-        #     self.dfs(curr.left)
-        #     self.dfs(curr.right)
+        ###    self.dfs(curr.left)
+        ###    self.dfs(curr.right)
         
         self.nodes = list()
         self.dfs(root)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     p.left.right = TreeNode(4)
     p.right.right = TreeNode(6)
     
-    # Solution().printTree(p)
+    ###Solution().printTree(p)
     
     result = Solution().flatten(p)
     Solution().printTree(result)

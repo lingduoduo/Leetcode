@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 select *
 from cinema
 where id%2=1

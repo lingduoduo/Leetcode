@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -20,10 +20,10 @@ class Solution(object):
         self.d = dict()
         self.buildGraph(None, root)
         
-        # for k,v in enumerate(self.d):
-        #     print(k, v.val)
+        ###for k,v in enumerate(self.d):
+        ###    print(k, v.val)
         
-        # BFS
+        ###BFS
         seen = list()
         seen.append(target)
         stack = list()

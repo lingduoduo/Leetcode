@@ -13,50 +13,50 @@ class ListNode(object):
 
 
 def addTwoNumbers(l1, l2):
-    # first try
-    # head = ListNode(0)
-    # current = head
-    # carry = 0
+    ###first try
+    ###head = ListNode(0)
+    ###current = head
+    ###carry = 0
     #
-    # while l1 or l2:
-    #     val = carry
-    #     if l1:
-    #         val += l1.val
-    #         l1 = l1.next
-    #     if l2:
-    #         val += l2.val
-    #         l2 = l2.next
-    #     carry, val = val / 10, val % 10
-    #     current.next = ListNode(val)
-    #     current = current.next
-    # if carry == 1:
-    #     current.next = ListNode(1)
-    # return head.next
+    ###while l1 or l2:
+    ###    val = carry
+    ###    if l1:
+    ###        val += l1.val
+    ###        l1 = l1.next
+    ###    if l2:
+    ###        val += l2.val
+    ###        l2 = l2.next
+    ###    carry, val = val / 10, val % 10
+    ###    current.next = ListNode(val)
+    ###    current = current.next
+    ###if carry == 1:
+    ###    current.next = ListNode(1)
+    ###return head.next
     
-    # second try
-    # dummy = tail = ListNode(0)
-    # carry = 0
-    # tmp = 0
-    # while l1 or l2 or carry>0:
-    #     if l1:
-    #         tmp += l1.val
-    #         l1 = l1.next
-    #     if l2:
-    #         tmp += l2.val
-    #         l2 = l2.next
-    #     if carry>0:
-    #         tmp += 1
-    #         carry = 0
-    #     if tmp>=10:
-    #         carry = 1
-    #         tmp -= 10
-    #     tail.next = ListNode(tmp)
-    #     tmp = 0
-    #     tail = tail.next
-    # if carry>0:
-    #     tail.next = ListNode(carry)
-    #     tail = tail.next
-    # return dummy.next
+    ###second try
+    ###dummy = tail = ListNode(0)
+    ###carry = 0
+    ###tmp = 0
+    ###while l1 or l2 or carry>0:
+    ###    if l1:
+    ###        tmp += l1.val
+    ###        l1 = l1.next
+    ###    if l2:
+    ###        tmp += l2.val
+    ###        l2 = l2.next
+    ###    if carry>0:
+    ###        tmp += 1
+    ###        carry = 0
+    ###    if tmp>=10:
+    ###        carry = 1
+    ###        tmp -= 10
+    ###    tail.next = ListNode(tmp)
+    ###    tmp = 0
+    ###    tail = tail.next
+    ###if carry>0:
+    ###    tail.next = ListNode(carry)
+    ###    tail = tail.next
+    ###return dummy.next
     dummy = tail = ListNode(0)
     s = 0
     while l1 or l2 or s:
@@ -91,29 +91,29 @@ if __name__ == "__main__":
     l2.printList()
     result.printList()
 
-# class Solution(object):
-#     def addTwoNumbers(self, l1, l2):
-#         """
-#         :type l1: ListNode
-#         :type l2: ListNode
-#         :rtype: ListNode
-#         """
-#         head = ListNode(0)
-#         answer = head
-#         carry = 0
-#         while l1 and l2:
-#             add = l1.val + l2.val + carry
-#             carry = 1 if add >= 10 else 0
-#             head.next = ListNode(add % 10)
-#             head = head.next
-#             l1, l2 = l1.next, l2.next
-#         l = l1 if l1 else l2
-#         while l:
-#             add = l.val + carry
-#             carry = 1 if add >= 10 else 0
-#             head.next = ListNode(add % 10)
-#             head = head.next
-#             l = l.next
-#         if carry:
-#             head.next = ListNode(1)
-#         return answer.next
+###class Solution(object):
+###    def addTwoNumbers(self, l1, l2):
+###        """
+###        :type l1: ListNode
+###        :type l2: ListNode
+###        :rtype: ListNode
+###        """
+###        head = ListNode(0)
+###        answer = head
+###        carry = 0
+###        while l1 and l2:
+###            add = l1.val + l2.val + carry
+###            carry = 1 if add >= 10 else 0
+###            head.next = ListNode(add % 10)
+###            head = head.next
+###            l1, l2 = l1.next, l2.next
+###        l = l1 if l1 else l2
+###        while l:
+###            add = l.val + carry
+###            carry = 1 if add >= 10 else 0
+###            head.next = ListNode(add % 10)
+###            head = head.next
+###            l = l.next
+###        if carry:
+###            head.next = ListNode(1)
+###        return answer.next

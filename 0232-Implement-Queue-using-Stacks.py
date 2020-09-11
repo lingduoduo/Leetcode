@@ -46,9 +46,9 @@ class MyQueue(object):
         """
         return True if not self.stack1 and not self.stack2 else False
 
-# Your MyQueue object will be instantiated and called as such:
-# obj = MyQueue()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.peek()
-# param_4 = obj.empty()
+###Your MyQueue object will be instantiated and called as such:
+###obj = MyQueue()
+###obj.push(x)
+###param_2 = obj.pop()
+###param_3 = obj.peek()
+###param_4 = obj.empty()

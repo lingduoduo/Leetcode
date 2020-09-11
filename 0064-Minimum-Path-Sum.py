@@ -23,26 +23,26 @@ class Solution(object):
         return self.dp[x][y]
     #
     #
-    #     n = len(grid)
-    #     if n == 0:
-    #         return 0
-    #     m = len(grid[0])
+    ###    n = len(grid)
+    ###    if n == 0:
+    ###        return 0
+    ###    m = len(grid[0])
     #
-    #     self.dp = [[float('inf')] * (1 + m) for _ in range(1 + n)]
+    ###    self.dp = [[float('inf')] * (1 + m) for _ in range(1 + n)]
     #
-    #     return self.path(n, m, grid)
+    ###    return self.path(n, m, grid)
     #
-    # def path(self, x, y, grid):
-    #     if x <= 0 or y <= 0:
-    #         return self.dp[x][y]
-    #     if x == 1 and y == 1:
-    #         self.dp[x][y] = grid[x-1][y-1]
-    #     else:
-    #         left =  self.path(x, y - 1, grid)
-    #         self.dp[x][y] = min(self.dp[x][y], grid[x - 1][y - 1] + left)
-    #         up = self.path(x - 1, y, grid)
-    #         self.dp[x][y] = min(self.dp[x][y], grid[x-1][y-1] + up)
-    #     return self.dp[x][y]
+    ###def path(self, x, y, grid):
+    ###    if x <= 0 or y <= 0:
+    ###        return self.dp[x][y]
+    ###    if x == 1 and y == 1:
+    ###        self.dp[x][y] = grid[x-1][y-1]
+    ###    else:
+    ###        left =  self.path(x, y - 1, grid)
+    ###        self.dp[x][y] = min(self.dp[x][y], grid[x - 1][y - 1] + left)
+    ###        up = self.path(x - 1, y, grid)
+    ###        self.dp[x][y] = min(self.dp[x][y], grid[x-1][y-1] + up)
+    ###    return self.dp[x][y]
 
 
 if __name__ == '__main__':

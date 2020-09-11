@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 DELETE FROM Person
 WHERE Person.Id not in (
     select Person_derived.minId from(

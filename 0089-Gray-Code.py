@@ -1,6 +1,6 @@
 class Solution:
     def grayCode(self, n: int) -> List[int]:
-        # return map(lambda x: int(x, 2), self.recursive_loop(n))
+        ###return map(lambda x: int(x, 2), self.recursive_loop(n))
 
         s = self.recursive_loop(n)
         res = []

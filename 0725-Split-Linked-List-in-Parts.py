@@ -1,4 +1,4 @@
-# Definition for singly-linked list.
+###Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -20,8 +20,8 @@ class Solution:
         
         parts[0:l % k] = list(map(lambda x: x + 1, parts[0:l % k]))
         
-        # for i in range(l%k):
-        #     parts[i] += 1
+        ###for i in range(l%k):
+        ###    parts[i] += 1
         
         res = []
         curr = root

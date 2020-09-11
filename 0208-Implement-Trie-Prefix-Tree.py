@@ -78,8 +78,8 @@ if __name__ == '__main__':
     result = obj.search("app")
     print(result)
 
-# Your Trie object will be instantiated and called as such:
+###Your Trie object will be instantiated and called as such:
 
-# obj.insert(word)
-# param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
+###obj.insert(word)
+###param_2 = obj.search(word)
+###param_3 = obj.startsWith(prefix)

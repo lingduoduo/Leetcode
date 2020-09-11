@@ -1,11 +1,11 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 SELECT s.Score,
 (SELECT count(distinct Score) from Scores where Score>= s.Score) Rank
 FROM Scores s
 ORDER BY s.Score desc
 
 
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 select aa.Score, bb.Rank
 from Scores aa
 join (

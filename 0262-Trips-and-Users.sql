@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 select a.Request_at as Day, 
 round(sum(case when a.Status like 'complete%' then 0 else 1 end)/count(*),2) as 'Cancellation Rate'
 from Trips a

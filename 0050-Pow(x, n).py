@@ -5,7 +5,7 @@ class Solution(object):
         :type n: int
         :rtype: float
         """
-        ## 二分求幂
+        ####二分求幂
         if n==0:
         	return 1
 

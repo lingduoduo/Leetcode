@@ -4,9 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # n = len(nums)
-        # nums = sorted(nums, reverse=True)
-        # return max(nums[0]*num[1]*nums[2], nums[0]*nums[n-2]*nums[n-1])
+        ###n = len(nums)
+        ###nums = sorted(nums, reverse=True)
+        ###return max(nums[0]*num[1]*nums[2], nums[0]*nums[n-2]*nums[n-1])
         
         n = len(nums)
         MAX_1 = MAX_2 = MAX_3 = -1000

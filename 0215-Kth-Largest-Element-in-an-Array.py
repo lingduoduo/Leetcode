@@ -5,8 +5,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        # nums = sorted(nums)
-        # return nums[-k]
+        ###nums = sorted(nums)
+        ###return nums[-k]
         
         from heapq import heappush, heappop
         

@@ -1,9 +1,9 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+###Definition for a binary tree node.
+###class TreeNode(object):
+###    def __init__(self, x):
+###        self.val = x
+###        self.left = None
+###        self.right = None
 
 class Solution(object):
     def levelOrder(self, root):
@@ -11,7 +11,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        ## first try
+        ####first try
         result = []
         level = 0
         
@@ -26,7 +26,7 @@ class Solution(object):
         bfs(root, 0)
         return result
         
-        ## second try
+        ####second try
         if not root: return []
         result = []
         visited = []

@@ -4,14 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # d = {}
-        # for i in range(26):
-        #     d[chr(ord('A') + i)] = i + 1
+        ###d = {}
+        ###for i in range(26):
+        ###    d[chr(ord('A') + i)] = i + 1
         #
-        # res = 0
-        # for i in range(len(s)):
-        #     res = res * 26 + d[s[i]]
-        # return res
+        ###res = 0
+        ###for i in range(len(s)):
+        ###    res = res * 26 + d[s[i]]
+        ###return res
         l = [chr(ord('A') + i) for i in range(26)]
         n = [i+1 for i in range(26)]
         d = dict(zip(l,n))

@@ -27,7 +27,7 @@ class Solution(object):
                 break
         
         return pos > 0 and neg > 0 and 1 + pos + neg == len(A)
-        # return([pos, neg])
+        ###return([pos, neg])
 
 
 if __name__ == "__main__":

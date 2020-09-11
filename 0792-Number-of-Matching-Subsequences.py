@@ -14,10 +14,10 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        ## !! Exceed time limit
-        # d = dict()
-        # for i in range(len(S)):
-        #     d[S[i]] = d.get(S[i], []) + [i]
+        ####!! Exceed time limit
+        ###d = dict()
+        ###for i in range(len(S)):
+        ###    d[S[i]] = d.get(S[i], []) + [i]
         d = collections.defaultdict(list)
         for i, s in enumerate(S):
             d[s].append(i)
@@ -34,11 +34,11 @@ class Solution(object):
                 if c not in d:
                     break
                 else:
-                    # for pos in d[c]:
-                    #     if last_index<pos:
-                    #         i+=1
-                    #         last_index = pos
-                    #         break
+                    ###for pos in d[c]:
+                    ###    if last_index<pos:
+                    ###        i+=1
+                    ###        last_index = pos
+                    ###        break
                     pos = bisect.bisect_left(d[c], last_index + 1)
                     if pos == len(d[c]):
                         break
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     print(result)
     
     S = "acbca"
-    # # words = ["a", "bb", "acb", "ace", "ace"]
+    ######words = ["a", "bb", "acb", "ace", "ace"]
     words = ["a", "ac"]
     result = Solution().numMatchingSubseq(S, words)
     print(result)

@@ -6,7 +6,7 @@ Output: 5
 
 class Solution:
     def findUnsortedSubarray(self, nums) -> int:
-        # Method 1
+        ###Method 1
         if nums == sorted(nums):
             return 0
 
@@ -27,7 +27,7 @@ class Solution:
                 break
         return res
 
-        # Method 2
+        ###Method 2
         _len, _nums = len(nums), sorted(nums)
         if nums == _nums:
             return 0
@@ -37,13 +37,13 @@ class Solution:
 
 
 if __name__ == '__main__':
-    # nums = [2, 6, 4, 8, 10, 9, 15]
-    # result = Solution().findUnsortedSubarray(nums)
-    # print(result)
+    ###nums = [2, 6, 4, 8, 10, 9, 15]
+    ###result = Solution().findUnsortedSubarray(nums)
+    ###print(result)
     #
-    # nums = [1,2,3,4]
-    # result = Solution().findUnsortedSubarray(nums)
-    # print(result)
+    ###nums = [1,2,3,4]
+    ###result = Solution().findUnsortedSubarray(nums)
+    ###print(result)
 
     nums = [1, 2, 3, 3, 3]
     result = Solution().findUnsortedSubarray(nums)

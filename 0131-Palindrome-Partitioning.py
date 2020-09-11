@@ -9,12 +9,12 @@ class Solution(object):
         return self.res
     
     def dfs(self, s, temp):
-        ## return condition
+        ####return condition
         if not s:
             self.res.append(temp[:])
             return
         
-        ## backtracking
+        ####backtracking
         for i in range(1, len(s) + 1):
             ss = s[:i]
             if ss == ss[::-1]:

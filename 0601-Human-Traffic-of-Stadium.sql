@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 select a.id, min(a.visit_date) visit_date, min(a.people) people
 from stadium a
 join stadium b 

@@ -4,18 +4,18 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        # if not n:
-        #     return False
-        # if n < 3:
-        #     return False
+        ###if not n:
+        ###    return False
+        ###if n < 3:
+        ###    return False
         #
-        # cnt = 0
-        # cur = n
-        # while cur > 0:
-        #     cur = cur // 3
-        #     cnt += 1
+        ###cnt = 0
+        ###cur = n
+        ###while cur > 0:
+        ###    cur = cur // 3
+        ###    cnt += 1
         #
-        # return 3 ** (cnt - 1) == n
+        ###return 3 ** (cnt - 1) == n
         
         if n <= 1:
             return True

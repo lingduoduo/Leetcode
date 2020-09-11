@@ -4,22 +4,22 @@ class Solution(object):
         :type words: List[str]
         :rtype: str
         """
-        # curr = sorted(words)
+        ###curr = sorted(words)
         
-        # result = ""
+        ###result = ""
         
-        # for curr in words:
-        #     isIn = True
-        #     for i in range(1, len(curr)):
-        #         if curr[:i] not in words:
-        #             isIn = False
-        #             break
-        #     if isIn:
-        #         if not result or len(result) < len(curr):
-        #             result = curr
-        #         elif len(curr) == len(result) and result > curr:
-        #             result = curr
-        # return result
+        ###for curr in words:
+        ###    isIn = True
+        ###    for i in range(1, len(curr)):
+        ###        if curr[:i] not in words:
+        ###            isIn = False
+        ###            break
+        ###    if isIn:
+        ###        if not result or len(result) < len(curr):
+        ###            result = curr
+        ###        elif len(curr) == len(result) and result > curr:
+        ###            result = curr
+        ###return result
 
         res = []
         curr = sorted(words)[::-1]
@@ -43,7 +43,7 @@ class Solution(object):
         return res[-1]
 
 if __name__ == '__main__':
-    # words = ["w","wo","wor","worl", "world"]
+    ###words = ["w","wo","wor","worl", "world"]
     words = ["a","banana","app","appl","ap","apply","apple"]
     result = Solution().longestWord(words)
     print(result)

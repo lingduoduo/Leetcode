@@ -26,9 +26,9 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    # s='3[a]2[bc]'
-    # s = "3[a2[c]]" #"accaccacc"
-    s = "2[abc]3[cd]ef"  # "abcabccdcdcdef"
+    ###s='3[a]2[bc]'
+    ###s = "3[a2[c]]" #"accaccacc"
+    s = "2[abc]3[cd]ef"  ###"abcabccdcdcdef"
     s = "100[leetcode]"
     result = Solution().decodeString(s)
     print(result)

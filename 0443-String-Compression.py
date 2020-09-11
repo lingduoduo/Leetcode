@@ -1,19 +1,19 @@
 class Solution:
     def compress(self, chars) -> int:
-        # import collections
+        ###import collections
         #
-        # c = collections.Counter(chars)
-        # res = []
+        ###c = collections.Counter(chars)
+        ###res = []
         #
-        # for k, v in c.items():
-        #     if v == 1:
-        #         res.append(k)
-        #     else:
-        #         res.append(k)
-        #         for cha in str(v):
-        #             res.append(cha)
+        ###for k, v in c.items():
+        ###    if v == 1:
+        ###        res.append(k)
+        ###    else:
+        ###        res.append(k)
+        ###        for cha in str(v):
+        ###            res.append(cha)
         #
-        # return res
+        ###return res
         
         n = len(chars)
         i, count = 0, 1

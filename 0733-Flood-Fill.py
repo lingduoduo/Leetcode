@@ -7,7 +7,7 @@ class Solution(object):
         :type newColor: int
         :rtype: List[List[int]]
         """
-        # Method 1
+        ###Method 1
         if image[sr][sc] == newColor:
             return image
         
@@ -29,7 +29,7 @@ class Solution(object):
         Fill(sr, sc)
         return image
         
-        # Method 2
+        ###Method 2
         if image[sr][sc] == newColor:
             return image
         

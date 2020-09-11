@@ -4,17 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        # m = len(nums)
-        # nums_set = set(nums)
-        # res = []
+        ###m = len(nums)
+        ###nums_set = set(nums)
+        ###res = []
         
-        # for num in range(1, m+1):
-        #     if num not in nums_set:
-        #         res.append(num)
-        # return res
+        ###for num in range(1, m+1):
+        ###    if num not in nums_set:
+        ###        res.append(num)
+        ###return res
         
-        # res = set(i for i in range(1, len(nums)+1))
-        # return list(res - set(nums))
+        ###res = set(i for i in range(1, len(nums)+1))
+        ###return list(res - set(nums))
         
         res = [i for i in range(1, len(nums) + 1)]
         

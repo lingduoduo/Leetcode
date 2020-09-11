@@ -11,7 +11,7 @@ class Solution(object):
         return self.res
     
     def dfs(self, candidates, target, idx, path):
-        # print([candidates, target, idx, path])
+        ###print([candidates, target, idx, path])
         if target == 0:
             self.res.append(path)
             return

@@ -7,7 +7,7 @@ class MedianFinder(object):
         """
         initialize your data structure here.
         """
-        ## heap from small to large
+        ####heap from small to large
         self.small = []
         self.large = []
     
@@ -32,8 +32,8 @@ class MedianFinder(object):
         """
         :rtype: float
         """
-        # print(self.small)
-        # print(self.large)
+        ###print(self.small)
+        ###print(self.large)
         if len(self.small) > len(self.large):
             return -self.small[0]
         else:

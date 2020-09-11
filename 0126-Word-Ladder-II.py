@@ -10,8 +10,8 @@ class Solution:
                 buildPath(pathdict, newword, [word] + path)
         
         wordList = set(wordList)
-        # wordList.remove(beginWord)
-        # wordList.remove(endWord)
+        ###wordList.remove(beginWord)
+        ###wordList.remove(endWord)
         
         d = list()
         visited = set()
@@ -32,7 +32,7 @@ class Solution:
                     if w in wordList and w not in visited:
                         parents[w] = parents.get(w, []) + [node]
                         d.append([w, step + 1])
-                        # wordList.remove(w)
+                        ###wordList.remove(w)
                         visited.add(w)
         
         return res
@@ -45,49 +45,49 @@ if __name__ == '__main__':
     result = Solution().findLadders(beginWord, endWord, wordList)
     print(result)
     
-    # beginWord = "hot"
-    # endWord = "dog"
-    # wordList = ["hot"]
-    # result = Solution().findLadders(beginWord, endWord, wordList)
-    # print(result)
+    ###beginWord = "hot"
+    ###endWord = "dog"
+    ###wordList = ["hot"]
+    ###result = Solution().findLadders(beginWord, endWord, wordList)
+    ###print(result)
     
-    # beginWord = "hot"
-    # endWord = "dog"
-    # wordList = ["hot", "cog", "dog", "tot", "hog", "hop", "pot", "dot"]
-    # result = Solution().findLadders(beginWord, endWord, wordList)
-    # print(result)
+    ###beginWord = "hot"
+    ###endWord = "dog"
+    ###wordList = ["hot", "cog", "dog", "tot", "hog", "hop", "pot", "dot"]
+    ###result = Solution().findLadders(beginWord, endWord, wordList)
+    ###print(result)
     
-    # beginWord = "hot"
-    # endWord = "dog"
-    # wordList = ["hot", "dog", "cog", "pot", "dot"]
-    # result = Solution().findLadders(beginWord, endWord, wordList)
-    # print(result)
+    ###beginWord = "hot"
+    ###endWord = "dog"
+    ###wordList = ["hot", "dog", "cog", "pot", "dot"]
+    ###result = Solution().findLadders(beginWord, endWord, wordList)
+    ###print(result)
     
-    # length = len(beginWord)
-    # parents = {}
-    # for word in wordlist:
-    #     parents[word] = []
-    # result = []
-    # visited = set()
-    # visited.add(beginWord)
+    ###length = len(beginWord)
+    ###parents = {}
+    ###for word in wordlist:
+    ###    parents[word] = []
+    ###result = []
+    ###visited = set()
+    ###visited.add(beginWord)
     
-    # while True:
-    #     pre_level = visited
-    #     visited = set()
+    ###while True:
+    ###    pre_level = visited
+    ###    visited = set()
     
-    #     for word in pre_level:
-    #         for i in range(length):
-    #             left = word[:i]
-    #             right = word[i+1:]
-    #             for c in 'abcdefghijklmnopqrstuvwxyz':
-    #                 if c != word[i]:
-    #                     w = left + c + right
-    #                     if w in wordlist:
-    #                         parents[w].append(word)
-    #                         visited.add(w)
-    #     if len(visited) == 0:
-    #         return []
-    #     if endWord in visited:
-    #         break
-    # buildPath([],endWord)
-    # return result
+    ###    for word in pre_level:
+    ###        for i in range(length):
+    ###            left = word[:i]
+    ###            right = word[i+1:]
+    ###            for c in 'abcdefghijklmnopqrstuvwxyz':
+    ###                if c != word[i]:
+    ###                    w = left + c + right
+    ###                    if w in wordlist:
+    ###                        parents[w].append(word)
+    ###                        visited.add(w)
+    ###    if len(visited) == 0:
+    ###        return []
+    ###    if endWord in visited:
+    ###        break
+    ###buildPath([],endWord)
+    ###return result

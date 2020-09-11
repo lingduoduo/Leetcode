@@ -6,7 +6,7 @@ class Solution:
         for u, v in prerequisites:
             graph[u].append(v)
         
-        # 0 = unknown, 1 = visiting, 2 = visited
+        ###0 = unknown, 1 = visiting, 2 = visited
         visited = [0] * numCourses
         
         self.res = []

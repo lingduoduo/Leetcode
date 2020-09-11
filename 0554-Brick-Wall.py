@@ -24,6 +24,6 @@ if __name__ == '__main__':
             2, 4], [
             3, 1, 2], [
             1, 3, 1, 1]]
-    # walls = [[1, 2, 2, 1],[3, 1, 2]]
+    ###walls = [[1, 2, 2, 1],[3, 1, 2]]
     result = Solution().leastBricks(walls)
     print(result)

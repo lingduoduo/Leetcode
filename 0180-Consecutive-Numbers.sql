@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+###Write your MySQL query statement below
 
 SELECT distinct a.Num as ConsecutiveNums
 FROM Logs a, Logs b, Logs c

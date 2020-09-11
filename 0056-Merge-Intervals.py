@@ -5,23 +5,23 @@ class Solution(object):
         :rtype: List[List[int]]
         [[1,3],[2,6],[8,10],[15,18]]
         """
-        # if not intervals:
-        #     return False
+        ###if not intervals:
+        ###    return False
 
-        # res = []
+        ###res = []
 
-        # intervals.sort(key=lambda x: x[0])
+        ###intervals.sort(key=lambda x: x[0])
 
-        # for i in range(len(intervals)):
-        #     if not res or intervals[i][0] > res[-1][1]:
-        #         res.append(intervals[i])
-        #     else:
-        #         num = res.pop()
-        #         start = num[0]
-        #         end = max(num[1], intervals[i][1])
-        #         res.append([start, end])
+        ###for i in range(len(intervals)):
+        ###    if not res or intervals[i][0] > res[-1][1]:
+        ###        res.append(intervals[i])
+        ###    else:
+        ###        num = res.pop()
+        ###        start = num[0]
+        ###        end = max(num[1], intervals[i][1])
+        ###        res.append([start, end])
 
-        # return res
+        ###return res
 
         res = []
         intervals.sort(key=lambda x: x[0])

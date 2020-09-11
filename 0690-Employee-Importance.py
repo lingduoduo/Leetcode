@@ -1,13 +1,13 @@
 """
-# Employee info
+###Employee info
 class Employee(object):
     def __init__(self, id, importance, subordinates):
-        # It's the unique id of each node.
-        # unique id of this employee
+        ###It's the unique id of each node.
+        ###unique id of this employee
         self.id = id
-        # the importance value of this employee
+        ###the importance value of this employee
         self.importance = importance
-        # the id of direct subordinates
+        ###the id of direct subordinates
         self.subordinates = subordinates
 Input: [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1
 Output: 11
@@ -22,7 +22,7 @@ class Solution(object):
         :type id: int
         :rtype: int
         """
-        # First Method: DFS
+        ###First Method: DFS
         d = dict()
         for employee in employees:
             d[employee.id] = employee
@@ -35,7 +35,7 @@ class Solution(object):
         
         return dfs(id)
         
-        ## Second Method
+        ####Second Method
         d = dict()
         sub = dict()
         

@@ -11,7 +11,7 @@ class Solution(object):
         return self.res
     
     def dfs(self, nums, idx, depth, path):
-        # print([nums, idx, depth, path])
+        ###print([nums, idx, depth, path])
         if depth == self.d:
             self.res.append(path)
             return

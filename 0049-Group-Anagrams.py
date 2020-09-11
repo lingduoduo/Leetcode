@@ -6,12 +6,12 @@ class Solution(object):
         ["eat", "tea", "tan", "ate", "nat", "bat"]
         """
 
-        # d = dict()
+        ###d = dict()
 
-        # for i in range(len(strs)):
-        #     str_key = ''.join(sorted(strs[i]))
-        #     d[str_key] = d.get(str_key, []) + [strs[i]]
-        # return [v for v in d.values()]
+        ###for i in range(len(strs)):
+        ###    str_key = ''.join(sorted(strs[i]))
+        ###    d[str_key] = d.get(str_key, []) + [strs[i]]
+        ###return [v for v in d.values()]
 
         res = []
         if len(strs)<1:

@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     p.right.left = TreeNode(0)
     p.right.right = TreeNode(1)
     
-    # Solution().printTree(p)
+    ###Solution().printTree(p)
     
     result = Solution().sumRootToLeaf(p)
     print(result)

@@ -1,4 +1,4 @@
-# Definition for singly-linked list.
+###Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -51,6 +51,6 @@ if __name__ == "__main__":
     l1.next.next.next = ListNode(4)
     l1.next.next.next.next = ListNode(5)
     l1.next.next.next.next.next = ListNode(56)
-    # l1.printList()
+    ###l1.printList()
     l2 = Solution().reorderList(l1)
     l2.printList()

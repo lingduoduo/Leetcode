@@ -4,56 +4,56 @@ class Solution(object):
         :type M: List[List[int]]
         :rtype: int
         """
-        # Method 1
-        #  	if M is None:
-        #  		return 0;
-        #  	n = len(M)
-        #  	visited = dict()
-        #  	results = 0
-        #  	for i in range(n):
-        #  		for j in range(n):
-        #  			group = hm.setdefault(i, set())
-        #  			if M[i][j] ==1:
-        #  				group.add(j)
+        ###Method 1
+        ### 	if M is None:
+        ### 		return 0;
+        ### 	n = len(M)
+        ### 	visited = dict()
+        ### 	results = 0
+        ### 	for i in range(n):
+        ### 		for j in range(n):
+        ### 			group = hm.setdefault(i, set())
+        ### 			if M[i][j] ==1:
+        ### 				group.add(j)
         
-        #  	allNodes = set()
-        #  	for i in range(n):
-        #  		allNodes.add(i)
-        #  	while len(allNode) != 0:
-        #  		result += 1
-        #  		root = None
-        #  		for node in allNodes:
-        #  			root = node
-        #  			break
-        #  		self.dfs(root, set(), allNodes, hm)
-        #  	return result
+        ### 	allNodes = set()
+        ### 	for i in range(n):
+        ### 		allNodes.add(i)
+        ### 	while len(allNode) != 0:
+        ### 		result += 1
+        ### 		root = None
+        ### 		for node in allNodes:
+        ### 			root = node
+        ### 			break
+        ### 		self.dfs(root, set(), allNodes, hm)
+        ### 	return result
         
-        # def dfs(self, root, visited, allNodes, hm):
-        # 	visited.add(root)
-        # 	allNodes.discard(root)
-        # 	unvisited = set()
-        # 	for node in hm.get(root):
-        # 		if node not in visited:
-        # 			unvisited.add(node)
-        # 	for node in unvisited:
-        # 		self.dfs(node, visited, allNodes, hm)
+        ###def dfs(self, root, visited, allNodes, hm):
+        ###	visited.add(root)
+        ###	allNodes.discard(root)
+        ###	unvisited = set()
+        ###	for node in hm.get(root):
+        ###		if node not in visited:
+        ###			unvisited.add(node)
+        ###	for node in unvisited:
+        ###		self.dfs(node, visited, allNodes, hm)
         
-        # Method 2
-        # 	def dfs(M, curr, n):
-        # 		for i in range(n):
-        #  		if M[curr][i] == 1:
-        #  			M[curr][i] = M[i][curr] = 0
-        #  		dfs(M, i, n)
+        ###Method 2
+        ###	def dfs(M, curr, n):
+        ###		for i in range(n):
+        ### 		if M[curr][i] == 1:
+        ### 			M[curr][i] = M[i][curr] = 0
+        ### 		dfs(M, i, n)
         
-        # n = len(M)
-        # results = 0
-        # for i in range(n):
-        # 	if M[i][i] == 1:
-        # 		results += 1
-        # 		dfs(M, i, n)
-        # return
+        ###n = len(M)
+        ###results = 0
+        ###for i in range(n):
+        ###	if M[i][i] == 1:
+        ###		results += 1
+        ###		dfs(M, i, n)
+        ###return
         
-        # Method 3
+        ###Method 3
         self.res = 0
         self.visited = [0] * len(M[0])
         

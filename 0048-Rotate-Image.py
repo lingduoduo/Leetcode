@@ -4,17 +4,17 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        # nrow = len(matrix)
+        ###nrow = len(matrix)
         
-        # for i in range(nrow):
-        #     for j in range(nrow - i):
-        #         matrix[i][j], matrix[nrow-1-j][nrow-1-i] = matrix[nrow- 1 - j][nrow - 1 - i], matrix[i][j]
+        ###for i in range(nrow):
+        ###    for j in range(nrow - i):
+        ###        matrix[i][j], matrix[nrow-1-j][nrow-1-i] = matrix[nrow- 1 - j][nrow - 1 - i], matrix[i][j]
         
-        # for i in range(nrow // 2):
-        #     for j in range(nrow):
-        #         matrix[i][j], matrix[nrow - 1 - i][j] = matrix[nrow - 1 - i][j], matrix[i][j]
+        ###for i in range(nrow // 2):
+        ###    for j in range(nrow):
+        ###        matrix[i][j], matrix[nrow - 1 - i][j] = matrix[nrow - 1 - i][j], matrix[i][j]
         
-        # return matrix
+        ###return matrix
 
         h = len(matrix)
         n = h - 1
@@ -28,14 +28,14 @@ class Solution(object):
                 matrix[j][n-i] = tmp
 
 
-# if __name__ == '__main__':
-#     input = [
-#         [1, 2, 3],
-#         [4, 5, 6],
-#         [7, 8, 9]
-#     ]
-#     for col in zip(*input):
-#         print(col[::-1])
+###if __name__ == '__main__':
+###    input = [
+###        [1, 2, 3],
+###        [4, 5, 6],
+###        [7, 8, 9]
+###    ]
+###    for col in zip(*input):
+###        print(col[::-1])
 
-    # result = Solution().rotate(input)
-    # print(result)
+    ###result = Solution().rotate(input)
+    ###print(result)

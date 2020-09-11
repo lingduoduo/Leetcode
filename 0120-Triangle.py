@@ -13,7 +13,7 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    # matrix = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
+    ###matrix = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
     matrix = [[-1], [2, 3], [1, -1, -3]]
     result = Solution().minimumTotal(matrix)
     print(result)

@@ -31,11 +31,11 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    # result = Solution().calculate("3+2*2")
-    # print(result)
-    # result = Solution().calculate("3/2")
-    # print(result)
+    ###result = Solution().calculate("3+2*2")
+    ###print(result)
+    ###result = Solution().calculate("3/2")
+    ###print(result)
     result = Solution().calculate("14-3/2")
     print(result)
-    # result = Solution().calculate("3/2")
-    # print(result)
+    ###result = Solution().calculate("3/2")
+    ###print(result)

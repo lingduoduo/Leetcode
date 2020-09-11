@@ -4,16 +4,16 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        # d = dict()
+        ###d = dict()
         
-        # res = ''
-        # for i in range(len(s)):
-        #     d[s[i]] = d.get(s[i], 0) + 1
+        ###res = ''
+        ###for i in range(len(s)):
+        ###    d[s[i]] = d.get(s[i], 0) + 1
         
-        # for key in sorted(d, key=d.get, reverse=True):
-        #     res += ''.join([key] * d[key])
+        ###for key in sorted(d, key=d.get, reverse=True):
+        ###    res += ''.join([key] * d[key])
         
-        # return res
+        ###return res
 
         import collections
 

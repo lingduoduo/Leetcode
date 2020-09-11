@@ -5,7 +5,7 @@ class Solution(object):
         :type newInterval: List[int]
         :rtype: List[List[int]]
         """
-        # Method 1
+        ###Method 1
         intervals.append(newInterval)
         intervals.sort(key=lambda x: x[0])
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     print(result)
 
     intervals = [[1, 5]]
-    # newInterval = [2,3]
+    ###newInterval = [2,3]
     newInterval = [0, 3]
     result = Solution().insert(intervals, newInterval)
     print(result)

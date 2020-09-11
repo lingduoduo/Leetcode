@@ -57,11 +57,11 @@ class MyLinkedList:
         if index == self.size - 1: self.tail = prev
         self.size -= 1
     
-# Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
-# obj.addAtHead(val)
-# obj.addAtTail(val)
-# obj.addAtIndex(index,val)
-# obj.deleteAtIndex(index)
+###Your MyLinkedList object will be instantiated and called as such:
+###obj = MyLinkedList()
+###param_1 = obj.get(index)
+###obj.addAtHead(val)
+###obj.addAtTail(val)
+###obj.addAtIndex(index,val)
+###obj.deleteAtIndex(index)
 

@@ -1,9 +1,9 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+###Definition for a binary tree node.
+###class TreeNode(object):
+###    def __init__(self, x):
+###        self.val = x
+###        self.left = None
+###        self.right = None
 
 class Solution(object):
     def postorderTraversal(self, root):
@@ -11,7 +11,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        ## recursive
+        ####recursive
         if not root: return []
         
         res = list()
@@ -21,7 +21,7 @@ class Solution(object):
         res.append(root.val)
         return res
         
-        ## reverse post-order
+        ####reverse post-order
         if not root: return []
         
         res = list()

@@ -1,5 +1,5 @@
 """
-# Definition for a Node.
+###Definition for a Node.
 class Node:
     def __init__(self, val=None, children=None):
         self.val = val
@@ -8,14 +8,14 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
-        # if not root:
-        #     return []
+        ###if not root:
+        ###    return []
 
-        # res = []
-        # for child in children:
-        #     res.extend(self.postorder(child))
-        # res.append(root.val)
-        # return res
+        ###res = []
+        ###for child in children:
+        ###    res.extend(self.postorder(child))
+        ###res.append(root.val)
+        ###return res
 
         if not root:
             return []

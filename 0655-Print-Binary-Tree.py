@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -16,7 +16,7 @@ class Solution(object):
         h = self.getHeight(root)
         w = 2 ** h - 1
         result = [[" " for _ in range(w)] for _ in range(h)]
-        # self.fillValue(root, result, 0, 0, w-1)
+        ###self.fillValue(root, result, 0, 0, w-1)
         return result
     
     def getHeight(self, root):

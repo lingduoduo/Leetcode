@@ -4,13 +4,13 @@ class Solution(object):
         :type num: int
         :rtype: bool
         """
-        # if num <= 0:
-        #     return False
+        ###if num <= 0:
+        ###    return False
         #
-        # for i in [2, 3, 5]:
-        #     while num % i == 0:
-        #         num = num / i
-        # return True if num == 1 else False
+        ###for i in [2, 3, 5]:
+        ###    while num % i == 0:
+        ###        num = num / i
+        ###return True if num == 1 else False
         
         if num == 0:
             return False

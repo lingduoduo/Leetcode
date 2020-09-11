@@ -8,12 +8,12 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        # c1 = collections.Counter(s)
-        # c2 = collections.Counter(t)
-        # if c1 == c2:
-        #     return True
-        # else:
-        #     return False
+        ###c1 = collections.Counter(s)
+        ###c2 = collections.Counter(t)
+        ###if c1 == c2:
+        ###    return True
+        ###else:
+        ###    return False
         
         d = dict()
         

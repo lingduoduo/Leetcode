@@ -4,15 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # if s == '':
-        #     return 0
+        ###if s == '':
+        ###    return 0
         #
-        # words = s.split(" ")
+        ###words = s.split(" ")
         #
-        # for i in range(len(words)):
-        #     if words[len(words) - i - 1] != '':
-        #         return len(words[len(words) - i - 1])
-        # return 0
+        ###for i in range(len(words)):
+        ###    if words[len(words) - i - 1] != '':
+        ###        return len(words[len(words) - i - 1])
+        ###return 0
         
         count = 0
         local_count = 0

@@ -51,21 +51,21 @@ class Solution(object):
                 right = mid
         return left
 
-    # Second Try
+    ###Second Try
         if not nums:
             return [-1, -1]
 
         if target not in nums:
             return [-1, -1]
         
-        # start = 0
-        # end = len(nums) - 1
-        # while (start<len(nums)) and (nums[start] != target):
-        #         start += 1
-        # while (end>0) and (nums[end] != target):
-        #         end -= 1
+        ###start = 0
+        ###end = len(nums) - 1
+        ###while (start<len(nums)) and (nums[start] != target):
+        ###        start += 1
+        ###while (end>0) and (nums[end] != target):
+        ###        end -= 1
 
-        # return [start, end]
+        ###return [start, end]
 
         left1, right1 = 0, len(nums)-1
         while left1<right1:
@@ -86,25 +86,25 @@ class Solution(object):
         return [left1, left2-1]
 
 if __name__ == "__main__":
-    # nums = [-1,0,3,5,9,12]
-    # nums = [-1,0,3,3,5,9,12]
-    # nums = [5]
-    # nums = [5,7,7,8,8,10]
-    # nums = [1,2,3]
-    # result = Solution().lowerBound(nums, 3)
-    # result = Solution().upperBound(nums, 3)
-    # result = Solution().searchRange(nums, 8)
-    # result = Solution().searchRange(nums, 6)
+    ###nums = [-1,0,3,5,9,12]
+    ###nums = [-1,0,3,3,5,9,12]
+    ###nums = [5]
+    ###nums = [5,7,7,8,8,10]
+    ###nums = [1,2,3]
+    ###result = Solution().lowerBound(nums, 3)
+    ###result = Solution().upperBound(nums, 3)
+    ###result = Solution().searchRange(nums, 8)
+    ###result = Solution().searchRange(nums, 6)
 
-    # nums = [5,7,7,8,8,10]
+    ###nums = [5,7,7,8,8,10]
     target = 8
     nums = [5,7,7,8,8,10]
-    # target = 6
+    ###target = 6
     result = Solution().searchRange(nums, target)
     print(result)
-    # result = Solution().lowerBound(nums, 1)
-    # print(result)
-    # result = Solution().upperBound(nums, 1)
-    # print(result)
-    # result = Solution().searchRange(nums, 1)
-    # print(result)
+    ###result = Solution().lowerBound(nums, 1)
+    ###print(result)
+    ###result = Solution().upperBound(nums, 1)
+    ###print(result)
+    ###result = Solution().searchRange(nums, 1)
+    ###print(result)

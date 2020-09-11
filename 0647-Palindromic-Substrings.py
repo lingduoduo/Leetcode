@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        ## brute force
+        ####brute force
         result = list()
         
         for i in range(len(s)):
@@ -14,7 +14,7 @@ class Solution(object):
                     result.append(sub)
         return len(result)
         
-        ## dp
+        ####dp
         n = len(s)
         count = 0
         start, end, maxL = 0, 0, 0

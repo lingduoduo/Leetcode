@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -12,60 +12,60 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        # # Firs Recursive solution
-        # if root is None:
-        #     return []
-        # result = list()
+        ######Firs Recursive solution
+        ###if root is None:
+        ###    return []
+        ###result = list()
         
-        # def dfs(root):
-        #     if root is None:
-        #         return
-        #     dfs(root.left)
-        #     result.append(root.val)
-        #     dfs(root.right)
+        ###def dfs(root):
+        ###    if root is None:
+        ###        return
+        ###    dfs(root.left)
+        ###    result.append(root.val)
+        ###    dfs(root.right)
         
-        # dfs(root)
-        # return result
+        ###dfs(root)
+        ###return result
         
-        # # ## Second recursive solution
-        # res = []
-        # if root:
-        #     res = self.inorderTraversal(root.left)
-        #     res.append(root.val)
-        #     res += self.inorderTraversal(root.right)
-        # return res
+        ##########Second recursive solution
+        ###res = []
+        ###if root:
+        ###    res = self.inorderTraversal(root.left)
+        ###    res.append(root.val)
+        ###    res += self.inorderTraversal(root.right)
+        ###return res
         
-        # # iterative solution
-        # stack = []
-        # result = []
-        # curr = root
-        # while True:
-        #     while curr:
-        #         stack.append(curr)
-        #         curr = curr.left
-        #     if not stack:
-        #         return result
-        #     curr = stack.pop()
-        #     result.append(curr.val)
-        #     curr = curr.right
+        ######iterative solution
+        ###stack = []
+        ###result = []
+        ###curr = root
+        ###while True:
+        ###    while curr:
+        ###        stack.append(curr)
+        ###        curr = curr.left
+        ###    if not stack:
+        ###        return result
+        ###    curr = stack.pop()
+        ###    result.append(curr.val)
+        ###    curr = curr.right
         
-        # Third try
-        # if not root:
-        #     return root
-        # visited = []
-        # res = []
-        # curr = root
+        ###Third try
+        ###if not root:
+        ###    return root
+        ###visited = []
+        ###res = []
+        ###curr = root
         
-        # while True:
-        #     while curr:
-        #         visited.append(curr)
-        #         curr = curr.left
-        #     if not visited:
-        #         return res
-        #     curr = visited.pop()
-        #     res.append(curr.val)
-        #     curr = curr.right
-        # return res
+        ###while True:
+        ###    while curr:
+        ###        visited.append(curr)
+        ###        curr = curr.left
+        ###    if not visited:
+        ###        return res
+        ###    curr = visited.pop()
+        ###    res.append(curr.val)
+        ###    curr = curr.right
+        ###return res
 
         if root is None:
             return []

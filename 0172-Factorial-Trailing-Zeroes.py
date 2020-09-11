@@ -4,13 +4,13 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        ## return n/5 + n/25 + n/125 + ...
-        # result = 0
-        # i = 1
-        # while n / 5 ** i > 0:
-        #     result += n / 5 ** i
-        #     i += 1
-        # return result
+        ####return n/5 + n/25 + n/125 + ...
+        ###result = 0
+        ###i = 1
+        ###while n / 5 ** i > 0:
+        ###    result += n / 5 ** i
+        ###    i += 1
+        ###return result
         
         res = 0
         

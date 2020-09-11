@@ -9,38 +9,38 @@ class Solution(object):
         if not nums:
             return None
         
-        # i =0
-        # while nums[i] != 0 and i<len(nums)-1:
-        #     i += 1
-        # if i<len(nums):
-        #     nums[0], nums[i] = nums[i], nums[0]
-        # i = 0
+        ###i =0
+        ###while nums[i] != 0 and i<len(nums)-1:
+        ###    i += 1
+        ###if i<len(nums):
+        ###    nums[0], nums[i] = nums[i], nums[0]
+        ###i = 0
         #
-        # print(nums)
+        ###print(nums)
         #
-        # k = len(nums)-1
-        # while nums[k] != 2 and k>0:
-        #     k -= 1
-        # if k>=0:
-        #     nums[len(nums)-1], nums[k] = nums[k], nums[len(nums)-1]
-        # k = len(nums) - 1
+        ###k = len(nums)-1
+        ###while nums[k] != 2 and k>0:
+        ###    k -= 1
+        ###if k>=0:
+        ###    nums[len(nums)-1], nums[k] = nums[k], nums[len(nums)-1]
+        ###k = len(nums) - 1
         #
-        # print(nums)
+        ###print(nums)
         
-        # i = 0
-        # j = 0
-        # k = len(nums) - 1
-        # while j <= k:
-        #     if nums[j] == 0:
-        #         nums[i], nums[j] = nums[j], nums[i]
-        #         i += 1
-        #         j += 1
-        #     elif nums[j] == 2:
-        #         nums[k], nums[j] = nums[j], nums[k]
-        #         k -= 1
-        #     else:
-        #         j += 1
-        # return nums
+        ###i = 0
+        ###j = 0
+        ###k = len(nums) - 1
+        ###while j <= k:
+        ###    if nums[j] == 0:
+        ###        nums[i], nums[j] = nums[j], nums[i]
+        ###        i += 1
+        ###        j += 1
+        ###    elif nums[j] == 2:
+        ###        nums[k], nums[j] = nums[j], nums[k]
+        ###        k -= 1
+        ###    else:
+        ###        j += 1
+        ###return nums
 
         left = 0
         right = len(nums)-1

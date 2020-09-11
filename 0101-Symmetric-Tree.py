@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -22,30 +22,30 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        ## First Try
-        # def dfs(left, right):
-        # 	if left is None and right is None:
-        # 		return True
-        # 	if left is None:
-        # 		return False
-        # 	if right is None:
-        # 		return False
-        # 	flag1 = dfs(left.left, right.left)
-        # 	flag2 = dfs(left.right, right.right)
-        # 	if left.val == right.val and flag1  and flag2:
-        # 		return True
+        ####First Try
+        ###def dfs(left, right):
+        ###	if left is None and right is None:
+        ###		return True
+        ###	if left is None:
+        ###		return False
+        ###	if right is None:
+        ###		return False
+        ###	flag1 = dfs(left.left, right.left)
+        ###	flag2 = dfs(left.right, right.right)
+        ###	if left.val == right.val and flag1  and flag2:
+        ###		return True
         
-        # if root is None:
-        #       	return True
-        #       if root.left is None and root.right is None:
-        #       	return True
-        #       if root.left is None and root.right is not None:
-        #       	return False
-        #       if root.left is not None and root.right is None:
-        #       	return False
-        #       return True if dfs(root.left, root.right) False
+        ###if root is None:
+        ###      	return True
+        ###      if root.left is None and root.right is None:
+        ###      	return True
+        ###      if root.left is None and root.right is not None:
+        ###      	return False
+        ###      if root.left is not None and root.right is None:
+        ###      	return False
+        ###      return True if dfs(root.left, root.right) False
         
-        ## Second Try
+        ####Second Try
         if not root:
             return True
         
