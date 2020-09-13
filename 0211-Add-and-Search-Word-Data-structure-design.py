@@ -1,60 +1,49 @@
 import collections
-import pysnooper
-
-
-'''addWord("bad")
-addWord("dad")
-addWord("mad")
-search("pad") -> false
-search("bad") -> true
-search(".ad") -> true
-search("b..") -> true
-'''
 
 class Node(object):
     def __init__(self):
-        self.child = collections.defaultdict(Node)
+        self.children = collections.defaultdict(Node)
         self.isword = False
+        
+class WordDictionary(object):
 
-class WordDictionary:
-    
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.root = Node()
-    
-    @pysnooper.snoop()
-    def addWord(self, word: str) -> None:
+
+    def addWord(self, word):
         """
         Adds a word into the data structure.
+        :type word: str
+        :rtype: void
         """
         current = self.root
-        
-        for i in range(len(word)):
-            current = current.child[word[i]]
+        for w in word:
+            current = current.children[w]
         current.isword = True
-    
-    def search(self, word: str) -> bool:
+
+    def search(self, word):
         """
         Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+        :type word: str
+        :rtype: bool
         """
         return self.match(word, 0, self.root)
     
-    @pysnooper.snoop()
-    def match(self, word, idx, root):
-        if not root:
+    def match(self, word, index, root):
+        if root == None:
             return False
-        if idx == len(word):
+        if index == len(word):
             return root.isword
-        
-        if word[idx] != '.':
-            return not root and self.match(word, idx + 1, root.child.get(word[idx]))
+        if word[index] != '.':
+            return root != None and self.match(word, index + 1, root.children.get(word[index]))
         else:
-            for i in root.child.values():
-                if self.match(word, idx + 1, i):
+            for child in root.children.values():
+                if self.match(word, index + 1, child):
                     return True
-            return False
+        return False
 
 if __name__ == '__main__':
     obj = WordDictionary()
