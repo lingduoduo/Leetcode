@@ -4,17 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-    #     res = []
-    #     self.dfs(nums, res, [])
-    #     return res
+        self.res = []
+        self.dfs(nums, [])
+        return self.res
 
-    # def dfs(self, nums, res, path):
-    #     if not nums:
-    #         return
-    #     else:
-    #         for i in range(len(nums)):
-    #             self.dfs(nums[:i] + nums[:i+1], res, path+[nums[i]])
-
+    def dfs(self, nums, path):
+        if nums == []:
+            return self.res.append(path)
+        else:
+            for i in range(len(nums)):
+                self.dfs(nums[:i] + nums[i+1:], path+[nums[i]])
+                
     ###second try
     ###    res = []
     ###    self.tot = len(nums)
@@ -26,8 +26,7 @@ class Solution(object):
     ###        res.append(path)
     ###    else:
     ###        for i in range(len(nums)):
-    ###            self.dfs(nums[:i] + nums[i + 1:], res,
-    ###                     depth + 1, path + [nums[i]])
+    ###            self.dfs(nums[:i] + nums[i + 1:], res, depth + 1, path + [nums[i]])
 
     ###third try
         # if len(nums) <= 1:
