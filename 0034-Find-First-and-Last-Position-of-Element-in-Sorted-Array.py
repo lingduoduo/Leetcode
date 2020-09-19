@@ -43,7 +43,7 @@ class Solution(object):
         left = 0
         right = len(nums)
         
-        while left < right:
+        while left <= right:
             mid = left + (right - left) // 2
             if nums[mid] < target:
                 left = mid + 1

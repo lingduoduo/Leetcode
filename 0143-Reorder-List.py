@@ -44,6 +44,41 @@ class Solution:
 
         return dummy.next
 
+class Solution:
+    def reorderList(self, head: ListNode) -> None:
+    if head and head.next and head.next.next:
+        #find mid
+        fast, slow = head, head
+        while fast.next and fast.next.next:
+            fast = fast.next.next
+            slow = slow.next
+        head1 = head
+        head2 = slow.next
+        slow.next = None
+
+        # reverse linked list head2     
+        dummy = ListNode(0)
+        dummy.next = head2
+        curr = head2.next
+        head2.next = None
+        while curr:
+            temp= curr.next
+            curr.next = dummy.next
+            dummy.next = curr
+            curr = temp
+        head2 = dummy.next
+
+        # merge two linked list head1 and head2
+        p1 = head1
+        p2 = head2
+        while p2:
+            temp1 = p1.next
+            temp2 = p2.next
+            p1.next = p2
+            p2.next = temp1
+            p1 = temp1
+            p2 = temp2
+
 if __name__ == "__main__":
     l1 = ListNode(1)
     l1.next = ListNode(2)

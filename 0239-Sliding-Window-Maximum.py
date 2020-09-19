@@ -12,7 +12,3 @@ class Solution:
                 res.append(que[0][1])
         return res
 
-        if k==0: return []
-        res = []
-        window = sorted(nums[0:k]
-        for i in range(k, len(nums)+1):
