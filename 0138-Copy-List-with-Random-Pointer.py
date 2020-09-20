@@ -29,3 +29,32 @@ class Solution(object):
                 nodedict[curr].random = nodedict[curr.random]
             curr = curr.next
         return dummy.next
+
+   def copyRandomList(self, head):
+        """
+        :type head: RandomListNode
+        :rtype: RandomListNode
+        """
+        if not head:
+            return None
+        
+        # 使用一个字典类型进行拷贝
+        res = dict()
+        
+        # 数值拷贝
+        node = head
+        while node:
+            res[node] = RandomListNode(node.label)
+            node = node.next
+        
+        # 设置尾结点
+        res[None] = None
+        
+        # 进行两个指针的拷贝
+        node = head
+        while node:
+            res[node].next = res[node.next]
+            res[node].random = res[node.random]
+            node = node.next
+        
+        return res[head]
