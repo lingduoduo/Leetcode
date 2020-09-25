@@ -6,6 +6,7 @@ class Solution:
             return 0
         if t == 0: 
             return ((n - 1) * (n - 2) // 2) % (10**9 + 7)
+
         t //= 3
         l, r, c = 0, 0, 0
         for i, ch in enumerate(s):
