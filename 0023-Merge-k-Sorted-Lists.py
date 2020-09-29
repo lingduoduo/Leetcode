@@ -5,8 +5,8 @@
 ###        self.next = None
 
 
-class Solution(object):
-    def mergeKLists(self, lists):
+# class Solution(object):
+#     def mergeKLists(self, lists):
         """
         :type lists: List[ListNode]
         :rtype: ListNode
@@ -26,37 +26,52 @@ class Solution(object):
         ###    curr.next = ListNode(vals.pop(0))
         ###    curr = curr.next
         ###return dummy.next
-        
-        import heapq
-        
-        ###heapq.heappush(q, 10)
-        ###heapq.heappush(q, 1)
-        #
-        ###while q:
-        ###    print(heapq.heappop(q))
-        
-        head = ListNode(0)
-        curr = head
-        heap = []
-        heapq.heapify(heap)
-        [heapq.heappush(heap, (l.val, i)) for i, l in enumerate(lists) if l]
-        
-        while heap:
-            curVal, curIdx = heapq.heappop(heap)
-            curHead = lists[curIdx]
-            curNext = curHead.next
-            
-            curr.next = curHead
-            curr.next.next = None
-            curr = curr.next
-            
-            if curNext:
-                lists[curIdx]=curNext
-                heapq.heappush(heap, (curNext.val, curIdx))
 
-        return head.next
-    
+# class Solution(object):
+#     def mergeKLists(self, lists):        
+#         import heapq
+        
+#         ###heapq.heappush(q, 10)
+#         ###heapq.heappush(q, 1)
+#         #
+#         ###while q:
+#         ###    print(heapq.heappop(q))
+        
+#         head = ListNode(0)
+#         curr = head
+#         heap = []
+#         heapq.heapify(heap)
+#         [heapq.heappush(heap, (l.val, i)) for i, l in enumerate(lists) if l]
+        
+#         while heap:
+#             curVal, curIdx = heapq.heappop(heap)
+#             curHead = lists[curIdx]
+#             curNext = curHead.next
+            
+#             curr.next = curHead
+#             curr.next.next = None
+#             curr = curr.next
+            
+#             if curNext:
+#                 lists[curIdx]=curNext
+#                 heapq.heappush(heap, (curNext.val, curIdx))
+
+#         return head.next
+
+
+class Solution(object):
+    def mergeKLists(self, lists):  
+        import heapq
+
+        stack = []
+        heapq.heapify(stack)
+
+        for i in range(len(lists)):
+            heapq.heappush(stack, (i, lists[i][0]))
+
+        print(stack)
+
 if __name__ == "__main__":
-    numbers = [2, 7, 11, 15]
+    numbers = [[1,4,5],[1,3,4],[2,6]]
     result = Solution().mergeKLists(numbers)
     print(result)
