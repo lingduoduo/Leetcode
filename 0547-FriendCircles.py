@@ -53,20 +53,18 @@ class Solution(object):
         ###		dfs(M, i, n)
         ###return
         
-        ###Method 3
-        self.res = 0
-        self.visited = [0] * len(M[0])
-        
-        for i in range(len(M)):
-            if self.visited[i] == 0 and M[i][i] == 1:
-                self.res += 1
-                self.dfs(M, i)
-                self.visited[i] = 1
-        return self.res
-    
-    def dfs(self, M, curr):
-        for j in range(len(M[curr])):
-            if M[curr][j] == 1:
-                M[curr][j] = 0
-                M[j][curr] = 0
-                self.dfs(M, j)
+class Solution(object):
+    def findCircleNum(self, M):
+        cnt, n = 0, len(M)
+        self.vset = set()
+        for x in range(n):
+            if x not in self.vset:
+                cnt += 1
+                self.dfs(M, x)
+        return cnt
+
+    def dfs(self, M, n):
+        for x in range(len(M)):
+            if M[n][x] and x not in self.vset:
+                self.vset.add(x)
+                self.dfs(M, x) 

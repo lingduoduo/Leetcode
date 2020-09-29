@@ -45,6 +45,20 @@ class Solution(object):
                 res.append(points[i])
         return res
 
+class Solution(object):
+    def kClosest(self, points, K):
+        dist = []
+        for i in range(len(points)):
+            x, y = points[i]
+            dist.append(((x**2 + y**2), (x,y)))
+
+        heapq.heapify(dist)
+        res = []
+        nsmallest = heapq.nsmallest(K, dist)
+        for dist, point in nsmallest:
+            res.append(point)
+        return res
+
 
 if __name__ == "__main__":
     points = [[3, 3], [5, -1], [-2, 4]]
