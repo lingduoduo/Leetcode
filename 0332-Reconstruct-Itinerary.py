@@ -28,10 +28,13 @@ class Solution(object):
 class Solution(object):
     def findItinerary(self, tickets):
         graph = collections.defaultdict(list)
+
         for frm, to in tickets:
             graph[frm].append(to)
+
         for frm, tos in graph.items():
             tos.sort(reverse=True)
+            
         res = []
         self.dfs(graph, "JFK", res)
         return res[::-1]
