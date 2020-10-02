@@ -13,20 +13,6 @@ class Solution:
             prev = tmp
         return curr
 
-
-    def maxProfit(self, prices: List[int]) -> int:
-        sold = 0
-        rest = 0
-        hold = float("-inf")
-
-        for i in range(len(prices)):
-            prev_sold = sold
-            sold = hold+prices[i]
-            hold = max(hold, rest-prices[i])
-            rest = max(rest, prev_sold)
-        return max(rest, sold)
-
-
     def maxProfit(self, prices: List[int]) -> int:
         if not prices: return 0 
         profit = 0                ## before buy status
@@ -40,3 +26,30 @@ class Solution:
             cooldown = max(cooldown, prev_profit)
             
         return max(cooldown, profit)
+
+    def maxProfit(self, prices: List[int]) -> int:
+        buy = float("-inf")
+        pre_buy = 0
+        sell = 0
+        pre_sell = 0
+
+        for i in range(len(prices)):
+            pre_buy = buy
+            buy = max(pre_buy, pre_sell-prices[i])
+            pre_sell = sell
+            sell = max(pre_sell, pre_buy+prices[i])
+        return sell
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int buy = INT_MIN, pre_buy = 0, sell = 0, pre_sell = 0;
+        for (int price : prices) {
+             = buy;
+            buy = max(pre_sell - price, pre_buy);
+            pre_sell = sell;
+            sell = max(pre_buy + price, pre_sell);
+        }
+        return sell;
+    }
+};
