@@ -70,11 +70,10 @@ class Solution(object):
                   startIndex = i - maxLen
                   maxLen += 1
       return s[startIndex : startIndex + maxLen]
-
         
 if __name__ == "__main__":
     print(Solution().longestPalindrome("abbae"))
-    print(Solution().longestPalindrome("bb"))
-    print(Solution().longestPalindrome("cbbd"))
-    print('Done')
+    # print(Solution().longestPalindrome("bb"))
+    # print(Solution().longestPalindrome("cbbd"))
+    # print('Done')
 

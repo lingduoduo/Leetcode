@@ -1,40 +1,63 @@
-class Solution:
-    def findLadders(self, beginWord: str, endWord: str,
-                    wordList):
+# class Solution:
+#     def findLadders(self, beginWord: str, endWord: str,
+#                     wordList):
         
-        def buildPath(pathdict, word, path):
-            if word not in pathdict:
-                res.append([word] + path)
-                return
-            for newword in pathdict[word]:
-                buildPath(pathdict, newword, [word] + path)
+#         def buildPath(pathdict, word, path):
+#             if word not in pathdict:
+#                 res.append([word] + path)
+#                 return
+#             for newword in pathdict[word]:
+#                 buildPath(pathdict, newword, [word] + path)
         
-        wordList = set(wordList)
-        ###wordList.remove(beginWord)
-        ###wordList.remove(endWord)
+#         wordList = set(wordList)
+#         ###wordList.remove(beginWord)
+#         ###wordList.remove(endWord)
         
-        d = list()
-        visited = set()
-        parents = dict()
-        res = []
+#         d = list()
+#         visited = set()
+#         parents = dict()
+#         res = []
         
-        d.append([beginWord, 1])
-        visited.add(beginWord)
+#         d.append([beginWord, 1])
+#         visited.add(beginWord)
         
-        while d:
-            node, step = d.pop(0)
-            if node == endWord:
-                buildPath(parents, node, [])
+#         while d:
+#             node, step = d.pop(0)
+#             if node == endWord:
+#                 buildPath(parents, node, [])
             
-            for i in range(len(node)):
-                for j in 'abcdefghijklmnopqrstuvwxyz':
-                    w = node[:i] + j + node[i + 1:]
-                    if w in wordList and w not in visited:
-                        parents[w] = parents.get(w, []) + [node]
-                        d.append([w, step + 1])
-                        ###wordList.remove(w)
-                        visited.add(w)
+#             for i in range(len(node)):
+#                 for j in 'abcdefghijklmnopqrstuvwxyz':
+#                     w = node[:i] + j + node[i + 1:]
+#                     if w in wordList and w not in visited:
+#                         parents[w] = parents.get(w, []) + [node]
+#                         d.append([w, step + 1])
+#                         ###wordList.remove(w)
+#                         visited.add(w)
         
+#         return res
+
+class Solution:
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> 
+        wordlist=set(wordList)
+        res= []
+        layer = {}
+        layer[beginWord] = [[beginWord]]
+        
+        while layer:
+            newlayer = collections.defaultdict(list)
+            for w in layer:
+                if w == endWord:
+                    res.extend(k for k in layer[w])
+                else:
+                    for i in range(len(w)):
+                        for c in "abcdefghijklmnopqrstuvwxyz":
+                            newword=w[:i] + c + w[i+1:]
+                            if newword in wordlist:
+                                newlayer[newword] += [j+[newword] for j in layer[w]]
+            wordlist -=set(newlayer.keys())
+            layer = newlayer
+            
         return res
 
 

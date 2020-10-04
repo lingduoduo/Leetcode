@@ -1,7 +1,6 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
         K -= 1
-
         nodes = collections.defaultdict(list)
 
         for u, v, w in times:
@@ -9,15 +8,13 @@ class Solution:
 
         dist = [float('inf')] * N
         dist[K] = 0
+        done = set()
 
-        visited = set()
         for _ in range(N):
-            smallest = min((d, i) for (i, d) in enumerate(dist) if i not in visited)[1]
-
+            smallest = min((d, i) for (i, d) in enumerate(dist) if i not in done)[1]
             for v, w in nodes[smallest]:
                 if v not in done and dist[smallest] + w < dist[v]:
                     dist[v] = dist[smallest] + w
-                    
-            visited.add(smallest)
-
+            done.add(smallest)
+            
         return -1 if float('inf') in dist else max(dist)
