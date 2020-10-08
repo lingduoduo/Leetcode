@@ -8,24 +8,6 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
-    ###    return self.dfs(node, {})
-
-    ###def dfs(self, node, d):
-    ###    if not node:
-    ###        return None
-
-    ###    if node in d:
-    ###        return d[node]
-
-    ###    node_copy = Node(node.val, [])
-    ###    d[node] = node_copy
-
-    ###    for neighbor in node.neighbors:
-    ###        n_copy = self.dfs(neighbor, d)
-    ###        if n_copy:
-    ###            node_copy.neighbors.append(n_copy)
-    ###    return node_copy
-
     if not node: return None
 
     stack = []
@@ -45,3 +27,21 @@ class Solution:
     return node_copy
 
 
+class Solution(object):
+    def cloneGraph(self, node):
+        """
+        :type node: Node
+        :rtype: Node
+        """
+        if not node: return None
+
+        if node in hashd: return hashd[node]
+
+        node_copy = Node(node.val, [])
+        hashd[node] = node_copy
+
+        for neighbor in node.neighbors:
+            neighbor_copy = self.dfs(neighbor, hashd)
+            if neighbor_copy:
+                node_copy.neighbors.append(neighbor_copy)
+        return node_copy
