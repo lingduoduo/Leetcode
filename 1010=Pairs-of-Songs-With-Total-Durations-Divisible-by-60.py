@@ -3,40 +3,40 @@ import collections
 class Solution:
     def numPairsDivisibleBy60(self, time) -> int:
 
-        d = collections.defaultdict(list)
-        res = set()
-        for i in range(len(time)):
-            d[time[i] % 60].append(i)
+        # d = collections.defaultdict(list)
+        # res = set()
+        # for i in range(len(time)):
+        #     d[time[i] % 60].append(i)
         
-        for i in range(len(time)):
-            if 60 - time[i] % 60 in d and i not in d[60 - time[i] % 60]:
-                if i < d[60 - time[i] % 60]:
-                    res.add((d[60 - time[i] % 60], i))
-                else:
-                    res.add((i, d[60 - time[i] % 60]))
+        # for i in range(len(time)):
+        #     if 60 - time[i] % 60 in d and i not in d[60 - time[i] % 60]:
+        #         if i < d[60 - time[i] % 60]:
+        #             res.add((d[60 - time[i] % 60], i))
+        #         else:
+        #             res.add((i, d[60 - time[i] % 60]))
         
-        cnt = [x%60==0 for x in time].count(True)   
-        return len(res) + cnt * (cnt-1)//2
+        # cnt = [x%60==0 for x in time].count(True)   
+        # return len(res) + cnt * (cnt-1)//2
 
 
-        # record = [0 for _ in range(0, 60)]
-        # for index, item in enumerate(time):
-        #     record[item % 60] += 1
+        record = [0 for _ in range(0, 60)]
+        for index, item in enumerate(time):
+            record[item % 60] += 1
         
-        # res = 0
-        # for i in range(0, len(time)):
-        #     temp = time[i] % 60
+        res = 0
+        for i in range(0, len(time)):
+            temp = time[i] % 60
  
-        #     if temp:
-        #         record[temp] -= 1
-        #         res += record[60 - temp]
-        #     elif temp == 0 and record[0] > 1:
-        #         # print res, record[0]
-        #         # 5 4+3 +2 +1
-        #         res += record[0] * (record[0] - 1) // 2
-        #         record[0] = 0
+            if temp:
+                record[temp] -= 1
+                res += record[60 - temp]
+            elif temp == 0 and record[0] > 1:
+                # print res, record[0]
+                # 5 4+3 +2 +1
+                res += record[0] * (record[0] - 1) // 2
+                record[0] = 0
  
-        # return res
+        return res
 
 
         # pairs = itertools.combinations(time, 2)
