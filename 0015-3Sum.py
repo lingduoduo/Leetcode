@@ -58,27 +58,59 @@
 #                     right -= 1
 #         return res
 
-import collections
-class Solution(object):
-    def threeSum(self, nums):  
-        d = collections.defaultdict(list)
-        comb = collections.deque()
-        for i in range(len(nums)):
-            d[nums[i]].append(i)
-            for j in range(i+1, len(nums)):
-                comb.append((- nums[i] - nums[j], i, j))
+# import collections
+# class Solution(object):
+#     def threeSum(self, nums):  
+#         d = collections.defaultdict(list)
+#         comb = collections.deque()
+#         for i in range(len(nums)):
+#             d[nums[i]].append(i)
+#             for j in range(i+1, len(nums)):
+#                 comb.append((- nums[i] - nums[j], i, j))
 
-        res = list()
-        for i in range(len(comb)):
-            val, first, second = comb.popleft()
-            if val in d:
-                for v in d[val]:
-                    if v != first and v != second:
-                        third = v
-                        tmp = sorted([nums[first], nums[second], nums[third]])
-                        if tmp not in res:
-                            res.append(tmp)
-        return res
+#         res = list()
+#         for i in range(len(comb)):
+#             val, first, second = comb.popleft()
+#             if val in d:
+#                 for v in d[val]:
+#                     if v != first and v != second:
+#                         third = v
+#                         tmp = sorted([nums[first], nums[second], nums[third]])
+#                         if tmp not in res:
+#                             res.append(tmp)
+#         return res
+
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums = sorted(nums)
+
+        res = set()
+
+        for i in range(len(nums)-2):
+            if i>0 and nums[i-1] == nums[i]:
+                continue
+            left = i + 1
+            right = len(nums) - 1
+            while i < left < right :
+                if nums[i] + nums[left] + nums[right] == 0:
+                    res.add((nums[i], nums[left], nums[right]))
+                    left += 1
+                    right -= 1
+                    while left < right and nums[left-1] == nums[left]: 
+                        left += 1
+                    while left < right and nums[right] == nums[right+1]:
+                        right -= 1
+                elif nums[i] + nums[left] + nums[right] < 0:
+                    left += 1
+                else:
+                    right -= 1
+        return list(res)
+
+
 
 if __name__=="__main__":
     # nums=[-1, 0, 1, 2, -1, -4]
