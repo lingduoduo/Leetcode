@@ -18,3 +18,17 @@ class Solution:
                 stack.append(node.left)
                 stack.append(node.right)
         return False
+
+
+class Solution:
+    def findTarget(self, root: TreeNode, k: int) -> bool:
+        self.res = set()
+        return self.inOrder(root, k)
+
+    def inOrder(self, root, k):
+        if not root:
+            return False
+        if k - root.val in self.res:
+            return True
+        self.res.add(root.val)
+        return self.inOrder(root.left, k) or self.inOrder(root.right, k)
