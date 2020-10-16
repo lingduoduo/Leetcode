@@ -41,11 +41,10 @@ class Solution(object):
             i += 1
         return res
 
+# 
 if __name__ == '__main__':
     interval = [[1, 3], [2, 6], [8, 10], [15, 18]]
     result = Solution().merge(interval)
-    print(result)
 
-    interval = [[1, 4], [4, 5]]
-    result = Solution().merge(interval)
-    print(result)
+
+

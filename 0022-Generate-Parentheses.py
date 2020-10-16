@@ -16,6 +16,7 @@ class Solution(object):
     ###        self.dfs(left - 1, right, temp + '(')
     ###    if left < right:
     ###        self.dfs(left, right - 1, temp + ')')
+    
         if n == 0:
             return []
 
