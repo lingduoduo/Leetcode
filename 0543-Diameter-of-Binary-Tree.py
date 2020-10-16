@@ -26,3 +26,31 @@ class Solution(object):
         
         depth(root)
         return result
+
+
+class Solution:
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        self.res = 0
+        self.traverse(root)
+        return self.res
+        
+    
+    def traverse(self, root):
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+        
+        if root.left: 
+            left = self.traverse(root.left)
+        else:
+            left = 0
+    
+        if root.right: 
+            right = self.traverse(root.right)
+        else:
+            right = 0
+        
+        self.res = max(self.res, left + right)
+        
+        return 1 + max(left, right)
