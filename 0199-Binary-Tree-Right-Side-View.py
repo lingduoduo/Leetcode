@@ -14,8 +14,6 @@ class Solution:
             nums.append(self.res[level][-1])
         return nums
 
-
-
     def dfs(root, level):
         if not root:
             return
@@ -28,4 +26,26 @@ class Solution:
             self.dfs(root.left, level+1)
         if root.right:
             self.dfs(root.right, level+1)
+
+
+class Solution:
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        self.res = collections.defaultdict(list)
+        self.dfs(root, 0)
+
+        nums = []
+        for k, v in self.res.items():
+                nums.append(v[-1])
+        return nums
+
+
+    def dfs(self, root, level):
+        if not root:
+            return
+
+        self.res[level].append(root.val)
+        if root.left:
+            self.dfs(root.left, level+1)
+        if root.right:
+            self.dfs(root.right, level+1)        
 
