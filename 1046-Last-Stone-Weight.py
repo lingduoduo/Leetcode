@@ -5,7 +5,6 @@ class Solution:
         heapq.heapify(nums)
         
         while len(nums) >= 2:
-            print(nums)
             first = -heapq.heappop(nums)
             second = -heapq.heappop(nums)
  
