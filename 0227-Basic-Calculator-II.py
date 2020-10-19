@@ -10,8 +10,6 @@ class Solution(object):
         pre_op = '+'
         
         for i in range(len(s)):
-            print([curr])
-            print(stack)
             if s[i].isdigit():
                 curr = curr * 10 + ord(s[i]) - ord('0')
             if s[i] in '+-*/' or i == len(s) - 1:
