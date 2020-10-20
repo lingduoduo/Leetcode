@@ -27,21 +27,24 @@ class Solution:
     return node_copy
 
 
-class Solution(object):
-    def cloneGraph(self, node):
-        """
-        :type node: Node
-        :rtype: Node
-        """
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return None
-
-        if node in hashd: return hashd[node]
-
+        
+        hashd = dict()
         node_copy = Node(node.val, [])
         hashd[node] = node_copy
-
-        for neighbor in node.neighbors:
-            neighbor_copy = self.dfs(neighbor, hashd)
-            if neighbor_copy:
-                node_copy.neighbors.append(neighbor_copy)
+        
+        stack = collections.deque()
+        stack.append(node)
+         
+        while stack:
+            t = stack.popleft()
+            if not t: continue
+            for n in t.neighbors:
+                if n not in hashd:
+                    hashd[n] = Node(n.val, [])
+                    stack.append(n)
+                hashd[t].neighbors.append(hashd[n])
         return node_copy
+        
