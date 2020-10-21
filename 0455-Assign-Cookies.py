@@ -1,21 +1,22 @@
-def findContentChilden(x, y):
-    result = 0
-    x.sort()
-    y.sort()
-    for i in range(len(x)):
+class Solution:
+    def findContentChildren(self, g, s) -> int:
+        result = 0
+        g.sort()
+        s.sort()
         j = 0
-        while j < len(y) and y[j] < x[i]:
-            j += 1
-        if j < len(y):
-            result += 1
-    return (result)
-
+        for i in range(len(g)):
+            while j < len(s) and s[j] < g[i]:
+                j += 1
+            if j < len(s) and s[j] >= g[i]:
+                result += 1
+                j += 1
+        return result
 
 if __name__ == "__main__":
-    a = [1, 2, 3]
-    b = [1, 1]
-    print(findContentChilden(a, b))
+    # g = [1, 2, 3]
+    # s = [1, 1]
+    # print(Solution().findContentChildren(g, s))
     
     a = [1, 2, 3]
     b = [1, 2]
-    print(findContentChilden(a, b))
+    print(Solution().findContentChildren(a, b))
