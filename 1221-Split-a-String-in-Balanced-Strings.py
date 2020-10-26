@@ -14,9 +14,7 @@ class Solution:
                 l[curr] = l[i]
                 curr += 1
         l = l[:curr]
-        res = []
-        print(r)
-        print(l)
+        return min(len(l), len(r))
         
         # while l and r:
         #     while l[0] == '': l.pop(0)
