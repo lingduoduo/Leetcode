@@ -29,31 +29,76 @@
 #             nums[targetIndex + 1:] = reversed(nums[targetIndex + 1:])
 #         return nums
 ## 12431
+# class Solution(object):
+    # def nextPermutation(self, nums):
+    #     i = j = len(nums)-1
+    #     while i > 0 and nums[i]<=nums[i-1]:
+    #         i-=1
+    #     i-=1
+    #     if i<0:
+    #         nums.reverse()
+    #         return
+        
+    #     while j>i and nums[j]<=nums[i]:
+    #         j-=1
+        
+    #     nums[i],nums[j] = nums[j], nums[i]
+        
+    #     k,l = i+1, len(nums)-1
+        
+    #     while k<l:
+    #         nums[k],nums[l] = nums[l], nums[k]
+    #         k+=1
+    #         l-=1
+    #     return nums
+
+
 class Solution(object):
     def nextPermutation(self, nums):
-        i = j = len(nums)-1
-        while i > 0 and nums[i]<=nums[i-1]:
-            i-=1
-        i-=1
-        if i<0:
-            nums.reverse()
-            return
+        flag = -1
+        for i in range(len(nums)-2, -1, -1):
+            if nums[i] < nums[i+1]:
+                flag = i
+                break
+
+        if flag == -1:
+            nums.sort()
+        else:
+            for i in range(len(nums)-1, flag, -1):
+                if nums[i] > nums[flag]:
+                    nums[i], nums[flag] = nums[flag], nums[i]
+                    nums[flag+1:] = sorted(nums[flag+1:])
+                    break
+        return nums
+
+# class Solution(object):
+#     def nextPermutation(self, nums):
+#         i = j = len(nums)-1
+#         flag = -1
+#         for i in range(len(nums)-2, -1, -1):
+#             if nums[i] < nums[i+1]:
+#                 flag = i
+#                 break
+
+#         if flag<0:
+#             nums.reverse()
+#             return nums
         
-        while j>i and nums[j]<=nums[i]:
-            j-=1
+#         while j>i and nums[j]<=nums[i]:
+#             j-=1
         
-        nums[i],nums[j] = nums[j], nums[i]
+#         nums[i],nums[j] = nums[j], nums[i]
         
-        k,l = i+1, len(nums)-1
+#         k,l = i+1, len(nums)-1
         
-        while k<l:
-            nums[k],nums[l] = nums[l], nums[k]
-            k+=1
-            l-=1
+#         while k<l:
+#             nums[k],nums[l] = nums[l], nums[k]
+#             k+=1
+#             l-=1
         return nums
 
 if __name__ == "__main__":
-    nums = [1, 2, 4, 3, 1]
+    nums = [1, 4, 3, 2]
     # nums = [1, 2, 3]
     # nums = [1, 7, 3, 4, 1]
     # nums = [1, 5, 1]

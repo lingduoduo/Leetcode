@@ -22,4 +22,4 @@ class CombinationIterator:
 
 if __name__ == '__main__':
 	iterator = CombinationIterator("abc", 2)
-	print(iterator.next())
+	# print(iterator.next())
