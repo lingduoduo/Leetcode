@@ -28,3 +28,13 @@ class Solution(object):
             current.next = runner
             current = runner
         return head
+
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        p = q = head
+        while p:
+            while q and q.val == p.val:
+                q = q.next
+            p.next = q
+            p = q
+        return head

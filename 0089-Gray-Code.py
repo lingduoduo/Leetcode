@@ -1,5 +1,5 @@
 class Solution:
-    def grayCode(self, n: int) -> List[int]:
+    def grayCode(self, n: int):
         ###return map(lambda x: int(x, 2), self.recursive_loop(n))
 
         s = self.recursive_loop(n)
@@ -13,11 +13,14 @@ class Solution:
 
     def recursive_loop(self, n):
         res = None
-        if n==0:
-            res = ['0']
-        elif n==1:
+        if n == 1:
             res = ['0', '1']
         else:
             prev = self.recursive_loop(n-1)
             res = ['0' + x for x in prev] + ['1' + x for x in prev[::-1]] 
         return res
+
+if __name__ == '__main__':
+    n = 3
+    results = Solution().recursive_loop(n)
+    print(results)

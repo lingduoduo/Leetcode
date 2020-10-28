@@ -25,3 +25,21 @@ class Solution(object):
             current=next_one
 
         return dummy.next
+
+
+class Solution(object):
+    def swapPairs(self, head):
+        if not head or not head.next: return head
+
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
+
+        while pre.next and pre.next.next:
+            cur, pos = pre.next, pre.next.next
+            cur.next = pos.next
+            pos.next = cur
+            pre.next = pos
+            pre = cur
+        return dummy.next
+

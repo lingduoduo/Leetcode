@@ -11,8 +11,8 @@ class ListNode(object):
             pt = pt.next
         print(valStr)
 
-
-def addTwoNumbers(l1, l2):
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
     ###first try
     ###head = ListNode(0)
     ###current = head
@@ -33,32 +33,33 @@ def addTwoNumbers(l1, l2):
     ###    current.next = ListNode(1)
     ###return head.next
     
-    ###second try
-    dummy = tail = ListNode(0)
-    carry = 0
-    tmp = 0
-    while l1 or l2 or carry>0:
-       if l1:
-           tmp += l1.val
-           l1 = l1.next
-       if l2:
-           tmp += l2.val
-           l2 = l2.next
-       if carry>0:
-           tmp += 1
-           carry = 0
-       if tmp>=10:
-           carry = 1
-           tmp -= 10
-       tail.next = ListNode(tmp)
-       tmp = 0
-       tail = tail.next
-    if carry>0:
-       tail.next = ListNode(carry)
-       tail = tail.next
-    return dummy.next
+      ###second try
+      dummy = tail = ListNode(0)
+      carry = 0
+      tmp = 0
+      while l1 or l2 or carry>0:
+         if l1:
+             tmp += l1.val
+             l1 = l1.next
+         if l2:
+             tmp += l2.val
+             l2 = l2.next
+         if carry>0:
+             tmp += 1
+             carry = 0
+         if tmp>=10:
+             carry = 1
+             tmp -= 10
+         tail.next = ListNode(tmp)
+         tmp = 0
+         tail = tail.next
+      if carry>0:
+         tail.next = ListNode(carry)
+         tail = tail.next
+      return dummy.next
 
-    
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
     dummy = tail = ListNode(0)
     s = 0
     while l1 or l2 or s:
