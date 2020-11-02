@@ -57,9 +57,9 @@ class Solution(object):
           maxLen = 1
           # 開始跑迴圈
           for i in range(1 ,len(s)):
-              # 跑第一圈時，odd要找 s[-1:2]，event要找 s[0:2]
-              # 跑第二圈時，odd要找 s[0:3]，event要找 s[1:3]
-              # 跑第三圈時，odd要找 s[1:4]，event要找 s[2:4]
+              # 跑第一圈時，odd要找 s[-1:2]，even要找 s[0:2]
+              # 跑第二圈時，odd要找 s[0:3]，even要找 s[1:3]
+              # 跑第三圈時，odd要找 s[1:4]，even要找 s[2:4]
               odd = s[i - maxLen - 1 : i + 1]
               even = s[i - maxLen : i + 1]
               # 判斷odd是否為迴文

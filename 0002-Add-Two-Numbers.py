@@ -32,8 +32,10 @@ class Solution:
     ###if carry == 1:
     ###    current.next = ListNode(1)
     ###return head.next
-    
-      ###second try
+
+ class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:   
+    ###second try
       dummy = tail = ListNode(0)
       carry = 0
       tmp = 0

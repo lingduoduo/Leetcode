@@ -15,4 +15,9 @@ class Solution:
             next_seq += str(count) + seq[i]
             i += 1
         return next_seq
-        
+            
+        return next_seq
+if __name__ == '__main__':
+    n = 5
+    res = Solution().countAndSay(n)
+    print(res)
