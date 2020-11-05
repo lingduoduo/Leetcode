@@ -36,3 +36,15 @@ class Solution(object):
             return False
         
         return self.valid(root.left, min, root.val) and self.valid(root.right, root.val, max)
+
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        res = []
+        self.inOrder(root, res)
+        return res == sorted(res) and len(res) == len(set(res))
+        
+    def inOrder(self, root, res):
+        if not root: return []
+        self.inOrder(root.left, res)
+        res.append(root.val)
+        self.inOrder(root.right, res)

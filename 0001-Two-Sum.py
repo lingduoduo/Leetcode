@@ -6,8 +6,6 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-
-        # First Try
         # for k, v in enumerate(nums):
         # 	i = k+1
         # 	while i<len(nums):
@@ -16,6 +14,8 @@ class Solution(object):
         # 		else:
         # 			i=i+1
 
+class Solution(object):
+    def twoSum(self, nums, target):
         #    hash_map = {}
         #    for i,v in enumerate(nums):
         #    hash_map[v]=i
@@ -25,7 +25,8 @@ class Solution(object):
         #            index2 = hash_map[target-v]
         #    return [index1+1, index2+1]
 
-        # second try
+class Solution(object):
+    def twoSum(self, nums, target):
         # idx = dict()
         # for i in range(len(nums)):
         #     idx[nums[i]] = i
@@ -35,12 +36,16 @@ class Solution(object):
         #         return([i, idx[target - nums[i]]])
         # return None
 
-        # third try
+class Solution(object):
+    def twoSum(self, nums, target):
         # for i in range(len(nums)-1):
         #     for j in range(i+1, len(nums)):
         #         if (nums[i] + nums[j]) == target:
         #             return i, j
         # return None
+
+class Solution(object):
+    def twoSum(self, nums, target):        
         dict = {}
         for i in range(len(nums)):
             dict[nums[i]] = i

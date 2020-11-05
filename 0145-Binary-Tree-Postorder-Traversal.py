@@ -4,14 +4,13 @@
 ###        self.val = x
 ###        self.left = None
 ###        self.right = None
-
+        ####recursive
 class Solution(object):
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        ####recursive
         if not root: return []
         
         res = list()
@@ -20,19 +19,21 @@ class Solution(object):
         res += self.postorderTraversal(root.right)
         res.append(root.val)
         return res
-        
-        ####reverse post-order
+
+####reverse post-order
+class Solution(object):
+    def postorderTraversal(self, root):
         if not root: return []
         
-        res = list()
-        visited = list()
-        visited.append(root)
+        res = []
+        stack = []
+        stack.append(root)
         
-        while visited:
-            node = visited.pop()
+        while stack:
+            node = stack.pop()
             res.append(node.val)
             if node.left:
-                visited.append(node.left)
+                stack.append(node.left)
             if node.right:
-                visited.append(node.right)
+                stack.append(node.right)
         return res[::-1]

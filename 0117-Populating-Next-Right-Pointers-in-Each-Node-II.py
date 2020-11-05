@@ -27,3 +27,26 @@ class Solution:
                 if node.right:
                     stack.append(node.right)
         return root
+
+class Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return
+        
+        stack = [root]
+        
+        while stack:
+            next_level = []
+            
+            for i, node in enumerate(stack):
+                if i < len(stack)-1:
+                    node.next = stack[i+1]
+                else:
+                    node.next = None
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            stack = next_level
+        return root
+                    

@@ -21,7 +21,8 @@ class Solution(object):
         ###    location[ord(v)] = i
         ###return longest
 
-        ####Second try
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
         ###if not s:
         ###    return 0
         ###if len(s) <=1:
@@ -39,7 +40,8 @@ class Solution(object):
         ###    result = max(result, i-left)
         ###return result
         
-        ####third try:
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
         if not s:
             return 0
         if len(s) == 1:

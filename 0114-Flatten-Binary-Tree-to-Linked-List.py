@@ -1,4 +1,4 @@
-###Definition for a binary tree node.
+##Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -6,12 +6,12 @@ class TreeNode(object):
         self.right = None
 
 
-class Solution(object):
-    def flatten(self, root):
-        """
-        :type root: TreeNode
-        :rtype: None Do not return anything, modify root in-place instead.
-        """
+# class Solution(object):
+#     def flatten(self, root):
+        # """
+        # :type root: TreeNode
+        # :rtype: None Do not return anything, modify root in-place instead.
+        # """
         ###    if not root:
         ###        return root
         #
@@ -30,28 +30,55 @@ class Solution(object):
         ###    self.dfs(curr.left)
         ###    self.dfs(curr.right)
         
-        self.nodes = list()
-        self.dfs(root)
+    #     self.nodes = list()
+    #     self.dfs(root)
         
-        dummy = TreeNode(-1)
-        dummy.right = root
-        curr = dummy
-        while self.nodes:
-            curr.right = self.nodes.pop(0)
-            curr = curr.right
-        return dummy.right
+    #     dummy = TreeNode(-1)
+    #     dummy.right = root
+    #     curr = dummy
+    #     while self.nodes:
+    #         curr.right = self.nodes.pop(0)
+    #         curr = curr.right
+    #     return dummy.right
     
-    def dfs(self, root):
-        if not root:
-            return
-        self.nodes.append(root)
+    # def dfs(self, root):
+    #     if not root:
+    #         return
+    #     self.nodes.append(root)
+    #     left = root.left
+    #     right = root.right
+    #     root.left = None
+    #     root.right = None
+    #     self.dfs(left)
+    #     self.dfs(right)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        if not root: return
         left = root.left
         right = root.right
+        
         root.left = None
-        root.right = None
-        self.dfs(left)
-        self.dfs(right)
+        
+        self.flatten(left)
+        self.flatten(right)
+        
+        root.right = left
+        curr = root
 
+        while curr.right:
+            print(curr.right.val)
+            curr = curr.right
+        curr.right = right
 
 if __name__ == "__main__":
     p = TreeNode(1)
@@ -64,4 +91,4 @@ if __name__ == "__main__":
     ###Solution().printTree(p)
     
     result = Solution().flatten(p)
-    Solution().printTree(result)
+

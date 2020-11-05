@@ -49,7 +49,7 @@ class Solution(object):
             self.dfs(root.right, level+1)
             
 
-    class Solution(object):
+class Solution(object):
     def levelOrderBottom(self, root):
         if not root:
             return []
@@ -68,4 +68,5 @@ class Solution(object):
             res.append(vals)
         
         return res[::-1]
+
     

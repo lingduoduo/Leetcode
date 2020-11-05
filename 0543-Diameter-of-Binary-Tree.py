@@ -30,27 +30,20 @@ class Solution(object):
 
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        if not root: return 0
+        
         self.res = 0
         self.traverse(root)
-        return self.res
+        return self.res - 1
         
     
     def traverse(self, root):
         if not root:
             return 0
-        if not root.left and not root.right:
-            return 1
+
+        left = self.traverse(root.left)
+        right = self.traverse(root.right)
         
-        if root.left: 
-            left = self.traverse(root.left)
-        else:
-            left = 0
-    
-        if root.right: 
-            right = self.traverse(root.right)
-        else:
-            right = 0
-        
-        self.res = max(self.res, left + right)
+        self.res = max(self.res, 1 + left + right)
         
         return 1 + max(left, right)
