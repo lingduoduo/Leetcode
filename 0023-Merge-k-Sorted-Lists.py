@@ -1,16 +1,12 @@
 ###Definition for singly-linked list.
-###class ListNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.next = None
+class ListNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.next = None
 
 
 # class Solution(object):
 #     def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
         ###first method
         ###vals = []
         ###for i in range(len(lists)):
@@ -63,14 +59,49 @@ class Solution(object):
     def mergeKLists(self, lists):  
         import heapq
 
-        stack = []
-        heapq.heapify(stack)
+        # init heap
+        heap = []
+        # init dummy head and cursor
+        curr = dummy = ListNode(0)
+        for idx, element in enumerate(lists):
+            # for non-empty linked lists, push the tuple (head node val, head node) onto the heap
+            if element:
+                heapq.heappush(heap, (element.val, idx, element))
+        # due to Python's min heap implementation
+        # the heap is now a min heap of head node vals
 
-        for i in range(len(lists)):
-            heapq.heappush(stack, (i, lists[i][0]))
+        while heap:
+            # pop the min element (i.e. least node val)
+            value, idx, node = heapq.heappop(heap)
+            
+            # append the popped value to cursor
+            curr.next = ListNode(value)
+            # increment cursor and increment node
+            curr = curr.next
+            node = node.next
+            # so that now cursor -> the new node just appended to the tail of the linked list
+            # which the dummy head points to
+            # and node -> what's remaining of the linked list
+            # whose min val was just popped
+            # if anything remains, let's do the same thing once again
+            # we can see that the top of the heap will always be the min element of all of the
+            # remaining lists.
+            if node:
+                heapq.heappush(heap, (node.val, idx, node))
 
-        print(stack)
+        return dummy.next
 
+
+        dummy = curr = ListNode(None)
+        q = PriorityQueue()
+
+        while not q.empty():
+            _,idx,curr.next = q.get()
+            curr=curr.next
+            if curr.next: q.put((curr.next.val, idx, curr.next))
+        return dummy.next     
+
+        return dummy.next
 if __name__ == "__main__":
     numbers = [[1,4,5],[1,3,4],[2,6]]
     result = Solution().mergeKLists(numbers)

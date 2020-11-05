@@ -60,7 +60,8 @@ class Solution:
         pre.next = None
         return self.merge(self.sortList(head), self.sortList(slow))
 
-
+    def merge(self, h1, h2):
+        
 if __name__ == '__main__':
     list1 = ListNode(4)
     list1.next = ListNode(2)
