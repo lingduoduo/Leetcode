@@ -1,9 +1,5 @@
-class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
+# class Solution(object):
+#     def generateParenthesis(self, n):
     ###    self.result = []
     ###    self.dfs(n, n, '')
     ###    return self.result
@@ -33,4 +29,9 @@ class Solution(object):
             self.helper(left - 1, right, item + "(", res)
         if right > 0:
             self.helper(left, right - 1, item + ")", res)
+
+if __name__ == '__main__':
+    results = Solution().generateParenthesis(3)
+    print(results)
+
             

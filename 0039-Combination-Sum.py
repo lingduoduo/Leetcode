@@ -24,26 +24,20 @@
 
 class Solution(object):
     def combinationSum(self, candidates, target: int):
-        self.res = []
+        def dfs(cur, path):
+            if cur == 0:
+                res.append(path)
+            for n in candidates:
+                if n > cur:
+                    break
+                if path and n < path[-1]:
+                    continue
+                dfs(cur - n, path + [n])
+                
+        res = []
         candidates.sort()
-        self.dfs(candidates, target, [])
-        return self.res
-    
-    def dfs(self, candidates, target, path):
-        print(path)
-        if target == 0:
-            self.res.append(path)
-            return
-            
-        for i in range(len(candidates)):
-            if candidates[i] > target:
-                return
-
-            if path and candidates[i] < path[-1]:
-                continue
-            
-            self.dfs(candidates, target - candidates[i], path + [candidates[i]] )        
-
+        dfs(target, [])
+        return res
 
 if __name__ == "__main__":
     nums = [2, 3, 6, 7]
