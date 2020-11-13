@@ -5,13 +5,13 @@ class Solution:
 
         reach = 0
         cur = 0
-        pos = 0
+        i = 0
         while cur < n - 1:
             res += 1
             potential = cur
-            while pos <= potential:
-                cur = max(cur, pos + nums[pos])
-                pos += 1
+            while i <= potential:
+                cur = max(cur, i + nums[i])
+                i += 1
         return res
 
 if __name__ == '__main__':

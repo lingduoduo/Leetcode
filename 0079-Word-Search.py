@@ -31,7 +31,9 @@ class Solution(object):
         
     ###    return result
 
-        for i in range(len(board)):
+class Solution(object):
+    def exist(self, board, word):
+            for i in range(len(board)):
             for j in range(len(board[0])):
                 if self.helper(board, i, j, word, 0):
                     return True
@@ -54,4 +56,25 @@ class Solution(object):
         or self.helper(board, i, j+1, word, wordinx+1) 
         board[i][j] = word[wordinx]
 
+        return found
+
+
+class Solution(object):
+    def exist(self, board, word):
+        for y in range(len(board)):
+            for x in range(len(board[0])):
+                if self.dfs(board, word, x, y, 0):
+                    return True
+        return False
+    
+    def dfs(self, board, word, x, y, i):
+        if i == len(word):
+            return True
+        if x < 0 or x >= len(board[0]) or y < 0 or y >= len(board):
+            return False
+        if board[y][x] != word[i]:
+            return False
+        board[y][x] = "#"
+        found =  self.dfs(board, word, x + 1, y, i + 1) or self.exit(board, word, x, y + 1, i + 1) or self.exit(board, word, x - 1, y, i + 1) or self.exit(board, word, x, y - 1, i + 1)
+        board[y][x] = word[i]
         return found
