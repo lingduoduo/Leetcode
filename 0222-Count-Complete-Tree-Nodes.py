@@ -20,20 +20,22 @@ class Solution:
         self.dfs(root.left)
         self.dfs(root.right)
             
-    #     left_height = self.get_height(root.left)
-    #     right_height = self.get_height(root.right)
-    #     if left_height == right_height:
-    #         nodes = 2 ** left_height + self.countNodes(root.right)
-    #     else:
-    #         nodes = 2 ** right_height + self.countNodes(root.left)
-    #     return nodes
+class Solution:
+    def countNodes(self, root: TreeNode) -> int:
+        if not root: return 0
+        nodes = 0
+        left_height = self.getHeight(root.left)
+        right_height = self.getHeight(root.right)
+        if left_height == right_height:
+            nodes = 2 ** left_height + self.countNodes(root.right)
+        else:
+            nodes = 2 ** right_height + self.countNodes(root.left)
+        return nodes
 
 
-    # def get_height(self, root, height):
-    #     if not root:
-    #         return 0
-
-    #     left = self.get_height(root.left, height+1)
-    #     right = self.get_height(root.right, height+1)
-    #     return max(1+left, 1+right)
-
+    def getHeight(self, root):
+        height = 0
+        while root:
+            height += 1
+            root = root.left
+        return height

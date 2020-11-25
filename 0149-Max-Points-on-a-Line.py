@@ -1,5 +1,7 @@
+import collections
+
 class Solution:
-    def maxPoints(self, points: List[List[int]]) -> int:
+    def maxPoints(self, points) -> int:
         N = len(points)
         res = 0
         for i in range(N):
@@ -16,6 +18,21 @@ class Solution:
             res = max(res, (max(lines.values()) if lines else 0) + duplicates)
         return res
                 
+    # def gcd(self, x, y):
+    #     return x if y == 0 else self.gcd(y, x % y)
     def gcd(self, x, y):
-        return x if y == 0 else self.gcd(y, x % y)
-        
+        if y == 0 :
+            return x
+        while y:
+            x, y = y, x%y
+        return x
+
+
+if __name__ == '__main__':
+    # points = [[1,1],[2,2],[3,3]]
+    # res = Solution().maxPoints(points)
+    # print(res)
+
+    points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+    res = Solution().maxPoints(points)
+    print(res)
