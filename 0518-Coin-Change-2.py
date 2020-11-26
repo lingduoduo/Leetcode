@@ -15,7 +15,7 @@ class Solution(object):
     def change(self, amount, coins):
         self.res = set()
         self.dfs(amount, coins, [])
-        return self.res
+        return len(self.res)
 
 
     def dfs(self, amount, coins, path):
@@ -43,4 +43,4 @@ if __name__ == '__main__':
      coins = [10] 
      res = Solution().change(amount, coins)
      print(res)
-          
+
