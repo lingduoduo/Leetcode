@@ -1,17 +1,17 @@
 import numpy as np
 class Solution:
     def numSubarrayProductLessThanK(self, nums, k: int) -> int:
-        if k <= 1: return 0
-        n = len(nums)
-        res = 0
-        for i in range(n):
-            tmp = 1
-            for j in range(i+1, n):
-                tmp *= nums[j]
-                if  tmp < k:
-                    print([i,j])
-                    res += 1
-                    continue
+        if k <= 1:
+            return 0
+        
+        prod = 1
+        res = left = 0
+        for right, val in enumerate(nums):
+            prod *= val
+            while prod >= k:
+                prod /= nums[left]
+                left += 1
+            res += right - left + 1
         return res
 
 if __name__ == '__main__':

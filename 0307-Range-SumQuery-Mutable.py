@@ -42,3 +42,26 @@ class NumArray(object):
         :rtype: int
         """
         return self._tree.query(j + 1) - self._tree.query(i)
+
+
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.nums = [0]
+        for num in nums:
+            self.nums.append(self.nums[-1]+num) 
+            
+    def update(self, i: int, val: int) -> None:
+        u = val - (self.nums[i+1] - self.nums[i])
+        self.nums[i+1:] = list(map(lambda x: x+u, self.nums[i+1:]))
+
+        
+    def sumRange(self, i: int, j: int) -> int:
+        return self.nums[j+1] - self.nums[i]
+        
+if __name__ == '__main__':
+    # Your NumArray object will be instantiated and called as such:
+    nums = [1, 3, 5]
+    obj = NumArray(nums)
+    obj.update(1, 2)
+    # param_2 = obj.sumRange(i,j)

@@ -26,6 +26,20 @@ class Solution(object):
                 start = end + 1
         return res
 
+class Solution:
+    def partitionLabels(self, S: str) -> List[int]:
+        d = {v:k for k,v in enumerate(S)}
+        res = []
+        loc_max = float("-inf")
+        start = 0
+        for k, v in enumerate(S):
+            loc_max = max(loc_max, d[v])
+            if k == loc_max:
+                res.append(loc_max-start+1)
+                start = loc_max + 1
+        return res
+            
+
 if __name__ == '__main__':
     S = "ababcbacadefegdehijhklij"
     result = Solution().partitionLabels(S)
