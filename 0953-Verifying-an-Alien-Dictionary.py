@@ -21,6 +21,14 @@ class Solution:
                     return False
         return True
 
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        d = {c : i for i, c in enumerate(order)}
+        t_words = []
+        for i in range(len(words)):
+            l = [d[w] for w in words[i]]
+            t_words.append(l)
+        return sorted(t_words) == t_words
 
 if __name__ == '__main__':
     words = ["hello", "leetcode"]

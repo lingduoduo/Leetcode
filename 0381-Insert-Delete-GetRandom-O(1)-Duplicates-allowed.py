@@ -26,10 +26,10 @@ class RandomizedCollection:
             return False
         remove, last = self.d[val].pop(), self.nums[-1]
         self.nums[remove] = last
-        self.d[last].add(remove)
-        self.d[last].discard(len(self.nums) - 1)
-
         self.nums.pop()
+        self.d[last].add(remove)
+        self.d[last].remove(len(self.nums))
+
         return True
         
 

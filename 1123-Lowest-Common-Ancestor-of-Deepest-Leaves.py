@@ -25,3 +25,23 @@ class Solution:
             return right, height
         else:
             return left, height
+
+class Solution:
+    def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
+        parent = {}
+        queue = collections.deque([root])
+        while queue:
+            prev = queue.copy()
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if node.left:
+                    parent[node.left] = node
+                    queue.append(node.left)
+                if node.right:
+                    parent[node.right] = node
+                    queue.append(node.right)
+
+        while len(prev) > 1:
+            prev = set(parent[node] for node in prev)
+            
+        return prev.pop()

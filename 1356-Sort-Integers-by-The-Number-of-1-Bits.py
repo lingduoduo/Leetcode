@@ -14,6 +14,21 @@ class Solution:
         for k, v in result:
             res.extend(v)
         return res
+        
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        arr = sorted(arr)
+        
+        d = collections.defaultdict(list)
+        
+        for i in range(len(arr)):
+            d[bin(arr[i]).count('1')].append(arr[i])
+
+        result = sorted(d.items(), key = lambda x: x[0])
+        res = []
+        for k, v in result:
+            res.extend(v)
+        return res
             
 
 if __name__ == '__main__':
