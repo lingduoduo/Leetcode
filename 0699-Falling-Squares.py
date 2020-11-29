@@ -6,8 +6,8 @@ class Solution:
         for i, (pos, height) in enumerate(positions):
             print(stack)
             stack.append(height)
-            for j, (hisPos, hisLength) in enumerate(history):
-                if (pos + height <= hisPos or hisPos + hisLength <= pos) == False:
+            for j, (hisPos, hisHeight) in enumerate(history):
+                if (pos + height <= hisPos or hisPos + hisHeight <= pos) == False:
                     stack[-1] = max(stack[-1], height+stack[j])
             if len(res) == 0:
                 res.append(stack[-1])
