@@ -28,22 +28,26 @@ class Solution(object):
         return result
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         if not root: return 0
-        
         self.res = 0
-        self.traverse(root)
-        return self.res - 1
-        
+        self.dfs(root)
+        return self.res
     
-    def traverse(self, root):
+    def dfs(self, root):
         if not root:
             return 0
-
-        left = self.traverse(root.left)
-        right = self.traverse(root.right)
         
-        self.res = max(self.res, 1 + left + right)
+        left = self.dfs(root.left)
+        right = self.dfs(root.right)
         
-        return 1 + max(left, right)
+        self.res = max(self.res,  left + right)
+        return max(left+1, right+1)
+    
