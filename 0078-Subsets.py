@@ -44,9 +44,9 @@
 class Solution(object):
     def subsets(self, nums):
          n = len(nums)
-         # return [[nums[i] for i in range(n) if s & 1 << i > 0] for s in range(1 << n)]
-         for s in range(1 << n):
-            print(bin(s))
+         return [[nums[i] for i in range(n) if s & 1 << i > 0] for s in range(1 << n)]
+         # for s in range(1 << n):
+         #    print(bin(s))
 
 if __name__ == "__main__":
     numbers = [1, 2, 3, 4, 5]
