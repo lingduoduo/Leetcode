@@ -27,3 +27,21 @@ class Solution:
                 self.helper(root.left, False) + self.helper(root.right, False))
         self.d[(root, parentUsed)] = res
         return res
+
+
+class Solution:
+    def rob(self, root: TreeNode) -> int:
+        def dfs(root):
+            if not root:
+                return
+        
+            dfs(root.left)
+            dfs(root.right)
+
+            red[root] = root.val + black[root.left] + black[root.right]        
+            black[root] = max(red[root.left], black[root.left]) + max(red[root.right], black[root.right])
+        
+        red, black = defaultdict(int), defaultdict(int)
+        dfs(root)
+        return max(red[root], black[root])
+        
