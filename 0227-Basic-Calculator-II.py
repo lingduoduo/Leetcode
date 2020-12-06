@@ -27,6 +27,28 @@ class Solution(object):
                 curr = 0
         return sum(stack)
 
+class Solution:
+    def calculate(self, s: str) -> int:
+        stack = []
+        cur = 0
+        op = '+'
+        for cha in s+"+":
+            if cha == " ":
+                continue
+            elif cha.isdigit():
+                cur = cur * 10 + int(cha)
+            else:
+                if op == "+":
+                    stack.append(cur)
+                elif op == "-":
+                    stack.append(-cur)
+                elif op == "*":
+                    stack.append(stack.pop()*cur)
+                elif op == "/":
+                    stack.append(int(stack.pop()/cur))
+                cur = 0
+                op = cha
+        return sum(stack)
 
 if __name__ == '__main__':
     ###result = Solution().calculate("3+2*2")
