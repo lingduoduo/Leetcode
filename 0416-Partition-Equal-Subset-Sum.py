@@ -19,27 +19,21 @@ class Solution:
             
         return False
 
-
-# class Solution(object):
-#     def canPartition(self, nums) -> bool:
-#         tot = sum(nums)
-#         if tot%2 == 1:
-#             return False
-
-#         n = len(nums)
-#         for i in range(1<<n):
-#             tmp = []
-#             par = 0
-#             for j in range(n):
-#                 if 1<<j & i > 0 :
-#                     par += nums[j]
-#                     if par > tot/2:
-#                         continue
-#                     tmp.append(nums[j])
-#             if sum(tmp) == tot/2:
-#                 return True
-
-#         return False
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        if len(nums) < 2:
+            return False
+        s = sum(nums)
+        if s % 2 == 1:
+            return False
+        
+        dp = [True] + [False] * s
+        for idx, num in enumerate(nums):
+            for j in range(s//2, num-1, -1):
+                dp[j] |= dp[j-num]
+        return dp[s//2]
+                
+            
 
 
 if __name__ == '__main__':
