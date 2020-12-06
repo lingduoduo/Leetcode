@@ -31,7 +31,9 @@ class Solution:
         for idx, num in enumerate(nums):
             for j in range(s//2, num-1, -1):
                 dp[j] |= dp[j-num]
-        return dp[s//2]
+            if dp[s//2]:
+                return True
+        return False
                 
             
 
