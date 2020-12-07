@@ -21,6 +21,23 @@ class Solution(object):
                 res = max(res, left[i] + right[i] + 1)
         return res
 
+class Solution:
+    def longestMountain(self, arr: List[int]) -> int:
+        left = 0 
+        res = 0
+        while left + 2 < len(arr):
+            right = left + 1
+            if arr[left] < arr[left + 1]:
+                while right + 1 < len(arr) and arr[right] < arr[right + 1]:
+                    right += 1
+                if right < len(arr) - 1 and arr[right] > arr[right + 1]:
+                    while right + 1 < len(arr) and arr[right] > arr[right + 1]:
+                        right += 1
+                    res = max(res, right - left + 1)
+                else:
+                    right += 1
+            left = right
+        return res
 
 if __name__ == '__main__':
     nums = [2, 1, 4, 7, 3, 2, 5]
