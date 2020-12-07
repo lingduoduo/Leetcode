@@ -24,6 +24,24 @@ class Solution(object):
                 res += s[i]
         return res
 
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+        cur_num = cur_str = ''
+        
+        for cha in s:
+            if cha.isdigit():
+                cur_num += cha
+            elif cha.isalpha():
+                cur_str += cha
+            elif cha == "[":
+                stack.append((cur_num, cur_str))
+                cur_num = cur_str = ''
+            elif cha == "]":
+                pre_num, pre_str = stack.pop()
+                cur_str = pre_str + cur_str * int(pre_num)
+        return cur_str
+
 
 if __name__ == "__main__":
     ###s='3[a]2[bc]'
