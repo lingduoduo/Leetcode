@@ -13,7 +13,7 @@ class Solution:
         res = mask = 0
         for x in reversed(range(32)):
             mask += 1 << x
-            print(bin(mask))
+            # print(bin(mask))
             prefixSet = set([n & mask for n in nums])
             # print(prefixSet)
             temp = res | 1 << x

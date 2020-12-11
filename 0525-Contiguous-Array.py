@@ -17,4 +17,20 @@ class Solution:
                 d[cumsum]=i
 
         return res
+
+
+class Solution:
+    def findMaxLength(self, nums: List[int]) -> int:
+        res = cnt = 0
+        d = {0: 0}
+        
+        for i, num in enumerate(nums, 1):
+            cnt += 1 if num == 0 else -1
+                
+            if cnt in d:
+                res = max(res, i-d[cnt])
+            else:
+                d[cnt]=i
+                
+        return res
         
