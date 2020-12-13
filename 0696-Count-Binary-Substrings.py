@@ -19,7 +19,6 @@ class Solution:
     	return res
 
 
-    	
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
         res , cur, pre = 0, 1, 0
