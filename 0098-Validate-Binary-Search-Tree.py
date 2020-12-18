@@ -6,36 +6,19 @@
 ###        self.right = None
 
 class Solution(object):
-    def isValidBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        
-        ###def dfs(root, min, max):
-        ###    if not root:
-        ###        return True
-        ###    if root.val >= max:
-        ###        return False
-        ###    if root.val <= min:
-        ###        return False
-        ###    return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)
-        #
-        ###return dfs(root, float('-inf'), float('inf'))
-        
+    def isValidBST(self, root: TreeNode) -> bool:
         if not root:
             return True
-        
         return self.valid(root, float("-inf"), float("inf"))
         
-    def valid(self, root, min, max):
+    def valid(self, root, left, right):
         if not root:
             return True
         
-        if root.val >= max or root.val <= min:
+        if root.val <= left or root.val >= right:
             return False
         
-        return self.valid(root.left, min, root.val) and self.valid(root.right, root.val, max)
+        return self.valid(root.left, left, root.val) and self.valid(root.right, root.val, right)
 
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
