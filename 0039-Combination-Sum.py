@@ -22,18 +22,19 @@
 #                      candidates[i], i, path +
 #                      [candidates[i]])
 
-class Solution(object):
+class Solution:
     def combinationSum(self, candidates, target: int):
         def dfs(cur, path):
             if cur == 0:
                 res.append(path)
-            for n in candidates:
-                if n > cur:
+            
+            for candidate in candidates:
+                if candidate > cur:
                     break
-                if path and n < path[-1]:
+                if path and candidate < path[-1]:
                     continue
-                dfs(cur - n, path + [n])
-                
+                dfs(cur - candidate, path + [candidate])
+                    
         res = []
         candidates.sort()
         dfs(target, [])
