@@ -1,12 +1,11 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], S: int) -> int:
-    	n = len(nums)
-    	tot = sum(nums)
-    	dp = [[0] * (2 * tot + 1) for _ in (n+1)]
-
-    	dp[0][tot] = 1
-    	for i in range(n):
-    		for j in range(nums[i], tot-nums[i]):
-    			if dp[i][j]:
-    				dp[i + 1][nums[i] + j] += dp[i][j]
-    				dp[i + 1][nums[i] - j] += dp[i][j]
+        n = len(nums)
+        tot = sum(nums)
+        dp = [collections.defaultdict(int) for _ in range(1+n)]
+        dp[0][0] = 1
+        for i, num in enumerate(nums):
+            for k, v in dp[i].items():
+                dp[i+1][k-num] += v
+                dp[i+1][k+num] += v
+        return dp[n][S]
