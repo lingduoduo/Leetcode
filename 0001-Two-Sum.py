@@ -6,43 +6,43 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        # for k, v in enumerate(nums):
-        # 	i = k+1
-        # 	while i<len(nums):
-        # 		if v+nums[i] == target:
-        # 			return([k, i])
-        # 		else:
-        # 			i=i+1
+        for k, v in enumerate(nums):
+        	i = k+1
+        	while i<len(nums):
+        		if v+nums[i] == target:
+        			return([k, i])
+        		else:
+        			i=i+1
 
 class Solution(object):
     def twoSum(self, nums, target):
-        #    hash_map = {}
-        #    for i,v in enumerate(nums):
-        #    hash_map[v]=i
+           hash_map = {}
+           for i,v in enumerate(nums):
+           hash_map[v]=i
 
-        #    for index1, v in enumerate(nums):
-        #        if target-v in hash_map.keys():
-        #            index2 = hash_map[target-v]
-        #    return [index1+1, index2+1]
-
-class Solution(object):
-    def twoSum(self, nums, target):
-        # idx = dict()
-        # for i in range(len(nums)):
-        #     idx[nums[i]] = i
-        #
-        # for i in range(len(nums)):
-        #     if target - nums[i] in idx.keys() and i != idx[target - nums[i]]:
-        #         return([i, idx[target - nums[i]]])
-        # return None
+           for index1, v in enumerate(nums):
+               if target-v in hash_map.keys():
+                   index2 = hash_map[target-v]
+           return [index1+1, index2+1]
 
 class Solution(object):
     def twoSum(self, nums, target):
-        # for i in range(len(nums)-1):
-        #     for j in range(i+1, len(nums)):
-        #         if (nums[i] + nums[j]) == target:
-        #             return i, j
-        # return None
+        idx = dict()
+        for i in range(len(nums)):
+            idx[nums[i]] = i
+
+        for i in range(len(nums)):
+            if target - nums[i] in idx.keys() and i != idx[target - nums[i]]:
+                return([i, idx[target - nums[i]]])
+        return None
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        for i in range(len(nums)-1):
+            for j in range(i+1, len(nums)):
+                if (nums[i] + nums[j]) == target:
+                    return i, j
+        return None
 
 class Solution(object):
     def twoSum(self, nums, target):        
