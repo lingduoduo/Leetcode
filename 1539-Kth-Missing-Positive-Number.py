@@ -17,3 +17,14 @@ class Solution:
             result += 1
             k -= 1
 
+
+class Solution:
+    def findKthPositive(self, arr, k: int) -> int:
+        left, right = 0, len(arr) - 1
+        while left <= right:
+            mid = left + (right - left)//2
+            if arr[mid] - mid - 1 < k:
+                left += 1
+            else:
+                right -= 1
+        return left + k
