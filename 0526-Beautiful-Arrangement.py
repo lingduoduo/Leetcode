@@ -21,3 +21,19 @@ class Solution(object):
                 visited[i] = 1
                 self.helper(n, pos + 1, visited)
                 visited[i] = 0
+
+class Solution(object):
+    def countArrangement(self, N):
+        def dfs(num, curr):
+            if curr == 0:
+                res[0] += 1
+                return
+            for i in range(curr, 0, -1):
+                num[i], num[curr] = num[curr], num[i]
+                if num[curr] % curr == 0 or num[i] % i == 0:
+                    dfs(num, curr - 1)
+                num[curr], num[i] = num[i], num[curr]
+                
+        res = [0]
+        dfs([i for i in range(n+1)], n)
+        return res[0]

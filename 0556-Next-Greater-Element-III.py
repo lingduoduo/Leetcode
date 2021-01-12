@@ -21,6 +21,26 @@ class Solution:
         else:
             return res
 
+class Solution:
+    def nextGreaterElement(self, n: int) -> int:
+        s = list(str(n))
+        l = len(s)
+        i = l - 2
+        while i >= 0:
+            if s[i] < s[i + 1]:
+                break
+            i -= 1
+        if i < 0:
+            return -1
+        for j in range(l - 1, i, -1):
+            if s[j] > s[i]:
+                s[i], s[j] = s[j], s[i]
+                break
+        s[i + 1:] = s[i + 1:][::-1]
+        res = ''.join(s)
+        return res if int(res) <= 0x7fffffff else -1
+
+
 if __name__ == '__main__':
     # results = Solution().nextGreaterElement(127431)
     results = Solution().nextGreaterElement(1999999999)
