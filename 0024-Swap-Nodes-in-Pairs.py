@@ -43,3 +43,17 @@ class Solution(object):
             pre = cur
         return dummy.next
 
+class Solution(object):
+    def swapPairs(self, head):
+        dummy = ListNode(0)
+        res = dummy
+        dummy.next = head
+        while dummy.next and dummy.next.next:
+            first = dummy.next
+            second = dummy.next.next
+            first.next = second.next
+            second.next = first
+            dummy.next = second
+            dummy = dummy.next.next
+        return res.next
+        
