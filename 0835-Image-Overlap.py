@@ -1,14 +1,16 @@
 import collections
 class Solution:
-    def largestOverlap(self, img1, img2) -> int:
+    def largestOverlap(self, img1: List[List[int]], img2: List[List[int]]) -> int:
         N = len(img1)
-        LA = [(xi, yi) for xi in range(N) for yi in range(N) if img1[xi][yi]]
-
-        LB = [(xi, yi) for xi in range(N) for yi in range(N) if img2[xi][yi]]
-
-        d = collections.Counter([(x1 - x2, y1 - y2) for (x1, y1) in LA for (x2, y2) in LB])
-
-        return max(d.values() or [0])
+        ct = collections.defaultdict(int)
+        for i, row in enumerate(img1):
+            for j, col in enumerate(row):
+                if col:
+                    for i2, row2 in enumerate(img2):
+                        for j2, col2 in enumerate(row2):
+                            if col2:
+                                ct[i - i2, j - j2] += 1
+        return max(ct.values() or [0])  
 
 if __name__ == '__main__':
 	img1 = [[1,1,0],[0,1,0],[0,1,0]]
