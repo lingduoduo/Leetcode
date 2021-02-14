@@ -24,3 +24,8 @@ class Solution(object):
 
 if __name__ == "__main__":
     print(Solution().matrixReshape([[1, 2], [3, 4]], 4, 1))
+
+
+
+
+

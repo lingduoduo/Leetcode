@@ -78,20 +78,20 @@ class Solution:
             for i in range(l):
                 tmp = word[:i] + '_' + word[i + 1:]
                 dic[tmp].append(word)
-        q1 = deque([beginWord])
+        quadTree1 = deque([beginWord])
         dis1 = {w: 0 for w in wordList}
         dis1[beginWord] = 1
         q2 = deque([endWord])
         dis2 = {w: 0 for w in wordList}
         dis2[endWord] = 1
         flag = True
-        while q1 and q2:
+        while quadTree1 and q2:
             if flag:
-                front, dis_front = q1, dis1
+                front, dis_front = quadTree1, dis1
                 back, dis_back = q2, dis2
             else:
                 front, dis_front = q2, dis2
-                back, dis_back = q1, dis1 
+                back, dis_back = quadTree1, dis1 
             cur = front.popleft()
             dist = dis_front[cur]
             next_word = []
