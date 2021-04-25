@@ -3,27 +3,10 @@ import collections
 
 class Solution:
     def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
-        d = {}
-        for i in range(len(arr)-m+1):
-            key = tuple(arr[i:i+m])
-
-            if key in d and d[key][1] + m == i:
-                d[key] = [d[key][0] + 1, i]
-            else:
-                d[key] = [1, i]
-
-            if d[key][0] >= k:
-                print(d)
+        for i in range(len(arr)-m):
+            if i+m*k <= len(arr) and arr[i:i+m] * k == arr[i:i+m*k]:
                 return True
-        print(d)
         return False
-
-            
-            # d[k] = d.get(k, 0) + 1
-        #     print(d)
-        #     if d[arr[i:i+m]] > k:
-        #         return True
-        # return False
 
 
 if __name__ == '__main__':
