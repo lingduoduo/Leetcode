@@ -7,7 +7,7 @@ class Solution:
         j = 0
         res = 1
         for i in range(len(nums)):
-        	count += (i-j) * nums[i] - nums[i-1]
+        	count += (i - j) * (nums[i] - nums[i-1])
         	while count > k:
         		count -= nums[i] - nums[j]
         		j += 1
