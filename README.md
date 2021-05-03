@@ -72,7 +72,6 @@ def binary_search(l, r):
         else:
             l = m + 1 ###new range [m+1, r)
     return l    ###or not found
-12345678910
 ```
 
 **lower bound**: find index of i, such that `A[i] >= x`
@@ -88,7 +87,6 @@ def lowwer_bound(self, nums, target):
         else:
             right = mid
     return left
-12345678910
 ```
 
 **upper bound**: find index of i, such that `A[i] > x`
@@ -104,7 +102,6 @@ def higher_bound(self, nums, target):
         else:
             right = mid
     return left
-12345678910
 ```
 
 比如，题目[69. Sqrt(x)](https://blog.csdn.net/fuxuemingzhu/article/details/79254648)。
@@ -127,7 +124,6 @@ class Solution(object):
             else:
                 right = mid
         return left - 1
-1234567891011121314151617
 ```
 
 #### 排序的写法
@@ -136,7 +132,7 @@ C++的排序方法，使用sort并且重写comparator，如果需要使用外部
 
 题目451. Sort Characters By Frequency。
 
-```cpp
+```python
 class Solution {
 public:
     string frequencySort(string s) {
@@ -148,7 +144,6 @@ public:
         return s;
     }
 };
-1234567891011
 ```
 
 #### BFS的写法
@@ -165,7 +160,6 @@ for k in range(K):
     bfs = [y for x in bfs for y in conn[x] if y not in visited]
     visited |= set(bfs)
 return bfs
-1234567
 ```
 
 1. Word Ladder
@@ -195,7 +189,6 @@ class Solution(object):
                         wordset.remove(newWord)
                         bfs.append((newWord, length + 1))
         return 0
-12345678910111213141516171819202122
 ```
 
 [778. Swim in Rising Water](https://blog.csdn.net/fuxuemingzhu/article/details/82926674)
@@ -225,7 +218,6 @@ class Solution(object):
                 heapq.heappush(pq, (grid[x][y], x, y))
                 visited.add((x, y))
         return res
-12345678910111213141516171819202122
 ```
 
 [847. Shortest Path Visiting All Nodes](https://blog.csdn.net/fuxuemingzhu/article/details/82939203)
@@ -259,7 +251,6 @@ class Solution(object):
                     que.append((nextNode, state | (1 << nextNode)))
             step += 1
         return step
-1234567891011121314151617181920212223242526
 ```
 
 [429. N-ary Tree Level Order Traversal](https://blog.csdn.net/fuxuemingzhu/article/details/81022170)多叉树的层次遍历，这个BFS写法我觉得很经典。适合记忆。
@@ -294,7 +285,6 @@ class Solution(object):
             if level:
                 res.append(level)
         return res
-1234567891011121314151617181920212223242526272829
 ```
 
 #### DFS的写法
@@ -336,7 +326,6 @@ class Solution(object):
             if self.dfs(visited, grid, mid, n, x, y):
                 return True
         return False
-12345678910111213141516171819202122232425262728
 ```
 
 #### 回溯法
@@ -377,7 +366,6 @@ class Solution(object):
                 res.pop()
                 visited.remove(node)
             node = node[:-1]
-1234567891011121314151617181920212223242526272829
 ```
 
 [312. Burst Balloons](https://blog.csdn.net/fuxuemingzhu/article/details/82928879)
@@ -404,7 +392,9 @@ class Solution(object):
             res = max(res, self.dfs(nums, c, i, k - 1) + nums[i - 1] * nums[k] * nums[j + 1] + self.dfs(nums, c, k + 1, j))
         c[i][j] = res
         return c[i][j]
-123456789101112131415161718192021
+```
+
+```cpp
 class Solution {
 public:
     int countArrangement(int N) {
@@ -428,7 +418,6 @@ private:
         }
     }
 };
-1234567891011121314151617181920212223
 ```
 
 如果需要保存路径的回溯法：
@@ -462,7 +451,6 @@ private:
         }
     }
 };
-12345678910111213141516171819202122232425262728
 ```
 
 #### 树
@@ -482,7 +470,6 @@ class Solution:
         newT.left = self.mergeTrees(t1.left, t2.left)
         newT.right = self.mergeTrees(t1.right, t2.right)
         return newT
-12345678910
 ```
 
 #### 迭代
@@ -513,7 +500,6 @@ class Solution(object):
             stack.append(node.left)
             stack.append(node.right)
         return root
-1234567891011121314151617181920212223
 ```
 
 #### 前序遍历
@@ -548,8 +534,6 @@ class Solution(object):
             stack.append(node.right)
             stack.append(node.left)
         return res
-
-1234567891011121314151617181920212223242526
 ```
 
 #### 中序遍历
@@ -583,7 +567,6 @@ class Solution(object):
             root = stack.pop()
             answer.append(root.val)
             root = root.right
-123456789101112131415161718192021222324
 ```
 
 #### 后序遍历
@@ -620,7 +603,6 @@ public:
         return res;
     }
 };
-123456789101112131415161718192021222324252627
 ```
 
 #### 构建完全二叉树
@@ -682,7 +664,6 @@ class CBTInserter(object):
 ###obj = CBTInserter(root)
 ###param_1 = obj.insert(v)
 ###param_2 = obj.get_root()
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051
 ```
 
 #### 并查集
@@ -707,7 +688,6 @@ class DSU:
     
     def same(self, x, y):
         return self.find(x) == self.find(y)
-1234567891011121314
 ```
 
 C++版本如下：
@@ -726,7 +706,6 @@ void u(int a, int b) {
         return;
     map_[pa] = pb;
 }
-12345678910111213
 ```
 
 包含rank的，这里的rank表示树的高度：
@@ -756,7 +735,6 @@ class DSU(object):
             self.par[yr] = xr
             self.rnk[xr] += 1
         return True
-12345678910111213141516171819202122
 ```
 
 另外一种rank方法是，保存树中节点的个数。
@@ -801,7 +779,6 @@ class DSU(object):
         else:
             self.d[pb] = pa
             self.r[pa] += self.r[pb]
-12345678910111213141516171819202122232425262728293031323334353637
 ```
 
 #### 前缀树
@@ -876,7 +853,6 @@ private:
  * bool param_2 = obj.search(word);
  * bool param_3 = obj.startsWith(prefix);
  */
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465
 ```
 
 [677. Map Sum Pairs](https://blog.csdn.net/fuxuemingzhu/article/details/79436619)
@@ -923,7 +899,6 @@ private:
     Trie root;
     unordered_map<string, int> vals_;
 };
-1234567891011121314151617181920212223242526272829303132333435363738394041
 ```
 
 #### 图遍历
@@ -957,7 +932,6 @@ class Solution:
                     dist[v] = dist[smallest] + w
             done.add(smallest)
         return -1 if float('inf') in dist else max(dist)
-12345678910111213141516171819202122
 ```
 
 #### Floyd-Warshall算法
@@ -984,7 +958,6 @@ class Solution:
                 for j in range(N):
                     d[i][j] = min(d[i][j], d[i][k] + d[k][j])
         return -1 if float('inf') in d[K - 1] else max(d[K - 1])
-12345678910111213141516171819
 ```
 
 #### Bellman-Ford算法
@@ -1009,7 +982,6 @@ class Solution:
                 w = time[2]
                 dist[v] = min(dist[v], dist[u] + w)
         return -1 if float('inf') in dist else max(dist)
-1234567891011121314151617
 ```
 
 #### 最小生成树
@@ -1064,7 +1036,6 @@ public:
         return -1;
     }
 };
-123456789101112131415161718192021222324252627282930313233343536373839404142434445
 ```
 
 #### Prim算法
@@ -1122,7 +1093,6 @@ public:
         return -1;
     }
 };
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152
 ```
 
 #### 拓扑排序
@@ -1153,7 +1123,6 @@ class Solution(object):
             for node in graph[j]:
                 indegrees[node] -= 1
         return True                
-1234567891011121314151617181920212223
 ```
 
 DFS方式：
@@ -1186,7 +1155,6 @@ class Solution(object):
                 return False
         visited[i] = 2
         return True
-123456789101112131415161718192021222324252627
 ```
 
 如果需要保存拓扑排序的路径：
@@ -1220,7 +1188,6 @@ class Solution(object):
             for node in graph[j]:
                 indegrees[node] -= 1
         return path
-1234567891011121314151617181920212223242526
 ```
 
 DFS方式：
@@ -1254,7 +1221,6 @@ class Solution(object):
         visited[i] = 2
         path.append(i)
         return True
-12345678910111213141516171819202122232425262728
 ```
 
 [207. Course Schedule](https://blog.csdn.net/fuxuemingzhu/article/details/82951771)
@@ -1293,7 +1259,6 @@ int findSubstring(string s){
         }
         return d;
   }
-12345678910111213141516171819202122232425
 ```
 
 [76. Minimum Window Substring](https://blog.csdn.net/fuxuemingzhu/article/details/82931106)
@@ -1324,7 +1289,6 @@ class Solution(object):
                     cnt -= 1
                 left += 1
         return res
-1234567891011121314151617181920212223
 ```
 
 #### 动态规划
@@ -1364,7 +1328,6 @@ class Solution(object):
                     curStatus[x][y] = (v1 + v2 + v3 + v4) % (10**9 + 7)
             dp = curStatus
         return dp[i][j]
-12345678910111213141516171819202122
 ```
 
 #### 贪心
