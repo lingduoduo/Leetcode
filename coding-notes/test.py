@@ -1,69 +1,32 @@
-<<<<<<< HEAD
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-    def printList(self):
-        pt = self
-        valStr = ""
-        while pt:
-            valStr += "->" + str(pt.val)
-            pt = pt.next
-        print(valStr)
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = None
+        self.right = None
 
 class Solution:
-    def printListFromTailToHead(self, listNode):
-        stack = []
-        pt = listNode
-        while pt:
-            stack.append(pt.val)
-            pt = pt.next
+    def reConstructBinaryTree(self, preorder, intorder):
+        if len(preorder) == 0 or len(intorder) == 0:
+            return None
 
-        dummy = ListNode(-1)
-        pt = dummy
-        while stack:
-            pt.next = ListNode(stack.pop())
-            pt = pt.next
-        return dummy.next
+        root_idx = intorder.index(preorder[0])
+        preorder_left = preorder[1:root_idx+1]
+        inorder_left = intorder[:root_idx]
 
-        
+        preorder_right = preorder[root_idx+1:]
+        inorder_right = intorder[root_idx+1:]
 
+        left = self.reConstructBinaryTree(preorder_left, inorder_left)
+        right = self.reConstructBinaryTree(preorder_right, inorder_right)
 
-if __name__ == '__main__':
-    l1 = ListNode(0)
-    l1.next = ListNode(1)
-    l1.next.next = ListNode(2)
-    res = Solution().printListFromTailToHead(l1)
-    res.printList()
-=======
-class Solution:
-    def replaceSpace(self, s):
-    	strs = list(s)
-    	for i in range(len(s)):
-    		if s[i] == " ":
-    			strs.append(" ")
-    			strs.append(" ")
-
-    	p1 = len(s) - 1
-    	p2 = len(strs) - 1
-    	while p1 >= 0 and p2 > p1:
-    		print(strs)
-    		if strs[p1] != " ":
-    			strs[p2] = strs[p1]
-    			p1 -= 1
-    			p2 -= 1
-    		else:
-    			strs[p2] = "0"
-    			p2 -= 1
-    			strs[p2] = "2"
-    			p2 -= 1
-    			strs[p2] = "%"
-    			p2 -= 1
-    	return strs
+        return TreeNode(preorder[0], left, right)
 
 if __name__ == '__main__':
-    inputs = "A B"
-    res = Solution().replaceSpace(inputs)
-    print(res)
->>>>>>> 55a6640b481b7ebeb08cae75e347fdb2d694f9e4
+    res = Solution().reConstructBinaryTree(preorder=[3, 9, 20, 15, 7], intorder=[9, 3, 15, 20, 7])
+    # l1 = ListNode(0)
+    # l1.next = ListNode(1)
+    # l1.next.next = ListNode(2)
+    # res = Solution().printListFromTailToHead(l1)
+    # res.printList()
+
+
