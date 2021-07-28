@@ -1,26 +1,14 @@
-class Queue:
-    def __init__(self):
-        self.instack = []
-        self.outstack = []
+class Solution:
+    def Fibonacci(self, n) -> int:
+        res = []
+        res.append(0)
+        res.append(1)
+        for i in range(n-1):
+            res.append(res[-1] + res[-2])
+        print(res)
+        return res[-1]
 
-    def push(self, num):
-        self.instack.append(num)
-
-    def pop(self):
-        if not self.outstack:
-            for i in range(len(self.instack)):
-                self.outstack.append(self.instack.pop())
-        if not self.outstack:
-            return None
-        else:
-            return self.outstack.pop()
 
 if __name__ == '__main__':
-    q = Queue()
-    q.push(1)
-    q.push(2)
-    print(q.pop())
-    q.push(3)
-    print(q.pop())
-
-
+    res = Solution().Fibonacci(3)
+    print(res)
