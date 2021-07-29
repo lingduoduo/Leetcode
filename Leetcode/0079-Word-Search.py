@@ -59,22 +59,34 @@ class Solution(object):
         return found
 
 
-class Solution(object):
-    def exist(self, board, word):
-        for y in range(len(board)):
-            for x in range(len(board[0])):
-                if self.dfs(board, word, x, y, 0):
+from typing import List
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        
+        self.visited = [[False] * len(board[0]) for _ in range(len(board))]
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.backtracking(board, word, 0, i, j):
                     return True
         return False
-    
-    def dfs(self, board, word, x, y, i):
-        if i == len(word):
+
+    def backtracking(self, board, word, idx, r, c):
+        if idx == len(word):
             return True
-        if x < 0 or x >= len(board[0]) or y < 0 or y >= len(board):
+
+        if r < 0 or r >= len(board) or c < 0 or c >= len(board[0]) or board[r][c] != word[idx] or self.visited[r][c]:
             return False
-        if board[y][x] != word[i]:
-            return False
-        board[y][x] = "#"
-        found =  self.dfs(board, word, x + 1, y, i + 1) or self.exit(board, word, x, y + 1, i + 1) or self.exit(board, word, x - 1, y, i + 1) or self.exit(board, word, x, y - 1, i + 1)
-        board[y][x] = word[i]
-        return found
+        
+        self.visited[r][c] = True
+        paths = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        for p in paths:
+            if self.backtracking(board, word, idx+1, r + p[0], c + p[1]):
+                return True
+        self.visited[r][c] = False
+
+        return False
+
+if __name__ == '__main__':
+    res = Solution().exist(board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="ABCCED")
+    print(res)
+

@@ -1,18 +1,29 @@
 from typing import List
 class Solution:
-    def findMin(self, nums: List[int]) -> int:
-        if len(nums) == 0:
-            return None
-        left = 0
-        right = len(nums) - 1
-        while left < right:
-            mid = left + (right - left)//2
-            if nums[mid] <= nums[right]:
-                right = mid
-            else:
-                left = mid + 1
-        return nums[left]
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.backtracking(board, word, 0, i, j):
+                    return True
+        return False
+
+    def backtracking(self, board, word, idx, r, c):
+        if idx == len(word):
+            return True
+
+        if r < 0 or r >= len(board) or c < 0 or c >= len(board[0]) or board[r][c] != word[idx]:
+            return False
+        
+        curr = board[r][c]
+        board[r][c] = ""
+        paths = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        for p in paths:
+            if self.backtracking(board, word, idx+1, r + p[0], c + p[1]):
+                return True
+        board[r][c] = curr
+
+        return False
 
 if __name__ == '__main__':
-    res = Solution().findMin(nums=[3,4,5,1,2])
+    res = Solution().exist(board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="ABCCED")
     print(res)
