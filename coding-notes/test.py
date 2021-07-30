@@ -1,29 +1,42 @@
-from typing import List
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if self.backtracking(board, word, 0, i, j):
-                    return True
-        return False
+    def movingCount(self, m: int, n: int, k: int) -> int:
+        visited=[]
+        self.cnt = 0
+        for i in range(m):
+            visited.append([0]*n)
 
-    def backtracking(self, board, word, idx, r, c):
-        if idx == len(word):
-            return True
+        def dsum(x):
+            sumx=0
+            while x:
+                sumx+=x%10
+                x//=10
+            return sumx # 数值各位求和
 
-        if r < 0 or r >= len(board) or c < 0 or c >= len(board[0]) or board[r][c] != word[idx]:
-            return False
-        
-        curr = board[r][c]
-        board[r][c] = ""
-        paths = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-        for p in paths:
-            if self.backtracking(board, word, idx+1, r + p[0], c + p[1]):
-                return True
-        board[r][c] = curr
+        def bfs(x,y):   
+            # 超出边界
+            if x < 0 or x >=m or y < 0 or y >= n:
+                return 0   
 
-        return False
+            # 已访问
+            if visited[x][y]:
+                return 0       
+
+            # 超限
+            if dsum(x)+dsum(y) > k:
+                return 0
+
+            visited[x][y]=1
+            self.cnt += 1
+            paths = [[0, -1], [0, 1], [-1, 0], [1, 0]]
+            for dx, dy in paths:
+                bfs(x + dx, y + dy)
+
+        bfs(0, 0)
+        return self.cnt
 
 if __name__ == '__main__':
-    res = Solution().exist(board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="ABCCED")
+    res = Solution().movingCount(m=2, n=3, k=1)
+    print(res)
+
+    res = Solution().movingCount(m=1, n=3, k=0)
     print(res)
