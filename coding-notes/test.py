@@ -1,21 +1,20 @@
 class Solution:
-    def power(self, x:int, n: int) -> int:
-        print([x, n])
-        if n == 0:
-            return 1
-        if n == 1:
-            return x 
+    def print1ToMaxOfNDigits(self, n: int):
+        self.res = []
 
-        self.res = 1
-        if x < 0:
-            self.res = -1
-            x = - x
-        if n % 2 == 0:
-            self.res *= self.power(x, n//2) ** 2
-        else:
-            self.res *= self.power(x, (n-1)//2) ** 2 
-        return self.res
+        number = [''] * n
+        self.dfs(number, 0)
+        return self.res[1:]
+
+    def dfs(self, number, digit):
+        if digit == len(number):
+            self.res.append(int(''.join(number)))
+            return 
+
+        for i in range(10):
+            number[digit] = str(i)
+            self.dfs(number, digit + 1)
 
 if __name__ == '__main__':
-    res = Solution().power(x=-2, n=5)
+    res = Solution().print1ToMaxOfNDigits(n=2)
     print(res)
