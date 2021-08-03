@@ -1,31 +1,36 @@
 class ListNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.next = None
+    def __init__(self, val):
+        self.val = val
+        self.next = None
 
 class Solution:
-    def FindKthToTail(self, head, k):
-        if not head:
+    def EntryNodeOfLoop(self, pHead):
+        if pHead is None and pHead.next is None:
             return None
 
-        p1 = head
-        while p1 and k > 0:
-            p1 = p1.next
-            k -= 1
+        slow = pHead
+        fast = pHead
+        while slow.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
 
-        if k > 0:
-            return None
-
-        p2 = head
-        while p1:
-            p2 = p2.next
-            p1 = p1.next
-        return p2
-
+        fast = pHead
+        while slow.next and fast.next:
+            slow = slow.next
+            fast = fast.next
+            if slow == fast:
+                return slow
+        return None
 
 if __name__ == '__main__':
     root = ListNode(1)
-    root.next = ListNode(2)
-    root.next.next = ListNode(3)
-    res = Solution().FindKthToTail(root, 1)
+    p = root
+    nums = [2, 3, 4, 5, 6]
+    for num in nums:
+        p.next = ListNode(num)
+        p = p.next
+    p.next = root.next.next
+    res = Solution().EntryNodeOfLoop(root)
     print(res.val)
