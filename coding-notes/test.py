@@ -4,25 +4,15 @@ class ListNode(object):
         self.next = None
 
 class Solution:
-    def EntryNodeOfLoop(self, pHead):
-        if pHead is None and pHead.next is None:
-            return None
+    def ReverseList(self, head):
+        dummy = ListNode(-1)
 
-        slow = pHead
-        fast = pHead
-        while slow.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                break
-
-        fast = pHead
-        while slow.next and fast.next:
-            slow = slow.next
-            fast = fast.next
-            if slow == fast:
-                return slow
-        return None
+        while head:
+            post = head.next
+            head.next = dummy.next
+            dummy.next = head
+            head = post
+        return dummy.next
 
 if __name__ == '__main__':
     root = ListNode(1)
@@ -31,6 +21,18 @@ if __name__ == '__main__':
     for num in nums:
         p.next = ListNode(num)
         p = p.next
-    p.next = root.next.next
-    res = Solution().EntryNodeOfLoop(root)
-    print(res.val)
+
+    res = Solution().ReverseList(root)
+    while res:
+        print(res.val)
+        res = res.next
+
+
+# public ListNode ReverseList(ListNode head) {
+#     if (head == null || head.next == null)
+#         return head;
+#     ListNode next = head.next;
+#     head.next = null;
+#     ListNode newHead = ReverseList(next);
+#     next.next = head;
+#     return newHead;
