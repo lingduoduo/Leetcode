@@ -1,32 +1,31 @@
-class treeNode(object):
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
-
 class Solution:
-    def isSymmetrical(self, root):
-        if not root:
-            return True
+    def printMatrix(self, matrix):
+        r1 = 0
+        r2 = len(matrix) - 1
+        c1 = 0
+        c2 = len(matrix[0]) - 1
 
-        return self.isSymmetricalTree(root.left, root.right)
+        res = []
+        while r1 <= r2 and c1 <= c2:
+            for j in range(c1, c2 + 1 ):
+                res.append(matrix[r1][j])
+            r1 += 1
 
-    def isSymmetricalTree(self, left, right):
-        if not left and not right:
-            return True
+            for i in range(r1, r2 + 1):
+                res.append(matrix[i][c2])
+            c2 -= 1
 
-        if not left or not right:
-            return False
+            for j in reversed(range(c1, c2 + 1)):
+                res.append(matrix[r2][j])
+            r2 -= 1
+            
 
-        if left.val != right.val:
-            return False
-
-        return self.isSymmetricalTree(left.left, right.right) and self.isSymmetricalTree(left.right, right.left)
+            for i in reversed(range(r1, r2 + 1)):
+                res.append(matrix[i][c1])
+            c1 += 1
+        return res          
 
 if __name__ == '__main__':
-    root1 = treeNode(1)
-    root1.left = treeNode(8)
-    root1.right = treeNode(8)
-
-    res = Solution().isSymmetrical(root1)
+    matrix = [[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]]
+    res = Solution().printMatrix(matrix)
     print(res)
