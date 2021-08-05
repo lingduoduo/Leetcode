@@ -1,22 +1,36 @@
-import math
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
 class Solution:
-    def isThree(self, n: int) -> bool:
-        if n == 4:
-            return True
-        elif n < 4:
-            return False
-        elif n % 2 == 0:
-            return False
+    def treeTot(self, root, num):
+        self.res = []
+        self.backtracking(root, num, [])
+        return self.res 
+
+    def backtracking(self, node, target, path):
+        print(path)
+        if node == None:
+            return
+
+        path.append(node.val)
+        target -= node.val
+
+        if target == 0 and node.left == None and node.right == None:
+            self.res.append(path[:])
         else:
-            m = int(math.sqrt(n))
-            if m * m < n:
-                return False
-            else:
-                for i in range(2, m):
-                    if n % i == 0:
-                        return False
-                return True    
-                
+            self.backtracking(node.left, target, path)
+            self.backtracking(node.right, target, path)
+        path.pop()
+
 if __name__ == '__main__':
-    res = Solution().isThree(n=121)
+    root = TreeNode(10)
+    root.left = TreeNode(5)
+    root.right = TreeNode(12)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(7)
+
+    res = Solution().treeTot(root, 22)
     print(res)
