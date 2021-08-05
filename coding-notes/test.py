@@ -1,36 +1,53 @@
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
+class RandomListNode:
+    def __init__(self, label):
+        self.label = label
+        self.next = None
+        self.random = None
 
 class Solution:
-    def treeTot(self, root, num):
-        self.res = []
-        self.backtracking(root, num, [])
-        return self.res 
+    def clone(self, head):
+        if not head:
+            return None
 
-    def backtracking(self, node, target, path):
-        print(path)
-        if node == None:
-            return
+        # 插入新节点
+        cur = head
+        while cur:
+            clone = RandomListNode(cur.label)
+            clone.next = cur.next 
+            cur.next = clone
+            cur = clone.next
 
-        path.append(node.val)
-        target -= node.val
+        # 建立 random 链接
+        cur = head
+        while cur:
+            clone = cur.next
+            if cur.random is not None:
+                clone.random = cur.random.next
+            cur = clone.next
 
-        if target == 0 and node.left == None and node.right == None:
-            self.res.append(path[:])
-        else:
-            self.backtracking(node.left, target, path)
-            self.backtracking(node.right, target, path)
-        path.pop()
+        # 拆分
+        cur = head 
+        newhead = cur.next
+        while cur.next:
+            clone = cur.next 
+            cur.next = clone.next
+            cur = clone
+        return newhead
 
 if __name__ == '__main__':
-    root = TreeNode(10)
-    root.left = TreeNode(5)
-    root.right = TreeNode(12)
-    root.left.left = TreeNode(4)
-    root.left.right = TreeNode(7)
+    head = RandomListNode(1)
+    head.next = RandomListNode(2)
+    head.next.next = RandomListNode(3)
+    head.next.next.next = RandomListNode(4)
 
-    res = Solution().treeTot(root, 22)
-    print(res)
+    head.random = head.next.next
+    head.next.next.next.random = head.next
+    
+    res = Solution().clone(head)
+    p = res
+    while p:
+        print(["next", p.label])
+        if p.random:
+            print(["random", p.random.label])
+        p = p.next
+
