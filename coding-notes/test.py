@@ -1,26 +1,21 @@
+from typing import List
 class Solution:
-    def permutation(self, strs: str):
-        self.nums = list(strs)
-        self.res = []
-        self.visited = [False] * len(self.nums)
-        self.dfs([])
-        return self.res
-    
-    def dfs(self, path):
-        print(path)
-        if len(self.nums) == len(path):
-            self.res.append(''.join(path[:]))
-            
-        for i in range(len(self.nums)):
-            if self.visited[i]:
-                continue
-            path.append(self.nums[i])
-            self.visited[i] = True
-            self.dfs(path)
-            path.pop()
-            self.visited[i] = False
+    def moreThanHalfNum_Solution(self, numbers):
+        # return sorted(numbers)[len(numbers)//2]
+
+        majority = numbers[0]
+        cnt = 0
+        for num in numbers:
+            if num == majority:
+                cnt += 1
+            else:
+                cnt -= 1
+            if cnt == 0:
+                majority = num
+                cnt = 1
+        return majority
+
 
 if __name__ == '__main__':
-    res = Solution().permutation(strs="abc")
+    res = Solution().moreThanHalfNum_Solution(numbers = [1, 2, 3, 2, 2, 2, 5, 4, 2])
     print(res)
-
