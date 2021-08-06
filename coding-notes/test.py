@@ -1,17 +1,20 @@
 import heapq
 
 class Solution():
-    def getMedian(self, nums):
-        minnums = nums[:]
-        heapq.heapify(minnums)
-        maxnums = [-num for num in nums]
-        heapq.heapify(maxnums)
+    def findGreatestSumOfSubArray(self, nums):
+        if not nums:
+            return 0
+        curr = 0
+        res = float("-inf")
 
-        for i in range(len(nums)//2):
-            min_num = heapq.heappop(minnums)
-            max_num = - heapq.heappop(maxnums)
-        return (min_num + max_num)/2 if len(nums) % 2 == 0 else heapq.heappop(minnums)
+        for i in range(len(nums)):
+            curr += nums[i]
+            if curr < 0:
+                curr = 0 
+            res = max(res, curr)
+
+        return res
 
 if __name__ == '__main__':
-    res = Solution().getMedian([4, 5, 1, 6, 2, 7, 3, 8])
+    res = Solution().findGreatestSumOfSubArray(nums=[1, -2, 3, 10, -4, 7, 2, -5])
     print(res)
