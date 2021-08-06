@@ -1,33 +1,26 @@
 class Solution:
     def permutation(self, strs: str):
+        self.nums = list(strs)
         self.res = []
-
-        chars = list(strs)
-        chars.sort()
-
-        visited = [False] * len(strs)
-
-        self.backtracking(chars, visited, path=[])
+        self.visited = [False] * len(self.nums)
+        self.dfs([])
         return self.res
-
-    def backtracking(self, chars, visited, path):
-        print(path, visited)
-        if len(chars) == len(path):
-            self.res.append("".join(path[:]))
-            return
-
-        for i in range(len(chars)):
-            if visited[i]:
+    
+    def dfs(self, path):
+        print(path)
+        if len(self.nums) == len(path):
+            self.res.append(''.join(path[:]))
+            
+        for i in range(len(self.nums)):
+            if self.visited[i]:
                 continue
-            if (i != 0 and chars[i] == chars[i-1]) and not visited[i-1]:
-                continue
-            visited[i] = True
-            path.append(chars[i])
-            self.backtracking(chars, visited, path)
+            path.append(self.nums[i])
+            self.visited[i] = True
+            self.dfs(path)
             path.pop()
-            visited[i] = False
+            self.visited[i] = False
 
 if __name__ == '__main__':
-    res = Solution().permutation(strs="aabc")
+    res = Solution().permutation(strs="abc")
     print(res)
 

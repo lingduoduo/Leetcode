@@ -7,27 +7,26 @@ class Solution(object):
         """
         return list(permutations(nums))
 
-class Solution(object):
+class Solution:
     def permute(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        visited = [0] * len(nums)
-        res = []
-        
-        def dfs(path):
-            if len(path) == len(nums):
-                res.append(path)
-            else:
-                for i in range(len(nums)):
-                    if not visited[i]:
-                        visited[i] = 1
-                        dfs(path + [nums[i]])
-                        visited[i] = 0
-        
-        dfs([])
-        return res
+        self.nums = nums
+        self.res = []
+        self.visited = [False] * len(self.nums)
+        self.dfs([])
+        return self.res
+    
+    def dfs(self, path):
+        if len(self.nums) == len(path):
+            self.res.append(path[:])
+            
+        for i in range(len(self.nums)):
+            if self.visited[i]:
+                continue
+            path.append(self.nums[i])
+            self.visited[i] = True
+            self.dfs(path)
+            path.pop()
+            self.visited[i] = False
 
 class Solution(object):
     def permute(self, nums):
