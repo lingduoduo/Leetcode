@@ -1,20 +1,28 @@
-import heapq
+class Solution:
+    def getDigitAtIndex(self, index: int) -> int:
+        if index < 0:
+            return -1
 
-class Solution():
-    def findGreatestSumOfSubArray(self, nums):
-        if not nums:
-            return 0
-        curr = 0
-        res = float("-inf")
+        # 1 表示个位，2 表示 十位...
+        place = 1 
+        while True:
+            # place 位数的数字组成的字符串长度 10, 90, 900, ...
+            if place == 1:
+                amount = 10
+            else:
+                amount = 9 * 10 ** (place - 1)
+            tot = amount * place
 
-        for i in range(len(nums)):
-            curr += nums[i]
-            if curr < 0:
-                curr = 0 
-            res = max(res, curr)
-
-        return res
+            if index < tot:
+                if place == 1:
+                    begin = 0
+                else:
+                    begin = 10 ^ (place - 1)
+                shift = index // place
+                return list(str(begin + shift))[index % place]
+            index -= tot 
+            place += 1
 
 if __name__ == '__main__':
-    res = Solution().findGreatestSumOfSubArray(nums=[1, -2, 3, 10, -4, 7, 2, -5])
+    res = Solution().getDigitAtIndex(1)
     print(res)
