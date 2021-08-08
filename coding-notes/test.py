@@ -1,20 +1,25 @@
 class Solution:
-    def getMost(self, strs) -> int:
-        cur = 0
-        res = 0
-        preindex = [-1] * 26
-
-        for i, cha in enumerate(strs):
-            idx = ord(cha) - ord("a")
-            if preindex[idx] == -1 or i - preindex[idx] > cur:
-                cur += 1
+    def getUglyNumber_Solution(self, n) -> int:
+        if n <= 6:
+            return n 
+        i, j, k = 0, 0, 0 
+        dp = [0] * n 
+        dp[0] = 1
+        for ind in range(1, n):
+            next2 = dp[i] * 2
+            next3 = dp[j] * 3
+            next5 = dp[k] * 5
+            dp[idx] = min(next2, next3, next5)
+            if next2 == dp[idx]:
+                i += 1
+            elif next3 == dp[idx]:
+                j += 1
             else:
-                res = max(res, cur)
-                cur = i - preindex[idx]
-            preindex[idx] = i
-        return res
+                k += 1
+        return dp[-1]
 
 if __name__ == '__main__':
-    res = Solution().getMost(strs="arabcacfr")
+    res = Solution().getUglyNumber_Solution(n=)
     print(res)
+
 
