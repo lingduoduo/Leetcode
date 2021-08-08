@@ -1,30 +1,47 @@
 class Solution:
-    def numDecodings(self, s: str) -> int:
-        strs = list(str(s))
-        if len(strs) == 0:
-            return 0
-
-        dp = [0] * (1 + len(strs))
-        dp[0] = 1
-        dp[1] = 0 if str(strs[0]) == '0' else 1
-        
-        for i in range(2, len(strs) + 1):
-            print(dp)
-            one = strs[i-1: i]
-            if one != "0":
-                dp[i] += dp[i-1]
-
-            two = strs[i-2: i-1]
-            if two == '0':
-                continue
-            else:
-                if int(''.join(strs[i-2: i])) <= 26:
-                    dp[i] += dp[i-2]
-
-        return dp[len(strs)]
+    def firstNotRepeatingChar(self, s: str) -> int:
+        cnts = [0] * 128
+        for i in range(len(s)):
+            cnts[ord(s[i]) - ord('a')] += 1
+            
+        for i in range(len(s)):
+            if cnts[ord(s[i]) - ord('a')] == 1:
+                return s[i]
+        return -1
 
 if __name__ == '__main__':
-    res = Solution().numDecodings(12258)
+    res = Solution().firstNotRepeatingChar('abacc')
     print(res)
 
 
+# ```java
+# public int FirstNotRepeatingChar(String str) {
+#     int[] cnts = new int[128];
+#     for (int i = 0; i < str.length(); i++)
+#         cnts[str.charAt(i)]++;
+#     for (int i = 0; i < str.length(); i++)
+#         if (cnts[str.charAt(i)] == 1)
+#             return i;
+#     return -1;
+# }
+# ```
+
+# 以上实现的空间复杂度还不是最优的。考虑到只需要找到只出现一次的字符，那么需要统计的次数信息只有 0,1,更大，使用两个比特位就能存储这些信息。
+# ```java
+# public int FirstNotRepeatingChar2(String str) {
+#     BitSet bs1 = new BitSet(128);
+#     BitSet bs2 = new BitSet(128);
+#     for (char c : str.toCharArray()) {
+#         if (!bs1.get(c) && !bs2.get(c))
+#             bs1.set(c);     // 0 0 -> 0 1
+#         else if (bs1.get(c) && !bs2.get(c))
+#             bs2.set(c);     // 0 1 -> 1 1
+#     }
+#     for (int i = 0; i < str.length(); i++) {
+#         char c = str.charAt(i);
+#         if (bs1.get(c) && !bs2.get(c))  // 0 1
+#             return i;
+#     }
+#     return -1;
+# }
+# ```
