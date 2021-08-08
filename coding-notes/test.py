@@ -5,7 +5,7 @@ class Solution:
         i, j, k = 0, 0, 0 
         dp = [0] * n 
         dp[0] = 1
-        for ind in range(1, n):
+        for idx in range(1, n):
             next2 = dp[i] * 2
             next3 = dp[j] * 3
             next5 = dp[k] * 5
@@ -19,7 +19,7 @@ class Solution:
         return dp[-1]
 
 if __name__ == '__main__':
-    res = Solution().getUglyNumber_Solution(n=)
+    res = Solution().getUglyNumber_Solution(n=7)
     print(res)
 
 
