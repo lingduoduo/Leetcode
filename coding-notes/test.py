@@ -1,42 +1,34 @@
+class listNode:
+    def __init__(self, val):
+        self.val = val
+        self.next = None 
+
 class Solution:
-    def inversePairs(self, nums):
-        self.res = [0] * len(nums)
-        return self.mergeSort(nums, 0, len(nums)-1)
+    def findFirstCommonNode(self, l1, l2):
+        p1, p2 = l1, l2
+        while p1 != p2:
+            p1 = l2 if p1 is None else p1.next
+            p2 = l1 if p2 is None else p2.next
+        return p1
 
-    def mergeSort(self, A, l, r):
-        if l >= r:
-            return 0
-        
-        m = (l + r) >> 1
-        ans = self.mergeSort(A, l, m) + self.mergeSort(A, m + 1, r)
-
-        i, j, k = l, m + 1, l
-        while i <= m and j <= r:
-            if A[i] > A[j]:
-                self.res[k] = A[j]
-                j += 1
-                ans += m - i + 1
-            else:
-                self.res[k] = A[i]
-                i += 1
-            k += 1
-    
-        while i <= m:
-            self.res[k] = A[i]
-            k += 1
-            i += 1
-        while j <= r:
-            self.res[k] = A[j]
-            k += 1
-            j += 1
-        for i in range(l, r + 1):
-            A[i] = self.res[i]
-        print(A)
-
-        return ans
 
 if __name__ == '__main__':
-    res = Solution().inversePairs(nums=[2, 4, 1, 3, 5])
-    print(res)
+    l1 = listNode(1)
+    l1.next = listNode(2)
+    l1.next.next = listNode(3)
+
+    l2 = listNode(1)
+    l2.next = listNode(2)
+    l2.next.next = l1.next.next
+
+    res = Solution().findFirstCommonNode(l1, l2)
+    print(res.val)
 
 
+#     ListNode l1 = pHead1, l2 = pHead2;
+#     while (l1 != l2) {
+#         l1 = (l1 == null) ? pHead2 : l1.next;
+#         l2 = (l2 == null) ? pHead1 : l2.next;
+#     }
+#     return l1;
+# }
