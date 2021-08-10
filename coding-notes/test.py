@@ -1,36 +1,51 @@
 class Solution:
-    def findNumsAppearOnce(self, nums, target):
+    def findContinuousSequence(self, nums, target):
         res = []
-        i = 0
-        j = len(nums) - 1
-        while i < j:
-            cur = nums[i] + nums[j]
-            if cur == target:
-                return nums[i], nums[j]
-            elif cur < target:
-                i += 1
+        start = 1
+        end = 2
+        curSum = 3
+        while end < target:
+            if curSum > target:
+                curSum -= start
+                start += 1
+            elif curSum < target:
+                end += 1
+                curSum += end
             else:
-                j -= 1
-        return None
+                print(start, end)
+                res.append([i for i in range(start, end+1)])
+                curSum -= start
+                start += 1
+                end += 1
+                curSum += end 
+        return res
 
 if __name__ == '__main__':
-    nums = [1, 2, 4, 7, 11, 15]
-    res = Solution().findNumsAppearOnce(nums, 15)
+    nums = [i for i in range(101)]
+    res = Solution().findContinuousSequence(nums, 100)
     print(res)
   
 
-# ```java
-# public ArrayList<Integer> FindNumbersWithSum(int[] nums, int target) {
-#     int i = 0, j = nums.length - 1;
-#     while (i < j) {
-#         int cur = nums[i] + array[j];
-#         if (cur == target)
-#             return new ArrayList<>(Arrays.asList(nums[i], nums[j]));
-#         if (cur < target)
-#             i++;
-#         else
-#             j--;
+# # ```java
+#     int start = 1, end = 2;
+#     int curSum = 3;
+#     while (end < sum) {
+#         if (curSum > sum) {
+#             curSum -= start;
+#             start++;
+#         } else if (curSum < sum) {
+#             end++;
+#             curSum += end;
+#         } else {
+#             ArrayList<Integer> list = new ArrayList<>();
+#             for (int i = start; i <= end; i++)
+#                 list.add(i);
+#             ret.add(list);
+#             curSum -= start;
+#             start++;
+#             end++;
+#             curSum += end;
+#         }
 #     }
-#     return new ArrayList<>();
-
-# ```
+#     return ret;
+# # ```
