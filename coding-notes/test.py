@@ -1,47 +1,36 @@
 class Solution:
-    def findNumsAppearOnce(self, nums):
-        diff = 0
-        for num in nums:
-            diff ^= num 
-        diff &= -diff
-
-        res1 = 0 
-        res2 = 0
-        for num in nums:
-            if num & diff == 0:
-                res1 ^= num 
+    def findNumsAppearOnce(self, nums, target):
+        res = []
+        i = 0
+        j = len(nums) - 1
+        while i < j:
+            cur = nums[i] + nums[j]
+            if cur == target:
+                return nums[i], nums[j]
+            elif cur < target:
+                i += 1
             else:
-                res2 ^= num
-        return sorted([res1, res2])
-    
+                j -= 1
+        return None
+
 if __name__ == '__main__':
-    nums = [2, 4, 3, 6, 3, 2, 5, 5]
-    res = Solution().findNumsAppearOnce(nums)
+    nums = [1, 2, 4, 7, 11, 15]
+    res = Solution().findNumsAppearOnce(nums, 15)
     print(res)
   
 
 # ```java
-# public int[] FindNumsAppearOnce (int[] nums) {
-#     int[] res = new int[2];
-#     int diff = 0;
-#     for (int num : nums)
-#         diff ^= num;
-#     diff &= -diff;
-#     for (int num : nums) {
-#         if ((num & diff) == 0)
-#             res[0] ^= num;
+# public ArrayList<Integer> FindNumbersWithSum(int[] nums, int target) {
+#     int i = 0, j = nums.length - 1;
+#     while (i < j) {
+#         int cur = nums[i] + array[j];
+#         if (cur == target)
+#             return new ArrayList<>(Arrays.asList(nums[i], nums[j]));
+#         if (cur < target)
+#             i++;
 #         else
-#             res[1] ^= num;
+#             j--;
 #     }
-#     if (res[0] > res[1]) {
-#         swap(res);
-#     }
-#     return res;
-# }
-
-# private void swap(int[] nums) {
-#     int t = nums[0];
-#     nums[0] = nums[1];
-#     nums[1] = t;
+#     return new ArrayList<>();
 
 # ```
