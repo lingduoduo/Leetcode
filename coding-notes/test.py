@@ -1,44 +1,60 @@
+import collections
+class Solution(object):
+    def maxInWindows(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        que = collections.deque() # [[i, num]]
+        res = []
+        for i, num in enumerate(nums):
+            if que and i - que[0][0] >= k:
+                que.popleft()
+            while que and que[-1][1] <= num:
+                que.pop()
+            que.append([i, num])
+            if i >= k - 1:
+                res.append(que[0][1])
+        return res
+
+
+import heapq
 class Solution:
-    def leftRotateString(self, s, k):
-        if k >= len(s):
-            return s
+    def maxInWindows(self, nums, k):
+        if len(nums) < k or k < 1:
+            return nums
 
-        strs = list(s)
-        self.rev(strs, 0, k - 1)
-        self.rev(strs, k, len(s) - 1)
-        self.rev(strs, 0, len(s) - 1)
-        return ''.join(strs)
+        res = []
+        heap = []
+        for i in range(k):
+            heap.append(nums[i])
+        res.append(heapq.nlargest(1, heap)[0])
 
-    def rev(self, chrs, i, j):
-        while i < j:
-            chrs[i], chrs[j] = chrs[j], chrs[i]
-            i += 1
-            j -= 1
+        for i in range(k, len(nums)):
+            heap.pop(0)
+            heap.append(nums[i])
+            res.append(heapq.nlargest(1, heap)[0])
+        return res
 
 if __name__ == '__main__':
-    res = Solution().leftRotateString(s="abcXYZdef", k=3)
+    res = Solution().maxInWindows(nums=[2, 3, 4, 2, 6, 2, 5, 1], k = 3)
     print(res)
-  
+
 
 # # ```java
-# public String LeftRotateString(String str, int n) {
-#     if (n >= str.length())
-#         return str;
-#     char[] chars = str.toCharArray();
-#     reverse(chars, 0, n - 1);
-#     reverse(chars, n, chars.length - 1);
-#     reverse(chars, 0, chars.length - 1);
-#     return new String(chars);
-# }
-
-# private void reverse(char[] chars, int i, int j) {
-#     while (i < j)
-#         swap(chars, i++, j--);
-# }
-
-# private void swap(char[] chars, int i, int j) {
-#     char t = chars[i];
-#     chars[i] = chars[j];
-#     chars[j] = t;
-# }
+# public ArrayList<Integer> maxInWindows(int[] num, int size) {
+#     ArrayList<Integer> ret = new ArrayList<>();
+#     if (size > num.length || size < 1)
+#         return ret;
+#     PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> o2 - o1);  /* 大顶堆 */
+#     for (int i = 0; i < size; i++)
+#         heap.add(num[i]);
+#     ret.add(heap.peek());
+#     for (int i = 0, j = i + size; j < num.length; i++, j++) {            /* 维护一个大小为 size 的大顶堆 */
+#         heap.remove(num[i]);
+#         heap.add(num[j]);
+#         ret.add(heap.peek());
+#     }
+#     return ret;
 # # ```
