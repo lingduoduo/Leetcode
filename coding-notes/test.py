@@ -1,51 +1,44 @@
 class Solution:
-    def findContinuousSequence(self, nums, target):
-        res = []
-        start = 1
-        end = 2
-        curSum = 3
-        while end < target:
-            if curSum > target:
-                curSum -= start
-                start += 1
-            elif curSum < target:
-                end += 1
-                curSum += end
-            else:
-                print(start, end)
-                res.append([i for i in range(start, end+1)])
-                curSum -= start
-                start += 1
-                end += 1
-                curSum += end 
-        return res
+    def leftRotateString(self, s, k):
+        if k >= len(s):
+            return s
+
+        strs = list(s)
+        self.rev(strs, 0, k - 1)
+        self.rev(strs, k, len(s) - 1)
+        self.rev(strs, 0, len(s) - 1)
+        return ''.join(strs)
+
+    def rev(self, chrs, i, j):
+        while i < j:
+            chrs[i], chrs[j] = chrs[j], chrs[i]
+            i += 1
+            j -= 1
 
 if __name__ == '__main__':
-    nums = [i for i in range(101)]
-    res = Solution().findContinuousSequence(nums, 100)
+    res = Solution().leftRotateString(s="abcXYZdef", k=3)
     print(res)
   
 
 # # ```java
-#     int start = 1, end = 2;
-#     int curSum = 3;
-#     while (end < sum) {
-#         if (curSum > sum) {
-#             curSum -= start;
-#             start++;
-#         } else if (curSum < sum) {
-#             end++;
-#             curSum += end;
-#         } else {
-#             ArrayList<Integer> list = new ArrayList<>();
-#             for (int i = start; i <= end; i++)
-#                 list.add(i);
-#             ret.add(list);
-#             curSum -= start;
-#             start++;
-#             end++;
-#             curSum += end;
-#         }
-#     }
-#     return ret;
+# public String LeftRotateString(String str, int n) {
+#     if (n >= str.length())
+#         return str;
+#     char[] chars = str.toCharArray();
+#     reverse(chars, 0, n - 1);
+#     reverse(chars, n, chars.length - 1);
+#     reverse(chars, 0, chars.length - 1);
+#     return new String(chars);
+# }
+
+# private void reverse(char[] chars, int i, int j) {
+#     while (i < j)
+#         swap(chars, i++, j--);
+# }
+
+# private void swap(char[] chars, int i, int j) {
+#     char t = chars[i];
+#     chars[i] = chars[j];
+#     chars[j] = t;
+# }
 # # ```
