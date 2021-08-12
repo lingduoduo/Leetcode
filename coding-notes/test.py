@@ -1,14 +1,14 @@
 class Solution(object):
-    def lastRemaining_Solution(self, n, m):
-        if n == 0:
-            return -1 
-        if n == 1:
-            return 0 
-        return (self.lastRemaining_Solution(n - 1, m) + m) % n
+    def maxProfit(self, prices):
+        cur = prices[0]
+        res = float("-inf")
 
-
+        for price in prices[1:]:
+            cur = min(cur, price)
+            res = max(res, price - cur)
+        return res
 
 if __name__ == '__main__':
-    res = Solution().lastRemaining_Solution(n = 5, m = 2)
+    res = Solution().maxProfit(prices=[9,11,8,5, 7, 12, 16, 14])
     print(res)
 
