@@ -1,14 +1,7 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        cur = prices[0]
-        res = float("-inf")
-
-        for price in prices[1:]:
-            cur = min(cur, price)
-            res = max(res, price - cur)
-        return res
+class Solution:
+    def sum_Solution(self, n : int) -> int:
+        return n and (n + self.sum_Solution(n - 1))    
 
 if __name__ == '__main__':
-    res = Solution().maxProfit(prices=[9,11,8,5, 7, 12, 16, 14])
+    res = Solution().sum_Solution(n = 100)
     print(res)
-
