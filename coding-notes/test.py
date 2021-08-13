@@ -1,35 +1,32 @@
-class Solution:
-    def strToInt(self, strs):
-        if not strs:
-            return 0 
-        flag = strs[0] == "-"
-        res = 0
-        for char in strs:
-            if char == "+" or char == "-":
-                continue
-            if char < "0" or char > "9":
-                return 0
-            res = res * 10 + ord(char) - ord("0")
-        return -res if flag else res
+class treeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None 
+        self.right = None 
 
+class Solution:
+    def lowestCommonAncestor(self, root, p, q):
+        if not root or root == p or root == q:
+            return root 
+
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        if not left and right:
+            return right
+        if not right and left:
+            return left 
+        if left and right:
+            return root
 
 if __name__ == '__main__':
-    res = Solution().strToInt(strs = "+2147483647")
-    print(res)
+    root = treeNode(4)
+    root.left = treeNode(2)
+    root.right = treeNode(6)
+    root.left.left = treeNode(1)
+    root.left.right = treeNode(3)
+    root.right.left = treeNode(5)
+    root.right.right = treeNode(7)
 
-
-
-# public int StrToInt(String str) {
-#     if (str == null || str.length() == 0)
-#         return 0;
-#     boolean isNegative = str.charAt(0) == '-';
-#     int ret = 0;
-#     for (int i = 0; i < str.length(); i++) {
-#         char c = str.charAt(i);
-#         if (i == 0 && (c == '+' || c == '-'))  /* 符号判定 */
-#             continue;
-#         if (c < '0' || c > '9')                /* 非法输入 */
-#             return 0;
-#         ret = ret * 10 + (c - '0');
-#     }
-#     return isNegative ? -ret : ret;
+    res = Solution().lowestCommonAncestor(root, root.left.left, root.left.right)
+    print(res.val)
