@@ -2,7 +2,7 @@ import collections
 class Solution:
     def matrixRankTransform(self, matrix: List[List[int]]) -> List[List[int]]:
         def find(i):
-            if p[i]!= i:
+            if p[i] != i:
                 p[i] = find(p[i])
             return p[i]
 
