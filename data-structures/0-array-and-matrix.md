@@ -204,6 +204,35 @@ public int kthSmallest(int[][] matrix, int k) {
 }
 ```
 
+```python
+from typing import List
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        m = len(matrix)
+        n = len(matrix[0])
+        l = matrix[0][0]
+        r = matrix[m-1][n-1]
+
+        while l <= r:
+            mid = l + (r - l)//2
+            cnt = 0
+            for i in range(m):
+                for j in range(n):
+                    if matrix[i][j] <= mid:
+                        cnt += 1
+            if cnt < k:
+                l = mid + 1
+            else:
+                r = mid - 1
+        return l
+
+if __name__ == '__main__':
+    matrix = [[1, 5, 9], [10, 11, 13], [12, 13, 15]]
+    k = 8
+    result = Solution().kthSmallest(matrix, k)
+    print(result)
+```
+
 堆解法：
 
 ```
@@ -254,3 +283,4 @@ class Solution:
             res = heapq.heappop(nums)
         return res
 ```
+
