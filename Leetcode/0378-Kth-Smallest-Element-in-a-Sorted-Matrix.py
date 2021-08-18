@@ -67,7 +67,7 @@
         #         right=mid
         # return left
 
-# from typing import List
+
 # import heapq
 # import itertools
 # class Solution:
@@ -77,7 +77,6 @@
 #         for i in range(k):
 #             res = heapq.heappop(nums)
 #         return res
-
 from typing import List
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:

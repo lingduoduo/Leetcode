@@ -321,3 +321,125 @@ private void swap(int[] nums, int i, int j) {
 }
 ```
 
+```python
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        for i in range(len(nums)):
+            while nums[i] != i + 1:
+                if nums[i] == nums[nums[i] - 1]:
+                    break
+                else:
+                    j = nums[i] - 1
+                    nums[i], nums[j] = nums[j], nums[i]
+        res = []
+        for i in range(len(nums)):
+            if nums[i] != i + 1:
+                res.extend([nums[i], i + 1])
+        return res
+```
+
+7. 找出数组中重复的数，数组值在 [1, n] 之间
+
+287 Find the Duplicate Number (Medium)
+
+要求不能修改数组，也不能使用额外的空间。
+
+```python
+from typing import List
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        for i in range(len(nums)):
+            while nums[i] != i + 1:
+                if nums[i] == nums[nums[i] - 1]:
+                    return nums[i]
+                else:
+                    j = nums[i] - 1
+                    nums[i], nums[j] = nums[j], nums[i]
+
+if __name__ == '__main__':
+    res = Solution().findDuplicate(nums = [1,3,4,2,2])
+    print(res)
+```
+
+二分查找解法：
+
+思路是我们在[1,N]范围内先求出mid，再统计小于等于mid的数字个数count，如果count<=mid，说明重复数字在[mid+1,N]中，否则在[1,mid)中。
+
+我们统计小于等于mid的数字个数count，当nums在[1,mid]双闭区间中的数字不存在重复时，count应该恰好等于mid；当nums在[1,mid]双闭区间中的数字存在重复时，count应该>mid；当nums在[1,mid]双闭区间中的数字存在遗漏时，count应该<mid。所以，当我们发现count <= mid时，说明重复数字在[mid + 1, N]中，否则在[1,mid)中。
+
+```
+public int findDuplicate(int[] nums) {
+     int l = 1, h = nums.length - 1;
+     while (l <= h) {
+         int mid = l + (h - l) / 2;
+         int cnt = 0;
+         for (int i = 0; i < nums.length; i++) {
+             if (nums[i] <= mid) cnt++;
+         }
+         if (cnt > mid) h = mid - 1;
+         else l = mid + 1;
+     }
+     return l;
+}
+```
+
+```python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        n = len(nums)
+        l = 0
+        r = len(nums)
+        while l <= r:
+            mid = l + (r - l)//2
+            cnt = 0
+            for num in nums:
+                if num <= mid:
+                    cnt += 1
+            if cnt <= mid:
+                l = mid + 1
+            else:
+                r = mid - 1
+        return l
+
+if __name__ == '__main__':
+    res = Solution().findDuplicate(nums = [1,3,4,2,2])
+    print(res)
+```
+
+双指针解法，类似于有环链表中找出环的入口：
+
+```
+public int findDuplicate(int[] nums) {
+    int slow = nums[0], fast = nums[nums[0]];
+    while (slow != fast) {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    }
+    fast = 0;
+    while (slow != fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+    return slow;
+}
+```
+```python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        slow = nums[0]
+        fast = nums[nums[0]]
+        while slow != fast:
+            fast = nums[nums[fast]]
+            slow = nums[slow]
+        fast = 0
+        while slow != fast:
+            fast = nums[fast]
+            slow = nums[slow]
+        return fast
+
+if __name__ == '__main__':
+    res = Solution().findDuplicate(nums = [1,3,4,2,2])
+    print(res)
+```
+
+
