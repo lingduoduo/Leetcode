@@ -442,4 +442,93 @@ if __name__ == '__main__':
     print(res)
 ```
 
+8. 数组相邻差值的个数
 
+667 Beautiful Arrangement II (Medium)
+
+
+```
+Input: n = 3, k = 2
+Output: [1, 3, 2]
+Explanation: The [1, 3, 2] has three different positive integers ranging from 1 to 3, and the [2, 1] has exactly 2 distinct integers: 1 and 2.
+```
+
+题目描述：数组元素为 1~n 的整数，要求构建数组，使得相邻元素的差值不相同的个数为 k。
+
+让前 k+1 个元素构建出 k 个不相同的差值，序列为：1 k+1 2 k 3 k-1 ... k/2 k/2+1.
+
+```
+public int[] constructArray(int n, int k) {
+    int[] ret = new int[n];
+    ret[0] = 1;
+    for (int i = 1, interval = k; i <= k; i++, interval--) {
+        ret[i] = i % 2 == 1 ? ret[i - 1] + interval : ret[i - 1] - interval;
+    }
+    for (int i = k + 1; i < n; i++) {
+        ret[i] = i + 1;
+    }
+    return ret;
+}
+```
+```python
+from typing import List
+class Solution:
+    def constructArray(self, n: int, k: int) -> List[int]:
+        res = [1]
+        interval = k
+        for i in range(1, k + 1):
+            res.append(res[i - 1] + interval if i % 2 == 1 else res[i - 1] - interval)
+            interval -= 1
+            print(res)
+        for i in range(k + 1, n):
+            res.append(i + 1)
+        return res
+      
+if __name__ == '__main__':
+    res = Solution().constructArray(n = 3, k = 2)
+    print(res)
+
+    res = Solution().constructArray(n = 5, k = 2)
+    print(res)
+```
+
+9. 数组的度
+697 Degree of an Array (Easy)
+
+```
+Input: [1,2,2,3,1,4,2]
+Output: 6
+```
+
+题目描述：数组的度定义为元素出现的最高频率，例如上面的数组度为 3。要求找到一个最小的子数组，这个子数组的度和原数组一样。
+
+```
+public int findShortestSubArray(int[] nums) {
+    Map<Integer, Integer> numsCnt = new HashMap<>();
+    Map<Integer, Integer> numsLastIndex = new HashMap<>();
+    Map<Integer, Integer> numsFirstIndex = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int num = nums[i];
+        numsCnt.put(num, numsCnt.getOrDefault(num, 0) + 1);
+        numsLastIndex.put(num, i);
+        if (!numsFirstIndex.containsKey(num)) {
+            numsFirstIndex.put(num, i);
+        }
+    }
+    int maxCnt = 0;
+    for (int num : nums) {
+        maxCnt = Math.max(maxCnt, numsCnt.get(num));
+    }
+    int ret = nums.length;
+    for (int i = 0; i < nums.length; i++) {
+        int num = nums[i];
+        int cnt = numsCnt.get(num);
+        if (cnt != maxCnt) continue;
+        ret = Math.min(ret, numsLastIndex.get(num) - numsFirstIndex.get(num) + 1);
+    }
+    return ret;
+}
+```
+```python
+
+```
