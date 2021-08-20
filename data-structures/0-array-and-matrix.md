@@ -556,3 +556,69 @@ if __name__ == '__main__':
     res = Solution().findShortestSubArray(nums = [1,2,2,3,1,4,2])
     print(res)
 ```
+
+10. 对角元素相等的矩阵
+
+766 - Toeplitz Matrix (Easy)
+
+
+```
+1234
+5123
+9512
+
+In the above grid, the diagonals are "[9]", "[5, 5]", "[1, 1, 1]", "[2, 2, 2]", "[3, 3]", "[4]", and in each diagonal all elements are the same, so the answer is True.
+public boolean isToeplitzMatrix(int[][] matrix) {
+    for (int i = 0; i < matrix[0].length; i++) {
+        if (!check(matrix, matrix[0][i], 0, i)) {
+            return false;
+        }
+    }
+    for (int i = 0; i < matrix.length; i++) {
+        if (!check(matrix, matrix[i][0], i, 0)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+private boolean check(int[][] matrix, int expectValue, int row, int col) {
+    if (row >= matrix.length || col >= matrix[0].length) {
+        return true;
+    }
+    if (matrix[row][col] != expectValue) {
+        return false;
+    }
+    return check(matrix, expectValue, row + 1, col + 1);
+}
+```
+
+```python
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        n = len(matrix)
+        m = len(matrix[0])
+        for i in range(n):
+            r = i
+            c = 0
+            l = []
+            while 0 <= r < n and 0 <= c < m:
+                l.append(matrix[r][c])
+                r += 1
+                c += 1
+            if len(set(l)) != 1:
+                return False
+
+        for i in range(m):
+            r = 0
+            c = i
+            l = []
+            while 0 <= r < n and 0 <= c < m:
+                l.append(matrix[r][c])
+                r += 1
+                c += 1
+            if len(set(l)) != 1:
+                return False
+        return True
+```
+
