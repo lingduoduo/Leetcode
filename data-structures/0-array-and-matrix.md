@@ -698,3 +698,19 @@ public int maxChunksToSorted(int[] arr) {
     return ret;
 }
 ```
+
+```
+class Solution:
+    def maxChunksToSorted(self, arr: List[int]) -> int:
+        if not arr:
+            return 0
+
+        res = 0
+        right = arr[0]
+        for i in range(len(arr)):
+            right = max(right, arr[i])
+            if right == i:
+                res += 1
+        return res
+```
+
