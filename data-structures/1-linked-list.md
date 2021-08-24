@@ -126,3 +126,70 @@ class Solution:
         return dummy.next
 ```
 
+3. 归并两个有序的链表
+
+21 Merge Two Sorted Lists (Easy)
+
+```
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    if (l1 == null) return l2;
+    if (l2 == null) return l1;
+    if (l1.val < l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
+}
+```
+```
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
+class Solution:
+    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        if not l1: return l2
+        if not l2: return l1
+        if l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
+```
+
+4. 从有序链表中删除重复节点
+
+83 Remove Duplicates from Sorted List (Easy)
+
+
+```
+Given 1->1->2, return 1->2.
+Given 1->1->2->3->3, return 1->2->3.
+```
+```
+public ListNode deleteDuplicates(ListNode head) {
+    if (head == null || head.next == null) return head;
+    head.next = deleteDuplicates(head.next);
+    return head.val == head.next.val ? head.next : head;
+}
+```
+
+```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        head.next = self.deleteDuplicates(head.next)
+        return head.next if head.val == head.next.val else head
+```
+
