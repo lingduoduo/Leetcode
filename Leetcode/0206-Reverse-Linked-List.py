@@ -28,11 +28,11 @@
 #             dummy.next, head.next, head = head, dummy.next, head.next
 #         return dummy.next
 
-        # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         if not head: return None
@@ -52,4 +52,20 @@ class Solution:
             curr = tmp
         return dummy.next
         
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
         
+        post = head.next
+        newhead = self.reverseList(post)
+        post.next = head
+        head.next = None
+        return newhead
+
+
