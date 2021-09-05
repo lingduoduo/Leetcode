@@ -386,7 +386,7 @@ if __name__ == "__main__":
         p = p.next
 ```
 
-8. 回文链表
+8. **回文链表**
 234 Palindrome Linked List (Easy)
 
 题目要求：以 O(1) 的空间复杂度来求解。
@@ -432,4 +432,57 @@ private boolean isEqual(ListNode l1, ListNode l2) {
     }
     return true;
 }
+```
+
+```python
+from typing import Optional
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if not head or not head.next:
+            return  True
+
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        if fast:
+            slow = slow.next
+
+        self.cut(head, slow)
+        # return self.reverse(slow)
+        return self.check(head, self.reverse(slow))
+
+    def cut(self, p1, p2):
+        while p1.next != p2:
+            p1 = p1.next
+        p1.next = None
+
+    def reverse(self, p1):
+        print(p1.val)
+        dummy = ListNode(-1)
+        dummy.next = ListNode(p1.val)
+
+        p1 = p1.next
+        while p1:
+            p2 = p1.next
+            p1.next = dummy.next
+            dummy.next = p1
+            p1 = p2
+        return dummy.next
+
+    def check(self, p1, p2):
+        while p1 and p2:
+            if p1.val != p2.val:
+                return False
+            p1 = p1.next
+            p2 = p2.next
+        return True
 ```
