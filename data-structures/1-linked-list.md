@@ -253,7 +253,7 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
 
 题目要求：不能修改结点的 val 值，O(1) 空间复杂度。
 
-```
+```java
 public ListNode swapPairs(ListNode head) {
     ListNode node = new ListNode(-1);
     node.next = head;
@@ -328,3 +328,4 @@ private Stack<Integer> buildStack(ListNode l) {
     return stack;
 }
 ```
+
