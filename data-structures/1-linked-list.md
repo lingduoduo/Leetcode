@@ -487,35 +487,6 @@ class Solution:
         return True
 ```
 
-```python
-from typing import List, Optional
-class Solution:
-    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        n = 0
-        p = head
-        while p:
-            p = p.next
-            n += 1
-
-        m = n // k
-        r = n % k
-
-        res = []
-        p = head
-        for i in range(k):
-            curr = p
-            for j in range(m):
-                pre = p
-                p = p.next
-            if i < r:
-                pre = p
-                p = p.next
-            res.append(curr)
-            if m + r >= 1:
-                pre.next = None
-        return res
-```
-
 9. 分隔链表
 
 725 Split Linked List in Parts(Medium)
@@ -554,4 +525,33 @@ public ListNode[] splitListToParts(ListNode root, int k) {
     }
     return ret;
 }
+```
+
+```python
+from typing import List, Optional
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        n = 0
+        p = head
+        while p:
+            p = p.next
+            n += 1
+
+        m = n // k
+        r = n % k
+
+        res = []
+        p = head
+        for i in range(k):
+            curr = p
+            for j in range(m):
+                pre = p
+                p = p.next
+            if i < r:
+                pre = p
+                p = p.next
+            res.append(curr)
+            if m + r >= 1:
+                pre.next = None
+        return res
 ```
