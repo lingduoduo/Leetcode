@@ -1,6 +1,6 @@
 ### 链表
 
-1. 找出两个链表的交点
+1. **找出两个链表的交点**
 160 - Intersection of Two Linked Lists (Easy)
 
 例如以下示例中 A 和 B 两个链表相交于 c1：
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 把第一个链表的结尾连接到第二个链表的开头，看第二个链表是否存在环；
 或者直接比较两个链表的最后一个节点是否相同。
 
-2. 链表反转
+2. **链表反转**
 
 206 - Reverse Linked List (Easy)
 
@@ -126,7 +126,7 @@ class Solution:
         return dummy.next
 ```
 
-3. 归并两个有序的链表
+3. **归并两个有序的链表**
 
 21 Merge Two Sorted Lists (Easy)
 
@@ -162,7 +162,7 @@ class Solution:
             return l2
 ```
 
-4. 从有序链表中删除重复节点
+4. **从有序链表中删除重复节点**
 
 83 Remove Duplicates from Sorted List (Easy)
 
@@ -193,7 +193,7 @@ class Solution:
         return head.next if head.val == head.next.val else head
 ```
 
-5. 删除链表的倒数第 n 个节点
+5. **删除链表的倒数第 n 个节点**
 
 19 Remove Nth Node From End of List (Medium)
 
@@ -240,4 +240,90 @@ class Solution:
             slow = slow.next
         slow.next = slow.next.next
         return head
+```
+
+6. **交换链表中的相邻结点**
+
+24 Swap Nodes in Pairs (Medium)
+
+```
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+```
+
+题目要求：不能修改结点的 val 值，O(1) 空间复杂度。
+
+```
+public ListNode swapPairs(ListNode head) {
+    ListNode node = new ListNode(-1);
+    node.next = head;
+    ListNode pre = node;
+    while (pre.next != null && pre.next.next != null) {
+        ListNode l1 = pre.next, l2 = pre.next.next;
+        ListNode next = l2.next;
+        l1.next = next;
+        l2.next = l1;
+        pre.next = l2;
+
+        pre = l1;
+    }
+    return node.next;
+}
+```
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def swapPairs(self, head):
+        dummy = ListNode(0)
+        dummy.next = head
+        p1 = dummy
+        while p1.next and p1.next.next:
+            p2 = p1.next
+            p3 = p2.next
+            p2.next = p3.next
+            p3.next = p2
+            p1.next = p3
+            p1 = p2
+        return dummy.next
+```
+
+**7 链表求和**
+445 - Add Two Numbers II (Medium)
+
+```
+Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 8 -> 0 -> 7
+```
+题目要求：不能修改原始链表。
+
+```java
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    Stack<Integer> l1Stack = buildStack(l1);
+    Stack<Integer> l2Stack = buildStack(l2);
+    ListNode head = new ListNode(-1);
+    int carry = 0;
+    while (!l1Stack.isEmpty() || !l2Stack.isEmpty() || carry != 0) {
+        int x = l1Stack.isEmpty() ? 0 : l1Stack.pop();
+        int y = l2Stack.isEmpty() ? 0 : l2Stack.pop();
+        int sum = x + y + carry;
+        ListNode node = new ListNode(sum % 10);
+        node.next = head.next;
+        head.next = node;
+        carry = sum / 10;
+    }
+    return head.next;
+}
+
+private Stack<Integer> buildStack(ListNode l) {
+    Stack<Integer> stack = new Stack<>();
+    while (l != null) {
+        stack.push(l.val);
+        l = l.next;
+    }
+    return stack;
+}
 ```
