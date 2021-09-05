@@ -329,3 +329,59 @@ private Stack<Integer> buildStack(ListNode l) {
 }
 ```
 
+```python
+from typing import Optional
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        l1Stack = []
+        p = l1
+        while p:
+            l1Stack.append(p.val)
+            p = p.next
+
+        l2Stack = []
+        p = l2
+        while p:
+            l2Stack.append(p.val)
+            p = p.next
+
+        head = ListNode(-1)
+        carry = 0
+        while l1Stack or l2Stack or carry:
+            x = l1Stack.pop() if l1Stack else 0
+            y = l2Stack.pop() if l2Stack else 0
+            v = x + y + carry
+            p = head.next
+            head.next = ListNode(v % 10)
+            head.next.next = p
+            carry = v // 10
+        return head.next
+
+if __name__ == "__main__":
+    l = [7, 2, 4, 3]
+    head1 = ListNode(-1)
+    cur = head1
+    for i in range(len(l)):
+        cur.next = ListNode(l[i])
+        cur = cur.next
+
+    l = [5, 6, 4]
+    head2 = ListNode(-1)
+    cur = head2
+    for i in range(len(l)):
+        cur.next = ListNode(l[i])
+        cur = cur.next
+
+    res = Solution().addTwoNumbers(head1.next, head2.next)
+    p = res
+    while p:
+        print(p.val)
+        p = p.next
+```
