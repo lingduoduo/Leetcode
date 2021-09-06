@@ -1,6 +1,7 @@
 递归
 
 1. 树的高度
+
 104 - Maximum Depth of Binary Tree (Easy)
 ```java
 public int maxDepth(TreeNode root) {
@@ -10,13 +11,14 @@ public int maxDepth(TreeNode root) {
 ```
 
 ```python
-from typing import List, Optional
+from typing import Optional
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+        
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
@@ -28,6 +30,7 @@ class Solution:
 ```
 
 2. 平衡树
+
 110 Balanced Binary Tree (Easy)
 
 平衡树左右子树高度差都小于等于 1
@@ -50,6 +53,8 @@ public int maxDepth(TreeNode root) {
 ```
 
 ```python
+from typing import Optional
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -73,6 +78,7 @@ class Solution:
 ```
 
 3. 两节点的最长路径
+
 543 Diameter of Binary Tree (Easy)
 
 Input:
@@ -126,6 +132,107 @@ class Solution:
         r = self.depth(root.right)
 
         self.res = max(self.res, l + r)
-
+        
         return 1 + max(l, r)
+```
+
+4. 翻转树
+
+226 Invert Binary Tree (Easy)
+
+```java
+public TreeNode invertTree(TreeNode root) {
+    if (root == null) return null;
+    TreeNode left = root.left;  // 后面的操作会改变 left 指针，因此先保存下来
+    root.left = invertTree(root.right);
+    root.right = invertTree(left);
+    return root;
+}
+```
+
+```python
+from typing import Optional
+
+# Definition for a binary tree node.
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return root
+        
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+        
+        return root
+
+```
+
+5. 归并两棵树
+   
+617 Merge Two Binary Trees (Easy)
+
+```
+Input:
+       Tree 1                     Tree 2
+          1                         2
+         / \                       / \
+        3   2                     1   3
+       /                           \   \
+      5                             4   7
+
+Output:
+         3
+        / \
+       4   5
+      / \   \
+     5   4   7
+```
+
+```java
+public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+    if (t1 == null && t2 == null) return null;
+    if (t1 == null) return t2;
+    if (t2 == null) return t1;
+    TreeNode root = new TreeNode(t1.val + t2.val);
+    root.left = mergeTrees(t1.left, t2.left);
+    root.right = mergeTrees(t1.right, t2.right);
+    return root;
+}
+```
+
+```python
+from typing import Optional
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root1 and not root2:
+            return None
+        
+        if not root1:
+            return root2
+        if not root2:
+            return root1
+        
+        val = 0
+        if root1:
+            val += root1.val
+        if root2:
+            val += root2.val
+        root = TreeNode(val)
+
+        root.left = self.mergeTrees(root1.left, root2.left)
+        root.right = self.mergeTrees(root1.right, root2.right)
+        
+        return root
 ```
