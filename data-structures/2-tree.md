@@ -236,3 +236,57 @@ class Solution:
         
         return root
 ```
+
+6. 判断路径和是否等于一个数
+
+Leetcdoe : 112 Path Sum (Easy)
+
+```
+              5
+             / \
+            4   8
+           /   / \
+          11  13  4
+         /  \      \
+        7    2      1
+```
+Given the below binary tree and sum = 22,
+
+return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+路径和定义为从 root 到 leaf 的所有节点的和。
+
+```java
+public boolean hasPathSum(TreeNode root, int sum) {
+    if (root == null) return false;
+    if (root.left == null && root.right == null && root.val == sum) return true;
+    return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+}
+```
+
+```python
+from typing import Optional
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root:
+            return False
+        
+        if not root.left and not root.right and root.val == targetSum:
+            return True
+        
+        if root.left and self.hasPathSum(root.left, targetSum - root.val):
+            return True
+        
+        if root.right and self.hasPathSum(root.right, targetSum - root.val):
+            return True
+        
+        return False
+```
+
