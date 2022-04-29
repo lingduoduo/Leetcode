@@ -7,23 +7,25 @@ class Solution(object):
         :rtype: List[int]
         """
         for k, v in enumerate(nums):
-        	i = k+1
-        	while i<len(nums):
-        		if v+nums[i] == target:
-        			return([k, i])
-        		else:
-        			i=i+1
+            i = k + 1
+            while i < len(nums):
+                if v + nums[i] == target:
+                    return ([k, i])
+                else:
+                    i = i + 1
+
 
 class Solution(object):
     def twoSum(self, nums, target):
-           hash_map = {}
-           for i,v in enumerate(nums):
-           hash_map[v]=i
+        hash_map = {}
+        for i, v in enumerate(nums):
+            hash_map[v] = i
 
-           for index1, v in enumerate(nums):
-               if target-v in hash_map.keys():
-                   index2 = hash_map[target-v]
-           return [index1+1, index2+1]
+        for index1, v in enumerate(nums):
+            if target - v in hash_map.keys():
+                index2 = hash_map[target - v]
+        return [index1 + 1, index2 + 1]
+
 
 class Solution(object):
     def twoSum(self, nums, target):
@@ -33,36 +35,54 @@ class Solution(object):
 
         for i in range(len(nums)):
             if target - nums[i] in idx.keys() and i != idx[target - nums[i]]:
-                return([i, idx[target - nums[i]]])
+                return ([i, idx[target - nums[i]]])
         return None
+
 
 class Solution(object):
     def twoSum(self, nums, target):
-        for i in range(len(nums)-1):
-            for j in range(i+1, len(nums)):
+        for i in range(len(nums) - 1):
+            for j in range(i + 1, len(nums)):
                 if (nums[i] + nums[j]) == target:
                     return i, j
         return None
 
+
 class Solution(object):
-    def twoSum(self, nums, target):        
+    def twoSum(self, nums, target):
         dict = {}
         for i in range(len(nums)):
             dict[nums[i]] = i
-           
+
         for i in range(len(nums)):
             part = target - nums[i]
             if (part in dict.keys()) and (i != dict[part]):
                 return i, dict[target - nums[i]]
         return None
 
-            
+class Solution(object):
+    def twoSum(self, nums, target):
+        d = {}
+        for i, v in enumerate(nums):
+            d[v] = i
+
+        for i in range(len(nums)):
+            if (target - nums[i] in d) and d[target - nums[i]] != i:
+                return i, d[target - nums[i]]
+        return None
+
 
 if __name__ == "__main__":
     numbers = [2, 7, 11, 15]
     result = Solution().twoSum(nums=numbers, target=9)
-    # numbers = [3, 2, 4]
-    # result = Solution().twoSum(numbers, 6)
-    # numbers = [2, 5, 5, 11]
-    # result = Solution().twoSum(numbers, 10)
+    print(result)
+    numbers = [3, 2, 4]
+    result = Solution().twoSum(numbers, 6)
+    print(result)
+    numbers = [2, 5, 5, 11]
+    result = Solution().twoSum(numbers, 6)
+    print(result)
+    nums = [3, 3]
+    target = 6
+    result = Solution().twoSum(nums, target)
     print(result)

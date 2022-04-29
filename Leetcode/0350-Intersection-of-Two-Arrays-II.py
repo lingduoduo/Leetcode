@@ -5,38 +5,39 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-        ####first try
-        ###result = list()
-        ###l1 = len(nums1)
-        ###l2 = len(nums2)
-        ######if l1<l2:
-        ######    for i in range(l1):
-        ######        if nums1[i] in nums2:
-        ######            result.append(nums1[i])
-        ######            nums2.pop(nums2.index(nums1[i]))
-        ######else:
-        ######    for i in range(l2):
-        ######        if nums2[i] in nums1:
-        ######            result.append(nums2[i])
-        ######            nums1.pop(nums1.index(nums2[i]))
-        ######return list(result)
-        ###if l1>l2:
-        ###    nums1, nums2 = nums2, nums1
+        #first try
+        result = list()
+        l1 = len(nums1)
+        l2 = len(nums2)
+        if l1<l2:
+           for i in range(l1):
+               if nums1[i] in nums2:
+                   result.append(nums1[i])
+                   nums2.pop(nums2.index(nums1[i]))
+        else:
+           for i in range(l2):
+               if nums2[i] in nums1:
+                   result.append(nums2[i])
+                   nums1.pop(nums1.index(nums2[i]))
+        return list(result)
+
+
+class Solution(object):
+    def intersection(self, nums1, nums2):
+            #second try
+        cnt = dict()
+        res = list()
+        for i in range(len(nums1)):
+           if nums1[i] in cnt:
+               cnt[nums1[i]] += 1
+           else:
+               cnt[nums1[i]] = 1
         
-        ####second try
-        ###cnt = dict()
-        ###res = list()
-        ###for i in range(len(nums1)):
-        ###    if nums1[i] in cnt:
-        ###        cnt[nums1[i]] += 1
-        ###    else:
-        ###        cnt[nums1[i]] = 1
-        #
-        ###for i in range(len(nums2)):
-        ###    if nums2[i] in cnt and cnt[nums2[i]] > 0:
-        ###        res.append(nums2[i])
-        ###        cnt[nums2[i]] -= 1
-        ###return (res)
+        for i in range(len(nums2)):
+           if nums2[i] in cnt and cnt[nums2[i]] > 0:
+               res.append(nums2[i])
+               cnt[nums2[i]] -= 1
+        return (res)
         
         if len(nums1) > len(nums2):
             nums1, nums2 = nums2, nums1
@@ -57,6 +58,17 @@ class Solution(object):
                 d[nums1[i]] -= 1
         return res
 
+
+from collections import Counter
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        ct = Counter(nums1)
+        res = []
+        for num in nums2:
+            if ct[num]:
+                res.append(num)
+                ct[num] -= 1
+        return res
 
 if __name__ == "__main__":
     nums1 = [1, 2, 2, 1]
