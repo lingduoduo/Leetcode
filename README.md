@@ -169,27 +169,26 @@ return bfs
 在BFS中保存已走过的步，并把已经走的合法路径删除掉。
 
 ```python
-class Solution(object):
-    def ladderLength(self, beginWord, endWord, wordList):
-        """
-        :type beginWord: str
-        :type endWord: str
-        :type wordList: List[str]
-        :rtype: int
-        """
-        wordset = set(wordList)
-        bfs = collections.deque()
-        bfs.append((beginWord, 1))
-        while bfs:
-            word, length = bfs.popleft()
-            if word == endWord:
-                return length
-            for i in range(len(word)):
-                for c in "abcdefghijklmnopqrstuvwxyz":
-                    newWord = word[:i] + c + word[i + 1:]
-                    if newWord in wordset and newWord != word:
-                        wordset.remove(newWord)
-                        bfs.append((newWord, length + 1))
+import collections
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList) -> int:
+        stack = [(beginWord, 1)]
+        visited = set()
+        wordList = set(wordList)
+
+        while(stack):
+            next_child = []
+            for node, step in stack:
+                if node == endWord:
+                    return step
+                if node not in visited:
+                    visited.add(node)
+                    for i in range(len(node)):
+                        for j in 'abcdefghijklmnopqrstuvwxyz':
+                            if node[:i]+j+node[i+1:] in wordList:
+                                next_child.append((node[:i]+j+node[i+1:], step + 1))
+
+            stack = list(set(next_child))
         return 0
 ```
 
