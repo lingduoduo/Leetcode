@@ -55,14 +55,6 @@ test
 
 #### 二分查找
 
-最明显的题目就是[34. Find First and Last Position of Element in Sorted Array](https://blog.csdn.net/fuxuemingzhu/article/details/83273084)
-
-花花酱的二分查找专题视频：https://www.youtube.com/watch?v=v57lNF2mb_s
-
-模板：
-
-区间定义：`[l, r) 左闭右开`
-
 其中f(m)函数代表找到了满足条件的情况，有这个条件的判断就返回对应的位置，如果没有这个条件的判断就是lowwer_bound和higher_bound.
 
 ```python
@@ -77,6 +69,10 @@ def binary_search(l, r):
             l = m + 1  ###new range [m+1, r)
     return l  ###or not found
 ```
+
+[34. Find First and Last Position of Element in Sorted Array]
+
+区间定义：`[l, r) 左闭右开`
 
 **lower bound**: find index of i, such that `A[i] >= x`
 
@@ -108,7 +104,7 @@ def higher_bound(self, nums, target):
     return left
 ```
 
-比如，题目[69. Sqrt(x)](https://blog.csdn.net/fuxuemingzhu/article/details/79254648)。
+[69. Sqrt(x)]
 
 ```python
 class Solution(object):
@@ -132,7 +128,7 @@ class Solution(object):
 
 #### 排序的写法
 
-题目451. Sort Characters By Frequency。
+[451. Sort Characters By Frequency]
 
 ```python
 class Solution(object):
@@ -172,7 +168,9 @@ if __name__ == '__main__':
 
 #### BFS的写法
 
-【LeetCode】863. All Nodes Distance K in Binary Tree - 下面的这个写法是在一个邻接矩阵中找出离某一个点距离是k的点
+[863. All Nodes Distance K in Binary Tree]
+
+下面的这个写法是在一个邻接矩阵中找出离某一个点距离是k的点
 
 ```python
 ###BFS
@@ -200,7 +198,7 @@ if __name__ == '__main__':
     print(result)
 ```
 
-【LeetCode】127. Word Ladder
+[127. Word Ladder]
 
 在BFS中保存已走过的步，并把已经走的合法路径删除掉。
 
@@ -230,7 +228,7 @@ class Solution:
         return 0
 ```
 
-Leetcode 778. Swim in Rising Water
+[Leetcode 778. Swim in Rising Water]
 
 使用优先级队列来优先走比较矮的路，最后保存最高的那个格子的高度。
 
@@ -259,7 +257,7 @@ class Solution(object):
         return res
 ```
 
-[847. Shortest Path Visiting All Nodes](https://blog.csdn.net/fuxuemingzhu/article/details/82939203)
+[Leetcode 847. Shortest Path Visiting All Nodes]
 
 需要找出某顶点到其他顶点的最短路径。出发顶点不是确定的，每个顶点有可能访问多次。使用N位bit代表访问过的顶点的状态。如果到达了最终状态，那么现在步数就是所求。这个题把所有的节点都放入了起始队列中，相当于每次都是所有的顶点向前走一步。
 
@@ -292,7 +290,9 @@ class Solution(object):
         return step
 ```
 
-[429. N-ary Tree Level Order Traversal](https://blog.csdn.net/fuxuemingzhu/article/details/81022170)多叉树的层次遍历，这个BFS写法我觉得很经典。适合记忆。
+[429. N-ary Tree Level Order Traversal]
+
+多叉树的层次遍历，这个BFS写法我觉得很经典。适合记忆。
 
 ```python
 """
@@ -330,11 +330,11 @@ class Solution(object):
 
 #### DFS的写法
 
-[329. Longest Increasing Path in a Matrix](https://blog.csdn.net/fuxuemingzhu/article/details/82917210)
+[329. Longest Increasing Path in a Matrix]
 
-[417. Pacific Atlantic Water Flow](https://blog.csdn.net/fuxuemingzhu/article/details/82917037)
+[417. Pacific Atlantic Water Flow]
 
-[778. Swim in Rising Water](https://blog.csdn.net/fuxuemingzhu/article/details/82926674)
+[778. Swim in Rising Water]
 
 二分查找+DFS
 
@@ -375,7 +375,7 @@ class Solution(object):
 
 这个回溯思想，先去添加一个新的状态，看在这个状态的基础上，能不能找结果，如果找不到结果的话，那么就回退，即把这个结果和访问的记录给去掉。这个题使用了return True的方法让我们知道已经找出了结果，所以不用再递归了。
 
-[753. Cracking the Safe](https://blog.csdn.net/fuxuemingzhu/article/details/82945477)
+[753. Cracking the Safe] 
 
 ```python
 class Solution(object):
@@ -409,7 +409,7 @@ class Solution(object):
             node = node[:-1]
 ```
 
-[312. Burst Balloons](https://blog.csdn.net/fuxuemingzhu/article/details/82928879)
+[312. Burst Balloons]
 
 ```python
 class Solution(object):
@@ -436,70 +436,13 @@ class Solution(object):
         return c[i][j]
 ```
 
-```cpp
-class Solution {
-public:
-    int countArrangement(int N) {
-        int res = 0;
-        vector<int> visited(N + 1, 0);
-        helper(N, visited, 1, res);
-        return res;
-    }
-private:
-    void helper(int N, vector<int>& visited, int pos, int& res) {
-        if (pos > N) {
-            res++;
-            return;
-        }
-        for (int i = 1; i <= N; i++) {
-            if (visited[i] == 0 && (i % pos == 0 || pos % i == 0)) {
-                visited[i] = 1;
-                helper(N, visited, pos + 1, res);
-                visited[i] = 0;
-            }
-        }
-    }
-};
-```
-
-如果需要保存路径的回溯法：
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        const int N = nums.size();
-        vector<vector<int>> res;
-        vector<int> path;
-        vector<int> visited(N, 0);
-        dfs(nums, 0, visited, res, path);
-        return res;
-    }
-private:
-    void dfs(vector<int>& nums, int pos, vector<int>& visited, vector<vector<int>>& res, vector<int>& path) {
-        const int N = nums.size();
-        if (pos == N) {
-            res.push_back(path);
-            return;
-        }
-        for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
-                visited[i] = 1;
-                path.push_back(nums[i]);
-                dfs(nums, pos + 1, visited, res, path);
-                path.pop_back();
-                visited[i] = 0;
-            }
-        }
-    }
-};
-```
-
 #### 树
 
 #### 递归
 
-[617. Merge Two Binary Trees](https://blog.csdn.net/fuxuemingzhu/article/details/79052953)把两个树重叠，重叠部分求和，不重叠部分是两个树不空的节点。
+[617. Merge Two Binary Trees]
+
+把两个树重叠，重叠部分求和，不重叠部分是两个树不空的节点。
 
 ```python
 class Solution:
@@ -516,15 +459,15 @@ class Solution:
 
 #### 迭代
 
-[226. Invert Binary Tree](https://blog.csdn.net/fuxuemingzhu/article/details/51284488)
+[226. Invert Binary Tree]
 
 ```python
-###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+Definition for a binary tree node.
+class TreeNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.left = None
+       self.right = None
 
 class Solution(object):
     def invertTree(self, root):
@@ -546,17 +489,17 @@ class Solution(object):
 
 #### 前序遍历
 
-[144. Binary Tree Preorder Traversal](https://blog.csdn.net/fuxuemingzhu/article/details/72575422)
+[144. Binary Tree Preorder Traversal]
 
 迭代写法：
 
 ```python
 ###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+class TreeNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.left = None
+       self.right = None
 
 class Solution(object):
     def preorderTraversal(self, root):
@@ -580,17 +523,17 @@ class Solution(object):
 
 #### 中序遍历
 
-[94. Binary Tree Inorder Traversal](https://blog.csdn.net/fuxuemingzhu/article/details/79294461)
+[94. Binary Tree Inorder Traversal]
 
 迭代写法：
 
 ```python
-###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+# Definition for a binary tree node.
+class TreeNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.left = None
+       self.right = None
 
 class Solution(object):
     def inorderTraversal(self, root):
@@ -613,38 +556,51 @@ class Solution(object):
 
 #### 后序遍历
 
-[145. Binary Tree Postorder Traversal](https://blog.csdn.net/fuxuemingzhu/article/details/101079767)
+[145. Binary Tree Postorder Traversal]
 
 迭代写法如下：
 
-```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> res;
-        if (!root) return res;
-        stack<TreeNode*> st;
-        st.push(root);
-        while (!st.empty()) {
-            TreeNode* node = st.top(); st.pop();
-            if (!node) continue;
-            res.push_back(node->val);
-            st.push(node->left);
-            st.push(node->right);
-        }
-        reverse(res.begin(), res.end());
-        return res;
-    }
-};
+```python
+###Definition for a binary tree node.
+class TreeNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.left = None
+       self.right = None
+
+####recursive
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if not root: return []
+        
+        res = list()
+        
+        res += self.postorderTraversal(root.left)
+        res += self.postorderTraversal(root.right)
+        res.append(root.val)
+        return res
+
+####reverse post-order
+class Solution(object):
+    def postorderTraversal(self, root):
+        if not root: return []
+        
+        res = []
+        stack = []
+        stack.append(root)
+        
+        while stack:
+            node = stack.pop()
+            res.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        return res[::-1]
 ```
 
 #### 构建完全二叉树
@@ -652,7 +608,7 @@ public:
 完全二叉树是每一层都满的，因此找出要插入节点的父亲节点是很简单的。如果用数组tree保存着所有节点的层次遍历，那么新节点的父亲节点就是tree[(N -1)/2]，N是未插入该节点前的树的元素个数。
 构建树的时候使用层次遍历，也就是BFS把所有的节点放入到tree里。插入的时候直接计算出新节点的父亲节点。获取root就是数组中的第0个节点。
 
-[919. Complete Binary Tree Inserter](https://blog.csdn.net/fuxuemingzhu/article/details/82958284)
+[919. Complete Binary Tree Inserter]
 
 ```python
 ###Definition for a binary tree node.
@@ -730,27 +686,9 @@ class DSU:
         return self.find(x) == self.find(y)
 ```
 
-C++版本如下：
-
-```cpp
-vector<int> map_; //i的parent，默认是i
-int f(int a) {
-    if (map_[a] == a)
-        return a;
-    return f(map_[a]);
-}
-void u(int a, int b) {
-    int pa = f(a);
-    int pb = f(b);
-    if (pa == pb)
-        return;
-    map_[pa] = pb;
-}
-```
-
 包含rank的，这里的rank表示树的高度：
 
-[684. Redundant Connection](https://leetcode.com/articles/redundant-connection/)
+[684. Redundant Connection]
 
 ```python
 class DSU(object):
@@ -779,7 +717,7 @@ class DSU(object):
 
 另外一种rank方法是，保存树中节点的个数。
 
-[547. Friend Circles](https://blog.csdn.net/fuxuemingzhu/article/details/70258103)，代码如下：
+[547. Friend Circles]
 
 ```python
 class Solution(object):
@@ -826,121 +764,55 @@ class DSU(object):
 
 前缀树的题目可以使用字典解决，代码还是需要背一下的，C++版本的前缀树如下：
 
-[208. Implement Trie (Prefix Tree)](https://blog.csdn.net/fuxuemingzhu/article/details/79388432)这个题是纯考Trie的。参考代码如下：
+[208. Implement Trie (Prefix Tree)]
 
-```cpp
-class TrieNode {
-public:
-    vector<TrieNode*> child;
-    bool isWord;
-    TrieNode() : isWord(false), child(26, nullptr) {
-    }
-    ~TrieNode() {
-        for (auto& c : child)
-            delete c;
-    }
-};
+```python
+class Trie:
+    def __init__(self):
+        """ Initialize your data structure here. """
+        self.dic = {}
 
-class Trie {
-public:
-    /** Initialize your data structure here. */
-    Trie() {
-        root = new TrieNode();
-    }
-    
-    /** Inserts a word into the trie. */
-    void insert(string word) {
-        TrieNode* p = root;
-        for (char a : word) {
-            int i = a - 'a';
-            if (!p->child[i])
-                p->child[i] = new TrieNode();
-            p = p->child[i];
-        }
-        p->isWord = true;
-    }
-    
-    /** Returns if the word is in the trie. */
-    bool search(string word) {
-        TrieNode* p = root;
-        for (char a : word) {
-            int i = a - 'a';
-            if (!p->child[i])
-                return false;
-            p = p->child[i];
-        }
-        return p->isWord;
-    }
-    
-    /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(string prefix) {
-        TrieNode* p = root;
-        for (char a : prefix) {
-            int i = a - 'a';
-            if (!p->child[i])
-                return false;
-            p = p->child[i];
-        }
-        return true;
-    }
-private:
-    TrieNode* root;
-};
+    def insert(self, word: str) -> None:
+        """ Inserts a word into the trie. """
+        cur = self.dic
+        for c in word:
+            if c not in cur:
+                cur[c] = {}
+            cur = cur[c]
+        cur['#'] = True
+        print(self.dic)
 
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie obj = new Trie();
- * obj.insert(word);
- * bool param_2 = obj.search(word);
- * bool param_3 = obj.startsWith(prefix);
- */
+    def search(self, word: str) -> bool:
+        """ Returns if the word is in the trie. """
+        cur = self.dic
+        for c in word:
+            if c not in cur:
+                return False
+            cur = cur[c]
+        return '#' in cur
+
+    def startsWith(self, prefix: str) -> bool:
+        """ Returns if there is any word in the trie that starts with the given prefix. """
+        cur = self.dic
+        for c in prefix:
+            if c not in cur:
+                return False
+            cur = cur[c]
+        return True
+
+
+if __name__ == '__main__':
+    obj = Trie()
+    obj.insert("apple")
+    obj.search("apple")
+    obj.insert("apps")
+    obj.startsWith("app")
+    obj.insert("app")
+    obj.startsWith("app")
 ```
 
-[677. Map Sum Pairs](https://blog.csdn.net/fuxuemingzhu/article/details/79436619)
+[677. Map Sum Pairs]
 
-```cpp
-class MapSum {
-public:
-    /** Initialize your data structure here. */
-    MapSum() {}
-    
-    void insert(string key, int val) {
-        int inc = val - vals_[key];
-        Trie* p = &root;
-        for (const char c : key) {
-            if (!p->children[c])
-                p->children[c] = new Trie();
-            p->children[c]->sum += inc;
-            p = p->children[c];
-        }
-        vals_[key] = val;
-    }
-    
-    int sum(string prefix) {
-        Trie* p = &root;
-        for (const char c : prefix) {
-            if (!p->children[c])
-                return 0;
-            p = p->children[c];
-        }
-        return p->sum;
-    }
-private:
-    struct Trie {
-        Trie():children(128, nullptr), sum(0){}
-        ~Trie(){
-            for (auto child : children)
-                if (child) delete child;
-            children.clear();
-        }
-        vector<Trie*> children;
-        int sum;
-    };
-    
-    Trie root;
-    unordered_map<string, int> vals_;
-};
-```
 
 #### 图遍历
 
@@ -1027,114 +899,13 @@ class Solution:
 
 #### 最小生成树
 
-[1135. Connecting Cities With Minimum Cost](https://blog.csdn.net/fuxuemingzhu/article/details/101214765)
+[1135. Connecting Cities With Minimum Cost]
 
 #### Kruskal算法
 
-```cpp
-class Solution {
-public:
-    static bool cmp(vector<int> & a,vector<int> & b){
-        return a[2] < b[2];
-    }
-    
-    int find(vector<int> & f,int x){
-        while(x != f[x]){
-            x = f[x];
-        }
-        return x;
-    }
-    
-    bool uni(vector<int> & f,int x,int y){
-        int x1 = find(f,x);
-        int y1 = find(f,y);
-        f[x1] = y1;
-        
-        return true;
-    }
-    
-    int minimumCost(int N, vector<vector<int>>& conections) {
-        int ans = 0;
-        int count = 0;
-        vector<int> father(N+1,0);
-        
-        sort(conections.begin(),conections.end(),cmp);
-        for(int i = 0;i <= N; ++i){
-            father[i] = i;
-        }
-        
-        for(auto conect : conections){
-            if(find(father,conect[0]) != find(father,conect[1])){
-                count++;
-                ans += conect[2];
-                uni(father,conect[0],conect[1]);
-                if(count == N-1){
-                    return ans;
-                }
-            }
-        }
-        
-        return -1;
-    }
-};
-```
 
 #### Prim算法
 
-```cpp
-struct cmp {
-    bool operator () (const vector<int> &a, const vector<int> &b) {
-        return a[2] > b[2];
-    }
-};
-
-class Solution {
-public:    
-    int minimumCost(int N, vector<vector<int>>& conections) {
-        int ans = 0;
-        int selected = 0;
-        vector<vector<pair<int,int>>> edgs(N+1,vector<pair<int,int>>());
-        priority_queue<vector<int>,vector<vector<int>>,cmp> pq;
-        vector<bool> visit(N+1,false);
-        
-        /*initial*/
-        for(auto re : conections){
-            edgs[re[0]].push_back(make_pair(re[1],re[2]));
-            edgs[re[1]].push_back(make_pair(re[0],re[2]));
-        }
-        
-        if(edgs[1].size() == 0){
-            return -1;
-        }
-        
-        /*kruskal*/
-        selected = 1;
-        visit[1] = true;
-        for(int i = 0;i < edgs[1].size(); ++i){
-            pq.push(vector<int>({1,edgs[1][i].first,edgs[1][i].second}));
-        }
-        
-        while(!pq.empty()){
-            vector<int> curr = pq.top();
-            pq.pop();
-            
-            if(!visit[curr[1]]){
-                visit[curr[1]] = true;
-                ans += curr[2];
-                for(auto e : edgs[curr[1]]){
-                    pq.push(vector<int>({curr[1],e.first,e.second}));
-                }
-                selected++;
-                if(selected == N){
-                    return ans;
-                }
-            }
-        }
-        
-        return -1;
-    }
-};
-```
 
 #### 拓扑排序
 
@@ -1275,35 +1046,7 @@ class Solution(object):
 这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'
 rel=)，里面的map如果是双指针范围内的字符串字频的话，增加和减少的方式如下。
 
-```cpp
-int findSubstring(string s){
-        vector<int> map(128,0);
-        int counter; // check whether the substring is valid
-        int begin=0, end=0; //two pointers, one point to tail and one  head
-        int d; //the length of substring
-
-        for() { /* initialize the hash map here */ }
-
-        while(end<s.size()){
-
-            if(map[s[end++]]++ ?){  /* modify counter here */ }
-
-            while(/* counter condition */){ 
-                 
-                 /* update d here if finding minimum*/
-
-                //increase begin to make it invalid/valid again
-                
-                if(map[s[begin++]]-- ?){ /*modify counter here*/ }
-            }  
-
-            /* update d here if finding maximum*/
-        }
-        return d;
-  }
-```
-
-[76. Minimum Window Substring](https://blog.csdn.net/fuxuemingzhu/article/details/82931106)
+[76. Minimum Window Substring]
 
 这个题的map是t的字频，所以使用map更方式和上是相反的。
 
@@ -1337,15 +1080,15 @@ class Solution(object):
 
 #### 状态搜索
 
-[688. Knight Probability in Chessboard](https://blog.csdn.net/fuxuemingzhu/article/details/82747623)
+[688. Knight Probability in Chessboard]
 
-[62. Unique Paths](https://blog.csdn.net/fuxuemingzhu/article/details/79337352)
+[62. Unique Paths]
 
-[63. Unique Paths II](https://blog.csdn.net/fuxuemingzhu/article/details/83154114)
+[63. Unique Paths II]
 
-[913. Cat and Mouse](https://blog.csdn.net/fuxuemingzhu/article/details/83350880)
+[913. Cat and Mouse]
 
-[576. Out of Boundary Paths](https://blog.csdn.net/fuxuemingzhu/article/details/83447155)
+[576. Out of Boundary Paths]
 
 ```python
 class Solution(object):
@@ -1376,9 +1119,13 @@ class Solution(object):
 
 贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来最好的选择。也就是说，不从整体最优上加以考虑，他所作出的是在某种意义上的局部最优解。贪心算法和动态规划算法都是由局部最优导出全局最优，这里不得不比较下二者的区别
 
-贪心算法： 1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。 2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
+贪心算法： 
+1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。 
+2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
 
-动态规划算法： 1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解 2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
+动态规划算法： 
+1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解 
+2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
 3.边界条件：即最简单的，可以直接得出的局部最优解
 
 贪心是个思想，没有统一的模板。
