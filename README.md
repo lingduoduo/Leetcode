@@ -14,11 +14,12 @@ test
 
 - [树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_415)
 
-- - [递归](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_417)
-  - [迭代](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_435)
-  - [前序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_465)
-  - [中序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_500)
-  - [后序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_533)
+-
+    - [递归](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_417)
+    - [迭代](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_435)
+    - [前序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_465)
+    - [中序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_500)
+    - [后序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_533)
 
 - [构建完全二叉树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_569)
 
@@ -28,14 +29,16 @@ test
 
 - [图遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_869)
 
-- - [Dijkstra算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Dijkstra_873)
-  - [Floyd-Warshall算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#FloydWarshall_902)
-  - [Bellman-Ford算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#BellmanFord_928)
+-
+    - [Dijkstra算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Dijkstra_873)
+    - [Floyd-Warshall算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#FloydWarshall_902)
+    - [Bellman-Ford算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#BellmanFord_928)
 
 - [最小生成树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_952)
 
-- - [Kruskal算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Kruskal_956)
-  - [Prim算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Prim_1006)
+-
+    - [Kruskal算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Kruskal_956)
+    - [Prim算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Prim_1006)
 
 - [拓扑排序](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1065)
 
@@ -43,11 +46,10 @@ test
 
 - [动态规划](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1263)
 
-- - [状态搜索](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265)
+-
+    - [状态搜索](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265)
 
 - [贪心](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1303)
-
-
 
 本文的目的是收集一些典型的题目，记住其写法，理解其思想，即可做到一通百通。欢迎大家提出宝贵意见！
 
@@ -67,13 +69,13 @@ test
 def binary_search(l, r):
     while l < r:
         m = l + (r - l) // 2
-        if f(m):    ###判断找了没有，optional
+        if f(m):  ###判断找了没有，optional
             return m
         if g(m):
-            r = m   ###new range [l, m)
+            r = m  ###new range [l, m)
         else:
-            l = m + 1 ###new range [m+1, r)
-    return l    ###or not found
+            l = m + 1  ###new range [m+1, r)
+    return l  ###or not found
 ```
 
 **lower bound**: find index of i, such that `A[i] >= x`
@@ -130,53 +132,89 @@ class Solution(object):
 
 #### 排序的写法
 
-C++的排序方法，使用sort并且重写comparator，如果需要使用外部变量，需要在中括号中放入&。
-
 题目451. Sort Characters By Frequency。
 
 ```python
-class Solution {
-public:
-    string frequencySort(string s) {
-        unordered_map<char, int> m;
-        for (char c : s) ++m[c];
-        sort(s.begin(), s.end(), [&](char& a, char& b){
-            return m[a] > m[b] || (m[a] == m[b] && a < b);
-        });
-        return s;
-    }
-};
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        d = dict()
+
+        res = ''
+        for i in range(len(s)):
+            d[s[i]] = d.get(s[i], 0) + 1
+
+        for key in sorted(d, key=d.get, reverse=True):
+            res += ''.join([key] * d[key])
+        return res
+
+
+class Solution(object):
+    def frequencySort(self, s):
+        import collections
+
+        i = [cha for cha in s]
+        d = collections.Counter(i)
+        f = d.most_common()
+        return ''.join([k * v for k, v in f])
+
+
+if __name__ == '__main__':
+    s = "tree"
+    s = "cccaaa"
+    s = "Aabb"
+    result = Solution().frequencySort(s)
+    print(result)
 ```
 
 #### BFS的写法
 
-下面的这个写法是在一个邻接矩阵中找出离某一个点距离是k的点。
-
-来自文章：[【LeetCode】863. All Nodes Distance K in Binary Tree 解题报告（Python）](https://blog.csdn.net/fuxuemingzhu/article/details/82709619)
+【LeetCode】863. All Nodes Distance K in Binary Tree - 下面的这个写法是在一个邻接矩阵中找出离某一个点距离是k的点
 
 ```python
 ###BFS
-bfs = [target.val]
-visited = set([target.val])
-for k in range(K):
-    bfs = [y for x in bfs for y in conn[x] if y not in visited]
-    visited |= set(bfs)
-return bfs
+
+class Solution(object):
+    def distanceK(self, root, target, K):
+        bfs = [target.val]
+        visited = set([target.val])
+        for k in range(K):
+            bfs = [y for x in bfs for y in conn[x] if y not in visited]
+            visited |= set(bfs)
+        return bfs
+
+if __name__ == '__main__':
+    p = TreeNode(3)
+    p.left = TreeNode(5)
+    p.right = TreeNode(1)
+    p.left.left = TreeNode(6)
+    p.left.right = TreeNode(2)
+    p.left.right.left = TreeNode(7)
+    p.left.right.right = TreeNode(4)
+    p.right.right = TreeNode(8)
+
+    result = Solution().distanceK(p, p.left, 2)
+    print(result)
 ```
 
-1. Word Ladder
+【LeetCode】127. Word Ladder
 
 在BFS中保存已走过的步，并把已经走的合法路径删除掉。
 
 ```python
 import collections
+
+
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList) -> int:
         stack = [(beginWord, 1)]
         visited = set()
         wordList = set(wordList)
 
-        while(stack):
+        while (stack):
             next_child = []
             for node, step in stack:
                 if node == endWord:
@@ -185,14 +223,14 @@ class Solution:
                     visited.add(node)
                     for i in range(len(node)):
                         for j in 'abcdefghijklmnopqrstuvwxyz':
-                            if node[:i]+j+node[i+1:] in wordList:
-                                next_child.append((node[:i]+j+node[i+1:], step + 1))
+                            if node[:i] + j + node[i + 1:] in wordList:
+                                next_child.append((node[:i] + j + node[i + 1:], step + 1))
 
             stack = list(set(next_child))
         return 0
 ```
 
-[778. Swim in Rising Water](https://blog.csdn.net/fuxuemingzhu/article/details/82926674)
+Leetcode 778. Swim in Rising Water
 
 使用优先级队列来优先走比较矮的路，最后保存最高的那个格子的高度。
 
@@ -264,6 +302,8 @@ class Node(object):
         self.val = val
         self.children = children
 """
+
+
 class Solution(object):
     def levelOrder(self, root):
         """
@@ -314,7 +354,7 @@ class Solution(object):
             else:
                 left = mid + 1
         return left
-        
+
     def dfs(self, visited, grid, mid, n, i, j):
         visited[i][j] = True
         if i == n - 1 and j == n - 1:
@@ -352,7 +392,7 @@ class Solution(object):
         if self.dfs(res, visited, size, n, k):
             return "".join(res)
         return ""
-        
+
     def dfs(self, res, visited, size, n, k):
         if len(visited) == size:
             return True
@@ -383,14 +423,15 @@ class Solution(object):
         nums.append(1)
         c = [[0] * (n + 2) for _ in range(n + 2)]
         return self.dfs(nums, c, 1, n)
-        
+
     def dfs(self, nums, c, i, j):
         if i > j: return 0
         if c[i][j] > 0: return c[i][j]
         if i == j: return nums[i - 1] * nums[i] * nums[i + 1]
         res = 0
         for k in range(i, j + 1):
-            res = max(res, self.dfs(nums, c, i, k - 1) + nums[i - 1] * nums[k] * nums[j + 1] + self.dfs(nums, c, k + 1, j))
+            res = max(res,
+                      self.dfs(nums, c, i, k - 1) + nums[i - 1] * nums[k] * nums[j + 1] + self.dfs(nums, c, k + 1, j))
         c[i][j] = res
         return c[i][j]
 ```
@@ -652,14 +693,12 @@ class CBTInserter(object):
             father.right = node
         self.tree.append(node)
         return father.val
-        
 
     def get_root(self):
         """
         :rtype: TreeNode
         """
         return self.tree[0]
-
 
 ###Your CBTInserter object will be instantiated and called as such:
 ###obj = CBTInserter(root)
@@ -683,10 +722,10 @@ class DSU:
         if x != self.par[x]:
             self.par[x] = self.find(self.par[x])
         return self.par[x]
-    
+
     def union(self, x, y):
         self.par[self.find(x)] = self.find(y)
-    
+
     def same(self, x, y):
         return self.find(x) == self.find(y)
 ```
@@ -760,15 +799,16 @@ class Solution(object):
             if dsu.f(i) == i:
                 res += 1
         return res
-        
+
+
 class DSU(object):
     def __init__(self):
         self.d = range(201)
         self.r = [0] * 201
-        
+
     def f(self, a):
         return a if a == self.d[a] else self.f(self.d[a])
-    
+
     def u(self, a, b):
         pa = self.f(a)
         pb = self.f(b)
@@ -1145,7 +1185,7 @@ class Solution(object):
             if not self.dfs(graph, visited, i):
                 return False
         return True
-        
+
     ###Can we add node i to visited successfully?
     def dfs(self, graph, visited, i):
         if visited[i] == 1: return False
@@ -1211,7 +1251,7 @@ class Solution(object):
             if not self.dfs(graph, visited, i, path):
                 return []
         return path
-    
+
     def dfs(self, graph, visited, i, path):
         if visited[i] == 1: return False
         if visited[i] == 2: return True
@@ -1232,7 +1272,8 @@ class Solution(object):
 
 #### 查找子字符串，双指针模板
 
-这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-' rel=)，里面的map如果是双指针范围内的字符串字频的话，增加和减少的方式如下。
+这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'
+rel=)，里面的map如果是双指针范围内的字符串字频的话，增加和减少的方式如下。
 
 ```cpp
 int findSubstring(string s){
@@ -1284,7 +1325,7 @@ class Solution(object):
             while cnt == len(t):
                 if minLen > i - left + 1:
                     minLen = i - left + 1
-                    res = s[left : i + 1]
+                    res = s[left: i + 1]
                 count[s[left]] += 1
                 if count[s[left]] > 0:
                     cnt -= 1
@@ -1326,7 +1367,7 @@ class Solution(object):
                     v2 = 1 if x == m - 1 else dp[x + 1][y]
                     v3 = 1 if y == 0 else dp[x][y - 1]
                     v4 = 1 if y == n - 1 else dp[x][y + 1]
-                    curStatus[x][y] = (v1 + v2 + v3 + v4) % (10**9 + 7)
+                    curStatus[x][y] = (v1 + v2 + v3 + v4) % (10 ** 9 + 7)
             dp = curStatus
         return dp[i][j]
 ```
@@ -1335,13 +1376,9 @@ class Solution(object):
 
 贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来最好的选择。也就是说，不从整体最优上加以考虑，他所作出的是在某种意义上的局部最优解。贪心算法和动态规划算法都是由局部最优导出全局最优，这里不得不比较下二者的区别
 
-贪心算法：
-1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。
-2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
+贪心算法： 1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。 2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
 
-动态规划算法：
-1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解
-2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
+动态规划算法： 1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解 2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
 3.边界条件：即最简单的，可以直接得出的局部最优解
 
 贪心是个思想，没有统一的模板。
