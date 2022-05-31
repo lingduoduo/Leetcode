@@ -296,8 +296,6 @@ class Node(object):
         self.val = val
         self.children = children
 """
-
-
 class Solution(object):
     def levelOrder(self, root):
         """
@@ -605,12 +603,12 @@ class Solution(object):
 [919. Complete Binary Tree Inserter]
 
 ```python
-###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+## Definition for a binary tree node.
+class TreeNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.left = None
+       self.right = None
 
 class CBTInserter(object):
 
