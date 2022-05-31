@@ -12,7 +12,7 @@ class Solution:
                 isDigit = False  # 设置isDigit = false
                 isE = True
             elif x in "+-":
-                if i != 0 and s[i-1] != "e":  # +- 只能出现首位，和 字符e的后面
+                if i != 0 and s[i - 1] != "e":  # +- 只能出现首位，和 字符e的后面
                     return False
             elif x == ".":
                 if isDot or isE:  # 字符 .（小数点）只能出现一次，而且是只能出现在 e 的前面
@@ -28,6 +28,7 @@ class Solution:
 
 import re
 
+
 class Solution:
     def isNumeric(self, s):
         if len(s) == 0:
@@ -40,7 +41,7 @@ class Solution:
     def isNumber(self, s: str) -> bool:
         pattern = re.compile(r'^[+-]?(\d+|\d+\.\d*|\.\d+)([eE][+-]?\d+)?$')
         return pattern.match(s) is not None
-    
+
 
 if __name__ == '__main__':
     res = Solution().isNumeric(s="+100")
