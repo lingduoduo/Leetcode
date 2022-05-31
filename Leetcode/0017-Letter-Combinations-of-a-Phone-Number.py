@@ -69,6 +69,7 @@ class Solution(object):
                     tmp.append(str + ch)
             res = tmp
         return res
+
       
 if __name__ == "__main__":
     digits = "23"
