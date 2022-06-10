@@ -1,5 +1,6 @@
 30. 包含 min 函数的栈
 
+Leetcode 155. Min Stack
 
 题目描述
 实现一个包含 min() 函数的栈，该方法返回当前栈中最小的值。
@@ -52,7 +53,6 @@ class MinStack:
                 self.mins.append(val)
             else:
                 self.mins.append(self.mins[-1])
-        
 
     def pop(self) -> None:
         self.mins.pop()
