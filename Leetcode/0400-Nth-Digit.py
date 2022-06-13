@@ -21,3 +21,18 @@ class Solution(object):
             n -= d * (i + 1)
         n -= 1
         return int(str(pow(10, i) + n / (i + 1))[n % (i + 1)])
+
+class Solution:
+    def findNthDigit(self, n: int) -> int:
+        start = 1
+        digit_len = 1
+        cnt = 9
+
+        while n > digit_len * cnt:
+            n -= digit_len * cnt
+            start *= 10
+            digit_len += 1
+            cnt *= 10
+
+        start += (n - 1) / digit_len
+        return int(str(start)[(n - 1) % digit_len])
