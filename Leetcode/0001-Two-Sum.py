@@ -1,4 +1,3 @@
-# Method 1
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -17,51 +16,6 @@ class Solution(object):
 
 class Solution(object):
     def twoSum(self, nums, target):
-        hash_map = {}
-        for i, v in enumerate(nums):
-            hash_map[v] = i
-
-        for index1, v in enumerate(nums):
-            if target - v in hash_map.keys():
-                index2 = hash_map[target - v]
-        return [index1 + 1, index2 + 1]
-
-
-class Solution(object):
-    def twoSum(self, nums, target):
-        idx = dict()
-        for i in range(len(nums)):
-            idx[nums[i]] = i
-
-        for i in range(len(nums)):
-            if target - nums[i] in idx.keys() and i != idx[target - nums[i]]:
-                return ([i, idx[target - nums[i]]])
-        return None
-
-
-class Solution(object):
-    def twoSum(self, nums, target):
-        for i in range(len(nums) - 1):
-            for j in range(i + 1, len(nums)):
-                if (nums[i] + nums[j]) == target:
-                    return i, j
-        return None
-
-
-class Solution(object):
-    def twoSum(self, nums, target):
-        dict = {}
-        for i in range(len(nums)):
-            dict[nums[i]] = i
-
-        for i in range(len(nums)):
-            part = target - nums[i]
-            if (part in dict.keys()) and (i != dict[part]):
-                return i, dict[target - nums[i]]
-        return None
-
-class Solution(object):
-    def twoSum(self, nums, target):
         d = {}
         for i, v in enumerate(nums):
             d[v] = i
@@ -71,6 +25,16 @@ class Solution(object):
                 return i, d[target - nums[i]]
         return None
 
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        pos = dict()
+        for i, num in enumerate(nums):
+            if target - num in pos:
+                return [pos[target - num], i]
+            else:
+                pos[num] = i
+        return [0, 0]
 
 if __name__ == "__main__":
     numbers = [2, 7, 11, 15]
