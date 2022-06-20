@@ -15,6 +15,27 @@ class Solution:
 
         return  1 if n == 1 else 2*(n//2 + 1 - self.lastRemaining(n//2))
 
+
+class Solution:
+    def lastRemaining(self, n: int) -> int:
+        return self.leftToRight(n)
+
+    def leftToRight(self, n):
+        if n == 1: return 1
+        if n == 2: return 2
+        if n & 1 == 1:
+            return 2 * self.rightToLeft((n - 1) // 2)
+        else:
+            return 2 * self.rightToLeft(n // 2)
+
+    def rightToLeft(self, n):
+        if n == 1: return 1
+        if n == 2: return 1
+        if n & 1 == 1:
+            return 2 * self.leftToRight((n - 1) // 2)
+        else:
+            return 2 * self.leftToRight(n // 2) - 1
+
 if __name__ == '__main__':
     n = 9
     res = Solution().lastRemaining(n)
