@@ -19,55 +19,6 @@
 - [Missing Number](https://leetcode.com/problems/missing-number/)
 - [Reverse Bits](https://leetcode.com/problems/reverse-bits/)
 
-### Dynamic Programming
-
-- [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
-- [Coin Change](https://leetcode.com/problems/coin-change/)
-- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
-- [Word Break Problem](https://leetcode.com/problems/word-break/)
-- [Combination Sum](https://leetcode.com/problems/combination-sum-iv/)
-- [House Robber](https://leetcode.com/problems/house-robber/)
-- [House Robber II](https://leetcode.com/problems/house-robber-ii/)
-- [Decode Ways](https://leetcode.com/problems/decode-ways/)
-- [Unique Paths](https://leetcode.com/problems/unique-paths/)
-- [Jump Game](https://leetcode.com/problems/jump-game/)
-
-### Graph
-
-- [Clone Graph](https://leetcode.com/problems/clone-graph/)
-- [Course Schedule](https://leetcode.com/problems/course-schedule/)
-- [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-- [Number of Islands](https://leetcode.com/problems/number-of-islands/)
-- [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
-- [Alien Dictionary (Leetcode Premium)](https://leetcode.com/problems/alien-dictionary/)
-- [Graph Valid Tree (Leetcode Premium)](https://leetcode.com/problems/graph-valid-tree/)
-- [Number of Connected Components in an Undirected Graph (Leetcode Premium)](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
-
-### Interval
-
-- [Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
-- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
-- [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
-- [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
-
-### Linked List
-
-- [Reverse a Linked List](https://leetcode.com/problems/reverse-linked-list/)
-- [Detect Cycle in a Linked List](https://leetcode.com/problems/linked-list-cycle/)
-- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
-- [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
-- [Remove Nth Node From End Of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
-- [Reorder List](https://leetcode.com/problems/reorder-list/)
-
-### Matrix
-
-- [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
-- [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
-- [Rotate Image](https://leetcode.com/problems/rotate-image/)
-- [Word Search](https://leetcode.com/problems/word-search/)
-
 ### String
 
 - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
@@ -98,6 +49,29 @@
 - [Add and Search Word](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
 - [Word Search II](https://leetcode.com/problems/word-search-ii/)
 
+### Linked List
+
+- [Reverse a Linked List](https://leetcode.com/problems/reverse-linked-list/)
+- [Detect Cycle in a Linked List](https://leetcode.com/problems/linked-list-cycle/)
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+- [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [Remove Nth Node From End Of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+- [Reorder List](https://leetcode.com/problems/reorder-list/)
+
+### Interval
+
+- [Insert Interval](https://leetcode.com/problems/insert-interval/)
+- [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
+- [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
+
+### Matrix
+
+- [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
+- [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
+- [Rotate Image](https://leetcode.com/problems/rotate-image/)
+- [Word Search](https://leetcode.com/problems/word-search/)
 
 ### Heap
 
@@ -105,6 +79,31 @@
 - [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
+### Graph
+
+- [Clone Graph](https://leetcode.com/problems/clone-graph/)
+- [Course Schedule](https://leetcode.com/problems/course-schedule/)
+- [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+- [Number of Islands](https://leetcode.com/problems/number-of-islands/)
+- [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
+- [Alien Dictionary (Leetcode Premium)](https://leetcode.com/problems/alien-dictionary/)
+- [Graph Valid Tree (Leetcode Premium)](https://leetcode.com/problems/graph-valid-tree/)
+- [Number of Connected Components in an Undirected Graph (Leetcode Premium)](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
+
+### Dynamic Programming
+
+- [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+- [Coin Change](https://leetcode.com/problems/coin-change/)
+- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+- [Word Break Problem](https://leetcode.com/problems/word-break/)
+- [Combination Sum](https://leetcode.com/problems/combination-sum-iv/)
+- [House Robber](https://leetcode.com/problems/house-robber/)
+- [House Robber II](https://leetcode.com/problems/house-robber-ii/)
+- [Decode Ways](https://leetcode.com/problems/decode-ways/)
+- [Unique Paths](https://leetcode.com/problems/unique-paths/)
+- [Jump Game](https://leetcode.com/problems/jump-game/)
+
 ### Important Link:
 
-[14 Patterns to Ace Any Coding Interview Question](
+[14 Patterns to Ace Any Coding Interview Question]
