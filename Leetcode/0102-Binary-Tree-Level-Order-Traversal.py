@@ -14,7 +14,7 @@ class Solution(object):
         ####first try
         result = []
         level = 0
-        
+
         def bfs(root, level):
             if root is None: return
             if len(result) == level:
@@ -22,16 +22,18 @@ class Solution(object):
             result[level].append(root.val)
             bfs(root.left, level + 1)
             bfs(root.right, level + 1)
-        
+
         bfs(root, 0)
         return result
-        
-        ####second try
+
+
+class Solution(object):
+    def levelOrder(self, root):
         if not root: return []
         result = []
         visited = []
         visited.append(root)
-        
+
         while visited:
             size = len(visited)
             par = []
@@ -45,3 +47,24 @@ class Solution(object):
                 size -= 1
             result.append(par)
         return result
+
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+
+        res = []
+        stack = [root]
+
+        while stack:
+            nodes = []
+            for i in range(len(stack)):
+                node = stack.pop(0)
+                nodes.append(node.val)
+                if node.left:
+                    stack.append(node.left)
+                if node.right:
+                    stack.append(node.right)
+            res.append(nodes)
+        return res
