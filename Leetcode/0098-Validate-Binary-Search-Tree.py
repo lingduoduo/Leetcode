@@ -31,3 +31,16 @@ class Solution:
         self.inOrder(root.left, res)
         res.append(root.val)
         self.inOrder(root.right, res)
+
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        self.res = []
+        self.inOrder(root)
+        return self.res == sorted(self.res) and len(self.res) == len(set(self.res))
+
+    def inOrder(self, root):
+        if not root: return []
+        self.inOrder(root.left)
+        self.res.append(root.val)
+        self.inOrder(root.right)

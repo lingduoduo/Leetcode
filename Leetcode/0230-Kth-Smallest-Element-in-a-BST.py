@@ -26,3 +26,37 @@ class Solution(object):
         
         DFS(root, k)
         return self.result
+
+
+# 递归
+class Solution:
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        def inorder(root):
+            if not root:
+                return
+            res = inorder(root.left)
+            if res is not None:
+                return res
+            self.k -= 1
+            if self.k == 0:
+                return root.val
+            else:
+                return inorder(root.right)
+
+        self.k = k
+        return inorder(root)
+
+
+# 非递归
+class Solution:
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            k -= 1
+            if k == 0:
+                return root.val
+            root = root.right
