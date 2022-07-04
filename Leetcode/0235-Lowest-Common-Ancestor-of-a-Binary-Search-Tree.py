@@ -9,3 +9,12 @@ class Solution:
                 pointer = pointer.left
             else:
                 return pointer
+
+ class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if min(p.val, q.val) <= root.val and max(p.val, q.val) >= root.val:
+            return root
+        elif p.val < root.val and q.val < root.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif p.val > root.val and q.val > root.val:
+            return self.lowestCommonAncestor(root.right, p, q)
