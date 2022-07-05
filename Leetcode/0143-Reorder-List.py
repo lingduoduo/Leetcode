@@ -1,4 +1,4 @@
-###Definition for singly-linked list.
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -82,6 +82,7 @@ class Solution:
 class Solution:
     def reorderList(self, head: ListNode) -> None:
         if head and head.next and head.next.next:
+            
             #find mid
             fast, slow = head, head
             while fast.next and fast.next.next:
@@ -91,6 +92,7 @@ class Solution:
             head2 = slow.next
             slow.next = None
             
+            # reverse second list
             dummy = ListNode(0)
             dummy.next = head2
             curr = head2.next
