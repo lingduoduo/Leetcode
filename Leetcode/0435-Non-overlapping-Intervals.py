@@ -2,16 +2,12 @@ class Solution:
     def eraseOverlapIntervals(self, intervals) -> int:
         if not intervals:
             return 0
-        
-        s_intervals = sorted(intervals, key=lambda x: (x[0], x[1]))
 
+        s_intervals = sorted(intervals, key=lambda x: (x[0], x[1]))
         res = 0
-        
         stack = [s_intervals[0]]
-        
         for x, y in s_intervals[1:]:
             x0, y0 = stack[-1]
-
             if y0 <= x:
                 stack.append([x, y])
             else:
@@ -19,6 +15,24 @@ class Solution:
                     stack.pop()
                     stack.append([x, y])
                 res += 1
+        return res
+
+
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        if len(intervals) == 0:
+            return 0
+
+        intervals.sort(key=lambda x: x[0])
+        l, r = intervals[0]
+        res = 0
+        for interval in intervals[1:]:
+            if r <= interval[0]:
+                l, r = interval
+            else:
+                res += 1
+                if r > interval[1]:
+                    l, r = interval
         return res
 
 if __name__ == '__main__':
