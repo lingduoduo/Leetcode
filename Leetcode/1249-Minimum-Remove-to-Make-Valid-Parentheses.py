@@ -20,6 +20,28 @@ class Solution:
         
         return ''.join(res)
     
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        cnt = 0
+        res = []
+        for cha in s:
+            if cha == "(":
+                cnt += 1
+                res.append(cha)
+            elif cha == ")":
+                if cnt > 0:
+                    cnt -= 1
+                    res.append(cha)
+            else:
+                res.append(cha)
+
+        for i in reversed(range(len(res))):
+            if cnt == 0:
+                break
+            if res[i] == "(":
+                cnt -= 1
+                res[i] = ""
+        return ''.join(res)
 
 if __name__ == '__main__':
     s = "))(("
