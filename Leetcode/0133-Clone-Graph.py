@@ -40,11 +40,27 @@ class Solution:
          
         while stack:
             t = stack.popleft()
-            if not t: continue
-            for n in t.neighbors:
-                if n not in hashd:
-                    hashd[n] = Node(n.val, [])
-                    stack.append(n)
-                hashd[t].neighbors.append(hashd[n])
+            if not t:
+                continue
+            for cur in t.neighbors:
+                if cur not in hashd:
+                    hashd[cur] = Node(cur.val, [])
+                    stack.append(cur)
+                hashd[t].neighbors.append(hashd[cur])
         return node_copy
-        
+
+
+class Solution:
+    def __init__(self):
+        self.visit = {}
+
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return node
+        if node in self.visit:
+            return self.visit[node]
+        res = Node(node.val, [])
+        self.visit[node] = res
+        if node.neighbors:
+            res.neighbors = [self.cloneGraph(n) for n in node.neighbors]
+        return res
