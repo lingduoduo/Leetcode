@@ -4,17 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+
         if not nums:
-           return 0
+            return 0
         if len(nums) == 1:
-           return nums[0]
+            return nums[0]
 
         dp = [0] * (len(nums) + 1)
         dp[0] = 0
         dp[1] = nums[0]
         for i in range(1, len(nums)):
-           dp[1 + i] = max(dp[i - 1] + nums[i], dp[i])
+            dp[1 + i] = max(dp[i - 1] + nums[i], dp[i])
 
         return dp[len(nums)]
 
@@ -25,7 +25,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        dp0, dp1  = 0, 0
+        dp0, dp1 = 0, 0
         for num in nums:
             dp0, dp1 = dp1, max(dp0 + num, dp1)
+        return dp1
+
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        dp0 = dp1 = 0
+        for num in nums:
+            dp0, dp1 = dp1, max(dp1, dp0 + num)
         return dp1
