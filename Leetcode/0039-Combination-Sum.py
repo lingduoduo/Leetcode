@@ -1,26 +1,24 @@
-# class Solution(object):
-#     def combinationSum(self, candidates, target):
-#         """
-#         :type candidates: List[int]
-#         :type target: int
-#         :rtype: List[List[int]]
-#         """
-#         candidates = sorted(candidates)
-#         self.res = []
-#         self.dfs(candidates, target, 0, [])
-#         return self.res
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        candidates = sorted(candidates)
+        self.res = []
+        self.dfs(candidates, target, 0, [])
+        return self.res
     
-#     def dfs(self, candidates, target, idx, path):
-#         if target == 0:
-#             self.res.append(path)
-#             return
+    def dfs(self, candidates, target, idx, path):
+        if target == 0:
+            self.res.append(path)
+            return
         
-#         for i in range(idx, len(candidates)):
-#             if candidates[i] > target:
-#                 break
-#             self.dfs(candidates, target -
-#                      candidates[i], i, path +
-#                      [candidates[i]])
+        for i in range(idx, len(candidates)):
+            if candidates[i] > target:
+                break
+            self.dfs(candidates, target - candidates[i], i, path + [candidates[i]])
 
 class Solution:
     def combinationSum(self, candidates, target: int):
