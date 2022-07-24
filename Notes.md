@@ -21,7 +21,7 @@
 - [二叉搜索树]
 - [完全二叉树]
 
-4 [二分查找](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_6)
+4 二分查找
 
 5 HashTable, Queue, Priority Queue
 
@@ -624,32 +624,36 @@ def binary_search(l, r):
 
 **lower bound**: find index of i, such that `A[i] >= x`
 
-```python
-def lowwer_bound(self, nums, target):
-    ###find in range [left, right)
-    left, right = 0, len(nums)
-    while left < right:
-        mid = left + (right - left) // 2
-        if nums[mid] < target:
-            left = mid + 1
-        else:
-            right = mid
-    return left
-```
-
 **upper bound**: find index of i, such that `A[i] > x`
 
 ```python
-def higher_bound(self, nums, target):
-    ###find in range [left, right)
-    left, right = 0, len(nums)
-    while left < right:
-        mid = left + (right - left) // 2
-        if nums[mid] <= target:
-            left = mid + 1
-        else:
-            right = mid
-    return left
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = self.lower_bound(nums, target)
+        right = self.higher_bound(nums, target)
+        if left == right:
+            return [-1, -1]
+        return [left, right - 1]
+    
+    def lower_bound(self, nums, target):
+        left, right = 0, len(nums)
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+    
+    def higher_bound(self, nums, target):
+        left, right = 0, len(nums)
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] <= target:
+                left = mid + 1
+            else:
+                right = mid
+        return left
 ```
 
 [69. Sqrt(x)]
