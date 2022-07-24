@@ -30,24 +30,22 @@ class Solution:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return None
-        
-        hashd = dict()
-        node_copy = Node(node.val, [])
-        hashd[node] = node_copy
-        
+
+        d = dict()
+        d[node] = Node(node.val, [])
         stack = collections.deque()
         stack.append(node)
-         
+
         while stack:
-            t = stack.popleft()
-            if not t:
+            cur = stack.popleft()
+            if not cur:
                 continue
-            for cur in t.neighbors:
-                if cur not in hashd:
-                    hashd[cur] = Node(cur.val, [])
-                    stack.append(cur)
-                hashd[t].neighbors.append(hashd[cur])
-        return node_copy
+            for neighbor in cur.neighbors:
+                if neighbor not in d:
+                    d[neighbor] = Node(neighbor.val, [])
+                    stack.append(neighbor)
+                d[cur].neighbors.append(d[neighbor])
+        return d[node]
 
 
 class Solution:
