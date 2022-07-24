@@ -659,13 +659,12 @@ class Solution:
 [69. Sqrt(x)]
 
 ```python
-class Solution(object):
-    def mySqrt(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-        left, right = 0, x + 1
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+
+        left, right = 0, x//2 + 1
         ###[left, right)
         while left < right:
             mid = left + (right - left) // 2
@@ -676,6 +675,12 @@ class Solution(object):
             else:
                 right = mid
         return left - 1
+```
+
+(162. Find Peak Element )
+
+```python
+
 ```
 
 #### 排序的写法
