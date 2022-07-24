@@ -3,21 +3,23 @@
 1 Recursion / Backtracking [递归回溯法]
 
 2 Graph Traversal [图遍历]
-    - [Dijkstra算法] Leetcode 873
-    - [拓扑排序] Leetcode 1065
-    - [Kruskal算法] Leetcode 956 
-    - [Floyd-Warshall算法] Leetcode 902
-    - [Bellman-Ford算法] Leetcode 928
-    - [最小生成树] Leetcode 952 
-    - [Prim算法] Leetcode 1006 
+
+- [Dijkstra算法] Leetcode 873
+- [拓扑排序] Leetcode 1065
+- [Kruskal算法] Leetcode 956 
+- [Floyd-Warshall算法] Leetcode 902
+- [Bellman-Ford算法] Leetcode 928
+- [最小生成树] Leetcode 952 
+- [Prim算法] Leetcode 1006 
 
 3 树
-    - [前序遍历]
-    - [中序遍历]
-    - [后序遍历]
-    - [递归迭代]
-    - [二叉搜索树]
-    - [完全二叉树]
+
+- [前序遍历]
+- [中序遍历]
+- [后序遍历]
+- [递归迭代]
+- [二叉搜索树]
+- [完全二叉树]
 
 4 [二分查找](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_6)
 
@@ -47,7 +49,7 @@
 
 (39. Combination-Sum )
 
-```
+```python
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates = sorted(candidates)
@@ -68,7 +70,7 @@ class Solution:
 
 (40. Combination-Sum II)
 
-```
+```python
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates = sorted(candidates)
@@ -91,7 +93,7 @@ class Solution:
 
 (78. Subsets)
 
-```
+```python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         self.res = []
@@ -110,7 +112,7 @@ class Solution:
 
 (90. Subsets II)
 
-```
+```python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         self.res = []
@@ -129,7 +131,7 @@ class Solution:
 
 (46. Permutation)
 
-```
+```python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         self.res = []
@@ -146,7 +148,7 @@ class Solution:
 
 (47. Permutation II)
 
-```
+```python
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         self.res = set()
@@ -188,7 +190,7 @@ class Solution:
 
 (133. Clone Graph)
 
-```
+```python
 class Solution: 
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return None
@@ -212,7 +214,7 @@ class Solution:
 
 (490. Maze)
 
-```
+```python
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
     		m, n = len(maze), len(maze[0])
@@ -238,7 +240,7 @@ class Solution:
 [207. Course Schedule]
 
 BFS方式：
-```
+```python
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         inbound = [0] * numCourses
@@ -296,7 +298,7 @@ class Solution(object):
 
 BFS方式：
 
-```
+```python
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         indegree = [0] * numCourses
@@ -346,7 +348,7 @@ class Solution(object):
 
 [269. Alien Dictionary]
 
-```
+```python
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         # create adject matrx of the graph
@@ -454,7 +456,7 @@ class Solution:
 ```
 
 [102. Binary Tree Level Order Traversal]
-```
+```python
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None:
@@ -476,7 +478,7 @@ class Solution:
 
 [236.  Lowest Common Ancestor of a Binary Tree]
 
-```
+```python
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if not root or p == root or q==root:
@@ -490,7 +492,7 @@ class Solution:
 
 (297. Serialize and Deserialize Binary Tree)
 
-```
+```python
 class Codec:
 
     def serialize(self, root):
@@ -523,7 +525,7 @@ class Codec:
         root.right = self.build(vals)
         return root
 ```
-        
+
 [617. Merge Two Binary Trees]
 
 把两个树重叠，重叠部分求和，不重叠部分是两个树不空的节点。
@@ -545,7 +547,7 @@ Binary Search Tree
 
 [98.Validate Binary Search Tree)
 
-```
+```python
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
