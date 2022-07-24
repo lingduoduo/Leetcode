@@ -1,51 +1,603 @@
 #### 目录
 
-- [二分查找](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_6)
+1 Recursion / Backtracking [递归回溯法]
 
-- [排序的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_84)
+2 Graph Traversal [图遍历]
+    - [Dijkstra算法] Leetcode 873
+    - [拓扑排序] Leetcode 1065
+    - [Kruskal算法] Leetcode 956 
+    - [Floyd-Warshall算法] Leetcode 902
+    - [Bellman-Ford算法] Leetcode 928
+    - [最小生成树] Leetcode 952 
+    - [Prim算法] Leetcode 1006 
 
-- [BFS的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#BFS_104)
+3 树
+    - [前序遍历]
+    - [中序遍历]
+    - [后序遍历]
+    - [递归迭代]
+    - [二叉搜索树]
+    - [完全二叉树]
 
-- [DFS的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#DFS_248)
+4 [二分查找](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_6)
 
-- [回溯法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_288)
+5 HashTable, Queue, Priority Queue
 
-- [树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_415)
+6 LinkList
 
-    - [递归](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_417)
-    - [迭代](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_435)
-    - [前序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_465)
-    - [中序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_500)
-    - [后序遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_533)
+7 Pointer Manipulation [查找子字符串，双指针模板](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1201)
 
-- [构建完全二叉树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_569)
+8 [排序的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_84)
+
+9 Desgin
+
+10 [动态规划](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1263)
 
 - [并查集](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_630)
 
 - [前缀树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_747)
 
-- [图遍历](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_869)
-
-    - [Dijkstra算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Dijkstra_873)
-    - [Floyd-Warshall算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#FloydWarshall_902)
-    - [Bellman-Ford算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#BellmanFord_928)
-
-- [最小生成树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_952)
-
-    - [Kruskal算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Kruskal_956)
-    - [Prim算法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#Prim_1006)
-
-- [拓扑排序](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1065)
-
-- [查找子字符串，双指针模板](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1201)
-
-- [动态规划](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1263)
-
-    - [状态搜索](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265)
+- [状态搜索](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265)
 
 - [贪心](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1303)
 
-本文的目的是收集一些典型的题目，记住其写法，理解其思想，即可做到一通百通。欢迎大家提出宝贵意见！
+#### Recursion / Backtracking 回溯法
+
+这个回溯思想，先去添加一个新的状态，看在这个状态的基础上，能不能找结果，如果找不到结果的话，那么就回退，即把这个结果和访问的记录给去掉。这个题使用了return True的方法让我们知道已经找出了结果，所以不用再递归了。
+
+(39. Combination-Sum )
+
+```
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates = sorted(candidates)
+        self.res = []
+        self.dfs(candidates, target, 0, [])
+        return self.res
+    
+    def dfs(self, candidates, target, idx, path):
+        if target == 0:
+            self.res.append(path)
+            return
+        
+        for i in range(idx, len(candidates)):
+            if candidates[i] > target:
+                break
+            self.dfs(candidates, target - candidates[i], i, path + [candidates[i]])
+```
+
+(40. Combination-Sum II)
+
+```
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates = sorted(candidates)
+        self.res = []
+        self.dfs(candidates, target, 0, [])
+        return self.res
+    
+    def dfs(self, candidates, target, idx, path):
+        if target == 0:
+            self.res.append(path)
+            return
+        
+        for i in range(idx, len(candidates)):
+            if candidates[i] > target:
+                break
+            if i > idx and candidates[i] == candidates[i - 1]:
+                continue
+            self.dfs(candidates, target - candidates[i], i + 1, path + [candidates[i]])  
+```
+
+(78. Subsets)
+
+```
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        self.res = []
+        for i in range(1 + len(nums)):
+            self.dfs(nums, i, 0, [])
+        return self.res
+
+    def dfs(self, nums, n, idx, path):
+        if n == len(path):
+            self.res.append(path)
+            return
+
+        for i in range(idx, len(nums)):
+            self.dfs(nums, n, i + 1, path + [nums[i]]) 
+```
+
+(90. Subsets II)
+
+```
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        self.res = []
+        for i in range(1 + len(nums)):
+            self.dfs(nums, i, 0, [])
+        return self.res
+
+    def dfs(self, nums, n, idx, path):
+        if n == len(path):
+            self.res.append(path)
+            return
+
+        for i in range(idx, len(nums)):
+            self.dfs(nums, n, i + 1, path + [nums[i]]) 
+```
+
+(46. Permutation)
+
+```
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        self.res = []
+        self.dfs(nums, [])
+        return self.res
+
+    def dfs(self, nums, path):
+        if len(nums) == 0:
+            self.res.append(path)
+
+        for i in range(len(nums)):
+            self.dfs(nums[:i] + nums[i+1:], [nums[i]] + path)
+```
+
+(47. Permutation II)
+
+```
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        self.res = set()
+        self.dfs(nums, [])
+        return list(self.res)
+
+    def dfs(self, nums, path):            
+        if len(nums) == 0:
+            self.res.add(tuple(path))
+            return
+        for i in range(len(nums)):                
+            self.dfs(nums[:i] + nums[i+1:], path + [nums[i]])
+```
+
+[127. Word Ladder]
+
+```python
+import collections
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList) -> int:
+        stack = [(beginWord, 1)]
+        visited = set()
+        wordList = set(wordList)
+
+        while (stack):
+            next_child = []
+            for node, step in stack:
+                if node == endWord:
+                    return step
+                if node not in visited:
+                    visited.add(node)
+                    for i in range(len(node)):
+                        for j in 'abcdefghijklmnopqrstuvwxyz':
+                            if node[:i] + j + node[i + 1:] in wordList:
+                                next_child.append((node[:i] + j + node[i + 1:], step + 1))
+            stack = list(set(next_child))
+        return 0
+```
+
+(133. Clone Graph)
+
+```
+class Solution: 
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node: return None
+
+        d = dict()
+        d[node] = Node(node.val, [])
+        stack = collections.deque()
+        stack.append(node)
+        
+        while stack:
+            cur = stack.popleft()
+            if not cur:
+                continue
+            for neighbor in cur.neighbors:
+                if neighbor not in d:
+                    d[neighbor] = Node(neighbor.val, [])
+                    stack.append(neighbor)
+                d[cur].neighbors.append(d[neighbor])
+        return d[node]
+```
+
+(490. Maze)
+
+```
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+    		m, n = len(maze), len(maze[0])
+        visit = set()
+        directions = [(1, 0), (-1, 0), (0, -1), (0, 1)]
+        stack = [start]
+        while stack:
+            curx, cury = stack.pop()
+            if [curx, cury] == destination:
+                return True
+            for dirx, diry in directions:
+                tx, ty = curx, cury
+                while 0 <= tx + dirx < m and 0 <= ty + diry < n and not maze[tx + dirx][ty + diry]:
+                    tx, ty = tx + dirx, ty + diry
+                if (tx, ty) not in visit:
+                    visit.add((tx, ty))
+                    stack.append((tx, ty))
+        return False
+```
+
+#### 图遍历
+
+[207. Course Schedule]
+
+BFS方式：
+```
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        inbound = [0] * numCourses
+        edge = defaultdict(list)
+        for x, y in prerequisites:
+            inbound[x] += 1
+            edge[y].append(x)
+        stack = [i for i in range(numCourses) if inbound[i] == 0]
+        visited = 0
+        while stack:
+            cur = stack.pop()
+            visited += 1
+            for node in edge[cur]:
+                inbound[node] -= 1
+                if inbound[node] == 0:
+                    stack.append(node)
+        return visited == numCourses
+```
+
+DFS方式：
+
+```python
+class Solution(object):
+    def canFinish(self, N, prerequisites):
+        """
+        :type N,: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+        graph = collections.defaultdict(list)
+        for u, v in prerequisites:
+            graph[u].append(v)
+        ###0 = Unknown, 1 = visiting, 2 = visited
+        visited = [0] * N
+        for i in range(N):
+            if not self.dfs(graph, visited, i):
+                return False
+        return True
+
+    ###Can we add node i to visited successfully?
+    def dfs(self, graph, visited, i):
+        if visited[i] == 1: return False
+        if visited[i] == 2: return True
+        visited[i] = 1
+        for j in graph[i]:
+            if not self.dfs(graph, visited, j):
+                return False
+        visited[i] = 2
+        return True
+```
+
+如果需要保存拓扑排序的路径：
+
+[210. Course Schedule II]
+
+BFS方式：
+
+```
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        indegree = [0] * numCourses
+        edge = defaultdict(list)
+        for x, y in prerequisites:
+            indegree[x] += 1
+            edge[y].append(x)
+        q = [i for i in range(numCourses) if indegree[i] == 0]
+        res = []
+        while q:
+            cur = q.pop()
+            res.append(cur)
+            for n in edge[cur]:
+                indegree[n] -= 1
+                if indegree[n] == 0:
+                    q.append(n)
+        return res if len(res) == numCourses else []
+```
+
+DFS方式：
+
+```python
+class Solution(object):
+    def findOrder(self, numCourses, prerequisites):
+        graph = collections.defaultdict(list)
+        for u, v in prerequisites:
+            graph[u].append(v)
+        ###0 = Unknown, 1 = visiting, 2 = visited
+        visited = [0] * numCourses
+        path = []
+        for i in range(numCourses):
+            if not self.dfs(graph, visited, i, path):
+                return []
+        return path
+
+    def dfs(self, graph, visited, i, path):
+        if visited[i] == 1: return False
+        if visited[i] == 2: return True
+        visited[i] = 1
+        for j in graph[i]:
+            if not self.dfs(graph, visited, j, path):
+                return False
+        visited[i] = 2
+        path.append(i)
+        return True
+```
+
+[269. Alien Dictionary]
+
+```
+class Solution:
+    def alienOrder(self, words: List[str]) -> str:
+        # create adject matrx of the graph
+        adj_list = collections.defaultdict(set)
+        # create initial indegrees 0 for all distinct words
+        indegrees = {}
+        for word in words:
+            for c in word:
+                if c in indegrees:
+                    continue
+                indegrees[c] = 0
+
+        # construct the graph and indegrees
+        for first_word, second_word in zip(words, words[1:]):
+            for c, d in zip(first_word, second_word):
+                if c != d:
+                    # this line is needed, otherwise the indegrees of d will be repeatedly added
+                    if d not in adj_list[c]:
+                        adj_list[c].add(d)
+                        indegrees[d] += 1
+                    break
+            # this 'else' will still match with the 'if' inside the for loop, it means if after any zip pairs c and d is not equal, codes in 'else' won't be runned. only when all pairs are equal, then codes in 'else' will be runned. In other words, the 'else' match to the final 'if' of the for loop
+            else:
+                # check if the second word is a prefix of the first word
+                if len(second_word) < len(first_word):
+                    return ''
+
+        # pick all nodes with zero indegree and put it into queue
+        q = collections.deque()
+        for k, v in indegrees.items():
+            if v == 0:
+                q.append(k)
+
+        # pick off zero indegree nodes level by level,and add to the output
+        ans = []
+        while q:
+            c = q.popleft()
+            ans.append(c)
+            for d in adj_list[c]:
+                indegrees[d] -= 1
+                if indegrees[d] == 0:
+                    q.append(d)
+
+        # if there are letter that not appear in the output, means there is a cycle in the graph, because on the indegrees of nodes in a cycle will all be non-zero
+        if len(ans) < len(indegrees):
+            return ''
+
+        return "".join(ans)
+```
+
+#### 树
+
+前序遍历
+
+[144. Binary Tree Preorder Traversal]
+
+```python
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                res.append(node.val)
+                stack.append(node.right)
+                stack.append(node.left)
+        return res
+```
+
+中序遍历
+
+[94. Binary Tree Inorder Traversal]
+
+```python
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack, res = [], []
+        cur = root
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            node = stack.pop()
+            res.append(node.val)
+            cur = node.right
+        return res
+```
+
+后序遍历
+
+[145. Binary Tree Postorder Traversal]
+
+迭代写法如下：
+
+```python
+        stack, res = [root], deque([])
+        while stack:
+            cur = stack.pop()
+            if cur:
+                res.appendleft(cur.val)
+                stack.append(cur.left)
+                stack.append(cur.right)
+        return res
+```
+
+[102. Binary Tree Level Order Traversal]
+```
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+        res = []
+        stack = [root]
+        while stack:
+            nodes = []
+            for i in range(len(stack)):
+                node = stack.pop(0)
+                nodes.append(node.val)
+                if node.left:
+                    stack.append(node.left)
+                if node.right:
+                    stack.append(node.right)
+            res.append(nodes)
+        return res
+```
+
+[236.  Lowest Common Ancestor of a Binary Tree]
+
+```
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root or p == root or q==root:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
+            return root
+        return left if left else right
+```
+
+(297. Serialize and Deserialize Binary Tree)
+
+```
+class Codec:
+
+    def serialize(self, root):
+        self.res = []
+        self.preorder(root)
+        return ','.join(str(s) for s in self.res)
+
+    def preorder(self, root):
+        if root is None:
+            self.res.append("#")
+            return
+        self.res.append(root.val)
+        self.preorder(root.left)
+        self.preorder(root.right)
+        return
+
+    def deserialize(self, data):
+        vals = collections.deque(val for val in data.split(','))
+        return self.build(vals)
+
+    def build(self, vals):
+        if not vals:
+            return None
+
+        val = vals.popleft()
+        if val == '#':
+            return None
+        root = TreeNode(int(val))
+        root.left = self.build(vals)
+        root.right = self.build(vals)
+        return root
+```
+        
+[617. Merge Two Binary Trees]
+
+把两个树重叠，重叠部分求和，不重叠部分是两个树不空的节点。
+
+```python
+class Solution:
+    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root2:
+            return root1
+        if not root1:
+            return root2
+        newT = TreeNode(root1.val + root2.val)
+        newT.left = self.mergeTrees(root1.left, root2.left)
+        newT.right = self.mergeTrees(root1.right, root2.right)
+        return newT
+```
+
+Binary Search Tree
+
+[98.Validate Binary Search Tree)
+
+```
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        return self.valid(root, float("-inf"), float("inf"))
+    
+    def valid(self, root, left, right):
+        if not root:
+            return True
+        
+        if root.val <= left or root.val >= right:
+            return False
+        
+        return self.valid(root.left, left, root.val) and self.valid(root.right, root.val, right)
+```
+
+构建完全二叉树
+
+完全二叉树是每一层都满的，因此找出要插入节点的父亲节点是很简单的。如果用数组tree保存着所有节点的层次遍历，那么新节点的父亲节点就是tree[(N -1)/2]，N是未插入该节点前的树的元素个数。
+构建树的时候使用层次遍历，也就是BFS把所有的节点放入到tree里。插入的时候直接计算出新节点的父亲节点。获取root就是数组中的第0个节点。
+
+[919. Complete Binary Tree Inserter]
+
+```python
+class CBTInserter:
+
+    def __init__(self, root):
+        self.tree = list()
+        queue = collections.deque()
+        queue.append(root)
+        while queue:
+            node = queue.popleft()
+            self.tree.append(node)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+    def insert(self, v):
+        _len = len(self.tree)
+        father = self.tree[(_len - 1) // 2]
+        node = TreeNode(v)
+        if not father.left:
+            father.left = node
+        else:
+            father.right = node
+        self.tree.append(node)
+        return father.val
+
+    def get_root(self):
+        return self.tree[0]
+```
 
 #### 二分查找
 
@@ -160,499 +712,6 @@ if __name__ == '__main__':
     print(result)
 ```
 
-#### BFS的写法
-
-[863. All Nodes Distance K in Binary Tree]
-
-下面的这个写法是在一个邻接矩阵中找出离某一个点距离是k的点
-
-```python
-###BFS
-
-class Solution(object):
-    def distanceK(self, root, target, K):
-        bfs = [target.val]
-        visited = set([target.val])
-        for k in range(K):
-            bfs = [y for x in bfs for y in conn[x] if y not in visited]
-            visited |= set(bfs)
-        return bfs
-
-if __name__ == '__main__':
-    p = TreeNode(3)
-    p.left = TreeNode(5)
-    p.right = TreeNode(1)
-    p.left.left = TreeNode(6)
-    p.left.right = TreeNode(2)
-    p.left.right.left = TreeNode(7)
-    p.left.right.right = TreeNode(4)
-    p.right.right = TreeNode(8)
-
-    result = Solution().distanceK(p, p.left, 2)
-    print(result)
-```
-
-[127. Word Ladder]
-
-在BFS中保存已走过的步，并把已经走的合法路径删除掉。
-
-```python
-import collections
-
-
-class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList) -> int:
-        stack = [(beginWord, 1)]
-        visited = set()
-        wordList = set(wordList)
-
-        while (stack):
-            next_child = []
-            for node, step in stack:
-                if node == endWord:
-                    return step
-                if node not in visited:
-                    visited.add(node)
-                    for i in range(len(node)):
-                        for j in 'abcdefghijklmnopqrstuvwxyz':
-                            if node[:i] + j + node[i + 1:] in wordList:
-                                next_child.append((node[:i] + j + node[i + 1:], step + 1))
-
-            stack = list(set(next_child))
-        return 0
-```
-
-[Leetcode 778. Swim in Rising Water]
-
-使用优先级队列来优先走比较矮的路，最后保存最高的那个格子的高度。
-
-```python
-class Solution(object):
-    def swimInWater(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
-        n = len(grid)
-        visited, pq = set((0, 0)), [(grid[0][0], 0, 0)]
-        res = 0
-        while pq:
-            T, i, j = heapq.heappop(pq)
-            res = max(res, T)
-            directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
-            if i == j == n - 1:
-                break
-            for dir in directions:
-                x, y = i + dir[0], j + dir[1]
-                if x < 0 or x >= n or y < 0 or y >= n or (x, y) in visited:
-                    continue
-                heapq.heappush(pq, (grid[x][y], x, y))
-                visited.add((x, y))
-        return res
-```
-
-[Leetcode 847. Shortest Path Visiting All Nodes]
-
-需要找出某顶点到其他顶点的最短路径。出发顶点不是确定的，每个顶点有可能访问多次。使用N位bit代表访问过的顶点的状态。如果到达了最终状态，那么现在步数就是所求。这个题把所有的节点都放入了起始队列中，相当于每次都是所有的顶点向前走一步。
-
-```python
-class Solution(object):
-    def shortestPathLength(self, graph):
-        """
-        :type graph: List[List[int]]
-        :rtype: int
-        """
-        N = len(graph)
-        que = collections.deque()
-        step = 0
-        goal = (1 << N) - 1
-        visited = [[0 for j in range(1 << N)] for i in range(N)]
-        for i in range(N):
-            que.append((i, 1 << i))
-        while que:
-            s = len(que)
-            for i in range(s):
-                node, state = que.popleft()
-                if state == goal:
-                    return step
-                if visited[node][state]:
-                    continue
-                visited[node][state] = 1
-                for nextNode in graph[node]:
-                    que.append((nextNode, state | (1 << nextNode)))
-            step += 1
-        return step
-```
-
-[429. N-ary Tree Level Order Traversal]
-
-多叉树的层次遍历，这个BFS写法我觉得很经典。适合记忆。
-
-```python
-"""
-###Definition for a Node.
-class Node(object):
-    def __init__(self, val, children):
-        self.val = val
-        self.children = children
-"""
-class Solution(object):
-    def levelOrder(self, root):
-        """
-        :type root: Node
-        :rtype: List[List[int]]
-        """
-        res = []
-        que = collections.deque()
-        que.append(root)
-        while que:
-            level = []
-            size = len(que)
-            for _ in range(size):
-                node = que.popleft()
-                if not node:
-                    continue
-                level.append(node.val)
-                for child in node.children:
-                    que.append(child)
-            if level:
-                res.append(level)
-        return res
-```
-
-#### DFS的写法
-
-[329. Longest Increasing Path in a Matrix]
-
-[417. Pacific Atlantic Water Flow]
-
-[778. Swim in Rising Water]
-
-二分查找+DFS
-
-```python
-class Solution(object):
-    def swimInWater(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
-        n = len(grid)
-        left, right = 0, n * n - 1
-        while left <= right:
-            mid = left + (right - left) / 2
-            if self.dfs([[False] * n for _ in range(n)], grid, mid, n, 0, 0):
-                right = mid - 1
-            else:
-                left = mid + 1
-        return left
-
-    def dfs(self, visited, grid, mid, n, i, j):
-        visited[i][j] = True
-        if i == n - 1 and j == n - 1:
-            return True
-        directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
-        for dir in directions:
-            x, y = i + dir[0], j + dir[1]
-            if x < 0 or x >= n or y < 0 or y >= n or visited[x][y] or max(mid, grid[i][j]) != max(mid, grid[x][y]):
-                continue
-            if self.dfs(visited, grid, mid, n, x, y):
-                return True
-        return False
-```
-
-#### 回溯法
-
-下面这个题使用了回溯法，但是写的不够简单干练，遇到更好的解法的时候，要把这个题进行更新。
-
-这个回溯思想，先去添加一个新的状态，看在这个状态的基础上，能不能找结果，如果找不到结果的话，那么就回退，即把这个结果和访问的记录给去掉。这个题使用了return True的方法让我们知道已经找出了结果，所以不用再递归了。
-
-[753. Cracking the Safe] 
-
-```python
-class Solution(object):
-    def crackSafe(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: str
-        """
-        res = ["0"] * n
-        size = k ** n
-        visited = set()
-        visited.add("".join(res))
-        if self.dfs(res, visited, size, n, k):
-            return "".join(res)
-        return ""
-
-    def dfs(self, res, visited, size, n, k):
-        if len(visited) == size:
-            return True
-        node = "".join(res[len(res) - n + 1:])
-        for i in range(k):
-            node = node + str(i)
-            if node not in visited:
-                res.append(str(i))
-                visited.add(node)
-                if self.dfs(res, visited, size, n, k):
-                    return True
-                res.pop()
-                visited.remove(node)
-            node = node[:-1]
-```
-
-[312. Burst Balloons]
-
-```python
-class Solution(object):
-    def maxCoins(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        n = len(nums)
-        nums.insert(0, 1)
-        nums.append(1)
-        c = [[0] * (n + 2) for _ in range(n + 2)]
-        return self.dfs(nums, c, 1, n)
-
-    def dfs(self, nums, c, i, j):
-        if i > j: return 0
-        if c[i][j] > 0: return c[i][j]
-        if i == j: return nums[i - 1] * nums[i] * nums[i + 1]
-        res = 0
-        for k in range(i, j + 1):
-            res = max(res,
-                      self.dfs(nums, c, i, k - 1) + nums[i - 1] * nums[k] * nums[j + 1] + self.dfs(nums, c, k + 1, j))
-        c[i][j] = res
-        return c[i][j]
-```
-
-#### 树
-
-#### 递归
-
-[617. Merge Two Binary Trees]
-
-把两个树重叠，重叠部分求和，不重叠部分是两个树不空的节点。
-
-```python
-class Solution:
-    def mergeTrees(self, t1, t2):
-        if not t2:
-            return t1
-        if not t1:
-            return t2
-        newT = TreeNode(t1.val + t2.val)
-        newT.left = self.mergeTrees(t1.left, t2.left)
-        newT.right = self.mergeTrees(t1.right, t2.right)
-        return newT
-```
-
-#### 迭代
-
-[226. Invert Binary Tree]
-
-```python
-Definition for a binary tree node.
-class TreeNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.left = None
-       self.right = None
-
-class Solution(object):
-    def invertTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: TreeNode
-        """
-        stack = []
-        stack.append(root)
-        while stack:
-            node = stack.pop()
-            if not node:
-                continue
-            node.left, node.right = node.right, node.left
-            stack.append(node.left)
-            stack.append(node.right)
-        return root
-```
-
-#### 前序遍历
-
-[144. Binary Tree Preorder Traversal]
-
-迭代写法：
-
-```python
-###Definition for a binary tree node.
-class TreeNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.left = None
-       self.right = None
-
-class Solution(object):
-    def preorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        if not root: return []
-        res = []
-        stack = []
-        stack.append(root)
-        while stack:
-            node = stack.pop()
-            if not node:
-                continue
-            res.append(node.val)
-            stack.append(node.right)
-            stack.append(node.left)
-        return res
-```
-
-#### 中序遍历
-
-[94. Binary Tree Inorder Traversal]
-
-迭代写法：
-
-```python
-# Definition for a binary tree node.
-class TreeNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.left = None
-       self.right = None
-
-class Solution(object):
-    def inorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        stack = []
-        answer = []
-        while True:
-            while root:
-                stack.append(root)
-                root = root.left
-            if not stack:
-                return answer
-            root = stack.pop()
-            answer.append(root.val)
-            root = root.right
-```
-
-#### 后序遍历
-
-[145. Binary Tree Postorder Traversal]
-
-迭代写法如下：
-
-```python
-###Definition for a binary tree node.
-class TreeNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.left = None
-       self.right = None
-
-####recursive
-class Solution(object):
-    def postorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        if not root: return []
-        
-        res = list()
-        
-        res += self.postorderTraversal(root.left)
-        res += self.postorderTraversal(root.right)
-        res.append(root.val)
-        return res
-
-####reverse post-order
-class Solution(object):
-    def postorderTraversal(self, root):
-        if not root: return []
-        
-        res = []
-        stack = []
-        stack.append(root)
-        
-        while stack:
-            node = stack.pop()
-            res.append(node.val)
-            if node.left:
-                stack.append(node.left)
-            if node.right:
-                stack.append(node.right)
-        return res[::-1]
-```
-
-#### 构建完全二叉树
-
-完全二叉树是每一层都满的，因此找出要插入节点的父亲节点是很简单的。如果用数组tree保存着所有节点的层次遍历，那么新节点的父亲节点就是tree[(N -1)/2]，N是未插入该节点前的树的元素个数。
-构建树的时候使用层次遍历，也就是BFS把所有的节点放入到tree里。插入的时候直接计算出新节点的父亲节点。获取root就是数组中的第0个节点。
-
-[919. Complete Binary Tree Inserter]
-
-```python
-## Definition for a binary tree node.
-class TreeNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.left = None
-       self.right = None
-
-class CBTInserter(object):
-
-    def __init__(self, root):
-        """
-        :type root: TreeNode
-        """
-        self.tree = list()
-        queue = collections.deque()
-        queue.append(root)
-        while queue:
-            node = queue.popleft()
-            self.tree.append(node)
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-
-    def insert(self, v):
-        """
-        :type v: int
-        :rtype: int
-        """
-        _len = len(self.tree)
-        father = self.tree[(_len - 1) / 2]
-        node = TreeNode(v)
-        if not father.left:
-            father.left = node
-        else:
-            father.right = node
-        self.tree.append(node)
-        return father.val
-
-    def get_root(self):
-        """
-        :rtype: TreeNode
-        """
-        return self.tree[0]
-
-###Your CBTInserter object will be instantiated and called as such:
-###obj = CBTInserter(root)
-###param_1 = obj.insert(v)
-###param_2 = obj.get_root()
-```
 
 #### 并查集
 
@@ -730,7 +789,6 @@ class Solution(object):
                 res += 1
         return res
 
-
 class DSU(object):
     def __init__(self):
         self.d = range(201)
@@ -805,233 +863,6 @@ if __name__ == '__main__':
 
 [677. Map Sum Pairs]
 
-#### 图遍历
-
-[743. Network Delay Time](https://blog.csdn.net/fuxuemingzhu/article/details/82862769)这个题很详细。
-
-#### Dijkstra算法
-
-时间复杂度是O(N ^ 2 + E)，空间复杂度是O(N+E).
-
-```python
-class Solution:
-    def networkDelayTime(self, times, N, K):
-        """
-        :type times: List[List[int]]
-        :type N: int
-        :type K: int
-        :rtype: int
-        """
-        K -= 1
-        nodes = collections.defaultdict(list)
-        for u, v, w in times:
-            nodes[u - 1].append((v - 1, w))
-        dist = [float('inf')] * N
-        dist[K] = 0
-        done = set()
-        for _ in range(N):
-            smallest = min((d, i) for (i, d) in enumerate(dist) if i not in done)[1]
-            for v, w in nodes[smallest]:
-                if v not in done and dist[smallest] + w < dist[v]:
-                    dist[v] = dist[smallest] + w
-            done.add(smallest)
-        return -1 if float('inf') in dist else max(dist)
-```
-
-#### Floyd-Warshall算法
-
-时间复杂度O(n^3)， 空间复杂度O(n^2)。
-
-```python
-class Solution:
-    def networkDelayTime(self, times, N, K):
-        """
-        :type times: List[List[int]]
-        :type N: int
-        :type K: int
-        :rtype: int
-        """
-        d = [[float('inf')] * N for _ in range(N)]
-        for time in times:
-            u, v, w = time[0] - 1, time[1] - 1, time[2]
-            d[u][v] = w
-        for i in range(N):
-            d[i][i] = 0
-        for k in range(N):
-            for i in range(N):
-                for j in range(N):
-                    d[i][j] = min(d[i][j], d[i][k] + d[k][j])
-        return -1 if float('inf') in d[K - 1] else max(d[K - 1])
-```
-
-#### Bellman-Ford算法
-
-时间复杂度O(ne)， 空间复杂度O(n)
-
-```python
-class Solution:
-    def networkDelayTime(self, times, N, K):
-        """
-        :type times: List[List[int]]
-        :type N: int
-        :type K: int
-        :rtype: int
-        """
-        dist = [float('inf')] * N
-        dist[K - 1] = 0
-        for i in range(N):
-            for time in times:
-                u = time[0] - 1
-                v = time[1] - 1
-                w = time[2]
-                dist[v] = min(dist[v], dist[u] + w)
-        return -1 if float('inf') in dist else max(dist)
-```
-
-#### 最小生成树
-
-[1135. Connecting Cities With Minimum Cost]
-
-#### Kruskal算法
-
-
-#### Prim算法
-
-
-#### 拓扑排序
-
-BFS方式：
-
-```python
-class Solution(object):
-    def canFinish(self, N, prerequisites):
-        """
-        :type N,: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
-        graph = collections.defaultdict(list)
-        indegrees = collections.defaultdict(int)
-        for u, v in prerequisites:
-            graph[v].append(u)
-            indegrees[u] += 1
-        for i in range(N):
-            zeroDegree = False
-            for j in range(N):
-                if indegrees[j] == 0:
-                    zeroDegree = True
-                    break
-            if not zeroDegree: return False
-            indegrees[j] = -1
-            for node in graph[j]:
-                indegrees[node] -= 1
-        return True                
-```
-
-DFS方式：
-
-```python
-class Solution(object):
-    def canFinish(self, N, prerequisites):
-        """
-        :type N,: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
-        graph = collections.defaultdict(list)
-        for u, v in prerequisites:
-            graph[u].append(v)
-        ###0 = Unknown, 1 = visiting, 2 = visited
-        visited = [0] * N
-        for i in range(N):
-            if not self.dfs(graph, visited, i):
-                return False
-        return True
-
-    ###Can we add node i to visited successfully?
-    def dfs(self, graph, visited, i):
-        if visited[i] == 1: return False
-        if visited[i] == 2: return True
-        visited[i] = 1
-        for j in graph[i]:
-            if not self.dfs(graph, visited, j):
-                return False
-        visited[i] = 2
-        return True
-```
-
-如果需要保存拓扑排序的路径：
-
-BFS方式：
-
-```python
-class Solution(object):
-    def findOrder(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: List[int]
-        """
-        graph = collections.defaultdict(list)
-        indegrees = collections.defaultdict(int)
-        for u, v in prerequisites:
-            graph[v].append(u)
-            indegrees[u] += 1
-        path = []
-        for i in range(numCourses):
-            zeroDegree = False
-            for j in range(numCourses):
-                if indegrees[j] == 0:
-                    zeroDegree = True
-                    break
-            if not zeroDegree:
-                return []
-            indegrees[j] -= 1
-            path.append(j)
-            for node in graph[j]:
-                indegrees[node] -= 1
-        return path
-```
-
-DFS方式：
-
-```python
-class Solution(object):
-    def findOrder(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: List[int]
-        """
-        graph = collections.defaultdict(list)
-        for u, v in prerequisites:
-            graph[u].append(v)
-        ###0 = Unknown, 1 = visiting, 2 = visited
-        visited = [0] * numCourses
-        path = []
-        for i in range(numCourses):
-            if not self.dfs(graph, visited, i, path):
-                return []
-        return path
-
-    def dfs(self, graph, visited, i, path):
-        if visited[i] == 1: return False
-        if visited[i] == 2: return True
-        visited[i] = 1
-        for j in graph[i]:
-            if not self.dfs(graph, visited, j, path):
-                return False
-        visited[i] = 2
-        path.append(i)
-        return True
-```
-
-[207. Course Schedule](https://blog.csdn.net/fuxuemingzhu/article/details/82951771)
-
-[210. Course Schedule II](https://blog.csdn.net/fuxuemingzhu/article/details/83302328)
-
-[310. Minimum Height Trees](https://blog.csdn.net/fuxuemingzhu/article/details/83548874)
-
 #### 查找子字符串，双指针模板
 
 这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'
@@ -1068,6 +899,21 @@ class Solution(object):
 ```
 
 #### 动态规划
+
+[312. Burst Balloons]
+
+```python
+class Solution:
+    def maxCoins(self, nums: List[int]) -> int:
+        nums = [1] + nums + [1]
+        n = len(nums)
+        dp = [[0] * n for _ in range(n)]
+        for i in range(n - 2, -1, -1):
+            for j in range(i + 2, n):
+                for k in range(i + 1, j):
+                    dp[i][j] = max(dp[i][j], nums[i] * nums[k] * nums[j] + dp[i][k] + dp[k][j])
+        return dp[0][n - 1]
+```
 
 #### 状态搜索
 
