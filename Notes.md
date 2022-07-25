@@ -29,7 +29,7 @@
 
 7 Pointer Manipulation [查找子字符串，双指针模板]
 
-8 [排序的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_84)
+8 排序的写法
 
 9 Desgin
 
@@ -966,32 +966,15 @@ class Solution:
 ```python
 class Solution(object):
     def frequencySort(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        d = dict()
-
-        res = ''
-        for i in range(len(s)):
-            d[s[i]] = d.get(s[i], 0) + 1
-
-        for key in sorted(d, key=d.get, reverse=True):
-            res += ''.join([key] * d[key])
-        return res
-
-
-class Solution(object):
-    def frequencySort(self, s):
         import collections
 
         i = [cha for cha in s]
         d = collections.Counter(i)
         f = d.most_common()
         return ''.join([k * v for k, v in f])
-
 ```
 
+(148. Sort List)
 
 ```python
 class Solution:
@@ -1015,12 +998,139 @@ class Solution:
         return self.merge(self.sortList(head), self.sortList(slow))
 ```
 
+Design
+
+(146. LRU Cache)
+
+```python
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dict = collections.OrderedDict()
+        self.size = 0
+
+    def get(self, key: int) -> int:
+        if key in self.dict:
+            self.dict.move_to_end(key)
+            return self.dict[key]
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            self.dict[key] = value
+            self.dict.move_to_end(key)
+        else:
+            if self.size < self.capacity:
+                self.dict[key] = value
+                self.size += 1
+            else:
+                self.dict.popitem(False)
+                self.dict[key] = value
+
+class ListNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.prev = self
+        self.next = self
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.dic = dict()
+        self.capacity = capacity
+        self.size = 0
+        self.root = ListNode(0, 0)
+
+    def get(self, key: int) -> int:
+        if key in self.dic:
+            node = self.dic[key]
+            self.removeFromList(node)
+            self.insertIntoHead(node)
+            return node.value
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dic:
+            node = self.dic[key]
+            self.removeFromList(node)
+            self.insertIntoHead(node)
+            node.value = value
+        else:
+            if self.size >= self.capacity:
+                self.removeFromTail()
+                self.size -= 1
+            node = ListNode(key, value)
+            self.insertIntoHead(node)
+            self.dic[key] = node
+            self.size += 1
+
+    def removeFromList(self, node):
+        if node == self.root: return
+        prev_node = node.prev
+        next_node = node.next
+        prev_node.next = next_node
+        next_node.prev = prev_node
+        node.prev = node.next = None
+
+    def insertIntoHead(self, node):
+        head_node = self.root.next
+        head_node.prev = node
+        node.prev = self.root
+        self.root.next = node
+        node.next = head_node
+
+    def removeFromTail(self):
+        if self.size == 0: return
+        tail_node = self.root.prev
+        del self.dic[tail_node.key]
+        self.removeFromList(tail_node)
+```
+
+(1066. )
+
+```
+class Solution:
+    def assignBikes(self, workers, bikes):
+        n, m = len(workers), len(bikes)
+        dis = [[0 for _ in range(m)] for _ in range(n)]
+            
+        for w, worker in enumerate(workers):
+             xw, yw = worker[0], worker[1]
+            
+             for b, bike in enumerate(bikes):
+                xb, yb = bike[0], bike[1]
+                dis[w][b] = abs(xb-xw) + abs(yb-yw)
+
+        def findRes(wid, usedbike):
+            if wid >= n:
+                return 0 
+            
+            state = (wid, tuple(sorted(list(usedbike))))
+            # print state
+            if state in dp: #Calculated before
+                return dp[state]
+            else:
+                res = float("inf")
+                for bid in range(m):
+                    if bid not in usedbike:    
+                        usedbike.add(bid)
+                        t = dis[wid][bid] + findRes(wid + 1, usedbike)   
+                        usedbike.remove(bid)
+                        res = min(res, t)
+                dp[state] = res
+                return res
+```
+
 #### 并查集
 
 不包含rank的话，代码很简短，应该背会。
 
-1. Accounts Merge
-   https://leetcode.com/articles/accounts-merge/
+(721. Accounts Merge)
 
 ```python
 class DSU:
