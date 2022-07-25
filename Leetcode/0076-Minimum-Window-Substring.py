@@ -7,23 +7,23 @@ class Solution(object):
         """
         if len(s) < len(t):
             return ""
-        
+
         d = dict()
         for i in range(len(t)):
             d[t[i]] = d.get(t[i], 0) + 1
-        
+
         slow = 0
         minLen = float('inf')
         matchCount = 0
         index = 0
-        
+
         for i in range(len(s)):
             if s[i] in d:
                 d[s[i]] -= 1
                 ####from 1 to 0
                 if d[s[i]] == 0:
                     matchCount += 1
-            
+
             while matchCount == len(d.keys()):
                 ####find a valid substring
                 if i - slow + 1 < minLen:
@@ -38,8 +38,28 @@ class Solution(object):
                     d[leftmost] += 1
                     if d[leftmost] > 0:
                         matchCount -= 1
-        
+
         return "" if minLen == float('inf') else s[index: index + minLen]
+
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        res = ""
+        left, cnt, minLen = 0, 0, float('inf')
+        count = collections.Counter(t)
+        for i, c in enumerate(s):
+            count[c] -= 1
+            if count[c] >= 0:
+                cnt += 1
+            while cnt == len(t):
+                if minLen > i - left + 1:
+                    minLen = i - left + 1
+                    res = s[left: i + 1]
+                count[s[left]] += 1
+                if count[s[left]] > 0:
+                    cnt -= 1
+                left += 1
+        return res
 
 
 if __name__ == '__main__':

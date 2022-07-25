@@ -23,11 +23,11 @@
 
 4 二分查找
 
-5 HashTable, Queue, Priority Queue
+5 Data Structure - HashTable, Queue, Priority Queue
 
 6 LinkList
 
-7 Pointer Manipulation [查找子字符串，双指针模板](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1201)
+7 Pointer Manipulation [查找子字符串，双指针模板]
 
 8 [排序的写法](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_84)
 
@@ -680,7 +680,264 @@ class Solution:
 (162. Find Peak Element )
 
 ```python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        left, right = 0, len(nums) - 1
+        while left < right:
+            mid1 = (left + right) // 2
+            mid2 = mid1 + 1
+            if nums[mid1] < nums[mid2]:
+                left = mid2
+            else:
+                right = mid1
+        return left
+```
+#### Data Structure - HashTable, Queue, Priority Queue
 
+HashTable
+
+[242. Valid Anagram]
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        d = {}
+        for cha in s:
+            if cha in d:
+                d[cha] += 1
+            else:
+                d[cha] = 1
+
+        for cha in t:
+            if cha in d:
+                if d[cha] > 0:
+                    d[cha] -= 1
+                else:
+                    return False
+            else:
+                return False
+        return all(v == 0 for v in d.values())
+```
+
+Stack
+
+[155. Min Stack]
+
+```python
+class MinStack:
+
+    def __init__(self):
+        self.num_stack = []
+        self.min_stack = []
+
+    def push(self, val: int) -> None:
+        self.num_stack.append(val)
+        if len(self.min_stack) == 0 or val < self.min_stack[-1]:
+            self.min_stack.append(val)
+        else:
+            self.min_stack.append(self.min_stack[-1])
+
+    def pop(self) -> None:
+        self.min_stack.pop()
+        return None if len(self.num_stack) == 0 else self.num_stack.pop()
+
+    def top(self) -> int:
+        return None if len(self.num_stack) == 0 else self.num_stack[-1]
+
+    def getMin(self) -> int:
+        return None if len(self.min_stack) == 0 else self.min_stack[-1]
+```
+
+(225. Implement Stack using Queues)
+
+```python
+class MyStack:
+    def __init__(self):
+        self.que = collections.deque()
+
+    def push(self, x):
+        self.que.append(x)
+        for i in range(len(self.que) - 1):
+            self.que.append(self.que.popleft())
+
+    def pop(self):
+        return self.que.popleft()
+
+    def top(self):
+        return self.que[0]
+
+    def empty(self):
+        return not self.que
+```
+
+Priority Queue
+
+[23. Merge k Sorted Lists]
+
+```python
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        q = []
+        for i in range(len(lists)):
+            if lists[i]:
+                heapq.heappush(q, (lists[i].val, i))
+                lists[i] = lists[i].next
+        
+        dummy = ListNode()
+        cur = dummy
+        while q:
+            val, i = heapq.heappop(q)
+            cur.next = ListNode(val)
+            cur = cur.next
+            if lists[i]:
+                heapq.heappush(q, (lists[i].val, i))
+                lists[i] = lists[i].next
+        return dummy.next
+```
+
+[215. Kth Largest Element in an Array)
+
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums = [-num for num in nums]
+        heapq.heapify(nums)
+        i = 0
+        while i < k:
+            res = heapq.heappop(nums)
+            i += 1
+        return -res
+```
+
+#### Linklist
+
+(237. Delete Node in a Linked List)
+
+```python
+class Solution:
+    def deleteNode(self, node):
+        node.val = node.next.val
+        node.next = node.next.next
+```
+
+(876. Middle of the Linked List)
+
+```
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+        
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+```
+
+(92. Reverse Linked List II)
+
+```python
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        count = 1
+        root = ListNode(0)
+        root.next = head
+        pre = root
+        while pre.next and count < left:
+            pre = pre.next
+            count += 1
+        if count < left:
+            return head
+        mNode = pre.next
+        curr = mNode.next
+        while curr and count < right:
+            next = curr.next
+            curr.next = pre.next
+            pre.next = curr
+            mNode.next = next
+            curr = next
+            count += 1
+        return root.next
+```
+
+(143. Reorder List)
+
+```python
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        if head and head.next and head.next.next:
+            
+            #find mid
+            fast, slow = head, head
+            while fast.next and fast.next.next:
+                fast = fast.next.next
+                slow = slow.next
+            head1 = head
+            head2 = slow.next
+            slow.next = None
+            
+            # reverse second list
+            dummy = ListNode(0)
+            dummy.next = head2
+            curr = head2.next
+            head2.next = None
+            
+            while curr:
+                dummy.next, curr.next, curr = curr, dummy.next, curr.next
+            head2 = dummy.next
+        
+            # merge two linked list head1 and head2
+            p1 = head1
+            p2 = head2
+            while p2:
+                p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next 
+```
+
+#### Pointer Manipulation
+
+(3. Longest Substring Without Repeating Characters)
+
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        d = {}
+        start = res = 0
+        for i, c in enumerate(s):
+            if c in d and start <= d[c]:
+                start = d[c] + 1
+            else:
+                res = max(res, i - start + 1)
+            d[c] = i
+        return res
+```
+
+[76. Minimum Window Substring]
+
+这个题的map是t的字频，所以使用map更方式和上是相反的。
+
+```python
+class Solution(object):
+    def minWindow(self, s, t):
+        res = ""
+        left, cnt, minLen = 0, 0, float('inf')
+        count = collections.Counter(t)
+        for i, c in enumerate(s):
+            count[c] -= 1
+            if count[c] >= 0:
+                cnt += 1
+            while cnt == len(t):
+                if minLen > i - left + 1:
+                    minLen = i - left + 1
+                    res = s[left: i + 1]
+                count[s[left]] += 1
+                if count[s[left]] > 0:
+                    cnt -= 1
+                left += 1
+        return res
 ```
 
 #### 排序的写法
@@ -879,34 +1136,7 @@ if __name__ == '__main__':
 这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'
 rel=)，里面的map如果是双指针范围内的字符串字频的话，增加和减少的方式如下。
 
-[76. Minimum Window Substring]
 
-这个题的map是t的字频，所以使用map更方式和上是相反的。
-
-```python
-class Solution(object):
-    def minWindow(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: str
-        """
-        res = ""
-        left, cnt, minLen = 0, 0, float('inf')
-        count = collections.Counter(t)
-        for i, c in enumerate(s):
-            count[c] -= 1
-            if count[c] >= 0:
-                cnt += 1
-            while cnt == len(t):
-                if minLen > i - left + 1:
-                    minLen = i - left + 1
-                    res = s[left: i + 1]
-                count[s[left]] += 1
-                if count[s[left]] > 0:
-                    cnt -= 1
-                left += 1
-        return res
 ```
 
 #### 动态规划

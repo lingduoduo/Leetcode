@@ -44,9 +44,21 @@ class MyStack(object):
         else:
             return False
 
-###Your MyStack object will be instantiated and called as such:
-###obj = MyStack()
-###obj.push(x)
-###param_2 = obj.pop()
-###param_3 = obj.top()
-###param_4 = obj.empty()
+class MyStack:
+    def __init__(self):
+        self.que = collections.deque()
+
+    def push(self, x):
+        self.que.append(x)
+        for i in range(len(self.que) - 1):
+            self.que.append(self.que.popleft())
+
+    def pop(self):
+        return self.que.popleft()
+
+    def top(self):
+        return self.que[0]
+
+    def empty(self):
+        return not self.que
+
