@@ -940,6 +940,25 @@ class Solution(object):
         return res
 ```
 
+(239. Sliding Window Maximum)
+```python
+from collections import deque
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        res = []
+        q = deque()
+        for i in range(n):
+            while q and nums[q[-1]] < nums[i]:
+                q.pop()
+            q.append(i)
+            if q[0] == i - k:
+                q.popleft()
+            if i >= k - 1:
+                res.append(nums[q[0]])
+        return res
+```
+
 #### 排序的写法
 
 [451. Sort Characters By Frequency]
@@ -971,15 +990,30 @@ class Solution(object):
         f = d.most_common()
         return ''.join([k * v for k, v in f])
 
-
-if __name__ == '__main__':
-    s = "tree"
-    s = "cccaaa"
-    s = "Aabb"
-    result = Solution().frequencySort(s)
-    print(result)
 ```
 
+
+```python
+class Solution:
+    def merge(self, h1, h2):
+        dummy = tail = ListNode()
+        while h1 and h2:
+            if h1.val < h2.val:
+                tail.next, tail, h1 = h1, h1, h1.next
+            else:
+                tail.next, tail, h2 = h2, h2, h2.next
+        tail.next = h1 or h2
+        return dummy.next
+    
+    def sortList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        pre, slow, fast = None, head, head
+        while fast and fast.next:
+            pre, slow, fast = slow, slow.next, fast.next.next
+        pre.next = None
+        return self.merge(self.sortList(head), self.sortList(slow))
+```
 
 #### 并查集
 
