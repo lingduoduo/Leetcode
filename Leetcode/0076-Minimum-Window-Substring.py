@@ -41,13 +41,14 @@ class Solution(object):
 
         return "" if minLen == float('inf') else s[index: index + minLen]
 
-
+import collections
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         res = ""
         left, cnt, minLen = 0, 0, float('inf')
         count = collections.Counter(t)
         for i, c in enumerate(s):
+            print(f"left = {left}, cnt={cnt}, minLen={minLen}, count={count}")
             count[c] -= 1
             if count[c] >= 0:
                 cnt += 1
