@@ -2,7 +2,7 @@ from typing import List
 import heapq
 
 class Solution:
-    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+    def canAttendMeetings(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[0])
         l, r = intervals[0]
         q = []
