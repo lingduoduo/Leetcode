@@ -50,7 +50,7 @@
 
 - [贪心](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1303)
 
-#### Recursion / Backtracking 回溯法
+### Recursion / Backtracking 回溯法
 
 这个回溯思想，先去添加一个新的状态，看在这个状态的基础上，能不能找结果，如果找不到结果的话，那么就回退，即把这个结果和访问的记录给去掉。这个题使用了return True的方法让我们知道已经找出了结果，所以不用再递归了。
 
@@ -170,6 +170,8 @@ class Solution:
             self.dfs(nums[:i] + nums[i+1:], path + [nums[i]])
 ```
 
+### 图遍历
+
 [127. Word Ladder]
 
 ```python
@@ -241,8 +243,6 @@ class Solution:
                     stack.append((tx, ty))
         return False
 ```
-
-#### 图遍历
 
 [207. Course Schedule]
 
@@ -406,7 +406,7 @@ class Solution:
         return "".join(ans)
 ```
 
-#### 树
+### 树
 
 前序遍历
 
@@ -608,7 +608,7 @@ class CBTInserter:
         return self.tree[0]
 ```
 
-#### 二分查找
+### 二分查找
 
 其中f(m)函数代表找到了满足条件的情况，有这个条件的判断就返回对应的位置，如果没有这个条件的判断就是lowwer_bound和higher_bound.
 
@@ -699,7 +699,7 @@ class Solution:
                 right = mid1
         return left
 ```
-#### Data Structure - HashTable, Queue, Priority Queue
+### Data Structure - HashTable, Queue, Priority Queue
 
 HashTable
 
@@ -816,7 +816,7 @@ class Solution:
         return -res
 ```
 
-#### Linklist
+### Linklist
 
 (237. Delete Node in a Linked List)
 
@@ -904,7 +904,7 @@ class Solution:
                 p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next 
 ```
 
-#### Pointer Manipulation
+### Pointer Manipulation
 
 (3. Longest Substring Without Repeating Characters)
 
@@ -966,7 +966,7 @@ class Solution:
         return res
 ```
 
-#### 排序的写法
+### 排序的写法
 
 [451. Sort Characters By Frequency]
 
@@ -1133,7 +1133,7 @@ class Solution:
                 return res
 ```
 
-#### 并查集
+### 并查集
 
 不包含rank的话，代码很简短，应该背会。
 
@@ -1229,7 +1229,7 @@ class DSU(object):
             self.r[pa] += self.r[pb]
 ```
 
-#### 前缀树
+### 前缀树
 
 前缀树的题目可以使用字典解决，代码还是需要背一下的，C++版本的前缀树如下：
 
@@ -1290,7 +1290,7 @@ rel=)，里面的map如果是双指针范围内的字符串字频的话，增加
 
 ```
 
-#### 动态规划
+### 动态规划
 
 [312. Burst Balloons]
 
@@ -1344,7 +1344,7 @@ class Solution(object):
         return dp[i][j]
 ```
 
-#### 贪心
+### 贪心
 
 贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来最好的选择。也就是说，不从整体最优上加以考虑，他所作出的是在某种意义上的局部最优解。贪心算法和动态规划算法都是由局部最优导出全局最优，这里不得不比较下二者的区别
 
