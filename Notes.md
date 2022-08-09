@@ -2,6 +2,13 @@
 
 1 Recursion / Backtracking [递归回溯法]
 
+- [Combination-Sum](https://leetcode.com/problems/combination-sum/)
+- [Combination-Sum II](https://leetcode.com/problems/combination-sum-ii/)
+- [ Subsets](https://leetcode.com/problems/subsets/)
+- [Subsets II](https://leetcode.com/problems/subsets-ii/)
+- [Permutation](https://leetcode.com/problems/permutations/)
+- [Permutation II](https://leetcode.com/problems/permutations-ii/)
+
 2 Graph Traversal [图遍历]
 
 - [Dijkstra算法] Leetcode 873
