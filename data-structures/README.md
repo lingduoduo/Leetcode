@@ -121,19 +121,18 @@ class Solution:
 
 ```python
 class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
+    def subsetsWithDup(self, nums):
         self.res = []
-        for i in range(1 + len(nums)):
-            self.dfs(nums, i, 0, [])
+        nums.sort()
+        for i in range(len(nums)):
+            self.dfs(nums, i, [])
         return self.res
 
-    def dfs(self, nums, n, idx, path):
-        if n == len(path):
+    def dfs(self, nums, index, path):
+        if path not in self.res:
             self.res.append(path)
-            return
-
-        for i in range(idx, len(nums)):
-            self.dfs(nums, n, i + 1, path + [nums[i]]) 
+        for i in range(index, len(nums)):
+            self.dfs(nums, i + 1, path + [nums[i]])
 ```
 
 (46. Permutation)
