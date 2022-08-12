@@ -11,7 +11,7 @@
 
 2 Graph Traversal [图遍历]
 
-- [Word Ladde](https://leetcode.com/problems/word-ladder/)
+- [Word Ladder](https://leetcode.com/problems/word-ladder/)
 - [Clone Graph](https://leetcode.com/problems/clone-graph/)
 - [The Maze] - Premium
 - [Course Schedule](https://leetcode.com/problems/course-schedule/)
@@ -226,7 +226,7 @@ class Solution:
         return d[node]
 ```
 
-(490. Maze)
+(490. The Maze)
 
 ```python
 class Solution:
