@@ -32,7 +32,17 @@
 
 4 二分查找
 
-5 Data Structure - HashTable, Queue, Priority Queue
+- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+- [Sqrt(x)](https://leetcode.com/problems/sqrtx/)
+- [Find Peak Element](https://leetcode.com/problems/find-peak-element/)
+
+5 Data Structure - HashTable, Stack, Priority Queue
+
+- [Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+- [Min Stack](https://leetcode.com/problems/min-stack/)
+- [Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
+- [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 6 LinkList
 
