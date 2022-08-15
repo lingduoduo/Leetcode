@@ -82,7 +82,7 @@
 
 36. 二叉搜索树与双向链表	Linked List	
 
-37. 序列化二叉树	Tree	关注
+37. [序列化二叉树 Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)	Tree	关注
 
 38. 字符串的排列	String	关注
 
@@ -150,4 +150,5 @@
 
     把字符串转成整数	Bit Manipulation	关注
 
-67. 树中两个节点的最低公共祖先		常考
+67. [树中两个节点的最低公共祖先 Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)		常考
+
