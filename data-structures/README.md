@@ -508,7 +508,7 @@ class Solution:
         return left if left else right
 ```
 
-(297. Serialize and Deserialize Binary Tree)
+[297. Serialize and Deserialize Binary Tree]
 
 ```python
 class Codec:
@@ -563,7 +563,7 @@ class Solution:
 
 Binary Search Tree
 
-[98.Validate Binary Search Tree)
+[98.Validate Binary Search Tree]
 
 ```python
 class Solution:
@@ -694,7 +694,7 @@ class Solution:
         return left - 1
 ```
 
-(162. Find Peak Element )
+[162. Find Peak Element]
 
 ```python
 class Solution:
