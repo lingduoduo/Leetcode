@@ -494,7 +494,7 @@ class Solution:
         return res
 ```
 
-[236.  Lowest Common Ancestor of a Binary Tree]
+[236. Lowest Common Ancestor of a Binary Tree]
 
 ```python
 class Solution:
@@ -641,7 +641,6 @@ def binary_search(l, r):
 区间定义：`[l, r) 左闭右开`
 
 **lower bound**: find index of i, such that `A[i] >= x`
-
 **upper bound**: find index of i, such that `A[i] > x`
 
 ```python
