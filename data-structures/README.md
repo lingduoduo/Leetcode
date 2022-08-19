@@ -75,12 +75,12 @@ class Solution:
         self.res = []
         self.dfs(candidates, target, 0, [])
         return self.res
-    
+
     def dfs(self, candidates, target, idx, path):
         if target == 0:
             self.res.append(path)
             return
-        
+
         for i in range(idx, len(candidates)):
             if candidates[i] > target:
                 break
@@ -96,12 +96,12 @@ class Solution:
         self.res = []
         self.dfs(candidates, target, 0, [])
         return self.res
-    
+
     def dfs(self, candidates, target, idx, path):
         if target == 0:
             self.res.append(path)
             return
-        
+
         for i in range(idx, len(candidates)):
             if candidates[i] > target:
                 break
@@ -161,7 +161,7 @@ class Solution:
             self.res.append(path)
 
         for i in range(len(nums)):
-            self.dfs(nums[:i] + nums[i+1:], [nums[i]] + path)
+            self.dfs(nums[:i] + nums[i + 1:], [nums[i]] + path)
 ```
 
 (47. Permutation II)
@@ -173,12 +173,12 @@ class Solution:
         self.dfs(nums, [])
         return list(self.res)
 
-    def dfs(self, nums, path):            
+    def dfs(self, nums, path):
         if len(nums) == 0:
             self.res.add(tuple(path))
             return
-        for i in range(len(nums)):                
-            self.dfs(nums[:i] + nums[i+1:], path + [nums[i]])
+        for i in range(len(nums)):
+            self.dfs(nums[:i] + nums[i + 1:], path + [nums[i]])
 ```
 
 ### 图遍历
@@ -187,6 +187,8 @@ class Solution:
 
 ```python
 import collections
+
+
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList) -> int:
         stack = [(beginWord, 1)]
@@ -211,7 +213,7 @@ class Solution:
 (133. Clone Graph)
 
 ```python
-class Solution: 
+class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return None
 
@@ -219,7 +221,7 @@ class Solution:
         d[node] = Node(node.val, [])
         stack = collections.deque()
         stack.append(node)
-        
+
         while stack:
             cur = stack.popleft()
             if not cur:
@@ -237,27 +239,29 @@ class Solution:
 ```python
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
-    		m, n = len(maze), len(maze[0])
-        visit = set()
-        directions = [(1, 0), (-1, 0), (0, -1), (0, 1)]
-        stack = [start]
-        while stack:
-            curx, cury = stack.pop()
-            if [curx, cury] == destination:
-                return True
-            for dirx, diry in directions:
-                tx, ty = curx, cury
-                while 0 <= tx + dirx < m and 0 <= ty + diry < n and not maze[tx + dirx][ty + diry]:
-                    tx, ty = tx + dirx, ty + diry
-                if (tx, ty) not in visit:
-                    visit.add((tx, ty))
-                    stack.append((tx, ty))
-        return False
+        m, n = len(maze), len(maze[0])
+
+    visit = set()
+    directions = [(1, 0), (-1, 0), (0, -1), (0, 1)]
+    stack = [start]
+    while stack:
+        curx, cury = stack.pop()
+        if [curx, cury] == destination:
+            return True
+        for dirx, diry in directions:
+            tx, ty = curx, cury
+            while 0 <= tx + dirx < m and 0 <= ty + diry < n and not maze[tx + dirx][ty + diry]:
+                tx, ty = tx + dirx, ty + diry
+            if (tx, ty) not in visit:
+                visit.add((tx, ty))
+                stack.append((tx, ty))
+    return False
 ```
 
 [207. Course Schedule]
 
 BFS方式：
+
 ```python
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
@@ -463,6 +467,8 @@ class Solution:
 迭代写法如下：
 
 ```python
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         stack, res = [root], deque([])
         while stack:
             cur = stack.pop()
@@ -474,6 +480,7 @@ class Solution:
 ```
 
 [102. Binary Tree Level Order Traversal]
+
 ```python
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
@@ -499,7 +506,7 @@ class Solution:
 ```python
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if not root or p == root or q==root:
+        if not root or p == root or q == root:
             return root
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
@@ -571,14 +578,14 @@ class Solution:
         if not root:
             return True
         return self.valid(root, float("-inf"), float("inf"))
-    
+
     def valid(self, root, left, right):
         if not root:
             return True
-        
+
         if root.val <= left or root.val >= right:
             return False
-        
+
         return self.valid(root.left, left, root.val) and self.valid(root.right, root.val, right)
 ```
 
@@ -651,7 +658,7 @@ class Solution:
         if left == right:
             return [-1, -1]
         return [left, right - 1]
-    
+
     def lower_bound(self, nums, target):
         left, right = 0, len(nums)
         while left < right:
@@ -661,7 +668,7 @@ class Solution:
             else:
                 right = mid
         return left
-    
+
     def higher_bound(self, nums, target):
         left, right = 0, len(nums)
         while left < right:
@@ -681,7 +688,7 @@ class Solution:
         if x < 2:
             return x
 
-        left, right = 0, x//2 + 1
+        left, right = 0, x // 2 + 1
         ###[left, right)
         while left < right:
             mid = left + (right - left) // 2
@@ -709,6 +716,7 @@ class Solution:
                 right = mid1
         return left
 ```
+
 ### Data Structure - HashTable, Queue, Priority Queue
 
 HashTable
@@ -799,7 +807,7 @@ class Solution:
             if lists[i]:
                 heapq.heappush(q, (lists[i].val, i))
                 lists[i] = lists[i].next
-        
+
         dummy = ListNode()
         cur = dummy
         while q:
@@ -887,8 +895,8 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         if head and head.next and head.next.next:
-            
-            #find mid
+
+            # find mid
             fast, slow = head, head
             while fast.next and fast.next.next:
                 fast = fast.next.next
@@ -896,17 +904,17 @@ class Solution:
             head1 = head
             head2 = slow.next
             slow.next = None
-            
+
             # reverse second list
             dummy = ListNode(0)
             dummy.next = head2
             curr = head2.next
             head2.next = None
-            
+
             while curr:
                 dummy.next, curr.next, curr = curr, dummy.next, curr.next
             head2 = dummy.next
-        
+
             # merge two linked list head1 and head2
             p1 = head1
             p2 = head2
@@ -958,8 +966,11 @@ class Solution(object):
 ```
 
 (239. Sliding Window Maximum)
+
 ```python
 from collections import deque
+
+
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         n = len(nums)
@@ -1004,7 +1015,7 @@ class Solution:
                 tail.next, tail, h2 = h2, h2, h2.next
         tail.next = h1 or h2
         return dummy.next
-    
+
     def sortList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
@@ -1045,6 +1056,7 @@ class LRUCache:
             else:
                 self.dict.popitem(False)
                 self.dict[key] = value
+
 
 class ListNode:
     def __init__(self, key, value):
@@ -1218,6 +1230,7 @@ class Solution(object):
                 res += 1
         return res
 
+
 class DSU(object):
     def __init__(self):
         self.d = range(201)
@@ -1297,7 +1310,6 @@ if __name__ == '__main__':
 这是一个[模板](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'
 rel=)，里面的map如果是双指针范围内的字符串字频的话，增加和减少的方式如下。
 
-
 ```
 
 ### 动态规划
@@ -1358,13 +1370,9 @@ class Solution(object):
 
 贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来最好的选择。也就是说，不从整体最优上加以考虑，他所作出的是在某种意义上的局部最优解。贪心算法和动态规划算法都是由局部最优导出全局最优，这里不得不比较下二者的区别
 
-贪心算法： 
-1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。 
-2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
+贪心算法： 1.贪心算法中，作出的每步贪心决策都无法改变，因为贪心策略是由上一步的最优解推导下一步的最优解，而上一部之前的最优解则不作保留。 2.由（1）中的介绍，可以知道贪心法正确的条件是：每一步的最优解一定包含上一步的最优解
 
-动态规划算法： 
-1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解 
-2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
+动态规划算法： 1.全局最优解中一定包含某个局部最优解，但不一定包含前一个局部最优解，因此需要记录之前的所有最优解 2.动态规划的关键是状态转移方程，即如何由以求出的局部最优解来推导全局最优解
 3.边界条件：即最简单的，可以直接得出的局部最优解
 
 贪心是个思想，没有统一的模板。
