@@ -45,6 +45,7 @@
 - [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 6 LinkList
+- [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 
 7 Pointer Manipulation [查找子字符串，双指针模板]
 
@@ -820,7 +821,7 @@ class Solution:
         return dummy.next
 ```
 
-[215. Kth Largest Element in an Array)
+[215. Kth Largest Element in an Array]
 
 ```python
 class Solution:
@@ -847,7 +848,7 @@ class Solution:
 
 (876. Middle of the Linked List)
 
-```
+```python
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
