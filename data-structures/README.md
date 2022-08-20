@@ -45,13 +45,27 @@
 - [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 6 LinkList
-- [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 
-7 Pointer Manipulation [查找子字符串，双指针模板]
+- [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
+- [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
+- [Reorder List](https://leetcode.com/problems/reorder-list/)
+
+7 Pointer Manipulation [查找子字符串，双指针]
+
+- [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
+- [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
+- [Sliding Window Maximum)](https://leetcode.com/problems/sliding-window-maximum/)
 
 8 排序的写法
 
+- [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)
+- [Sort List](https://leetcode.com/problems/sort-list/)
+
 9 Desgin
+
+- [LRU Cache](https://leetcode.com/problems/lru-cache/)
+- [Campus Bikes II](https://leetcode.ca/all/1066.html)
 
 10 [动态规划](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1263)
 
