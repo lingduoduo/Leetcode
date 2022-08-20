@@ -1135,7 +1135,7 @@ class LRUCache:
         self.removeFromList(tail_node)
 ```
 
-(1066. )
+(1066. Campus Bikes II)
 
 ```
 class Solution:
