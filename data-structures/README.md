@@ -48,8 +48,18 @@
 
 - [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 - [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
 - [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
 - [Reorder List](https://leetcode.com/problems/reorder-list/)
+- [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+- [Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+- [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+- [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
+- [Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/)
+- [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+- [Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts/)
+- [Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)
 
 7 Pointer Manipulation [查找子字符串，双指针]
 
