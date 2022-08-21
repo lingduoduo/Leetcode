@@ -66,26 +66,36 @@
 - [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 - [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
 - [Sliding Window Maximum)](https://leetcode.com/problems/sliding-window-maximum/)
+- [Two Sum II - Input array is sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+- [Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)
+- [Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
+- [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/)
+- [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
+- [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+- [Longest Word in Dictionary through Deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/)
 
 8 排序的写法
 
 - [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)
 - [Sort List](https://leetcode.com/problems/sort-list/)
+- [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
+- [Top K Frequent Elements ](https://leetcode.com/problems/top-k-frequent-elements/description/)
+- [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
+- [Sort Colors](https://leetcode.com/problems/sort-colors/description/)
 
 9 Desgin
 
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Campus Bikes II](https://leetcode.ca/all/1066.html)
 
-10 [动态规划](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1263)
+10 动态规划
 
-- [并查集](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_630)
+11 贪心
 
-- [前缀树](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_747)
+12 分治
 
-- [状态搜索](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265)
+https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265
 
-- [贪心](https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1303)
 
 ### Recursion / Backtracking 回溯法
 
