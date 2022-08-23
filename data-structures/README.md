@@ -63,7 +63,6 @@
 
 7 Pointer Manipulation [查找子字符串，双指针]
 
-- [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 - [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
 - [Sliding Window Maximum)](https://leetcode.com/problems/sliding-window-maximum/)
 - [Two Sum II - Input array is sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
