@@ -91,11 +91,16 @@
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Campus Bikes II](https://leetcode.ca/all/1066.html)
 
-10 动态规划
+10 Bit Computation
+- [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
+- [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths/description/)
+- [Counting Bits](https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E4%BD%8D%E8%BF%90%E7%AE%97.md)
 
-11 贪心
+11 动态规划
 
-12 分治
+12 贪心
+
+13 分治
 
 https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265
 

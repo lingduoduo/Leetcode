@@ -21,6 +21,7 @@ class Solution:
         h = len(nums) - 1
         while l < h:
             m = l + (h - l) // 2
+            print(m)
             if m % 2 == 1:
                 m -= 1
             if nums[m] == nums[m + 1]:
