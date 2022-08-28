@@ -35,6 +35,10 @@
 - [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [Sqrt(x)](https://leetcode.com/problems/sqrtx/)
 - [Find Peak Element](https://leetcode.com/problems/find-peak-element/)
+- [Find Smallest Letter Greater Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+- [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/description/)
+- [First Bad Version](https://leetcode.com/problems/first-bad-version/description/)
+- [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
 
 5 Data Structure - HashTable, Stack, Priority Queue
 
