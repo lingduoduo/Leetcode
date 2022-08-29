@@ -47,6 +47,9 @@
 - [Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
 - [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 - [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+- [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+- [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
+- [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description/)
 
 6 LinkList
 
@@ -101,6 +104,8 @@
 12 贪心
 
 13 分治
+- [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/description/)
+- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
 
 https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265
 
