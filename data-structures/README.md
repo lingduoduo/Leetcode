@@ -81,14 +81,17 @@
 - [Longest Word in Dictionary through Deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/)
 
 8 Bit Computation
+
 - [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
 - [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths/description/)
 - [Counting Bits](https://leetcode.com/problems/counting-bits/description/)
 
 9 String
+
 - [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/description/)
 
 10 分治
+
 - [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/description/)
 - [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
 

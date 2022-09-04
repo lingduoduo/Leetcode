@@ -20,8 +20,18 @@ class Solution(object):
         result = sign + result
         return result
 
+class Solution:
+    def convertToBase7(self, num: int) -> str:
+        res = []
+        flag = 1 if num < 0 else 0
+        num = -num if num < 0 else num
+        while num:
+            res.append(str(num % 7))
+            num = num // 7
+        s = ''.join(res[::-1])
+        return s if flag == 0 else '-' + s
 
 if __name__ == "__main__":
-    s = -7
+    s = -8
     result = Solution().convertToBase7(s)
     print(result)

@@ -28,3 +28,11 @@ class Solution(object):
             elif nums[i] < MIN_2:
                 MIN_2 = nums[i]
         return max(MAX_1 * MAX_2 * MAX_3, MAX_1 * MIN_1 * MIN_2)
+
+
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        nums.sort()
+        right = nums[-3] * nums[-2] * nums[-1]
+        left = nums[0] * nums[1] * nums[-1]
+        return max(left, right)
