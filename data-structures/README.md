@@ -94,10 +94,10 @@
 
 11 排序的写法
 
-- [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)
-- [Sort List](https://leetcode.com/problems/sort-list/)
 - [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 - [Top K Frequent Elements ](https://leetcode.com/problems/top-k-frequent-elements/description/)
+- [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)
+- [Sort List](https://leetcode.com/problems/sort-list/)
 - [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
 - [Sort Colors](https://leetcode.com/problems/sort-colors/description/)
 
