@@ -80,7 +80,19 @@
 - [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 - [Longest Word in Dictionary through Deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/)
 
-8 排序的写法
+8 Bit Computation
+- [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
+- [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths/description/)
+- [Counting Bits](https://leetcode.com/problems/counting-bits/description/)
+
+9 String
+- [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/description/)
+
+10 分治
+- [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/description/)
+- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
+
+11 排序的写法
 
 - [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)
 - [Sort List](https://leetcode.com/problems/sort-list/)
@@ -88,18 +100,6 @@
 - [Top K Frequent Elements ](https://leetcode.com/problems/top-k-frequent-elements/description/)
 - [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
 - [Sort Colors](https://leetcode.com/problems/sort-colors/description/)
-
-9 Bit Computation
-- [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
-- [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths/description/)
-- [Counting Bits](https://leetcode.com/problems/counting-bits/description/)
-
-10 String
-- [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/description/)
-
-11 分治
-- [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/description/)
-- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
 
 12 Desgin
 
