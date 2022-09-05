@@ -109,9 +109,40 @@
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Campus Bikes II](https://leetcode.ca/all/1066.html)
 
-13 动态规划
+13 贪心
 
-14 贪心
+- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
+- [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
+- [Queue Reconstruction by Height](https://leetcode.com/problems/queue-reconstruction-by-height/description/)
+- [Is Subsequence](https://leetcode.com/problems/is-subsequence/description/)
+- [Partition Labels](https://leetcode.com/problems/partition-labels/description/)
+
+14 动态规划
+
+- [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/description/)
+- [Unique Paths](https://leetcode.com/problems/unique-paths/description/)
+- [Arithmetic Slices](https://leetcode.com/problems/arithmetic-slices/description/)
+- [Integer Break](https://leetcode.com/problems/integer-break/description/)
+- [Perfect Squares](https://leetcode.com/problems/perfect-squares/description/)
+- [Decode Ways](https://leetcode.com/problems/decode-ways/description/)
+- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+- [Maximum Length of Pair Chain](https://leetcode.com/problems/maximum-length-of-pair-chain/description/)
+- [Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence/description/)
+- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+- [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
+- [Target Sum](https://leetcode.com/problems/target-sum/description/)
+- [Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/description/)
+- [Coin Change](https://leetcode.com/problems/coin-change/description/)
+- [Coin Change 2](https://leetcode.com/problems/coin-change-2/description/)
+- [Word Break](https://leetcode.com/problems/word-break/description/)
+- [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
+- [Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
+- [Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/)
+- [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
+- [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
+- [Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)
+- [Edit Distance](https://leetcode.com/problems/edit-distance/description/)
+- [2 Keys Keyboard](https://leetcode.com/problems/2-keys-keyboard/description/)
 
 https://blog.csdn.net/fuxuemingzhu/article/details/101900729#_1265
 
