@@ -21,5 +21,5 @@ class Solution:
         return res
 
 if __name__ == '__main__':
-    results = Solution().toHex(26)
+    results = Solution().toHex(-1)
     print(results)

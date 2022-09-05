@@ -1,7 +1,7 @@
 class Solution:
-    def convertToTitle(self, n: int) -> str:
+    def convertToTitle(self, columnNumber: int) -> str:
         result = ""
-        num = n
+        num = columnNumber
         
         while num:
             result += chr( (num-1) % 26 + ord("A") )
