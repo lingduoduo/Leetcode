@@ -20,3 +20,32 @@ class Solution:
         # if rand < self.preSum[left]:
         #     return left
         # return right
+
+class Solution:
+
+    def __init__(self, w: List[int]):
+        self.psum = [w[0]]
+        for n in w[1:]:
+            self.psum.append(self.psum[-1] + n)
+
+    def pickIndex(self) -> int:
+        def search(n):
+            l, r = 0, len(self.psum)
+            while l < r:
+                m = (l + r) // 2
+                if self.psum[m] <= n:
+                    l = m + 1
+                else:
+                    r = m
+            return l
+        num = random.randint(0, self.psum[-1] - 1)
+        return search(num)
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+
+# return bisect.bisect(self.sum, num)
+# return bisect.bisect(self.sum, self.sum[-1] * random.random())
+
+

@@ -28,20 +28,34 @@ class Solution:
 
 import re
 
-
-class Solution:
-    def isNumeric(self, s):
-        if len(s) == 0:
-            return None
-
-        return re.search(r"[+-]?\d*(\.\d+)?([eE][+-]?\d+)?", s).group() == s
-
-
 class Solution:
     def isNumber(self, s: str) -> bool:
         pattern = re.compile(r'^[+-]?(\d+|\d+\.\d*|\.\d+)([eE][+-]?\d+)?$')
         return pattern.match(s) is not None
 
+
+class Solution:
+    def isNumber(self, s: str) -> bool:
+        seen_digit = seen_exponent = seen_dot = False
+        for i, c in enumerate(s):
+            if c.isdigit():
+                seen_digit = True
+            elif c in ["+", "-"]:
+                if i > 0 and s[i - 1] != "e" and s[i - 1] != "E":
+                    return False
+            elif c in ["e", "E"]:
+                if seen_exponent or not seen_digit:
+                    return False
+                seen_exponent = True
+                seen_digit = False
+            elif c == ".":
+                if seen_dot or seen_exponent:
+                    return False
+                seen_dot = True
+            else:
+                return False
+
+        return seen_digit
 
 if __name__ == '__main__':
     res = Solution().isNumeric(s="+100")
