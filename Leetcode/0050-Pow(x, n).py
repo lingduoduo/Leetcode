@@ -23,11 +23,11 @@ class Solution(object):
         if n < 0:
             x = 1 / x
             n = -n
-        ans = 1
+
         res = 1
         while n:
             if n % 2:
-                ans *= x
+                res *= x
             n >>= 1
             x *= x
-        return ans
+        return res
