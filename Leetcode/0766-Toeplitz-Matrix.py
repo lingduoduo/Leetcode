@@ -1,31 +1,5 @@
 from typing import List
-# class Solution:
-#     def isToeplitzMatrix(self, matrix) -> bool:
-#         nrow = len(matrix)
-#         ncol = len(matrix[0])
 
-#         for i in range(ncol):
-#             tmp  = []
-#             x = 0
-#             y = i 
-#             while 0 <= x < nrow and 0 <= y < ncol:
-#                 tmp.append(matrix[x][y])
-#                 x += 1
-#                 y += 1
-#             if len(set(tmp)) > 1:
-#                 return False
-
-#         for i in range(1, nrow):
-#             tmp  = []
-#             x = i
-#             y = 0
-#             while 0 <= x < nrow and 0 <= y < ncol:
-#                 tmp.append(matrix[x][y])
-#                 x += 1
-#                 y += 1
-#             if len(set(tmp)) > 1:
-#                 return False
-#         return True
 
 class Solution:
     def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
@@ -55,7 +29,19 @@ class Solution:
         return True
 
 
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        groups = {}
+        for r, row in enumerate(matrix):
+            for c, val in enumerate(row):
+                if r - c not in groups:
+                    groups[r - c] = val
+                elif groups[r - c] != val:
+                    return False
+        return True
+
+
 if __name__ == '__main__':
-    matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
+    matrix = [[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]
     res = Solution().isToeplitzMatrix(matrix)
     print(res)
