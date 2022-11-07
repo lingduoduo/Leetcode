@@ -54,6 +54,14 @@ class Solution(object):
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        output = [[]]
+        for num in nums:
+            output += [curr + [num] for curr in output]
+        return output
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
         self.res = []
         for i in range(1 + len(nums)):
             self.dfs(nums, i, 0, [])
