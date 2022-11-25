@@ -7,6 +7,17 @@ class Solution:
         else:
             return 1 - self.kthGrammar(N - 1, K - (1 << (N - 2)))
 
+
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        if n == 1: return 0
+        return (1 - k%2) ^ self.kthGrammar(n-1, (k+1)//2)
+
+
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        return bin(k - 1).count('1') % 2
+
 if __name__ == '__main__':
     res = Solution().kthGrammar(N=6, K=5)
     print(res)
