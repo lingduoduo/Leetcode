@@ -9,7 +9,7 @@ class Solution:
         for i in range(len(answerKey)):
             d[answerKey[i]] += 1
             maxf = max(maxf, d[answerKey[i]])
-            if res - maxf < k:
+            if res < maxf + k:
                 res += 1
             else:
                 d[answerKey[i - res]] -= 1
