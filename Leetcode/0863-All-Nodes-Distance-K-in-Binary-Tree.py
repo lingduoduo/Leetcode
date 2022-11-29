@@ -1,74 +1,63 @@
-###Definition for a binary tree node.
-# class TreeNode(object):
+# Definition for a binary tree node.
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        ans = []
 
-# class Solution(object):
-#     def distanceK(self, root, target, K):
-#         """
-#         :type root: TreeNode
-#         :type target: TreeNode
-#         :type K: int
-#         :rtype: List[int]
-#         """
-#         if not root:
-#             return None
-        
-#         self.d = dict()
-#         self.buildGraph(None, root)
-        
-#         ###for k,v in enumerate(self.d):
-#         ###    print(k, v.val)
-        
-#         ###BFS
-#         seen = list()
-#         seen.append(target)
-#         stack = list()
-#         stack.append(target)
-        
-#         k = 0
-#         res = []
-#         while stack and k <= K:
-#             size = len(stack)
-#             for i in range(size):
-#                 node = stack.pop(0)
-#                 if k == K:
-#                     res.append(node.val)
-                
-#                 if node not in self.d:
-#                     break
-                
-#                 for child in self.d[node]:
-#                     if child not in seen:
-#                         seen.append(child)
-#                         stack.append(child)
-#             k += 1
-#         return res
-    
-#     def buildGraph(self, parent, child):
-#         if parent and child:
-#             self.d[parent] = self.d.get(parent, []) + [child]
-#             self.d[child] = self.d.get(child, []) + [parent]
-        
-#         if child.left:
-#             self.buildGraph(child, child.left)
-        
-#         if child.right:
-#             self.buildGraph(child, child.right)
+        # Return distance from node to target if exists, else -1
+        # Vertex distance: the # of vertices on the path from node to target
+        def dfs(node):
+            if not node:
+                return -1
+            elif node is target:
+                subtree_add(node, 0)
+                return 1
+            else:
+                L, R = dfs(node.left), dfs(node.right)
+                if L != -1:
+                    if L == k:
+                        ans.append(node.val)
+                    subtree_add(node.right, L + 1)
+                    return L + 1
+                elif R != -1:
+                    if R == k:
+                        ans.append(node.val)
+                    subtree_add(node.left, R + 1)
+                    return R + 1
+                else:
+                    return -1
+
+        # Add all nodes 'K - dist' from the node to answer.
+        def subtree_add(node, dist):
+            if not node:
+                return
+            elif dist == k:
+                ans.append(node.val)
+            else:
+                subtree_add(node.left, dist + 1)
+                subtree_add(node.right, dist + 1)
+
+        dfs(root)
+        return ans
 
 
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         # DFS
         conn = collections.defaultdict(list)
+
         def connect(parent, child):
             if parent and child:
                 conn[parent.val].append(child.val)
                 conn[child.val].append(parent.val)
             if child.left: connect(child, child.left)
             if child.right: connect(child, child.right)
-            
+
         connect(None, root)
 
         # BFS
@@ -79,6 +68,7 @@
             visited |= set(bfs)
         return bfs
 
+
 if __name__ == '__main__':
     p = TreeNode(3)
     p.left = TreeNode(5)
@@ -88,6 +78,6 @@ if __name__ == '__main__':
     p.left.right.left = TreeNode(7)
     p.left.right.right = TreeNode(4)
     p.right.right = TreeNode(8)
-    
+
     result = Solution().distanceK(p, p.left, 2)
     print(result)
