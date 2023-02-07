@@ -2,7 +2,7 @@
 
 3. [数组中重复的数字	Array	常考](../coding-notes/codes/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.md)
 
-4. 二维数组中的查找	Array	常考
+4. [二维数组中的查找	Array	常考](..//coding-notes/codes/04-二维数组中的查找.md)
 
 5. 替换空格	String	
 
