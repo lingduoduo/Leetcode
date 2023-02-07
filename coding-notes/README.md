@@ -6,7 +6,7 @@
 
 5. [替换空格	String](../coding-notes/codes/05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC.md)
 
-6. 从尾到头打印链表	Linked List	
+6. [从尾到头打印链表	Linked List](https://github.com/lingduoduo/Leetcode/blob/master/coding-notes/codes/06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8.md)	
 
 7. 重建二叉树	Tree	关注
 
