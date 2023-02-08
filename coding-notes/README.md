@@ -10,7 +10,7 @@
 
 7. [重建二叉树	Tree](../coding-notes/codes/07-重建二叉树.md)
 
-8. 二叉树的下一个结点	Tree	关注
+8. [二叉树的下一个结点	Tree](../coding-notes/codes/08-二叉树的下一个结点.md)
 
 9. 用两个栈实现队列	Stack,Queue	关注
 
