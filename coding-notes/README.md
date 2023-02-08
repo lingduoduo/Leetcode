@@ -14,13 +14,7 @@
 
 9. [用两个栈实现队列	Stack,Queue](../coding-notes/codes/09-用两个栈实现队列.md)
 
-10. [斐波那契数列	Dynamic Programming,	
-
-    跳台阶	Dynamic Programming,	
-
-    变态跳台阶	Dynamic Programming,Math	
-
-    矩形覆盖	Dynamic Programming,](../coding-notes/codes/10-斐波那契数列.md)
+10. [斐波那契数列	Dynamic Programming,跳台阶	Dynamic Programming,变态跳台阶	Dynamic Programming,Math矩形覆盖	Dynamic Programming,](../coding-notes/codes/10-斐波那契数列.md)
 
 11. 旋转数组的最小数字	Binary Search,	常考
 
