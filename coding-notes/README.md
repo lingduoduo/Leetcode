@@ -12,9 +12,7 @@
 
 8. [二叉树的下一个结点	Tree](../coding-notes/codes/08-二叉树的下一个结点.md)
 
-9. 用两个栈实现队列	Stack,Queue	关注
-
-   两个队列实现栈	Stack,Queue	关注
+9. [用两个栈实现队列	Stack,Queue](../coding-notes/codes/09-用两个栈实现队列.md)
 
 10. 斐波那契数列	Dynamic Programming,	
 
