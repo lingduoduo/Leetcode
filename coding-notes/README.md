@@ -22,7 +22,7 @@
 
 13. [机器人的运动范围	BackTracking](..//coding-notes/codes/13-机器人的运动范围.md)
 
-14. 剪绳子	Dynamic Programming	
+14. [剪绳子	Dynamic Programming](../coding-notes/codes/14-剪绳子.md)	
 
 15. 二进制中的1的个数	Bit Manipulation,	
 
