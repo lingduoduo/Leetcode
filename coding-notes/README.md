@@ -24,7 +24,7 @@
 
 14. [剪绳子	Dynamic Programming](../coding-notes/codes/14-剪绳子.md)	
 
-15. [二进制中的1的个数	Bit Manipulation](15-二进制中%201%20的个数.md)	
+15. [二进制中的1的个数	Bit Manipulation](../coding-notes/codes/15-二进制中%201%20的个数.md)	
 
 16. 数值的整数次方	Math,	关注
 
