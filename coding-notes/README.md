@@ -18,7 +18,7 @@
 
 11. [旋转数组的最小数字	Binary Search](../coding-notes/codes/11-旋转数组的最小数字.md)
 
-12. 矩阵中的路径	BackTracking	
+12. [矩阵中的路径	BackTracking](../coding-notes/codes/12-矩阵中的路径.md)	
 
 13. 机器人的运动范围	BackTracking	关注
 
