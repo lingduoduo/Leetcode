@@ -1,30 +1,22 @@
 题目	类别	备注
 
-3. [数组中重复的数字	Array	常考](../coding-notes/codes/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.md)
+3. [数组中重复的数字	Array](../coding-notes/codes/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.md)
 
-4. [二维数组中的查找	Array	常考](..//coding-notes/codes/04-二维数组中的查找.md)
+4. [二维数组中的查找	Array](..//coding-notes/codes/04-二维数组中的查找.md)
 
-5. 替换空格	String	
+5. [替换空格	String](../coding-notes/codes/05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC.md)
 
-6. 从尾到头打印链表	Linked List	
+6. [从尾到头打印链表	Linked List](../coding-notes/codes/06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8.md)	
 
-7. 重建二叉树	Tree	关注
+7. [重建二叉树	Tree](../coding-notes/codes/07-重建二叉树.md)
 
-8. 二叉树的下一个结点	Tree	关注
+8. [二叉树的下一个结点	Tree](../coding-notes/codes/08-二叉树的下一个结点.md)
 
-9. 用两个栈实现队列	Stack,Queue	关注
+9. [用两个栈实现队列	Stack,Queue](../coding-notes/codes/09-用两个栈实现队列.md)
 
-   两个队列实现栈	Stack,Queue	关注
+10. [斐波那契数列	Dynamic Programming,跳台阶	Dynamic Programming,变态跳台阶	Dynamic Programming,Math矩形覆盖	Dynamic Programming,](../coding-notes/codes/10-斐波那契数列.md)
 
-10. 斐波那契数列	Dynamic Programming,	
-
-    跳台阶	Dynamic Programming,	
-
-    变态跳台阶	Dynamic Programming,Math	
-
-    矩形覆盖	Dynamic Programming,	
-
-11. 旋转数组的最小数字	Binary Search,	常考
+11. [旋转数组的最小数字	Binary Search](../coding-notes/codes/11-旋转数组的最小数字.md)
 
 12. 矩阵中的路径	BackTracking	
 
