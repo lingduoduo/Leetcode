@@ -28,7 +28,7 @@
 
 16. [数值的整数次方	Math](/coding-notes/codes/16-数值的整数次方.md)
 
-17. 打印从1到最大的n位数		
+17. [打印从1到最大的n位数](coding-notes/codes/17-打印从%201%20到最大的%20n%20位数.md)		
 
 18. O(1)时间删除链表节点	Linked List	
 
