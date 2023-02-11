@@ -31,9 +31,10 @@
 17. [打印从1到最大的n位数](../coding-notes/codes/17-打印从%201%20到最大的%20n%20位数.md)		
 
 18. [O(1)时间删除链表节点	Linked List	](../coding-notes/codes/18-在%20O(1)%20时间内删除链表节点.md)
+
     删除链表中重复结点	Linked List	常考
 
-19. 正则表达式匹配	String	
+19. [正则表达式匹配	String](../coding-notes/codes/19-正则表达式匹配.md)
 
 20. 表示数值的字符串	String	
 
