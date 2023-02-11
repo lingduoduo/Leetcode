@@ -1,3 +1,140 @@
+9/1/2022
+
+1762 - Buildings With an Ocean View
+314	- Binary Tree Vertical Order Traversal
+1570 - Dot Product of Two Sparse Vectors
+
+1249 - Minimum Remove to Make Valid Parentheses	
+408	- Valid Word Abbreviation
+1650 - Lowest Common Ancestor of a Binary Tree III
+
+680	- Valid Palindrome II	
+249	- Group Shifted Strings
+71	- Simplify Path	
+
+65	- Valid Number	
+708	- Insert into a Sorted Circular Linked List
+921	- Minimum Add to Make Parentheses Valid
+
+1091 - Shortest Path in Binary Matrix	
+2060	- Check if an Original String Exists Given Two Encoded Strings	
+236	- Lowest Common Ancestor of a Binary Tree	
+
+227	- Basic Calculator II	
+215	- Kth Largest Element in an Array	
+339	- Nested List Weight Sum
+
+301	- Remove Invalid Parentheses	
+1216 - Valid Palindrome III
+346	- Moving Average from Data Stream
+
+938	- Range Sum of BST	
+791 - Custom Sort String	
+691	- Stickers to Apell Word
+
+987	- Vertical Order Traversal of a Binary Tree	
+636	- Exclusive Time of Functions	
+162	- Find Peak Element
+
+199	- Binary Tree Right Side View	
+523	- Continuous Subarray Sum	
+1891 - Cutting Ribbons
+
+10/1/2022
+
+56	- Merge Intervals	
+973	- K Closest Points to Origin	
+1428	- Leftmost Column with at Least a One
+
+827	- Making A Large Island	
+138	- Copy List with Random Pointer	
+50 -	Pow(x, n)	
+
+498	- Diagonal Traverse	
+163	- Missing Ranges
+689 - Maximum Sum of 3 Non-Overlapping Subarrays
+
+129	- Sum Root to Leaf Numbers	
+670	- Maximum Swap
+560	- Subarray Sum Equals K	
+
+416	- Partition Equal Subset Sum	
+426	- Convert Binary Search Tree to Sorted Doubly Linked List
+1123	- Lowest Common Ancestor of Deepest Leaves
+
+529	- Minesweeper
+825	- Friends Of Appropriate Ages	
+347	- Top K Frequent Elements	
+
+173	- Binary Search Tree Iterator	
+489	- Robot Room Cleaner
+125	- Valid Palindrome
+
+1340 - Jump Game V
+543	- Diameter of Binary Tree	
+766 - Toeplitz Matrix	
+
+779	- K-th Symbol in Grammar	
+958	- Check Completeness of a Binary Tree
+1004 - Max Consecutive Ones III
+
+271	- Encode and Decode Strings
+298	- Binary Tree Longest Consecutive Sequence
+1192	- Critical Connections in a Network	
+
+11/1/2022
+
+1644	- Lowest Common Ancestor of a Binary Tree II
+939	- Minimum Area Rectangle	
+1424	- Diagonal Traverse II	
+
+2210 - Count Hills and Valleys in an Array
+266- Palindrome Permutation
+528 - Random Pick with Weight	
+
+270	- Closest Binary Search Tree Value
+415	- Add Strings	
+88 - Merge Sorted Array	
+
+953	- Verifying an Alien Dictionary	
+398	- Random Pick Index	
+31	- Next Permutation	
+
+159 - Lingest Substring with At Most Two Distinct Characters
+1047 - Remove All Adjacent Duplicates In String	
+1539 - Kth Missing Positive Number	
+
+1060 - Missing Element in Sorted Array
+161	- One Edit Distance
+146	- LRU Cache	
+
+78	- Subsets	
+977	- Squares of a Sorted Array	
+23	- Merge k Sorted Lists	
+
+2024	- Maximize the Confusion of an Exam	
+1209	- Remove All Adjacent Duplicates in String II	
+34	- Find First and Last Position of Element in Sorted Array	
+
+896	- Monotonic Array	
+623	- Add One Row to Tree
+824	- Goat Latin	
+
+779	- K-th Symbol in Grammar	
+246	- Strobogrammatic Number
+
+863	- All Nodes Distance K in Binary Tree	
+583	- Delete Operation for Two Strings
+1213	- Intersection of Three Sorted Arrays
+
+319	- Bulb Switcher	
+266	- Palindrome Permutation
+463	- Island Perimeter
+
+378	- Kth Smallest Element in a Sorted Matrix	
+139	- Word Break	
+283	- Move Zeroes
+
 ### 3Sum
 
 ```python
