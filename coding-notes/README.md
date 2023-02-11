@@ -26,11 +26,11 @@
 
 15. [二进制中的1的个数	Bit Manipulation](../coding-notes/codes/15-二进制中%201%20的个数.md)	
 
-16. [数值的整数次方	Math](/coding-notes/codes/16-数值的整数次方.md)
+16. [数值的整数次方	Math](/../coding-notes/codes/16-数值的整数次方.md)
 
-17. [打印从1到最大的n位数](coding-notes/codes/17-打印从%201%20到最大的%20n%20位数.md)		
+17. [打印从1到最大的n位数](../coding-notes/codes/17-打印从%201%20到最大的%20n%20位数.md)		
 
-18. O(1)时间删除链表节点	Linked List	
+18. [O(1)时间删除链表节点	Linked List	](../coding-notes/codes/18-在%20O(1)%20时间内删除链表节点.md)
 
 19. 删除链表中重复结点	Linked List	常考
 
