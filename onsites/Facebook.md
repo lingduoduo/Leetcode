@@ -1,4 +1,4 @@
-### 3Sum
+15. 3Sum
 
 ```python
 class Solution:
@@ -29,7 +29,7 @@ class Solution:
         return res
 ```
 
-### 3Sum Closest
+16. 3Sum Closest
 
 ```python
 class Solution:
@@ -56,7 +56,7 @@ class Solution:
         return target + gap
 ```
 
-### Accounts Merge
+Accounts Merge
 
 ```python
 class Solution:
@@ -89,7 +89,7 @@ class Solution:
         return res
 ```
 
-### Add Strings
+Add Strings
 
 ```python
 class Solution(object):
@@ -110,7 +110,7 @@ class Solution(object):
         return ''.join(reversed(res))
 ```
 
-### Alien Dictionary
+Alien Dictionary
 
 ```python
 class Solution:
@@ -141,7 +141,7 @@ class Solution:
         return "".join(res)
 ```
 
-### Angle Between Hands of a Clock
+Angle Between Hands of a Clock
 
 ```python
 class Solution:
@@ -150,13 +150,13 @@ class Solution:
         return angle if angle <= 180 else 360 - angle
 ```
 
-### floating strings相加
+floating strings相加
 
 ```python
 
 ```
 
-### Appear Times
+Appear Times
 
 ```python
 import bisect
@@ -166,7 +166,7 @@ def appear_times(num, target):
     return right - left
 ```
 
-### atoi
+atoi
 
 ```python
 class Solution:
@@ -197,7 +197,7 @@ class Solution:
         return res * flag
 ```
 
-### Balance a Binary Search Tree
+Balance a Binary Search Tree
 
 ```python
 class Solution:
@@ -270,7 +270,7 @@ class Solution:
 		return bst(v)
 ```
 
-### Basic Calculator II
+Basic Calculator II
 
 ```python
 class Solution:
@@ -294,7 +294,7 @@ class Solution:
         return sum(stack)
 ```
 
-### Binary Search Tree Iterator
+Binary Search Tree Iterator
 
 ```python
 class BSTIterator:
@@ -317,7 +317,7 @@ class BSTIterator:
         return self.stack
 ```
 
-### Binary Tree Level Order Traversal
+Binary Tree Level Order Traversal
 
 ```python
 class Solution:
@@ -338,7 +338,7 @@ class Solution:
         return res
 ```
 
-### Binary Tree Maximum Path Sum
+Binary Tree Maximum Path Sum
 
 ```python
 class Solution:
@@ -356,7 +356,7 @@ class Solution:
         return self.res
 ```
 
-### Binary Tree Right Side View
+Binary Tree Right Side View
 
 ```python
 class Solution:
@@ -376,7 +376,7 @@ class Solution:
         return [res[depth] for depth in range(max_depth + 1)]
 ```
 
-### Binary Tree Vertical Order Traversal
+Binary Tree Vertical Order Traversal
 
 ```python
 class Solution:
@@ -405,7 +405,7 @@ class Solution:
         return ret
 ```
 
-### Convert Binary Search Tree to Sorted Doubly Linked List
+Convert Binary Search Tree to Sorted Doubly Linked List
 
 ```python
 class Solution:
@@ -430,7 +430,7 @@ class Solution:
         return first
 ```
 
-### Combinations
+Combinations
 
 ```python
 class Solution(object):
@@ -451,19 +451,19 @@ class Solution(object):
         return self.com(0, n, 0, k)
 ```
 
-### check if string is parlindrome, ignore non a-z A-Z chars
+check if string is parlindrome, ignore non a-z A-Z chars
 
 ```python
 
 ```
 
-### Data Stream as Disjoint Intervals
+Data Stream as Disjoint Intervals
 
 ```python
 
 ```
 
-### Design Skiplist
+Design Skiplist
 
 ```python
 class Node:
@@ -513,7 +513,7 @@ class Skiplist(object):
         return ans
 ```
 
-### Design TicTacToe
+Design TicTacToe
 
 ```python
 class TicTacToe(object):
@@ -586,7 +586,7 @@ class TicTacToe(object):
         return 0
 ```
 
-### Divide Two Integers
+Divide Two Integers
 
 ```python
 class Solution:
@@ -611,7 +611,7 @@ class Solution:
         return min(max(res, -maxint-1), maxint)
 ```
 
-### FB Sticker
+FB Sticker
 
 ```python
 from collections import Counter
@@ -627,7 +627,7 @@ def fb_sticker(target):
     return res
 ```
 
-### Find Peak Element
+Find Peak Element
 
 ```python
 class Solution(object):
@@ -645,7 +645,7 @@ class Solution(object):
                 r = m - 1
 ```
 
-### Group Shifted Strings
+Group Shifted Strings
 
 ```python
 class Solution(object):
@@ -674,7 +674,7 @@ class Solution(object):
         return res
 ```
 
-### Implement getlast map
+Implement getlast map
 
 ```python
 class newDS:
@@ -698,19 +698,19 @@ class newDS:
         return val
 ```
 
-### Interval Overlap
+Interval Overlap
 
 ```python
 
 ```
 
-### find all local peaks and valleys
+find all local peaks and valleys
 
 ```python
 
 ```
 
-### Find First and Last Position of Element in Sorted Array
+Find First and Last Position of Element in Sorted Array
 
 ```python
 class Solution:
@@ -728,7 +728,7 @@ class Solution:
     return [lo, search(target+1)-1] if target in nums[lo:lo+1] else [-1, -1]
 ```
 
-### left most colume have 1
+left most colume have 1
 
 ```python
 import bisect
@@ -743,7 +743,7 @@ def left_most(A):
     return cur if f else -1
 ```
 
-### Koko Eating Bananas
+Koko Eating Bananas
 
 ```python
 class Solution:
@@ -765,7 +765,7 @@ class Solution:
         return res
 ```
 
-### K Closest Points to Origin
+K Closest Points to Origin
 
 ```python
 class Solution:
@@ -780,7 +780,7 @@ class Solution:
         return [[p[1], p[2]] for p in q]
 ```
 
-### Knight Dialer
+Knight Dialer
 
 ```python
 class Solution:
@@ -809,7 +809,7 @@ class Solution:
         return sum(dp) % M
 ```
 
-### Kth Largest Element in an Array
+Kth Largest Element in an Array
 
 ```python
 class Solution(object):
@@ -835,7 +835,7 @@ class Solution(object):
         return nums[quickSelect(nums, 0, n - 1, n - k + 1)]
 ```
 
-### Kth Smallest Element in a BST
+Kth Smallest Element in a BST
 
 ```python
 class Solution:
@@ -852,7 +852,7 @@ class Solution:
             root = root.right
 ```
 
-### LRU Cache
+LRU Cache
 
 ```python
 class LRUCache:
@@ -882,7 +882,7 @@ class LRUCache:
                 self.dict[key] = value
 ```
 
-### Local Minima
+Local Minima
 
 ```python
 def localMinUtil(arr, low, high, n):
@@ -898,7 +898,7 @@ def localMin(arr, n):
     return localMinUtil(arr, 0, n - 1, n)
 ```
 
-### Longest Increasing Path in a Matrix
+Longest Increasing Path in a Matrix
 
 ```python
 class Solution:
@@ -917,7 +917,7 @@ class Solution:
         return max(dp(x, y) for x in range(m) for y in range(n))
 ```
 
-### Longest Substring with At Most K Distinct Characters
+Longest Substring with At Most K Distinct Characters
 
 ```python
 from collections import OrderedDict
@@ -942,7 +942,7 @@ class Solution:
         return res
 ```
 
-### Lowest Common Ancestor of a Binary Tree III
+Lowest Common Ancestor of a Binary Tree III
 
 ```python
 class Solution:
@@ -956,7 +956,7 @@ class Solution:
         return q
 ```
 
-### Making A Large Island
+Making A Large Island
 
 ```python
 class Solution:
@@ -993,13 +993,13 @@ class Solution:
         return res
 ```
 
-### max depth of parentheses of expression
+max depth of parentheses of expression
 
 ```python
 
 ```
 
-###  Max Stack
+ Max Stack
 
 ```python
 class MaxStack:
@@ -1025,7 +1025,7 @@ class MaxStack:
         return m
 ```
 
-### Meeting Rooms
+Meeting Rooms
 
 ```python
 class Solution:
@@ -1037,7 +1037,7 @@ class Solution:
         return True
 ```
 
-### Meeting Rooms II
+Meeting Rooms II
 
 ```python
 class Solution:
@@ -1052,7 +1052,7 @@ class Solution:
         return len(heap)
 ```
 
-### Merge k Sorted Lists
+Merge k Sorted Lists
 
 ```python
 class Solution:
@@ -1074,7 +1074,7 @@ class Solution:
         return res.next
 ```
 
-### Merge Intervals
+Merge Intervals
 
 ```python
 class Solution:
@@ -1089,7 +1089,7 @@ class Solution:
         return res
 ```
 
-### Merge Sorted Array
+Merge Sorted Array
 
 ```python
 class Solution:
@@ -1110,7 +1110,7 @@ class Solution:
             j, k = j - 1, k - 1
 ```
 
-### Minimum Add to Make Parentheses Valid
+Minimum Add to Make Parentheses Valid
 
 ```python
 class Solution:
@@ -1126,7 +1126,7 @@ class Solution:
         return res + bal
 ```
 
-### Minimum Remove to Make Valid Parentheses
+Minimum Remove to Make Valid Parentheses
 
 ```python
 class Solution:
@@ -1152,7 +1152,7 @@ class Solution:
         return ''.join(res)
 ```
 
-### Minimum Cost For Tickets
+Minimum Cost For Tickets
 
 ```python
 # dp[i]表示车票覆盖到第i天的最小花费,dp[last_day]为所求
@@ -1176,7 +1176,7 @@ class Solution:
         return dp[last]
 ```
 
-### Minimum Window Substring
+Minimum Window Substring
 
 ```python
 class Solution:
@@ -1198,7 +1198,7 @@ class Solution:
         return s[I:J]
 ```
 
-### Missing Number
+Missing Number
 
 ```python
 class Solution:
@@ -1206,7 +1206,7 @@ class Solution:
         return (len(nums) + 1) * len(nums) // 2 - sum(nums)
 ```
 
-### Next Permutation
+Next Permutation
 
 ```python
 class Solution:
@@ -1225,7 +1225,7 @@ class Solution:
         nums.reverse()
 ```
 
-### Number of Islands
+Number of Islands
 
 ```python
 class Solution:
@@ -1261,7 +1261,7 @@ class Solution:
         return res
 ```
 
-### Product of Array Except Self
+Product of Array Except Self
 
 ```python
 class Solution:
@@ -1279,7 +1279,7 @@ class Solution:
         return res
 ```
 
-### Range Sum of BST
+Range Sum of BST
 
 ```python
 class Solution:
@@ -1297,7 +1297,7 @@ class Solution:
         return self.res
 ```
 
-### Reverse Nodes in k-Group
+Reverse Nodes in k-Group
 
 ```python
 class Solution:
@@ -1330,7 +1330,7 @@ class Solution:
         return dummy.next
 ```
 
-### Shortest Distance from All Buildings
+Shortest Distance from All Buildings
 
 ```python
 class Solution:
@@ -1363,7 +1363,7 @@ class Solution:
         return min([distSum[i][j] for i in range(M) for j in range(N) if not grid[i][j] and hit[i][j] == buildings] or [-1])
 ```
 
-### Simplify Path
+Simplify Path
 
 ```python
 class Solution:
@@ -1380,7 +1380,7 @@ class Solution:
         return '/' + '/'.join(res)
 ```
 
-### Strobogrammatic Number
+Strobogrammatic Number
 
 ```python
 class Solution:
@@ -1393,7 +1393,7 @@ class Solution:
         return True
 ```
 
-### Strobogrammatic Number II
+Strobogrammatic Number II
 
 ```python
 class Solution:
@@ -1411,7 +1411,7 @@ class Solution:
             return [p[:mid] + c + p[mid:] for c in n1 for p in self.findStrobogrammatic(n - 1)]
 ```
 
-### Subarray Sum Equals K
+Subarray Sum Equals K
 
 ```python
 from collections import defaultdict
@@ -1429,7 +1429,7 @@ class Solution:
         return res
 ```
 
-### Task Scheduler
+Task Scheduler
 
 ```python
 class Solution:
@@ -1440,7 +1440,7 @@ class Solution:
         return max(len(tasks), (maxx - 1) * (n + 1) + nmax)
 ```
 
-### Toeplitz Matrix
+Toeplitz Matrix
 
 ```python
 class Solution:
@@ -1455,7 +1455,7 @@ class Solution:
         return True
 ```
 
-### Valid Palindrome II
+Valid Palindrome II
 
 ```python
 class Solution:
@@ -1479,7 +1479,7 @@ class Solution:
 
 
 
-### Verifying an Alien Dictionary
+Verifying an Alien Dictionary
 
 ```python
 class Solution:
@@ -1499,7 +1499,7 @@ class Solution:
         return True
 ```
 
-### Word Break II
+Word Break II
 
 ```python
 class Solution:
@@ -1522,7 +1522,7 @@ class Solution:
         return dfs(0)
 ```
 
-### Word Ladder
+Word Ladder
 
 ```python
 class Solution:
@@ -1569,7 +1569,7 @@ class Solution:
         return 0
 ```
 
-### Walls and Gates
+Walls and Gates
 
 ```python
 class Solution:
