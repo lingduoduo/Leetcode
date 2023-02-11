@@ -2,7 +2,7 @@
 
 3. [数组中重复的数字	Array](../coding-notes/codes/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.md)
 
-4. [二维数组中的查找	Array](..//coding-notes/codes/04-二维数组中的查找.md)
+4. [二维数组中的查找	Array](../coding-notes/codes/04-二维数组中的查找.md)
 
 5. [替换空格	String](../coding-notes/codes/05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC.md)
 
@@ -20,13 +20,13 @@
 
 12. [矩阵中的路径	BackTracking](../coding-notes/codes/12-矩阵中的路径.md)	
 
-13. [机器人的运动范围	BackTracking](..//coding-notes/codes/13-机器人的运动范围.md)
+13. [机器人的运动范围	BackTracking](../coding-notes/codes/13-机器人的运动范围.md)
 
 14. [剪绳子	Dynamic Programming](../coding-notes/codes/14-剪绳子.md)	
 
 15. [二进制中的1的个数	Bit Manipulation](../coding-notes/codes/15-二进制中%201%20的个数.md)	
 
-16. [数值的整数次方	Math](/../coding-notes/codes/16-数值的整数次方.md)
+16. [数值的整数次方	Math](../coding-notes/codes/16-数值的整数次方.md)
 
 17. [打印从1到最大的n位数](../coding-notes/codes/17-打印从%201%20到最大的%20n%20位数.md)		
 
