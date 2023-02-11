@@ -26,7 +26,7 @@
 
 15. [二进制中的1的个数	Bit Manipulation](../coding-notes/codes/15-二进制中%201%20的个数.md)	
 
-16. 数值的整数次方	Math,	关注
+16. [数值的整数次方	Math](/coding-notes/codes/16-数值的整数次方.md)
 
 17. 打印从1到最大的n位数		
 
