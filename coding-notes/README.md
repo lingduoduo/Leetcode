@@ -18,13 +18,13 @@
 
 11. [旋转数组的最小数字	Binary Search](../coding-notes/codes/11-旋转数组的最小数字.md)
 
-12. 矩阵中的路径	BackTracking	
+12. [矩阵中的路径	BackTracking](../coding-notes/codes/12-矩阵中的路径.md)	
 
-13. 机器人的运动范围	BackTracking	关注
+13. [机器人的运动范围	BackTracking](..//coding-notes/codes/13-机器人的运动范围.md)
 
-14. 剪绳子	Dynamic Programming	
+14. [剪绳子	Dynamic Programming](../coding-notes/codes/14-剪绳子.md)	
 
-15. 二进制中的1的个数	Bit Manipulation,	
+15. [二进制中的1的个数	Bit Manipulation](../coding-notes/codes/15-二进制中%201%20的个数.md)	
 
 16. 数值的整数次方	Math,	关注
 
