@@ -1,3 +1,5 @@
+from typing import List
+import collections
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         n = len(accounts)
@@ -43,3 +45,36 @@ class Solution:
     
     def same(self, x, y):
         return self.find(x) == self.find(y)
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        edge = defaultdict(list)
+        names = {}
+        for account in accounts:
+            for i in range(1, len(account) - 1):
+                email, nemail = account[i], account[i + 1]
+                edge[email].append(nemail)
+                edge[nemail].append(email)
+            names[account[-1]] = account[0]
+
+        visited = set()
+        res = []
+        for email, name in names.items():
+            if email not in visited:
+                emails = [email]
+                visited.add(email)
+                q = [email]
+                while q:
+                    e = q.pop()
+                    for neighbor in edge[e]:
+                        if neighbor not in visited:
+                            emails.append(neighbor)
+                            visited.add(neighbor)
+                            q.append(neighbor)
+                emails.sort()
+                res.append([name] + emails)
+        return res
