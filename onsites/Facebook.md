@@ -247,7 +247,7 @@ class Solution(object):
         return ''.join(reversed(res))
 ```
 
-Alien Dictionary
+269. Alien Dictionary
 
 ```python
 class Solution:
@@ -277,6 +277,98 @@ class Solution:
             return ""
         return "".join(res)
 ```
+
+347. Top K Frequent Elements
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        res = collections.Counter(nums)
+        res = sorted(res.items(), key=lambda x: (-x[1], x[0]))
+        return [x for x, y in res][:k]
+```
+
+23. Merge k Sorted Lists
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        q = []
+        for i in range(len(lists)):
+            if lists[i]:
+                heapq.heappush(q, (lists[i].val, i))
+                lists[i] = lists[i].next
+        res = ListNode()
+        cur = res
+        while q:
+            val, i = heapq.heappop(q)
+            cur.next = ListNode(val)
+            cur = cur.next
+            if lists[i]:
+                heapq.heappush(q, (lists[i].val, i))
+                lists[i] = lists[i].next
+        return res.next
+```
+
+56. Merge Intervals
+
+```python
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0])
+        res = [intervals[0]]
+        for interval in intervals[1:]:
+            if res[-1][1] >= interval[0]:
+                res[-1][1] = max(interval[1], res[-1][1])
+            else:
+                res.append(interval)
+        return res
+```
+
+88. Merge Sorted Array
+
+```python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        i, j, k = m - 1, n - 1, m + n - 1
+        while i >= 0 and j >= 0:
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i, k = i - 1, k - 1
+            else:
+                nums1[k] = nums2[j]
+                j, k = j - 1, k - 1
+        while j >= 0:
+            nums1[k] = nums2[j]
+            j, k = j - 1, k - 1
+```
+
+973. K Closest Points to Origin
+
+```python
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        q = []
+        for px, py in points:
+            t = (-(px * px + py * py), px, py)
+            if len(q) < k:
+                heapq.heappush(q, t)
+            else:
+                heapq.heappushpop(q, t)
+        return [[p[1], p[2]] for p in q]
+
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        points.sort(key = lambda P: P[0]**2 + P[1]**2)
+        return points[:k]
+```
+
+
 
 Angle Between Hands of a Clock
 
@@ -902,21 +994,6 @@ class Solution:
         return res
 ```
 
-K Closest Points to Origin
-
-```python
-class Solution:
-    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        q = []
-        for px, py in points:
-            t = (-(px * px + py * py), px, py)
-            if len(q) < k:
-                heapq.heappush(q, t)
-            else:
-                heapq.heappushpop(q, t)
-        return [[p[1], p[2]] for p in q]
-```
-
 Knight Dialer
 
 ```python
@@ -1187,64 +1264,6 @@ class Solution:
             else:
                 heapq.heappush(heap, i[1])
         return len(heap)
-```
-
-Merge k Sorted Lists
-
-```python
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        q = []
-        for i in range(len(lists)):
-            if lists[i]:
-                heapq.heappush(q, (lists[i].val, i))
-                lists[i] = lists[i].next
-        res = ListNode()
-        cur = res
-        while q:
-            val, i = heapq.heappop(q)
-            cur.next = ListNode(val)
-            cur = cur.next
-            if lists[i]:
-                heapq.heappush(q, (lists[i].val, i))
-                lists[i] = lists[i].next
-        return res.next
-```
-
-Merge Intervals
-
-```python
-class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key=lambda x: x[0])
-        res = [intervals[0]]
-        for interval in intervals[1:]:
-            if res[-1][1] >= interval[0]:
-                res[-1][1] = max(interval[1], res[-1][1])
-            else:
-                res.append(interval)
-        return res
-```
-
-Merge Sorted Array
-
-```python
-class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
-        """
-        i, j, k = m - 1, n - 1, m + n - 1
-        while i >= 0 and j >= 0:
-            if nums1[i] > nums2[j]:
-                nums1[k] = nums1[i]
-                i, k = i - 1, k - 1
-            else:
-                nums1[k] = nums2[j]
-                j, k = j - 1, k - 1
-        while j >= 0:
-            nums1[k] = nums2[j]
-            j, k = j - 1, k - 1
 ```
 
 Minimum Add to Make Parentheses Valid

@@ -1,3 +1,7 @@
+from typing import List
+from collections import defaultdict, deque
+import collections
+
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         # create adject matrx of the graph
@@ -47,9 +51,6 @@ class Solution:
 
         return "".join(ans)
 
-
-from typing import List
-from collections import defaultdict, deque
 
 
 def alienOrder(words: List[str]) -> str:
