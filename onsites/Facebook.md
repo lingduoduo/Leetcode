@@ -172,28 +172,28 @@ class Solution:
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
-        cur = None
-        gap = 10000000
-        for i in range(len(nums)):
-            if cur == nums[i]:
-                i += 1
+        n = len(nums)
+        res = nums[0] + nums[1] + nums[n-1]
+
+        for i in range(n-2):
+            if i > 0 and nums[i-1] == nums[i]:
                 continue
-            cur = nums[i]
             j = i + 1
-            k = len(nums) -1
+            k = n - 1
             while j < k:
-                tmp = nums[i] + nums[j] + nums[k] - target
-                gap = tmp if abs(tmp) < abs(gap) else gap
-                if tmp > 0:
-                    k -= 1
-                elif tmp < 0:
+                val = nums[i] + nums[j] + nums[k]
+                if abs(val - target) < abs(res - target):
+                    res = val
+                elif val == target:
+                    return target
+                elif val < target:
                     j += 1
                 else:
-                    return target
-        return target + gap
+                    k -= 1
+        return res
 ```
 
-Accounts Merge
+721. Accounts Merge
 
 ```python
 class Solution:
@@ -226,7 +226,7 @@ class Solution:
         return res
 ```
 
-Add Strings
+415. Add Strings
 
 ```python
 class Solution(object):

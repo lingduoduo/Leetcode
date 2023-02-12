@@ -75,6 +75,23 @@ class Solution:
 
         return ''.join(str(x) for x in res[::-1])
 
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        res = []
+        carry = 0
+        p1 = len(num1)
+        p2 = len(num2)
+        while p1 > 0 or p2 > 0 or carry > 0:
+            if p1:
+                p1 -= 1
+                carry += int(num1[p1])
+            if p2:
+                p2 -= 1
+                carry += int(num2[p2])
+            res.append(str(carry % 10))
+            carry = carry // 10
+        return ''.join(str(x) for x in res[::-1])
+
 if __name__ == "__main__":
     result = Solution().addStrings('198', '23')
     print(result)
