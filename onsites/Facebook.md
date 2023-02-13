@@ -471,6 +471,27 @@ class TicTacToe(object):
         return 0
 ```
 
+77. Combinations
+
+```python
+class Solution(object):
+    def helper(self, l, n, d, k):
+        if d == k:
+            return [[l]]
+        res = []
+        for i in range(l+1, n + 1 - (k - d - 1)):
+            tmp = self.helper(i, n, d + 1, k)
+            if l == 0:
+                res += tmp
+            else:
+                for p in tmp:
+                    res.append([l] + p)
+        return res
+        
+    def combine(self, n, k):
+        return self.helper(0, n, 0, k)
+```
+
 Angle Between Hands of a Clock
 
 ```python
@@ -758,27 +779,6 @@ class Solution:
         last.right = first
         first.left = last
         return first
-```
-
-Combinations
-
-```python
-class Solution(object):
-    def com(self, l, n, d, k):
-        if d == k:
-            return [[l]]
-        res = []
-        for i in range(l+1, n + 1 - (k - d - 1)):
-            tmp = self.com(i, n, d + 1, k)
-            if l == 0:
-                res += tmp
-            else:
-                for p in tmp:
-                    res.append([l] + p)
-        return res
-        
-    def combine(self, n, k):
-        return self.com(0, n, 0, k)
 ```
 
 check if string is parlindrome, ignore non a-z A-Z chars
