@@ -368,6 +368,36 @@ class Solution:
         return points[:k]
 ```
 
+146. LRU Cache
+
+```python
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dict = collections.OrderedDict()
+        self.size = 0
+
+    def get(self, key: int) -> int:
+        if key in self.dict:
+            self.dict.move_to_end(key)
+            return self.dict[key]
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            self.dict[key] = value
+            self.dict.move_to_end(key)
+        else:
+            if self.size < self.capacity:
+                self.dict[key] = value
+                self.size += 1
+            else:
+                self.dict.popitem(False)
+                self.dict[key] = value
+```
+
 
 
 Angle Between Hands of a Clock
@@ -1066,36 +1096,6 @@ class Solution:
             root = root.right
 ```
 
-LRU Cache
-
-```python
-class LRUCache:
-
-    def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.dict = collections.OrderedDict()
-        self.size = 0
-
-    def get(self, key: int) -> int:
-        if key in self.dict:
-            self.dict.move_to_end(key)
-            return self.dict[key]
-        else:
-            return -1
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.dict:
-            self.dict[key] = value
-            self.dict.move_to_end(key)
-        else:
-            if self.size < self.capacity:
-                self.dict[key] = value
-                self.size += 1
-            else:
-                self.dict.popitem(False)
-                self.dict[key] = value
-```
-
 Local Minima
 
 ```python
@@ -1632,8 +1632,6 @@ class Solution:
         else:
             return False
 ```
-
-
 
 Verifying an Alien Dictionary
 
