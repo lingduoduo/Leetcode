@@ -1,4 +1,4 @@
-9/1/2022
+**9/1/2022**
 
 1762 - Buildings With an Ocean View
 314	- Binary Tree Vertical Order Traversal
@@ -40,7 +40,7 @@
 523	- Continuous Subarray Sum	
 1891 - Cutting Ribbons
 
-10/1/2022
+**10/1/2022**
 
 56	- Merge Intervals	
 973	- K Closest Points to Origin	
@@ -82,7 +82,7 @@
 298	- Binary Tree Longest Consecutive Sequence
 1192	- Critical Connections in a Network	
 
-11/1/2022
+**11/1/2022**
 
 1644	- Lowest Common Ancestor of a Binary Tree II
 939	- Minimum Area Rectangle	
