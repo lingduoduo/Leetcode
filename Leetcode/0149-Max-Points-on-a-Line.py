@@ -27,6 +27,21 @@ class Solution:
             x, y = y, x%y
         return x
 
+import math
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        n = len(points)
+        if n == 1:
+            return 1
+        result = 2
+        for i in range(n):
+            d = collections.defaultdict(int)
+            for j in range(n):
+                if j != i:
+                    d[math.atan2(points[j][1] - points[i][1],
+                                   points[j][0] - points[i][0])] += 1
+            result = max(result, max(d.values()) + 1)
+        return result
 
 if __name__ == '__main__':
     # points = [[1,1],[2,2],[3,3]]
