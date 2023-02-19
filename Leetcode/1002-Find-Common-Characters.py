@@ -17,4 +17,4 @@ class Solution:
         for k, v in curr.items():
             res.extend([k]*v)
         return res
-            
+
