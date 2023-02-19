@@ -12,6 +12,8 @@ class Solution(object):
         else:
             return i - 1
 
+class Solution(object):
+    def mySqrt(self, x):
         L = 0
         R = x
         while L <= R:
@@ -24,8 +26,8 @@ class Solution(object):
                 L = mid + 1
         return R
 
-        second
-        Try
+class Solution(object):
+    def mySqrt(self, x):
         L = 0
         R = x + 1
         while L < R:
@@ -35,22 +37,4 @@ class Solution(object):
             else:
                 R = mid
         return L - 1
-
-
-class Solution:
-    def mySqrt(self, x: int) -> int:
-        if x < 2:
-            return x
-
-        left, right = 0, x//2 + 1
-        ###[left, right)
-        while left < right:
-            mid = left + (right - left) // 2
-            if mid ** 2 == x:
-                return mid
-            if mid ** 2 < x:
-                left = mid + 1
-            else:
-                right = mid
-        return left - 1
 
