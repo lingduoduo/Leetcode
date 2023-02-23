@@ -16,3 +16,60 @@ class Solution:
         wordDict = set(wordDict)
         memo = {len(s): [""]}
         return dfs(0)
+
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        wordSet = set(wordDict)
+        # table to map a string to its corresponding words break
+        # {string: [['word1', 'word2'...], ['word3', 'word4', ...]]}
+        memo = defaultdict(list)
+
+        #@lru_cache(maxsize=None)    # alternative memoization solution
+        def dfs(s):
+            """ return list of word lists """
+            if not s:
+                return [[]]  # list of empty list
+
+            if s in memo:
+                # returned the cached solution directly.
+                return memo[s]
+
+            for endIndex in range(1, len(s)+1):
+                word = s[:endIndex]
+                if word in wordSet:
+                    # move forwards to break the postfix into words
+                    for subsentence in dfs(s[endIndex:]):
+                        memo[s].append([word] + subsentence)
+            return memo[s]
+
+        # break the input string into lists of words list
+        dfs(s)
+
+        # chain up the lists of words into sentences.
+        return [" ".join(words) for words in memo[s]]
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        # quick check on the characters,
+        #   otherwise it would exceed the time limit for certain test cases.
+        if set(Counter(s).keys()) > set(Counter("".join(wordDict)).keys()):
+            return []
+
+        wordSet = set(wordDict)
+
+        dp = [[]] * (len(s)+1)
+        dp[0] = [""]
+
+        for endIndex in range(1, len(s)+1):
+            sublist = []
+            # fill up the values in the dp array.
+            for startIndex in range(0, endIndex):
+                word = s[startIndex:endIndex]
+                if word in wordSet:
+                    for subsentence in dp[startIndex]:
+                        sublist.append((subsentence + ' ' + word).strip())
+
+            dp[endIndex] = sublist
+
+        return dp[len(s)]
