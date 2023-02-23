@@ -64,48 +64,51 @@ class Solution:
         return 0
 
 
-class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        wordList = set(wordList)
-        if endWord not in wordList:
+from collections import defaultdict
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+
+        if endWord not in wordList or not endWord or not beginWord or not wordList:
             return 0
-        wordList.add(beginWord)
-        n = len(beginWord)
-        d = defaultdict(list)
+
+        # Dictionary to hold combination of words that can be formed,
+        # from any given word. By changing one letter at a time.
+        all_combo_dict = defaultdict(list)
         for word in wordList:
-            for i in range(n):
-                k = word[:i] + '_' + word[i + 1:]
-                d[k].append(word)
-        q1 = deque([beginWord])
-        dis1 = {w: 0 for w in wordList}
-        dis1[beginWord] = 1
-        q2 = deque([endWord])
-        dis2 = {w: 0 for w in wordList}
-        dis2[endWord] = 1
-        flag = True
-        while q1 and q2:
-            if flag:
-                front, dis_front = q1, dis1
-                back, dis_back = q2, dis2
-            else:
-                front, dis_front = q2, dis2
-                back, dis_back = q1, dis1
-            cur = front.popleft()
-            dist = dis_front[cur]
-            next_word = []
-            for i in range(n):
-                k = cur[:i] + '_' + cur[i + 1:]
-                for w in d[k]:
-                    next_word.append(w)
-            for w in next_word:
-                if dis_back[w] > 0:
-                    return dist + dis_back[w]
-                if dis_front[w] == 0:
-                    dis_front[w] = dist + 1
-                    front.append(w)
-            if len(back) < len(front):
-                flag = not flag
+            for i in range(len(beginWord)):
+                # Key is the generic word
+                # Value is a list of words which have the same intermediate generic word.
+                all_combo_dict[word[:i] + "*" + word[i+1:]].append(word)
+
+        # Queue for BFS
+        queue = collections.deque([(beginWord, 1)])
+        # Visited to make sure we don't repeat processing same word.
+        visited = {beginWord: True}
+        while queue:
+            current_word, level = queue.popleft()
+            for i in range(len(beginWord)):
+                # Intermediate words for current word
+                intermediate_word = current_word[:i] + "*" + current_word[i+1:]
+
+                # Next states are all the words which share the same intermediate state.
+                for word in all_combo_dict[intermediate_word]:
+                    # If at any point if we find what we are looking for
+                    # i.e. the end word - we can return with the answer.
+                    if word == endWord:
+                        return level + 1
+                    # Otherwise, add it to the BFS Queue. Also mark it visited
+                    if word not in visited:
+                        visited[word] = True
+                        queue.append((word, level + 1))
+                all_combo_dict[intermediate_word] = []
         return 0
+
 
 if __name__ == '__main__':
     beginWord = "hit"
