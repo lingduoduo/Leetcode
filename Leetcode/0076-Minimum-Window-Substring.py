@@ -62,6 +62,25 @@ class Solution:
                 left += 1
         return res
 
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        res = ""
+        left, right, minLen = 0, 0, float('inf')
+        d = collections.Counter(t)
+        for i, v in enumerate(s):
+            d[v] -= 1
+            if d[v] >= 0:
+                right += 1
+            while right == len(t):
+                if minLen > i - left + 1:
+                    minLen = i - left + 1
+                    res = s[left: i + 1]
+                d[s[left]] += 1
+                if d[s[left]] > 0:
+                    right -= 1
+                left += 1
+        return res
+
 
 if __name__ == '__main__':
     S = "ADOBECODEBANC"
