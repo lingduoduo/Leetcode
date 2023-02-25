@@ -31,6 +31,13 @@ class Solution(object):
             return 0
         return ind*res
 
+class Solution:
+    def reverse(self, x: int) -> int:
+        flag = -1 if x < 0 else 1
+        x = x * flag
+
+        res = int(''.join(list(str(x))[::-1])) * flag
+        return 0 if res<=-2**31 or res>=2**31-1 else res
 
 if __name__ == "__main__":
     numbers = -123
