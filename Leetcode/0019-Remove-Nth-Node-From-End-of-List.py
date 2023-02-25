@@ -11,7 +11,6 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        first try
         dummy = ListNode(0)
         dummy.next = head
         curr = dummy

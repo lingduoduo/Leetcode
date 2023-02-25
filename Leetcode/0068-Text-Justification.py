@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
         res = []  # 记录最终的结果
