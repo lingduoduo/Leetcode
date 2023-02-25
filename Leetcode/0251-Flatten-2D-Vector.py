@@ -47,6 +47,25 @@ class Vector2D(object):
             return False
 
 
+class Vector2D:
+
+    def __init__(self, a):
+        def it():
+            for line in a:
+                for val in line:
+                    self.size -= 1
+                    yield val
+
+        self.it = it()
+        self.size = sum(len(line) for line in a)
+
+    def next(self):
+        return next(self.it)
+
+    def hasNext(self):
+        return self.size
+
+
 if __name__ == '__main__':
     vec2d = [[1, 2], [3], [4, 5, 6]]
     i, v = Vector2D(vec2d), []
