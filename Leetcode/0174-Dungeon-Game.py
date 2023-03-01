@@ -24,6 +24,7 @@ class Solution:
         def dfs(i, j):
             if i < 0 or j < 0 or i == len(dungeon) or j == len(dungeon[i]):
                 return float('-inf')
+
             if i == len(dungeon) - 1 and j == len(dungeon[i]) - 1:
                 return min(0, dungeon[i][j])
 
