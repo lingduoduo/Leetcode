@@ -26,10 +26,22 @@ class Solution(object):
         digits[0] = 1
         digits.append(0)
         return digits
-        
+
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        carry = 1
+        for idx, num in enumerate(digits[::-1]):
+            digits[idx] = (num + carry) % 10
+            carry = (num + carry) // 10
+        print(digits)
+        if carry == 1:
+            digits.append(1)
+
+        return digits[::-1]
 
 
 if __name__ == "__main__":
-    nums = [9, 9, 9, 9]
+    nums = [1,2,3]
+    # nums = [9, 9, 9, 9]
     result = Solution().plusOne(nums)
     print(result)

@@ -23,6 +23,7 @@ class Solution:
 
         return seen_once
 
+
 if __name__ == '__main__':
     nums = [2, 2, 3, 2]
     results = Solution().singleNumber(nums)
