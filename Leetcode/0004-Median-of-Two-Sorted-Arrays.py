@@ -34,47 +34,6 @@
     ###    else:
     ###        return A[pa - 1]
 
-###second try
-# class Solution(object):
-# def findMedianSortedArrays(self, nums1, nums2):
-#     lst = nums1 + nums2
-#     lst.sort()
-#     median = 0
-#     if len(lst) % 2 == 1:
-#         median = lst[(len(lst) // 2)]
-#     else:
-#         median = (float(lst[len(lst) // 2] + lst[(len(lst) // 2) - 1]) / 2)
-#     return median
-
-#         int M = nums1.size();
-#         int N = nums2.size();
-#         if (M > N) return findMedianSortedArrays(nums2, nums1);
-#         int L = M + N;
-
-#         int k = (L + 1) / 2; //总共左边需要多少个元素
-#         int l = 0, r = M; // 对于nums1而言
-#         int m1 = 0, m2 = 0;
-#         while (l < r) {
-#             m1 = l + (r - l) / 2; // nums1的分割位置，左边的元素个数
-#             m2 = k - m1; // nums2的分割位置，左边的元素个数
-#             if (nums1[m1] < nums2[m2 - 1]) {
-#                 l = m1 + 1;
-#             } else {
-#                 r = m1;
-#             }
-#         }
-#         m1 = l;
-#         m2 = k - l;
-#         double c1 = max(m1 <= 0 ? INT_MIN : nums1[m1 - 1],
-#                         m2 <= 0 ? INT_MIN : nums2[m2 - 1]);
-#         if (L & 1)
-#             return c1;
-#         double c2 = min(m1 >= M ? INT_MAX : nums1[m1],
-#                         m2 >= N ? INT_MAX : nums2[m2]);
-#         return (c1 + c2 ) / 2;
-#     }
-# };    
-
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         if len(nums1)>len(nums2):
@@ -99,5 +58,47 @@ class Solution:
             return c1
         c2 = min(float("inf") if m1>=n1 else nums1[m1], float("inf") if m2>=n2 else nums2[m2])
         return (c1+c2)/2
+
+import heapq
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        final = heapq.merge(nums1,nums2)
+        final = list(final)
+        if len(final)%2 != 0:
+            return final[len(final)//2]
+        else:
+            left = int(len(final)/2) - 1
+            right = int(len(final)/2)
+            return (final[left]+final[right])/2
       
 
+def findMedianSortedArrays(self, nums1, nums2):
+    a, b = sorted((nums1, nums2), key=len)
+    m, n = len(a), len(b)
+    mid = (m + n - 1) / 2
+    # Determine i, j that a[0:i] + b[0:j] (exclusive) is the most small "after" numbers.
+    # There could multiple pairs of such (i, j) if there are some duplicated numbers.
+    # Each each such pair satisfies the following criteria at the same time:
+    # 1) i + j == mid
+    # 2) (j>=1 and a[i] >= b[j-1]) or j==0
+    # 3) (i>=1 and b[j] >= a[i-1]) or i==0
+    lo, hi = 0, m
+    while lo < hi:
+        i = (lo + hi) // 2
+        j = mid - i
+        cond1 = (j>=1 and a[i] >= b[j-1]) or j==0
+        cond2 = (i>=1 and b[j] >= a[i-1]) or i==0
+        if cond1 and cond2:
+            lo = i
+            break
+        elif not cond1:
+            assert(cond2)
+            lo = i + 1
+        else:
+            assert(cond1)
+            hi = i
+    i = lo
+    j = mid - i
+    nextfew = sorted(a[i:i+2] + b[j:j+2])
+    return (nextfew[0] + nextfew[1 - (m+n)%2]) // 2.0

@@ -27,24 +27,36 @@ class Solution:
             return
         if left > 0:
             self.dfs(res, left - 1, right, path + '(')
-        if right >0:
+        if right > 0:
             self.dfs(res, left, right - 1, path + ')')
 
 class Solution:
-    def generateParenthesis(self, n: int):        
-        stack = ["()"]
-        step = 1
-        while step < n:
-            for i in range(len(stack)):
-                cur = stack.pop(0)
-                stack.append("()"+cur)
-                stack.append("("+cur+")")
-                stack.append(cur+"()")
-            step += 1
-        return list(set(stack))
+    def generateParenthesis(self, n: int) -> List[str]:
+        ans = []
+        def backtrack(S = [], left = 0, right = 0):
+            if len(S) == 2 * n:
+                ans.append("".join(S))
+                return
+            if left < n:
+                S.append("(")
+                backtrack(S, left+1, right)
+                S.pop()
+            if right < left:
+                S.append(")")
+                backtrack(S, left, right+1)
+                S.pop()
+        backtrack()
+        return ans
 
-["()(()())","()((()))","(())()()","((()))()","(()()())","(()())()","(()(()))","((())())"]
-["((())())","((()))()","(()(()))","(()()())","(()())()","(())(())","(())()()","()((()))","()(()())"]
+class Solution(object):
+    def generateParenthesis(self, n):
+        if n == 0: return ['']
+        ans = []
+        for c in range(n):
+            for left in self.generateParenthesis(c):
+                for right in self.generateParenthesis(n-1-c):
+                    ans.append('({}){}'.format(left, right))
+        return ans
 
 if __name__ == '__main__':
     results = Solution().generateParenthesis(1)
