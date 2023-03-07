@@ -24,4 +24,4 @@ class TimeMap:
             return ""
         else:
             return d[high-1][1]
-        
+
