@@ -1,3 +1,5 @@
+import itertools
+import random
 class Solution:
 
     def __init__(self, w: List[int]):
@@ -21,6 +23,7 @@ class Solution:
         #     return left
         # return right
 
+import numpy as np
 class Solution:
 
     def __init__(self, w: List[int]):
@@ -40,6 +43,13 @@ class Solution:
             return l
         num = random.randint(0, self.psum[-1] - 1)
         return search(num)
+
+class Solution:
+    def __init__(self, w):
+        self.w = list(itertools.accumulate(w))
+
+    def pickIndex(self):
+        return bisect.bisect_left(self.w, random.randint(1, self.w[-1]))
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
