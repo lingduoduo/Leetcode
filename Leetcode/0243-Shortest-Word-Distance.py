@@ -46,6 +46,22 @@ class Solution(object):
             
             i += 1
         return dist
+
+class Solution:
+    def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        idx1 = -1
+        idx2 = -1
+        res = float("inf")
+        for idx, word in enumerate(wordsDict):
+            if word == word1:
+                if idx2 != -1:
+                    res = min(res, idx - idx2)
+                idx1 = idx
+            if word == word2:
+                if idx1 != -1:
+                    res = min(res, idx - idx1)
+                idx2 = idx
+        return res
     
 if __name__ == "__main__":
     words = ['practice', 'makes', 'perfect', 'coding', 'makes']
