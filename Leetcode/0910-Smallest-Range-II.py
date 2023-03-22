@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def smallestRangeII(self, A: List[int], K: int) -> int:
         A = sorted(set(A))
