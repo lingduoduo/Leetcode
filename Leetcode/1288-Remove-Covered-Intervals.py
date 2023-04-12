@@ -19,6 +19,18 @@ class Solution:
                     res += 1
         return res
 
+class Solution:
+    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        stack = []
+        intervals.sort(key=lambda x: (x[0], -x[1]))
+        for interval in intervals:
+            if stack:
+                x, y = stack[-1]
+                if x <= interval[0] and interval[1] <= y:
+                    continue
+            stack.append(interval)
+        return len(stack)
+
 if __name__ == '__main__':
     # intervals = [[1,4],[3,6],[2,8]]
     # intervals = [[1,4],[2,3]]
