@@ -1,22 +1,16 @@
 import collections
-
-
-class Solution(object):
-    def containsDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
-        ###d = collections.Counter(nums)
-        ###for key, val in d.items():
-        ###    if val > 1:
-        ###        return True
-        ###return False
-        
-        return len(set(nums)) != len(nums)
-
+from typing import List
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        s = set()
+        for num in nums:
+            if num in s:
+                return True
+            else:
+                s.add(num)
+        return False
 
 if __name__ == "__main__":
-    input = [1, 2]
+    input = [1, 2, 2]
     result = Solution().containsDuplicate(input)
     print(result)
