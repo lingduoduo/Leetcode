@@ -1,34 +1,17 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        ###if not prices:
-        ###    return 0
-        ###buy = [0] * len(prices)
-        ###buy[0] = prices[0]
-        ###sell = [0] * len(prices)
-        ###sell[0] = 0
-        ###for i in range(1, len(prices)):
-        ###    buy[i] = min(buy[i - 1], prices[i])
-        ###    sell[i] = max(sell[i - 1], prices[i] - buy[i - 1])
-        ###return sell[len(prices) - 1]
-        
-        max_profit, min_price = 0, float("inf")
-        
-        for price in prices:
-            min_price = min(price, min_price)
-            max_profit = max(max_profit, price - min_price)
-        
-        return max_profit
+from typing import List
 
-class Solution(object):
-    def maxProfit(self, prices):
-        if not prices: return 0
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices) <= 1:
+            return 0
+        cur_min = prices[0]
         res = 0
-        min_price = prices[0]
         for i in range(1, len(prices)):
-            res =  max(res, prices[i] - min_price)
-            min_price = min(min_price, prices[i])
+            res = max(res, prices[i] - cur_min)
+            cur_min = min(cur_min, prices[i])
+
         return res
+
+if __name__ == "__main__":
+    res = Solution().maxProfit(prices = [7,1,5,3,6,4])
+    print(res)
