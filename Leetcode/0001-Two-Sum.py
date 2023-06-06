@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         d = dict()
@@ -8,6 +10,7 @@ class Solution:
                 return [i, d[target - nums[i]]]
             else:
                 d[nums[i]] = i
+
 
 if __name__ == "__main__":
     numbers = [2, 7, 11, 15]
