@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
@@ -15,7 +16,7 @@ class Solution:
                     i += 1
                 else:
                     j -= 1
-        return res
+        return list(res)
 
 
 if __name__ == "__main__":
