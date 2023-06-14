@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
         res=0
@@ -28,3 +30,20 @@ class Solution:
                     res = max(res, h * w)
                 stack.append(i)
         return res
+
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        heights.append(0)
+        stack = [-1]
+        res = 0
+        for i in range(len(heights)):
+            while heights[i] < heights[stack[-1]]:
+                h = heights[stack.pop()]
+                w = i - stack[-1] - 1
+                res = max(res, h * w)
+            stack.append(i)
+        return res
+
+if __name__ == "__main__":
+    res = Solution().largestRectangleArea(heights = [2,1,5,6,2,3])
+    print(res)
