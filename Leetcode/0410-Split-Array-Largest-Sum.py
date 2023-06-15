@@ -38,33 +38,35 @@
 #         for i in range(1, m):
 #             for j in range(i-1, n):
 #                 for k in range(j):
-#                     dp[i][j] = min(dp[i][j], 
+#                     dp[i][j] = min(dp[i][j],
 #                         max(dp[i-1][k], sums[j]-sums[k]))
 #         return dp[-1][-1]
+
 
 class Solution:
     def splitArray(self, nums, m) -> int:
         left = max(nums)
-        right = sum(nums) 
+        right = sum(nums)
 
-        while left<right:
-            mid=left+(right-left)//2
-            count=1
-            total=0
+        while left < right:
+            mid = left + (right - left) // 2
+            count = 1
+            total = 0
             for num in nums:
-                total+=num
-                if total>mid:
-                    total=num
-                    count+=1
- 
-            if count>m:
-                left=mid+1
+                total += num
+                if total > mid:
+                    total = num
+                    count += 1
+
+            if count > m:
+                left = mid + 1
             else:
-                right=mid
+                right = mid
         return left
 
-if __name__ == '__main__':
-    nums = [7,2,5,10,8]
+
+if __name__ == "__main__":
+    nums = [7, 2, 5, 10, 8]
     # nums = [1,2,3,4,5]
     # nums = [1,4,4]
     # nums = [10,5,13,4,8,4,5,11,14,9,16,10,20,8]

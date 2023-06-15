@@ -1,17 +1,19 @@
 import numpy as np
+
+
 class Solution:
     def countSquares(self, matrix: List[List[int]]) -> int:
         if not matrix:
             return 0
-        
+
         m = len(matrix)
         n = len(matrix[0])
-        
+
         dp = [[0] * n for _ in range(m)]
 
         for i in range(m):
             dp[i][0] = int(matrix[i][0])
-            
+
         for j in range(n):
             dp[0][j] = int(matrix[0][j])
 
@@ -22,13 +24,11 @@ class Solution:
 
         return np.sum(dp)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # matrix = [[0,1,1,1],
     #           [1,1,1,1],
     #           [0,1,1,1]]
-    matrix = [
-  [1,0,1],
-  [1,1,0],
-  [1,1,0]]
+    matrix = [[1, 0, 1], [1, 1, 0], [1, 1, 0]]
     results = Solution().countSquares(matrix)
     print(results)

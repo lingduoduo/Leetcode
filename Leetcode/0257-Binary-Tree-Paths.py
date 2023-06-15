@@ -12,20 +12,20 @@ class Solution:
         self.res = []
 
         self.dfs(root, [])
-        
+
         s = []
         for path in self.res:
-            s.append('->'.join(path))
+            s.append("->".join(path))
         return s
 
     def dfs(self, root, path):
         if not root:
-            return 
+            return
 
         if not root.left and not root.right:
-            self.res.append(path+[str(root.val)])
+            self.res.append(path + [str(root.val)])
 
         if root.left:
-            self.dfs(root.left, path+[str(root.val)])
+            self.dfs(root.left, path + [str(root.val)])
         if root.right:
-            self.dfs(root.right, path+[str(root.val)])
+            self.dfs(root.right, path + [str(root.val)])

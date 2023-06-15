@@ -6,6 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
         import collections
+
         ###d = collections.Counter(nums)
         ###l = sorted(d.values())[-k:]
 
@@ -18,6 +19,7 @@ class Solution(object):
         counter = collections.Counter(nums).most_common()
         print(counter)
         return [counter[i][0] for i in range(k)]
+
 
 class Solution(object):
     def topKFrequent(self, nums, k):
@@ -32,7 +34,8 @@ class Solution(object):
             val, key = heapq.heappop(ksmallest)
             res.append(key)
         return res
-        
+
+
 if __name__ == "__main__":
     nums = [1, 1, 1, 2, 2, 3]
     result = Solution().topKFrequent(nums, 2)

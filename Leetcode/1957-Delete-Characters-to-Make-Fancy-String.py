@@ -15,12 +15,13 @@ class Solution:
                 cnt += 1
         return res
 
-if __name__ == '__main__':
-    res = Solution().makeFancyString(s = "leeetcode")
+
+if __name__ == "__main__":
+    res = Solution().makeFancyString(s="leeetcode")
     print(res)
 
-    res = Solution().makeFancyString(s = "aaabaaaa")
+    res = Solution().makeFancyString(s="aaabaaaa")
     print(res)
 
-    res = Solution().makeFancyString(s = "aab")
+    res = Solution().makeFancyString(s="aab")
     print(res)

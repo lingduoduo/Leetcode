@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         n = len(cost)
-        
+
         dp = [0] * len(cost)
         dp[0] = cost[0]
         dp[1] = cost[1]

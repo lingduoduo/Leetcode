@@ -8,4 +8,3 @@ class Solution:
             if num == 1:
                 prev = idx
         return True
-        

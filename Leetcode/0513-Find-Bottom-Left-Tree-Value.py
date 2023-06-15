@@ -8,7 +8,7 @@ class Solution:
     def findBottomLeftValue(self, root: TreeNode) -> int:
         if not root:
             return -1
-    
+
         d = collections.defaultdict(list)
 
         def bfs(root):
@@ -25,7 +25,7 @@ class Solution:
                         stack.append(node.right)
                 level += 1
             return level
-        
+
         l = bfs(root)
-        
-        return d[l-1][0]
+
+        return d[l - 1][0]

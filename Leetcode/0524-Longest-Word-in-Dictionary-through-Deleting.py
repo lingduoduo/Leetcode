@@ -1,5 +1,7 @@
 from typing import List
 import collections
+
+
 class Solution:
     def findLongestWord(self, s: str, d: List[str]) -> str:
         res = []
@@ -16,13 +18,15 @@ class Solution:
                     res.append(w)
                 else:
                     dmap[w[i + 1]].append((i + 1, w))
-        
-        if not res: return ''
-        maxl = len(max(res, key = len))
+
+        if not res:
+            return ""
+        maxl = len(max(res, key=len))
         return min(w for w in res if len(w) == maxl)
 
-if __name__ == '__main__':
-	s = "abpcplea"
-	d = ["ale","apple","monkey","plea"]
-	res = Solution().findLongestWord(s, d)
-	print(res)
+
+if __name__ == "__main__":
+    s = "abpcplea"
+    d = ["ale", "apple", "monkey", "plea"]
+    res = Solution().findLongestWord(s, d)
+    print(res)

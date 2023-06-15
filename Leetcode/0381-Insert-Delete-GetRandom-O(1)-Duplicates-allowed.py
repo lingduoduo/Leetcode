@@ -1,14 +1,14 @@
 from collections import defaultdict
 from random import choice
 
-class RandomizedCollection:
 
+class RandomizedCollection:
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.d = collections.defaultdict(set)
-        self.nums = []        
+        self.nums = []
 
     def insert(self, val: int) -> bool:
         """
@@ -22,7 +22,7 @@ class RandomizedCollection:
         """
         Removes a value from the collection. Returns true if the collection contained the specified element.
         """
-        if not self.d[val]: 
+        if not self.d[val]:
             return False
         remove, last = self.d[val].pop(), self.nums[-1]
         self.nums[remove] = last
@@ -31,15 +31,14 @@ class RandomizedCollection:
         self.d[last].remove(len(self.nums))
 
         return True
-        
 
     def getRandom(self) -> int:
         """
         Get a random element from the collection.
         """
         import random
+
         return random.choice(self.nums)
-        
 
 
 # Your RandomizedCollection object will be instantiated and called as such:

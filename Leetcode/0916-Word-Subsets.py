@@ -1,5 +1,7 @@
 from typing import List
 import collections
+
+
 class Solution:
     def wordSubsets(self, A: List[str], B: List[str]) -> List[str]:
         target = collections.defaultdict(int)
@@ -18,8 +20,9 @@ class Solution:
                 res.append(word)
         return res
 
-if __name__ == '__main__':
-     A = ["amazon","apple","facebook","google","leetcode"]
-     B = ["ec","oc","ceo"]
-     res = Solution().wordSubsets(A, B)
-     print(res)
+
+if __name__ == "__main__":
+    A = ["amazon", "apple", "facebook", "google", "leetcode"]
+    B = ["ec", "oc", "ceo"]
+    res = Solution().wordSubsets(A, B)
+    print(res)

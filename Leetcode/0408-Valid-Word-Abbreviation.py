@@ -30,6 +30,7 @@ class Solution:
 
         return l == 0 and len(w1) == 0
 
+
 if __name__ == "__main__":
     res = Solution().validWordAbbreviation(word="internationalization", abbr="i12iz4n")
     print(res)
@@ -42,4 +43,3 @@ if __name__ == "__main__":
 
     res = Solution().validWordAbbreviation(word="hi", abbr="2i")
     print(res)
-

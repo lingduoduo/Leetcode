@@ -14,5 +14,4 @@ class Solution:
                 left = idx
                 right = max_idx
         nums[left], nums[right] = nums[right], nums[left]
-        return int(''.join(nums))
-   
+        return int("".join(nums))

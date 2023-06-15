@@ -27,17 +27,16 @@
 #         else:
 #             return False
 
+
 class Solution:
     def isValidSerialization(self, preorder: str) -> bool:
-
         # stack = []
         # for node in preorder.split(','):
         #     stack.append(node)
         #     while len(stack) >= 3 and stack[-1] == stack[-2] == '#' and stack[-3] != '#':
         #         stack.pop(), stack.pop(), stack.pop()
         #         stack.append('#')
-        # return len(stack) == 1 and stack.pop() == '#' 
-        
+        # return len(stack) == 1 and stack.pop() == '#'
 
         inputs = preorder.split(",")
         stack = []
@@ -46,20 +45,25 @@ class Solution:
         for cha in inputs:
             print(stack)
             stack.append(cha)
-            while len(stack) >= 3 and stack[-1] == "#" and stack[-2] == "#" and stack[-3]!= "#":
+            while (
+                len(stack) >= 3
+                and stack[-1] == "#"
+                and stack[-2] == "#"
+                and stack[-3] != "#"
+            ):
                 stack.pop()
                 stack.pop()
                 stack.pop()
                 stack.append("#")
         print(stack)
 
-
         if stack == ["#"]:
             return True
         else:
-            return False           
+            return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     strs = "9,3,4,#,#,1,#,#,2,#,6,#,#"
     strs = "9,#,92,#,#"
     # strs = "1,#"

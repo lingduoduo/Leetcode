@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         s = list()
-        
+
         for op in ops:
             if op == "+":
                 s.append(s[-1] + s[-2])

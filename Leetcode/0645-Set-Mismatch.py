@@ -1,4 +1,5 @@
 from typing import List
+
 # class Solution:
 #     def findErrorNums(self, nums):
 #         nums.sort()
@@ -18,6 +19,7 @@ from typing import List
 #             hashs[nums[i] - 1] += 1
 #         return [hashs.index(2) + 1, hashs.index(0) + 1]
 
+
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         for i in range(len(nums)):
@@ -33,12 +35,12 @@ class Solution:
                 res.extend([nums[i], i + 1])
         return res
 
-if __name__ == '__main__':
-	nums = [1,2,2,4]
-	# nums = [3,2,2]
-	# nums = [3,2,3,4,6,5]
-	# nums = [1, 1]
-	# nums = [2, 2]
-	results = Solution().findErrorNums(nums)
-	print(results)
 
+if __name__ == "__main__":
+    nums = [1, 2, 2, 4]
+    # nums = [3,2,2]
+    # nums = [3,2,3,4,6,5]
+    # nums = [1, 1]
+    # nums = [2, 2]
+    results = Solution().findErrorNums(nums)
+    print(results)

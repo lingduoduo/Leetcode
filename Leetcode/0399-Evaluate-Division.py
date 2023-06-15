@@ -1,5 +1,7 @@
 class Solution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         edge = defaultdict(list)
         for i in range(len(equations)):
             x, y = equations[i]
@@ -31,5 +33,4 @@ class Solution:
                     break
             else:
                 res.append(-1)
-        return res        
-        
+        return res

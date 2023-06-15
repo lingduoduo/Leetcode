@@ -28,7 +28,7 @@ class Solution:
 
             return pre
 
-        if (head):
+        if head:
             return reverse(head, k)
         else:
             return None
@@ -86,7 +86,6 @@ def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
 
         # If we counted k nodes, reverse them
         if count == k:
-
             # Reverse k nodes and get the new head
             revHead = self.reverseLinkedList(head, k)
 

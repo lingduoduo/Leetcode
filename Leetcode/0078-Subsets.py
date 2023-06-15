@@ -60,6 +60,7 @@ class Solution:
             output += [curr + [num] for curr in output]
         return output
 
+
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         self.res = []
@@ -80,4 +81,4 @@ if __name__ == "__main__":
     numbers = [1, 2, 3, 4, 5]
     result = Solution().subsets(numbers)
     print(result)
-    print('Done')
+    print("Done")

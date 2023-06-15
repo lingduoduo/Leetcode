@@ -1,5 +1,7 @@
 import collections
 import heapq
+
+
 class Solution:
     def minTime(self, n: int, edges, hasApple) -> int:
         d = collections.defaultdict(list)
@@ -28,17 +30,18 @@ class Solution:
                     if flag:
                         res.add((fromNode, node))
         return res
-                    # if res == tot:
-                    #   return 
-                
-# Output: 8 
-# Explanation: The figure above represents the given tree where red vertices have an apple. 
-# One optimal path to collect all apples is shown by the green arrows.  
+        # if res == tot:
+        #   return
 
 
-if __name__ == '__main__':
+# Output: 8
+# Explanation: The figure above represents the given tree where red vertices have an apple.
+# One optimal path to collect all apples is shown by the green arrows.
+
+
+if __name__ == "__main__":
     n = 7
-    edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]]
-    hasApple = [False,False,True,False,True,True,False]
+    edges = [[0, 1], [0, 2], [1, 4], [1, 5], [2, 3], [2, 6]]
+    hasApple = [False, False, True, False, True, True, False]
     results = Solution().minTime(n, edges, hasApple)
     print(results)

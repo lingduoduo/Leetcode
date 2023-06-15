@@ -4,6 +4,7 @@
 ###        self.val = x
 ###        self.next = None
 
+
 class Solution(object):
     def hasCycle(self, head):
         """
@@ -28,7 +29,7 @@ class Solution(object):
         ###    if fast == slow:
         ###        return True
         ###return False
-        
+
         fast, slow = head, head
         while fast and fast.next:
             fast = fast.next.nest

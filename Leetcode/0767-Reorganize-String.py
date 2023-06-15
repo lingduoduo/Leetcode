@@ -1,12 +1,15 @@
 import collections
 import heapq
+
+
 class Solution:
     def reorganizeString(self, S: str) -> str:
         d = collections.Counter(S)
         pq = [(-v, k) for k, v in d.items()]
         heapq.heapify(pq)
-        
-        if -pq[0][0] > (1+len(S))//2: return ""
+
+        if -pq[0][0] > (1 + len(S)) // 2:
+            return ""
 
         res = []
         while len(pq) >= 2:
@@ -17,10 +20,10 @@ class Solution:
                 heapq.heappush(pq, (v1 + 1, k1))
             if v2 != -1:
                 heapq.heappush(pq, (v2 + 1, k2))
-        return "".join(res) + (pq[0][1] if pq else "")         
+        return "".join(res) + (pq[0][1] if pq else "")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # s = "aab"
     s = "vvvlo"
     result = Solution().reorganizeString(s)

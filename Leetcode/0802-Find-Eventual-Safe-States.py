@@ -1,6 +1,6 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        #color[i], 0 means not visited. 1 means safe. 2 means unsafe.
+        # color[i], 0 means not visited. 1 means safe. 2 means unsafe.
         color = [0] * len(graph)
 
         res = []

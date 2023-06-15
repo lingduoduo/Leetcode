@@ -18,4 +18,3 @@ class Solution:
                 if node.right:
                     stack.append(node.right)
         return res
-        

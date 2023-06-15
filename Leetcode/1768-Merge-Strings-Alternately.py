@@ -11,4 +11,4 @@ class Solution:
                 res.append(word2.pop(0))
             i += 1
         res = res + word1 + word2
-        return ''.join(res)
+        return "".join(res)

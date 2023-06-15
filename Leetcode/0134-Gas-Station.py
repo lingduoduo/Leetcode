@@ -8,11 +8,12 @@ class Solution:
 
         for i in range(len(gas)):
             if gas[i] + remain < cost[i]:
-                start = i+1
+                start = i + 1
                 remain = 0
             else:
-                remain += gas[i]-cost[i]
+                remain += gas[i] - cost[i]
         return start
+
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
@@ -24,4 +25,3 @@ class Solution:
             if remain < 0:
                 remain, start = 0, i + 1
         return -1 if tot < 0 else start
-        

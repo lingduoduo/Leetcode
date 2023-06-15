@@ -8,12 +8,13 @@ class Solution:
 
     4) 如果元素尝试完都没有找到可能的划分，则不存在这样的划分.
     """
+
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
         psum = sum(nums) // k
         if sum(nums) % k != 0 or max(nums) > psum:
             return False
 
-        nums.sort(reverse = True)
+        nums.sort(reverse=True)
         target = [psum] * k
 
         def dfs(index, target):
@@ -27,7 +28,4 @@ class Solution:
                     target[i] += nums[index]
             return False
 
-
         return dfs(0, target)
-
-    

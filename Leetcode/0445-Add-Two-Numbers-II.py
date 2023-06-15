@@ -99,14 +99,18 @@
 
 from typing import Optional
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         l1Stack = []
         p = l1
         while p:
@@ -130,6 +134,7 @@ class Solution:
             head.next.next = p
             carry = v // 10
         return head.next
+
 
 if __name__ == "__main__":
     l = [7, 2, 4, 3]

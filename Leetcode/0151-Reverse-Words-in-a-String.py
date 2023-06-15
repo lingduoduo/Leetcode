@@ -9,21 +9,21 @@ class Solution(object):
         ###s = p.sub(" ", s)
         ###words = s.split(" ")
         ###return " ".join(words[::-1])
-        
+
         if s == "":
             return s
-        
+
         s = s.strip()
         ls = s.split(" ")
         if ls == []:
             return ""
-        
+
         res = ""
-        for i in range(len(ls)-1):
-            if ls[len(ls)-1-i] != "":
-                res += ls[len(ls)-1-i] + " "
+        for i in range(len(ls) - 1):
+            if ls[len(ls) - 1 - i] != "":
+                res += ls[len(ls) - 1 - i] + " "
         res += ls[0]
-        
+
         return res
 
 
@@ -36,19 +36,19 @@ class Solution:
     def trim_spaces(self, s: str) -> list:
         left, right = 0, len(s) - 1
         # remove leading spaces
-        while left <= right and s[left] == ' ':
+        while left <= right and s[left] == " ":
             left += 1
 
         # remove trailing spaces
-        while left <= right and s[right] == ' ':
+        while left <= right and s[right] == " ":
             right -= 1
 
         # reduce multiple spaces to single one
         output = []
         while left <= right:
-            if s[left] != ' ':
+            if s[left] != " ":
                 output.append(s[left])
-            elif output[-1] != ' ':
+            elif output[-1] != " ":
                 output.append(s[left])
             left += 1
 
@@ -65,7 +65,7 @@ class Solution:
 
         while start < n:
             # go to the end of the word
-            while end < n and l[end] != ' ':
+            while end < n and l[end] != " ":
                 end += 1
             # reverse the word
             self.reverse(l, start, end - 1)
@@ -84,7 +84,7 @@ class Solution:
         # reverse each word
         self.reverse_each_word(l)
 
-        return ''.join(l)
+        return "".join(l)
 
 
 if __name__ == "__main__":

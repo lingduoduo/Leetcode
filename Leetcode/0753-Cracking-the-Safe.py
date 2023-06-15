@@ -1,6 +1,6 @@
 class Solution:
     def crackSafe(self, n: int, k: int) -> str:
-        res = ["0"]*n
+        res = ["0"] * n
         size = k**n
         visited = set()
         visited.add("".join(res))
@@ -9,9 +9,9 @@ class Solution:
         return ""
 
     def dfs(self, res, visited, size, n, k):
-        if len(visited )==size:
+        if len(visited) == size:
             return True
-        node = "".join(res[len(res)-n+1:])
+        node = "".join(res[len(res) - n + 1 :])
         for i in range(k):
             node = node + str(i)
             if node not in visited:
@@ -22,4 +22,3 @@ class Solution:
                 res.pop()
                 visited.remove(node)
             node = node[:-1]
-

@@ -8,7 +8,7 @@ class Solution:
             stack.append(height)
             for j, (hisPos, hisHeight) in enumerate(history):
                 if (pos + height <= hisPos or hisPos + hisHeight <= pos) == False:
-                    stack[-1] = max(stack[-1], height+stack[j])
+                    stack[-1] = max(stack[-1], height + stack[j])
             if len(res) == 0:
                 res.append(stack[-1])
             else:
@@ -16,7 +16,8 @@ class Solution:
             history.append([pos, height])
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     positions = [[1, 2], [2, 3], [6, 1]]
     res = Solution().fallingSquares(positions)
     print(res)

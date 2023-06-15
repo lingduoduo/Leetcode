@@ -17,6 +17,7 @@ class Solution(object):
                     break
         return d
 
+
 class Solution(object):
     def wordBreak(self, s, wordDict):
         dp = [False] * (len(s) + 1)
@@ -37,13 +38,14 @@ class Solution:
         for i in range(1, n + 1):
             for w in wordDict:
                 l = len(w)
-                if s[i - l: i] == w and dp[i - l]:
+                if s[i - l : i] == w and dp[i - l]:
                     dp[i] = True
                     break
         return dp[-1]
 
 
 from typing import List, FrozenSet, Deque
+
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -91,6 +93,7 @@ class Solution:
                     dp[i] = True
                     break
         return dp[len(s)]
+
 
 if __name__ == "__main__":
     s = "leetcode"

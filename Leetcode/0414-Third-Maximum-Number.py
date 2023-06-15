@@ -19,10 +19,10 @@ class Solution(object):
         ###    elif nums[i]>max_3:
         ###        max_3 = nums[i]
         ###return max_1 if max_3 == float('-inf') else max_3
-        
+
         nums = sorted(list(set(nums)))
-        
-        if len(nums)<3:
+
+        if len(nums) < 3:
             return max(nums)
         else:
             return nums[-3]

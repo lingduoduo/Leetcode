@@ -35,17 +35,18 @@ class Solution:
                     l, r = interval
         return res
 
-if __name__ == '__main__':
-    intervals = [[1,2],[2,3],[3,4],[1,3]]
+
+if __name__ == "__main__":
+    intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
     res = Solution().eraseOverlapIntervals(intervals)
     print(res)
-    intervals = [[1,2],[1,2],[1,2]]
+    intervals = [[1, 2], [1, 2], [1, 2]]
     res = Solution().eraseOverlapIntervals(intervals)
     print(res)
-    intervals = [[1,2],[2,3]]
+    intervals = [[1, 2], [2, 3]]
     res = Solution().eraseOverlapIntervals(intervals)
     print(res)
-    intervals = [[1,100],[11,22],[1,11],[2,12]]
+    intervals = [[1, 100], [11, 22], [1, 11], [2, 12]]
     res = Solution().eraseOverlapIntervals(intervals)
     print(res)
 

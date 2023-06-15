@@ -17,23 +17,23 @@ class Solution(object):
         ###    res += sum(v * (v - 1) for v in d.values())
         ###return res
         res = 0
-        
+
         for x1, x2 in points:
             d = {}
             for y1, y2 in points:
                 if x1 == x2 and y1 == y2:
                     continue
-                
-                distance = (x1 - x2)** 2 + (y1 - y2)**2
+
+                distance = (x1 - x2) ** 2 + (y1 - y2) ** 2
                 print(distance)
-                
+
                 ###if distance in d:
                 ###    res += d[distance]
                 ###    d[distance] += 1
                 ###else:
                 ###    d[distance] = 1
-                    
-        return 2*res
+
+        return 2 * res
 
 
 if __name__ == "__main__":

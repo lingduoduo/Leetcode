@@ -8,26 +8,27 @@ class Solution(object):
         ###    return
         ###if len(nums) == 1:
         ###    return nums[0]
-        
+
         ###for i in range(1, len(nums)):
         ###    if nums[i] < nums[i - 1]:
         ###        return nums[i]
         ###return nums[0]
-        left, right = 0, len(nums)-1
+        left, right = 0, len(nums) - 1
 
         return self.findmin(nums, left, right)
 
     def findmin(self, l, r):
-        if l+1>=r:
+        if l + 1 >= r:
             return min(nums[l], nums[r])
 
-        if nums[l]<nums[r]:
+        if nums[l] < nums[r]:
             return nums[l]
 
-        mid = left + (right-lft)//2
+        mid = left + (right - lft) // 2
 
-        return min(findmin(nums, l, m-1), findmin(nums, m, r))
-    
+        return min(findmin(nums, l, m - 1), findmin(nums, m, r))
+
+
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         l, r = 0, len(nums) - 1
@@ -40,4 +41,3 @@ class Solution:
             else:
                 r -= 1
         return nums[l]
-        

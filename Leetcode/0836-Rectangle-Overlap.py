@@ -8,18 +8,28 @@ class Solution:
 class Solution(object):
     def isRectangleOverlap(self, rec1, rec2):
         # check if either rectangle is actually a line
-        if (rec1[0] == rec1[2] or rec1[1] == rec1[3] or rec2[0] == rec2[2] or rec2[1] == rec2[3]):
+        if (
+            rec1[0] == rec1[2]
+            or rec1[1] == rec1[3]
+            or rec2[0] == rec2[2]
+            or rec2[1] == rec2[3]
+        ):
             # the line cannot have positive overlap
             return False
 
-        return not (rec1[2] <= rec2[0] or  # left
-                    rec1[3] <= rec2[1] or  # bottom
-                    rec1[0] >= rec2[2] or  # right
-                    rec1[1] >= rec2[3])  # top
+        return not (
+            rec1[2] <= rec2[0]
+            or rec1[3] <= rec2[1]  # left
+            or rec1[0] >= rec2[2]  # bottom
+            or rec1[1] >= rec2[3]  # right
+        )  # top
+
 
 class Solution(object):
     def isRectangleOverlap(self, rec1, rec2):
         def intersect(p_left, p_right, q_left, q_right):
             return min(p_right, q_right) > max(p_left, q_left)
-        return (intersect(rec1[0], rec1[2], rec2[0], rec2[2]) and # width > 0
-                intersect(rec1[1], rec1[3], rec2[1], rec2[3]))    # height > 0
+
+        return intersect(rec1[0], rec1[2], rec2[0], rec2[2]) and intersect(  # width > 0
+            rec1[1], rec1[3], rec2[1], rec2[3]
+        )  # height > 0

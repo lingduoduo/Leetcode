@@ -13,6 +13,7 @@ class Solution(object):
                 nums.pop()
         return ""
 
-if __name__ == '__main__':
-    res=Solution().largestOddNumber(num="4206")
+
+if __name__ == "__main__":
+    res = Solution().largestOddNumber(num="4206")
     print(res)

@@ -1,12 +1,12 @@
 class Solution:
-    '''
+    """
     input = [2,2,3,4]
-    '''
-    
+    """
+
     def triangleNumber(self, nums):
         nums = sorted(nums, reverse=True)
         res = 0
-        
+
         n = len(nums)
         for i in range(n - 2):
             left = i + 1
@@ -17,11 +17,11 @@ class Solution:
                     left += 1
                 else:
                     right -= 1
-        
+
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     input = [2, 2, 3, 4]
     result = Solution().triangleNumber(input)
     print(result)

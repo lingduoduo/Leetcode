@@ -3,11 +3,12 @@ class Solution:
         cnt = collections.Counter(strs)
         slist = sorted(set(strs), key=len, reverse=True)
         for i, c in enumerate(slist):
-            if cnt[c] > 1: continue
+            if cnt[c] > 1:
+                continue
             if all(self.uncommon(p, c) for p in slist[:i]):
                 return len(c)
         return -1
-    
+
     def uncommon(self, parent, child):
         lp, lc = len(parent), len(child)
         pp = pc = 0

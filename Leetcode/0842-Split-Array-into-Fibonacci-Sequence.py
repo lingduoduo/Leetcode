@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def splitIntoFibonacci(self, S: str) -> List[int]:
         res = []
@@ -10,7 +12,7 @@ class Solution:
             return True
 
         for i in range(pos, len(S)):
-            num = int(S[pos:i+1])
+            num = int(S[pos : i + 1])
             if (S[pos] == "0" and i > pos) or (num >= 2**31):
                 break
 
@@ -21,9 +23,10 @@ class Solution:
                 if self.dfs(S, nums, i + 1):
                     return True
                 nums.pop()
-        return False        
+        return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     S = "123456579"
     res = Solution().splitIntoFibonacci(S)
     print(res)

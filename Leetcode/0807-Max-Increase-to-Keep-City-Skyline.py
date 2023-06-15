@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
         rows = [0] * len(grid)
@@ -16,7 +18,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
-    grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+if __name__ == "__main__":
+    grid = [[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]
     res = Solution().maxIncreaseKeepingSkyline(grid)
     print(res)

@@ -7,6 +7,7 @@ class Solution:
         res += sum(range(t + 1, t + r + 1))
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     res = Solution().totalMoney(n=20)
     print(res)

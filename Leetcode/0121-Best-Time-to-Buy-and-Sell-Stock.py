@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if len(prices) <= 1:
@@ -12,6 +13,7 @@ class Solution:
 
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().maxProfit(prices = [7,1,5,3,6,4])
+    res = Solution().maxProfit(prices=[7, 1, 5, 3, 6, 4])
     print(res)

@@ -17,10 +17,9 @@ class CBTInserter:
             if node.right:
                 queue.append(node.right)
 
-
     def insert(self, v: int) -> int:
         n = len(self.tree)
-        father = self.tree[(n-1)//2]
+        father = self.tree[(n - 1) // 2]
         node = TreeNode(v)
         if not father.left:
             father.left = node

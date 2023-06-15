@@ -6,7 +6,8 @@
 #         self.right = right
 class Solution:
     def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
-        if not root: return None
+        if not root:
+            return None
 
         res = self.dfs(root)
         return res[0]
@@ -26,6 +27,7 @@ class Solution:
         else:
             return left, height
 
+
 class Solution:
     def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
         parent = {}
@@ -43,5 +45,5 @@ class Solution:
 
         while len(prev) > 1:
             prev = set(parent[node] for node in prev)
-            
+
         return prev.pop()

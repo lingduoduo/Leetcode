@@ -1,5 +1,4 @@
 class TwoSum:
-
     def __init__(self):
         self.nums = []
         self.sums = set()
@@ -17,7 +16,6 @@ class TwoSum:
 
 
 class TwoSum(object):
-
     def __init__(self):
         """
         Initialize your data structure here.

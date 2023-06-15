@@ -12,4 +12,3 @@ class Solution:
             if asteroid != None:
                 stack.append(asteroid)
         return stack
-        

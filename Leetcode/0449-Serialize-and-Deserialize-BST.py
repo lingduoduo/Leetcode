@@ -12,8 +12,8 @@
 #         self.left = None
 #         self.right = None
 
-class Codec:
 
+class Codec:
     def serialize(self, root):
         """Encodes a tree to a single string.
         :type root: TreeNode
@@ -21,8 +21,8 @@ class Codec:
         """
         self.res = []
         self.preOrder(root)
-        return ' '.join(map(str, self.res))
-    
+        return " ".join(map(str, self.res))
+
     def preOrder(self, root):
         if not root:
             return
@@ -33,8 +33,7 @@ class Codec:
             self.preOrder(root.right)
 
     def deserialize(self, data: str) -> TreeNode:
-        """Decodes your encoded data to tree.
-        """
+        """Decodes your encoded data to tree."""
         data = [int(val) for val in data.split()]
         return self.buildTree(data)
 
@@ -55,6 +54,7 @@ class Codec:
             root.left = self.buildTree(left)
             root.right = self.buildTree(right)
             return root
+
 
 # Your Codec object will be instantiated and called as such:
 # Your Codec object will be instantiated and called as such:

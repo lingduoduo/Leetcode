@@ -9,9 +9,8 @@ class Solution:
         return res.most_common()[0][0]
 
         p = re.compile(r"[!?',;.]")
-        sub_para = p.sub(' ', paragraph.lower())
-        words = sub_para.split(' ')
+        sub_para = p.sub(" ", paragraph.lower())
+        words = sub_para.split(" ")
         words = [word for word in words if word and word not in banned]
         count = collections.Counter(words)
         return count.most_common()[0][0]
-        

@@ -1,12 +1,10 @@
 class TicTacToe:
-
     def __init__(self, n):
         """
         Initialize your data structure here.
         :type n: int
         """
-        self.grid = [[' ']*n for i in range(n)]       
-        
+        self.grid = [[" "] * n for i in range(n)]
 
     def move(self, row, col, player):
         """
@@ -24,19 +22,24 @@ class TicTacToe:
         :rtype: int
         """
         if player == 1:
-            mark = 'X'
+            mark = "X"
         else:
-            mark = 'O'
-            
+            mark = "O"
+
         self.grid[row][col] = mark
         # check wining condition
         # check if the row has the same mark
         n = len(self.grid)
         sum_of_row = sum([self.grid[row][c] == mark for c in range(n)])
-        sum_of_col = sum([self.grid[r][col]== mark for r in range(n)])
+        sum_of_col = sum([self.grid[r][col] == mark for r in range(n)])
         sum_of_left_d = sum([self.grid[i][i] == mark for i in range(n)])
-        sum_of_right_d = sum([self.grid[i][n-1-i] == mark for i in range(n)])
-        if sum_of_row == n or sum_of_col == n or sum_of_left_d== n or sum_of_right_d == n:
-            return player        
+        sum_of_right_d = sum([self.grid[i][n - 1 - i] == mark for i in range(n)])
+        if (
+            sum_of_row == n
+            or sum_of_col == n
+            or sum_of_left_d == n
+            or sum_of_right_d == n
+        ):
+            return player
         else:
             return 0

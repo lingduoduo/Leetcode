@@ -13,7 +13,7 @@ class Solution:
                 return 0
             return max(
                 dfs(i + 1, j) + nums[i] * multipliers[k],
-                dfs(i, j - 1) + nums[j] * multipliers[k]
+                dfs(i, j - 1) + nums[j] * multipliers[k],
             )
 
         return dfs(0, n - 1)
@@ -31,13 +31,15 @@ class Solution:
 
         for op in range(m - 1, -1, -1):
             for left in range(op, -1, -1):
-                dp[op][left] = max(multipliers[op] * nums[left] + dp[op + 1][left + 1],
-                                   multipliers[op] * nums[n - 1 - (op - left)] + dp[op + 1][left])
+                dp[op][left] = max(
+                    multipliers[op] * nums[left] + dp[op + 1][left + 1],
+                    multipliers[op] * nums[n - 1 - (op - left)] + dp[op + 1][left],
+                )
 
         return dp[0][0]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [1, 2, 3]
     multipliers = [3, 2, 1]
     res = Solution().maximumScore(nums, multipliers)

@@ -12,4 +12,3 @@ class Solution:
             digits = [int(cha) for cha in s]
             num = sum(digits)
         return num
-        

@@ -19,8 +19,7 @@ class Solution:
 if __name__ == "__main__":
     res = Solution().kthDistinct(arr=["d", "b", "c", "b", "c", "a"], k=2)
     print(res)
-    res = Solution().kthDistinct(arr = ["aaa","aa","a"], k = 1)
+    res = Solution().kthDistinct(arr=["aaa", "aa", "a"], k=1)
     print(res)
-    res = Solution().kthDistinct(arr = ["a","b","a"], k = 3)
+    res = Solution().kthDistinct(arr=["a", "b", "a"], k=3)
     print(res)
-

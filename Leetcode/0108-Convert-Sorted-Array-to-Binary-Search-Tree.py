@@ -5,6 +5,7 @@
 ###        self.left = None
 ###        self.right = None
 
+
 class Solution(object):
     def sortedArrayToBST(self, nums):
         """
@@ -23,29 +24,28 @@ class Solution(object):
         ###if len(right) >= 1:
         ###    root.right = self.sortedArrayToBST(right)
         ###return root
-        
-    ###    if not nums:
-    ###        return None
-        
-    ###    return self.build(nums, 0, len(nums)-1)
-        
-    ###def build(self, arr, left, right):
-    ###    if left>right:
-    ###        return None
-    ###    mid = left + (right - left)//2
-    ###    print(mid)
-    ###    root = TreeNode(arr[mid])
-    ###    root.left = self.build(arr, left, mid-1)
-    ###    root.right = self.build(arr, mid+1, right)
-    ###    return root
+
+        ###    if not nums:
+        ###        return None
+
+        ###    return self.build(nums, 0, len(nums)-1)
+
+        ###def build(self, arr, left, right):
+        ###    if left>right:
+        ###        return None
+        ###    mid = left + (right - left)//2
+        ###    print(mid)
+        ###    root = TreeNode(arr[mid])
+        ###    root.left = self.build(arr, left, mid-1)
+        ###    root.right = self.build(arr, mid+1, right)
+        ###    return root
         if not nums:
             return
 
         left = 0
-        right = len(nums)-1
-        mid = left + (right-mid)//2
+        right = len(nums) - 1
+        mid = left + (right - mid) // 2
         root = TreeNode(nums[mid])
         root.left = self.sortedArrayToBST(nums[:mid])
-        root.right = self.sortedArrayToBST(nums[mid+1:])
+        root.right = self.sortedArrayToBST(nums[mid + 1 :])
         return root
-

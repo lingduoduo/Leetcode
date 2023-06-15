@@ -1,10 +1,11 @@
 from typing import List
 import bisect
 
+
 class Solution:
     def minWastedSpace(self, packages: List[int], boxes: List[List[int]]) -> int:
         packages.sort()
-        res = float('inf')
+        res = float("inf")
         for box in boxes:
             box.sort()
             if box[-1] < packages[-1]:
@@ -15,4 +16,4 @@ class Solution:
                 cur += b * (j - i)
                 i = j
             res = min(res, cur)
-        return (res - sum(packages)) % (10**9 + 7) if res < float('inf') else -1
+        return (res - sum(packages)) % (10**9 + 7) if res < float("inf") else -1

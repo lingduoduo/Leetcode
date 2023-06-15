@@ -4,18 +4,19 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        
+
         result = n
         while result >= 0:
             l = list(str(result))
             result = 0
-            
+
             while l:
                 result += int(l.pop()) ** 2
             if result == 1 or result == 7:
                 return True
             elif result < 10:
                 return False
+
 
 class Solution:
     def isHappy(self, n: int) -> bool:

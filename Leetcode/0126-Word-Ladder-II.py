@@ -1,7 +1,5 @@
 class Solution:
-    def findLadders(self, beginWord: str, endWord: str,
-                    wordList):
-
+    def findLadders(self, beginWord: str, endWord: str, wordList):
         def buildPath(pathdict, word, path):
             if word not in pathdict:
                 res.append([word] + path)
@@ -27,8 +25,8 @@ class Solution:
                 buildPath(parents, node, [])
 
             for i in range(len(node)):
-                for j in 'abcdefghijklmnopqrstuvwxyz':
-                    w = node[:i] + j + node[i + 1:]
+                for j in "abcdefghijklmnopqrstuvwxyz":
+                    w = node[:i] + j + node[i + 1 :]
                     if w in wordList and w not in visited:
                         parents[w] = parents.get(w, []) + [node]
                         d.append([w, step + 1])
@@ -53,7 +51,7 @@ class Solution:
                 else:
                     for i in range(len(w)):
                         for c in "abcdefghijklmnopqrstuvwxyz":
-                            newword = w[:i] + c + w[i + 1:]
+                            newword = w[:i] + c + w[i + 1 :]
                             if newword in wordlist:
                                 newlayer[newword] += [j + [newword] for j in layer[w]]
             wordlist -= set(newlayer.keys())
@@ -69,7 +67,7 @@ class Solution:
         edge = defaultdict(list)
         for word in wordList:
             for i in range(len(word)):
-                edge[word[:i] + "_" + word[i + 1:]].append(word)
+                edge[word[:i] + "_" + word[i + 1 :]].append(word)
 
         q = {beginWord: [[beginWord]]}
         while q:
@@ -80,7 +78,7 @@ class Solution:
                     res += q[w]
                 else:
                     for i in range(len(w)):
-                        for neww in edge[w[:i] + "_" + w[i + 1:]]:
+                        for neww in edge[w[:i] + "_" + w[i + 1 :]]:
                             if neww in wordList:
                                 new_q[neww] += [j + [neww] for j in q[w]]
             q = new_q
@@ -90,7 +88,9 @@ class Solution:
 class Solution:
     WILDCARD = "."
 
-    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+    def findLadders(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> List[List[str]]:
         """
         Given a wordlist, we perform BFS traversal to generate a word tree where
         every node points to its parent node.
@@ -107,10 +107,9 @@ class Solution:
         # then generate a word ladder from the word tree
         return self.getLadders(beginWord, endWord, word_tree)
 
-    def getWordTree(self,
-                    beginWord: str,
-                    endWord: str,
-                    wordList: List[str]) -> Dict[str, List[str]]:
+    def getWordTree(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> Dict[str, List[str]]:
         """
         BFS traversal from begin word until end word is encountered.
 
@@ -121,7 +120,7 @@ class Solution:
         adjacency_list = defaultdict(list)
         for word in wordList:
             for i in range(len(word)):
-                pattern = word[:i] + Solution.WILDCARD + word[i + 1:]
+                pattern = word[:i] + Solution.WILDCARD + word[i + 1 :]
                 adjacency_list[pattern].append(word)
 
         # Holds the tree of words in reverse order
@@ -146,7 +145,7 @@ class Solution:
 
                 for i in range(len(word)):
                     # for each pattern of the current word
-                    pattern = word[:i] + Solution.WILDCARD + word[i + 1:]
+                    pattern = word[:i] + Solution.WILDCARD + word[i + 1 :]
 
                     for next_word in adjacency_list[pattern]:
                         if next_word == endWord:
@@ -168,10 +167,9 @@ class Solution:
 
         return visited_tree
 
-    def getLadders(self,
-                   beginWord: str,
-                   endWord: str,
-                   wordTree: Dict[str, List[str]]) -> List[List[str]]:
+    def getLadders(
+        self, beginWord: str, endWord: str, wordTree: Dict[str, List[str]]
+    ) -> List[List[str]]:
         """
         DFS traversal from endWord to beginWord in a given tree.
         """
@@ -193,7 +191,7 @@ class Solution:
         return dfs(endWord)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     beginWord = "hit"
     endWord = "cog"
     wordList = ["hot", "dot", "dog", "lot", "log", "cog"]

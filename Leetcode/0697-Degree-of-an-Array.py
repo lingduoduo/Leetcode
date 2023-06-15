@@ -11,8 +11,11 @@ class Solution:
                 res = min(res, max(d[k]) - min(d[k]) + 1)
         return res
 
+
 from typing import List
 import collections
+
+
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
         cnt = collections.Counter(nums)
@@ -24,15 +27,16 @@ class Solution:
             if cnt[num] == max_cnt:
                 if len(d[num]) <= 1:
                     d[num].append(idx)
-                else: 
+                else:
                     d[num][-1] = idx
         for k, v in d.items():
             res = min(res, max(v) - min(v) + 1)
-        return res   
-                
-if __name__ == '__main__':
-    res = Solution().findShortestSubArray(nums = [1,2,2,3,1])
+        return res
+
+
+if __name__ == "__main__":
+    res = Solution().findShortestSubArray(nums=[1, 2, 2, 3, 1])
     print(res)
 
-    res = Solution().findShortestSubArray(nums = [1,2,2,3,1,4,2])
+    res = Solution().findShortestSubArray(nums=[1, 2, 2, 3, 1, 4, 2])
     print(res)

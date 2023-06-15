@@ -29,9 +29,11 @@
 
 #         return res
 
+
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
-        if not root: return
+        if not root:
+            return
         self.res = collections.defaultdict(list)
         self.dfs(root, 0)
         return self.res.values()
@@ -40,12 +42,13 @@ class Solution:
         if not root:
             return
 
-        if level%2==0:
+        if level % 2 == 0:
             self.res[level] = self.res[level] + [root.val]
         else:
             self.res[level] = [root.val] + self.res[level]
 
-        if root.left: self.dfs(root.left, level+1)
-        if root.right: self.dfs(root.right, level+1)
+        if root.left:
+            self.dfs(root.left, level + 1)
+        if root.right:
+            self.dfs(root.right, level + 1)
         return
-

@@ -6,12 +6,13 @@ class Trie:
 
 class Solution:
     def sumPrefixScores(self, words: List[str]) -> List[int]:
-        trie, a, ans = Trie(), ord('a'), []
+        trie, a, ans = Trie(), ord("a"), []
         for x in words:
             t = trie
             for c in x:
                 c = ord(c) - a
-                if not t.ch[c]: t.ch[c] = Trie()
+                if not t.ch[c]:
+                    t.ch[c] = Trie()
                 t.ch[c].visited += 1
                 t = t.ch[c]
         for x in words:

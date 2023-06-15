@@ -8,9 +8,10 @@ class Solution:
                 stack.append(cha)
             else:
                 stack.pop()
-        return ''.join(stack)
+        return "".join(stack)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     S = "aaab"
     results = Solution().removeDuplicates(S)
     print(results)

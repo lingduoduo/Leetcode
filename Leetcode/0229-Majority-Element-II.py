@@ -24,11 +24,10 @@ class Solution:
                 c1 += 1
             elif j == nums2:
                 c2 += 1
-                
+
         l = len(nums)
-        if c1>l/3:
+        if c1 > l / 3:
             result.append(nums1)
-        if c2>l/3:
+        if c2 > l / 3:
             result.append(nums2)
         return result
-        

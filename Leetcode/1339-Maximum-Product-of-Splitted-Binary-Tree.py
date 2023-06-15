@@ -18,7 +18,7 @@ class Solution:
         self.s = s
         self.res = 0
         self.dfs(root)
-        return self.res % (10 ** 9 + 7)
+        return self.res % (10**9 + 7)
 
     def dfs(self, root):
         if not root:

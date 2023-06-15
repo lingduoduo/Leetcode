@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def reverseWords(self, s: List[str]) -> None:
         """
@@ -21,5 +22,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().reverseWords(s = ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"])
+    res = Solution().reverseWords(
+        s=["t", "h", "e", " ", "s", "k", "y", " ", "i", "s", " ", "b", "l", "u", "e"]
+    )
     print(res)

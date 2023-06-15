@@ -40,18 +40,15 @@ class Solution:
 
 
 class Solution:
-
     def __init__(self):
         self.memo = {}
 
     def rob(self, nums: List[int]) -> int:
-
         self.memo = {}
 
         return self.robFrom(0, nums)
 
     def robFrom(self, i, nums):
-
         # No more houses left to examine.
         if i >= len(nums):
             return 0

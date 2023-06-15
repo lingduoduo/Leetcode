@@ -7,6 +7,8 @@ class Solution:
                 if s[i] == s[j]:
                     dp[i][j] = dp[i + 1][j - 1]
                 else:
-                    dp[i][j] = min(1 + dp[i][j - 1], 1 + dp[i + 1][j], 2 + dp[i + 1][j - 1])
+                    dp[i][j] = min(
+                        1 + dp[i][j - 1], 1 + dp[i + 1][j], 2 + dp[i + 1][j - 1]
+                    )
         # print(dp)
         return dp[0][-1] <= k

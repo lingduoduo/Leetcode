@@ -1,4 +1,6 @@
 import collections
+
+
 class Solution:
     def matrixRankTransform(self, matrix: List[List[int]]) -> List[List[int]]:
         def find(i):
@@ -18,8 +20,8 @@ class Solution:
             rank2 = rank[:]
             for i, j in dic[a]:
                 i, j = find(i), find(j + n)
-                p[i] = j 
-                rank2[j] = max(rank2[i], rank2[j]) 
+                p[i] = j
+                rank2[j] = max(rank2[i], rank2[j])
             for i, j in dic[a]:
                 rank[i] = rank[j + n] = matrix[i][j] = rank2[find(i)] + 1
         return matrix

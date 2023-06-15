@@ -4,7 +4,7 @@ class Solution:
         res = 0
         for key, val in d.items():
             if k - key == key:
-                res += val//2
+                res += val // 2
             elif key < k - key:
                 res += min(val, d[k - key])
         return res

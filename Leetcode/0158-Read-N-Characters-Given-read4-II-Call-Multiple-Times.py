@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def __init__(self):
         self.q = []
@@ -11,7 +12,7 @@ class Solution:
                 buf[i] = self.q.pop(0)
                 i += 1
             else:
-                buf4 = [''] * 4
+                buf4 = [""] * 4
                 v = read4(buf4)
                 if v == 0:
                     break

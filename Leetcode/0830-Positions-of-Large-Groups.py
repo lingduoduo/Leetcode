@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def largeGroupPositions(self, s: str) -> List[List[int]]:
         if len(s) < 3:
@@ -19,7 +21,8 @@ class Solution:
             res.append([start, end])
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     s = "abbxxxxzzy"
     res = Solution().largeGroupPositions(s)
     print(res)
@@ -27,7 +30,6 @@ if __name__ == '__main__':
     s = "abcdddeeeeaabbbcd"
     res = Solution().largeGroupPositions(s)
     print(res)
-
 
     s = "aaa"
     res = Solution().largeGroupPositions(s)

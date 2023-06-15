@@ -1,6 +1,10 @@
 from collections import defaultdict
+
+
 class Solution:
-    def gridIllumination(self, N: int, lamps: List[List[int]], queries: List[List[int]]) -> List[int]:
+    def gridIllumination(
+        self, N: int, lamps: List[List[int]], queries: List[List[int]]
+    ) -> List[int]:
         ctx = defaultdict(int)
         cty = defaultdict(int)
         ctd = defaultdict(int)
@@ -12,7 +16,17 @@ class Solution:
             cty[y] += 1
             ctd[x + y] += 1
             ctad[x - y] += 1
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), (1, 1)]
+        directions = [
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+            (0, -1),
+            (0, 0),
+            (0, 1),
+            (1, -1),
+            (1, 0),
+            (1, 1),
+        ]
         for x, y in queries:
             if ctx[x] > 0 or cty[y] or ctd[x + y] > 0 or ctad[x - y] > 0:
                 res.append(1)

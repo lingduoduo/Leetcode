@@ -12,8 +12,9 @@ class Solution:
             left = order(root.left, dic)
             right = order(root.right, dic)
             lev = max(left, right) + 1
-            dic[lev] += root.val,
+            dic[lev] += (root.val,)
             return lev
+
         dic = collections.defaultdict(list)
         order(root, dic)
         return dic.values()

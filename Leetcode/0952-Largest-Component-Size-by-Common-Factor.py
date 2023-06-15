@@ -46,4 +46,4 @@ class Solution:
             if t > 1:
                 union(num, t)
 
-        return max(Counter([find(n) for n in A]).values())      
+        return max(Counter([find(n) for n in A]).values())

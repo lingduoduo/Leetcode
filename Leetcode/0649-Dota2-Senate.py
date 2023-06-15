@@ -14,7 +14,7 @@ class Solution:
             r = qr.popleft()
             d = qd.popleft()
             if r < d:
-                qr.append(n+r)
+                qr.append(n + r)
             else:
-                qd.append(n+d)
+                qd.append(n + d)
         return "Radiant" if qr else "Dire"

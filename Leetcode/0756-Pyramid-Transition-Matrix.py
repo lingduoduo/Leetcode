@@ -1,5 +1,7 @@
 from typing import List
 import collections
+
+
 class Solution:
     def pyramidTransition(self, bottom: str, allowed: List[str]) -> bool:
         d = collections.defaultdict(list)
@@ -15,14 +17,15 @@ class Solution:
             return self.helper(above, "", d)
 
         pos = len(above)
-        base = curr[pos:pos+2]
+        base = curr[pos : pos + 2]
         if base in d:
             for cha in d[base]:
-                if self.helper(curr, above+cha, d):
+                if self.helper(curr, above + cha, d):
                     return True
         return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # bottom = "XYZ"
     # allowed = ["XYD", "YZE", "DEA", "FFF"]
     # res = Solution().pyramidTransition(bottom, allowed)
@@ -34,7 +37,26 @@ if __name__ == '__main__':
     # print(res)
 
     bottom = "CCC"
-    allowed = ["CBB","ACB","ABD","CDB","BDC","CBC","DBA","DBB","CAB","BCB","BCC","BAA","CCD","BDD","DDD","CCA","CAA","CCC","CCB"]
+    allowed = [
+        "CBB",
+        "ACB",
+        "ABD",
+        "CDB",
+        "BDC",
+        "CBC",
+        "DBA",
+        "DBB",
+        "CAB",
+        "BCB",
+        "BCC",
+        "BAA",
+        "CCD",
+        "BDD",
+        "DDD",
+        "CCA",
+        "CAA",
+        "CCC",
+        "CCB",
+    ]
     res = Solution().pyramidTransition(bottom, allowed)
     print(res)
-

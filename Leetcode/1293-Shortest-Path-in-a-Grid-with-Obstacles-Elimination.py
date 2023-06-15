@@ -22,7 +22,12 @@ class Solution:
                 return steps
 
             # explore the four directions in the next step
-            for new_row, new_col in [(row, col + 1), (row + 1, col), (row, col - 1), (row - 1, col)]:
+            for new_row, new_col in [
+                (row, col + 1),
+                (row + 1, col),
+                (row, col - 1),
+                (row - 1, col),
+            ]:
                 # if (new_row, new_col) is within the grid boundaries
                 if (0 <= new_row < rows) and (0 <= new_col < cols):
                     new_eliminations = k - grid[new_row][new_col]

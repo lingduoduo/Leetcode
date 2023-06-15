@@ -5,12 +5,12 @@
 ###        self.left = left
 ###        self.right = right
 class Solution:
-    def pseudoPalindromicPaths (self, root: TreeNode) -> int:
+    def pseudoPalindromicPaths(self, root: TreeNode) -> int:
         self.res = 0
 
         def dfs(node, path):
             if not node:
-                return 
+                return
 
             path = path + [node.val]
 
@@ -20,17 +20,16 @@ class Solution:
 
             dfs(node.left, path)
             dfs(node.right, path)
-        
+
         dfs(root, [])
         return self.res
 
     def hasPalindromic(self, nums):
-
         d = collections.Counter(nums)
 
         odds = 0
 
         for val in d.values():
-            if val %2 == 1:
+            if val % 2 == 1:
                 odds += 1
         return odds <= 1

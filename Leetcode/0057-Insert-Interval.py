@@ -41,7 +41,9 @@ class Solution(object):
 
 
 class Solution:
-    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+    def insert(
+        self, intervals: List[List[int]], newInterval: List[int]
+    ) -> List[List[int]]:
         n = len(intervals)
         if n == 0:
             return [newInterval]
@@ -61,7 +63,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     intervals = [[1, 3], [6, 9]]
     newInterval = [2, 5]
     result = Solution().insert(intervals, newInterval)

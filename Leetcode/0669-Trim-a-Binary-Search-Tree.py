@@ -5,6 +5,7 @@
 ###        self.left = None
 ###        self.right = None
 
+
 class Solution(object):
     def trimBST(self, root, L, R):
         """
@@ -19,7 +20,7 @@ class Solution(object):
             return self.trimBST(root.right, L, R)
         if R < root.val:
             return self.trimBST(root.left, L, R)
-        
+
         root.left = self.trimBST(root.left, L, R)
         root.right = self.trimBST(root.right, L, R)
         return root

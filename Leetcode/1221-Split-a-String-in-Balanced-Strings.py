@@ -15,14 +15,15 @@
 #                 curr += 1
 #         l = l[:curr]
 #         return min(len(l), len(r))
-        
+
+
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
         res = 0
         l, r = 0, 0
         for i in list(s):
             print([i, l, r, res])
-            if i == 'L':
+            if i == "L":
                 l += 1
             else:
                 r += 1
@@ -30,15 +31,15 @@ class Solution:
                 res += 1
                 l = r = 0
         return res
-        
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # s = "RLRRLLRLRL"
     # s = "RLLLLRRRLR"
     s = "LLLLRRRR"
     results = Solution().balancedStringSplit(s)
     print(results)
 
-#     Input: 
+#     Input:
 # Output: 4
 # Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.

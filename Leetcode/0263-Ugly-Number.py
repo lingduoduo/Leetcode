@@ -11,7 +11,7 @@ class Solution(object):
         ###    while num % i == 0:
         ###        num = num / i
         ###return True if num == 1 else False
-        
+
         if num == 0:
             return False
 
@@ -19,4 +19,3 @@ class Solution(object):
             while num % i == 0:
                 num /= i
         return num == 1
-        

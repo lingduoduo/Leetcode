@@ -37,7 +37,7 @@ class Solution(object):
         for idx, num in enumerate(nums):
             if num <= target:
                 print([idx, num])
-                self.dfs(nums[idx + 1:], target - num, path + [num])
+                self.dfs(nums[idx + 1 :], target - num, path + [num])
 
 
 class Solution(object):
@@ -53,14 +53,15 @@ class Solution(object):
                 visited[idx] = 0
                 dfs(cur - num, path + [num])
                 visited[idx] = 1
-                
+
         res = []
         visited = [0] * len(candidates)
         candidates.sort()
         dfs(target, [])
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     candidates = [10, 1, 2, 7, 6, 1, 5]
     result = Solution().combinationSum2(candidates, 8)
     print(result)

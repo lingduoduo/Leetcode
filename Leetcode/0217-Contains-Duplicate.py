@@ -1,5 +1,7 @@
 import collections
 from typing import List
+
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         s = set()
@@ -9,6 +11,7 @@ class Solution:
             else:
                 s.add(num)
         return False
+
 
 if __name__ == "__main__":
     input = [1, 2, 2]

@@ -3,7 +3,7 @@ class Solution(object):
         dist = []
         for i in range(len(points)):
             x, y = points[i]
-            dist.append(x ** 2 + y ** 2)
+            dist.append(x**2 + y**2)
 
         prev = dist
         dist = sorted(dist)
@@ -19,7 +19,7 @@ class Solution(object):
         dist = []
         for i in range(len(points)):
             x, y = points[i]
-            dist.append(((x ** 2 + y ** 2), (x, y)))
+            dist.append(((x**2 + y**2), (x, y)))
 
         heapq.heapify(dist)
         res = []

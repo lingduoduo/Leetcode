@@ -1,8 +1,8 @@
-'''
+"""
 S = "abcde"
 words = ["a", "bb", "acd", "ace"]
 Output: 3
-'''
+"""
 import collections
 import bisect
 
@@ -21,7 +21,7 @@ class Solution(object):
         d = collections.defaultdict(list)
         for i, s in enumerate(S):
             d[s].append(i)
-        
+
         d2 = set()
         res = 0
         for word in words:
@@ -45,25 +45,25 @@ class Solution(object):
                     else:
                         i += 1
                         last_index = d[c][pos]
-            
+
             if i == len(word):
                 res += 1
                 d2.add(word)
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     S = "abcde"
     words = ["a", "bb", "acd", "ace"]
     result = Solution().numMatchingSubseq(S, words)
     print(result)
-    
+
     S = "acbca"
     ######words = ["a", "bb", "acb", "ace", "ace"]
     words = ["a", "ac"]
     result = Solution().numMatchingSubseq(S, words)
     print(result)
-    
+
     S = "qlhxagxdqh"
     words = ["qlhxagxdq", "qlhxagxdq", "lhyiftwtut", "yfzwraahab"]
     result = Solution().numMatchingSubseq(S, words)

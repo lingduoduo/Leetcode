@@ -8,11 +8,11 @@ class Solution(object):
             return False
         if len(A) <= 2:
             return False
-        
+
         curr = 1
         pos = 0
         neg = 0
-        
+
         while curr < len(A):
             if A[curr - 1] < A[curr]:
                 pos += 1
@@ -25,7 +25,7 @@ class Solution(object):
                 curr += 1
             else:
                 break
-        
+
         return pos > 0 and neg > 0 and 1 + pos + neg == len(A)
         ###return([pos, neg])
 
@@ -38,6 +38,7 @@ class Solution(object):
         while j >= 0 and arr[j] < arr[j - 1]:
             j -= 1
         return i == j and i != 0 and j != len(arr) - 1
+
 
 if __name__ == "__main__":
     numbers = [0, 3, 2, 1]

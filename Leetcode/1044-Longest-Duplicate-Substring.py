@@ -14,7 +14,7 @@ class Solution:
             return -1
 
         n = len(s)
-        nums = [ord(c) - ord('a') for c in s]
+        nums = [ord(c) - ord("a") for c in s]
         l, r = 1, n
         pos = -1
         MOD = 2**63 - 1
@@ -26,4 +26,4 @@ class Solution:
                 pos = cur
             else:
                 r = m - 1
-        return s[pos: pos + l - 1]
+        return s[pos : pos + l - 1]

@@ -4,5 +4,5 @@ class Solution:
         res = 0
         for num in gain:
             cumsum += num
-            res = max(res,  cumsum)
+            res = max(res, cumsum)
         return res

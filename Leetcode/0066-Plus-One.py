@@ -15,17 +15,18 @@ class Solution(object):
         ###        digits[i] = 0
         ###if carry == 1:
         ###    return [1] + digits
-        
+
         for i in reversed(range(len(digits))):
             if digits[i] == 9:
                 digits[i] = 0
             else:
                 digits[i] += 1
                 return digits
-        
+
         digits[0] = 1
         digits.append(0)
         return digits
+
 
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
@@ -41,7 +42,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums = [1,2,3]
+    nums = [1, 2, 3]
     # nums = [9, 9, 9, 9]
     result = Solution().plusOne(nums)
     print(result)

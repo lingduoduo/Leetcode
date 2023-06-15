@@ -12,7 +12,8 @@ class Solution:
             arr[:i] = arr[:i][::-1]
         return result
 
-if __name__ == '__main__':
-    arr = [3,2,4,1]
+
+if __name__ == "__main__":
+    arr = [3, 2, 4, 1]
     results = Solution().pancakeSort(arr)
     print(results)

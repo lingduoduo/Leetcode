@@ -1,7 +1,7 @@
 from sortedcontainers import SortedList
 
-class MaxStack:
 
+class MaxStack:
     def __init__(self):
         self.stack = SortedList()
         self.values = SortedList()
@@ -30,8 +30,9 @@ class MaxStack:
 
 
 import heapq
-class MaxStack:
 
+
+class MaxStack:
     def __init__(self):
         self.heap = []
         self.cnt = 0

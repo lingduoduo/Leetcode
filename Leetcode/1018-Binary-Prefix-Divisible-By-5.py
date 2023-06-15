@@ -6,7 +6,7 @@ class Solution(object):
         """
         res = []
         num = 0
-        
+
         for i in range(len(A)):
             num = num * 2 + A[i]
             res.append(num % 5 == 0)

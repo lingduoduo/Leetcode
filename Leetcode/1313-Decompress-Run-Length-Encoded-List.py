@@ -8,4 +8,3 @@ class Solution:
             i += 2
             j += 2
         return res
-            

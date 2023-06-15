@@ -1,12 +1,25 @@
 class Solution:
-    def computeArea(self, A: int, B: int, C: int, D: int, E: int, F: int, G: int, H: int) -> int:
-        area1 = (C-A)*(D-B)
-        area2 = (G-E)*(H-F)
-        overlap = max((min(C,G) - max(A, E)),0)*max((min(D, H) - max(B,F)),0)
+    def computeArea(
+        self, A: int, B: int, C: int, D: int, E: int, F: int, G: int, H: int
+    ) -> int:
+        area1 = (C - A) * (D - B)
+        area2 = (G - E) * (H - F)
+        overlap = max((min(C, G) - max(A, E)), 0) * max((min(D, H) - max(B, F)), 0)
         return area1 + area2 - overlap
 
+
 class Solution:
-    def computeArea(self, ax1: int, ay1: int, ax2: int, ay2: int, bx1: int, by1: int, bx2: int, by2: int) -> int:
+    def computeArea(
+        self,
+        ax1: int,
+        ay1: int,
+        ax2: int,
+        ay2: int,
+        bx1: int,
+        by1: int,
+        bx2: int,
+        by2: int,
+    ) -> int:
         area_of_a = (ay2 - ay1) * (ax2 - ax1)
         area_of_b = (by2 - by1) * (bx2 - bx1)
 

@@ -19,9 +19,10 @@ class Solution:
                 left -= 1
         return left == 0
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # data = [197, 130, 1]
     # data = [235, 140, 4]
-    data = [230,136,145]
+    data = [230, 136, 145]
     res = Solution().validUtf8(data)
     print(res)

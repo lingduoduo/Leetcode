@@ -31,7 +31,7 @@
 ###    if diff <= 1 and isBalanced(root.left) and isBalanced(root.right):
 ###        return True
 ###    return False
-    
+
 #     if not root:
 #         return True
 #     if not root.left and not root.right:
@@ -55,16 +55,18 @@
 #         return 1+self.get_height(root.left)
 #
 #     return 1+max(self.get_height(root.left), self.get_height(root.right))
-    
+
 from typing import Optional
 import math
-    
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:

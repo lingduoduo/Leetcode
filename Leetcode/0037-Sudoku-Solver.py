@@ -3,11 +3,11 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
-        self.dfs(board) 
+        self.dfs(board)
 
     def check(self, x, y, board):
         tmp = board[x][y]
-        board[x][y] = '.'
+        board[x][y] = "."
         for row in range(9):
             if board[row][y] == tmp:
                 return False
@@ -20,17 +20,15 @@ class Solution:
                     return False
         board[x][y] = tmp
         return True
-    
+
     def dfs(self, board):
         for row in range(9):
             for col in range(9):
-                if board[row][col] == '.':
-                    for char in '123456789':
+                if board[row][col] == ".":
+                    for char in "123456789":
                         board[row][col] = char
                         if self.check(row, col, board) and self.dfs(board):
                             return True
-                        board[row][col] = '.'
+                        board[row][col] = "."
                     return False
         return True
-
-            

@@ -1,5 +1,4 @@
 class Solution:
-
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         dist = collections.defaultdict(list)
         for source, target in edges:

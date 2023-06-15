@@ -9,19 +9,20 @@ class Solution:
                 if arr[node] == 0:
                     return True
                 else:
-                    for jump in [node-arr[node], node+arr[node]]:
+                    for jump in [node - arr[node], node + arr[node]]:
                         if 0 <= jump < len(arr) and visited[jump] == 0:
                             stack.append(jump)
                             visited[jump] = 1
         return False
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     # arr = [4,2,3,0,3,1,2]
     # start = 5
     # res = Solution().canReach(arr, start)
     # print(res)
-    
-     arr = [3,0,2,1,2]
-     start = 2
-     res = Solution().canReach(arr, start)
-     print(res)
+
+    arr = [3, 0, 2, 1, 2]
+    start = 2
+    res = Solution().canReach(arr, start)
+    print(res)

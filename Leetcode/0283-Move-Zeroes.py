@@ -1,6 +1,6 @@
 class Solution(object):
     def moveZeroes(self, nums):
-        i = 0 
+        i = 0
         j = len(nums) - 1
         while i < j:
             while nums[i] != 0 and i < j:
@@ -9,6 +9,7 @@ class Solution(object):
                 j -= 1
             nums[i], nums[j] = nums[j], nums[i]
         return nums
+
 
 class Solution(object):
     def moveZeroes(self, nums):
@@ -45,6 +46,8 @@ class Solution:
                 nums[l] = nums[r]
                 nums[r] = 0
             l += 1
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     res = Solution().moveZeroes(nums=[0, 1, 0, 3, 12])
     print(res)

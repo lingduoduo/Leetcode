@@ -4,6 +4,7 @@
 ###        self.val = x
 ###        self.next = None
 
+
 class Solution:
     def partition(self, head: ListNode, x: int) -> ListNode:
         first = ListNode(0)
@@ -12,7 +13,7 @@ class Solution:
         dummy1, dummy2 = first, second
 
         curr = head
-        
+
         while curr:
             if curr.val < x:
                 first.next = curr
@@ -23,6 +24,6 @@ class Solution:
             temp = curr.next
             curr.next = None
             curr = temp
-        first.next  = dummy2.next
+        first.next = dummy2.next
 
         return dummy1.next

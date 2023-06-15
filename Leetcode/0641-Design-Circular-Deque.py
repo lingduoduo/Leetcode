@@ -2,7 +2,6 @@ import collections
 
 
 class MyCircularDeque:
-
     def __init__(self, k: int):
         """
         Initialize your data structure here. Set the size of the deque to be k.
@@ -107,9 +106,9 @@ class MyCircularDeque:
         self.head = self.tail = None
 
     def insertFront(self, value: int) -> bool:
-        if (self.l == self.k):
+        if self.l == self.k:
             return 0
-        if (self.l == 0):
+        if self.l == 0:
             self.head = self.tail = Node(value)
         else:
             curr = Node(value)
@@ -119,9 +118,9 @@ class MyCircularDeque:
         return 1
 
     def insertLast(self, value: int) -> bool:
-        if (self.l == self.k):
+        if self.l == self.k:
             return 0
-        if (self.l == 0):
+        if self.l == 0:
             self.head = self.tail = Node(value)
         else:
             curr = Node(value)
@@ -131,26 +130,26 @@ class MyCircularDeque:
         return 1
 
     def deleteFront(self) -> bool:
-        if (self.l == 0):
+        if self.l == 0:
             return 0
         self.head = self.head.next
         self.l -= 1
         return 1
 
     def deleteLast(self) -> bool:
-        if (self.l == 0):
+        if self.l == 0:
             return 0
         self.tail = self.tail.prev
         self.l -= 1
         return 1
 
     def getFront(self) -> int:
-        if (self.l == 0):
+        if self.l == 0:
             return -1
         return self.head.val
 
     def getRear(self) -> int:
-        if (self.l == 0):
+        if self.l == 0:
             return -1
         return self.tail.val
 

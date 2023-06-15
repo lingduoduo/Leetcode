@@ -10,7 +10,7 @@ class Solution(object):
         m = len(grid[0])
         area = 0
         conn = 0
-        
+
         for i in range(n):
             for j in range(m):
                 if grid[i][j] == 1:
@@ -45,4 +45,3 @@ class Solution:
                         result -= 2
 
         return result
-    

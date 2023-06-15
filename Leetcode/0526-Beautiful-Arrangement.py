@@ -22,6 +22,7 @@ class Solution(object):
                 self.helper(n, pos + 1, visited)
                 visited[i] = 0
 
+
 class Solution(object):
     def countArrangement(self, N):
         def dfs(num, curr):

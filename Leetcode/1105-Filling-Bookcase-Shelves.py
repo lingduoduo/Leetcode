@@ -1,7 +1,7 @@
 class Solution:
     def minHeightShelves(self, books: List[List[int]], shelfWidth: int) -> int:
         n = len(books)
-        dp = [float('inf') for _ in range(n + 1)]
+        dp = [float("inf") for _ in range(n + 1)]
         dp[0] = 0
         for i in range(1, n + 1):
             max_width = shelfWidth

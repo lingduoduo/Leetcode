@@ -1,5 +1,5 @@
 class Solution:
-    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+    def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
         plist = []
         while p:
             plist.append(p)

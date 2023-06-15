@@ -7,7 +7,7 @@
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
         self.res = []
-        
+
         self.inOrder(root, False)
 
         cum = 0
@@ -32,7 +32,8 @@ class Solution:
             root.val = self.res.pop(0)
             self.inOrder(root.right, True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     root = TreeNode(2)
     root.left = TreeNode(1)
     root.right = TreeNode(3)

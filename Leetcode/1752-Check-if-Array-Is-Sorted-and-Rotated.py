@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def check(self, nums: List[int]) -> bool:
         if len(nums) <= 1:
@@ -6,8 +8,8 @@ class Solution:
 
         j = 1
         while j < len(nums):
-            if nums[0] <= nums[1]:      
-                if nums[j-1] <= nums[j]:
+            if nums[0] <= nums[1]:
+                if nums[j - 1] <= nums[j]:
                     j += 1
                 elif nums[j:] + nums[:j] == sorted(nums):
                     return True
@@ -22,7 +24,8 @@ class Solution:
             return True
         return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     nums = [1, 1, 1]
     res = Solution().check(nums)
     print(res)
@@ -31,6 +34,6 @@ if __name__ == '__main__':
     res = Solution().check(nums)
     print(res)
 
-    nums = [2,1, 3, 4]
+    nums = [2, 1, 3, 4]
     res = Solution().check(nums)
     print(res)

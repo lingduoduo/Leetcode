@@ -2,7 +2,7 @@ class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        
+
         if grid[0][0] == 1 or grid[-1][-1] == 1:
             return -1
 
@@ -11,11 +11,20 @@ class Solution:
 
         stack = []
         stack.append((0, 0))
-        
-        visited = [[0]*n for _ in range(m)]
+
+        visited = [[0] * n for _ in range(m)]
         visited[0][0] = 1
 
-        directions = [ [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
+        directions = [
+            [-1, -1],
+            [-1, 0],
+            [-1, 1],
+            [0, -1],
+            [0, 1],
+            [1, -1],
+            [1, 0],
+            [1, 1],
+        ]
 
         step = 1
         while stack:
@@ -24,9 +33,16 @@ class Solution:
                 x, y = stack.pop(0)
                 for d in directions:
                     dx, dy = x + d[0], y + d[1]
-                    if dx <0 or dx >= m or dy < 0 or dy >= n or grid[dx][dy] == 1 or visited[dx][dy] == 1:
+                    if (
+                        dx < 0
+                        or dx >= m
+                        or dy < 0
+                        or dy >= n
+                        or grid[dx][dy] == 1
+                        or visited[dx][dy] == 1
+                    ):
                         continue
-                    if dx == n-1 and dy == m-1:
+                    if dx == n - 1 and dy == m - 1:
                         return step + 1
                     visited[dx][dy] = 1
                     stack.append((dx, dy))
@@ -38,7 +54,16 @@ class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         max_row = len(grid) - 1
         max_col = len(grid[0]) - 1
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        directions = [
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+            (0, -1),
+            (0, 1),
+            (1, -1),
+            (1, 0),
+            (1, 1),
+        ]
 
         # Helper function to find the neighbors of a given cell.
         def get_neighbours(row, col):
@@ -72,4 +97,3 @@ class Solution:
 
         # There was no path.
         return -1
-    

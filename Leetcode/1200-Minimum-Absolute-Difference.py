@@ -14,7 +14,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = [3, 8, -10, 23, 19, -4, -14, 27]
     res = Solution().minimumAbsDifference(arr)
     print(res)

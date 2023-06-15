@@ -1,16 +1,20 @@
 class Solution:
     def getMoneyAmount(self, n: int) -> int:
         dp = [[0] * (n + 1) for _ in range(n + 1)]
-        
+
         for left in range(n - 1, 0, -1):
             for right in range(left + 1, n + 1):
-                dp[left][right] = min(i + max(dp[left][i - 1], dp[i + 1][right]) for i in range(left, right))
-        
+                dp[left][right] = min(
+                    i + max(dp[left][i - 1], dp[i + 1][right])
+                    for i in range(left, right)
+                )
+
         return dp[1][n]
+
 
 class Solution:
     def getMoneyAmount(self, n: int) -> int:
-        dp = [[0] * (n + 1) for _ in range(n+1)]
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
 
         def helper(left, right):
             if left >= right:
@@ -30,6 +34,7 @@ class Solution:
 
         return helper(1, n)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     res = Solution().getMoneyAmount(10)
     print(res)

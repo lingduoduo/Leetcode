@@ -16,14 +16,22 @@ class Solution(object):
         if wordinx == len(word):
             return True
 
-        if i < 0 or i > len(board) - 1 or j < 0 or j > len(board[0]) - 1 or word[wordinx] != board[i][j]:
+        if (
+            i < 0
+            or i > len(board) - 1
+            or j < 0
+            or j > len(board[0]) - 1
+            or word[wordinx] != board[i][j]
+        ):
             return False
 
         board[i][j] = "#"
-        found = self.helper(board, i + 1, j, word, wordinx + 1) \
-                or self.helper(board, i - 1, j, word, wordinx + 1) \
-                or self.helper(board, i, j - 1, word, wordinx + 1) \
-                or self.helper(board, i, j + 1, word, wordinx + 1)
+        found = (
+            self.helper(board, i + 1, j, word, wordinx + 1)
+            or self.helper(board, i - 1, j, word, wordinx + 1)
+            or self.helper(board, i, j - 1, word, wordinx + 1)
+            or self.helper(board, i, j + 1, word, wordinx + 1)
+        )
         board[i][j] = word[wordinx]
         return found
 
@@ -38,7 +46,12 @@ class Solution:
                 return True
             for dirx, diry in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
                 curx, cury = x + dirx, y + diry
-                if 0 <= curx < m and 0 <= cury < n and flag[curx][cury] and board[curx][cury] == word[p]:
+                if (
+                    0 <= curx < m
+                    and 0 <= cury < n
+                    and flag[curx][cury]
+                    and board[curx][cury] == word[p]
+                ):
                     flag[curx][cury] = False
                     if dfs(curx, cury, p + 1):
                         flag[curx][cury] = True
@@ -72,7 +85,14 @@ class Solution:
         if len(word) == idx:
             return True
 
-        if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) or board[row][col] != word[size] or self.visited[row][col]:
+        if (
+            row < 0
+            or row >= len(board)
+            or col < 0
+            or col >= len(board[0])
+            or board[row][col] != word[size]
+            or self.visited[row][col]
+        ):
             return False
 
         self.visited[row][col] = True
@@ -83,6 +103,10 @@ class Solution:
         self.visited[row][col] = False
         return False
 
-if __name__ == '__main__':
-    res = Solution().exist(board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], word="ABCCED")
+
+if __name__ == "__main__":
+    res = Solution().exist(
+        board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+        word="ABCCED",
+    )
     print(res)

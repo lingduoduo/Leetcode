@@ -2,24 +2,25 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
         valid = set()
-        
+
         for i, w in enumerate(s):
             if w == "(":
                 stack.append(i)
-            elif w == ")" and len(stack)>0:
+            elif w == ")" and len(stack) > 0:
                 valid.add(i)
                 valid.add(stack[-1])
                 stack.pop()
-        
+
         res = []
         for i, w in enumerate(s):
             if w not in "()":
                 res.append(w)
             elif i in valid:
                 res.append(w)
-        
-        return ''.join(res)
-    
+
+        return "".join(res)
+
+
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         cnt = 0
@@ -41,9 +42,10 @@ class Solution:
             if res[i] == "(":
                 cnt -= 1
                 res[i] = ""
-        return ''.join(res)
+        return "".join(res)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     s = "))(("
     results = Solution().minRemoveToMakeValid(s)
     print(results)

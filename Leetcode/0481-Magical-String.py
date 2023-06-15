@@ -7,4 +7,4 @@ class Solution:
             S += [curr] * S[i]
             curr = 2 if curr == 1 else 1
             i += 1
-        return S[:n].count(1) 
+        return S[:n].count(1)

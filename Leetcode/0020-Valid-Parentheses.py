@@ -34,15 +34,15 @@ class Solution(object):
         ###            return False
         ###return len(v) == 0
 
-        d = {'[': ']', '(': ')', '{': '}'}
+        d = {"[": "]", "(": ")", "{": "}"}
         stack = []
         for i in range(len(s)):
             if s[i] in d:
                 stack.append(s[i])
             else:
-                if len(stack)==0 or d[stack.pop()] != s[i]:
+                if len(stack) == 0 or d[stack.pop()] != s[i]:
                     return False
-        return len(stack)==0
+        return len(stack) == 0
 
 
 if __name__ == "__main__":

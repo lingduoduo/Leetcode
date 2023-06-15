@@ -1,7 +1,5 @@
 class Solution:
-    def canFinish(self, numCourses: int,
-                  prerequisites: List[List[int]]) -> bool:
-
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = collections.defaultdict(list)
         for before, after in prerequisites:
             graph[before].append(after)

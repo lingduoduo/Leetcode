@@ -2,7 +2,7 @@ class Solution:
     def longestSubstring(self, s: str, k: int) -> int:
         if len(s) < k:
             return 0
-        
+
         for cha in set(s):
             if s.count(cha) < k:
                 return max(self.longestSubstring(t, k) for t in s.split(cha))
@@ -16,16 +16,16 @@ class Solution:
             times = [0] * 26
             l = r = ct = dif_ct = 0
             while r < len(s):
-                ind = ord(s[r]) - ord('a')
+                ind = ord(s[r]) - ord("a")
                 times[ind] += 1
                 if times[ind] == 1:
                     dif_ct += 1
                 if times[ind] == k:
                     ct += 1
                 r += 1
-                
+
                 while l < r and dif_ct > i:
-                    ind = ord(s[l]) - ord('a')
+                    ind = ord(s[l]) - ord("a")
                     if times[ind] == k:
                         ct -= 1
                     if times[ind] == 1:

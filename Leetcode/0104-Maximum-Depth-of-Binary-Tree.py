@@ -18,7 +18,7 @@ class Solution(object):
         ###leftdepth = self.maxDepth(root.left)
         ###rightdepth = self.maxDepth(root.right)
         ###return max(leftdepth, rightdepth)+1
-        
+
         ####Second Try
         ###if not root:
         ###    return 0
@@ -29,7 +29,7 @@ class Solution(object):
         ###if root.right:
         ###    right = self.maxDepth(root.right)
         ###return max(left, right) + 1
-        
+
         ###if not root:
         ###    return 0
         ###if not root.left and not root.right:
@@ -46,7 +46,7 @@ class Solution(object):
         left = self.maxDepth(root.left)
         right = self.maxDepth(root.right)
 
-        return max(left, right)+1
+        return max(left, right) + 1
 
 
 if __name__ == "__main__":

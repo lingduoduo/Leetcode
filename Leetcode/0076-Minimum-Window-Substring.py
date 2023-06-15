@@ -13,7 +13,7 @@ class Solution(object):
             d[t[i]] = d.get(t[i], 0) + 1
 
         slow = 0
-        minLen = float('inf')
+        minLen = float("inf")
         matchCount = 0
         index = 0
 
@@ -39,13 +39,16 @@ class Solution(object):
                     if d[leftmost] > 0:
                         matchCount -= 1
 
-        return "" if minLen == float('inf') else s[index: index + minLen]
+        return "" if minLen == float("inf") else s[index : index + minLen]
+
 
 import collections
+
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         res = ""
-        left, cnt, minLen = 0, 0, float('inf')
+        left, cnt, minLen = 0, 0, float("inf")
         count = collections.Counter(t)
         for i, c in enumerate(s):
             print(f"left = {left}, cnt={cnt}, minLen={minLen}, count={count}")
@@ -55,17 +58,18 @@ class Solution:
             while cnt == len(t):
                 if minLen > i - left + 1:
                     minLen = i - left + 1
-                    res = s[left: i + 1]
+                    res = s[left : i + 1]
                 count[s[left]] += 1
                 if count[s[left]] > 0:
                     cnt -= 1
                 left += 1
         return res
 
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         res = ""
-        left, right, minLen = 0, 0, float('inf')
+        left, right, minLen = 0, 0, float("inf")
         d = collections.Counter(t)
         for i, v in enumerate(s):
             d[v] -= 1
@@ -74,7 +78,7 @@ class Solution:
             while right == len(t):
                 if minLen > i - left + 1:
                     minLen = i - left + 1
-                    res = s[left: i + 1]
+                    res = s[left : i + 1]
                 d[s[left]] += 1
                 if d[s[left]] > 0:
                     right -= 1
@@ -82,7 +86,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     S = "ADOBECODEBANC"
     T = "ABC"
     result = Solution().minWindow(S, T)

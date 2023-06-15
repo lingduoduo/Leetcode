@@ -10,14 +10,15 @@ class Solution:
                     return steps
                 for idx, cha in enumerate(node):
                     for newcha in ["A", "C", "G", "T"]:
-                        newchas = node[:idx] + newcha + node[idx+1:]
+                        newchas = node[:idx] + newcha + node[idx + 1 :]
                         if newchas in bank:
                             stack.append(newchas)
                             bank.remove(newchas)
             steps += 1
         return -1
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # start = "AACCGGTT"
     # end = "AACCGGTA"
     # bank = ["AACCGGTA"]
@@ -38,7 +39,6 @@ if __name__ == '__main__':
 
     start = "AACCTTGG"
     end = "AATTCCGG"
-    bank = ["AATTCCGG","AACCTGGG","AACCCCGG","AACCTACC"]
+    bank = ["AATTCCGG", "AACCTGGG", "AACCCCGG", "AACCTACC"]
     res = Solution().minMutation(start, end, bank)
     print(res)
-        

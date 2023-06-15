@@ -5,6 +5,7 @@
 ###        self.left = None
 ###        self.right = None
 
+
 class Solution(object):
     def kthSmallest(self, root, k):
         """
@@ -14,7 +15,7 @@ class Solution(object):
         """
         self.cnt = 0
         self.result = 0
-        
+
         def DFS(root, k):
             if root is None:
                 return
@@ -23,7 +24,7 @@ class Solution(object):
             if self.cnt == k:
                 self.result = root.val
             DFS(root.right, k)
-        
+
         DFS(root, k)
         return self.result
 

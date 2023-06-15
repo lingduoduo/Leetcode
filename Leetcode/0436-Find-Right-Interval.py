@@ -1,11 +1,11 @@
 class Solution:
     def findRightInterval(self, intervals):
-        res = [-1]*len(intervals)
+        res = [-1] * len(intervals)
         d = {}
         for idx, val in enumerate(intervals):
             d[val[0], val[1]] = idx
-        
-        s = sorted(intervals, key = lambda x: (x[1], x[0]))
+
+        s = sorted(intervals, key=lambda x: (x[1], x[0]))
         x0, y0 = s[0]
 
         for x1, y1 in s[1:]:
@@ -19,7 +19,8 @@ class Solution:
 
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # intervals = [[3,4],[2,3],[1,2]]
     # res = Solution().findRightInterval(intervals)
     # print(res)
@@ -28,6 +29,6 @@ if __name__ == '__main__':
     # res = Solution().findRightInterval(intervals)
     # print(res)
 
-    intervals = [[1,12],[2,9],[3,10],[13,14],[15,16],[16,17]]
+    intervals = [[1, 12], [2, 9], [3, 10], [13, 14], [15, 16], [16, 17]]
     res = Solution().findRightInterval(intervals)
     print(res)

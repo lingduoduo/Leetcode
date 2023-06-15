@@ -2,7 +2,7 @@ class Solution:
     def maxSumSubmatrix(self, matrix: List[List[int]], k: int) -> int:
         m = len(matrix)
         n = len(matrix[0]) if m else 0
-        
+
         M = max(m, n)
         N = min(m, n)
         ans = float("-inf")
@@ -19,5 +19,4 @@ class Solution:
                     if i != len(slist):
                         ans = max(ans, num - slist[i])
                     bisect.insort(slist, num)
-        return ans or 0      
-        
+        return ans or 0

@@ -30,39 +30,38 @@ class Solution(object):
         ###if rowstart == rowend and colstart == colend:
         ###    res[rowstart][colstart] = step
         ###    step += 1
-        
-        ###return res
 
+        ###return res
 
         matrix = []
         for i in range(n):
             matrix.append([0 for i in range(n)])
 
         rowBegin = 0
-        rowEnd = n-1
+        rowEnd = n - 1
         colBegin = 0
-        colEnd = n-1
+        colEnd = n - 1
         num = 1
 
-        while rowBegin<=rowEnd and colBegin<=colEnd:
-            for i in range(colBegin, colEnd+1):
+        while rowBegin <= rowEnd and colBegin <= colEnd:
+            for i in range(colBegin, colEnd + 1):
                 matrix[rowBegin][i] = num
-                num+=1
+                num += 1
             rowBegin += 1
 
-            for i in range(rowBegin, rowEnd+1):
+            for i in range(rowBegin, rowEnd + 1):
                 matrix[i][colEnd] = num
-                num+=1
+                num += 1
             colEnd -= 1
 
             if rowBegin <= rowEnd:
-                for i in range(colEnd, colBegin-1, -1):
+                for i in range(colEnd, colBegin - 1, -1):
                     matrix[rowEnd][i] = num
                     num += 1
                 rowEnd -= 1
 
             if colBegin <= colEnd:
-                for i in range(rowEnd, rowBegin-1, -1):
+                for i in range(rowEnd, rowBegin - 1, -1):
                     matrix[i][colBegin] = num
                     num += 1
                 colBegin += 1
@@ -81,6 +80,7 @@ class Solution(object):
             cury += directions[curd][1]
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     result = Solution().generateMatrix(4)
     print(result)

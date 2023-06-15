@@ -10,14 +10,13 @@ class Solution:
         self.traverse(root)
         dif = float("inf")
         for i in range(1, len(self.res)):
-            dif = min(dif, self.res[i]-self.res[i-1])
+            dif = min(dif, self.res[i] - self.res[i - 1])
         return dif
-    
-    
+
     def traverse(self, root):
         if not root:
             return 0
-        
+
         self.traverse(root.left)
         self.res.append(root.val)
         self.traverse(root.right)

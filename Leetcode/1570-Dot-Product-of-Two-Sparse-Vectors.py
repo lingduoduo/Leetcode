@@ -9,7 +9,7 @@ class SparseVector:
                 self.d[i] = v
 
     # Return the dotProduct of two sparse vectors
-    def dotProduct(self, vec: 'SparseVector') -> int:
+    def dotProduct(self, vec: "SparseVector") -> int:
         res = 0
         for k, v in self.d.items():
             if k in vec.d:
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # ans = v1.dotProduct(v2)
     # print(ans)
 
-    v1 = SparseVector(nums=[0,1,0,0,2,0,0])
-    v2 = SparseVector(nums=[1,0,0,0,3,0,4])
+    v1 = SparseVector(nums=[0, 1, 0, 0, 2, 0, 0])
+    v2 = SparseVector(nums=[1, 0, 0, 0, 3, 0, 4])
     ans = v1.dotProduct(v2)
     print(ans)

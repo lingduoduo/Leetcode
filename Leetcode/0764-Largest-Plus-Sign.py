@@ -11,13 +11,13 @@ class Solution:
             for j in range(N):
                 l = l + 1 if dp[i][j] else 0
                 r = r + 1 if dp[j][i] else 0
-                u = u + 1 if dp[i][N - 1 -j] else 0
+                u = u + 1 if dp[i][N - 1 - j] else 0
                 d = d + 1 if dp[N - 1 - j][i] else 0
                 dp[i][j] = min(dp[i][j], l)
                 dp[j][i] = min(dp[j][i], r)
-                dp[i][N - 1 - j] = min(dp[i][N -  1 - j], u)
+                dp[i][N - 1 - j] = min(dp[i][N - 1 - j], u)
                 dp[N - 1 - j][i] = min(dp[N - 1 - j][i], d)
         for i in range(N):
             for j in range(N):
                 res = max(res, dp[i][j])
-        return res 
+        return res

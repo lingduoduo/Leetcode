@@ -4,10 +4,10 @@ class Solution:
         distances = defaultdict(lambda: float("inf"))
         dirs = [(0, -1), (0, 1), (-1, 0), (1, 0)]
         q = []
-        heappush(q, (0,0,0))
+        heappush(q, (0, 0, 0))
         while q:
             effort, curx, cury = heappop(q)
-            if (curx, cury)  == (m-1, n-1):
+            if (curx, cury) == (m - 1, n - 1):
                 return effort
             for dx, dy in dirs:
                 tx, ty = curx + dx, cury + dy

@@ -9,7 +9,7 @@
 
 
 class Solution:
-    def findMaximumXOR(self, nums) -> int:   
+    def findMaximumXOR(self, nums) -> int:
         res = mask = 0
         for x in reversed(range(32)):
             mask += 1 << x
@@ -23,7 +23,8 @@ class Solution:
                     break
         return res
 
-if __name__ == '__main__':
-	nums = [3,10,5,25,2,8]
-	res = Solution().findMaximumXOR(nums)
-	print(res)
+
+if __name__ == "__main__":
+    nums = [3, 10, 5, 25, 2, 8]
+    res = Solution().findMaximumXOR(nums)
+    print(res)

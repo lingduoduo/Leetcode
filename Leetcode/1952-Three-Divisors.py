@@ -1,4 +1,6 @@
 import math
+
+
 class Solution:
     def isThree(self, n: int) -> bool:
         if n == 4:
@@ -15,8 +17,9 @@ class Solution:
                 for i in range(2, m):
                     if n % i == 0:
                         return False
-                return True    
-                
-if __name__ == '__main__':
+                return True
+
+
+if __name__ == "__main__":
     res = Solution().isThree(n=121)
     print(res)

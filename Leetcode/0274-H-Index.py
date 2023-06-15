@@ -4,5 +4,5 @@ class Solution:
         citations.sort()
         h = 0
         for k, v in enumerate(citations):
-             h = max(h, min(n - k, v))
+            h = max(h, min(n - k, v))
         return h

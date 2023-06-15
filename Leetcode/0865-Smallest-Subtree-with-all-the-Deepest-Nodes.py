@@ -18,6 +18,5 @@ class Solution:
                 return (l[0], depth)
             else:
                 return (root, depth)
-        
+
         return dfs(root)[0]
-        

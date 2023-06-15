@@ -9,15 +9,16 @@ class Solution:
             else:
                 d[len(word)].append(word)
 
-        d_sorted = sorted(d.items(), key = lambda x: x[0]) 
+        d_sorted = sorted(d.items(), key=lambda x: x[0])
         res = []
         for k, v in d_sorted:
             res += v
 
-        res_adjust = ' '.join(res)
+        res_adjust = " ".join(res)
         return res_adjust[0].upper() + res_adjust[1:]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # text = "Leetcode is cool"
     text = "To be or not to be"
     results = Solution().arrangeWords(text)

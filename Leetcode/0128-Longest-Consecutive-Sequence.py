@@ -21,7 +21,7 @@ class Solution:
                 continue
             current_length = 1
             cur = nums[i]
-            while (cur + 1 in nums_set):
+            while cur + 1 in nums_set:
                 current_length += 1
                 cur += 1
             res = max(res, current_length)

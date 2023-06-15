@@ -7,13 +7,13 @@ class Solution(object):
         x = 0
         y = 0
         for move in moves:
-            if move == 'U':
+            if move == "U":
                 y += 1
-            elif move == 'D':
+            elif move == "D":
                 y -= 1
-            elif move == 'L':
+            elif move == "L":
                 x -= 1
-            elif move == 'R':
+            elif move == "R":
                 x += 1
         if x == 0 and y == 0:
             return True

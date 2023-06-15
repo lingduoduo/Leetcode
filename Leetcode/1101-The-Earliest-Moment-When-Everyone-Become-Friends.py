@@ -22,7 +22,6 @@ class Solution:
 
 
 class UnionFind:
-
     def __init__(self, size):
         self.group = [group_id for group_id in range(size)]
         self.rank = [0] * size
@@ -34,8 +33,8 @@ class UnionFind:
 
     def union(self, a, b):
         """
-            return: true if a and b are not connected before
-                otherwise, connect a with b and then return false
+        return: true if a and b are not connected before
+            otherwise, connect a with b and then return false
         """
         group_a = self.find(a)
         group_b = self.find(b)

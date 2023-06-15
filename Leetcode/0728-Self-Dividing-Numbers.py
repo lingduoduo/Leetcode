@@ -5,9 +5,9 @@ class Solution(object):
         :type right: int
         :rtype: List[int]
         """
-        
+
         def isSelfDividing(number):
-            if '0' in str(number):
+            if "0" in str(number):
                 return False
             curr = number
             while curr > 0:
@@ -16,7 +16,7 @@ class Solution(object):
                     return False
                 curr = curr // 10
             return True
-        
+
         result = list()
         for num in range(left, right + 1):
             if isSelfDividing(num):

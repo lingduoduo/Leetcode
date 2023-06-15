@@ -3,8 +3,9 @@ class Solution:
     graph = defaultdict(list)
     conn_dict = {}
 
-    def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
-
+    def criticalConnections(
+        self, n: int, connections: List[List[int]]
+    ) -> List[List[int]]:
         self.formGraph(n, connections)
         self.dfs(0, 0)
 
@@ -15,7 +16,6 @@ class Solution:
         return result
 
     def dfs(self, node: int, discovery_rank: int) -> int:
-
         # That means this node is already visited. We simply return the rank.
         if self.rank[node]:
             return self.rank[node]
@@ -26,7 +26,6 @@ class Solution:
         # This is the max we have seen till now. So we start with this instead of INT_MAX or something.
         min_rank = discovery_rank + 1
         for neighbor in self.graph[node]:
-
             # Skip the parent.
             if self.rank[neighbor] and self.rank[neighbor] == discovery_rank - 1:
                 continue
@@ -44,7 +43,6 @@ class Solution:
         return min_rank
 
     def formGraph(self, n: int, connections: List[List[int]]):
-
         # Reinitialize for each test case
         self.rank = {}
         self.graph = defaultdict(list)

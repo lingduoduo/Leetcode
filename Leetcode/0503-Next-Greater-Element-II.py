@@ -12,8 +12,7 @@ class Solution:
         #         res[i] = padding[j]
         # return res[:len(nums)]
 
-
-        for i in reversed(range(len(padding))): 
+        for i in reversed(range(len(padding))):
             if stack and padding[i] < stack[-1]:
                 res[i] = stack[-1]
             elif stack and padding[i] >= stack[-1]:
@@ -22,11 +21,10 @@ class Solution:
                 if stack:
                     res[i] = stack[-1]
             stack.append(padding[i])
-        return [res[len(nums)]] + res[1:len(nums)]
+        return [res[len(nums)]] + res[1 : len(nums)]
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     # nums = [1,2,1]
     nums = [1, 2, 3, 4, 5]
     # nums = [5, 4, 3, 2, 1]

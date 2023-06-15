@@ -1,4 +1,6 @@
 import collections
+
+
 class Solution:
     def canPermutePalindrome(self, s: str) -> bool:
         d = collections.Counter(s)
@@ -8,9 +10,10 @@ class Solution:
                 cnt += 1
         return len(d.keys()) == cnt or len(d.keys()) == cnt + 1
 
+
 if __name__ == "__main__":
-    res = Solution().canPermutePalindrome(s = "codde")
+    res = Solution().canPermutePalindrome(s="codde")
     print(res)
 
-    res = Solution().canPermutePalindrome(s = "aab")
+    res = Solution().canPermutePalindrome(s="aab")
     print(res)

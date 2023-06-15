@@ -19,7 +19,7 @@ while stack:
     curr = stack.pop()
     curr.prev = prev
     prev.next = curr
-    
+
     if curr.next:
         stack.append(curr.next)
         curr.next = None

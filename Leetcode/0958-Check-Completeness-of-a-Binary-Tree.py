@@ -20,12 +20,7 @@ class Solution:
                     continue
                 if hasNone:
                     return False
-                
+
                 stack.append(node.left)
                 stack.append(node.right)
-        return True 
-
-
-
-
-
+        return True

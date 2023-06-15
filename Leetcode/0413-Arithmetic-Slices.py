@@ -1,4 +1,6 @@
 import copy
+
+
 class Solution:
     def numberOfArithmeticSlices(self, A) -> int:
         count = 0
@@ -10,10 +12,9 @@ class Solution:
             else:
                 addend = 0
         return count
-                
-                
-                
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     A = [1, 2, 3, 4, 5, 6]
     # A = [7, 7, 7, 7]
     res = Solution().numberOfArithmeticSlices(A)

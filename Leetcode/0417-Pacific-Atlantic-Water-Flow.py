@@ -23,7 +23,14 @@ class Solution:
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         for direction in directions:
             x, y = i + direction[0], j + direction[1]
-            if x < 0 or x >= m or y < 0 or y >= n or visited[x][y] or matrix[x][y] < matrix[i][j]:
+            if (
+                x < 0
+                or x >= m
+                or y < 0
+                or y >= n
+                or visited[x][y]
+                or matrix[x][y] < matrix[i][j]
+            ):
                 continue
             self.dfs(matrix, visited, m, n, x, y)
 

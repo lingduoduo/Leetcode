@@ -15,8 +15,10 @@ class Solution:
 
             if abs(target - root.val) < abs(target - res):
                 res = root.val
-            if root.left: trav(root.left)
-            if root.right: trav(root.right)
+            if root.left:
+                trav(root.left)
+            if root.right:
+                trav(root.right)
 
         trav(root)
         return res
@@ -26,4 +28,5 @@ class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         def inorder(root: TreeNode):
             return inorder(root.left) + [root.val] + inorder(root.right) if root else []
-        return min(inorder(root), key = lambda x: abs(target - x))
+
+        return min(inorder(root), key=lambda x: abs(target - x))

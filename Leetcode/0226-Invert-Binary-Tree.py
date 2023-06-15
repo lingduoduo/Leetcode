@@ -19,15 +19,14 @@ class Solution(object):
         ###self.invertTree(root.left)
         ###self.invertTree(root.right)
         ###return root
-        
-        
+
         # if not root:
         #     return None
         # if not root.left and not root.right:
         #     return root
         # root.right, root.left = self.invertTree(root.left), self.invertTree(root.right)
         # return root
-        
+
         stack = []
         stack.append(root)
 

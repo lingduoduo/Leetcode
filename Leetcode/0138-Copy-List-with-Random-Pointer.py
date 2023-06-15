@@ -62,7 +62,7 @@ def copyRandomList(self, head):
 
 
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
         if head is None:
             return None
 
@@ -93,7 +93,7 @@ class Solution:
     def __init__(self):
         self.visit = {None: None}
 
-    def copyRandomList(self, head: 'Node') -> 'Node':
+    def copyRandomList(self, head: "Node") -> "Node":
         if head in self.visit:
             return self.visit[head]
         node = Node(head.val, None, None)

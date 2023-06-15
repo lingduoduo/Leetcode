@@ -49,7 +49,6 @@
 #         return self.res
 
 
-
 #     def dfs(self, grid, x, y, n):
 #         print([x, y, n])
 #         if x<0 or x>=len(grid) or y<0 or y>=len(grid[0]) or grid[x][y]==-1 or n<0:
@@ -57,7 +56,7 @@
 #         if grid[x][y]==2:
 #             if n==0:
 #                 self.res += 1
-#                 return 
+#                 return
 #         grid[x][y]=-1
 #         self.dfs(grid, x+1, y, n-1)
 #         self.dfs(grid, x-1, y, n-1)
@@ -71,28 +70,29 @@ class Solution:
         R, C = len(grid), len(grid[0])  # 计算行数和列数
 
         def neighbors(r, c):
-            for nr, nc in ((r-1, c), (r, c-1), (r+1, c), (r, c+1)):
+            for nr, nc in ((r - 1, c), (r, c - 1), (r + 1, c), (r, c + 1)):
                 if 0 <= nr < R and 0 <= nc < C and grid[nr][nc] % 2 == 0:  # 返回可以到达的位置
                     yield nr, nc
 
         todo = 0
         for r, row in enumerate(grid):
             for c, val in enumerate(row):
-                if val != -1: 
+                if val != -1:
                     todo += 1  # 统计不是障碍的点数
-                if val == 1:   # 起始位置
+                if val == 1:  # 起始位置
                     sr, sc = r, c
-                if val == 2:   # 结束位置
+                if val == 2:  # 结束位置
                     tr, tc = r, c
 
         self.ans = 0
+
         def dfs(r, c, todo):
             print([r, c, todo])
             todo -= 1  # 遍历到一个位置，将当前位置变为-1
-            if todo < 0: 
+            if todo < 0:
                 return
             if r == tr and c == tc:  # 当到达目标位置同时todo为零
-                if todo == 0:  
+                if todo == 0:
                     self.ans += 1
                 return
 
@@ -104,11 +104,8 @@ class Solution:
         dfs(sr, sc, todo)
         return self.ans
 
-if __name__ == '__main__':
-    grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+
+if __name__ == "__main__":
+    grid = [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
     result = Solution().uniquePathsIII(grid)
     print(result)
-
-
-
-

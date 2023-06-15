@@ -1,5 +1,4 @@
 class HitCounter:
-
     def __init__(self):
         self.counter = []
 
@@ -10,6 +9,7 @@ class HitCounter:
         while self.counter and timestamp - self.counter[0] >= 300:
             self.counter.pop(0)
         return len(self.counter)
+
 
 # Your HitCounter object will be instantiated and called as such:
 # obj = HitCounter()

@@ -5,7 +5,7 @@ class Solution:
         """
         res = []
         for i in range(len(arr)):
-            if arr[i]!= 0:
+            if arr[i] != 0:
                 res.append(arr[i])
             else:
                 res.append(0)

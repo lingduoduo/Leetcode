@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def smallestRangeII(self, A: List[int], K: int) -> int:
         A = sorted(set(A))
@@ -13,4 +14,3 @@ class Solution:
             a, b = A[i], A[i + 1]
             res = min(res, max(hi - K, a + K) - min(lo + K, b - K))
         return res
-

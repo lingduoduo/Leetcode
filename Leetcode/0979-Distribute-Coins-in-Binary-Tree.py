@@ -15,7 +15,7 @@ class Solution(object):
         self.result = 0
         self.balance(root)
         return self.result
-    
+
     def balance(self, root):
         if root is None:
             return 0

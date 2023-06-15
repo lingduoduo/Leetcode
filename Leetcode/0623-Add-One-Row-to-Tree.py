@@ -38,7 +38,9 @@ class Solution:
 
 
 class Solution:
-    def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
+    def addOneRow(
+        self, root: Optional[TreeNode], val: int, depth: int
+    ) -> Optional[TreeNode]:
         if depth == 1:
             return TreeNode(val, root, None)
 
@@ -53,13 +55,15 @@ class Solution:
                 if curr.right != None:
                     bfs.append(curr.right)
 
-                if depth == 1:  # Current level is in depth d-1 -> Add nodes with value `v`
+                if (
+                    depth == 1
+                ):  # Current level is in depth d-1 -> Add nodes with value `v`
                     curr.left = TreeNode(val, curr.left, None)
                     curr.right = TreeNode(val, None, curr.right)
         return root
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root = TreeNode(4, None, None)
     root.left = TreeNode(2, None, None)
     root.right = TreeNode(6, None, None)

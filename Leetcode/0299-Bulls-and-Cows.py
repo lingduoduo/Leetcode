@@ -12,7 +12,7 @@ class Solution:
                     d1[secret[i]] += 1
                 else:
                     d1[secret[i]] = 1
-                    
+
                 if guess[i] in d2:
                     d2[guess[i]] += 1
                 else:
@@ -20,8 +20,8 @@ class Solution:
         for i in d1:
             if i in d2:
                 cow += min(d1[i], d2[i])
-        s = ''
+        s = ""
         s += str(bull)
-        s += 'A'
+        s += "A"
         s += str(cow)
-        s += 'B'
+        s += "B"

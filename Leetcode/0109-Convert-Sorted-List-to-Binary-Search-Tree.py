@@ -14,19 +14,19 @@ class Solution:
         nums = []
 
         while head:
-        	nums.append(head.val)
-        	head = head.next
+            nums.append(head.val)
+            head = head.next
 
         return self.helper(nums)
 
     def helper(self, nums):
         if nums == []:
-        	return None
+            return None
 
-        mid = len(nums)//2
+        mid = len(nums) // 2
 
         root = TreeNode(nums[mid])
         root.left = self.helper(nums[:mid])
-        root.right = self.helper(nums[mid+1:])
+        root.right = self.helper(nums[mid + 1 :])
 
         return root

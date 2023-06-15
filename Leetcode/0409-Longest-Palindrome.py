@@ -47,12 +47,13 @@ class Solution(object):
         flag = 0
         print(d)
         for k, v in d.items():
-            if v%2==0:
+            if v % 2 == 0:
                 res += v
             else:
-                res += v-1
+                res += v - 1
                 flag = 1
         return res + flag
+
 
 if __name__ == "__main__":
     ###numbers = "abccccdd"
@@ -60,4 +61,4 @@ if __name__ == "__main__":
     numbers = "bananas"
     result = Solution().longestPalindrome(numbers)
     print(result)
-    print('Done')
+    print("Done")

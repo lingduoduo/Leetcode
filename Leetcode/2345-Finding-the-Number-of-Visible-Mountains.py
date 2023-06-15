@@ -16,7 +16,8 @@ class Solution:
                 maxEnd = x + y
 
                 # we need to consider duplicates -> should not count
-                if i < n - 1 and peaks[i] == peaks[i + 1]: continue
+                if i < n - 1 and peaks[i] == peaks[i + 1]:
+                    continue
 
                 count += 1
         return count

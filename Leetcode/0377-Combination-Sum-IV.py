@@ -5,7 +5,8 @@ class Solution:
         for i in range(1, target + 1):
             # update dp[i]
             for num in nums:
-                if i >= num: dp[i] += dp[i - num]  # i - x 不可以 < 0
+                if i >= num:
+                    dp[i] += dp[i - num]  # i - x 不可以 < 0
 
         return dp[target]
 
@@ -18,7 +19,7 @@ class Solution:
         return dp[target]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [1, 2, 3]
     res = Solution().combinationSum4(nums, 4)
     print(res)

@@ -1,9 +1,9 @@
 class Solution:
     def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
         ugly = [1]
-        pointers = [0]*len(primes)
-         
-        for i in range(1,n):
+        pointers = [0] * len(primes)
+
+        for i in range(1, n):
             local_min = float("inf")
             minIndex = 0
             for j in range(len(primes)):

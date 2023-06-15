@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
         rep = 4
@@ -20,12 +22,15 @@ class Solution:
 
         return False
 
-if __name__ == '__main__':
-    res = Solution().findRotation(mat=[[0,1],[1,0]], target=[[1,0],[0,1]])
+
+if __name__ == "__main__":
+    res = Solution().findRotation(mat=[[0, 1], [1, 0]], target=[[1, 0], [0, 1]])
     print(res)
 
-    res = Solution().findRotation(mat = [[0,1],[1,1]], target = [[1,0],[0,1]])
+    res = Solution().findRotation(mat=[[0, 1], [1, 1]], target=[[1, 0], [0, 1]])
     print(res)
 
-    res = Solution().findRotation(mat = [[0,0,0],[0,1,0],[1,1,1]], target = [[1,1,1],[0,1,0],[0,0,0]])
+    res = Solution().findRotation(
+        mat=[[0, 0, 0], [0, 1, 0], [1, 1, 1]], target=[[1, 1, 1], [0, 1, 0], [0, 0, 0]]
+    )
     print(res)

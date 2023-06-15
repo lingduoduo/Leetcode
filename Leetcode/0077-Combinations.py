@@ -44,7 +44,7 @@ class Solution:
         return output
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n = 5
     k = 3
     result = Solution().combine(n, k)

@@ -1,7 +1,9 @@
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
         def countAndMergeSort(num_idxs, start, end, counts):
-            if end - start <= 0:  # The size of range [start, end] less than 2 is always with count 0.
+            if (
+                end - start <= 0
+            ):  # The size of range [start, end] less than 2 is always with count 0.
                 return 0
 
             mid = start + (end - start) // 2
@@ -18,7 +20,7 @@ class Solution:
                 counts[num_idxs[i][1]] += r - (mid + 1)
 
             # Copy tmp back to num_idxs
-            num_idxs[start:start+len(tmp)] = tmp
+            num_idxs[start : start + len(tmp)] = tmp
 
         num_idxs = []
         counts = [0] * len(nums)

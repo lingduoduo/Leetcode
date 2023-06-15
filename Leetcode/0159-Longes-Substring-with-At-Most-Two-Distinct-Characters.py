@@ -1,5 +1,6 @@
 import collections
 
+
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         n = len(s)
@@ -19,6 +20,7 @@ class Solution:
             right += 1
             res = max(res, right - left)
         return res
+
 
 # from collections import defaultdict
 # class Solution:
@@ -48,5 +50,5 @@ class Solution:
 #         return res
 
 if __name__ == "__main__":
-    res = Solution().lengthOfLongestSubstringTwoDistinct(s = "ccaabbb")
+    res = Solution().lengthOfLongestSubstringTwoDistinct(s="ccaabbb")
     print(res)

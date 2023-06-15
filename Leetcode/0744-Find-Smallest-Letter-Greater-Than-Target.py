@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution(object):
     def nextGreatestLetter(self, letters, target):
         """
@@ -12,6 +13,7 @@ class Solution(object):
                 return letters[i]
         return letters[0]
 
+
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         left, right = 0, len(letters)
@@ -23,9 +25,10 @@ class Solution:
                 right = mid
         return letters[left % len(letters)]
 
+
 if __name__ == "__main__":
-    res = Solution().nextGreatestLetter(letters = ["c","f","j"], target = "a")
+    res = Solution().nextGreatestLetter(letters=["c", "f", "j"], target="a")
     print(res)
 
-    res = Solution().nextGreatestLetter(letters = ["c","f","j"], target = "c")
+    res = Solution().nextGreatestLetter(letters=["c", "f", "j"], target="c")
     print(res)

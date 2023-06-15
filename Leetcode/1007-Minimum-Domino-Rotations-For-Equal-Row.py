@@ -15,4 +15,3 @@ class Solution:
         if res != -1 or A[0] == B[0]:
             return res
         return check(B[0])
-

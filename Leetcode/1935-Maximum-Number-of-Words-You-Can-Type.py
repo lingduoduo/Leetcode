@@ -6,9 +6,10 @@ class Solution:
             wordset = list(set(word)) + list(brokenLetters)
             if len(wordset) == len(set(wordset)):
                 res += 1
-        return res 
+        return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     res = Solution().canBeTypedWords(text="leet code", brokenLetters="e")
     print(res)
 

@@ -3,10 +3,10 @@ class Solution:
         tokens.sort()
         res = 0
         scores = 0
-        
+
         left = 0
         right = len(tokens) - 1
-        
+
         while left <= right:
             if tokens[left] <= P:
                 P -= tokens[left]
@@ -21,5 +21,3 @@ class Solution:
                     P += tokens[right]
                     right -= 1
         return res
-     
-        

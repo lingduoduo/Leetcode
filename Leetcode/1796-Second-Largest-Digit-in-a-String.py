@@ -9,5 +9,5 @@ class Solution:
                 elif firstMax < int(i):
                     secondMax = firstMax
                     firstMax = int(i)
-        
+
         return secondMax

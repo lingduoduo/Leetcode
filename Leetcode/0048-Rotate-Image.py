@@ -31,10 +31,6 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
 
-if __name__ == '__main__':
-    input = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
+if __name__ == "__main__":
+    input = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     results = Solution().rotate(input)

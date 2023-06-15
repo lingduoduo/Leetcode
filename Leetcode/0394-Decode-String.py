@@ -6,29 +6,30 @@ class Solution(object):
         """
         rep = []
         cur = []
-        res = ''
+        res = ""
         num = 0
-        
+
         for i in range(len(s)):
             print([s[i], res])
-            if s[i] == '[':
+            if s[i] == "[":
                 rep.append(num)
                 cur.append(res)
                 num = 0
-                res = ''
-            elif s[i] == ']':
+                res = ""
+            elif s[i] == "]":
                 res = cur.pop() + res * rep.pop()
             elif s[i].isdigit():
-                num = num * 10 + ord(s[i]) - ord('0')
+                num = num * 10 + ord(s[i]) - ord("0")
             else:
                 res += s[i]
         return res
 
+
 class Solution:
     def decodeString(self, s: str) -> str:
         stack = []
-        cur_num = cur_str = ''
-        
+        cur_num = cur_str = ""
+
         for cha in s:
             if cha.isdigit():
                 cur_num += cha
@@ -36,7 +37,7 @@ class Solution:
                 cur_str += cha
             elif cha == "[":
                 stack.append((cur_num, cur_str))
-                cur_num = cur_str = ''
+                cur_num = cur_str = ""
             elif cha == "]":
                 pre_num, pre_str = stack.pop()
                 cur_str = pre_str + cur_str * int(pre_num)

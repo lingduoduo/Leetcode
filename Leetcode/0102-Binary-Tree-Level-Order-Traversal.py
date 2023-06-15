@@ -5,6 +5,7 @@
 ###        self.left = None
 ###        self.right = None
 
+
 class Solution(object):
     def levelOrder(self, root):
         """
@@ -16,7 +17,8 @@ class Solution(object):
         level = 0
 
         def bfs(root, level):
-            if root is None: return
+            if root is None:
+                return
             if len(result) == level:
                 result.append([])
             result[level].append(root.val)
@@ -29,7 +31,8 @@ class Solution(object):
 
 class Solution(object):
     def levelOrder(self, root):
-        if not root: return []
+        if not root:
+            return []
         result = []
         visited = []
         visited.append(root)

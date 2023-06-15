@@ -12,11 +12,12 @@ class Solution:
                 j += 1
         return result
 
+
 if __name__ == "__main__":
     # g = [1, 2, 3]
     # s = [1, 1]
     # print(Solution().findContentChildren(g, s))
-    
+
     a = [1, 2, 3]
     b = [1, 2]
     print(Solution().findContentChildren(a, b))

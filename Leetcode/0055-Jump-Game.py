@@ -28,7 +28,7 @@ class Solution:
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [2, 3, 1, 1, 4]
     result = Solution().canJump(nums)
     print(result)

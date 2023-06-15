@@ -39,10 +39,11 @@
 #
 #         return strs[0]
 
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         # this will be an answer
-        pref = ''
+        pref = ""
         # find min and max words among strs
         minWord = min(strs)
         maxWord = max(strs)
@@ -63,6 +64,7 @@ class Solution:
 
         return pref
 
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         res = ""
@@ -73,8 +75,9 @@ class Solution:
                 return res
         return res
 
-if __name__=="__main__":
-    strs=["flower","flow","flight"]
+
+if __name__ == "__main__":
+    strs = ["flower", "flow", "flight"]
     ###strs = ["aa","a"]
     ###strs = ["dog","racecar","car"]
     results = Solution().longestCommonPrefix(strs)

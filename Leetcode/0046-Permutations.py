@@ -1,4 +1,6 @@
 from itertools import permutations
+
+
 class Solution(object):
     def permute(self, nums):
         """
@@ -7,6 +9,7 @@ class Solution(object):
         """
         return list(permutations(nums))
 
+
 class Solution:
     def permute(self, nums):
         self.nums = nums
@@ -14,11 +17,11 @@ class Solution:
         self.visited = [False] * len(self.nums)
         self.dfs([])
         return self.res
-    
+
     def dfs(self, path):
         if len(self.nums) == len(path):
             self.res.append(path[:])
-            
+
         for i in range(len(self.nums)):
             if self.visited[i]:
                 continue
@@ -27,6 +30,7 @@ class Solution:
             self.dfs(path)
             path.pop()
             self.visited[i] = False
+
 
 class Solution(object):
     def permute(self, nums):
@@ -39,7 +43,8 @@ class Solution(object):
             self.res.append(path)
 
         for i in range(len(curr)):
-            self.dfs(curr[:i]+curr[i+1:], path+[curr[i]])
+            self.dfs(curr[:i] + curr[i + 1 :], path + [curr[i]])
+
 
 if __name__ == "__main__":
     nums = [1, 2, 3]

@@ -7,24 +7,22 @@ class TreeNode(object):
 
 
 class Solution(object):
-    
     def printTree(self, root):
         """
         :type root: TreeNode
         :rtype: List[List[str]]
         """
         h = self.getHeight(root)
-        w = 2 ** h - 1
+        w = 2**h - 1
         result = [[" " for _ in range(w)] for _ in range(h)]
         ###self.fillValue(root, result, 0, 0, w-1)
         return result
-    
+
     def getHeight(self, root):
         if root == None:
             return 0
-        return max(self.getHeight(root.left),
-                   self.getHeight(root.right)) + 1
-    
+        return max(self.getHeight(root.left), self.getHeight(root.right)) + 1
+
     def fillValue(self, root, result, h, l, r):
         if root == None:
             return 0

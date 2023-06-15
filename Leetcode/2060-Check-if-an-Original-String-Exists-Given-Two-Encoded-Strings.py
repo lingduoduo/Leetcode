@@ -23,7 +23,12 @@ class Solution:
                 if self.dfs(s1, s2, i, k, diff + val):
                     return True
         elif diff == 0:
-            if i < len(s1) and j < len(s2) and s1[i] == s2[j] and self.dfs(s1, s2, i + 1, j + 1, diff):
+            if (
+                i < len(s1)
+                and j < len(s2)
+                and s1[i] == s2[j]
+                and self.dfs(s1, s2, i + 1, j + 1, diff)
+            ):
                 return True
         elif diff > 0:
             if i < len(s1) and self.dfs(s1, s2, i + 1, j, diff - 1):

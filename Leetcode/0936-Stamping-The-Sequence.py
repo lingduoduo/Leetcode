@@ -3,7 +3,7 @@ class Solution:
         def check(word):
             ret = 0
             for i in range(m):
-                if word[i] == '?':
+                if word[i] == "?":
                     continue
                 if word[i] == stamp[i]:
                     ret += 1
@@ -20,9 +20,8 @@ class Solution:
                 cur = check(target[i : i + m])
                 if cur:
                     tot += cur
-                    target[i : i + m] = ['?'] * m
+                    target[i : i + m] = ["?"] * m
                     res.append(i)
             if tmp == tot:
                 return []
-        return res [::-1]
-
+        return res[::-1]

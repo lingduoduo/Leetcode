@@ -1,6 +1,7 @@
 import collections
 import re
 
+
 class Solution(object):
     def checkRecord(self, s):
         """
@@ -22,7 +23,6 @@ class Solution(object):
         ###else:
         ###	return True
 
-
         ###i = 0
         ###a = 0
         ###while i < len(s):
@@ -38,29 +38,30 @@ class Solution(object):
         return not re.match(".*A.*A.*", s) and not re.match(".*LLL.*", s)
 
         d = collections.Counter(s)
-        if d['A'] > 1:
+        if d["A"] > 1:
             return False
 
         i = 0
-        for i in range(len(s)-2):
+        for i in range(len(s) - 2):
             ###print(s[i:(i+3)])
-            if s[i:(i+3)] == 'LLL':
+            if s[i : (i + 3)] == "LLL":
                 return False
-        return True 
+        return True
+
 
 if __name__ == "__main__":
-    s = 'PPALLP'
+    s = "PPALLP"
     result = Solution().checkRecord(s)
     print(result)
-    
-    s = 'LLLALL'
+
+    s = "LLLALL"
     result = Solution().checkRecord(s)
     print(result)
-    
+
     s = "PPALLL"
     result = Solution().checkRecord(s)
     print(result)
-    
+
     s = "LLPPPLL"
     result = Solution().checkRecord(s)
     print(result)

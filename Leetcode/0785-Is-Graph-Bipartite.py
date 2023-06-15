@@ -67,7 +67,7 @@ class Solution:
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     graph = [[1, 3], [0, 2], [1, 3], [0, 2]]
     results = Solution().isBipartite(graph)
     print(results)

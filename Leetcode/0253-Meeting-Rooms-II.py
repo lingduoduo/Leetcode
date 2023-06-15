@@ -1,6 +1,7 @@
 from typing import List
 import heapq
 
+
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[0])
@@ -21,7 +22,7 @@ class Solution:
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> int:
         nums = []
-        for x, y  in intervals:
+        for x, y in intervals:
             nums.append((x, 1))
             nums.append((y, -1))
         nums.sort()
@@ -35,9 +36,10 @@ class Solution:
                 res = max(res, room)
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().canAttendMeetings(intervals=[[0,30],[5,10],[10,20]])
+    res = Solution().canAttendMeetings(intervals=[[0, 30], [5, 10], [10, 20]])
     print(res)
 
-    res = Solution().canAttendMeetings(intervals=[[7,10],[2,4]])
+    res = Solution().canAttendMeetings(intervals=[[7, 10], [2, 4]])
     print(res)

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def countHillValley(self, nums: List[int]) -> int:
         res = 0
@@ -18,10 +19,10 @@ class Solution:
             stack.append(nums[i])
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().countHillValley(nums = [2,4,1,1,6,5])
+    res = Solution().countHillValley(nums=[2, 4, 1, 1, 6, 5])
     print(res)
 
-    res = Solution().countHillValley(nums = [6,6,5,5,4,1])
+    res = Solution().countHillValley(nums=[6, 6, 5, 5, 4, 1])
     print(res)
-

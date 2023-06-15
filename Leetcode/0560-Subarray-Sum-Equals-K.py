@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution(object):
     def subarraySum(self, nums, k):
         """
@@ -18,6 +19,7 @@ class Solution(object):
                 res += d[tot - k]
             d[tot] += 1
         return res
+
 
 if __name__ == "__main__":
     res = Solution().subarraySum(nums=[1, 1, 1], k=2)

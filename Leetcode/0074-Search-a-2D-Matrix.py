@@ -7,14 +7,14 @@ class Solution(object):
         """
         nrow = len(matrix)
         ncol = len(matrix[0])
-        
+
         left = 0
         right = nrow * ncol
-        
+
         while left < right:
             mid = left + (right - left) // 2
             mid_value = matrix[mid // ncol][mid % ncol]
-            
+
             if mid_value == target:
                 return True
             elif mid_value < target:

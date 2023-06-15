@@ -8,11 +8,11 @@ class Solution:
     def findTarget(self, root: TreeNode, k: int) -> bool:
         visited = [root.val]
         stack = [root.left, root.right]
-        
+
         while stack:
             node = stack.pop()
             if node:
-                if k-node.val in visited:
+                if k - node.val in visited:
                     return True
                 visited.append(node.val)
                 stack.append(node.left)

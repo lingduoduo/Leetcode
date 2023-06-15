@@ -1,5 +1,6 @@
 from typing import Optional, List
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -7,10 +8,14 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 from collections import defaultdict
+
+
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root: return []
+        if not root:
+            return []
         d = defaultdict(list)
 
         stack = []

@@ -14,7 +14,8 @@ class Solution:
                 res += 1
         return res + len(stack)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     S = "())"
     res = Solution().minAddToMakeValid(S)
     print(res)
@@ -30,4 +31,3 @@ if __name__ == '__main__':
     S = "()))(("
     res = Solution().minAddToMakeValid(S)
     print(res)
-        

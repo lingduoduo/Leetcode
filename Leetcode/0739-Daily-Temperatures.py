@@ -66,7 +66,7 @@ class Solution:
                 return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     T = [73, 74, 75, 71, 69, 72, 76, 73]
     result = Solution().dailyTemperatures(T)
     print(result)

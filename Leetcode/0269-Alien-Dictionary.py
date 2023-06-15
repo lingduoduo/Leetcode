@@ -2,6 +2,7 @@ from typing import List
 from collections import defaultdict, deque
 import collections
 
+
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         # create adject matrx of the graph
@@ -27,7 +28,7 @@ class Solution:
             else:
                 # check if the second word is a prefix of the first word
                 if len(second_word) < len(first_word):
-                    return ''
+                    return ""
 
         # pick all nodes with zero indegree and put it into queue
         q = collections.deque()
@@ -47,10 +48,9 @@ class Solution:
 
         # if there are letter that not appear in the output, means there is a cycle in the graph, because on the indegrees of nodes in a cycle will all be non-zero
         if len(ans) < len(indegrees):
-            return ''
+            return ""
 
         return "".join(ans)
-
 
 
 def alienOrder(words: List[str]) -> str:

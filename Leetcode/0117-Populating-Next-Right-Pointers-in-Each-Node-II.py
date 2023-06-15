@@ -8,11 +8,12 @@ class Node:
         self.next = next
 """
 
+
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         if not root:
             return
-            
+
         stack = []
         stack.append(root)
 
@@ -20,7 +21,7 @@ class Solution:
             n = len(stack)
             for i in range(n):
                 node = stack.pop(0)
-                if i<n-1:
+                if i < n - 1:
                     node.next = stack[0]
                 if node.left:
                     stack.append(node.left)
@@ -28,19 +29,20 @@ class Solution:
                     stack.append(node.right)
         return root
 
+
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         if not root:
             return
-        
+
         stack = [root]
-        
+
         while stack:
             next_level = []
-            
+
             for i, node in enumerate(stack):
-                if i < len(stack)-1:
-                    node.next = stack[i+1]
+                if i < len(stack) - 1:
+                    node.next = stack[i + 1]
                 else:
                     node.next = None
                 if node.left:
@@ -49,4 +51,3 @@ class Solution:
                     next_level.append(node.right)
             stack = next_level
         return root
-                    

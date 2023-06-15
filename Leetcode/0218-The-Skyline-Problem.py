@@ -5,19 +5,21 @@ class Solution:
             events.append([l, -h, r])
             events.append([r, 0, -1])
         events.sort()
-        
+
         res, hp = [], [(0, float("inf"))]
         for l, h, r in events:
-            while l >= hp[0][1]: 
-                heapq.heappop(hp) 
+            while l >= hp[0][1]:
+                heapq.heappop(hp)
             if h:
                 heapq.heappush(hp, (h, r))
-            if not res or res[-1][1] != -hp[0][0]: 
+            if not res or res[-1][1] != -hp[0][0]:
                 res.append([l, -hp[0][0]])
         return res
 
+
 from typing import List
 import heapq
+
 
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
@@ -27,9 +29,9 @@ class Solution:
             # -1 means the end of the building
             change_point.append([start, 1, height])
             change_point.append([end, -1, height])
-        change_point.sort(key = lambda x:[x[0], -x[1], -x[2]])
+        change_point.sort(key=lambda x: [x[0], -x[1], -x[2]])
         res = []
-        heap = [] # height
+        heap = []  # height
         remove_heap = []
         for i, (position, flag, height) in enumerate(change_point):
             # add a building
@@ -49,7 +51,10 @@ class Solution:
                 # take consideration of the first and the last one
                 # if the current max height equals the last height(two adjacent buildings), continue
                 # if the current position has multiple operations(only take the highest one), continue
-                if i == 0 or i == len(change_point)-1 or (-heap[0] != res[-1][1] and position != change_point[i+1][0]):
-                    res.append([position, -heap[0]]) # current max height
+                if (
+                    i == 0
+                    or i == len(change_point) - 1
+                    or (-heap[0] != res[-1][1] and position != change_point[i + 1][0])
+                ):
+                    res.append([position, -heap[0]])  # current max height
         return res
-

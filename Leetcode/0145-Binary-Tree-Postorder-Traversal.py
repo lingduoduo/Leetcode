@@ -13,7 +13,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root: return []
+        if not root:
+            return []
 
         res = list()
 
@@ -26,7 +27,8 @@ class Solution(object):
 ####reverse post-order
 class Solution(object):
     def postorderTraversal(self, root):
-        if not root: return []
+        if not root:
+            return []
 
         res = []
         stack = []
@@ -45,7 +47,11 @@ class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+        return (
+            self.postorderTraversal(root.left)
+            + self.postorderTraversal(root.right)
+            + [root.val]
+        )
 
 
 class Solution:

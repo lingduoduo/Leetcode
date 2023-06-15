@@ -13,7 +13,6 @@ class Solution:
         idx = inorder.index(postorder[-1])
 
         root.left = buildTree(inorder[:idx], postorder[:idx])
-        root.right = buildTree(inorder[(idx+1):], postorder[idx:-1])
+        root.right = buildTree(inorder[(idx + 1) :], postorder[idx:-1])
 
         return root
-

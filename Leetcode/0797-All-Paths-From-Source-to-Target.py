@@ -7,7 +7,7 @@
 #         self.res = []
 #         self.dfs(graph, 0, [0])
 #         return self.res
-    
+
 #     def dfs(self, graph, curr, path):
 #         if graph[curr] == []:
 #             self.res.append(path)
@@ -21,12 +21,12 @@ class Solution(object):
         n = len(graph)
         res = []
         stack = [[0]]
-        
+
         while stack:
             m = len(stack)
             for i in range(m):
                 path = stack.pop(0)
-                if path[-1] == n-1:
+                if path[-1] == n - 1:
                     res.append(path)
                     continue
 
@@ -35,7 +35,8 @@ class Solution(object):
                     stack.append(path + [node])
         return res
 
-if __name__ == '__main__':
-    graph = [[1,2],[3],[3],[]]
+
+if __name__ == "__main__":
+    graph = [[1, 2], [3], [3], []]
     res = Solution().allPathsSourceTarget(graph)
     print(res)

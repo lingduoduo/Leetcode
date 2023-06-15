@@ -11,10 +11,16 @@ class Solution:
         self.helper(root, m, res)
         return res
 
-    def helper(self, root,  m, res):
+    def helper(self, root, m, res):
         if not root:
-            return '#'
-        serialization = str(root.val) + ',' + self.helper(root.left, m, res) + ',' + self.helper(root.right, m, res)
+            return "#"
+        serialization = (
+            str(root.val)
+            + ","
+            + self.helper(root.left, m, res)
+            + ","
+            + self.helper(root.right, m, res)
+        )
         if m[serialization] == 1:
             res.append(root)
         m[serialization] += 1

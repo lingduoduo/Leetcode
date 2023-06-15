@@ -6,17 +6,15 @@ class Solution:
         :rtype: bool
         """
         import numpy as np
+
         matrix = np.reshape(matrix, [1, -1])
         return target in matrix
 
-
-        nums=[]
+        nums = []
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
                 nums.append(matrix[i][j])
         return target in nums
-
-
 
         if not matrix or not matrix[0]:
             return False
@@ -26,7 +24,7 @@ class Solution:
 
         i = 0
         j = ncol - 1
-        while i>=0 and i<nrow and j>= 0 and j<ncol:
+        while i >= 0 and i < nrow and j >= 0 and j < ncol:
             if matrix[i][j] == target:
                 return True
             elif matrix[i][j] > target:
@@ -34,8 +32,3 @@ class Solution:
             elif matrix[i][j] < target:
                 i += 1
         return False
-
-
-            
-
-

@@ -9,15 +9,16 @@ class Trie:
             if letter not in node:
                 node[letter] = {}
             node = node[letter]
-        node['_end_'] = word
+        node["_end_"] = word
 
     def getNextNode(self, letter, node):
         return node.get(letter)
 
     def checkNodeIsWordEnd(self, node):
-        if '_end_' in node:
-            self.result.append(node['_end_'])
-            del node['_end_']
+        if "_end_" in node:
+            self.result.append(node["_end_"])
+            del node["_end_"]
+
 
 class Solution:
     def __init__(self):
@@ -55,7 +56,11 @@ class Solution:
     def checkNeighbors(self, i, j, node):
         for deltaX, deltaY in self.directions:
             neighborI, neighborJ = i + deltaX, j + deltaY
-            if -1 < neighborI < self.m and -1 < neighborJ < self.n and not self.visited[neighborI][neighborJ]:
+            if (
+                -1 < neighborI < self.m
+                and -1 < neighborJ < self.n
+                and not self.visited[neighborI][neighborJ]
+            ):
                 self.DFS(neighborI, neighborJ, self.board[neighborI][neighborJ], node)
 
     def findWords(self, board, words):
@@ -82,7 +87,7 @@ class Solution:
                 if letter not in cur:
                     cur[letter] = {}
                 cur = cur[letter]
-            cur['#'] = word
+            cur["#"] = word
 
         m, n = len(board), len(board[0])
         self.res = []
@@ -96,10 +101,10 @@ class Solution:
         letter = board[x][y]
         m, n = len(board), len(board[0])
         cur = trie[letter]
-        word = cur.pop('#', False)
+        word = cur.pop("#", False)
         if word:
             self.res.append(word)
-        board[x][y] = '*'
+        board[x][y] = "*"
         for dirx, diry in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
             curx, cury = x + dirx, y + diry
             if 0 <= curx < m and 0 <= cury < n and board[curx][cury] in cur:

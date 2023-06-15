@@ -1,6 +1,7 @@
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        if len(words) == 0: return []
+        if len(words) == 0:
+            return []
         wordsDict = {}
         for word in words:  # 统计每个单词出现的个数
             if word not in wordsDict:
@@ -16,7 +17,7 @@ class Solution:
             cur_dict = {}
 
             while j < k:
-                word = s[i + m * j:i + m * j + m]  # 区间内选择一个单词
+                word = s[i + m * j : i + m * j + m]  # 区间内选择一个单词
                 if word not in wordsDict:  # 出现不存在的单词，直接结束本此区间
                     break
                 if word not in cur_dict:
@@ -26,8 +27,7 @@ class Solution:
                 if cur_dict[word] > wordsDict[word]:  # 某个单词大于所需，则直接结束本此区间
                     break
                 j += 1  # 单词数加一
-            if j == k: 
+            if j == k:
                 res.append(i)  # 记录起始位置
 
         return res
-        

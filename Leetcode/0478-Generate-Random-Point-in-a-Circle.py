@@ -1,6 +1,7 @@
 import random
-class Solution:
 
+
+class Solution:
     def __init__(self, radius: float, x_center: float, y_center: float):
         self.radius = radius
         self.x_center = x_center
@@ -8,11 +9,10 @@ class Solution:
 
     def randPoint(self) -> List[float]:
         newradius = math.sqrt(random.random()) * self.radius
-        newthelta = random.random() * 2 * 3.1415926 
-        newx = self.x_center + newradius*math.cos(newthelta)
-        newy = self.y_center + newradius*math.sin(newthelta)
+        newthelta = random.random() * 2 * 3.1415926
+        newx = self.x_center + newradius * math.cos(newthelta)
+        newy = self.y_center + newradius * math.sin(newthelta)
         return [newx, newy]
-
 
 
 # Your Solution object will be instantiated and called as such:

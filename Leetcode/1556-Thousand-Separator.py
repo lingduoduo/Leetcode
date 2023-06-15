@@ -8,5 +8,4 @@ class Solution:
             if i % 3 == 0 and i != len(word):
                 res.append(".")
             i += 1
-        return ''.join(res[::-1])
-            
+        return "".join(res[::-1])

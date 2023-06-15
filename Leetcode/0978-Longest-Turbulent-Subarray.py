@@ -17,9 +17,9 @@ class Solution:
         return maxAB
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # A = [9,4,2,10,7,8,8,1,9]
     # A = [0,1,1,0,1,0,1,1,0,0]
-    A = [1,0,1,0]
+    A = [1, 0, 1, 0]
     results = Solution().maxTurbulenceSize(A)
     print(results)

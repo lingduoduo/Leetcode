@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         ###d = dict()
-        
+
         ###for i in range(len(s)):
         ###    try:
         ###        d[s[i]]+=1
@@ -15,7 +15,7 @@ class Solution(object):
         ###    if d[s[i]] == 1:
         ###        return i
         ###return -1
-        
+
         ###print(s)
         ###l = list(s)
         ###res = 0
@@ -25,15 +25,15 @@ class Solution(object):
         ###        return res
         ###    res += 1
         ###return -1
-        
+
         import collections
+
         d = collections.Counter(s)
-        
+
         for i, cha in enumerate(s):
             if d[cha] == 1:
                 return i
         return -1
-        
 
 
 if __name__ == "__main__":

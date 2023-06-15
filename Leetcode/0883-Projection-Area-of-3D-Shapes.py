@@ -15,4 +15,4 @@ class Solution:
                     col[j] = max(col[j], grid[i][j])
         res += sum(row)
         res += sum(col)
-        return res 
+        return res

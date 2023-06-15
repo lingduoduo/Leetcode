@@ -14,7 +14,7 @@ class Solution(object):
         return sorted(d.keys(), key=d.get)[-1]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [2, 2, 1, 1, 1, 2, 2]
     res = Solution().majorityElement(nums)
     print(res)

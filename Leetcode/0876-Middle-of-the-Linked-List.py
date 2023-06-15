@@ -4,6 +4,7 @@
 ###        self.val = x
 ###        self.next = None
 
+
 class Solution(object):
     def middleNode(self, head):
         """
@@ -12,12 +13,12 @@ class Solution(object):
         """
         dummy = ListNode(0)
         dummy.next = head
-        
+
         slow = dummy
         fast = dummy
-        
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
+
         return slow.next if fast else slow

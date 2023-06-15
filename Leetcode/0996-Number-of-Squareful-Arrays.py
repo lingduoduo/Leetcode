@@ -12,8 +12,9 @@ class Solution:
                 continue  # skip duplicates
             if path and not self.square(path[-1] + nums[i]):
                 continue  # backtracking without going further
-            self.dfs(nums[:i] + nums[i + 1:], path + [nums[i]], ret)
+            self.dfs(nums[:i] + nums[i + 1 :], path + [nums[i]], ret)
 
     def square(self, num):
         from math import sqrt
+
         return pow(int(sqrt(num)), 2) == num

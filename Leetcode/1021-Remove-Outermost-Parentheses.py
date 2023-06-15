@@ -14,21 +14,21 @@ class Solution:
                 else:
                     stack.pop()
         return "".join(res)
-        
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     # S = "(()())(())(()(()))"
     # res = Solution().removeOuterParentheses(S)
     # print(res)
 
     # S = "(()())(())"
     # res = Solution().removeOuterParentheses(S)
-    # print(res)    
+    # print(res)
 
     # S = "()()"
     # res = Solution().removeOuterParentheses(S)
-    # print(res)    
+    # print(res)
 
-    S= "(()())(())(()(()))"
+    S = "(()())(())(()(()))"
     res = Solution().removeOuterParentheses(S)
     print(res)
-

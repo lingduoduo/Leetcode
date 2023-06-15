@@ -16,9 +16,7 @@ class Solution:
         return res
 
 
-
-if __name__ == '__main__':
-    seats = [1,0,0,0,0,1,0,1]
+if __name__ == "__main__":
+    seats = [1, 0, 0, 0, 0, 1, 0, 1]
     res = Solution().maxDistToClosest(seats)
     print(res)
-

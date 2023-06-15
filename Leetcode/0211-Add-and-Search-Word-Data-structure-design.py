@@ -1,39 +1,40 @@
 import collections
-        
-class WordDictionary:
 
+
+class WordDictionary:
     def __init__(self):
-        """ Initialize your data structure here. """
+        """Initialize your data structure here."""
         self.trie = {}
 
     def addWord(self, word: str) -> None:
-        """ Adds a word into the data structure. """
+        """Adds a word into the data structure."""
         cur = self.trie
         for c in word:
             if c not in cur:
                 cur[c] = {}
             cur = cur[c]
-        cur['#'] = True
+        cur["#"] = True
 
     def search(self, word: str) -> bool:
-        """ Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. """
+        """Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter."""
         return self.dfs(self.trie, word, 0)
-    
+
     def dfs(self, dic, word, i):
         if i == len(word):
-            return '#' in dic
-        
-        if word[i] == '.':
+            return "#" in dic
+
+        if word[i] == ".":
             for child in dic:
-                if child != '#' and self.dfs(dic[child], word, i + 1):
+                if child != "#" and self.dfs(dic[child], word, i + 1):
                     return True
             return False
-        
+
         if word[i] not in dic:
             return False
         return self.dfs(dic[word[i]], word, i + 1)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     obj = WordDictionary()
     obj.addWord("bad")
     obj.addWord("dad")

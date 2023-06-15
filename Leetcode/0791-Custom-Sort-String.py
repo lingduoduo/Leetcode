@@ -1,12 +1,13 @@
 from collections import defaultdict
 import collections
 
+
 class Solution:
     def customSortString(self, S: str, T: str) -> str:
         pos = collections.defaultdict(int)
         for i in range(len(S)):
             pos[S[i]] = i
-        res = sorted(T, key = lambda x: pos[x])
+        res = sorted(T, key=lambda x: pos[x])
         return "".join(res)
 
 
@@ -20,9 +21,9 @@ class Solution:
             else:
                 m[len(d)].append(s[i])
         m = sorted(m.items(), key=lambda x: x[0])
-        res = ''
+        res = ""
         for k, v in m:
-            res += ''.join(v)
+            res += "".join(v)
         return res
 
 
@@ -45,10 +46,10 @@ class Solution:
 
         return "".join(res)
 
+
 if __name__ == "__main__":
-    res = Solution().customSortString(order = "cba", s = "abcd")
+    res = Solution().customSortString(order="cba", s="abcd")
     print(res)
 
-    res = Solution().customSortString(order = "cbafg", s = "abcd")
+    res = Solution().customSortString(order="cbafg", s="abcd")
     print(res)
-        

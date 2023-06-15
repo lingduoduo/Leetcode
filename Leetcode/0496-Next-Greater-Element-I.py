@@ -17,6 +17,7 @@
 
 #         print(idx)
 
+
 #         res = []
 #         for num in nums1:
 #             res.append(idx[num])
@@ -48,14 +49,10 @@ class Solution(object):
         return res
 
 
-
-if __name__ == '__main__':
-    nums1 = [4,1,2]
-    nums2 = [1,3,4,2]
+if __name__ == "__main__":
+    nums1 = [4, 1, 2]
+    nums2 = [1, 3, 4, 2]
     # nums1 = [3,1,5,7,9,2,6]
     # nums2 = [1,2,3,5,6,7,9,11]
     result = Solution().nextGreaterElement(nums1, nums2)
     print(result)
-
-
-            

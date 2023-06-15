@@ -3,8 +3,8 @@ class Solution:
         prev = nums[0]
         local = prev
         res = local
-        
-        for i in range(1,  len(nums)):
+
+        for i in range(1, len(nums)):
             if nums[i] > prev:
                 local += nums[i]
                 prev = nums[i]
@@ -14,4 +14,3 @@ class Solution:
                 local = prev
         res = max(res, local)
         return res
-        

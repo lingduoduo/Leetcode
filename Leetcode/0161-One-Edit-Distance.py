@@ -15,16 +15,17 @@ class Solution:
             if s[i] != t[i]:
                 # if strings have the same length
                 if ns == nt:
-                    return s[i + 1:] == t[i + 1:]
+                    return s[i + 1 :] == t[i + 1 :]
                 # if strings have different lengths
                 else:
-                    return s[i:] == t[i + 1:]
+                    return s[i:] == t[i + 1 :]
 
         # If there is no diffs on ns distance
         # the strings are one edit away only if
         # t has one more character.
         return ns + 1 == nt
 
+
 if __name__ == "__main__":
-    res = Solution().isOneEditDistance(s = "ab", t = "acb")
+    res = Solution().isOneEditDistance(s="ab", t="acb")
     print(res)

@@ -15,7 +15,7 @@ class Solution(object):
         ### 			group = hm.setdefault(i, set())
         ### 			if M[i][j] ==1:
         ### 				group.add(j)
-        
+
         ### 	allNodes = set()
         ### 	for i in range(n):
         ### 		allNodes.add(i)
@@ -27,7 +27,7 @@ class Solution(object):
         ### 			break
         ### 		self.dfs(root, set(), allNodes, hm)
         ### 	return result
-        
+
         ###def dfs(self, root, visited, allNodes, hm):
         ###	visited.add(root)
         ###	allNodes.discard(root)
@@ -37,14 +37,14 @@ class Solution(object):
         ###			unvisited.add(node)
         ###	for node in unvisited:
         ###		self.dfs(node, visited, allNodes, hm)
-        
+
         ###Method 2
         ###	def dfs(M, curr, n):
         ###		for i in range(n):
         ### 		if M[curr][i] == 1:
         ### 			M[curr][i] = M[i][curr] = 0
         ### 		dfs(M, i, n)
-        
+
         ###n = len(M)
         ###results = 0
         ###for i in range(n):
@@ -52,7 +52,8 @@ class Solution(object):
         ###		results += 1
         ###		dfs(M, i, n)
         ###return
-        
+
+
 class Solution(object):
     def findCircleNum(self, M):
         cnt, n = 0, len(M)
@@ -67,4 +68,4 @@ class Solution(object):
         for x in range(len(M)):
             if M[n][x] and x not in self.vset:
                 self.vset.add(x)
-                self.dfs(M, x) 
+                self.dfs(M, x)

@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def numRookCaptures(self, board: List[List[str]]) -> int:
         for i in range(len(board)):
@@ -13,8 +15,8 @@ class Solution:
         for dx, dy in dirs:
             x = startx
             y = starty
-            while 0 <= x < 8 and  0 <= y < 8 :
-                if board[x][y] == 'B':
+            while 0 <= x < 8 and 0 <= y < 8:
+                if board[x][y] == "B":
                     break
                 if board[x][y] == "p":
                     res += 1
@@ -23,6 +25,18 @@ class Solution:
                 y = y + dy
         return res
 
-if __name__ == '__main__':
-    res = Solution().numRookCaptures(board = [[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]])
+
+if __name__ == "__main__":
+    res = Solution().numRookCaptures(
+        board=[
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "p", ".", ".", ".", "."],
+            [".", ".", ".", "R", ".", ".", ".", "p"],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "p", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ]
+    )
     print(res)

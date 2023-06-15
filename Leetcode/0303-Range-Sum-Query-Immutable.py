@@ -1,39 +1,37 @@
 class NumArray(object):
-    
     def __init__(self, nums):
         """
         :type nums: List[int]
         """
         self.nums = nums
-    
+
     def sumRange(self, i, j):
         """
         :type i: int
         :type j: int
         :rtype: int
         """
-        return sum(self.nums[i:(j + 1)])
+        return sum(self.nums[i : (j + 1)])
 
-        
 
 ###Your NumArray object will be instantiated and called as such:
 ###obj = NumArray(nums)
 ###param_1 = obj.sumRange(i,j)
 
+
 class NumArray(object):
-    
     def __init__(self, nums):
         """
         :type nums: List[int]
         """
         self.nums = nums
-    
+
     def sumPos(self, pos):
         sum = 0
         for x in range(pos + 1):
             sum += self.nums[x]
         return sum
-    
+
     def sumRange(self, i, j):
         """
         :type i: int
@@ -47,7 +45,6 @@ class NumArray(object):
 
 
 class NumArray(object):
-    
     def __init__(self, nums):
         """
         :type nums: List[int]
@@ -56,11 +53,11 @@ class NumArray(object):
         self.parsum = [0]
         for num in nums:
             self.parsum.append(self.parsum[-1] + num)
-    
+
     def sumRange(self, i, j):
         """
         :type i: int
         :type j: int
         :rtype: int
         """
-        return self.parsum[j+1] - self.parsum[i]
+        return self.parsum[j + 1] - self.parsum[i]

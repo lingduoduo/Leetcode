@@ -34,6 +34,7 @@ class TreeNode:
 
 from typing import Optional
 
+
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         return self.gen(1, n)

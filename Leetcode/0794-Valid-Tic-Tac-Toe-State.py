@@ -1,7 +1,8 @@
 from typing import List
+
+
 class Solution:
     def validTicTacToe(self, board: List[str]) -> bool:
-        
         X = 0
         Y = 0
 
@@ -14,9 +15,9 @@ class Solution:
 
         if not (X == Y or X == Y + 1):
             return False
-        if (X == Y and self.win(board, "X")):
+        if X == Y and self.win(board, "X"):
             return False
-        if (X == Y + 1 and self.win(board, "O")):
+        if X == Y + 1 and self.win(board, "O"):
             return False
 
         return True
@@ -39,7 +40,7 @@ class Solution:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     board = ["XXX", "   ", "OOO"]
     res = Solution().validTicTacToe(board)
     print(res)

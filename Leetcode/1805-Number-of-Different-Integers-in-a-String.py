@@ -8,14 +8,15 @@ class Solution:
                 if cur == -1:
                     cur = int(w)
                 else:
-                    cur = cur * 10 + int(w) 
+                    cur = cur * 10 + int(w)
             else:
                 if cur >= 0:
                     d[cur] = d.get(cur, 0) + 1
                 cur = -1
         return len(d.keys())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     word = "a123bc34d8ef34"
     res = Solution().numDifferentIntegers(word)
     print(res)

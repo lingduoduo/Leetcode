@@ -8,7 +8,7 @@ class Solution:
     def increasingBST(self, root: TreeNode) -> TreeNode:
         self.vals = []
         self.trav(root)
-        
+
         for idx, val in enumerate(self.vals):
             if idx == 0:
                 curr = TreeNode(val)
@@ -17,7 +17,7 @@ class Solution:
                 curr.right = TreeNode(val)
                 curr = curr.right
         return dummy
-    
+
     def trav(self, root):
         if not root:
             return
@@ -28,4 +28,3 @@ class Solution:
         self.vals.append(root.val)
         self.trav(root.right)
         return
-        

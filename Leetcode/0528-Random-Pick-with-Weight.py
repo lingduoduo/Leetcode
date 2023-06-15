@@ -1,7 +1,8 @@
 import itertools
 import random
-class Solution:
 
+
+class Solution:
     def __init__(self, w: List[int]):
         self.preSum = [0] * len(w)
         self.preSum[0] = w[0]
@@ -23,9 +24,11 @@ class Solution:
         #     return left
         # return right
 
-import numpy as np
-class Solution:
 
+import numpy as np
+
+
+class Solution:
     def __init__(self, w: List[int]):
         self.psum = [w[0]]
         for n in w[1:]:
@@ -41,8 +44,10 @@ class Solution:
                 else:
                     r = m
             return l
+
         num = random.randint(0, self.psum[-1] - 1)
         return search(num)
+
 
 class Solution:
     def __init__(self, w):
@@ -51,11 +56,10 @@ class Solution:
     def pickIndex(self):
         return bisect.bisect_left(self.w, random.randint(1, self.w[-1]))
 
+
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
 # param_1 = obj.pickIndex()
 
 # return bisect.bisect(self.sum, num)
 # return bisect.bisect(self.sum, self.sum[-1] * random.random())
-
-

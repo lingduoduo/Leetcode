@@ -14,24 +14,24 @@ class Solution(object):
         """
         sum_list = list()
         cnt_list = list()
-        
+
         def preorder(root, depth):
             if root is None:
                 return
-            
+
             if len(sum_list) <= depth:
                 sum_list.append(0)
                 cnt_list.append(0)
-            
+
             sum_list[depth] += root.val
             cnt_list[depth] += 1
-            
+
             preorder(root.left, depth + 1)
             preorder(root.right, depth + 1)
-        
+
         preorder(root, 0)
         result = [float(s) / n for s, n in zip(sum_list, cnt_list)]
-        
+
         return result
 
 

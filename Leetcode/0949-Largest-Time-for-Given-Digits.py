@@ -7,5 +7,4 @@ class Solution:
             if hour < 24 and minute < 60:
                 time = hour * 60 + minute
                 res = max(res, time)
-        return "%02d:%02d" % divmod(res, 60) if res >= 0 else ""        
-        
+        return "%02d:%02d" % divmod(res, 60) if res >= 0 else ""

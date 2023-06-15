@@ -10,7 +10,7 @@ class Solution:
             nums.append(head.val)
             head = head.next
         stack = []
-        res = [0]*len(nums)
+        res = [0] * len(nums)
         for i, n in enumerate(nums):
             while stack and nums[stack[-1]] < n:
                 res[stack.pop()] = n

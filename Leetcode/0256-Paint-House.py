@@ -3,7 +3,6 @@ from functools import lru_cache
 
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-
         @lru_cache(maxsize=None)
         def paint_cost(n, color):
             total_cost = costs[n][color]

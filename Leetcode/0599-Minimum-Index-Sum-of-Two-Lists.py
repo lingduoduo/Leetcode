@@ -7,7 +7,7 @@ class Solution(object):
         """
         result = []
         midx = len(list1) + len(list2)
-        
+
         commons = [word for word in list1 if word in list2]
         for common in commons:
             i = list1.index(common)
@@ -23,6 +23,6 @@ class Solution(object):
 if __name__ == "__main__":
     list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
     list2 = ["KFC", "Burger King", "Tapioca Express", "Shogun"]
-    
+
     results = Solution().findRestaurant(list1, list2)
     print(results)

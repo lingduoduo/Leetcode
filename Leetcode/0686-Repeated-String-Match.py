@@ -6,4 +6,3 @@ class Solution:
             if b in a * i:
                 return i
         return -1
-   

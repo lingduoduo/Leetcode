@@ -1,6 +1,6 @@
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-        if n ==1:
+        if n == 1:
             return [0]
 
         leaves = collections.defaultdict(set)
@@ -12,8 +12,8 @@ class Solution:
         for v, vs in leaves.items():
             if len(vs) == 1:
                 que.append(v)
-                
-        while n>2:
+
+        while n > 2:
             n = n - len(que)
             for _ in range(len(que)):
                 u = que.popleft()
@@ -22,6 +22,7 @@ class Solution:
                     if len(leaves[v]) == 1:
                         que.append(v)
         return list(que)
+
 
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:

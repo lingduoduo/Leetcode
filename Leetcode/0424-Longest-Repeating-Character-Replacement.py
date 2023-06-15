@@ -1,4 +1,6 @@
 import collections
+
+
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         d = collections.Counter()
@@ -13,7 +15,8 @@ class Solution:
             res = max(res, idx - start + 1)
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     s = "ABAB"
     res = Solution().characterReplacement(s, 1)
     print(res)

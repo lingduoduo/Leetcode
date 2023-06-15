@@ -42,13 +42,13 @@ class Solution(object):
         curr = head
         n = 0
         while curr:
-            n+=1
+            n += 1
             curr = curr.next
 
-        if n<2:
+        if n < 2:
             return head
 
-        k=k%n
+        k = k % n
         if k == 0:
             return head
 
@@ -65,8 +65,3 @@ class Solution(object):
         p2.next = head
 
         return output
-        
-
-
-
-

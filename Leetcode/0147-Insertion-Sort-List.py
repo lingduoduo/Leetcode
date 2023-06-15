@@ -25,7 +25,8 @@ class Solution:
                     prev = prev.next
                 temp.next = prev.next
                 prev.next = temp
-        return dummy.next               
+        return dummy.next
+
 
 class Solution:
     def insertionSortList(self, head: ListNode) -> ListNode:
@@ -44,8 +45,9 @@ class Solution:
                 pre = pre.next
             cur.next = pre.next
             pre.next = cur
-            
+
         return dummy.next
+
 
 # Definition for singly-linked list.
 # class ListNode:

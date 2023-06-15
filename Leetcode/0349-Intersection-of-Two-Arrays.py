@@ -21,15 +21,13 @@ class Solution(object):
         ###return list(result)
         #
         ###return list(set(nums1) & set(nums2))
-        
+
         if len(nums1) > len(nums2):
             nums1, nums2 = nums2, nums1
-        
+
         ref = set(nums2)
         res = set()
         for i in range(len(nums1)):
             if nums1[i] in ref:
                 res.add(nums1[i])
         return res
-        
-            

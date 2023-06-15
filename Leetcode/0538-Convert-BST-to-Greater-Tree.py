@@ -1,7 +1,7 @@
 class Solution:
     def convertBST(self, root: TreeNode) -> TreeNode:
         self.res = []
-        
+
         self.inOrder(root, False)
 
         cum = 0

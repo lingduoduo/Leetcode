@@ -24,7 +24,7 @@ class Solution(object):
         ###if root.right is None:
         ###	retrun leftDepth+1
         ###return min(leftDepth, rightDepth)+1
-        
+
         ####Second Try
         ###if not root:
         ###    return 0
@@ -37,40 +37,38 @@ class Solution(object):
         ###if root.right:
         ###    right = self.minDepth(root.right)
         ###return min(left, right) + 1
-        
+
         ####Third Try
         ###if not root:
         ###    return 0
         ###if not root.left and not root.right:
         ###    return 1
-            
+
         ###left = self.minDepth(root.left)
         ###right = self.minDepth(root.right)
         ###if root.left and root.right:
         ###    return min(left, right) + 1
         ###else:
         ###    return max(left, right) + 1
-        
 
         if not root:
             return 0
-        
+
         self.res = []
-        
+
         self.dfs(root, 1)
-        
+
         return min(self.res)
-    
+
     def dfs(self, root, level):
         if not root:
             return level
-        
+
         if not root.left and not root.right:
             return self.res.append(level)
-        
-        self.dfs(root.left, level+1)
-        self.dfs(root.right, level+1)
-        
+
+        self.dfs(root.left, level + 1)
+        self.dfs(root.right, level + 1)
 
 
 if __name__ == "__main__":
@@ -79,7 +77,7 @@ if __name__ == "__main__":
     ###root.right = TreeNode(20)
     ###root.right.left = TreeNode(15)
     ###root.right.right = TreeNode(7)
-    
+
     root = TreeNode(1)
     root.left = TreeNode(2)
     result = Solution().minDepth(root)

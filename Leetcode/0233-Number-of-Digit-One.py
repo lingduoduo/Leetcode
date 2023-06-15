@@ -9,6 +9,7 @@ class Solution:
             m = m * 10
         return res
 
+
 class Solution:
     def countDigitOne(self, n: int) -> int:
         m = len(str(n))
@@ -16,9 +17,13 @@ class Solution:
             return 0 if n == 0 else 1
         num_digits_tenth = (m - 1) * 10 ** (m - 1)
         num_ones_tenth = num_digits_tenth // 10
-        first_digit = n // (10 ** (m-1))
-        rest = n % (10 ** (m-1))
+        first_digit = n // (10 ** (m - 1))
+        rest = n % (10 ** (m - 1))
         if first_digit > 1:
-            return num_ones_tenth * first_digit + (10 ** (m - 1)) + self.countDigitOne(rest)
+            return (
+                num_ones_tenth * first_digit
+                + (10 ** (m - 1))
+                + self.countDigitOne(rest)
+            )
         else:
             return num_ones_tenth + self.countDigitOne(rest) + (rest + 1)

@@ -10,9 +10,10 @@ class Solution:
         print(nums)
         res = 0
         for i in range(1, len(nums)):
-            res = max(res, nums[i]-nums[i-1])
+            res = max(res, nums[i] - nums[i - 1])
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     res = Solution().binaryGap(22)
     print(res)

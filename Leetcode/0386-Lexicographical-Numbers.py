@@ -3,6 +3,7 @@
 #         chas = sorted([str(i) for i in range(1, n+1)])
 #         return [int(cha) for cha in chas]
 
+
 class Solution:
     def lexicalOrder(self, n: int):
         cur = 1
@@ -19,6 +20,7 @@ class Solution:
                     cur //= 10
         return res
 
-if __name__ == '__main__':
-	res = Solution().lexicalOrder(100)
-	print(res)        
+
+if __name__ == "__main__":
+    res = Solution().lexicalOrder(100)
+    print(res)

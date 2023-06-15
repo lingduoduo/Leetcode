@@ -7,4 +7,3 @@ class Solution:
             if d_magazine[k] < v:
                 return False
         return True
-        

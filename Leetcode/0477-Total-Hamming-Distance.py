@@ -8,11 +8,12 @@ class Solution:
             for num in nums:
                 if num & mask:
                     cnt += 1
-            res += cnt *  (n - cnt)
+            res += cnt * (n - cnt)
             mask <<= 1
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     nums = [4, 14, 2]
     res = Solution().totalHammingDistance(nums)
     print(res)

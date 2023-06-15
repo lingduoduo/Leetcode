@@ -1,5 +1,4 @@
 class Solution:
-    
     def __init__(self, n_rows: int, n_cols: int):
         self.M = n_rows
         self.N = n_cols
@@ -21,7 +20,6 @@ class Solution:
         :rtype: void
         """
         self.fliped.clear()
-        
 
 
 # Your Solution object will be instantiated and called as such:

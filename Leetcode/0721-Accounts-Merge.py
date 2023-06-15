@@ -1,5 +1,7 @@
 from typing import List
 import collections
+
+
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         n = len(accounts)
@@ -11,14 +13,16 @@ class Solution:
 
         for i in range(n):
             for j in nameMap[accounts[i][0]]:
-                if (not self.same(i, j)) and (set(accounts[i][1:]) & set(accounts[j][1:])):
+                if (not self.same(i, j)) and (
+                    set(accounts[i][1:]) & set(accounts[j][1:])
+                ):
                     self.union(i, j)
 
         res = [set() for _ in range(n)]
         for i in range(n):
             self.par[i] = self.find(i)
             res[self.par[i]] |= set(accounts[i][1:])
-            
+
         ans = []
         for i in range(n):
             if self.par[i] == i:
@@ -27,22 +31,21 @@ class Solution:
                 person.extend(sorted(res[i]))
                 ans.append(person)
         return ans
-        
-        
+
     def find(self, x):
         if x == self.par[x]:
             return self.par[x]
         parent = self.find(self.par[x])
         self.par[x] = parent
         return parent
-    
+
     def union(self, x, y):
         x = self.find(x)
         y = self.find(y)
         if x == y:
             return
         self.par[x] = y
-    
+
     def same(self, x, y):
         return self.find(x) == self.find(y)
 
@@ -81,9 +84,16 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().accountsMerge(accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]])
+    res = Solution().accountsMerge(
+        accounts=[
+            ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
+            ["John", "johnsmith@mail.com", "john00@mail.com"],
+            ["Mary", "mary@mail.com"],
+            ["John", "johnnybravo@mail.com"],
+        ]
+    )
     # print(res)
- #
- # {'johnsmith@mail.com': ['john_newyork@mail.com', 'john00@mail.com'],
- #  'john_newyork@mail.com': ['johnsmith@mail.com'],
- #  'john00@mail.com': ['johnsmith@mail.com']}
+#
+# {'johnsmith@mail.com': ['john_newyork@mail.com', 'john00@mail.com'],
+#  'john_newyork@mail.com': ['johnsmith@mail.com'],
+#  'john00@mail.com': ['johnsmith@mail.com']}

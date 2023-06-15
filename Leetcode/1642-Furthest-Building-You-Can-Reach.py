@@ -5,7 +5,7 @@ class Solution:
         for idx, num in enumerate(heights):
             if idx == 0:
                 continue
-            d = heights[idx]-heights[idx-1]
+            d = heights[idx] - heights[idx - 1]
             if d <= 0:
                 continue
             heapq.heappush(q, d)
@@ -13,6 +13,5 @@ class Solution:
                 continue
             bricks -= heapq.heappop(q)
             if bricks < 0:
-                return idx-1
-        return n-1
-
+                return idx - 1
+        return n - 1

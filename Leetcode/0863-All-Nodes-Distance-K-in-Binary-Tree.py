@@ -5,6 +5,7 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         ans = []
@@ -55,8 +56,10 @@ class Solution:
             if parent and child:
                 conn[parent.val].append(child.val)
                 conn[child.val].append(parent.val)
-            if child.left: connect(child, child.left)
-            if child.right: connect(child, child.right)
+            if child.left:
+                connect(child, child.left)
+            if child.right:
+                connect(child, child.right)
 
         connect(None, root)
 
@@ -69,7 +72,7 @@ class Solution:
         return bfs
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p = TreeNode(3)
     p.left = TreeNode(5)
     p.right = TreeNode(1)

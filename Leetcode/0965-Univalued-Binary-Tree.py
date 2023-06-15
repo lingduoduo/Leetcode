@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isUnivalTree(self, root: TreeNode) -> bool:        
+    def isUnivalTree(self, root: TreeNode) -> bool:
         if not root:
             return True
 
@@ -13,5 +13,5 @@ class Solution:
             return False
         if root.right and root.val != root.right.val:
             return False
-        
+
         return self.isUnivalTree(root.left) and self.isUnivalTree(root.right)

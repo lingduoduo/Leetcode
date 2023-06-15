@@ -56,6 +56,7 @@ class Solution:
                 res.append(interval)
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     interval = [[1, 3], [2, 6], [8, 10], [15, 18]]
     result = Solution().merge(interval)

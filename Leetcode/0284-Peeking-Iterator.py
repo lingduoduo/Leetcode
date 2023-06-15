@@ -19,6 +19,7 @@
 #         :rtype: int
 #         """
 
+
 class PeekingIterator:
     def __init__(self, iterator):
         """
@@ -26,8 +27,7 @@ class PeekingIterator:
         :type iterator: Iterator
         """
         self.iterator = iterator
-        self.n = None #使用None判断是否保存有元素
-        
+        self.n = None  # 使用None判断是否保存有元素
 
     def peek(self):
         """
@@ -48,7 +48,6 @@ class PeekingIterator:
             return tmp
         else:
             return self.iterator.next()
-        
 
     def hasNext(self):
         """
@@ -58,13 +57,14 @@ class PeekingIterator:
             return True
         else:
             return self.iterator.hasNext()
-        
-    
+
+
 # Your PeekingIterator object will be instantiated and called as such:
 # iter = PeekingIterator(Iterator(nums))
 # while iter.hasNext():
 #     val = iter.peek()   # Get the next element but not advance the iterator.
 #     iter.next()         # Should return the same value as [val].
+
 
 class PeekingIterator:
     def __init__(self, iterator):
@@ -77,12 +77,12 @@ class PeekingIterator:
         # the iterator is actually empty -- here I have thrown an exception
         # but in an interview you should definitely ask! This is the kind of
         # thing they expect you to ask about.
-        if  self._saved_peeked_value is None:
+        if self._saved_peeked_value is None:
             if not self._iterator.hasNext():
                 raise StopIteration()
             self._peeked_value = self._iterator.next()
 
-        return  self._saved_peeked_value
+        return self._saved_peeked_value
 
     def next(self):
         # Firstly, we need to check if we have a value already

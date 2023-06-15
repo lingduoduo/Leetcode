@@ -12,7 +12,7 @@ class Solution:
                 elif token == "*":
                     stack.append(num1 * num2)
                 elif token == "/":
-                    stack.append(int(float(num2)/num1))
+                    stack.append(int(float(num2) / num1))
             else:
                 stack.append(int(token))
         return stack.pop()

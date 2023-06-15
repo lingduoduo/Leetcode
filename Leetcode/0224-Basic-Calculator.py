@@ -23,8 +23,8 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
-    s = '(4+5+2)'
-    s = '(1 + (4 + 5 + 2) - 3) + (6 + 8)'
+if __name__ == "__main__":
+    s = "(4+5+2)"
+    s = "(1 + (4 + 5 + 2) - 3) + (6 + 8)"
     result = Solution().calculate(s)
     print(result)

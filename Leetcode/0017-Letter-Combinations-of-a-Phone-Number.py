@@ -47,16 +47,16 @@ class Solution(object):
             return []
 
         d = dict()
-        d[0] = '0'
-        d[1] = '1'
-        d[2] = 'abc'
-        d[3] = 'def'
-        d[4] = 'ghi'
-        d[5] = 'jkl'
-        d[6] = 'mno'
-        d[7] = 'pqrs'
-        d[8] = 'tuv'
-        d[9] = 'wxyz'
+        d[0] = "0"
+        d[1] = "1"
+        d[2] = "abc"
+        d[3] = "def"
+        d[4] = "ghi"
+        d[5] = "jkl"
+        d[6] = "mno"
+        d[7] = "pqrs"
+        d[8] = "tuv"
+        d[9] = "wxyz"
 
         res = [""]
         if not digits:
@@ -70,7 +70,7 @@ class Solution(object):
             res = tmp
         return res
 
-      
+
 if __name__ == "__main__":
     digits = "23"
     result = Solution().letterCombinations(digits)

@@ -11,7 +11,9 @@ class Solution:
                 dfs(node.left, node)
                 dfs(node.right, node)
 
-                if (par is None and node not in covered) or (node.left not in covered or node.right not in covered):
+                if (par is None and node not in covered) or (
+                    node.left not in covered or node.right not in covered
+                ):
                     self.res += 1
                     covered.update({node, par, node.left, node.right})
 

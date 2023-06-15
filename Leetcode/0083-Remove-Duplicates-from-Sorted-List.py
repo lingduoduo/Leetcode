@@ -4,6 +4,7 @@
 ###        self.val = x
 ###        self.next = None
 
+
 class Solution(object):
     def deleteDuplicates(self, head):
         """
@@ -29,6 +30,7 @@ class Solution(object):
             current = runner
         return head
 
+
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         p = q = head
@@ -39,12 +41,14 @@ class Solution:
             p = q
         return head
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-        
+
+
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:

@@ -1,6 +1,6 @@
 class Solution:
     def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
-        if not matrix or not matrix[0]: 
+        if not matrix or not matrix[0]:
             return []
 
         directions = [(-1, 1), (1, -1)]
@@ -26,7 +26,7 @@ class Solution:
             elif i < m and j >= n:
                 i += 2
                 j -= 1
-            elif i >= m and j < n :
+            elif i >= m and j < n:
                 j += 2
                 i -= 1
             count += 1
@@ -35,7 +35,6 @@ class Solution:
 
 class Solution:
     def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
-
         # Check for an empty matrix
         if not matrix or not matrix[0]:
             return []
@@ -59,7 +58,6 @@ class Solution:
         # The uber while loop which will help us iterate over all
         # the elements in the array.
         while row < N and column < M:
-
             # First and foremost, add the current element to
             # the result matrix.
             result.append(matrix[row][column])
@@ -74,25 +72,22 @@ class Solution:
             # bounds of the matrix or not. If it's not within the bounds,
             # we have to find the next head.
             if new_row < 0 or new_row == N or new_column < 0 or new_column == M:
-
                 # If the current diagonal was going in the upwards
                 # direction.
                 if direction:
-
                     # For an upwards going diagonal having [i, j] as its tail
                     # If [i, j + 1] is within bounds, then it becomes
                     # the next head. Otherwise, the element directly below
                     # i.e. the element [i + 1, j] becomes the next head
-                    row += (column == M - 1)
-                    column += (column < M - 1)
+                    row += column == M - 1
+                    column += column < M - 1
                 else:
-
                     # For a downwards going diagonal having [i, j] as its tail
                     # if [i + 1, j] is within bounds, then it becomes
                     # the next head. Otherwise, the element directly below
                     # i.e. the element [i, j + 1] becomes the next head
-                    column += (row == N - 1)
-                    row += (row < N - 1)
+                    column += row == N - 1
+                    row += row < N - 1
 
                 # Flip the direction
                 direction = 1 - direction

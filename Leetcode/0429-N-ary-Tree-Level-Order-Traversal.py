@@ -8,13 +8,13 @@ class Node:
 
 
 class Solution:
-    def levelOrder(self, root: 'Node') -> List[List[int]]:
+    def levelOrder(self, root: "Node") -> List[List[int]]:
         # if not root:
         #     return []
         # res = []
         # cur = [root]
         # next = []
-        
+
         # while cur:
         #     tmp = []
         #     for n in cur:
@@ -46,7 +46,3 @@ class Solution:
             if level:
                 res.append(level)
         return res
-
-        
-
-

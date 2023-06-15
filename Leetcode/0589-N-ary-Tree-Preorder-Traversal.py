@@ -6,8 +6,9 @@ class Node:
         self.children = children
 """
 
+
 class Solution:
-    def preorder(self, root: 'Node') -> List[int]:
+    def preorder(self, root: "Node") -> List[int]:
         ###res = []
         ###if not root:
         ###    return res
@@ -16,12 +17,13 @@ class Solution:
         ###    res.extedn(self.preorder(child))
         ###return res
 
-        if not root: return []
+        if not root:
+            return []
         stack = []
         stack.append(root)
-        res =[]
+        res = []
         while stack:
-            node =stack.pop()
+            node = stack.pop()
             res.append(node.val)
             stack.extend(node.children[::-1])
         return res

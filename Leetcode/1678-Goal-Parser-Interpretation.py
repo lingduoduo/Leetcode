@@ -4,7 +4,7 @@ class Solution:
         i = 0
         while i < len(command):
             if command[i] == ")":
-                if command[i-1] == "(":
+                if command[i - 1] == "(":
                     res.pop()
                     res.append("o")
                 else:
@@ -17,4 +17,3 @@ class Solution:
                 res.append(command[i])
             i += 1
         return "".join(res)
-        

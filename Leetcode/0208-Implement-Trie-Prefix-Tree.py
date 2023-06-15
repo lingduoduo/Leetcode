@@ -1,50 +1,50 @@
 # class Node:
-    
+
 #     def __init__(self):
 #         self.d = dict()
 #         self.isword = False
 
 
 # class Trie:
-    
+
 #     def __init__(self):
 #         """
 #         Initialize your data structure here.
 #         """
 #         self.root = Node()
-    
+
 #     def insert(self, word: str) -> None:
 #         """
 #         Inserts a word into the trie.
 #         """
 #         current = self.root
-        
+
 #         for i in range(len(word)):
 #             node = Node()
 #             current.d[word[i]] = current.d.get(word[i], node)
 #             current = current.d[word[i]]
 #         current.isword = True
-    
+
 #     def search(self, word: str) -> bool:
 #         """
 #         Returns if the word is in the trie.
 #         """
 #         current = self.root
-        
+
 #         for i in range(len(word)):
 #             if word[i] in current.d:
 #                 current = current.d[word[i]]
 #             else:
 #                 return False
-        
+
 #         return current.isword
-    
+
 #     def startsWith(self, prefix: str) -> bool:
 #         """
 #         Returns if there is any word in the trie that starts with the given prefix.
 #         """
 #         current = self.root
-        
+
 #         for i in range(len(prefix)):
 #             if prefix[i] in current.d:
 #                 current = current.d[prefix[i]]
@@ -55,29 +55,29 @@
 
 class Trie:
     def __init__(self):
-        """ Initialize your data structure here. """
+        """Initialize your data structure here."""
         self.d = {}
 
     def insert(self, word: str) -> None:
-        """ Inserts a word into the trie. """
+        """Inserts a word into the trie."""
         cur = self.d
         for c in word:
             if c not in cur:
                 cur[c] = {}
             cur = cur[c]
-        cur['#'] = True
+        cur["#"] = True
 
     def search(self, word: str) -> bool:
-        """ Returns if the word is in the trie. """
+        """Returns if the word is in the trie."""
         cur = self.d
         for c in word:
             if c not in cur:
                 return False
             cur = cur[c]
-        return '#' in cur
+        return "#" in cur
 
     def startsWith(self, prefix: str) -> bool:
-        """ Returns if there is any word in the trie that starts with the given prefix. """
+        """Returns if there is any word in the trie that starts with the given prefix."""
         cur = self.d
         for c in prefix:
             if c not in cur:
@@ -86,7 +86,7 @@ class Trie:
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     obj = Trie()
     obj.insert("apple")
     obj.search("apple")

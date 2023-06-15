@@ -44,7 +44,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     Input = [1, 2, 2]
     result = Solution().subsetsWithDup(Input)
     print(result)

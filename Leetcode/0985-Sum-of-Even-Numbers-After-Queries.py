@@ -4,12 +4,11 @@ class Solution:
         ans = []
 
         for x, k in queries:
-            if A[k] % 2 == 0: 
+            if A[k] % 2 == 0:
                 S -= A[k]
             A[k] += x
-            if A[k] % 2 == 0: 
+            if A[k] % 2 == 0:
                 S += A[k]
             ans.append(S)
 
-        return ans 
-    
+        return ans

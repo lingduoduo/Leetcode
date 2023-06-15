@@ -6,18 +6,19 @@ class Solution:
         self.s = []
         self.traverse(root2)
         s2 = self.s
-        
+
         s = s1 + s2
         s.sort()
         return s
 
-    
     def traverse(self, root):
-        if not root: return
-        
+        if not root:
+            return
+
         self.traverse(root.left)
         self.s.append(root.val)
         self.traverse(root.right)
+
 
 class Solution:
     def getAllElements(self, root1: TreeNode, root2: TreeNode) -> List[int]:
@@ -48,6 +49,3 @@ class Solution:
                 res.append(node.val)
                 root1 = node.right
         return res
-
-
-                

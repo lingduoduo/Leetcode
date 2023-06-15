@@ -15,7 +15,6 @@ class Solution:
 
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-
         @lru_cache(maxsize=None)
         def steps(idx1, idx2):
             # if both pointers end

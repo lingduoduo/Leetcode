@@ -19,4 +19,4 @@ class Solution:
                 break
             if t >= left and str(t) == str(t)[::-1]:
                 res += 1
-        return res   
+        return res

@@ -1,6 +1,7 @@
 class Solution:
     def totalNQueens(self, n: int) -> int:
-        if n == 9: return 352
+        if n == 9:
+            return 352
 
         def canBe(nums):
             for i in range(len(nums)):

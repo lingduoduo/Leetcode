@@ -13,6 +13,7 @@
 
 ###这道题小心重复
 
+
 class Solution(object):
     def shortestDeistance(self, words, word1, word2):
         ###pos1 = pos2 = res = float('inf')
@@ -31,8 +32,7 @@ class Solution(object):
         ###    return -1
         ###else:
         ###    return res
-        
-        
+
         dist = float("inf")
         i, index1, index2 = 0, None, None
         while i < len(words):
@@ -40,12 +40,13 @@ class Solution(object):
                 index1 = i
             elif words[i] == word2:
                 index2 = i
-            
+
             if index1 is not None and index2 is not None:
                 dist = min(dist, abs(index1 - index2))
-            
+
             i += 1
         return dist
+
 
 class Solution:
     def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
@@ -62,15 +63,16 @@ class Solution:
                     res = min(res, idx - idx1)
                 idx2 = idx
         return res
-    
+
+
 if __name__ == "__main__":
-    words = ['practice', 'makes', 'perfect', 'coding', 'makes']
+    words = ["practice", "makes", "perfect", "coding", "makes"]
     ###word1 = 'coding'
     ###word2 = 'practice'
     ###result = Solution().shortestDeistance(words, word1, word2)
     ###print(result)
-    
-    word1 = 'makes'
-    word2 = 'coding'
+
+    word1 = "makes"
+    word2 = "coding"
     result = Solution().shortestDeistance(words, word1, word2)
     print(result)

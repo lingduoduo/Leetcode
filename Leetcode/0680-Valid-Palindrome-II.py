@@ -6,9 +6,9 @@ class Solution(object):
         """
         if s == s[::-1]:
             return True
-        
+
         left = 0
-        right = len(s)-1
+        right = len(s) - 1
         while left < right:
             if s[left] == s[right]:
                 left += 1
@@ -26,7 +26,8 @@ class Solution(object):
                 return False
         return True
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     s = "abc"
     results = Solution().validPalindrome(s)
     print(results)

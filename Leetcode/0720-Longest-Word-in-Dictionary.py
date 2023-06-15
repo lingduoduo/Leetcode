@@ -5,9 +5,9 @@ class Solution(object):
         :rtype: str
         """
         ###curr = sorted(words)
-        
+
         ###result = ""
-        
+
         ###for curr in words:
         ###    isIn = True
         ###    for i in range(1, len(curr)):
@@ -33,17 +33,18 @@ class Solution(object):
                     found = False
                     break
             if found:
-                if len(res)==0:
+                if len(res) == 0:
                     res.append(word)
-                elif len(res[-1])<=len(word):
+                elif len(res[-1]) <= len(word):
                     res.pop()
                     res.append(word)
 
         res = sorted(res)
         return res[-1]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     ###words = ["w","wo","wor","worl", "world"]
-    words = ["a","banana","app","appl","ap","apply","apple"]
+    words = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
     result = Solution().longestWord(words)
     print(result)

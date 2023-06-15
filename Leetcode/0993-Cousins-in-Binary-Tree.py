@@ -13,7 +13,7 @@ class Solution:
                     stack.append(node.right)
                     d[node.right.val] = (depth + 1, node)
             depth += 1
-            
+
         dx, px = d[x]
         dy, py = d[y]
         return dx == dy and px != py

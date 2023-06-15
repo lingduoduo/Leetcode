@@ -1,7 +1,7 @@
 class Solution:
-
     def __init__(self, nums: List[int]):
         self.nums = nums
+
     def pick(self, target: int) -> int:
         idxs = []
         for i, num in enumerate(self.nums):
@@ -25,6 +25,7 @@ def pick(self, target):
             if chance == count:
                 res = i
     return res
+
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)

@@ -7,8 +7,10 @@ class TreeNode:
 
 
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        parents = {root.val:None}
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        parents = {root.val: None}
         stack = [root]
         while stack:
             node = stack.pop(0)
@@ -19,7 +21,8 @@ class Solution:
                 parents[node.right.val] = node
                 stack.append(node.right)
         ancestors = set()
-        if p.val not in parents or q.val not in parents: return None
+        if p.val not in parents or q.val not in parents:
+            return None
         while p:
             ancestors.add(p.val)
             p = parents[p.val]
@@ -27,7 +30,9 @@ class Solution:
             q = parents[q.val]
         return q
 
-if __name__ == "__main__":
 
-    res = Solution().lowestCommonAncestor(root = [3,5,1,6,2,0,8,None,None,7,4], p = 5, q = 1)
+if __name__ == "__main__":
+    res = Solution().lowestCommonAncestor(
+        root=[3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], p=5, q=1
+    )
     print(res)

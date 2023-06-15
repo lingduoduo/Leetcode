@@ -9,18 +9,22 @@ class Solution(object):
         """
         r = set()
         for email in emails:
-            name, domain = email.split('@')
-            
-            name = re.sub('\.', '', name)
-            if name.find('+'):
-                s = name.split('+')
+            name, domain = email.split("@")
+
+            name = re.sub("\.", "", name)
+            if name.find("+"):
+                s = name.split("+")
                 name = s[0]
-            
-            r.add(name + '@' + domain)
+
+            r.add(name + "@" + domain)
         return len(r)
 
 
 if __name__ == "__main__":
-    s = ["testemail@leetcode.com", "testemail1@leetcode.com", "testemail+david@lee.tcode.com"]
+    s = [
+        "testemail@leetcode.com",
+        "testemail1@leetcode.com",
+        "testemail+david@lee.tcode.com",
+    ]
     results = Solution().numUniqueEmails(s)
     print(results)

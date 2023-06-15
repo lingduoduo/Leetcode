@@ -1,6 +1,6 @@
 class Solution:
     def maxSumOfThreeSubarrays(self, nums: List[int], k: int) -> List[int]:
-        W = [] #array of sums of windows
+        W = []  # array of sums of windows
         curr_sum = 0
         for i, x in enumerate(nums):
             curr_sum += x

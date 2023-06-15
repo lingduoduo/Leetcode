@@ -78,19 +78,11 @@ class Solution:
                     matrix[i][j] = 0
 
 
-if __name__ == '__main__':
-    matrix = [
-        [1, 0, 1],
-        [1, 1, 1],
-        [1, 1, 0]
-    ]
+if __name__ == "__main__":
+    matrix = [[1, 0, 1], [1, 1, 1], [1, 1, 0]]
     result = Solution().setZeroes(matrix)
     print(result)
 
-    matrix = [
-        [0, 1, 2, 0],
-        [3, 4, 5, 2],
-        [1, 3, 1, 5]
-    ]
+    matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
     result = Solution().setZeroes(matrix)
     print(result)

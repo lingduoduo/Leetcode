@@ -12,4 +12,4 @@ class Solution:
             return res + grid[i][j1] + grid[i][j2]
 
         m, n = len(grid), len(grid[0])
-        return dfs(0, 0, n-1)
+        return dfs(0, 0, n - 1)

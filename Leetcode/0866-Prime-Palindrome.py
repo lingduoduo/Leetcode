@@ -3,16 +3,16 @@ class Solution:
         def isPrime(x):
             if x == 1:
                 return False
-            for i in range(2,int(x**0.5)+1):
-                if x%i == 0:
+            for i in range(2, int(x**0.5) + 1):
+                if x % i == 0:
                     return False
             return True
 
         def isPalindrome(x):
             x = str(x)
             l = [ch for ch in x]
-            return l[::-1]==l
-           
+            return l[::-1] == l
+
         while True:
             if isPalindrome(N) and isPrime(N):
                 break

@@ -6,17 +6,16 @@ class Solution:
             if i == 0:
                 res[i] = nums[i]
             else:
-                res[i] = res[i-1] + nums[i]
-        
-        j = len(nums)-1
+                res[i] = res[i - 1] + nums[i]
+
+        j = len(nums) - 1
         cum = 0
         while j > 0:
-            if j == len(nums)-1:
+            if j == len(nums) - 1:
                 cum = nums[j]
             else:
                 cum += nums[j]
-            if cum > res[j-1]:
+            if cum > res[j - 1]:
                 return nums[j:][::-1]
             j -= 1
         return nums[::-1]
-            

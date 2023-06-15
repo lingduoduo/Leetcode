@@ -1,7 +1,7 @@
-'''
+"""
 Input: [2, 6, 4, 8, 10, 9, 15]
 Output: 5
-'''
+"""
 
 
 class Solution:
@@ -12,7 +12,7 @@ class Solution:
 
         res = len(nums)
         for i in range(len(nums) - 1):
-            if nums[i] <= min(nums[i + 1:]):
+            if nums[i] <= min(nums[i + 1 :]):
                 res -= 1
             else:
                 break
@@ -36,7 +36,7 @@ class Solution:
         return r - l + 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ###nums = [2, 6, 4, 8, 10, 9, 15]
     ###result = Solution().findUnsortedSubarray(nums)
     ###print(result)

@@ -2,6 +2,7 @@ class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         # Dictionary for memoization
         memo = {}
+
         def uniqueSubsequences(i, j):
             m, n = len(s), len(t)
             # Base case
@@ -19,6 +20,7 @@ class Solution:
             # Cache the answer and return
             memo[i, j] = ans
             return ans
+
         return uniqueSubsequences(0, 0)
 
 

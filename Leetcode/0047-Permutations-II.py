@@ -18,7 +18,7 @@ class Solution(object):
         for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            self.dfs(nums[:i] + nums[i + 1:], i, depth + 1, path + [nums[i]])
+            self.dfs(nums[:i] + nums[i + 1 :], i, depth + 1, path + [nums[i]])
 
 
 class Solution(object):
@@ -28,7 +28,7 @@ class Solution(object):
                 res.add(tuple(path))
                 return
             for i in range(len(nums)):
-                dfs(nums[:i] + nums[i + 1:], path + [nums[i]], res)
+                dfs(nums[:i] + nums[i + 1 :], path + [nums[i]], res)
 
         res = set()
         dfs(nums, [], res)
@@ -46,7 +46,7 @@ class Solution:
             self.res.add(tuple(path))
             return
         for i in range(len(nums)):
-            self.dfs(nums[:i] + nums[i + 1:], path + [nums[i]])
+            self.dfs(nums[:i] + nums[i + 1 :], path + [nums[i]])
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ class Solution(object):
 
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        """ Do not return anything, modify nums in-place instead. """
+        """Do not return anything, modify nums in-place instead."""
         p0, p1, p2 = 0, 0, len(nums) - 1
         while p1 <= p2:
             if nums[p1] == 0:
@@ -31,7 +31,7 @@ class Solution:
                 p1 += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [2, 0, 2, 1, 1, 0]
     result = Solution().sortColors(nums)
     print(result)

@@ -1,8 +1,11 @@
 from typing import List
 import math
 
+
 class Solution:
-    def visiblePoints(self, points: List[List[int]], angle: int, location: List[int]) -> int:
+    def visiblePoints(
+        self, points: List[List[int]], angle: int, location: List[int]
+    ) -> int:
         arr, extra = [], 0
         xx, yy = location
 

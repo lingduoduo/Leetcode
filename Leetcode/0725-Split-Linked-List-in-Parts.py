@@ -36,15 +36,21 @@
 #                 res.append(dummy.next)
 #         return res
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 from typing import List, Optional
+
+
 class Solution:
-    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+    def splitListToParts(
+        self, head: Optional[ListNode], k: int
+    ) -> List[Optional[ListNode]]:
         n = 0
         p = head
         while p:
@@ -69,12 +75,13 @@ class Solution:
                 pre.next = None
         return res
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     head = ListNode(1)
     curr = head
     for i in range(2, 4):
         curr.next = ListNode(i)
         curr = curr.next
-    
+
     result = Solution().splitListToParts(head, 5)
     print(result)

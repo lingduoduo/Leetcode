@@ -1,7 +1,7 @@
 class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
-        v1 = version1.split('.')
-        v2 = version2.split('.')
+        v1 = version1.split(".")
+        v2 = version2.split(".")
 
         max_len = max(len(v1), len(v2))
 

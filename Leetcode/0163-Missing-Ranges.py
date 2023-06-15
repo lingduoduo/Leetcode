@@ -22,5 +22,5 @@ if __name__ == "__main__":
     res = Solution().findMissingRanges(nums=[0, 1, 3, 50, 75], lower=0, upper=99)
     print(res)
 
-    res = Solution().findMissingRanges(nums = [-1], lower = -1, upper = -1)
+    res = Solution().findMissingRanges(nums=[-1], lower=-1, upper=-1)
     print(res)

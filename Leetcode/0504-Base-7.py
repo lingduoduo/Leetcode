@@ -8,7 +8,7 @@ class Solution(object):
             return ""
         if num == 0:
             return "0"
-        
+
         result = ""
         sign = ""
         if num < 0:
@@ -20,6 +20,7 @@ class Solution(object):
         result = sign + result
         return result
 
+
 class Solution:
     def convertToBase7(self, num: int) -> str:
         res = []
@@ -28,8 +29,9 @@ class Solution:
         while num:
             res.append(str(num % 7))
             num = num // 7
-        s = ''.join(res[::-1])
-        return s if flag == 0 else '-' + s
+        s = "".join(res[::-1])
+        return s if flag == 0 else "-" + s
+
 
 if __name__ == "__main__":
     s = -8

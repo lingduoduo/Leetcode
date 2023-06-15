@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def numSubarrayBoundedMax(self, A: List[int], L: int, R: int) -> int:
         # Count # of sub arrays whose max element is <= N
@@ -15,7 +17,8 @@ class Solution:
 
         return countarray(A, R) - countarray(A, L - 1)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     A = [2, 1, 4, 3]
     L = 2
     R = 3

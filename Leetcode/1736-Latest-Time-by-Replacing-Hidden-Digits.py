@@ -1,4 +1,6 @@
 from itertools import product
+
+
 class Solution:
     def maximumTime(self, time: str) -> str:
         p = {}
@@ -6,7 +8,6 @@ class Solution:
         p[1] = []
         p[2] = []
         p[3] = []
-
 
         if time[0] == "?":
             for num in range(3):
@@ -18,7 +19,7 @@ class Solution:
             for num in range(10):
                 p[1].append(str(num))
         else:
-            p[1].append(time[1])            
+            p[1].append(time[1])
 
         if time[3] == "?":
             for num in range(6):
@@ -34,12 +35,12 @@ class Solution:
 
         h = 0
         for x, y in product(p[0], p[1]):
-            if int(x+y) <= 23:
-                h = max(h, int(x+y))
+            if int(x + y) <= 23:
+                h = max(h, int(x + y))
         m = 0
         for x, y in product(p[2], p[3]):
-            if int(x+y) <= 59:
-                m = max(m, int(x+y))
+            if int(x + y) <= 59:
+                m = max(m, int(x + y))
         hstr = str(h)
         if h < 10:
             hstr = "0" + hstr
@@ -48,7 +49,8 @@ class Solution:
             mstr = "0" + mstr
         return hstr + ":" + mstr
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     time = "2?:?0"
     res = Solution().maximumTime(time)
     print(res)
@@ -59,4 +61,4 @@ if __name__ == '__main__':
 
     time = "1?:22"
     res = Solution().maximumTime(time)
-    print(res)    
+    print(res)

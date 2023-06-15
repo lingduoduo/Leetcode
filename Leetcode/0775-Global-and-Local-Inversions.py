@@ -3,4 +3,4 @@ class Solution:
         for idx, num in enumerate(A):
             if abs(num - idx) > 1:
                 return False
-        return True    
+        return True

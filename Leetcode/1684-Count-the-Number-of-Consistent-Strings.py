@@ -6,4 +6,3 @@ class Solution:
             if w.issubset(allowed):
                 res += 1
         return res
-                    

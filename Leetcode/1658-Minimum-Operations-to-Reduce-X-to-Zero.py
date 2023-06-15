@@ -12,9 +12,7 @@ class Solution:
             r += 1
             while partsum >= target:
                 if partsum == target:
-                    res = max(res, r-l)
+                    res = max(res, r - l)
                 partsum -= nums[l]
                 l += 1
         return -1 if res == -1 else len(nums) - res
-
-

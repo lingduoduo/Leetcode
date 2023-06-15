@@ -14,16 +14,16 @@ class Solution:
         self.first.val, self.second.val = self.second.val, self.first.val
 
     def inOrder(self, root):
-        if not root: return
-        
+        if not root:
+            return
+
         self.inOrder(root.left)
-        
+
         if self.pre and self.pre.val > root.val:
             if not self.first:
                 self.first = self.pre
             self.second = root
-            
+
         self.pre = root
-        
+
         self.inOrder(root.right)
-        

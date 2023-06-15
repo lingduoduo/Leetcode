@@ -1,5 +1,4 @@
 class MyCircularQueue:
-
     def __init__(self, k: int):
         """
         Initialize your data structure here. Set the size of the queue to be k.
@@ -15,9 +14,9 @@ class MyCircularQueue:
         if self.cur < self.capacity:
             self.que.append(value)
             self.cur += 1
-            return True 
+            return True
         else:
-            return False 
+            return False
 
     def deQueue(self) -> bool:
         """
@@ -30,8 +29,6 @@ class MyCircularQueue:
         else:
             return False
 
-        
-
     def Front(self) -> int:
         """
         Get the front item from the queue.
@@ -40,7 +37,6 @@ class MyCircularQueue:
             return self.que[0]
         else:
             return -1
-        
 
     def Rear(self) -> int:
         """
@@ -50,7 +46,6 @@ class MyCircularQueue:
             return self.que[-1]
         else:
             return -1
-        
 
     def isEmpty(self) -> bool:
         """
@@ -73,13 +68,13 @@ class MyCircularQueue:
 
 from threading import Lock
 
-class MyCircularQueue:
 
+class MyCircularQueue:
     def __init__(self, k: int):
         """
         Initialize your data structure here. Set the size of the queue to be k.
         """
-        self.queue = [0]*k
+        self.queue = [0] * k
         self.headIndex = 0
         self.count = 0
         self.capacity = k
@@ -98,6 +93,7 @@ class MyCircularQueue:
             self.count += 1
         # automatically release the lock when leaving the block
         return True
+
     def deQueue(self) -> bool:
         """
         Delete an element from the circular queue. Return true if the operation is successful.
@@ -139,7 +135,6 @@ class MyCircularQueue:
 
 
 class MyCircularQueue:
-
     def __init__(self, k: int):
         self.cap = k
         self.q = [0] * k
@@ -177,24 +172,24 @@ class MyCircularQueue:
         return self.ct == self.cap
 
 
-if __name__ == '__main__':
-    circularQueue = MyCircularQueue(3); 
+if __name__ == "__main__":
+    circularQueue = MyCircularQueue(3)
     # // set the size to be 3
-    circularQueue.enQueue(1);  
+    circularQueue.enQueue(1)
     # // return true
-    circularQueue.enQueue(2);  
+    circularQueue.enQueue(2)
     # // return true
-    circularQueue.enQueue(3);  
+    circularQueue.enQueue(3)
     # // return true
-    circularQueue.enQueue(4);  
+    circularQueue.enQueue(4)
     # // return false, the queue is full
-    circularQueue.Rear();  
+    circularQueue.Rear()
     # // return 3
-    circularQueue.isFull();  
+    circularQueue.isFull()
     # // return true
-    circularQueue.deQueue();  
+    circularQueue.deQueue()
     # // return true
-    circularQueue.enQueue(4);  
+    circularQueue.enQueue(4)
     # // return true
-    circularQueue.Rear();  
+    circularQueue.Rear()
     # // return 4

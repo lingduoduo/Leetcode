@@ -8,6 +8,7 @@
 #                 res += 1
 #         return res
 
+
 class Solution:
     def maxChunksToSorted(self, arr: List[int]) -> int:
         if not arr:

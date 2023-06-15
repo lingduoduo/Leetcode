@@ -9,6 +9,5 @@ class Solution:
                 table.append(num)
             else:
                 table[i] = num
-            dp[i][num] += sum(dp[i-1][j] for j in dp[i-1] if j < num)
+            dp[i][num] += sum(dp[i - 1][j] for j in dp[i - 1] if j < num)
         return sum(dp[max(0, len(table) - 1)].values())
-    

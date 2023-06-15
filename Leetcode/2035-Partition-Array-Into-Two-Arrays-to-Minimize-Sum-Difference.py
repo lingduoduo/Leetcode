@@ -2,6 +2,7 @@ from typing import List
 from itertools import combinations
 import bisect
 
+
 class Solution:
     def minimumDifference(self, nums: List[int]) -> int:
         n = len(nums) // 2
@@ -23,6 +24,7 @@ class Solution:
                     ans = min(ans, diff)
         return ans
 
+
 if __name__ == "__main__":
-    res = Solution().minimumDifference(nums = [3,9,7,3])
+    res = Solution().minimumDifference(nums=[3, 9, 7, 3])
     print(res)

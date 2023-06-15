@@ -3,7 +3,7 @@ class Solution:
         left = 0
         right = int(c**0.5)
         while left <= right:
-            res = left ** 2 + right ** 2
+            res = left**2 + right**2
             if res == c:
                 return True
             elif res < c:

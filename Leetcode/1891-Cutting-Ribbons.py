@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxLength(self, ribbons: List[int], k: int) -> int:
         total = sum(ribbons)
@@ -17,6 +18,7 @@ class Solution:
 
         return low
 
+
 if __name__ == "__main__":
-    res = Solution().maxLength(ribbons = [9,7,5], k = 3)
+    res = Solution().maxLength(ribbons=[9, 7, 5], k=3)
     print(res)

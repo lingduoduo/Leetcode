@@ -1,5 +1,4 @@
 class Twitter(object):
-    
     def __init__(self):
         """
         Initialize your data structure here.
@@ -36,10 +35,10 @@ class Twitter(object):
         result = []
         while max_heap and len(result) < self.number_of_most_recent_tweets:
             t, uid, curr = heapq.heappop(max_heap)
-            nxt = curr + 1;
+            nxt = curr + 1
             if nxt != len(self.messages[uid]):
-                heapq.heappush(max_heap, (-self.messages[uid][-(nxt+1)][0], uid, nxt))
-            result.append(self.messages[uid][-(curr+1)][1]);
+                heapq.heappush(max_heap, (-self.messages[uid][-(nxt + 1)][0], uid, nxt))
+            result.append(self.messages[uid][-(curr + 1)][1])
         return result
 
     def follow(self, followerId, followeeId):
@@ -60,6 +59,7 @@ class Twitter(object):
         :rtype: void
         """
         self.followings[followerId].discard(followeeId)
+
 
 # Your Twitter object will be instantiated and called as such:
 # obj = Twitter()

@@ -1,12 +1,14 @@
 from typing import List
 
+
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         res = []
         for num in nums:
-            res.append(num*num)
+            res.append(num * num)
         res.sort()
         return res
+
 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
@@ -30,12 +32,13 @@ class Solution:
             result[i] = square * square
         return result
 
+
 if __name__ == "__main__":
-    res = Solution().sortedSquares(nums = [-4,-1,0,3,10])
+    res = Solution().sortedSquares(nums=[-4, -1, 0, 3, 10])
     print(res)
 
-    res = Solution().sortedSquares(nums=[-5,-3,-2,-1])
+    res = Solution().sortedSquares(nums=[-5, -3, -2, -1])
     print(res)
 
-    res = Solution().sortedSquares(nums=[0,2])
+    res = Solution().sortedSquares(nums=[0, 2])
     print(res)

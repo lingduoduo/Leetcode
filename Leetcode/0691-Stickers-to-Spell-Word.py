@@ -12,9 +12,10 @@ class Solution:
                         del ft[char]
                 else:
                     res.append(char)
-            return ''.join(res)
+            return "".join(res)
 
         from collections import defaultdict, deque
+
         queue = deque()
         queue.append(target)
         visited = set()

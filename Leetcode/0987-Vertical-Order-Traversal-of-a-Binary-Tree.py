@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 
+
 class Solution:
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         self.d = collections.defaultdict(list)

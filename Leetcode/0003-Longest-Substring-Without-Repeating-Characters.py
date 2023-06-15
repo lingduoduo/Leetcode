@@ -6,18 +6,19 @@ class Solution(object):
         """
         if not s:
             return 0
-        if len(s) <=1:
+        if len(s) <= 1:
             return 1
         longest = 0
         start = -1
         location = [-1 for i in range(256)]
 
-        for i,v in enumerate(s):
-           if location[ord(v)] > start:
-               start = location[ord(v)]
-           longest = max(longest, i-start)
-           location[ord(v)] = i
+        for i, v in enumerate(s):
+            if location[ord(v)] > start:
+                start = location[ord(v)]
+            longest = max(longest, i - start)
+            location[ord(v)] = i
         return longest
+
 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
@@ -37,7 +38,8 @@ class Solution(object):
             d[s[i]] = i
             result = max(result, i - left)
         return result
-        
+
+
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         if not s:
@@ -48,11 +50,12 @@ class Solution(object):
         start = -1
         res = 0
         for j in range(len(s)):
-            if s[j] in dict.keys() and dict[s[j]]>start:
+            if s[j] in dict.keys() and dict[s[j]] > start:
                 start = dict[s[j]]
             dict[s[j]] = j
             res = max(res, j - start)
         return res
+
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -60,7 +63,7 @@ class Solution:
             return 0
         if len(s) == 1:
             return 1
-        
+
         d = {}
         start = 0
         res = 0

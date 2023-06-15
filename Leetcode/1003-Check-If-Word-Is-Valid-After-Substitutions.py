@@ -3,4 +3,3 @@ class Solution:
         while "abc" in s:
             s = s.replace("abc", "")
         return not s
-            

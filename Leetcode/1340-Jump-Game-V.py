@@ -26,6 +26,7 @@ class Solution:
 
         return max(map(height, range(n)))
 
+
 if __name__ == "__main__":
-    res = Solution().maxJumps(arr = [6,4,14,6,8,13,9,7,10,6,12], d = 2)
+    res = Solution().maxJumps(arr=[6, 4, 14, 6, 8, 13, 9, 7, 10, 6, 12], d=2)
     print(res)

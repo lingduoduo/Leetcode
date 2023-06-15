@@ -10,8 +10,8 @@ class Solution:
 
         i = len(str1)
         while i > 0:
-            m1 = len(str2)//len(str1[:i])
-            m2 = len(str1)//len(str1[:i])
+            m1 = len(str2) // len(str1[:i])
+            m2 = len(str1) // len(str1[:i])
             if str2 == str1[:i] * m1 and str1 == str1[:i] * m2:
                 return str1[:i]
             else:

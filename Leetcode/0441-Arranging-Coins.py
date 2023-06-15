@@ -9,4 +9,4 @@ class Solution:
         if n - tot == i:
             return i
         else:
-            return i-1
+            return i - 1

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def singleNumber(self, nums) -> int:
         res = 0
@@ -8,7 +9,8 @@ class Solution:
             for num in nums:
                 cnt += (num >> i) & 1
             res |= (cnt % 3) << i
-        return res - 2 ** 32 if res >> 31 & 1 else res
+        return res - 2**32 if res >> 31 & 1 else res
+
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -20,6 +22,8 @@ class Solution:
 
 
 import collections
+
+
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         d = collections.Counter(nums)
@@ -28,7 +32,7 @@ class Solution:
                 return k
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [2, 2, 3, 2]
     results = Solution().singleNumber(nums)
     print(results)

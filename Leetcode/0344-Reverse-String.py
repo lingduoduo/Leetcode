@@ -13,13 +13,14 @@ class Solution(object):
         ###else:
         ###    for i in range(1, n // 2 + 1):
         ###        s[mid + i], s[mid - i] = s[mid - i], s[mid + i]
-        
+
         n = len(s)
-        
-        for i in range(n//2):
-            s[i], s[-i-1] = s[-i-1], s[i]
+
+        for i in range(n // 2):
+            s[i], s[-i - 1] = s[-i - 1], s[i]
         return s
-        
+
+
 if __name__ == "__main__":
     input = ["h", "e", "l", "l", "o"]
     ###input = ["e", "l", "l", "o"]

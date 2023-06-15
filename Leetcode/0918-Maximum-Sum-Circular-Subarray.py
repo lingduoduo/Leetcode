@@ -10,5 +10,4 @@ class Solution:
         if s == min_glo:
             return max_glo
         else:
-            return max(max_glo, s-min_glo)
-            
+            return max(max_glo, s - min_glo)

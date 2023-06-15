@@ -9,7 +9,7 @@ class Solution:
         val, i = 0, 0
         val_str = ""
         while i < len(num):
-            val = val * 10 + ord(num[i]) - ord('0')
+            val = val * 10 + ord(num[i]) - ord("0")
             val_str += num[i]
             # Avoid "00...".
             if str(val) != val_str:
@@ -20,7 +20,7 @@ class Solution:
             expr.pop()
             i += 1
         return result
- 
+
     def addOperatorsDFS(self, num, target, pos, operand1, operand2, expr, result):
         if pos == len(num) and operand1 + operand2 == target:
             result.append("".join(expr))
@@ -29,31 +29,37 @@ class Solution:
             val_str = ""
             while i < len(num):
                 # print(expr)
-                val = val * 10 + ord(num[i]) - ord('0')
+                val = val * 10 + ord(num[i]) - ord("0")
                 val_str += num[i]
                 # Avoid "00...".
                 if str(val) != val_str:
                     break
- 
+
                 # Case '+':
                 expr.append("+" + val_str)
-                self.addOperatorsDFS(num, target, i + 1, operand1 + operand2, val, expr, result)
+                self.addOperatorsDFS(
+                    num, target, i + 1, operand1 + operand2, val, expr, result
+                )
                 expr.pop()
- 
+
                 # Case '-':
                 expr.append("-" + val_str)
-                self.addOperatorsDFS(num, target, i + 1, operand1 + operand2, -val, expr, result)
+                self.addOperatorsDFS(
+                    num, target, i + 1, operand1 + operand2, -val, expr, result
+                )
                 expr.pop()
- 
+
                 # Case '*':
                 expr.append("*" + val_str)
-                self.addOperatorsDFS(num, target, i + 1, operand1, operand2 * val, expr, result)
+                self.addOperatorsDFS(
+                    num, target, i + 1, operand1, operand2 * val, expr, result
+                )
                 expr.pop()
- 
+
                 i += 1
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     num = "123"
     target = 6
     results = Solution().addOperators(num, target)
-    

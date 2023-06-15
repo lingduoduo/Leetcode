@@ -13,6 +13,7 @@ read4(buf4) # read4 returns 4. Now buf = ['e','f','g','h'], fp points to 'i'
 read4(buf4) # read4 returns 3. Now buf = ['i','j','k',...], fp points to end of file
 """
 
+
 class Solution:
     def read(self, buf, n):
         """
@@ -22,7 +23,7 @@ class Solution:
         """
         copied_chars = 0
         read_chars = 4
-        buf4 = [''] * 4
+        buf4 = [""] * 4
 
         while copied_chars < n and read_chars == 4:
             read_chars = read4(buf4)

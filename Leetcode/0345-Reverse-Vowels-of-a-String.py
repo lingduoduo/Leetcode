@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: str
         """
         strs = [cha for cha in s]
-        ref = ['i', 'e', 'a', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        ref = ["i", "e", "a", "o", "u", "A", "E", "I", "O", "U"]
         left = 0
         right = len(s) - 1
         while left < right:
@@ -16,7 +16,7 @@ class Solution(object):
             strs[left], strs[right] = strs[right], strs[left]
             left += 1
             right -= 1
-        return ''.join(strs)
+        return "".join(strs)
 
 
 if __name__ == "__main__":

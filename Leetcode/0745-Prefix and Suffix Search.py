@@ -3,12 +3,11 @@ WEIGHT = False
 
 
 class WordFilter:
-
     def __init__(self, words: List[str]):
         self.trie = Trie()
 
         for weight, word in enumerate(words):
-            word += '#'
+            word += "#"
             for i in range(len(word)):
                 cur = self.trie
                 cur[WEIGHT] = weight
@@ -18,7 +17,7 @@ class WordFilter:
 
     def f(self, pref: str, suff: str) -> int:
         cur = self.trie
-        for letter in suff + '#' + pref:
+        for letter in suff + "#" + pref:
             if letter not in cur:
                 return -1
             cur = cur[letter]
@@ -30,18 +29,18 @@ WEIGHT = False
 
 
 class WordFilter:
-
     def __init__(self, words):
         from collections import defaultdict
+
         self.prefixes = defaultdict(set)
         self.suffixes = defaultdict(set)
         self.weights = {}
         for index, word in enumerate(words):
-            prefix, suffix = '', ''
-            for char in [''] + list(word):
+            prefix, suffix = "", ""
+            for char in [""] + list(word):
                 prefix += char
                 self.prefixes[prefix].add(word)
-            for char in [''] + list(word[::-1]):
+            for char in [""] + list(word[::-1]):
                 suffix += char
                 self.suffixes[suffix[::-1]].add(word)
             self.weights[word] = index
@@ -55,20 +54,19 @@ class WordFilter:
 
 
 class WordFilter:
-
     def __init__(self, words):
         self.inputs = {}
         for index, word in enumerate(words):
-            prefix = ''
-            for char in [''] + list(word):
+            prefix = ""
+            for char in [""] + list(word):
                 prefix += char
-                suffix = ''
-                for char in [''] + list(word[::-1]):
+                suffix = ""
+                for char in [""] + list(word[::-1]):
                     suffix += char
-                    self.inputs[prefix + '.' + suffix[::-1]] = index
+                    self.inputs[prefix + "." + suffix[::-1]] = index
 
     def f(self, prefix, suffix):
-        return self.inputs.get(prefix + '.' + suffix, -1)
+        return self.inputs.get(prefix + "." + suffix, -1)
 
 
 # Your WordFilter object will be instantiated and called as such:

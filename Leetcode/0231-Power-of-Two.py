@@ -11,18 +11,20 @@ class Solution(object):
         ###    return True
         ###else:
         ###    return False
-        
+
         if n < 1:
             return False
-        
+
         while n % 2 == 0:
             n /= 2
-        return True if n==1 else False
+        return True if n == 1 else False
+
 
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
         return n > 0 and bin(n).count("1") == 1
 
+
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        return n > 0 and n & (n-1) == 0
+        return n > 0 and n & (n - 1) == 0

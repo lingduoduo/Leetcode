@@ -1,6 +1,6 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        if len(s)>12:
+        if len(s) > 12:
             return []
 
         self.res = []
@@ -21,7 +21,7 @@ class Solution:
 
     def dfs(self, s, path):
         if not s and len(path) == 4:
-            self.res.append('.'.join(path))
+            self.res.append(".".join(path))
             return
 
         for i in range(1, 4):

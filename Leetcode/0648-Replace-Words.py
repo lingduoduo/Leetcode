@@ -8,6 +8,4 @@ class Solution:
                     return word[:i]
             return word
 
-        return ''.join(map(replace, sentence.split()))
-
-
+        return "".join(map(replace, sentence.split()))

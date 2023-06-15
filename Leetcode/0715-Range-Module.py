@@ -1,7 +1,7 @@
 import bisect
 
-class RangeModule:
 
+class RangeModule:
     def __init__(self):
         self.track = []
 
@@ -34,6 +34,7 @@ class RangeModule:
             subtrack.append(right)
 
         self.track[start:end] = subtrack
+
 
 # Your RangeModule object will be instantiated and called as such:
 # obj = RangeModule()

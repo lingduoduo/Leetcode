@@ -8,4 +8,4 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 mat[i][j] = heapq.heappop(d[i - j])
-        return mat         
+        return mat

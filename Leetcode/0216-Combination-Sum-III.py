@@ -23,18 +23,19 @@ class Solution(object):
             self.dfs(k - 1, n - i, i + 1, path + [i])
         return
 
-if __name__ == '__main__':
-    k=3
-    n=7
-    result = Solution().combinationSum3(k, n)
-    print(result)
-    
-    k=3
-    n=9
+
+if __name__ == "__main__":
+    k = 3
+    n = 7
     result = Solution().combinationSum3(k, n)
     print(result)
 
-    k=3
-    n=15
+    k = 3
+    n = 9
+    result = Solution().combinationSum3(k, n)
+    print(result)
+
+    k = 3
+    n = 15
     result = Solution().combinationSum3(k, n)
     print(result)

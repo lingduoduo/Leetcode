@@ -8,6 +8,7 @@
 #             res.append(res[-1] + sum(A) - 4 * A[-i])
 #         return max(res)
 
+
 class Solution:
     def maxRotateFunction(self, A) -> int:
         if not A:
@@ -20,7 +21,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     A = [4, 3, 2, 6]
     res = Solution().maxRotateFunction(A)
     print(res)

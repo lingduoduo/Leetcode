@@ -18,7 +18,9 @@ class Solution:
         def precedence(current_op, op_from_ops):
             if op_from_ops == "(" or op_from_ops == ")":
                 return False
-            if (current_op == "*" or current_op == "/") and (op_from_ops == "+" or op_from_ops == "-"):
+            if (current_op == "*" or current_op == "/") and (
+                op_from_ops == "+" or op_from_ops == "-"
+            ):
                 return False
             return True
 

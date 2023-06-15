@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         visited = set([0])
@@ -31,5 +32,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().canVisitAllRooms(rooms = [[1],[2],[3],[]])
+    res = Solution().canVisitAllRooms(rooms=[[1], [2], [3], []])
     print(res)

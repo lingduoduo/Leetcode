@@ -76,7 +76,11 @@ class Solution:
         if root is None:
             return []
 
-        next_level = deque([root, ])
+        next_level = deque(
+            [
+                root,
+            ]
+        )
         rightside = []
 
         while next_level:

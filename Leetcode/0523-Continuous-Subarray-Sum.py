@@ -66,13 +66,13 @@ class Solution:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [23, 2, 4, 6, 7]
-    k=6
+    k = 6
     results = Solution().checkSubarraySum(nums, k)
     print(results)
 
-    nums = [23,2,6,4,7]
+    nums = [23, 2, 6, 4, 7]
     k = 0
     results = Solution().checkSubarraySum(nums, k)
     print(results)

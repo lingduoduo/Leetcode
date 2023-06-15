@@ -43,7 +43,7 @@ class Solution:
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = "abc"
     results = Solution().countSubstrings(s)
     print(results)

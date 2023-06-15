@@ -27,12 +27,15 @@ class Solution:
 
 
 import re
+
+
 class Solution:
     def isNumber(self, s: str) -> bool:
-        pattern = re.compile(r'^[+-]?(\d+|\d+\.\d*|\.\d+)([eE][+-]?\d+)?$')
+        pattern = re.compile(r"^[+-]?(\d+|\d+\.\d*|\.\d+)([eE][+-]?\d+)?$")
         return pattern.match(s) is not None
 
-'''
+
+"""
 Algorithm
 
 1. Declare 3 variables seenDigit, seenExponent, and seenDot. Set all of them to false.
@@ -43,7 +46,7 @@ Algorithm
 6. If the character is a dot, first check if we have already seen either a dot or an exponent. If so, return false. Otherwise, set seenDot = true.
 7. If the character is anything else, return false.
 8. At the end, return seenDigit. This is one reason why we have to reset seenDigit after seeing an exponent - otherwise an input like "21e" would be incorrectly judged as valid.
-'''
+"""
 
 
 class Solution:
@@ -70,7 +73,7 @@ class Solution:
         return seen_digit
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     res = Solution().isNumeric(s="+100")
     print(res)
 

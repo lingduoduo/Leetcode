@@ -5,14 +5,14 @@ class Solution:
                 return memo[i]
             res = []
             for j in range(i, len(s)):
-                prefix = s[i: j + 1]
+                prefix = s[i : j + 1]
                 if prefix in wordDict:
                     tmp = dfs(j + 1)
                     for word in tmp:
                         res.append((prefix + " " + word).strip())
             memo[i] = res
             return res
-        
+
         wordDict = set(wordDict)
         memo = {len(s): [""]}
         return dfs(0)
@@ -25,9 +25,9 @@ class Solution:
         # {string: [['word1', 'word2'...], ['word3', 'word4', ...]]}
         memo = defaultdict(list)
 
-        #@lru_cache(maxsize=None)    # alternative memoization solution
+        # @lru_cache(maxsize=None)    # alternative memoization solution
         def dfs(s):
-            """ return list of word lists """
+            """return list of word lists"""
             if not s:
                 return [[]]  # list of empty list
 
@@ -35,7 +35,7 @@ class Solution:
                 # returned the cached solution directly.
                 return memo[s]
 
-            for endIndex in range(1, len(s)+1):
+            for endIndex in range(1, len(s) + 1):
                 word = s[:endIndex]
                 if word in wordSet:
                     # move forwards to break the postfix into words
@@ -49,6 +49,7 @@ class Solution:
         # chain up the lists of words into sentences.
         return [" ".join(words) for words in memo[s]]
 
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         # quick check on the characters,
@@ -58,17 +59,17 @@ class Solution:
 
         wordSet = set(wordDict)
 
-        dp = [[]] * (len(s)+1)
+        dp = [[]] * (len(s) + 1)
         dp[0] = [""]
 
-        for endIndex in range(1, len(s)+1):
+        for endIndex in range(1, len(s) + 1):
             sublist = []
             # fill up the values in the dp array.
             for startIndex in range(0, endIndex):
                 word = s[startIndex:endIndex]
                 if word in wordSet:
                     for subsentence in dp[startIndex]:
-                        sublist.append((subsentence + ' ' + word).strip())
+                        sublist.append((subsentence + " " + word).strip())
 
             dp[endIndex] = sublist
 

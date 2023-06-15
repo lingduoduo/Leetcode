@@ -15,6 +15,5 @@ class Solution:
                     curr[key] = min(prev[key], d[key])
         res = []
         for k, v in curr.items():
-            res.extend([k]*v)
+            res.extend([k] * v)
         return res
-

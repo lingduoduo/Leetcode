@@ -6,7 +6,7 @@ class Solution:
         for u, v, w in times:
             nodes[u - 1].append((v - 1, w))
 
-        dist = [float('inf')] * N
+        dist = [float("inf")] * N
         dist[K] = 0
         done = set()
 
@@ -16,5 +16,5 @@ class Solution:
                 if v not in done and dist[smallest] + w < dist[v]:
                     dist[v] = dist[smallest] + w
             done.add(smallest)
-            
-        return -1 if float('inf') in dist else max(dist)
+
+        return -1 if float("inf") in dist else max(dist)

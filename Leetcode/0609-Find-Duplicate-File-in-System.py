@@ -1,5 +1,7 @@
 from typing import List
 import collections
+
+
 class Solution:
     def findDuplicate(self, paths: List[str]) -> List[List[str]]:
         d = collections.defaultdict(list)
@@ -15,7 +17,13 @@ class Solution:
                 res.append(v)
         return res
 
-if __name__ == '__main__':
-    paths = ["root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)"]
+
+if __name__ == "__main__":
+    paths = [
+        "root/a 1.txt(abcd) 2.txt(efgh)",
+        "root/c 3.txt(abcd)",
+        "root/c/d 4.txt(efgh)",
+        "root 4.txt(efgh)",
+    ]
     res = Solution().findDuplicate(paths)
     print(res)

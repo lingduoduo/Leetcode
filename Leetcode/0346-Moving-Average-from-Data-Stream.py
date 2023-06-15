@@ -1,7 +1,6 @@
 class MovingAverage:
-
     def __init__(self, size: int):
-        """ Initialize your data structure here. """
+        """Initialize your data structure here."""
         self.size = size
         self.q = deque()
         self.count = 0

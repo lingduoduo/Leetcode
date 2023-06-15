@@ -1,6 +1,7 @@
 import heapq
-class KthLargest:
 
+
+class KthLargest:
     def __init__(self, k: int, nums: List[int]):
         self.sorted_num = sorted(nums)
         self.size = len(self.sorted_num)
@@ -27,7 +28,7 @@ class KthLargest:
 # obj = KthLargest(k, nums)
 # param_1 = obj.add(val)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nums = [4, 5, 8, 2]
     output = KthLargest(3, nums)
 # # Your KthLargest object will be instantiated and called as such:

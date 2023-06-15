@@ -1,9 +1,11 @@
 from typing import List
+
+
 class Solution:
     def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
         # def equalpairs(a, b, c, d):
         #     return (a==c and b==d) or (a==d and b==c)
-        
+
         # d = {}
         # res = 0
         # for domino in dominoes:
@@ -27,15 +29,16 @@ class Solution:
         m = [0] * 100
         res = 0
         for d in dominoes:
-            k1 = d[0]*10 + d[1]
-            k2 = d[1]*10 + d[0]
+            k1 = d[0] * 10 + d[1]
+            k2 = d[1] * 10 + d[0]
             res += m[k1]
             if k1 != k2:
                 res += m[k2]
             m[k1] += 1
         return res
-            
-if __name__ == '__main__':
-    dominoes = [[1,2],[2,1],[3,4],[5,6], [3,4]]
+
+
+if __name__ == "__main__":
+    dominoes = [[1, 2], [2, 1], [3, 4], [5, 6], [3, 4]]
     res = Solution().numEquivDominoPairs(dominoes)
     print(res)

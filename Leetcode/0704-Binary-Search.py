@@ -7,10 +7,10 @@ class Solution(object):
         """
         if not nums:
             return -1
-        
+
         left = 0
         right = len(nums)
-        
+
         while left < right:
             mid = left + (right - left) // 2
             if nums[mid] == target:

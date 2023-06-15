@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def largestSubmatrix(self, matrix: List[List[int]]) -> int:
         m = len(matrix)
@@ -7,7 +9,7 @@ class Solution:
         for j in range(n):
             for i in range(1, m):
                 if matrix[i][j] == 1:
-                    matrix[i][j] += matrix[i-1][j]
+                    matrix[i][j] += matrix[i - 1][j]
 
         res = 0
         for i in range(m):
@@ -18,8 +20,7 @@ class Solution:
         return res
 
 
-
-if __name__ == '__main__':
-    matrix = [[0,0,1],[1,1,1],[1,0,1]]
+if __name__ == "__main__":
+    matrix = [[0, 0, 1], [1, 1, 1], [1, 0, 1]]
     res = Solution().largestSubmatrix(matrix)
     print(res)

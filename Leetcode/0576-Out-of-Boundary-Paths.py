@@ -10,10 +10,13 @@ class Solution:
                         if nx < 0 or nx >= m or ny < 0 or ny >= n:
                             dp[s][x][y] += 1
                         else:
-                            dp[s][x][y] = (dp[s][x][y] + dp[s - 1][nx][ny]) % (10**9 + 7)
+                            dp[s][x][y] = (dp[s][x][y] + dp[s - 1][nx][ny]) % (
+                                10**9 + 7
+                            )
         return dp[N][i][j]
-            
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     m = 2
     n = 2
     N = 2
@@ -29,4 +32,3 @@ if __name__ == '__main__':
     j = 1
     res = Solution().findPaths(m, n, N, i, j)
     print(res)
-
