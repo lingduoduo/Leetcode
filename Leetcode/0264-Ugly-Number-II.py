@@ -32,6 +32,23 @@ class Solution:
 
         return res[n-1]
 
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        if n < 0:
+            return 0
+        q = []
+        heapq.heappush(q, 1)
+        num = 1
+        for i in range(n):
+            num = heapq.heappop(q)
+            if num * 2 not in q:
+                heapq.heappush(q, num*2)
+            if num * 3 not in q:
+                heapq.heappush(q, num*3)
+            if num * 5 not in q:
+                heapq.heappush(q, num*5)
+        return num
+
 if __name__ == '__main__':
     n = 10
     results = Solution().nthUglyNumber(n)
