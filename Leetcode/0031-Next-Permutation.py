@@ -95,7 +95,7 @@ class Solution(object):
 #             nums[k],nums[l] = nums[l], nums[k]
 #             k+=1
 #             l-=1
-        return nums
+#         return nums
 
 if __name__ == "__main__":
     nums = [1, 4, 3, 2]

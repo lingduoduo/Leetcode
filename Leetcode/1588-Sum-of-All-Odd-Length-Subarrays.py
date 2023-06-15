@@ -14,6 +14,16 @@ class Solution:
         return res
 
 
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        res = 0
+        n = len(arr)
+        for l in range(1, n + 1, 2):
+            for i in range(n - l + 1):
+                res += sum(arr[i : i + l])
+        return res
+
+
 if __name__ == "__main__":
     arr = [1, 4, 2, 5, 3]
     res = Solution().sumOddLengthSubarrays(arr)
