@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
         numset = set(nums)

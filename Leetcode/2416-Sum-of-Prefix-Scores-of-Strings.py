@@ -1,3 +1,6 @@
+from typing import list
+
+
 class Trie:
     def __init__(self):
         self.ch = [None] * 26

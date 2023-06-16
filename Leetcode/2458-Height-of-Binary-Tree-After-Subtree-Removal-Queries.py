@@ -1,3 +1,7 @@
+import collections
+from typing import List, Optional
+
+
 class Solution:
     def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
         Depth, Height = collections.defaultdict(int), collections.defaultdict(int)

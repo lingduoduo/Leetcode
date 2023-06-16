@@ -8,16 +8,15 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        n = len(nums)
         d = collections.defaultdict(int)
         d[0] = 1
-        tot = 0
+        presum = 0
         res = 0
-        for i in range(n):
-            tot += nums[i]
-            if tot - k in d:
-                res += d[tot - k]
-            d[tot] += 1
+        for i in range(len(nums)):
+            presum += nums[i]
+            if presum - k in d:
+                res += d[presum - k]
+            d[presum] += 1
         return res
 
 
