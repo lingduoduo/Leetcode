@@ -1,3 +1,7 @@
+import collections
+from typing import List
+
+
 class Solution(object):
     def groupAnagrams(self, strs):
         """
@@ -5,15 +9,6 @@ class Solution(object):
         :rtype: List[List[str]]
         ["eat", "tea", "tan", "ate", "nat", "bat"]
         """
-
-        ###d = dict()
-
-        ###for i in range(len(strs)):
-        ###    str_key = ''.join(sorted(strs[i]))
-        ###    d[str_key] = d.get(str_key, []) + [strs[i]]
-        ###return [v for v in d.values()]
-
-        res = []
         if len(strs) < 1:
             return strs
 
@@ -37,6 +32,25 @@ class Solution(object):
         for s in strs:
             s_sorted = "".join(sorted(s))
             d[s_sorted].append(s)
+        return d.values()
+
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = collections.defaultdict(list)
+        for cha in strs:
+            d[tuple(sorted(cha))].append(cha)
+        return d.values()
+
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = collections.defaultdict(list)
+        for cha in strs:
+            key = [0] * 26
+            for c in cha:
+                key[ord(c) - ord("a")] += 1
+            d[tuple(key)].append(cha)
         return d.values()
 
 
