@@ -1,9 +1,9 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         return (
-                self.is_row_valid(board)
-                and self.is_col_valid(board)
-                and self.is_square_valid(board)
+            self.is_row_valid(board)
+            and self.is_col_valid(board)
+            and self.is_square_valid(board)
         )
 
     def is_row_valid(self, board):

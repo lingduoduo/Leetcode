@@ -42,6 +42,17 @@ class Solution:
         return filtered_chars_list == reversed_chars_list
 
 
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        strs = []
+        for cha in s:
+            if cha.isdigit():
+                strs.append(cha)
+            elif cha.isalpha():
+                strs.append(cha.lower())
+        return strs == strs[::-1]
+
+
 if __name__ == "__main__":
     s = "A man, a plan, a canal: Panama"
     results = Solution().isPalindrome(s)

@@ -91,7 +91,6 @@ class LRUCache:
 
 
 class LRUCache:
-
     def __init__(self, capacity: int):
         self.dict = {}
         self.capacity = capacity
@@ -121,7 +120,6 @@ class ListNode:
 
 
 class LRUCache:
-
     def __init__(self, capacity: int):
         self.d = {}
         self.capacity = capacity
