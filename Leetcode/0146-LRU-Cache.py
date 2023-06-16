@@ -1,3 +1,6 @@
+import collections
+
+
 class ListNode:
     def __init__(self, key, value):
         self.key = key
@@ -85,3 +88,78 @@ class LRUCache:
             else:
                 self.dict.popitem(False)
                 self.dict[key] = value
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.dict = {}
+        self.capacity = capacity
+
+    def get(self, key: int) -> int:
+        if key not in self.dict:
+            return -1
+        val = self.dict.pop(key)  # Remove it first before inserting it at the end again
+        self.dict[key] = val
+        return val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            self.dict.pop(key)
+        else:
+            if len(self.dict) == self.capacity:
+                del self.dict[next(iter(self.dict))]
+        self.dict[key] = value
+
+
+class ListNode:
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.next = None
+        self.prev = None
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.d = {}
+        self.capacity = capacity
+        self.head = ListNode(-1, -1)
+        self.tail = ListNode(-1, -1)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def add(self, node):
+        p = self.tail.prev
+        p.next = node
+        node.prev = p
+        node.next = self.tail
+        self.tail.prev = node
+
+    def delete(self, node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def get(self, key: int) -> int:
+        if key not in self.d:
+            return -1
+
+        node = self.d[key]
+        self.delete(node)
+        self.add(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> int:
+        if key in self.d:
+            old_node = self.d[key]
+            self.delete(old_node)
+
+        node = ListNode(key, value)
+        self.d[key] = node
+        self.add(node)
+
+        if len(self.d) > self.capacity:
+            node = self.head.next
+            self.delete(node)
+            del self.d[node.key]
