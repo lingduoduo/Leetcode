@@ -6,6 +6,7 @@ class Solution:
         if not points: return 0
 
         points = sorted(points, key=lambda x: x[1])
+        print(points)
         cur = points[0][1]
         res = 1
         for point in points[1:]:
