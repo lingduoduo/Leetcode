@@ -1,19 +1,36 @@
+from typing import List
+
+
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        if sum(gas) < sum(cost):
-            return -1
+        n = len(gas)
 
-        start = 0
-        remain = 0
+        for i in range(n):
+            tank = 0
+            for j in range(n):
+                tank += gas[(i+j)%n] - cost[(i+j)%n]
+                if tank < 0:
+                    break
+                if j == n - 1:
+                    return i
+        return -1
 
-        for i in range(len(gas)):
-            if gas[i] + remain < cost[i]:
-                start = i + 1
-                remain = 0
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        n = len(gas)
+        tank = 0
+        res = 0
+        for i in range(n * 2):
+            tank += (gas[i % n] - cost[i % n])
+            if tank >= 0:
+                res += 1
             else:
-                remain += gas[i] - cost[i]
-        return start
-
+                res = 0
+            tank = max(0, tank)
+        if res >= n:
+            return 2 * n - res
+        else:
+            return -1
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
@@ -25,3 +42,20 @@ class Solution:
             if remain < 0:
                 remain, start = 0, i + 1
         return -1 if tot < 0 else start
+
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        tot = 0
+        cur = 0
+        res = 0
+
+        for i in range(len(gas)):
+            tot += gas[i] - cost[i]
+            cur += gas[i] - cost[i]
+
+            if cur < 0:
+                cur = 0
+                res = i + 1
+
+        return res if tot >= 0 else -1
