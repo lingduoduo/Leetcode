@@ -1,44 +1,11 @@
-###Definition for singly-linked list.
-###class ListNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 
 class Solution(object):
     def rotateRight(self, head, k):
-        """
-        :type head: ListNode
-        :type k: int
-        :rtype: ListNode
-        """
-        ###if head is None:
-        ###    return head
-        ###if k == 0:
-        ###    return head
-
-        ###fast = head
-        ###n = 0
-        ###while fast:
-        ###    fast = fast.next
-        ###    n += 1
-        ###k = k % n
-
-        ###fast = head
-        ###while k:
-        ###    fast = fast.next
-        ###    k -= 1
-
-        ###slow = head
-        ###while fast.next:
-        ###    fast = fast.next
-        ###    slow = slow.next
-
-        ###fast.next = head
-        ###head = slow.next
-        ###slow.next = None
-        ###return head
-
         curr = head
         n = 0
         while curr:
@@ -65,3 +32,34 @@ class Solution(object):
         p2.next = head
 
         return output
+
+
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        dummy = ListNode(-1)
+        dummy.next = head
+
+        n = 0
+        p = dummy
+        while p.next:
+            p = p.next
+            n += 1
+
+        if n < 2:
+            return dummy.next
+
+        k = k % n
+
+        f, s = dummy.next, dummy.next
+        for i in range(k):
+            f = f.next
+
+        while f.next:
+            s = s.next
+            f = f.next
+
+        f.next = dummy.next
+        dummy.next = s.next
+        s.next = None
+
+        return dummy.next
