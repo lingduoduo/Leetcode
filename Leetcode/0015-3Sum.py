@@ -6,21 +6,25 @@ class Solution:
         n = len(nums)
         nums.sort()
         res = set()
-        for k in range(n - 2):
-            i, j = k + 1, n - 1
-            while i < j:
-                cur_sum = nums[k] + nums[i] + nums[j]
-                if cur_sum == 0:
-                    res.add(tuple(sorted([nums[k], nums[i], nums[j]])))
-                    i += 1
-                    j -= 1
-                elif cur_sum < 0:
-                    i += 1
+        for i in range(n - 2):
+            j = i + 1
+            k = n - 1
+            while j < k:
+                s = nums[i] + nums[j] + nums[k]
+                if s == 0:
+                    res.add((nums[i], nums[j], nums[k]))
+                    j += 1
+                    k -= 1
+                elif s > 0:
+                    k -= 1
                 else:
-                    j -= 1
+                    j += 1
         return list(res)
 
 
 if __name__ == "__main__":
-    res = Solution().threeSum(nums=[0, 0, 0])
+    # res = Solution().threeSum(nums=[0, 0, 0])
+    # print(res)
+
+    res = Solution().threeSum([-2, 0, 1, 1, 2])
     print(res)
