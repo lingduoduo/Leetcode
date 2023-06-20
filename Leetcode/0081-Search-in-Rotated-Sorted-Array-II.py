@@ -1,31 +1,155 @@
-class Solution(object):
-    def search(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: bool
-        """
-        left = 0
-        right = len(nums) - 1
-        while left <= right:
-            while left < right and nums[left] == nums[right]:
-                left += 1
-            mid = (left + right) // 2
+from typing import List
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            while l < r and nums[l] == nums[r]:
+                l += 1
+            mid = l + (r - l) // 2
             if nums[mid] == target:
                 return True
-
-            if nums[left] <= nums[mid]:
-                if nums[left] <= target < nums[mid]:
-                    right = mid - 1
-                elif nums[left] <= nums[mid] < target:
-                    left = mid + 1
-                elif target <= nums[left] <= nums[mid]:
-                    left = mid + 1
-            elif nums[mid] <= nums[right]:
-                if nums[mid] < target <= nums[right]:
-                    left = mid + 1
-                elif target < nums[mid] <= nums[right]:
-                    right = mid - 1
-                elif nums[mid] <= nums[right] <= target:
-                    right = mid - 1
+            elif nums[l] <= nums[mid]:
+                if nums[l] <= target < nums[mid]:
+                    r = mid
+                else:
+                    l = mid + 1
+            else:
+                if nums[mid] < target <= nums[r]:
+                    l = mid + 1
+                else:
+                    r = mid
         return False
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        nums = list(set(nums))
+        print(nums)
+
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) // 2
+            if nums[mid] == target:
+                return True
+            elif nums[l] <= nums[mid]:
+                if nums[l] <= target < nums[mid]:
+                    r = mid
+                else:
+                    l = mid + 1
+            else:
+                if nums[mid] < target <= nums[r]:
+                    l = mid + 1
+                else:
+                    r = mid
+        return False
+
+
+if __name__ == "__main__":
+    res = Solution().search(
+        nums=[
+            -9,
+            -8,
+            -8,
+            -8,
+            -8,
+            -7,
+            -7,
+            -7,
+            -7,
+            -7,
+            -7,
+            -6,
+            -6,
+            -6,
+            -6,
+            -6,
+            -5,
+            -5,
+            -4,
+            -4,
+            -4,
+            -4,
+            -4,
+            -4,
+            -4,
+            -3,
+            -3,
+            -3,
+            -3,
+            -3,
+            -2,
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            4,
+            4,
+            4,
+            5,
+            5,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            8,
+            8,
+            9,
+            9,
+            9,
+            9,
+            10,
+            10,
+            10,
+            10,
+            -10,
+            -10,
+            -10,
+            -10,
+            -10,
+            -10,
+            -9,
+            -9,
+            -9,
+        ],
+        target=13,
+    )
+    print(res)

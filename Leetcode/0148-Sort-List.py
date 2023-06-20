@@ -3,10 +3,13 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
-'''
+
+
+"""
 Input: 4->2->1->3
 Output: 1->2->3->4
-'''
+"""
+
 
 class Solution:
     def sortList(self, head):
@@ -20,11 +23,13 @@ class Solution:
         mid = slow.next
         slow.next = None
         return self.merge(self.sortList(head), self.sortList(mid))
-    
+
     def merge(self, l1, l2):
-        if not l1: return l2
-        if not l2: return l1
-    
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+
         head = ListNode(0)
         curr = head
 
@@ -50,7 +55,7 @@ class Solution:
                 tail.next, tail, h2 = h2, h2, h2.next
         tail.next = h1 or h2
         return dummy.next
-    
+
     def sortList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
@@ -60,9 +65,8 @@ class Solution:
         pre.next = None
         return self.merge(self.sortList(head), self.sortList(slow))
 
-    def merge(self, h1, h2):
-        
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     list1 = ListNode(4)
     list1.next = ListNode(2)
     list1.next.next = ListNode(1)

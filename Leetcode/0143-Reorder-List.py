@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -11,6 +14,7 @@ class ListNode:
             valStr += "->" + str(pt.val)
             pt = pt.next
         print(valStr)
+
 
 class Solution:
     def reorderList(self, head: ListNode) -> None:
@@ -34,7 +38,7 @@ class Solution:
         prev = dummy
         i = 1
         while stack:
-            if i%2 == 1:
+            if i % 2 == 1:
                 node = stack.pop(0)
             else:
                 node = stack.pop()
@@ -44,46 +48,11 @@ class Solution:
 
         return dummy.next
 
-class Solution:
-    def reorderList(self, head: ListNode) -> None:
-    if head and head.next and head.next.next:
-        #find mid
-        fast, slow = head, head
-        while fast.next and fast.next.next:
-            fast = fast.next.next
-            slow = slow.next
-        head1 = head
-        head2 = slow.next
-        slow.next = None
 
-        # reverse linked list head2     
-        dummy = ListNode(0)
-        dummy.next = head2
-        curr = head2.next
-        head2.next = None
-        while curr:
-            temp= curr.next
-            curr.next = dummy.next
-            dummy.next = curr
-            curr = temp
-        head2 = dummy.next
-
-        # merge two linked list head1 and head2
-        p1 = head1
-        p2 = head2
-        while p2:
-            temp1 = p1.next
-            temp2 = p2.next
-            p1.next = p2
-            p2.next = temp1
-            p1 = temp1
-            p2 = temp2
-            
 class Solution:
     def reorderList(self, head: ListNode) -> None:
         if head and head.next and head.next.next:
-            
-            #find mid
+            # find mid
             fast, slow = head, head
             while fast.next and fast.next.next:
                 fast = fast.next.next
@@ -91,17 +60,53 @@ class Solution:
             head1 = head
             head2 = slow.next
             slow.next = None
-            
+
+            # reverse linked list head2
+            dummy = ListNode(0)
+            dummy.next = head2
+            curr = head2.next
+            head2.next = None
+            while curr:
+                temp = curr.next
+                curr.next = dummy.next
+                dummy.next = curr
+                curr = temp
+            head2 = dummy.next
+
+            # merge two linked list head1 and head2
+            p1 = head1
+            p2 = head2
+            while p2:
+                temp1 = p1.next
+                temp2 = p2.next
+                p1.next = p2
+                p2.next = temp1
+                p1 = temp1
+                p2 = temp2
+
+
+class Solution:
+    def reorderList(self, head: ListNode) -> None:
+        if head and head.next and head.next.next:
+            # find mid
+            fast, slow = head, head
+            while fast.next and fast.next.next:
+                fast = fast.next.next
+                slow = slow.next
+            head1 = head
+            head2 = slow.next
+            slow.next = None
+
             # reverse second list
             dummy = ListNode(0)
             dummy.next = head2
             curr = head2.next
             head2.next = None
-            
+
             while curr:
                 dummy.next, curr.next, curr = curr, dummy.next, curr.next
             head2 = dummy.next
-        
+
             # merge two linked list head1 and head2
             p1 = head1
             p2 = head2
