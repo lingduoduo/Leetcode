@@ -34,7 +34,7 @@ if __name__ == '__main__':
     G = [0, 1, 3]
     result = Solution().numComponents(head, G)
     print(result)
-    
+
     head.next.next.next.next = ListNode(4)
     G = [0, 3, 1, 4]
     result = Solution().numComponents(head, G)
