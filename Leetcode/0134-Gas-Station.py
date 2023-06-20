@@ -8,12 +8,13 @@ class Solution:
         for i in range(n):
             tank = 0
             for j in range(n):
-                tank += gas[(i+j)%n] - cost[(i+j)%n]
+                tank += gas[(i + j) % n] - cost[(i + j) % n]
                 if tank < 0:
                     break
                 if j == n - 1:
                     return i
         return -1
+
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
@@ -21,7 +22,7 @@ class Solution:
         tank = 0
         res = 0
         for i in range(n * 2):
-            tank += (gas[i % n] - cost[i % n])
+            tank += gas[i % n] - cost[i % n]
             if tank >= 0:
                 res += 1
             else:
@@ -31,6 +32,7 @@ class Solution:
             return 2 * n - res
         else:
             return -1
+
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:

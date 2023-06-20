@@ -4,32 +4,32 @@ class Solution:
         :type str: str
         :rtype: int
         """
-        # str = str.strip()
-        # if str == "":
-        #     return 0
+        str = str.strip()
+        if str == "":
+            return 0
 
-        # i = 0
-        # if str[i] == "-":
-        #     flag = -1
-        #     i += 1
-        # elif str[i] == "+":
-        #     flag = 1
-        #     i += 1
-        # else:
-        #     flag = 1
+        i = 0
+        if str[i] == "-":
+            flag = -1
+            i += 1
+        elif str[i] == "+":
+            flag = 1
+            i += 1
+        else:
+            flag = 1
 
-        # result = 0
-        # while i < len(str):
-        #     if str[i] < '0' or str[i] > '9':
-        #         break
-        #     result = result * 10 + int(str[i])
-        #     i += 1
-        # result = result * flag
-        # if result <= -2**31:
-        #     return -2**31
-        # if result >= 2**31:
-        #     return 2**31-1
-        # return result
+        result = 0
+        while i < len(str):
+            if str[i] < "0" or str[i] > "9":
+                break
+            result = result * 10 + int(str[i])
+            i += 1
+        result = result * flag
+        if result <= -(2**31):
+            return -(2**31)
+        if result >= 2**31:
+            return 2**31 - 1
+        return result
 
 
 class Solution:
@@ -51,10 +51,34 @@ class Solution:
         return max(-(2**31), min(sign * res, 2**31 - 1))
 
 
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        res = 0
+        f = 1
+        s = s.lstrip(" ")
+        if len(s) == 0:
+            return 0
+        elif s[0] == "-":
+            f = -1
+        elif s[0] == "+":
+            f = 1
+        elif s[0].isalpha() or s[0] == ".":
+            return 0
+        else:
+            res += int(s[0])
+
+        for ch in s[1:]:
+            if ch.isdigit():
+                res = res * 10 + int(ch)
+            else:
+                break
+        return min(max(-(2**31), res * f), 2**31 - 1)
+
+
 if __name__ == "__main__":
+    print(Solution().myAtoi("+-12"))
     print(Solution().myAtoi("    -41"))
     print(Solution().myAtoi("4193 with words"))
     print(Solution().myAtoi("words and 987"))
     print(Solution().myAtoi("-91283472332"))
     print(Solution().myAtoi("3.14"))
-    print("Done")
