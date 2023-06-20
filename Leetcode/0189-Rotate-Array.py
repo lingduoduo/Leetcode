@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution(object):
     def rotate(self, nums, k):
         """
@@ -25,3 +27,12 @@ class Solution:
         self.reverse(nums, 0, n - 1)
         self.reverse(nums, 0, k - 1)
         self.reverse(nums, k, n - 1)
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        # speed up the rotation
+        k %= n
+        res = nums + nums
+        for i in range(n):
+            nums[i] = res[n-k+i]
