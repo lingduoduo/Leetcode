@@ -64,11 +64,10 @@ class Solution:
         for i, c in enumerate(s):
             if c not in d:
                 d[c] = i
-                res = max(res, i - start + 1)
             else:
                 start = max(start, d[c] + 1)
                 d[c] = i
-                res = max(res, i - start + 1)
+            res = max(res, i - start + 1)
         return res
 
 
