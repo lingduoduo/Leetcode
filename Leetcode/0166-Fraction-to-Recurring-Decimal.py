@@ -26,10 +26,12 @@ class Solution:
         res = numlist[0]
 
         if len(numlist) > 1:
-            res += '.'
+            res += "."
 
         if loopStr:
-            res += "".join(numlist[1:len(numlist) - len(loopStr)]) + "(" + loopStr + ")"
+            res += (
+                "".join(numlist[1 : len(numlist) - len(loopStr)]) + "(" + loopStr + ")"
+            )
         else:
             res += "".join(numlist[1:])
 

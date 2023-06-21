@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
         seen = set()  # track visited elements in the window
@@ -16,4 +17,3 @@ class Solution:
             seen.add(x)
             res = max(res, tot)
         return res
-
