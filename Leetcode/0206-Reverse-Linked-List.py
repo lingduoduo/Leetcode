@@ -23,19 +23,20 @@ class Solution:
         if not head:
             return None
 
-        dummy = ListNode(0)
+        dummy = ListNode(-1)
         dummy.next = head
 
-        curr = head
-        head = head.next
-        curr.next = None
-        curr = head
+        p1 = dummy
+        p2 = p1.next
+        p3 = p2.next
+        p2.next = None
 
-        while curr:
-            tmp = curr.next
-            curr.next = dummy.next
-            dummy.next = curr
-            curr = tmp
+        p2 = p3
+        while p2:
+            p3 = p2.next
+            p2.next = p1.next
+            p1.next = p2
+            p2 = p3
         return dummy.next
 
 
