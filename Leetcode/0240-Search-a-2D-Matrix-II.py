@@ -16,6 +16,9 @@ class Solution:
                 nums.append(matrix[i][j])
         return target in nums
 
+
+class Solution:
+    def searchMatrix(self, matrix, target):
         if not matrix or not matrix[0]:
             return False
 
