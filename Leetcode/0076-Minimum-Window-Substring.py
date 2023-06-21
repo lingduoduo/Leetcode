@@ -39,7 +39,7 @@ class Solution(object):
                     if d[leftmost] > 0:
                         matchCount -= 1
 
-        return "" if minLen == float("inf") else s[index: index + minLen]
+        return "" if minLen == float("inf") else s[index : index + minLen]
 
 
 import collections
@@ -58,7 +58,7 @@ class Solution:
             while cnt == len(t):
                 if minLen > i - left + 1:
                     minLen = i - left + 1
-                    res = s[left: i + 1]
+                    res = s[left : i + 1]
                 count[s[left]] += 1
                 if count[s[left]] > 0:
                     cnt -= 1
@@ -81,7 +81,7 @@ class Solution:
             while debt == 0:
                 if cur > i - start + 1:
                     cur = i - start + 1
-                    res = s[start: i + 1]
+                    res = s[start : i + 1]
                 d[s[start]] += 1
                 if d[s[start]] > 0:
                     debt += 1

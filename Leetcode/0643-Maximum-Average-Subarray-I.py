@@ -31,12 +31,13 @@ class Solution:
         if k == 1:
             return max(nums)
 
-        psum = sum(nums[0 : k])
+        psum = sum(nums[0:k])
         res = psum
         for idx, num in enumerate(nums[k:]):
             psum = psum + num - nums[idx]
             res = max(res, psum)
         return float(res) / k
+
 
 if __name__ == "__main__":
     res = Solution().findMaxAverage(nums=[1, 12, -5, -6, 50, 3], k=4)
