@@ -59,19 +59,16 @@ class Solution(object):
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if not s:
-            return 0
-        if len(s) == 1:
-            return 1
-
         d = {}
-        start = 0
-        res = 0
-        for j in range(len(s)):
-            if s[j] in d.keys() and d[s[j]] >= start:
-                start = d[s[j]] + 1
-            d[s[j]] = j
-            res = max(res, j - start + 1)
+        start = res = 0
+        for i, c in enumerate(s):
+            if c not in d:
+                d[c] = i
+                res = max(res, i - start + 1)
+            else:
+                start = max(start, d[c] + 1)
+                d[c] = i
+                res = max(res, i - start + 1)
         return res
 
 

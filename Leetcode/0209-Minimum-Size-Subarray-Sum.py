@@ -1,24 +1,5 @@
 class Solution:
     def minSubArrayLen(self, s: int, nums) -> int:
-        # if not nums: return 0
-        # presum = []
-        # presum.append(0)
-
-        # for i in range(len(nums)):
-        #     presum.append(presum[i] + nums[i])
-
-        # print(presum)
-
-        # res = float('inf')
-        # for i in range(len(nums)):
-        #     cnt = float('inf')
-        #     for j in range(1,len(nums)+1):
-        #         if presum[j] - presum[i] >= s:
-        #             cnt = min(cnt, j-i)
-        #             break
-        #     res = min(res, cnt)
-        # return 0 if res == float('inf') else res
-
         n = len(nums)
         left, right = 0, 0
         csum = 0
@@ -31,6 +12,24 @@ class Solution:
                 left += 1
             right += 1
         return res if res != float("inf") else 0
+
+
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        if sum(nums) < target:
+            return 0
+
+        stack = []
+        psum = 0
+        res = len(nums)
+        for num in nums:
+            psum += num
+            stack.append(num)
+            while stack and psum >= target:
+                res = min(res, len(stack))
+                val = stack.pop(0)
+                psum -= val
+        return res
 
 
 if __name__ == "__main__":
