@@ -8,7 +8,6 @@ class TreeNode(object):
 
 class Solution(object):
     def minDepth(self, root):
-
         if not root:
             return 0
 
