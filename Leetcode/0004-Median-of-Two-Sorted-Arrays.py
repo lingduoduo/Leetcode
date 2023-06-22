@@ -1,38 +1,4 @@
-###class Solution(object):
-###first try
-###    def findMedianSortedArrays(self, nums1, nums2):
-###    """
-###    :type nums1: List[int]
-###    :type nums2: List[int]
-###    :rtype: float
-###    """
-###    lenA, lenB = len(nums1), len(nums2)
-###    if (lenA + lenB) % 2 == 1:
-###        return self.getKth(nums1, nums2, (lenA + lenB) / 2 + 1)
-###    else:
-###        return (self.getKth(nums1, nums2, (lenA + lenB) / 2) +
-###                self.getKth(nums1, nums2, (lenA + lenB) / 2 + 1)) * 0.5
-#
-###def getKth(self, A, B, k):
-###    lenA, lenB = len(A), len(B)
-###    if lenA > lenB:
-###        return self.getKth(B, A, k)
-#
-###    if lenA == 0:
-###        return B[k - 1]
-#
-###    if k == 1:
-###        return min(A[0], B[0])
-#
-###    pa = min(k / 2, lenA)
-###    pb = k - pa
-#
-###    if A[pa - 1] < B[pb - 1]:
-###        return self.getKth(A[pa:], B, k - pa)
-###    elif A[pa - 1] > B[pb - 1]:
-###        return self.getKth(A, B[pb:], k - pb)
-###    else:
-###        return A[pa - 1]
+from typing import List
 
 
 class Solution:
@@ -109,5 +75,33 @@ def findMedianSortedArrays(self, nums1, nums2):
             hi = i
     i = lo
     j = mid - i
-    nextfew = sorted(a[i : i + 2] + b[j : j + 2])
+    nextfew = sorted(a[i: i + 2] + b[j: j + 2])
     return (nextfew[0] + nextfew[1 - (m + n) % 2]) // 2.0
+
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        if len(nums1) > len(nums2):
+            return self.findMedianSortedArrays(nums2, nums1)
+
+        m, n = len(nums1), len(nums2)
+        left, right = 0, m
+
+        while left <= right:
+            partitionA = (left + right) // 2
+            partitionB = (m + n + 1) // 2 - partitionA
+
+            maxLeftA = float('-inf') if partitionA == 0 else nums1[partitionA - 1]
+            minRightA = float('inf') if partitionA == m else nums1[partitionA]
+            maxLeftB = float('-inf') if partitionB == 0 else nums2[partitionB - 1]
+            minRightB = float('inf') if partitionB == n else nums2[partitionB]
+
+            if maxLeftA <= minRightB and maxLeftB <= minRightA:
+                if (m + n) % 2 == 0:
+                    return (max(maxLeftA, maxLeftB) + min(minRightA, minRightB)) / 2
+                else:
+                    return max(maxLeftA, maxLeftB)
+            elif maxLeftA > minRightB:
+                right = partitionA - 1
+            else:
+                left = partitionA + 1
