@@ -11,22 +11,20 @@ class Solution:
 
 class Solution:
     def largestNumber(self, nums):
-        current_max, ans = "", ""
-        # Convert Ints into Strings
-
-        nums = [str(i) for i in nums]
+        cur = ""
+        res = ""
+        nums = [str(num) for num in nums]
         while nums:
             for i in nums:
-                if not current_max:
-                    current_max = i
+                if not cur:
+                    cur = i
                 else:
-                    # Comparator
-                    if i + current_max > current_max + i:
-                        current_max = i
-            ans += current_max
-            nums.remove(current_max)
-            current_max = ""
-        return ans if not ans.startswith("0") else "0"
+                    if int(i + cur) > int(cur + i):
+                        cur = i
+            res += cur
+            nums.remove(cur)
+            cur = ""
+        return str(int(res))
 
 
 if __name__ == "__main__":
