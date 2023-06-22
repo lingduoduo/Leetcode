@@ -8,48 +8,6 @@ class TreeNode(object):
 
 class Solution(object):
     def minDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        ####First Try
-        ###if root is None:
-        ###	return 0
-        ###if root.left is None and root.right is None:
-        ###	return 1
-        ###leftDepth = minDepth(root.left)
-        ###rightDepth = minDepth(root.right)
-        ###if root.left is None:
-        ###	return rightDepth+1
-        ###if root.right is None:
-        ###	retrun leftDepth+1
-        ###return min(leftDepth, rightDepth)+1
-
-        ####Second Try
-        ###if not root:
-        ###    return 0
-        ###left = float('inf')
-        ###right = float('inf')
-        ###if not root.left and not root.right:
-        ###    return 1
-        ###if root.left:
-        ###    left = self.minDepth(root.left)
-        ###if root.right:
-        ###    right = self.minDepth(root.right)
-        ###return min(left, right) + 1
-
-        ####Third Try
-        ###if not root:
-        ###    return 0
-        ###if not root.left and not root.right:
-        ###    return 1
-
-        ###left = self.minDepth(root.left)
-        ###right = self.minDepth(root.right)
-        ###if root.left and root.right:
-        ###    return min(left, right) + 1
-        ###else:
-        ###    return max(left, right) + 1
 
         if not root:
             return 0
@@ -69,6 +27,28 @@ class Solution(object):
 
         self.dfs(root.left, level + 1)
         self.dfs(root.right, level + 1)
+
+
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        res = float("inf")
+
+        def helper(root, depth):
+            nonlocal res
+            if not root:
+                return depth
+            if not root.left and not root.right:
+                res = min(res, depth + 1)
+            if root.left:
+                helper(root.left, depth + 1)
+            if root.right:
+                helper(root.right, depth + 1)
+
+        helper(root, 0)
+        return res
 
 
 if __name__ == "__main__":
