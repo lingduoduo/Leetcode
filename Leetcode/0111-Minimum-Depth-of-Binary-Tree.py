@@ -1,4 +1,7 @@
 ###Definition for a binary tree node.
+from typing import Optional
+
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
