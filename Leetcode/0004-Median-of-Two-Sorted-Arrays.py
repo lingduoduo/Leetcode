@@ -75,7 +75,7 @@ def findMedianSortedArrays(self, nums1, nums2):
             hi = i
     i = lo
     j = mid - i
-    nextfew = sorted(a[i: i + 2] + b[j: j + 2])
+    nextfew = sorted(a[i : i + 2] + b[j : j + 2])
     return (nextfew[0] + nextfew[1 - (m + n) % 2]) // 2.0
 
 
@@ -91,10 +91,10 @@ class Solution:
             partitionA = (left + right) // 2
             partitionB = (m + n + 1) // 2 - partitionA
 
-            maxLeftA = float('-inf') if partitionA == 0 else nums1[partitionA - 1]
-            minRightA = float('inf') if partitionA == m else nums1[partitionA]
-            maxLeftB = float('-inf') if partitionB == 0 else nums2[partitionB - 1]
-            minRightB = float('inf') if partitionB == n else nums2[partitionB]
+            maxLeftA = float("-inf") if partitionA == 0 else nums1[partitionA - 1]
+            minRightA = float("inf") if partitionA == m else nums1[partitionA]
+            maxLeftB = float("-inf") if partitionB == 0 else nums2[partitionB - 1]
+            minRightB = float("inf") if partitionB == n else nums2[partitionB]
 
             if maxLeftA <= minRightB and maxLeftB <= minRightA:
                 if (m + n) % 2 == 0:

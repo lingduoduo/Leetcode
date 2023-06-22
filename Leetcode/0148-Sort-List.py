@@ -73,7 +73,8 @@ class Solution:
 #         self.next = next
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next: return head
+        if not head or not head.next:
+            return head
 
         slow, fast = head, head
         while fast.next and fast.next.next:
