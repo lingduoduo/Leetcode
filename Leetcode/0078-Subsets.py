@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def subsets(self, nums):
         """
@@ -75,6 +78,30 @@ class Solution:
 
         for i in range(idx, len(nums)):
             self.dfs(nums, n, i + 1, path + [nums[i]])
+
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        for num in nums:
+            cur_res = res.copy()
+            for cur in cur_res:
+                res.append(cur + [num])
+        return res
+
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def dfs(idx, path):
+            nonlocal res
+            res.append(path)
+            for i in range(idx, len(nums)):
+                dfs(i + 1, path + [nums[i]])
+
+        dfs(0, [])
+        return res
 
 
 if __name__ == "__main__":

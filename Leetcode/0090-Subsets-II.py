@@ -16,21 +16,6 @@ class Solution:
 
 
 class Solution:
-    def subsetsWithDup(self, nums):
-        self.res = []
-        nums.sort()
-        for i in range(len(nums)):
-            self.dfs(nums, i, [])
-        return self.res
-
-    def dfs(self, nums, index, path):
-        if path not in self.res:
-            self.res.append(path)
-        for i in range(index, len(nums)):
-            self.dfs(nums, i + 1, path + [nums[i]])
-
-
-class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         res = [[], [nums[0]]]
@@ -41,6 +26,21 @@ class Solution:
             else:
                 cur = [t + [nums[i]] for t in res]
             res += cur
+        return res
+
+
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def dfs(idx, path):
+            nonlocal res
+            if sorted(path) not in res:
+                res.append(sorted(path))
+            for i in range(idx, len(nums)):
+                dfs(i + 1, path + [nums[i]])
+
+        dfs(0, [])
         return res
 
 
