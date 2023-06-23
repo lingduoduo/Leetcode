@@ -1,4 +1,7 @@
- class Solution:
+from typing import List
+
+
+class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         if not nums:
             return []
@@ -28,21 +31,21 @@ class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         n = len(nums)
 
-        if n==0 or n==1:
+        if n == 0 or n == 1:
             return nums
 
         nums = sorted(nums)
 
-        dp = [0]*n
+        dp = [0] * n
         max_num = 0
         max_index = 0
-        child = [0]*n
+        child = [0] * n
         result = []
 
-        for i in range(n-1, -1, -1):
+        for i in range(n - 1, -1, -1):
             for j in range(i, n):
-                if nums[j] % nums[i] == 0 and dp[i] < dp[j]+1:
-                    dp[i] = dp[j]+1
+                if nums[j] % nums[i] == 0 and dp[i] < dp[j] + 1:
+                    dp[i] = dp[j] + 1
                     child[i] = j
 
                     # To store max subset length and relative start point index
@@ -51,9 +54,9 @@ class Solution:
                         max_index = i
 
         # Construct output subset
-        i=max_index       
+        i = max_index
         for j in range(max_num):
             result.append(nums[i])
-            i=child[i]
+            i = child[i]
 
         return result

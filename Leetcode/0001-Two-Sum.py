@@ -22,7 +22,3 @@ if __name__ == "__main__":
     numbers = [2, 5, 5, 11]
     result = Solution().twoSum(numbers, 6)
     print(result)
-    nums = [3, 3]
-    target = 6
-    result = Solution().twoSum(nums, target)
-    print(result)
