@@ -1,16 +1,6 @@
-# class Solution:
-#     '''
-#     Input: n = 4, k = 2
-#     Output:
-#     [
-#       [2,4],
-#       [3,4],
-#       [2,3],
-#       [1,2],
-#       [1,3],
-#       [1,4],
-#     ]
-#     '''
+from typing import List
+
+
 class Solution:
     def combine(self, n: int, k: int):
         res = []
@@ -42,6 +32,20 @@ class Solution:
         output = []
         backtrack()
         return output
+
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+
+        def dfs(idx, path):
+            if len(path) == k:
+                res.append(path)
+            for i in range(idx, n):
+                dfs(i + 1, path + [1 + i])
+
+        dfs(0, [])
+        return res
 
 
 if __name__ == "__main__":

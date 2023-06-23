@@ -24,24 +24,6 @@ class Solution(object):
 
 class Solution(object):
     def combinationSum2(self, candidates, target):
-        self.res = set()
-        candidates.sort()
-        self.dfs(candidates, target, [])
-        return list(self.res)
-
-    def dfs(self, nums, target, path):
-        if target == 0:
-            self.res.add(tuple(sorted(path)))
-            return
-
-        for idx, num in enumerate(nums):
-            if num <= target:
-                print([idx, num])
-                self.dfs(nums[idx + 1 :], target - num, path + [num])
-
-
-class Solution(object):
-    def combinationSum2(self, candidates, target):
         def dfs(cur, path):
             if cur == 0:
                 res.append(path)
@@ -58,6 +40,25 @@ class Solution(object):
         visited = [0] * len(candidates)
         candidates.sort()
         dfs(target, [])
+        return res
+
+
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        def dfs(target, index, path):
+            if target < 0:
+                return
+            elif target == 0:
+                res.append(path)
+                return
+            for i in range(index, len(candidates)):
+                if i > index and candidates[i] == candidates[i-1]:
+                    continue
+                dfs(target - candidates[i], i + 1, path + [candidates[i]])
+
+        candidates.sort()
+        res = []
+        dfs(target, 0, [])
         return res
 
 
