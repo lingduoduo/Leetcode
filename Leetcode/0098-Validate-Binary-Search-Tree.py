@@ -1,9 +1,9 @@
-###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 class Solution(object):
@@ -39,14 +39,18 @@ class Solution:
 
 
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        self.res = []
-        self.inOrder(root)
-        return self.res == sorted(self.res) and len(self.res) == len(set(self.res))
+    def isValidBST(self, root: TreeNode) -> bool:
 
-    def inOrder(self, root):
-        if not root:
-            return []
-        self.inOrder(root.left)
-        self.res.append(root.val)
-        self.inOrder(root.right)
+        def validate(node, low=float("-inf"), high=float("inf")):
+            # Empty trees are valid BSTs.
+            if not node:
+                return True
+            # The current node's value must be between low and high.
+            if node.val <= low or node.val >= high:
+                return False
+
+            # The left and right subtree must also be valid.
+            return (validate(node.right, node.val, high) and
+                    validate(node.left, low, node.val))
+
+        return validate(root)
