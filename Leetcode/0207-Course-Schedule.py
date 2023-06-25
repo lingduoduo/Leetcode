@@ -1,3 +1,7 @@
+from collections import defaultdict
+from typing import List
+
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = collections.defaultdict(list)
@@ -30,17 +34,26 @@ class Solution:
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         inbound = [0] * numCourses
-        edge = defaultdict(list)
-        for x, y in prerequisites:
-            inbound[x] += 1
-            edge[y].append(x)
+        d = defaultdict(list)
+
+        for t, f in prerequisites:
+            d[f].append(t)
+            inbound[t] += 1
+
         stack = [i for i in range(numCourses) if inbound[i] == 0]
         visited = 0
+        if len(stack) == 0: return False
+
         while stack:
-            cur = stack.pop()
+            f = stack.pop(0)
             visited += 1
-            for node in edge[cur]:
-                inbound[node] -= 1
-                if inbound[node] == 0:
-                    stack.append(node)
+            for t in d[f]:
+                inbound[t] -= 1
+                if inbound[t] == 0:
+                    stack.append(t)
         return visited == numCourses
+
+
+if __name__ == "__main__":
+    res = Solution().canFinish(numCourses=2, prerequisites=[[1, 0]])
+    print(res)
