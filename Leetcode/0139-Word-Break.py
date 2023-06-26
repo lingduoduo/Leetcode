@@ -1,22 +1,23 @@
-class Solution(object):
-    def wordBreak(self, s, wordDict):
-        """
-        :type s: str
-        :type wordDict: List[str]
-        :rtype: bool
-        """
-        d = dict()
-        for word in wordDict:
-            g = d.setdefault(word, set())
-            ind = -1
-            while True:
-                try:
-                    ind = s.index(word, ind + 1)
-                    g.add(ind)
-                except:
-                    break
-        return d
+from typing import List
 
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        word_set = set(wordDict)
+        q = Deque.deque()
+        visited = set()
+
+        q.append(0)
+        while q:
+            start = q.popleft()
+            if start in visited:
+                continue
+            for end in range(start + 1, len(s) + 1):
+                if s[start:end] in word_set:
+                    q.append(end)
+                    if end == len(s):
+                        return True
+            visited.add(start)
+        return False
 
 class Solution(object):
     def wordBreak(self, s, wordDict):
@@ -59,26 +60,6 @@ class Solution:
             return False
 
         return wordBreakRecur(s, frozenset(wordDict), 0)
-
-
-class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        word_set = set(wordDict)
-        q = Deque.deque()
-        visited = set()
-
-        q.append(0)
-        while q:
-            start = q.popleft()
-            if start in visited:
-                continue
-            for end in range(start + 1, len(s) + 1):
-                if s[start:end] in word_set:
-                    q.append(end)
-                    if end == len(s):
-                        return True
-            visited.add(start)
-        return False
 
 
 class Solution:

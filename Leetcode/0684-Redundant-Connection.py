@@ -1,5 +1,5 @@
 import collections
-
+from typing import List
 
 # Union Find Method
 class UnionFindSet:
