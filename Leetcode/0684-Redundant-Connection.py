@@ -1,6 +1,7 @@
 import collections
 from typing import List
 
+
 # Union Find Method
 class UnionFindSet:
     def __init__(self, n):
@@ -30,21 +31,6 @@ class UnionFindSet:
 
 
 class Solution:
-    def findRedundantConnection(self, edges):
-        """
-        :type edges: List[List[int]]
-        :rtype: List[int]
-        """
-
-        s = UnionFindSet(len(edges))
-
-        for edge in edges:
-            if not s.union(edge[0], edge[1]):
-                return edge
-        return None
-
-
-class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         graph = collections.defaultdict(set)
 
@@ -61,6 +47,30 @@ class Solution:
                 return u, v
             graph[u].add(v)
             graph[v].add(u)
+
+
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        self.parent = [-1] * (len(edges) + 1)  # -1 is giving me 98% time
+
+        def find(x):
+            while self.parent[x] > 0:
+                x = self.parent[x]
+            return x
+
+        def union(x, y):
+            root_x = find(x)
+            root_y = find(y)
+
+            if root_x == root_y:
+                return False
+            else:
+                self.parent[root_x] = root_y
+                return True
+
+        for u, v in edges:
+            if not union(u, v):
+                return [u, v]
 
 
 if __name__ == "__main__":
