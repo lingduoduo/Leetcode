@@ -1,9 +1,13 @@
+from typing import List
+
+
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        cash, hold = 0, -price[0]
+        buy = float("-inf")
+        sell = 0
 
-        for i in range(1, len(prices)):
-            cash = max(cash, hold + prices[i] - fee)
-            hold = max(hold, cash - prices[i])
+        for price in prices:
+            buy = max(buy, sell - price)
+            sell = max(sell, buy + price - fee)
 
-        retirm cash
+        return sell
