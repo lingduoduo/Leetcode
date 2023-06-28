@@ -1,4 +1,5 @@
 import math
+from typing import List
 
 
 class Solution:
@@ -34,3 +35,16 @@ class Solution:
 
         res = max(dp[n - 1][j][0] for j in range(k + 1))
         return res
+
+
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        if k == 0: return 0
+        # dp[k][0] = min cost you need to spend at most k transactions
+        # dp[k][1] = max profit you can achieve at most k transactions
+        dp = [[-float("inf"), 0] for _ in range(k + 1)]
+        for price in prices:
+            for i in range(1, k + 1):
+                dp[i][0] = max(dp[i][0], dp[i - 1][1] - price)
+                dp[i][1] = max(dp[i][1], price + dp[i][0])
+        return dp[-1][1]
