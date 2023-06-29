@@ -1,22 +1,5 @@
-class Solution:
-    def calculateMinimumHP(self, dungeon):
-        n, m = len(dungeon), len(dungeon[0])  ###初始化dp, n, m 分别代表着 行 和 列
-        dp = [[0] * m for _ in range(n)]
-        dp[n - 1][m - 1] = max(1 - dungeon[n - 1][m - 1], 1)
-
-        for i in range(n - 2, -1, -1):  ###最后一列
-            dp[i][m - 1] = max(dp[i + 1][m - 1] - dungeon[i][m - 1], 1)
-
-        for j in range(m - 2, -1, -1):  ###最后一行
-            dp[n - 1][j] = max(dp[n - 1][j + 1] - dungeon[n - 1][j], 1)
-
-        for i in range(n - 2, -1, -1):  ###倒着计算
-            for j in range(m - 2, -1, -1):
-                dp[i][j] = max(
-                    min(dp[i + 1][j] - dungeon[i][j], dp[i][j + 1] - dungeon[i][j]), 1
-                )
-
-        return dp[0][0]
+from functools import lru_cache
+from typing import List
 
 
 class Solution:
@@ -32,6 +15,23 @@ class Solution:
             return min(0, dungeon[i][j] + max(dfs(i + 1, j), dfs(i, j + 1)))
 
         return (-dfs(0, 0)) + 1
+
+
+class Solution:
+    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+        m, n = len(dungeon), len(dungeon[0])
+        dp = dungeon
+
+        dp[m -1][n - 1] = max(1, 1 - dp[m -1][n - 1])
+        for i in range(m-2, -1, -1):
+            dp[i][n-1] = max(1, dp[i+1][n-1] - dp[i][n-1])
+        for j in range(n-2, -1, -1):
+            dp[m-1][j] = max(1, dp[m-1][j+1] - dp[m-1][j])
+
+        for i in range(m-2, -1, -1):
+            for j in range(n-2, -1, -1):
+                dp[i][j] = max(1, min(dp[i + 1][j],dp[i][j + 1]) - dp[i][j])
+        return dp[0][0]
 
 
 if __name__ == "__main__":
