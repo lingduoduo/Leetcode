@@ -3,10 +3,10 @@ class Solution:
         n = len(s)
         dp = [[0] * n for _ in range(n)]
 
-        for i in reversed(range(n)):
+        for i in range(n - 2, -1, -1):
             dp[i][i] = 1
             for j in range(i + 1, n):
-                print([i, j])
+                print([i, j], s[i:j + 1])
                 if s[i] == s[j]:
                     dp[i][j] = dp[i + 1][j - 1] + 2
                 else:
