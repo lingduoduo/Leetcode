@@ -10,7 +10,7 @@ class Solution:
             if n - i <= size // 2:
                 break
             left = right = i
-            while right < n - 1 and s[right] == s[right+1]:
+            while right < n - 1 and s[right] == s[right + 1]:
                 right += 1
             i = right + 1
             while right < n - 1 and left > 0 and s[right + 1] == s[left - 1]:
@@ -20,7 +20,7 @@ class Solution:
             if cur > size:
                 start = left
                 size = cur
-        return s[start: start + size]
+        return s[start : start + size]
 
 
 class Solution:
@@ -45,7 +45,7 @@ class Solution:
                     res = [i, j]
 
         i, j = res
-        return s[i:j + 1]
+        return s[i : j + 1]
 
 
 if __name__ == "__main__":

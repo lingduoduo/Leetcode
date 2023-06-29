@@ -49,7 +49,6 @@ class KthLargest:
 
 
 class KthLargest:
-
     def __init__(self, k: int, nums: List[int]):
         self.stack = nums
         self.size = len(self.stack)

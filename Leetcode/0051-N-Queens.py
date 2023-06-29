@@ -18,7 +18,7 @@ class Solution:
                 if check(depth, i):
                     board[depth] = i
                     s = "." * n
-                    dfs(depth + 1, valuelist + [s[:i] + "Q" + s[i + 1:]])
+                    dfs(depth + 1, valuelist + [s[:i] + "Q" + s[i + 1 :]])
 
         board = [-1 for i in range(n)]
         res = []
@@ -42,9 +42,11 @@ class Solution:
             for col in range(n):
                 curr_diagonal = row - col
                 curr_anti_diagonal = row + col
-                if (col in cols
-                        or curr_diagonal in diagonals
-                        or curr_anti_diagonal in anti_diagonals):
+                if (
+                    col in cols
+                    or curr_diagonal in diagonals
+                    or curr_anti_diagonal in anti_diagonals
+                ):
                     continue
 
                 cols.add(col)

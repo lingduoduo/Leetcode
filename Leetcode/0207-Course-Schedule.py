@@ -42,7 +42,8 @@ class Solution:
 
         stack = [i for i in range(numCourses) if inbound[i] == 0]
         visited = 0
-        if len(stack) == 0: return False
+        if len(stack) == 0:
+            return False
 
         while stack:
             f = stack.pop(0)

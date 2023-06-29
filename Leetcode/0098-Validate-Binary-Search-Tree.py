@@ -40,7 +40,6 @@ class Solution:
 
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
-
         def validate(node, low=float("-inf"), high=float("inf")):
             # Empty trees are valid BSTs.
             if not node:
@@ -50,7 +49,8 @@ class Solution:
                 return False
 
             # The left and right subtree must also be valid.
-            return (validate(node.right, node.val, high) and
-                    validate(node.left, low, node.val))
+            return validate(node.right, node.val, high) and validate(
+                node.left, low, node.val
+            )
 
         return validate(root)

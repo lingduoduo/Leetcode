@@ -8,7 +8,9 @@ class Solution:
         count = 0
         for char in t:
             if d[char]:
-                d[char] -= 1  # if char in t is also in memo, substract that from the counted number
+                d[
+                    char
+                ] -= 1  # if char in t is also in memo, substract that from the counted number
             else:
                 count += 1
         # return count #or

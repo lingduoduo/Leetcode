@@ -3,9 +3,9 @@ import math
 
 class Solution:
     def numSquares(self, n: int) -> int:
-        square_nums = [i ** 2 for i in range(0, int(math.sqrt(n)) + 1)]
+        square_nums = [i**2 for i in range(0, int(math.sqrt(n)) + 1)]
 
-        dp = [float('inf')] * (n + 1)
+        dp = [float("inf")] * (n + 1)
         # bottom case
         dp[0] = 0
 
@@ -33,8 +33,8 @@ class Solution:
                 if target == 0:
                     return count
                 i = 1
-                while i ** 2 <= target:
-                    rest = target - i ** 2
+                while i**2 <= target:
+                    rest = target - i**2
                     _q.add(rest)
                     i += 1
             count += 1

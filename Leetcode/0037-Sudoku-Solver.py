@@ -48,7 +48,9 @@ class Solution:
             """
             Check if one could place a number d in (row, col) cell
             """
-            return not (d in rows[row] or d in columns[col] or d in boxes[box_index(row, col)])
+            return not (
+                d in rows[row] or d in columns[col] or d in boxes[box_index(row, col)]
+            )
 
         def place_number(d, row, col):
             """
@@ -67,7 +69,7 @@ class Solution:
             del rows[row][d]
             del columns[col][d]
             del boxes[box_index(row, col)][d]
-            board[row][col] = '.'
+            board[row][col] = "."
 
         def place_next_numbers(row, col):
             """
@@ -95,7 +97,7 @@ class Solution:
             Backtracking
             """
             # if the cell is empty
-            if board[row][col] == '.':
+            if board[row][col] == ".":
                 # iterate over all numbers from 1 to 9
                 for d in range(1, 10):
                     if could_place(d, row, col):
@@ -121,7 +123,7 @@ class Solution:
         boxes = [defaultdict(int) for i in range(N)]
         for i in range(N):
             for j in range(N):
-                if board[i][j] != '.':
+                if board[i][j] != ".":
                     d = int(board[i][j])
                     place_number(d, i, j)
 

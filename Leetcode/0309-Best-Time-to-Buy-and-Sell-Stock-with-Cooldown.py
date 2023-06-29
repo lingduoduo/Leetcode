@@ -3,7 +3,8 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if not prices: return 0
+        if not prices:
+            return 0
 
         prev = 0
         curr = 0
@@ -16,9 +17,11 @@ class Solution:
             prev = tmp
         return curr
 
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if not prices: return 0
+        if not prices:
+            return 0
         profit = 0  ## before buy status
         cooldown = 0  ## after sell status
         hold = -prices[0]  ## before sell status

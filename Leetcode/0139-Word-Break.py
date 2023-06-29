@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         word_set = set(wordDict)
@@ -18,6 +19,7 @@ class Solution:
                         return True
             visited.add(start)
         return False
+
 
 class Solution(object):
     def wordBreak(self, s, wordDict):

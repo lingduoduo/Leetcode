@@ -37,23 +37,23 @@ class Solution:
             return []
 
         d = dict()
-        d['0'] = ''
-        d['1'] = ''
-        d['2'] = 'abc'
-        d['3'] = 'def'
-        d['4'] = 'ghi'
-        d['5'] = 'jkl'
-        d['6'] = 'mno'
-        d['7'] = 'pqrs'
-        d['8'] = 'tuv'
-        d['9'] = 'wxyz'
+        d["0"] = ""
+        d["1"] = ""
+        d["2"] = "abc"
+        d["3"] = "def"
+        d["4"] = "ghi"
+        d["5"] = "jkl"
+        d["6"] = "mno"
+        d["7"] = "pqrs"
+        d["8"] = "tuv"
+        d["9"] = "wxyz"
 
         res = []
 
         def dfs(idx, path):
             nonlocal res
             if path == len(digits):
-                res.append(''.join(path))
+                res.append("".join(path))
 
             if idx >= len(digits):
                 return
@@ -72,23 +72,23 @@ class Solution:
             return []
 
         d = dict()
-        d['0'] = ''
-        d['1'] = ''
-        d['2'] = 'abc'
-        d['3'] = 'def'
-        d['4'] = 'ghi'
-        d['5'] = 'jkl'
-        d['6'] = 'mno'
-        d['7'] = 'pqrs'
-        d['8'] = 'tuv'
-        d['9'] = 'wxyz'
+        d["0"] = ""
+        d["1"] = ""
+        d["2"] = "abc"
+        d["3"] = "def"
+        d["4"] = "ghi"
+        d["5"] = "jkl"
+        d["6"] = "mno"
+        d["7"] = "pqrs"
+        d["8"] = "tuv"
+        d["9"] = "wxyz"
 
         res = []
 
         def dfs(idx, path):
             nonlocal res
             if len(path) == len(digits):
-                res.append(''.join(path))
+                res.append("".join(path))
 
             if idx >= len(digits):
                 return

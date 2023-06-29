@@ -52,7 +52,7 @@ class Solution:
                 res.append(path)
                 return
             for i in range(index, len(candidates)):
-                if i > index and candidates[i] == candidates[i-1]:
+                if i > index and candidates[i] == candidates[i - 1]:
                     continue
                 dfs(target - candidates[i], i + 1, path + [candidates[i]])
 

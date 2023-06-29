@@ -39,7 +39,8 @@ class Solution:
 
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
-        if k == 0: return 0
+        if k == 0:
+            return 0
         # dp[k][0] = min cost you need to spend at most k transactions
         # dp[k][1] = max profit you can achieve at most k transactions
         dp = [[-float("inf"), 0] for _ in range(k + 1)]

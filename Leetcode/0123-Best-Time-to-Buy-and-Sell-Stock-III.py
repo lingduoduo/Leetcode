@@ -1,7 +1,10 @@
 from typing import List
+
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if not prices: return 0
+        if not prices:
+            return 0
         n = len(prices)
         g = [[0] * 3 for _ in range(N)]
         l = [[0] * 3 for _ in range(N)]

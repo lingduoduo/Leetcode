@@ -30,7 +30,7 @@ class Solution:
         def dfs(strs, path):
             nonlocal res
             if len(path) == 4 and len(strs) == 0:
-                res.append('.'.join(path))
+                res.append(".".join(path))
                 return
 
             for i in range(1, 4):

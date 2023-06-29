@@ -6,6 +6,7 @@ class TreeNode:
         self.right = right
         self.dfs(root.right)
 
+
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
         if not root:
