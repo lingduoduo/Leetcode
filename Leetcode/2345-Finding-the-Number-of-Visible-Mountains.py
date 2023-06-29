@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def visibleMountains(self, peaks: List[List[int]]) -> int:
         n = len(peaks)
@@ -7,7 +9,7 @@ class Solution:
         peaks.sort(key=lambda x: (x[0] - x[1], -(x[0] + x[1])))
 
         count = 0
-        maxEnd = -inf
+        maxEnd = float("-inf")
 
         # while iterating peaks, count the number of visible peak
         # which has larger x-intercept of right mountain
