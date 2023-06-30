@@ -1,6 +1,7 @@
 from typing import List
 from bisect import bisect_left
 
+
 class Solution:
     def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
         if len(nums) < 3:

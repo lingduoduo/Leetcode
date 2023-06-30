@@ -38,7 +38,7 @@ class Solution:
             if len(cousins[depth]) == 1:  # No cousin, path length equals depth - 1.
                 ans.append(depth - 1)
             elif (
-                    cousins[depth][0][1] == q
+                cousins[depth][0][1] == q
             ):  # The removed node has the largest height, look for the node with 2nd largest height.
                 ans.append(-cousins[depth][1][0] + depth)
             else:  # Look for the node with the largest height.
