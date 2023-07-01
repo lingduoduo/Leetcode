@@ -67,3 +67,6 @@ class MaxStack:
         num, idx = heapq.heappop(self.heap)
         self.removed.add(-idx)
         return -num
+
+
+MaxStack()

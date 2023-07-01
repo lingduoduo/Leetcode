@@ -34,6 +34,34 @@ class WordDictionary:
         return self.dfs(dic[word[i]], word, i + 1)
 
 
+class WordDictionary:
+    def __init__(self):
+        self.d = {}
+
+    def addWord(self, word: str) -> None:
+        d = self.d
+        for cha in word:
+            if cha not in d:
+                d[cha] = {}
+            d = d[cha]
+        d["#"] = True
+
+    def search(self, word: str) -> bool:
+        return self.dfs(self.d, word)
+
+    def dfs(self, d, word):
+        for i, cha in enumerate(word):
+            if cha in d:
+                d = d[cha]
+            else:
+                if cha == ".":
+                    for x in d:
+                        if x != "#" and self.dfs(d[x], word[i + 1 :]):
+                            return True
+                return False
+        return "#" in d
+
+
 if __name__ == "__main__":
     obj = WordDictionary()
     obj.addWord("bad")

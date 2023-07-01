@@ -1,5 +1,5 @@
-Trie = lambda: collections.defaultdict(Trie)
-WEIGHT = False
+from typing import List
+import collections
 
 
 class WordFilter:

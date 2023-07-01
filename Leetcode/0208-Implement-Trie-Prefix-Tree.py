@@ -1,58 +1,3 @@
-# class Node:
-
-#     def __init__(self):
-#         self.d = dict()
-#         self.isword = False
-
-
-# class Trie:
-
-#     def __init__(self):
-#         """
-#         Initialize your data structure here.
-#         """
-#         self.root = Node()
-
-#     def insert(self, word: str) -> None:
-#         """
-#         Inserts a word into the trie.
-#         """
-#         current = self.root
-
-#         for i in range(len(word)):
-#             node = Node()
-#             current.d[word[i]] = current.d.get(word[i], node)
-#             current = current.d[word[i]]
-#         current.isword = True
-
-#     def search(self, word: str) -> bool:
-#         """
-#         Returns if the word is in the trie.
-#         """
-#         current = self.root
-
-#         for i in range(len(word)):
-#             if word[i] in current.d:
-#                 current = current.d[word[i]]
-#             else:
-#                 return False
-
-#         return current.isword
-
-#     def startsWith(self, prefix: str) -> bool:
-#         """
-#         Returns if there is any word in the trie that starts with the given prefix.
-#         """
-#         current = self.root
-
-#         for i in range(len(prefix)):
-#             if prefix[i] in current.d:
-#                 current = current.d[prefix[i]]
-#             else:
-#                 return False
-#         return True
-
-
 class Trie:
     def __init__(self):
         """Initialize your data structure here."""
@@ -83,6 +28,47 @@ class Trie:
             if c not in cur:
                 return False
             cur = cur[c]
+        return True
+
+
+class TrieNode:
+    def __init__(self):
+        # Stores children nodes and whether node is the end of a word
+        self.children = {}
+        self.isEnd = False
+
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        cur = self.root
+        # Insert character by character into trie
+        for c in word:
+            # if character path does not exist, create it
+            if c not in cur.children:
+                cur.children[c] = TrieNode()
+            cur = cur.children[c]
+        cur.isEnd = True
+
+    def search(self, word: str) -> bool:
+        cur = self.root
+        # Search character by character in trie
+        for c in word:
+            # if character path does not exist, return False
+            if c not in cur.children:
+                return False
+            cur = cur.children[c]
+        return cur.isEnd
+
+    def startsWith(self, prefix: str) -> bool:
+        # Same as search, except there is no isEnd condition at final return
+        cur = self.root
+        for c in prefix:
+            if c not in cur.children:
+                return False
+            cur = cur.children[c]
         return True
 
 
