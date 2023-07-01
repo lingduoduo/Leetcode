@@ -1,6 +1,8 @@
+from typing import List
+
+
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        n = len(nums)
         s = sum(nums)
 
         if s % 2 != 0:
@@ -38,225 +40,26 @@ class Solution:
 
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        if len(nums) < 2:
+        total_sum = sum(nums)
+        if total_sum % 2 != 0:
             return False
-        total = sum(nums)
-        if total % 2 != 0:
-            return False
-        target = total // 2
-        dp = [True] + [False] * target
-        for i, n in enumerate(nums):
-            for j in range(target, n - 1, -1):
-                dp[j] |= dp[j - n]
-        return dp[target]
+        subset_sum = total_sum // 2
+        n = len(nums)
+
+        # construct a dp table of size (n+1) x (subset_sum + 1)
+        dp = [[False] * (subset_sum + 1) for _ in range(n + 1)]
+        dp[0][0] = True
+        for i in range(1, n + 1):
+            curr = nums[i - 1]
+            for j in range(subset_sum + 1):
+                if j < curr:
+                    dp[i][j] = dp[i - 1][j]
+                else:
+                    dp[i][j] = dp[i - 1][j] or dp[i - 1][j - curr]
+        return dp[n][subset_sum]
 
 
 if __name__ == "__main__":
-    # nums = [1,5,11,5]
-    # res = Solution().canPartition(nums)
-    # print(res)
-
-    nums = [
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        99,
-        97,
-    ]
+    nums = [1, 5, 11, 5]
     res = Solution().canPartition(nums)
     print(res)
