@@ -72,7 +72,4 @@ if __name__ == "__main__":
     obj.buildDict(["hello", "leetcode"])
     result = obj.search("hello")
     print(result)
-    ###result = obj.search("heelo")
-    ###print(result)
-    ###result = obj.search("heel")
-    ###print(result)
+

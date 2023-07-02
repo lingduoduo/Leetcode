@@ -33,6 +33,6 @@ class Solution:
         return current_string
 
 if __name__ == '__main__':
-    n =
+    n = 10
     res = Solution().countAndSay(n)
     print(res)
