@@ -1,18 +1,17 @@
 import collections
+from typing import List
 
 
 class Solution:
-    def subdomainVisits(self, cpdomains):
-        d = collections.Counter()
-        for domains in cpdomains:
-            num, domain = domains.split(" ")
-            dstr = domain.split(".")[::-1]
-
-            while len(dstr) > 0:
-                s = ".".join(dstr[::-1])
-                d[s] += int(num)
-                dstr.pop()
-        return [str(v) + " " + k for k, v in d.items()]
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        res = collections.Counter()
+        for cp in cpdomains:
+            count, domain = cp.split()
+            count = int(count)
+            frags = domain.split(".")
+            for i in range(len(frags)):
+                res[".".join(frags[i:])] += count
+        return [f"{v} {k}" for k, v in res.items()]
 
 
 if __name__ == "__main__":
