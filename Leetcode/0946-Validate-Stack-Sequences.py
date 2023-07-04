@@ -1,12 +1,13 @@
+from typing import List
+
+
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        s = []
-        j = 0
+        stack = []
 
         for x in pushed:
-            s.append(x)
-            while s and s[-1] == popped[j]:
-                s.pop()
-                j += 1
-
-        return j == len(popped)
+            stack.append(x)
+            while stack and stack[-1] == popped[0]:
+                stack.pop()
+                popped.pop(0)
+        return len(stack) == 0
