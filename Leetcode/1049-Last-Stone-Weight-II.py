@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
         s = sum(stones)
@@ -7,7 +8,8 @@ class Solution:
         dp[0] = 1
         for i in range(len(stones)):
             for j in range(len(dp) - 1, -1, -1):
-                if j - stones[i] < 0: break
+                if j - stones[i] < 0:
+                    break
                 if dp[j - stones[i]]:
                     dp[j] = 1
 

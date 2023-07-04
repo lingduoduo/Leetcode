@@ -70,11 +70,11 @@ class Solution(object):
         for direction in directions:
             dx, dy = row + direction[0], col + direction[1]
             if (
-                    dx < 0
-                    or dx >= len(grid)
-                    or dy < 0
-                    or dy >= len(grid[0])
-                    or grid[dx][dy] == "0"
+                dx < 0
+                or dx >= len(grid)
+                or dy < 0
+                or dy >= len(grid[0])
+                or grid[dx][dy] == "0"
             ):
                 continue
             self.dfs(grid, dx, dy)
@@ -92,11 +92,11 @@ class Solution:
 
     def dfs(self, grid, row, col):
         if (
-                row < 0
-                or row >= len(grid)
-                or col < 0
-                or col >= len(grid[0])
-                or grid[row][col] == "0"
+            row < 0
+            or row >= len(grid)
+            or col < 0
+            or col >= len(grid[0])
+            or grid[row][col] == "0"
         ):
             return
 
@@ -117,17 +117,17 @@ class Solution:
         idx = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == '1':
+                if grid[i][j] == "1":
                     d[i, j] = idx
                     idx += 1
 
         uf = UnionFind(idx)
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == '1':
-                    if i > 0 and grid[i - 1][j] == '1':
+                if grid[i][j] == "1":
+                    if i > 0 and grid[i - 1][j] == "1":
                         uf.union(d[i - 1, j], d[i, j])
-                    if j > 0 and grid[i][j - 1] == '1':
+                    if j > 0 and grid[i][j - 1] == "1":
                         uf.union(d[i, j - 1], d[i, j])
         return uf.groups
 

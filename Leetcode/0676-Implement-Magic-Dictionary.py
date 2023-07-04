@@ -9,6 +9,7 @@ class MagicDictionary:
     Input: search("hell"), Output: False
     Input: search("leetcoded"), Output: False
     """
+
     def __init__(self):
         """
         Initialize your data structure here.
@@ -43,28 +44,31 @@ class MagicDictionary(object):
             self.buckets[len(word)].append(word)
 
     def search(self, word):
-        return any(sum(a!=b for a,b in zip(word, candidate)) == 1
-                   for candidate in self.buckets[len(word)])
+        return any(
+            sum(a != b for a, b in zip(word, candidate)) == 1
+            for candidate in self.buckets[len(word)]
+        )
 
 
 class MagicDictionary:
-
     def __init__(self):
         pass
 
     def _genneighbors(self, word):
         for i in range(len(word)):
-            yield word[:i] + '*' + word[i + 1:]
+            yield word[:i] + "*" + word[i + 1 :]
 
     def buildDict(self, dictionary: List[str]) -> None:
         self.words = set(dictionary)
-        self.d = collections.Counter(nei for word in dictionary
-                                     for nei in self._genneighbors(word))
+        self.d = collections.Counter(
+            nei for word in dictionary for nei in self._genneighbors(word)
+        )
 
     def search(self, searchWord: str) -> bool:
-        return any(self.d[nei] > 1 or
-                   self.d[nei] == 1 and searchWord not in self.words
-                   for nei in self._genneighbors(searchWord))
+        return any(
+            self.d[nei] > 1 or self.d[nei] == 1 and searchWord not in self.words
+            for nei in self._genneighbors(searchWord)
+        )
 
 
 if __name__ == "__main__":
@@ -72,4 +76,3 @@ if __name__ == "__main__":
     obj.buildDict(["hello", "leetcode"])
     result = obj.search("hello")
     print(result)
-

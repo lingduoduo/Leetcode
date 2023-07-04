@@ -13,7 +13,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().corpFlightBookings(bookings=[[1, 2, 10], [2, 3, 20], [2, 5, 25]], n=5)
+    res = Solution().corpFlightBookings(
+        bookings=[[1, 2, 10], [2, 3, 20], [2, 5, 25]], n=5
+    )
     print(res)
 
     res = Solution().corpFlightBookings(bookings=[[1, 2, 10], [2, 2, 15]], n=2)

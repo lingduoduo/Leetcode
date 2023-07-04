@@ -28,7 +28,8 @@ class Solution:
         def replace(word):
             cur = trie
             for letter in word:
-                if letter not in cur or END in cur: break
+                if letter not in cur or END in cur:
+                    break
                 cur = cur[letter]
             return cur.get(END, word)
 
@@ -53,12 +54,14 @@ class Trie:
 
     def search(self, word):
         node = self.root
-        osf = ''
+        osf = ""
         for c in word:
-            if c not in node.children: break
+            if c not in node.children:
+                break
             node = node.children[c]
             osf += c
-            if node.isWord: return osf
+            if node.isWord:
+                return osf
         return word
 
 
@@ -67,9 +70,9 @@ class Solution:
         trie = Trie()
         for words in dictionary:
             trie.insert(words)
-        res = ''
+        res = ""
         for word in sentence.split():
             if res:
-                res += ' '
+                res += " "
             res += trie.search(word)
         return res
