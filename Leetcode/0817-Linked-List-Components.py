@@ -1,9 +1,3 @@
-'''
-Input: 
-head: 0->1->2->3
-G = [0, 1, 3]
-'''
-
 import collections
 
 
@@ -20,13 +14,13 @@ class Solution:
         res = 0
         curr = head
         while curr:
-            if curr.val in d and (not curr.next or curr.next.val not in d)
+            if (curr.val in d) and (not curr.next or curr.next.val not in d):
                 res += 1
             curr = curr.next
         return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     head = ListNode(0)
     head.next = ListNode(1)
     head.next.next = ListNode(2)

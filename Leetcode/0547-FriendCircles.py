@@ -21,7 +21,8 @@ class Solution(object):
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        if not isConnected: return 0
+        if not isConnected:
+            return 0
 
         graph = collections.defaultdict(set)
         n = len(isConnected)
@@ -46,24 +47,6 @@ class Solution:
                 seen.add(i)
                 dfs(i)
         return res
-
-
-class Solution:
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
-
-    def find(self, x):
-        if x == self.par[x]:
-            return self.par[x]
-        parent = self.find(self.par[x])
-        self.par[x] = parent
-        return parent
-
-    def union(self, x, y):
-        x = self.find(x)
-        y = self.find(y)
-        if x == y:
-            return
-        self.par[x] = y
 
 
 class UnionFind:
@@ -93,38 +76,6 @@ class UnionFind:
         self.groups -= 1
 
         return False
-
-
-class Solution:
-    def findCircleNum(self, grid: List[List[int]]) -> int:
-        n = len(grid)
-        if n < 1 or len(grid[0]) != n:
-            return 0
-
-        union = UnionFind(n)
-
-        for i in range(n):
-            for j in range(n):
-                if grid[i][j] == 1:
-                    union.union(i, j)
-
-        return union.groups
-
-
-class Solution:
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        n = len(isConnected)
-        if n < 1 or len(isConnected[0]) != n:
-            return 0
-
-        union = UnionFind(n)
-
-        for i in range(n):
-            for j in range(n):
-                if isConnected[i][j] == 1:
-                    union.union(i, j)
-
-        return union.groups
 
 
 class UnionFind:
