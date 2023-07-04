@@ -2,7 +2,6 @@ install:
 	pip3 install --upgrade pip && pip3 install -r requirements.txt
 
 format:
-#	black $$(git ls-files '*.py')
 	black *.py
 
 lint:
