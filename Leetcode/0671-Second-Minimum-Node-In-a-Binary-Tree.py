@@ -1,9 +1,10 @@
 ###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 
 class Solution(object):
     def findSecondMinimumValue(self, root):
@@ -13,10 +14,10 @@ class Solution(object):
         """
         if root is None:
             return -1
-        
+
         minVal = root.val
         self.secVal = 0x80000000
-        
+
         def traverse(root):
             if root is None:
                 return -1
@@ -24,6 +25,6 @@ class Solution(object):
                 self.secVal = root.val
             traverse(root.left)
             traverse(root.right)
-        
+
         traverse(root)
-        return self.secVal if !self.secVal = 0x80000000 else -1
+        return self.secVal if self.secVal != 0x80000000 else -1

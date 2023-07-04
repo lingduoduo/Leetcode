@@ -1,6 +1,9 @@
+import List
+
+
 class Solution:
     def findWords(self, words: List[str]) -> List[str]:
-    	rowdict = {}
+        rowdict = {}
         for c in "qwertyuiopQWERTYUIOP":
             rowdict[c] = 1
         for c in "asdfghjklASDFGHJKL":
@@ -10,9 +13,9 @@ class Solution:
 
         res = []
         for word in words:
-        	curr = []
-        	for i in range(len(word)):
-        		curr.add(rowdict[word[i]])
-        	if len(set(curr)) == 1:
-        		res.append(word)
+            curr = []
+            for i in range(len(word)):
+                curr.add(rowdict[word[i]])
+            if len(set(curr)) == 1:
+                res.append(word)
         return res
