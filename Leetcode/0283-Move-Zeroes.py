@@ -60,8 +60,8 @@ class Solution:
                 j += 1
 
 if __name__ == "__main__":
-    # res = Solution().moveZeroes(nums=[0, 1, 0, 3, 12])
-    # print(res)
+    res = Solution().moveZeroes(nums=[0, 1, 0, 3, 12])
+    print(res)
 
     res = Solution().moveZeroes(nums=[0, 0])
     print(res)
