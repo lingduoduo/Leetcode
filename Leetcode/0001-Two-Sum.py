@@ -1,7 +1,10 @@
+import pysnooper
+
 from typing import List
 
 
 class Solution:
+    @pysnooper.snoop()
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         d = dict()
         d[nums[0]] = 0
