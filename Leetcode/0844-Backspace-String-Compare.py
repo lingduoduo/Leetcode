@@ -37,6 +37,22 @@ class Solution:
         return fs == ft
 
 
+@pysnooper.snoop()
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        def finalstrs(strs: str) -> str:
+            skip = 0
+            for x in reversed(strs):
+                if x == "#":
+                    skip += 1
+                elif skip:
+                    skip -= 1
+                else:
+                    yield x
+
+        return all(x == y for x, y in zip_longest(finalstrs(s), finalstrs(t)))
+
+
 if __name__ == "__main__":
     # S = "ab#c"
     # T = "ad#c"
@@ -44,7 +60,9 @@ if __name__ == "__main__":
     # T = "c#d#"
     # S = "a##c"
     # T = "#a#c"
-    s = "a#c"
-    t = "b"
+    # s = "a#c"
+    # t = "b"
+    s = "bxj##tw"
+    t = "bxj###tw"
     result = Solution().backspaceCompare(s, t)
     print(result)
