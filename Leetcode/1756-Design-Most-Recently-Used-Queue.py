@@ -2,7 +2,6 @@ import pysnooper
 
 
 class MRUQueue:
-
     def __init__(self, n: int):
         self.nums = [i + 1 for i in range(n)]
 
