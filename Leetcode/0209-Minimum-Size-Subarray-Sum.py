@@ -1,35 +1,43 @@
+from typing import List
+import pysnooper
+
+
 class Solution:
-    def minSubArrayLen(self, s: int, nums) -> int:
-        n = len(nums)
+    @pysnooper.snoop()
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        if sum(nums) < target:
+            return 0
         left, right = 0, 0
         csum = 0
         res = float("inf")
-        while right < n:
+        while right < len(nums):
             csum += nums[right]
-            while csum >= s:
+            while target <= csum:
                 res = min(res, right - left + 1)
                 csum -= nums[left]
                 left += 1
             right += 1
-        return res if res != float("inf") else 0
-
-
-class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        if sum(nums) < target:
-            return 0
-
-        stack = []
-        psum = 0
-        res = len(nums)
-        for num in nums:
-            psum += num
-            stack.append(num)
-            while stack and psum >= target:
-                res = min(res, len(stack))
-                val = stack.pop(0)
-                psum -= val
         return res
+
+        #
+
+
+# class Solution:
+#     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+#         if sum(nums) < target:
+#             return 0
+#
+#         stack = []
+#         psum = 0
+#         res = len(nums)
+#         for num in nums:
+#             psum += num
+#             stack.append(num)
+#             while stack and psum >= target:
+#                 res = min(res, len(stack))
+#                 val = stack.pop(0)
+#                 psum -= val
+#         return res
 
 
 if __name__ == "__main__":
