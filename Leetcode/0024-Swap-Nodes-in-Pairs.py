@@ -61,13 +61,6 @@ class Solution(object):
         return res.next
 
 
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 class Solution(object):
     def swapPairs(self, head):
         dummy = ListNode(0)
@@ -76,8 +69,10 @@ class Solution(object):
         while p1.next and p1.next.next:
             p2 = p1.next
             p3 = p2.next
+
             p2.next = p3.next
             p3.next = p2
+
             p1.next = p3
             p1 = p2
         return dummy.next
