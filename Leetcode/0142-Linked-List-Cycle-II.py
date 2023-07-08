@@ -8,9 +8,7 @@ class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         if not head:
             return None
-
         visited = set()
-
         while head:
             if head in visited:
                 return head
@@ -35,3 +33,18 @@ class Solution(object):
             slow = slow.next
             fast = fast.next
         return fast
+
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        f, s = head, head
+        while f and f.next:
+            f = f.next.next
+            s = s.next
+            if f == s:
+                s = head
+                while s != f:
+                    s = s.next
+                    f = f.next
+                return s
+        return None
