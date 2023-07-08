@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -19,16 +22,16 @@ class Solution:
         for i in range(left - 1):
             p1 = p1.next
 
-        p2 = p1.next
-        p4 = None
+        cur = p1.next
+        pre = None
 
         for i in range(right - left + 1):
-            p3 = p2.next
-            p2.next = p4
-            p4 = p2
-            p2 = p3
+            post = cur.next
+            cur.next = pre
+            pre = cur
+            cur = post
 
-        p1.next.next = p2
-        p1.next = p4
+        p1.next.next = cur
+        p1.next = pre
 
         return dummyNode.next
