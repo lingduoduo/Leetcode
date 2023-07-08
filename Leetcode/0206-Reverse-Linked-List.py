@@ -57,3 +57,16 @@ class Solution:
         post.next = head
         head.next = None
         return newhead
+
+
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        cur = head
+        pre = None
+        while cur:
+            post = cur.next  # 保存一下 cur的下一个节点，因为接下来要改变cur->next
+            cur.next = pre  # 反转
+            # 更新pre、cur指针
+            pre = cur
+            cur = post
+        return pre
