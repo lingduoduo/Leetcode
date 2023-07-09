@@ -30,6 +30,17 @@ class Solution:
         return n == 1
 
 
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while n != 1:
+            n = sum(int(i) ** 2 for i in str(n))
+            if n in seen:
+                return False
+            seen.add(n)
+        return True
+
+
 if __name__ == "__main__":
     n = 1111111
     result = Solution().isHappy(n)
