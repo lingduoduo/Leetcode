@@ -15,6 +15,17 @@ class Solution:
                 d[nums[i]] = i
 
 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # 创建一个集合来存储我们目前看到的数字
+        seen = set()
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in seen:
+                return [nums.index(diff), i]
+            seen.add(num)
+
+
 if __name__ == "__main__":
     numbers = [2, 7, 11, 15]
     result = Solution().twoSum(nums=numbers, target=9)
