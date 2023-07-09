@@ -1,46 +1,8 @@
+import collections
+
+
 class Solution(object):
     def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        ###freqs = dict()
-        ###for i in s:
-        ###    try:
-        ###        freqs[i] += 1
-        ###    except BaseException:
-        ###        freqs[i] = 1
-        #
-        ###result = 0
-        ###odd = 0
-        ###for v in freqs.values():
-        ###    result += v // 2 * 2
-        ###    if v % 2 == 1:
-        ###        odd = 1
-        ###result = result + odd
-        ###return result
-
-        ###d = {}
-        ###for cha in s:
-        ###    if cha in d:
-        ###        d[cha] += 1
-        ###    else:
-        ###        d[cha] = 1
-
-        ###even = odd = 0
-        ###for v in d.values():
-        ###    if v % 2 == 0:
-        ###        even += v
-        ###    else:
-        ###        odd = max(odd, v)
-        ###        even += v - 1
-        ###if odd > 0:
-        ###    return even + 1
-        ###else:
-        ###    return even
-
-        import collections
-
         chars = [c for c in s]
         d = collections.Counter(chars)
         res = 0
@@ -53,6 +15,20 @@ class Solution(object):
                 res += v - 1
                 flag = 1
         return res + flag
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        ss = set()
+        for letter in s:
+            if letter not in ss:
+                ss.add(letter)
+            else:
+                ss.remove(letter)
+        if len(ss) != 0:
+            return len(s) - len(ss) + 1
+        else:
+            return len(s)
 
 
 if __name__ == "__main__":

@@ -1,38 +1,22 @@
+import collections
+
+
 class Solution(object):
     def firstUniqChar(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        ###d = dict()
-
-        ###for i in range(len(s)):
-        ###    try:
-        ###        d[s[i]]+=1
-        ###    except:
-        ###        d[s[i]]=1
-        ###for i in range(len(s)):
-        ###    if d[s[i]] == 1:
-        ###        return i
-        ###return -1
-
-        ###print(s)
-        ###l = list(s)
-        ###res = 0
-        ###while l:
-        ###    curr = l.pop(0)
-        ###    if curr not in s[:res] and curr not in s[res + 1:]:
-        ###        return res
-        ###    res += 1
-        ###return -1
-
-        import collections
-
         d = collections.Counter(s)
 
         for i, cha in enumerate(s):
             if d[cha] == 1:
                 return i
+        return -1
+
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        for i in range(len(s)):
+            if s[i] not in s[:i] and s[i] not in s[i + 1 :]:
+                return i
+
         return -1
 
 
