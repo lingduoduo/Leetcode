@@ -114,6 +114,37 @@ class Solution:
                 p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
 
 
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        if head and head.next and head.next.next:
+            # find mid
+            fast, slow = head, head
+            while fast.next and fast.next.next:
+                fast = fast.next.next
+                slow = slow.next
+
+            head1 = head
+            head2 = slow.next
+            slow.next = None
+
+            # reverse second list
+            pre = None
+            cur = head2
+            while cur:
+                post = cur.next
+                cur.next = pre
+                pre = cur
+                cur = post
+
+            head2 = pre
+
+            # merge two linked list head1 and head2
+            p1 = head1
+            p2 = head2
+            while p2:
+                p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
+
+
 if __name__ == "__main__":
     l1 = ListNode(1)
     l1.next = ListNode(2)
