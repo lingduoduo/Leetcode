@@ -26,6 +26,15 @@ class Solution(object):
         return s
 
 
+class Solution(object):
+    def reverseString(self, s):
+        stack = []
+        for char in s:
+            stack.append(char)
+        for i in range(len(s)):
+            s[i] = stack.pop()
+
+
 if __name__ == "__main__":
     input = ["h", "e", "l", "l", "o"]
     ###input = ["e", "l", "l", "o"]
