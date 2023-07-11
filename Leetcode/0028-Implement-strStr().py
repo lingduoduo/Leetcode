@@ -25,6 +25,7 @@ class Solution:
             if needle[i] == needle[j + 1]:
                 j += 1
             next[i] = j
+        print(next)
 
         j = -1
         for i in range(len(haystack)):
@@ -35,3 +36,8 @@ class Solution:
             if j == len(needle) - 1:
                 return i - len(needle) + 1
         return -1
+
+
+if __name__ == "__main__":
+    res = Solution().strStr(haystack="sadbutsad", needle="sad")
+    print(resß)
