@@ -4,36 +4,6 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        ###Method 1
-        ###if not s:
-        ###    return True
-        ###stack = list()
-        ###for string in s:
-        ###    if string in ['[', '{', '(']:
-        ###        stack.append(string)
-        ###    else:
-        ###        if len(stack) == 0:
-        ###            return False
-        ###        last = stack.pop()
-        ###        if string == ']' and last != '[':
-        ###            return False
-        ###        elif string == ')' and last != '(':
-        ###            return False
-        ###        elif string == '}' and last != '{':
-        ###            return False
-        ###return True if len(stack) == 0 else False
-
-        ###Method 2
-        ###v = []
-        ###d = {']': '[', ')': '(', '}': '{'}
-        ###for i in range(len(s)):
-        ###    if s[i] in d.values():
-        ###        v.append(s[i])
-        ###    elif s[i] in d.keys():
-        ###        if len(v) == 0 or d[s[i]] != v.pop():
-        ###            return False
-        ###return len(v) == 0
-
         d = {"[": "]", "(": ")", "{": "}"}
         stack = []
         for i in range(len(s)):
@@ -43,6 +13,25 @@ class Solution(object):
                 if len(stack) == 0 or d[stack.pop()] != s[i]:
                     return False
         return len(stack) == 0
+
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+
+        for item in s:
+            if item == "(":
+                stack.append(")")
+            elif item == "[":
+                stack.append("]")
+            elif item == "{":
+                stack.append("}")
+            elif not stack or stack[-1] != item:
+                return False
+            else:
+                stack.pop()
+
+        return True if not stack else False
 
 
 if __name__ == "__main__":
