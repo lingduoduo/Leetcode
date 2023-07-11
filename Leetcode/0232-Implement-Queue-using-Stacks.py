@@ -3,8 +3,8 @@ class MyQueue(object):
         """
         Initialize your data structure here.
         """
-        self.stack1 = list()
-        self.stack2 = list()
+        self.stack_in = []
+        self.stack_out = []
 
     def push(self, x):
         """
@@ -12,38 +12,38 @@ class MyQueue(object):
         :type x: int
         :rtype: None
         """
-        self.stack1.append(x)
+        self.stack_in.append(x)
 
     def pop(self):
         """
         Removes the element from in front of queue and returns that element.
         :rtype: int
         """
-        if self.stack2:
-            return self.stack2.pop()
+        if self.empty():
+            return None
+
+        if self.stack_out:
+            return self.stack_out.pop()
         else:
-            while self.stack1:
-                self.stack2.append(self.stack1.pop())
-            return self.stack2.pop()
+            for i in range(len(self.stack_in)):
+                self.stack_out.append(self.stack_in.pop())
+            return self.stack_out.pop()
 
     def peek(self):
         """
         Get the front element.
         :rtype: int
         """
-        if self.stack2:
-            return self.stack2[-1]
-        else:
-            while self.stack1:
-                self.stack2.append(self.stack1.pop())
-            return self.stack2[-1]
+        ans = self.pop()
+        self.stack_out.append(ans)
+        return ans
 
     def empty(self):
         """
         Returns whether the queue is empty.
         :rtype: bool
         """
-        return True if not self.stack1 and not self.stack2 else False
+        return not (self.stack_in or self.stack_out)
 
 
 class MyQueue:
@@ -71,6 +71,30 @@ class MyQueue:
 
     def empty(self) -> bool:
         return len(self.q) == 0
+
+
+class MyQueue:
+    def __init__(self):
+        self.stack_in = []
+        self.stack_out = []
+
+    def push(self, x: int) -> None:
+        self.stack_in.append(x)
+
+    def pop(self) -> int:
+        if self.stack_out:
+            return self.stack_out.pop()
+        while self.stack_in:
+            self.stack_out.append(self.stack_in.pop())
+        return self.stack_out.pop()
+
+    def peek(self) -> int:
+        num = self.pop()
+        self.stack_out.append(num)
+        return num
+
+    def empty(self) -> bool:
+        return not self.stack_in and not self.stack_out
 
 
 obj = MyQueue()
