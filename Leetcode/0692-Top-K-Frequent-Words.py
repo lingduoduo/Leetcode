@@ -10,56 +10,32 @@ class Solution(object):
         ["i", "love", "leetcode", "i", "love", "coding"]
         k = 2
         """
-        ###first try
-        ###count = collections.Counter(words)
-        ###candidates = count.keys()
-        ###candidates.sort(key=lambda w: (-count[w], w))
-        ###return candidates[:k]
-
-        ######second try
-        ###d = dict()
-        ###for i in range(len(words)):
-        ###    d[words[i]] = d.get(words[i], 0) + 1
-
-        ###d2 = dict()
-        ###for key, v in d.items():
-        ###    if v not in d2:
-        ###        d2[v] = [key]
-        ###    else:
-        ###        d2[v] += [key]
-        ###    d2[v] = sorted(d2[v])
-
-        ###res = []
-        ###for key in sorted(d2.keys(), reverse=True):
-        ###    res += d2[key]
-        ###return res[:k]
-
-        ######third try
-        ###d = dict()
-        ###for i in range(len(words)):
-        ###    d[words[i]] = d.get(words[i], 0) + 1
-
-        ###def comp(x, y):
-        ###    if x[1] == y[1]:
-        ###        return cmp(x[0], y[0])
-        ###    else:
-        ###        return -cmp(x[1], y[1])
-
-        ###return [x[0] for x in sorted(d.items(), cmp=comp)[:k]]
-
-        ######Fouth try
-        ###d = dict()
-        ###for i in range(len(words)):
-        ###    d[words[i]] = d.get(words[i], 0) + 1
-        ###heap = [(-freq, word) for word, freq in d.items()]
-        ###heapq.heapify(heap)
-        ###return [heapq.heappop(heap)[1] for _ in range(k)]
-
-        ###fifth try
         count = collections.Counter(words)
         count = {k: v for k, v in sorted(count.items(), key=lambda x: (-x[1], x[0]))}
         candidates = list(count.keys())
         return candidates[:k]
+
+
+class Pair:
+    def __init__(self, word, freq):
+        self.word = word
+        self.freq = freq
+
+    def __lt__(self, p):
+        return self.freq < p.freq or (self.freq == p.freq and self.word > p.word)
+
+
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        cnt = Counter(words)
+        stack = []
+
+        for i, v in cnt.items():
+            heapq.heappush(stack, Pair(i, v))
+            if len(stack) > k:
+                heapq.heappop(stack)
+
+        return [p.word for p in sorted(stack, reverse=True)]
 
 
 if __name__ == "__main__":
