@@ -40,4 +40,4 @@ class Solution:
 
 if __name__ == "__main__":
     res = Solution().strStr(haystack="sadbutsad", needle="sad")
-    print(resß)
+    print(res)
