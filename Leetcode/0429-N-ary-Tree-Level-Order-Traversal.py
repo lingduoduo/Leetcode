@@ -1,31 +1,16 @@
-"""
+import collections
+from typing import List
+
+
 ###Definition for a Node.
 class Node:
     def __init__(self, val=None, children=None):
         self.val = val
         self.children = children
-"""
 
 
 class Solution:
     def levelOrder(self, root: "Node") -> List[List[int]]:
-        # if not root:
-        #     return []
-        # res = []
-        # cur = [root]
-        # next = []
-
-        # while cur:
-        #     tmp = []
-        #     for n in cur:
-        #         tmp.append(n.val)
-        #         for c in n.children:
-        #             next.append(c)
-        #     res.append(tmp)
-        #     cur = next
-        #     next = []
-        # return res
-
         if not root:
             return []
 
@@ -46,3 +31,27 @@ class Solution:
             if level:
                 res.append(level)
         return res
+
+
+class Solution:
+    def levelOrder(self, root: "Node") -> List[List[int]]:
+        if not root:
+            return []
+
+        result = []
+        queue = collections.deque([root])
+
+        while queue:
+            level_size = len(queue)
+            level = []
+
+            for _ in range(level_size):
+                node = queue.popleft()
+                level.append(node.val)
+
+                for child in node.children:
+                    queue.append(child)
+
+            result.append(level)
+
+        return result
