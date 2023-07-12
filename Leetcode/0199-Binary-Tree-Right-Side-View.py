@@ -1,5 +1,7 @@
 # Definition for a binary tree node.
-from typing import List
+from typing import List, Optional
+import collections
+import deque
 
 
 class TreeNode:
@@ -7,30 +9,6 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-
-
-class Solution:
-    def rightSideView(self, root: TreeNode) -> List[int]:
-        self.res = []
-        self.dfs(root, 0)
-
-        nums = []
-        for level in range(len(self.res)):
-            nums.append(self.res[level][-1])
-        return nums
-
-    def dfs(root, level):
-        if not root:
-            return
-
-        if len(self.res) == level:
-            res.append([])
-
-        res[level].append(root.val)
-        if root.left:
-            self.dfs(root.left, level + 1)
-        if root.right:
-            self.dfs(root.right, level + 1)
 
 
 class Solution:
@@ -103,3 +81,28 @@ class Solution:
             rightside.append(node.val)
 
         return rightside
+
+
+class Solution:
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        queue = collections.deque([root])
+        right_view = []
+
+        while queue:
+            level_size = len(queue)
+
+            for i in range(level_size):
+                node = queue.popleft()
+
+                if i == level_size - 1:
+                    right_view.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+        return right_view
