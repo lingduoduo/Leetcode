@@ -1,3 +1,6 @@
+from typing import List
+
+
 ###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -39,62 +42,6 @@ class Solution(object):
         return res
 
 
-class Solution(object):
-    def inorderTraversal(self, root):
-        stack = []
-        result = []
-        curr = root
-        while True:
-            while curr:
-                stack.append(curr)
-                curr = curr.left
-            if not stack:
-                return result
-            curr = stack.pop()
-            result.append(curr.val)
-            curr = curr.right
-
-
-class Solution(object):
-    def inorderTraversal(self, root):
-        if not root:
-            return root
-        visited = []
-        res = []
-        curr = root
-
-        while True:
-            while curr:
-                visited.append(curr)
-                curr = curr.left
-            if not visited:
-                return res
-            curr = visited.pop()
-            res.append(curr.val)
-            curr = curr.right
-        return res
-
-
-class Solution(object):
-    def inorderTraversal(self, root):
-        if root is None:
-            return []
-
-        stack = []
-        res = []
-
-        while True:
-            while root:
-                stack.append(root)
-                root = root.left
-            if not stack:
-                return res
-            root = stack.pop()
-            res.append(root.val)
-            root = root.right
-        return res
-
-
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
@@ -118,6 +65,27 @@ class Solution:
             res.append(node.val)
             cur = node.right
         return res
+
+
+# 前序遍历-迭代-LC144_二叉树的前序遍历
+class Solution:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        # 根结点为空则返回空列表
+        if not root:
+            return []
+        stack = [root]
+        result = []
+        while stack:
+            node = stack.pop()
+            # 中结点先处理
+            result.append(node.val)
+            # 右孩子先入栈
+            if node.right:
+                stack.append(node.right)
+            # 左孩子后入栈
+            if node.left:
+                stack.append(node.left)
+        return result
 
 
 if __name__ == "__main__":
