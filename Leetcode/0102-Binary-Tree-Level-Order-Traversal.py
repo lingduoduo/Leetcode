@@ -96,3 +96,19 @@ class Solution:
                     queue.append(cur.right)
             result.append(level)
         return result
+
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        levels = []
+        self.helper(root, 0, levels)
+        return levels
+
+    def helper(self, node, level, levels):
+        if not node:
+            return
+        if len(levels) == level:
+            levels.append([])
+        levels[level].append(node.val)
+        self.helper(node.left, level + 1, levels)
+        self.helper(node.right, level + 1, levels)
