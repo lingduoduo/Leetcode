@@ -35,6 +35,27 @@ class Solution(object):
         return result
 
 
+# Definition for a binary tree node.
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        if not root:
+            return [0]
+
+        stack = [root]
+        res = []
+        while stack:
+            cur = []
+            for i in range(len(stack)):
+                node = stack.pop(0)
+                cur.append(node.val)
+                if node.left:
+                    stack.append(node.left)
+                if node.right:
+                    stack.append(node.right)
+            res.append(sum(cur) / len(cur))
+        return res
+
+
 if __name__ == "__main__":
     root = TreeNode(3)
     root.left = TreeNode(9)
