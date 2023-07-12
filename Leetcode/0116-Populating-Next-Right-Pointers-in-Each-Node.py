@@ -1,4 +1,6 @@
-"""
+from typing import Optional
+
+
 ###Definition for a Node.
 class Node(object):
     def __init__(self, val, left, right, next):
@@ -6,7 +8,6 @@ class Node(object):
         self.left = left
         self.right = right
         self.next = next
-"""
 
 
 class Solution(object):
@@ -15,22 +16,6 @@ class Solution(object):
         :type root: Node
         :rtype: Node
         """
-        ###    self.d = dict()
-        ###    self.dfs(root, 0)
-
-        ###    for k in d.keys():
-        ###        for j in range(len(d[k])):
-        ###            if j == len(d[k]) - 1:
-        ###                d[k][j].next = None
-        ###            else:
-        ###                d[k][j].next = d[k][j + 1]
-        ###    return root
-
-        ###def dfs(self, root, level):
-        ###    if not root: return
-        ###    self.d[level] = self.d.get(level, []) + root
-        ###    self.dfs(root.left, level + 1)
-        ###    self.dfs(root.right, level + 1)
 
         if root and root.left and root.right:
             root.left.next = root.right
@@ -38,4 +23,56 @@ class Solution(object):
                 root.right.next = root.next.left
             self.connect(root.left)
             self.connect(root.right)
+        return root
+
+
+import collections
+
+
+class Solution:
+    def connect(self, root: "Node") -> "Node":
+        if not root:
+            return root
+
+        queue = collections.deque([root])
+
+        while queue:
+            level_size = len(queue)
+            prev = None
+
+            for i in range(level_size):
+                node = queue.popleft()
+
+                if prev:
+                    prev.next = node
+
+                prev = node
+
+                if node.left:
+                    queue.append(node.left)
+
+                if node.right:
+                    queue.append(node.right)
+
+        return root
+
+
+class Solution:
+    def connect(self, root: "Optional[Node]") -> "Optional[Node]":
+        if not root:
+            return None
+
+        stack = [root]
+        while stack:
+            size = len(stack)
+            for i in range(size):
+                node = stack.pop(0)
+                if i == size - 1:
+                    node.next = None
+                else:
+                    node.next = stack[0]
+                if node.left:
+                    stack.append(node.left)
+                if node.right:
+                    stack.append(node.right)
         return root
