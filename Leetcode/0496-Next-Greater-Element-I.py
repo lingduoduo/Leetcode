@@ -1,27 +1,3 @@
-# class Solution(object):
-#     def nextGreaterElement(self, nums1, nums2):
-#         """
-#         :type nums1: List[int]
-#         :type nums2: List[int]
-#         :rtype: List[int]
-#         """
-#         idx={}
-#         for i in range(len(nums2)):
-#             j = i+1
-#             while j<len(nums2) and nums2[i] >= nums2[j]:
-#                 j += 1
-#             if j==len(nums2):
-#                 idx[nums2[i]]=-1
-#             else:
-#                 idx[nums2[i]]=nums2[j]
-
-#         print(idx)
-
-
-#         res = []
-#         for num in nums1:
-#             res.append(idx[num])
-#         return res
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
         """
@@ -48,6 +24,17 @@ class Solution(object):
         res = [d[nums1[i]] for i in range(len(nums1))]
         return res
 
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nxt = [-1] * len(nums2)
+        stack = [0]
+        for i in range(1, len(nums2)):
+            while stack and nums2[stack[-1]] < nums2[i]:
+                prev = stack.pop(0)
+                nxt[prev] = nums2[prev]
+            stack.append(i)
+        print(nxt)
+        return [nxt[nums2.index(nums1[i])] for i in range(len(nums1))]
 
 if __name__ == "__main__":
     nums1 = [4, 1, 2]
