@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
         """
@@ -24,17 +27,18 @@ class Solution(object):
         res = [d[nums1[i]] for i in range(len(nums1))]
         return res
 
+
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nxt = [-1] * len(nums2)
         stack = [0]
         for i in range(1, len(nums2)):
             while stack and nums2[stack[-1]] < nums2[i]:
-                prev = stack.pop(0)
-                nxt[prev] = nums2[prev]
+                prev = stack.pop()
+                nxt[prev] = nums2[i]
             stack.append(i)
-        print(nxt)
         return [nxt[nums2.index(nums1[i])] for i in range(len(nums1))]
+
 
 if __name__ == "__main__":
     nums1 = [4, 1, 2]
