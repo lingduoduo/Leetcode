@@ -1,16 +1,11 @@
+from typing import List
+
+
 class Solution:
     def nextGreaterElements(self, nums):
         stack = []
         padding = nums * 2
         res = [-1] * len(padding)
-
-        # for i in range(len(padding)-1):
-        #     j = i+1
-        #     while j < len(padding) and padding[j] <= padding[i]:
-        #         j += 1
-        #     if j < len(padding):
-        #         res[i] = padding[j]
-        # return res[:len(nums)]
 
         for i in reversed(range(len(padding))):
             if stack and padding[i] < stack[-1]:
@@ -22,6 +17,20 @@ class Solution:
                     res[i] = stack[-1]
             stack.append(padding[i])
         return [res[len(nums)]] + res[1 : len(nums)]
+
+
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        res = [-1] * len(nums)
+        stack = [0]
+        n = len(nums)
+        nums = nums + nums
+        for i in range(1, len(nums)):
+            while stack and nums[stack[-1]] < nums[i]:
+                prev = stack.pop()
+                res[prev % n] = nums[i]
+            stack.append(i)
+        return res
 
 
 if __name__ == "__main__":
