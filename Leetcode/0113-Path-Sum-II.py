@@ -66,6 +66,7 @@ class Solution:
         self.traversal(node.right, count, path, result)
         path.pop()
 
+
 class Solution:
     def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
         if not root:
