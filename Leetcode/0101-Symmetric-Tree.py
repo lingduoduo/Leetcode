@@ -25,30 +25,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        ####First Try
-        ###def dfs(left, right):
-        ###	if left is None and right is None:
-        ###		return True
-        ###	if left is None:
-        ###		return False
-        ###	if right is None:
-        ###		return False
-        ###	flag1 = dfs(left.left, right.left)
-        ###	flag2 = dfs(left.right, right.right)
-        ###	if left.val == right.val and flag1  and flag2:
-        ###		return True
-
-        ###if root is None:
-        ###      	return True
-        ###      if root.left is None and root.right is None:
-        ###      	return True
-        ###      if root.left is None and root.right is not None:
-        ###      	return False
-        ###      if root.left is not None and root.right is None:
-        ###      	return False
-        ###      return True if dfs(root.left, root.right) False
-
-        ####Second Try
         if not root:
             return True
 
@@ -70,6 +46,27 @@ class Solution(object):
             return True
         else:
             return False
+
+
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        st = []  # 这里改成了栈
+        st.append(root.left)
+        st.append(root.right)
+        while st:
+            rightNode = st.pop()
+            leftNode = st.pop()
+            if not leftNode and not rightNode:
+                continue
+            if not leftNode or not rightNode or leftNode.val != rightNode.val:
+                return False
+            st.append(leftNode.left)
+            st.append(rightNode.right)
+            st.append(leftNode.right)
+            st.append(rightNode.left)
+        return True
 
 
 if __name__ == "__main__":
