@@ -13,44 +13,6 @@ class Solution(object):
         :type sum: int
         :rtype: bool
         """
-        ###First Try
-        ###if root is None:
-        ###	return False
-        ###if root.left is None and root.right is None and root.val == sum:
-        ###	return True
-        ###if self.hasPathSum(root.left, sum-root.val):
-        ###	return True
-        ###if self.hasPathSum(root.right, sum-root.val):
-        ###	return True
-        ###return False
-
-        ###Second Try
-        ###if not root:
-        ###    return False
-        ###if not root.left and not root.right and root.val == sum:
-        ###    return True
-        ###left = right = False
-        ###if root.left:
-        ###    left = self.hasPathSum(root.left, sum-root.val)
-        ###if root.right:
-        ###    right = self.hasPathSum(root.right, sum-root.val)
-        ###return left or right
-
-        ###Third Try
-        ###if not root:
-        ###    return False
-        #
-        ###if not root.left and not root.right:
-        ###    return root.val == sum
-        #
-        ###return self.hasPathSum(
-        ###    root.left,
-        ###    sum -
-        ###    root.val) or self.hasPathSum(
-        ###    root.right,
-        ###    sum -
-        ###    root.val)
-
         if not root:
             return False
         if not root.left and not root.right and root.val == sum:
@@ -62,42 +24,24 @@ class Solution(object):
             return True
         return False
 
-    ###def dfs(self, root, target):
-    ###    if not root:
-    ###        return False
 
-    ###    if not root.left and not root.right and root.val == target:
-    ###        return True
-
-    ###    if root.left:
-    ###        left = self.dfs(root.left, target-root.val)
-    ###    if root.right:
-    ###        right = self.dfs(root.right, target-root.val)
-    ###    if left or right:
-    ###        return True
-    ###    return False
-
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
-    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+    def hasPathSum(self, root: TreeNode, sum: int) -> bool:
         if not root:
             return False
-
-        if not root.left and not root.right and root.val == targetSum:
-            return True
-
-        if root.left and self.hasPathSum(root.left, targetSum - root.val):
-            return True
-
-        if root.right and self.hasPathSum(root.right, targetSum - root.val):
-            return True
-
+        # 此时栈里要放的是pair<节点指针，路径数值>
+        st = [(root, root.val)]
+        while st:
+            node, path_sum = st.pop()
+            # 如果该节点是叶子节点了，同时该节点的路径数值等于sum，那么就返回true
+            if not node.left and not node.right and path_sum == sum:
+                return True
+            # 右节点，压进去一个节点的时候，将该节点的路径数值也记录下来
+            if node.right:
+                st.append((node.right, path_sum + node.right.val))
+            # 左节点，压进去一个节点的时候，将该节点的路径数值也记录下来
+            if node.left:
+                st.append((node.left, path_sum + node.left.val))
         return False
 
 
