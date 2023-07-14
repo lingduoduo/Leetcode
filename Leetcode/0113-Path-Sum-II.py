@@ -1,3 +1,6 @@
+from typing import List
+
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -44,3 +47,21 @@ class Solution:
             if cur.right:
                 q.append((cur.right, s + cur.right.val, path + [cur.right.val]))
         return res
+
+
+class Solution:
+    def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
+        result = []
+        self.traversal(root, targetSum, [], result)
+        return result
+
+    def traversal(self, node, count, path, result):
+        if not node:
+            return
+        path.append(node.val)
+        count -= node.val
+        if not node.left and not node.right and count == 0:
+            result.append(list(path))
+        self.traversal(node.left, count, path, result)
+        self.traversal(node.right, count, path, result)
+        path.pop()
