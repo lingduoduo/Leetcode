@@ -54,3 +54,43 @@ class Solution:
             )
 
         return validate(root)
+
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+
+        def traverse(root):
+            nonlocal maxnum
+            if not root:
+                return True
+
+            left = traverse(root.left)
+            if maxnum < root.val:
+                maxnum = root.val
+            else:
+                return False
+            right = traverse(root.right)
+            return left and right
+
+        maxnum = float("-inf")
+        return traverse(root)
+
+
+class Solution:
+    def isValidBST(self, root):
+        stack = []
+        cur = root
+        pre = None  # 记录前一个节点
+        while cur is not None or len(stack) > 0:
+            if cur is not None:
+                stack.append(cur)
+                cur = cur.left  # 左
+            else:
+                cur = stack.pop()  # 中
+                if pre is not None and cur.val <= pre.val:
+                    return False
+                pre = cur  # 保存前一个访问的结点
+                cur = cur.right  # 右
+        return True

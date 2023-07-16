@@ -45,7 +45,7 @@ if __name__ == "__main__":
     res = Solution().kSmallestPairs(nums1=[1, 7, 11], nums2=[2, 4, 6], k=3)
     print(res)
 
-    res = Solution().kSmallestPairs(nums1=[1,1,2], nums2=[1,2,3], k=2)
+    res = Solution().kSmallestPairs(nums1=[1, 1, 2], nums2=[1, 2, 3], k=2)
     print(res)
 
     res = Solution().kSmallestPairs(nums1=[1, 1, 2], nums2=[1, 2, 3], k=10)
