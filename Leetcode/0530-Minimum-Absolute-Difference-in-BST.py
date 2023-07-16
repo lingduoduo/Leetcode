@@ -1,9 +1,9 @@
 ###Definition for a binary tree node.
-###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 class Solution(object):
@@ -12,40 +12,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-
-        ###    s = list()
-        ###    self.inorder(root, s)
-        ###    result = s[1] - s[0]
-        ###    for i in range(2, len(s)):
-        ###        result = min(result, s[i] - s[i - 1])
-        ###    return result
-
-        ###def inorder(self, root, ss):
-        ###    if root is None:
-        ###        return
-        ###    if root.left is None and root.right is None:
-        ###        ss.append(root.val)
-        ###        return
-        ###    self.inorder(root.left, ss)
-        ###    ss.append(root.val)
-        ###    self.inorder(root.right, ss)
-
-        ###    res = []
-        ###    self.inorder(root, res)
-
-        ###    min_abs = float("inf")
-        ###    for i in range(1, len(output)):
-        ###        min_abs = min(min_abs, output[i] - output[i-1]):
-        ###    return min_abs
-
-        ###def inorder(root, res):
-        ###    if not root:
-        ###        return
-        ###    else:
-        ###        self.inorder(root.left, res)
-        ###        res.append(root.val)
-        ###        self.inorder(root.right, res)
-
         self.res = float("inf")
         self.prev = None
         self.inOrder(root)
@@ -59,3 +25,66 @@ class Solution(object):
             self.res = min(self.res, self.root.val - self.prev.val)
         self.prev = root
         self.inOrder(root.right)
+
+
+class Solution:
+    def __init__(self):
+        self.vec = []
+
+    def traversal(self, root):
+        if root is None:
+            return
+        self.traversal(root.left)
+        self.vec.append(root.val)  # 将二叉搜索树转换为有序数组
+        self.traversal(root.right)
+
+    def getMinimumDifference(self, root):
+        self.vec = []
+        self.traversal(root)
+        if len(self.vec) < 2:
+            return 0
+        result = float("inf")
+        for i in range(1, len(self.vec)):
+            # 统计有序数组的最小差值
+            result = min(result, self.vec[i] - self.vec[i - 1])
+        return result
+
+
+class Solution:
+    def __init__(self):
+        self.result = float("inf")
+        self.pre = None
+
+    def traversal(self, cur):
+        if cur is None:
+            return
+        self.traversal(cur.left)  # 左
+        if self.pre is not None:  # 中
+            self.result = min(self.result, cur.val - self.pre.val)
+        self.pre = cur  # 记录前一个
+        self.traversal(cur.right)  # 右
+
+    def getMinimumDifference(self, root):
+        self.traversal(root)
+        return self.result
+
+
+class Solution:
+    def getMinimumDifference(self, root):
+        stack = []
+        cur = root
+        pre = None
+        result = float("inf")
+
+        while cur is not None or len(stack) > 0:
+            if cur is not None:
+                stack.append(cur)  # 将访问的节点放进栈
+                cur = cur.left  # 左
+            else:
+                cur = stack.pop()
+                if pre is not None:  # 中
+                    result = min(result, cur.val - pre.val)
+                pre = cur
+                cur = cur.right  # 右
+
+        return result
