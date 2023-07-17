@@ -1,9 +1,9 @@
 ###Definition for a binary tree node.
 ###class TreeNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.left = None
-###        self.right = None
+def __init__(self, x):
+    self.val = x
+    self.left = None
+    self.right = None
 
 
 class Solution(object):
@@ -37,25 +37,22 @@ class Solution(object):
         return root.val + max(left, right)
 
 
-class Solution(object):
-    def maxPathSum(self, root):
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
 
-        if not root.left and not root.right:
-            return root.val
+        def traverse(root: Optional[TreeNode]) -> int:
+            nonlocal res
+            if not root:
+                return 0
 
-        self.res = float("-inf")
+            left = max(0, traverse(root.left))
+            right = max(0, traverse(root.right))
 
-        self.traverse(root)
-        return self.res
+            res = max(res, left + right + root.val)
+            return root.val + max(left, right)
 
-    def traverse(self, root):
-        if not root:
-            return 0
-
-        left = max(0, self.traverse(root.left))
-        right = max(0, self.traverse(root.right))
-
-        self.res = max(self.res, left + right + root.val)
-        return root.val + max(left, right)
+        res = float("-inf")
+        traverse(root)
+        return res
