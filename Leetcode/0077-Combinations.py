@@ -56,17 +56,32 @@ class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         res = []
 
-        def dfs(t, path):
+        def dfs(idx, path):
             nonlocal res
             if len(path) == k:
                 res.append(path)
-            for i in range(len(t)):
-                dfs(t[i + 1], path + [t[i]])
+            for i in range(idx, n + 1):
+                dfs(i + 1, path + [i])
             return
 
-        t = [i + 1 for i in range(n)]
-        dfs(t, [])
+        dfs(1, [])
         return res
+
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        def backtracking(startIndex, path):
+            if len(path) == k:
+                result.append(path[:])
+                return
+            for i in range(startIndex, n - (k - len(path)) + 2):  # 优化的地方
+                path.append(i)  # 处理节点
+                self.backtracking(i + 1, path)
+                path.pop()  # 回溯，撤销处理的节点
+
+        result = []  # 存放结果集
+        self.backtracking(1, [])
+        return result
 
 
 if __name__ == "__main__":
