@@ -48,6 +48,27 @@ class Solution:
         return res
 
 
+import pysnooper
+
+
+class Solution:
+    @pysnooper.snoop()
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+
+        def dfs(t, path):
+            nonlocal res
+            if len(path) == k:
+                res.append(path)
+            for i in range(len(t)):
+                dfs(t[i + 1], path + [t[i]])
+            return
+
+        t = [i + 1 for i in range(n)]
+        dfs(t, [])
+        return res
+
+
 if __name__ == "__main__":
     n = 5
     k = 3
