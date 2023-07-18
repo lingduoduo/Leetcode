@@ -47,7 +47,7 @@ class Solution:
         def dfs(strs, path):
             nonlocal res
             print(strs, path)
-            if len(strs) == 1:
+            if len(strs) == 0:
                 res.append(path)
                 return
 
@@ -58,6 +58,26 @@ class Solution:
         res = []
         dfs(s, [])
         return res
+
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        def partition_helper(start_index, path):
+            if start_index == len(s):
+                result.append(path[:])
+                return
+
+            for i in range(start_index + 1, len(s) + 1):
+                sub = s[start_index:i]
+                if isPalindrome(sub):
+                    partition_helper(i, path + [sub])
+
+        def isPalindrome(s):
+            return all(s[i] == s[len(s) - 1 - i] for i in range(len(s) // 2))
+
+        result = []
+        partition_helper(0, [])
+        return result
 
 
 if __name__ == "__main__":
