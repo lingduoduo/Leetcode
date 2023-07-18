@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def combinationSum(self, candidates, target):
         """
@@ -38,6 +41,23 @@ class Solution:
         candidates.sort()
         dfs(target, [])
         return res
+
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtracking(total, startIndex, path):
+            if total > target:
+                return
+            if total == target:
+                result.append(path[:])
+                return
+
+            for i in range(startIndex, len(candidates)):
+                backtracking(total + candidates[i], i, path + [candidates[i]])
+
+        result = []
+        backtracking(0, 0, [])
+        return result
 
 
 if __name__ == "__main__":
