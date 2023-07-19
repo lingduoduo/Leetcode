@@ -1,4 +1,5 @@
 from itertools import permutations
+from typing import List
 
 
 class Solution(object):
@@ -44,6 +45,20 @@ class Solution(object):
 
         for i in range(len(curr)):
             self.dfs(curr[:i] + curr[i + 1 :], path + [curr[i]])
+
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def dfs(digits, path):
+            if len(digits) == 0:
+                res.append(path)
+            for i in range(len(digits)):
+                dfs(digits[:i] + digits[i + 1 :], path + [digits[i]])
+
+        dfs(nums, [])
+        return res
 
 
 if __name__ == "__main__":
