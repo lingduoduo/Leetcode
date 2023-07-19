@@ -44,6 +44,23 @@ class Solution:
         return res
 
 
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def dfs(idx, path):
+            nonlocal res
+            res.append(path)
+            for i in range(idx, len(nums)):
+                if i >= idx + 1 and nums[i - 1] == nums[i]:
+                    continue
+                dfs(i + 1, path + [nums[i]])
+
+        nums.sort()
+        dfs(0, [])
+        return list(res)
+
+
 if __name__ == "__main__":
     Input = [1, 2, 2]
     result = Solution().subsetsWithDup(Input)

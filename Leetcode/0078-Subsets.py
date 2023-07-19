@@ -1,34 +1,6 @@
 from typing import List
 
 
-class Solution(object):
-    def subsets(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        results = []
-        self.dfs(nums, 0, results, [])
-        return results
-
-    def dfs(self, nums, index, results, path):
-        results.append(path)
-        for i in range(index, len(nums)):
-            self.dfs(nums, i + 1, results, path + [nums[i]])
-
-
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.res = []
-        self.dfs(nums, 0, [])
-        return self.res
-
-    def dfs(self, nums, index, path):
-        self.res.append(path)
-        for i in range(index, len(nums)):
-            self.dfs(nums, i + 1, path + [nums[i]])
-
-
 class Solution:
     def subsets(self, nums):
         self.res = []
@@ -82,16 +54,6 @@ class Solution:
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        res = [[]]
-        for num in nums:
-            cur_res = res.copy()
-            for cur in cur_res:
-                res.append(cur + [num])
-        return res
-
-
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
 
         def dfs(idx, path):
@@ -101,6 +63,18 @@ class Solution:
                 dfs(i + 1, path + [nums[i]])
 
         dfs(0, [])
+        return res
+
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        for i in range(len(nums)):
+            paths = res
+            cur = []
+            for path in paths:
+                cur.append(path + [nums[i]])
+            res += cur
         return res
 
 
