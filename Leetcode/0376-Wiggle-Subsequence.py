@@ -39,5 +39,3 @@ if __name__ == "__main__":
     nums = [1, 17, 5, 10, 13, 15, 10, 5, 16, 8]
     res = Solution().wiggleMaxLength(nums)
     print(res)
-
-[x - y for x, y in zip(nums[:-1], nums[1:])]
