@@ -6,19 +6,37 @@ class Solution:
         """
         Do not return anything, modify rooms in-place instead.
         """
+        if not rooms:
+            return
 
-        def dfs(row, col, score):
-            if rooms[row][col] == -1:
-                return
+        r_size = len(rooms)
+        c_size = len(rooms[0])
+        q = collections.deque()
+        for r in range(r_size):
+            for c in range(c_size):
+                if rooms[r][c] == 0:
+                    q.append((r, c))
+        dirs = [(-1, 0), (0, -1), (1, 0), (0, 1)]
+        while q:
+            x, y = q.popleft()
+            distance = rooms[x][y] + 1
+            for dx, dy in dirs:
+                new_x, new_y = x + dx, y + dy
+                if (
+                    0 <= new_x < r_size
+                    and 0 <= new_y < c_size
+                    and rooms[new_x][new_y] == 2147483647
+                ):
+                    rooms[new_x][new_y] = distance
+                    q.append((new_x, new_y))
 
-            rooms[row][col] = min(rooms[row][col], score)
-            dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-            for dir in dirs:
-                x, y = row + dir[0], col + dir[1]
-                if 0 <= x < len(rooms) and 0 <= y < len(rooms[0]) and rooms[x][y] > 0:
-                    dfs(x, y, score + 1)
 
-        for i in range(len(rooms)):
-            for j in range(len(rooms[0])):
-                if rooms[i][j] == 0:
-                    dfs(i, j, 0)
+if __name__ == "__main__":
+    res = Solution().wallsAndGates(
+        [
+            [2147483647, -1, 0, 2147483647],
+            [2147483647, 2147483647, 2147483647, -1],
+            [2147483647, -1, 2147483647, -1],
+            [0, -1, 2147483647, 2147483647],
+        ]
+    )
