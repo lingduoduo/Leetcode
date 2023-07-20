@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         d = {}
@@ -22,4 +25,15 @@ class Solution:
         res = []
         for p in people:
             res.insert(p[1], p)
+        return res
+
+
+class Solution:
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
+        people.sort(key=lambda x: (x[0], -x[1]), reverse=True)
+
+        res = []
+        for p in people:
+            h, idx = p
+            res = res[:idx] + [p] + res[idx:]
         return res
