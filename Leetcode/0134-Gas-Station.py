@@ -48,16 +48,18 @@ class Solution:
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        tot = 0
-        cur = 0
-        res = 0
+        curSum = 0  # 当前累计的剩余油量
+        totalSum = 0  # 总剩余油量
+        start = 0  # 起始位置
 
         for i in range(len(gas)):
-            tot += gas[i] - cost[i]
-            cur += gas[i] - cost[i]
+            curSum += gas[i] - cost[i]
+            totalSum += gas[i] - cost[i]
 
-            if cur < 0:
-                cur = 0
-                res = i + 1
+            if curSum < 0:  # 当前累计剩余油量curSum小于0
+                start = i + 1  # 起始位置更新为i+1
+                curSum = 0  # curSum重新从0开始累计
 
-        return res if tot >= 0 else -1
+        if totalSum < 0:
+            return -1  # 总剩余油量totalSum小于0，说明无法环绕一圈
+        return start
