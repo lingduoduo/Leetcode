@@ -18,6 +18,23 @@ class Solution:
         return res
 
 
+class Solution:
+    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+        d = collections.defaultdict(list)
+        for path in paths:
+            contents = path.split(" ")
+            root = contents[0]
+            for strs in contents[1:]:
+                file, str2 = strs.split("(")
+                content = str2[:-1]
+                d[content].append(("/").join([root, file]))
+        res = []
+        for k, v in d.items():
+            if len(v) > 1:
+                res.append(v)
+        return res
+
+
 if __name__ == "__main__":
     paths = [
         "root/a 1.txt(abcd) 2.txt(efgh)",
