@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def eraseOverlapIntervals(self, intervals) -> int:
         if not intervals:
@@ -33,6 +36,23 @@ class Solution:
                 res += 1
                 if r > interval[1]:
                     l, r = interval
+        return res
+
+
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        if len(intervals) <= 1:
+            return 0
+
+        intervals.sort(key=lambda x: x[0])
+        res = 0
+        stack = [intervals[0]]
+        for interval in intervals[1:]:
+            if stack[-1][1] <= interval[0]:
+                stack.append(interval)
+            else:
+                stack[-1][1] = min(stack[-1][1], interval[1])
+                res += 1
         return res
 
 
