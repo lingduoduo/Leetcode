@@ -1,5 +1,4 @@
 class PhoneDirectory:
-
     def __init__(self, maxNumbers: int):
         self.nums = [True] * maxNumbers
 
