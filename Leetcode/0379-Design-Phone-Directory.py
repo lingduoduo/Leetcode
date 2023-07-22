@@ -1,4 +1,5 @@
 class PhoneDirectory:
+
     def __init__(self, maxNumbers: int):
         self.nums = [True] * maxNumbers
 
@@ -17,7 +18,7 @@ class PhoneDirectory:
 
 
 # Your PhoneDirectory object will be instantiated and called as such:
-# obj = PhoneDirectory(maxNumbers)
-# param_1 = obj.get()
-# param_2 = obj.check(number)
-# obj.release(number)
+obj = PhoneDirectory(maxNumbers=3)
+param_1 = obj.get()
+param_2 = obj.check(number=1)
+obj.release(number=1)
