@@ -61,52 +61,41 @@ class NumArray:
 
 
 # Segment tree node
-class Node(object):
+class Node:
     def __init__(self, start, end):
         self.start = start
         self.end = end
-        self.total = 0
+        self.tot = 0
         self.left = None
         self.right = None
 
 
-class NumArray(object):
-    def __init__(self, nums):
-        # helper function to create the tree from input array
+class NumArray:
+    def __init__(self, nums: List[int]):
         def createTree(nums, l, r):
-            # base case
             if l > r:
                 return None
 
-            # leaf node
             if l == r:
-                n = Node(l, r)
-                n.total = nums[l]
-                return n
+                node = Node(l, r)
+                node.tot = nums[l]
+                return node
 
-            mid = (l + r) // 2
-
+            mid = l + (r - l) // 2
             root = Node(l, r)
-
-            # recursively build the Segment tree
             root.left = createTree(nums, l, mid)
             root.right = createTree(nums, mid + 1, r)
-
-            # Total stores the sum of all leaves under root
-            # i.e. those elements lying between (start, end)
-            root.total = root.left.total + root.right.total
-
+            root.tot = root.left.tot + root.right.tot
             return root
 
         self.root = createTree(nums, 0, len(nums) - 1)
 
-    def update(self, i, val):
-        # Helper function to update a value
+    def update(self, index: int, val: int) -> None:
         def updateVal(root, i, val):
             # Base case. The actual value will be updated in a leaf.
             # The total is then propogated upwards
             if root.start == root.end:
-                root.total = val
+                root.tot = val
                 return val
 
             mid = (root.start + root.end) // 2
@@ -120,18 +109,17 @@ class NumArray(object):
                 updateVal(root.right, i, val)
 
             # Propogate the changes after recursive call returns
-            root.total = root.left.total + root.right.total
+            root.tot = root.left.tot + root.right.tot
 
-            return root.total
+            return root.tot
 
-        return updateVal(self.root, i, val)
+        return updateVal(self.root, index, val)
 
-    def sumRange(self, i, j):
-        # Helper function to calculate range sum
+    def sumRange(self, left: int, right: int) -> int:
         def rangeSum(root, i, j):
             # If the range exactly matches the root, we already have the sum
             if root.start == i and root.end == j:
-                return root.total
+                return root.tot
 
             mid = (root.start + root.end) // 2
 
@@ -150,13 +138,14 @@ class NumArray(object):
             else:
                 return rangeSum(root.left, i, mid) + rangeSum(root.right, mid + 1, j)
 
-        return rangeSum(self.root, i, j)
+        return rangeSum(self.root, left, right)
 
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # obj.update(index,val)
 # param_2 = obj.sumRange(left,right)
+
 
 if __name__ == "__main__":
     # Your NumArray object will be instantiated and called as such:
