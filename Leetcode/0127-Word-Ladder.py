@@ -1,4 +1,5 @@
 import collections
+from typing import List
 
 
 class Solution:
@@ -65,9 +66,6 @@ class Solution:
         return 0
 
 
-from collections import defaultdict
-
-
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
         """
@@ -110,6 +108,33 @@ class Solution(object):
                         visited[word] = True
                         queue.append((word, level + 1))
                 all_combo_dict[intermediate_word] = []
+        return 0
+
+
+from collections import deque
+
+
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        wordset = set(wordList)
+        if len(wordset) == 0 or endWord not in wordList:
+            return 0
+
+        d = {beginWord: 1}
+        queue = deque([beginWord])
+        while queue:
+            word = queue.popleft()
+            path = d[word]
+            for i in range(len(word)):
+                word_list = list(word)
+                for j in range(26):
+                    word_list[i] = chr(ord("a") + j)
+                    newword = "".join(word_list)
+                    if newword == endWord:
+                        return path + 1
+                    if newword in wordset and newword not in d:
+                        d[newword] = path + 1
+                        queue.append(newword)
         return 0
 
 
