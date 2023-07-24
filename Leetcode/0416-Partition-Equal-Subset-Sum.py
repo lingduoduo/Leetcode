@@ -3,26 +3,6 @@ from typing import List
 
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        s = sum(nums)
-
-        if s % 2 != 0:
-            return False
-
-        dp = [0] * (s + 1)
-        dp[0] = 1
-        for num in nums:
-            for i in range(s, -1, -1):
-                if dp[i]:
-                    dp[i + num] = 1
-
-            if dp[s // 2]:
-                return True
-
-        return False
-
-
-class Solution:
-    def canPartition(self, nums: List[int]) -> bool:
         if len(nums) < 2:
             return False
         s = sum(nums)
@@ -40,23 +20,41 @@ class Solution:
 
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        total_sum = sum(nums)
-        if total_sum % 2 != 0:
+        total = sum(nums)
+        if total % 2 != 0:
             return False
-        subset_sum = total_sum // 2
-        n = len(nums)
 
-        # construct a dp table of size (n+1) x (subset_sum + 1)
-        dp = [[False] * (subset_sum + 1) for _ in range(n + 1)]
-        dp[0][0] = True
-        for i in range(1, n + 1):
-            curr = nums[i - 1]
-            for j in range(subset_sum + 1):
-                if j < curr:
+        target = total // 2
+        dp = [[False] * (1 + target) for _ in range(1 + len(nums))]
+
+        for i in range(len(nums) + 1):
+            dp[i][0] = True
+
+        for i in range(1, len(nums) + 1):
+            for j in range(1, target + 1):
+                if j < nums[i - 1]:
                     dp[i][j] = dp[i - 1][j]
                 else:
-                    dp[i][j] = dp[i - 1][j] or dp[i - 1][j - curr]
-        return dp[n][subset_sum]
+                    dp[i][j] = dp[i - 1][j] or dp[i - 1][j - nums[i - 1]]
+        return dp[-1][-1]
+
+
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total_sum = sum(nums)
+
+        if total_sum % 2 != 0:
+            return False
+
+        target_sum = total_sum // 2
+        dp = [False] * (target_sum + 1)
+        dp[0] = True
+
+        for num in nums:
+            # 从target_sum逆序迭代到num，步长为-1
+            for i in range(target_sum, num - 1, -1):
+                dp[i] = dp[i] or dp[i - num]
+        return dp[target_sum]
 
 
 if __name__ == "__main__":
