@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def combinationSum4(self, nums, target: int) -> int:
         dp = [0] * (target + 1)
@@ -7,7 +10,6 @@ class Solution:
             for num in nums:
                 if i >= num:
                     dp[i] += dp[i - num]  # i - x 不可以 < 0
-
         return dp[target]
 
 
