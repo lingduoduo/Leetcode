@@ -54,57 +54,30 @@ class Solution(object):
         self.dfs(grid, i, j - 1, n, m)
 
 
-class Solution(object):
-    def numIslands(self, grid):
-        res = 0
-        for row in range(len(grid)):
-            for col in range(len(grid[0])):
-                if grid[row][col] == "1":
-                    self.dfs(grid, row, col)
-                    res += 1
-        return res
-
-    def dfs(self, grid, row, col):
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        grid[row][col] = "0"
-        for direction in directions:
-            dx, dy = row + direction[0], col + direction[1]
-            if (
-                dx < 0
-                or dx >= len(grid)
-                or dy < 0
-                or dy >= len(grid[0])
-                or grid[dx][dy] == "0"
-            ):
-                continue
-            self.dfs(grid, dx, dy)
-
-
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        def dfs(row, col):
+            directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+            grid[row][col] = "0"
+            for direction in directions:
+                dx, dy = row + direction[0], col + direction[1]
+                if (
+                    dx < 0
+                    or dx >= len(grid)
+                    or dy < 0
+                    or dy >= len(grid[0])
+                    or grid[dx][dy] == "0"
+                ):
+                    continue
+                dfs(dx, dy)
+
         res = 0
         for row in range(len(grid)):
             for col in range(len(grid[0])):
                 if grid[row][col] == "1":
-                    self.dfs(grid, row, col)
+                    dfs(row, col)
                     res += 1
         return res
-
-    def dfs(self, grid, row, col):
-        if (
-            row < 0
-            or row >= len(grid)
-            or col < 0
-            or col >= len(grid[0])
-            or grid[row][col] == "0"
-        ):
-            return
-
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        grid[row][col] = "0"
-        for direction in directions:
-            dx, dy = row + direction[0], col + direction[1]
-            self.dfs(grid, dx, dy)
 
 
 class Solution:
