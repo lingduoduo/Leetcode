@@ -21,18 +21,6 @@ class Solution:
         return False
 
 
-class Solution(object):
-    def wordBreak(self, s, wordDict):
-        dp = [False] * (len(s) + 1)
-        dp[0] = True
-
-        for i in range(1, len(s) + 1):
-            for k in range(i):
-                if dp[k] and s[k:i] in wordDict:
-                    dp[i] = True
-        return dp.pop()
-
-
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         n = len(s)
@@ -75,7 +63,22 @@ class Solution:
                 if dp[j] and s[j:i] in word_set:
                     dp[i] = True
                     break
-        return dp[len(s)]
+        return dp[-1]
+
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        dp = [False] * (n + 1)
+        dp[0] = True
+
+        for i in range(1, n + 1):
+            for w in wordDict:
+                m = len(w)
+                if s[i - m : i] == w and dp[i - m]:
+                    dp[i] = True
+                    break
+        return dp[-1]
 
 
 if __name__ == "__main__":
