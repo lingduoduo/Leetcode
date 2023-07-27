@@ -23,6 +23,32 @@ class Solution:
         return len(visited) == n
 
 
+class DSU:
+    def __init__(self, n):
+        self.root = [i for i in range(n)]
+
+    def find(self, x):
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        self.root[self.find(x)] = self.root[self.find(y)]
+
+
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        if len(edges) != n - 1:
+            return False
+        uf = DSU(n)
+        for r, c in edges:
+            if uf.find(r) != uf.find(c):
+                uf.union(r, c)
+            else:
+                return False
+        return True
+
+
 if __name__ == "__main__":
     res = Solution().validTree(n=5, edges=[[0, 1], [0, 2], [0, 3], [1, 4]])
     print(res)
