@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def insert(self, intervals, newInterval):
         ##Method 1
@@ -14,9 +17,6 @@ class Solution(object):
                 res.append([num[0], end])
 
         return res
-
-
-import heapq
 
 
 class Solution(object):
@@ -44,23 +44,19 @@ class Solution:
     def insert(
         self, intervals: List[List[int]], newInterval: List[int]
     ) -> List[List[int]]:
-        n = len(intervals)
-        if n == 0:
-            return [newInterval]
+        result = []
+        for interval in intervals:
+            if interval[1] < newInterval[0]:
+                result.append(interval)
+            elif interval[0] > newInterval[1]:
+                result.append(newInterval)
+                newInterval = interval
+            elif interval[1] >= newInterval[0] or interval[0] <= newInterval[1]:
+                newInterval[0] = min(interval[0], newInterval[0])
+                newInterval[1] = max(newInterval[1], interval[1])
 
-        res = []
-        i = 0
-        while i < n and intervals[i][1] < newInterval[0]:
-            res.append(intervals[i])
-            i += 1
-        l, r = newInterval
-        while i < n and intervals[i][0] <= newInterval[1]:
-            l = min(l, intervals[i][0])
-            r = max(r, intervals[i][1])
-            i += 1
-        res.append([l, r])
-        res.extend(intervals[i:])
-        return res
+        result.append(newInterval)
+        return result
 
 
 if __name__ == "__main__":
