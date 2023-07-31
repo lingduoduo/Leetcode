@@ -24,10 +24,8 @@ class Solution:
         stack = []
         intervals.sort(key=lambda x: (x[0], -x[1]))
         for interval in intervals:
-            if stack:
-                x, y = stack[-1]
-                if x <= interval[0] and interval[1] <= y:
-                    continue
+            if stack and stack[-1][0] <= interval[0] and interval[1] <= stack[-1][1]:
+                continue
             stack.append(interval)
         return len(stack)
 
