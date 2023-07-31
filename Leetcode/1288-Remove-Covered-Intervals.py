@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def removeCoveredIntervals(self, intervals) -> int:
         intervals.sort(key=lambda x: (x[0], -x[1]))

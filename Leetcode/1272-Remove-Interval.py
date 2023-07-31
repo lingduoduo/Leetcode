@@ -6,9 +6,6 @@ class Solution:
         self, intervals: List[List[int]], toBeRemoved: List[int]
     ) -> List[List[int]]:
         res = []
-        left_start = float("inf")
-        right_end = float("-inf")
-        flag = 0
         for interval in intervals:
             if interval[1] < toBeRemoved[0] or toBeRemoved[1] < interval[0]:
                 res.append(interval)
