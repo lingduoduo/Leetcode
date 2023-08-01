@@ -1,11 +1,14 @@
 from typing import List
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 class Solution:
     def minCameraCover(self, root: TreeNode) -> int:
         def dfs(node, par):
@@ -24,14 +27,16 @@ class Solution:
         dfs(root, None)
         return self.res
 
-class Solution:
-def minCameraCover(self, root: TreeNode) -> int:
-    # 定义递归函数
-    result = [0]  # 用于记录摄像头的安装数量
-    if self.traversal(root, result) == 0:
-        result[0] += 1
 
-    return result[0]
+class Solution:
+    def minCameraCover(self, root: TreeNode) -> int:
+        # 定义递归函数
+        result = [0]  # 用于记录摄像头的安装数量
+        if self.traversal(root, result) == 0:
+            result[0] += 1
+
+        return result[0]
+
 
 def traversal(self, cur: TreeNode, result: List[int]) -> int:
     if not cur:
