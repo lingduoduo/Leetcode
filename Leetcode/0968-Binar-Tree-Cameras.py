@@ -25,13 +25,6 @@ class Solution:
         return self.res
 
 class Solution:
-
-# Greedy Algo:
-# 从下往上安装摄像头：跳过leaves这样安装数量最少，局部最优 -> 全局最优
-# 先给leaves的父节点安装，然后每隔两层节点安装一个摄像头，直到Head
-# 0: 该节点未覆盖
-# 1: 该节点有摄像头
-# 2: 该节点有覆盖
 def minCameraCover(self, root: TreeNode) -> int:
     # 定义递归函数
     result = [0]  # 用于记录摄像头的安装数量
