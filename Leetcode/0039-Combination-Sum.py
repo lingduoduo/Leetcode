@@ -60,6 +60,23 @@ class Solution:
         return result
 
 
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtracking(startIndex, path):
+            if sum(path) == target:
+                result.append(path)
+                return
+            elif sum(path) > target:
+                return
+
+            for i in range(startIndex, len(candidates)):
+                backtracking(i, path + [candidates[i]])
+
+        result = []
+        backtracking(0, [])
+        return result
+
+
 if __name__ == "__main__":
     nums = [2, 3, 6, 7]
     result = Solution().combinationSum(nums, 7)
