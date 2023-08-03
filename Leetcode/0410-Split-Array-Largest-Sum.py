@@ -1,11 +1,11 @@
 class Solution:
     def splitArray(self, nums, m) -> int:
         n = len(nums)
-        self.sums = [0]*len(nums)
+        self.sums = [0] * len(nums)
         self.sums[0] = nums[0]
         for i in range(1, len(nums)):
-            self.sums[i] = self.sums[i-1] + nums[i]
-        self.dp = [[float("inf")]*n for _ in range(m)]
+            self.sums[i] = self.sums[i - 1] + nums[i]
+        self.dp = [[float("inf")] * n for _ in range(m)]
         return self.partial(nums, m)
 
     def partial(self, nums, m):
@@ -14,31 +14,34 @@ class Solution:
             return self.sums[k]
         if m > k + 1:
             return float("inf")
-        if self.dp[m-1][k] != float("inf"):
-            return self.dp[m-1][k]
+        if self.dp[m - 1][k] != float("inf"):
+            return self.dp[m - 1][k]
         res = float("inf")
         for i in range(k):
-            res = min(res, max(self.partial(nums[:i+1], m-1), self.sums[k]-self.sums[i]))
-        self.dp[m-1][k] = res
+            res = min(
+                res,
+                max(self.partial(nums[: i + 1], m - 1), self.sums[k] - self.sums[i]),
+            )
+        self.dp[m - 1][k] = res
         return res
 
 
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
         n = len(nums)
-        sums = [0]*n
+        sums = [0] * n
         sums[0] = nums[0]
         for i in range(1, n):
-            sums[i] = sums[i-1] + nums[i]
+            sums[i] = sums[i - 1] + nums[i]
 
-        dp = [[float("inf")]*n for _ in range(k)]
+        dp = [[float("inf")] * n for _ in range(k)]
         for i in range(n):
             dp[0][i] = sums[i]
 
         for i in range(1, k):
-            for j in range(i-1, n):
+            for j in range(i - 1, n):
                 for l in range(j):
-                    dp[i][j] = min(dp[i][j], max(dp[i-1][l], sums[j]-sums[l]))
+                    dp[i][j] = min(dp[i][j], max(dp[i - 1][l], sums[j] - sums[l]))
         return dp[-1][-1]
 
 
