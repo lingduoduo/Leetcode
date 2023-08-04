@@ -31,12 +31,6 @@ class Solution(object):
     def mergeKLists(self, lists):
         import heapq
 
-        ###heapq.heappush(q, 10)
-        ###heapq.heappush(q, 1)
-        #
-        ###while q:
-        ###    print(heapq.heappop(q))
-
         head = ListNode(0)
         curr = head
         heap = []
@@ -83,13 +77,6 @@ class Solution(object):
             # increment cursor and increment node
             curr = curr.next
             node = node.next
-            # so that now cursor -> the new node just appended to the tail of the linked list
-            # which the dummy head points to
-            # and node -> what's remaining of the linked list
-            # whose min val was just popped
-            # if anything remains, let's do the same thing once again
-            # we can see that the top of the heap will always be the min element of all of the
-            # remaining lists.
             if node:
                 heapq.heappush(heap, (node.val, idx, node))
 
