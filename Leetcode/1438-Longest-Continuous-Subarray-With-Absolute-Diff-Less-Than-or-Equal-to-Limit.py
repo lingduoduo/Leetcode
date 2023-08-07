@@ -1,28 +1,27 @@
+from typing import List
+
+
 class Solution:
-    def longestSubarray(self, nums, limit) -> int:
-        max_stack = []
-        min_stack = []
-        left = 0
-        ans = 0
-        for right in range(len(nums)):
-            while max_stack and nums[max_stack[-1]] < nums[right]:
-                max_stack.pop()
-            max_stack.append(right)
-            while min_stack and nums[min_stack[-1]] > nums[right]:
-                min_stack.pop()
-            min_stack.append(right)
-            while (
-                max_stack
-                and min_stack
-                and nums[max_stack[0]] - nums[min_stack[0]] > limit
-            ):
-                if max_stack[0] <= left:
-                    max_stack.pop(0)
-                if min_stack[0] <= left:
-                    min_stack.pop(0)
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        res = 1
+        asc, desc = deque([0]), deque([0])
+        left, right = 0, 0
+        for right in range(1, len(nums)):
+            while asc and nums[asc[-1]] > nums[right]:
+                asc.pop()
+            asc.append(right)
+
+            while desc and nums[desc[-1]] < nums[right]:
+                desc.pop()
+            desc.append(right)
+            while nums[desc[0]] - nums[asc[0]] > limit:
                 left += 1
-            ans = max(ans, right - left + 1)
-        return ans
+                if desc[0] < left:
+                    desc.popleft()
+                if asc[0] < left:
+                    asc.popleft()
+            res = max(res, right - left + 1)
+        return res
 
 
 if __name__ == "__main__":
