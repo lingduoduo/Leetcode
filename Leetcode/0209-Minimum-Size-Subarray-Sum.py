@@ -22,22 +22,20 @@ class Solution:
         #
 
 
-# class Solution:
-#     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-#         if sum(nums) < target:
-#             return 0
-#
-#         stack = []
-#         psum = 0
-#         res = len(nums)
-#         for num in nums:
-#             psum += num
-#             stack.append(num)
-#             while stack and psum >= target:
-#                 res = min(res, len(stack))
-#                 val = stack.pop(0)
-#                 psum -= val
-#         return res
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        presum = [0]
+        for num in nums:
+            presum.append(presum[-1] + num)
+
+        res = float("inf")
+        q = [-1]
+        for i in range(len(nums)):
+            while q and presum[i + 1] - presum[q[0] + 1] >= target:
+                res = min(res, len(q))
+                q.pop(0)
+            q.append(i)
+        return 0 if res == float("inf") else res
 
 
 if __name__ == "__main__":
