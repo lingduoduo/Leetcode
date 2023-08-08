@@ -24,26 +24,6 @@ class Solution(object):
     def lengthOfLongestSubstring(self, s):
         if not s:
             return 0
-        if len(s) <= 1:
-            return 1
-
-        result = 0
-        left = -1
-        n = len(s)
-        d = {}
-
-        for i in range(len(s)):
-            if s[i] in d and d[s[i]] > left:
-                left = d[s[i]]
-            d[s[i]] = i
-            result = max(result, i - left)
-        return result
-
-
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        if not s:
-            return 0
         if len(s) == 1:
             return 1
         dict = {}
@@ -67,6 +47,19 @@ class Solution:
             else:
                 start = max(start, d[c] + 1)
                 d[c] = i
+            res = max(res, i - start + 1)
+        return res
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        d = {}
+        start = 0
+        res = 0
+        for i, v in enumerate(s):
+            if v in d:
+                start = max(start, d[v] + 1)
+            d[v] = i
             res = max(res, i - start + 1)
         return res
 

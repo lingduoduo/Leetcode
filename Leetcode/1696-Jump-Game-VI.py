@@ -3,6 +3,7 @@ import heapq
 import collections
 from collections import deque
 
+
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
         if not nums:
@@ -40,6 +41,7 @@ class Solution:
 
         return dp[-1]
 
+
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
         n = len(nums)
@@ -48,7 +50,7 @@ class Solution:
         dq.append((0, score))
         for i in range(1, n):
             # pop the old index
-            while dq and dq[0][0] < i-k:
+            while dq and dq[0][0] < i - k:
                 dq.popleft()
             score = dq[0][1] + nums[i]
             # pop the smaller value
