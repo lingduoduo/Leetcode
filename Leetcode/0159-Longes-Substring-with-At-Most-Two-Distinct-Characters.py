@@ -22,32 +22,22 @@ class Solution:
         return res
 
 
-# from collections import defaultdict
-# class Solution:
-#     def lengthOfLongestSubstringTwoDistinct(self, s: 'str') -> 'int':
-#         n = len(s)
-#         if n < 3:
-#             return n
-#         # sliding window left and right pointers
-#         left, right = 0, 0
-#         # hashmap character -> its rightmost position
-#         # in the sliding window
-#         d = defaultdict()
-#         res = 2
-#         while right < n:
-#             # when the slidewindow contains less than 3 characters
-#             d[s[right]] = right
-#             right += 1
-#
-#             # slidewindow contains 3 characters
-#             if len(d) == 3:
-#                 # delete the leftmost character
-#                 del_idx = min(d.values())
-#                 del d[s[del_idx]]
-#                 # move left pointer of the slidewindow
-#                 left = del_idx + 1
-#             res = max(res, right - left)
-#         return res
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        start = 0
+        d = collections.Counter()
+        res = 0
+        for i, v in enumerate(s):
+            d[v] += 1
+            if len(d.keys()) <= 2:
+                res = max(res, i - start + 1)
+            while len(d.keys()) > 2:
+                d[s[start]] -= 1
+                if d[s[start]] == 0:
+                    del d[s[start]]
+                start += 1
+        return res
+
 
 if __name__ == "__main__":
     res = Solution().lengthOfLongestSubstringTwoDistinct(s="ccaabbb")
