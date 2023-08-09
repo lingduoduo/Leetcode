@@ -1,8 +1,6 @@
 # Definition for singly-linked list.
 from typing import Optional
 
-s
-
 
 class ListNode(object):
     def __init__(self, x):

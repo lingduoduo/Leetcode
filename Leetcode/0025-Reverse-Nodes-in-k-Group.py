@@ -1,7 +1,9 @@
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
         # 实现一个group内的变换
@@ -34,11 +36,6 @@ class Solution:
             return None
 
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
     def reverseLinkedList(self, head, k):
         # Reverse k nodes of the given linked list.

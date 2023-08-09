@@ -17,3 +17,8 @@ class Solution:
                     dp[i][j] = dp[i - 1][j - 1]
 
         return dp[len(s)][len(p)]
+
+
+if __name__ == "__main__":
+    results = Solution().isMatch(s="aa", p="a")
+    print(results)
