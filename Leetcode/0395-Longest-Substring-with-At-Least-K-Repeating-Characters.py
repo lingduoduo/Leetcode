@@ -56,3 +56,30 @@ class Solution:
                 if dif_ct == ct == i:
                     res = max(res, r - l)
         return res
+
+
+class Solution:
+    def longestSubstring(self, s: str, k: int) -> int:
+        res = 0
+        for i in range(1, len(set(s)) + 1):
+            d = collections.Counter()
+            l = r = ct = dif_ct = 0
+            while r < len(s):
+                d[s[r]] += 1
+                if d[s[r]] == 1:
+                    dif_ct += 1
+                if d[s[r]] == k:
+                    ct += 1
+                r += 1
+
+                while l < r and dif_ct > i:
+                    if d[s[l]] == k:
+                        ct -= 1
+                    if d[s[l]] == 1:
+                        dif_ct -= 1
+                    d[s[l]] -= 1
+                    l += 1
+
+                if dif_ct == ct == i:
+                    res = max(res, r - l)
+        return res
