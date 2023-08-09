@@ -8,7 +8,7 @@ class Solution:
 
         prev = 0
         curr = 0
-        hold = -price[0]
+        hold = -prices[0]
 
         for i in range(1, len(prices)):
             tmp = curr

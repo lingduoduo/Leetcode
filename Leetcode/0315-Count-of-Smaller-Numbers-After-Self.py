@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
         def countAndMergeSort(num_idxs, start, end, counts):

@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def maxCoins(self, nums):
         n = len(nums)

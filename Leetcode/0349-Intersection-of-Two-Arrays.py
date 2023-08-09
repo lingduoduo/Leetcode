@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution(object):
     def intersection(self, nums1, nums2):
         if len(nums1) > len(nums2):
