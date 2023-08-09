@@ -4,18 +4,6 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        ###first try
-        ###if x < -2**31 or x > 2**31 - 1:
-        ###    return 0
-        ###ind = 1 if x > 0 else -1
-        ###x = abs(x)
-        ###result = 0
-        ###while x > 0:
-        ###    result = result * 10 + x % 10
-        ###    x = x / 10
-        ###if result < -2**31 or result > 2**31 - 1:
-        ###    return 0
-        ###return ind * result
         if x <= -(2**31) or x >= 2**31 - 1:
             return 0
         if x < 0:
