@@ -1,3 +1,6 @@
+import collections
+
+
 class Solution:
     def longestSubstring(self, s: str, k: int) -> int:
         if len(s) < k:
@@ -6,6 +9,24 @@ class Solution:
         for cha in set(s):
             if s.count(cha) < k:
                 return max(self.longestSubstring(t, k) for t in s.split(cha))
+        return len(s)
+
+
+class Solution:
+    def longestSubstring(self, s: str, k: int) -> int:
+        if len(s) < k:
+            return 0
+
+        # Count the frequency of each character
+        counter = collections.Counter(s)
+
+        # Check for characters that are less frequent than k
+        for char, freq in counter.items():
+            if freq < k:
+                # For each such character, split the string and solve for each substring
+                return max(self.longestSubstring(substr, k) for substr in s.split(char))
+
+        # If all characters have a frequency of k or more, return the string's length
         return len(s)
 
 
