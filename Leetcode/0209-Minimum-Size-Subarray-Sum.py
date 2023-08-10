@@ -38,6 +38,21 @@ class Solution:
         return 0 if res == float("inf") else res
 
 
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        presum = [0]
+        for num in nums:
+            presum.append(presum[-1] + num)
+
+        start = 0
+        res = float("inf")
+        for i, num in enumerate(nums):
+            while presum[i + 1] - presum[start] >= target:
+                res = min(res, i + 1 - start)
+                start += 1
+        return 0 if res == float("inf") else res
+
+
 if __name__ == "__main__":
     # s=15
     # nums = [1,2,3,4,5]
