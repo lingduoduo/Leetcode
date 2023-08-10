@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         d = {}
@@ -20,15 +22,13 @@ class Solution:
 
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        res = cnt = 0
-        d = {0: 0}
-
-        for i, num in enumerate(nums, 1):
-            cnt += 1 if num == 0 else -1
-
-            if cnt in d:
-                res = max(res, i - d[cnt])
+        d = {0: -1}
+        res = 0
+        presum = 0
+        for i, num in enumerate(nums):
+            presum += 1 if num == 1 else -1
+            if presum in d:
+                res = max(res, i - d[presum])
             else:
-                d[cnt] = i
-
+                d[presum] = i
         return res
