@@ -1,5 +1,4 @@
 class StringIterator:
-
     def __init__(self, compressedString: str):
         self.idx = -1
         self.words = ""
@@ -20,7 +19,6 @@ class StringIterator:
         self.idx += 1
         return self.words[self.idx] if self.idx < len(self.words) else " "
 
-
     def hasNext(self) -> bool:
         return self.idx + 1 < len(self.words)
 
@@ -30,14 +28,14 @@ from itertools import accumulate
 
 
 class StringIterator:
-
     def __init__(self, compressedString: str):
         self.letter = re.findall(r"\D", compressedString)
         self.number = [int(x) for x in re.findall(r"\d+", compressedString)]
         self.i = self.n = 0
 
     def next(self) -> str:
-        if not self.hasNext(): return " "
+        if not self.hasNext():
+            return " "
         if self.n >= self.number[self.i]:
             self.i += 1
             self.n = 1
@@ -47,6 +45,7 @@ class StringIterator:
 
     def hasNext(self) -> bool:
         return self.i < len(self.letter) - 1 or self.n < self.number[-1]
+
 
 # Your StringIterator object will be instantiated and called as such:
 # obj = StringIterator(compressedString)
