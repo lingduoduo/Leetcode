@@ -1,9 +1,13 @@
+from typing import List, Optional
+import collections
+
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
 class Solution:
@@ -49,9 +53,32 @@ class Solution:
         node_list.sort()
 
         # step 3). retrieve the sorted results partitioned by the column index
-        ret = OrderedDict()
+        ret = collections.OrderedDict()
         for column, row, value in node_list:
             if column in ret:
                 ret[column].append(value)
             else:
                 ret[column] = [value]
+
+
+class Solution:
+    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return [[]]
+        d = collections.defaultdict(list)
+        q = [(root, 0, 0)]
+        while q:
+            node, row, col = q.pop(0)
+            d[col].append((row, node.val))
+            if node.left:
+                q.append((node.left, row + 1, col - 1))
+            if node.right:
+                q.append((node.right, row + 1, col + 1))
+
+        res = []
+        for col in sorted(d.keys()):
+            rows = []
+            for row in sorted(d[col]):
+                rows.append(row[1])
+            res.append(rows)
+        return res
