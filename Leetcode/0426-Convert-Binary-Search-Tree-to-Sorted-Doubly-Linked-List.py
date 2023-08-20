@@ -44,3 +44,21 @@ class Solution:
         last.right = first
         first.left = last
         return first
+
+
+class Solution:
+    def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root: return
+        dummy = Node(0, None, None)
+
+        prev = dummy
+        stack, node = [], root
+        while stack or node:
+            while node:
+                stack.append(node)
+                node = node.left
+            node = stack.pop()
+            node.left, prev.right, prev = prev, node, node
+            node = node.right
+        dummy.right.left , prev.right = prev, dummy.right
+        return dummy.right
