@@ -1,7 +1,7 @@
 # Definition for a binary tree node.
 from typing import List, Optional
 import collections
-import deque
+from collections import deque
 
 
 class TreeNode:
@@ -106,3 +106,23 @@ class Solution:
                     queue.append(node.right)
 
         return right_view
+
+
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+
+        res = []
+        q = [root]
+        while q:
+            cur = []
+            for i in range(len(q)):
+                node = q.pop(0)
+                cur.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(cur[-1])
+        return res
