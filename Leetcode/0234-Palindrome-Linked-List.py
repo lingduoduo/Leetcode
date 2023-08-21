@@ -1,40 +1,34 @@
-###Definition for singly-linked list.
-###class ListNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.next = None
+##Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
-# class Solution(object):
-#     def isPalindrome(self, head):
-#         """
-#         :type head: ListNode
-#         :rtype: bool
-#         """
-###l = list()
-###while head:
-###    l.append(head.val)
-###    head = head.next
-###if l == l[::-1]:
-###    return True
-###else:
-###    return False
-# fast = slow = head
-# stack = []
-#
-# while fast and fast.next:
-#     stack.append(slow.val)
-#     slow = slow.next
-#     fast = fast.next.next
-#
-# if fast:
-#     slow = slow.next
-#
-# while slow:
-#     top = stack.pop()
-#     if top != slow.val:
-#         return False
-#     slow = slow.next
-# return True
+
+class Solution(object):
+    def isPalindrome(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        fast = slow = head
+        stack = []
+
+        while fast and fast.next:
+            stack.append(slow.val)
+            slow = slow.next
+            fast = fast.next.next
+
+        if fast:
+            slow = slow.next
+
+        while slow:
+            top = stack.pop()
+            if top != slow.val:
+                return False
+            slow = slow.next
+        return True
+
 
 from typing import Optional
 
@@ -88,6 +82,25 @@ class Solution:
                 return False
             p1 = p1.next
             p2 = p2.next
+        return True
+
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        slow, fast = head, head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+
+        prev, prev.next, slow = slow, None, slow.next
+        while slow:
+            slow.next, prev, slow = prev, slow, slow.next
+
+        fast, slow = head, prev
+        while slow:
+            if fast.val != slow.val:
+                return False
+            fast = fast.next
+            slow = slow.next
         return True
 
 
