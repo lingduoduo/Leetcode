@@ -1,9 +1,12 @@
+from typing import List
+
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 class Solution:
@@ -70,6 +73,34 @@ class Solution:
             bfs = [y for x in bfs for y in conn[x] if y not in visited]
             visited |= set(bfs)
         return bfs
+
+
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        d = collections.defaultdict(list)
+
+        def network(parent, child):
+            if parent and child:
+                d[parent.val].append(child.val)
+                d[child.val].append(parent.val)
+            if child.left:
+                network(child, child.left)
+            if child.right:
+                network(child, child.right)
+
+        network(None, root)
+
+        visited = set([target.val])
+        q = [target.val]
+        for i in range(k):
+            cur = []
+            for node in q:
+                for neighbor in d[node]:
+                    if neighbor not in visited:
+                        cur.append(neighbor)
+                        visited.add(neighbor)
+            q = cur
+        return q
 
 
 if __name__ == "__main__":
