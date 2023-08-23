@@ -29,6 +29,19 @@ class Solution:
         return 0 if res <= -(2**31) or res >= 2**31 - 1 else res
 
 
+class Solution:
+    def reverse(self, x: int) -> int:
+        flag = -1 if x < 0 else 1
+        x = x * flag
+        res = 0
+        while x:
+            res = res * 10 + x % 10
+            x = x // 10
+            res = 0 if res <= -(2**31) or res >= 2**31 - 1 else res
+        res = flag * res
+        return res
+
+
 if __name__ == "__main__":
     numbers = -123
     results = Solution().reverse(numbers)
