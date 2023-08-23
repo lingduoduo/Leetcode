@@ -12,6 +12,16 @@ class Solution:
         return res[::-1]
 
 
+class Solution:
+    def findBuildings(self, heights: List[int]) -> List[int]:
+        res = [0]
+        for i in range(1, len(heights)):
+            while res and heights[res[-1]] <= heights[i]:
+                res.pop()
+            res.append(i)
+        return res
+
+
 if __name__ == "__main__":
     res = Solution().findBuildings(heights=[4, 2, 3, 1])
     print(res)
