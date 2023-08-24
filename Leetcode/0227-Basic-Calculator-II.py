@@ -53,23 +53,24 @@ class Solution:
 class Solution:
     def calculate(self, s: str) -> int:
         stack = []
-        prev_op = '+'
+        prev_op = "+"
         num = 0
         for i, cha in enumerate(s):
             if cha.isdigit():
                 num = num * 10 + int(cha)
-            if i == len(s) - 1 or cha in '+-*/':
-                if prev_op == '+':
+            if i == len(s) - 1 or cha in "+-*/":
+                if prev_op == "+":
                     stack.append(num)
-                elif prev_op == '-':
+                elif prev_op == "-":
                     stack.append(-num)
-                elif prev_op == '*':
+                elif prev_op == "*":
                     stack.append(stack.pop() * num)
-                elif prev_op == '/':
+                elif prev_op == "/":
                     stack.append(int(stack.pop() / num))
                 prev_op = cha
                 num = 0
         return sum(stack)
+
 
 if __name__ == "__main__":
     ###result = Solution().calculate("3+2*2")

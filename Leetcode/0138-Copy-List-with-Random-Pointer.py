@@ -101,3 +101,22 @@ class Solution:
         node.next = self.copyRandomList(head.next)
         node.random = self.copyRandomList(head.random)
         return node
+
+
+class Solution:
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
+        if head is None:
+            return None
+        d = {}
+        p = head
+        while p:
+            d[p] = Node(p.val, None, None)
+            p = p.next
+        p = head
+        while p:
+            if p.next:
+                d[p].next = d[p.next]
+            if p.random:
+                d[p].random = d[p.random]
+            p = p.next
+        return d[head]
