@@ -1,7 +1,7 @@
 from typing import List
 
-class Solution:
 
+class Solution:
     def countPaths(self, n: int, roads: List[List[int]]) -> int:
         adj_list = defaultdict(list)
         for i, j, k in roads:
@@ -11,7 +11,7 @@ class Solution:
         start = 0
         end = n - 1
 
-        min_dist = {i: [float('inf'), 0] for i in adj_list.keys()}
+        min_dist = {i: [float("inf"), 0] for i in adj_list.keys()}
         min_dist[start] = [0, 1]
 
         heap = [(0, start)]

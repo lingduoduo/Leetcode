@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def totalSteps(self, nums: List[int]) -> int:
         dp = [0] * len(nums)
