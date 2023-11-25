@@ -1,4 +1,6 @@
-# LeetCode Medium+Hard 200 Questions https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
+## LeetCode Medium+Hard 200 Questions 
+
+https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
 
 ## Array
 https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
