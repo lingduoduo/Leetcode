@@ -17,10 +17,10 @@ class Solution:
         if not root:
             return []
         d = defaultdict(list)
-
+        
         stack = []
         stack.append((0, root))
-
+        
         while stack:
             for i in range(len(stack)):
                 pos, node = stack.pop(0)

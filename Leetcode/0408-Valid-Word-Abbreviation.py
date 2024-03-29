@@ -1,34 +1,20 @@
 class Solution:
     def validWordAbbreviation(self, word: str, abbr: str) -> bool:
-        w1 = list(word)
-        w2 = list(abbr)
-        l = 0
-        while w2:
-            chr2 = w2.pop(0)
-            if chr2 not in "0123456789":
-                while l and w1:
-                    w1.pop(0)
-                    l -= 1
-                if l > 0 or len(w1) == 0:
+        i = 0
+        j = 0
+        while i < len(word) and j < len(abbr):
+            if word[i] == abbr[j]:
+                i += 1
+                j += 1
+            else:
+                if abbr[j] == "0" or abbr[j].isalpha():
                     return False
-
-                chr1 = w1.pop(0)
-                if chr1 != chr2:
-                    return False
-
-            elif chr2 == "0" and l == 0:
-                return False
-
-            elif chr2 in list("0123456789"):
-                l = l * 10 + int(chr2)
-
-        while l and w1:
-            w1.pop(0)
-            l -= 1
-        if l > 0:
-            return False
-
-        return l == 0 and len(w1) == 0
+                num = 0
+                while j < len(abbr) and abbr[j].isdigit():
+                    num = num * 10 + int(abbr[j])
+                    j += 1
+                i += num
+        return i == len(word) and j == len(abbr)
 
 
 if __name__ == "__main__":
