@@ -47,29 +47,29 @@ class Solution:
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        first = []
+        firstpass = []
         left, right = 0, 0
         for cha in s:
             if cha not in "()":
-                first.append(cha)
-            elif cha == ")":
-                if right > 0:
-                    first.append(cha)
-                    right -= 1
-            else:
-                first.append(cha)
+                firstpass.append(cha)
+            elif cha == "(":
                 left += 1
                 right += 1
+                firstpass.append(cha)
+            else:
+                if right > 0:
+                    right -= 1
+                    firstpass.append(cha)
         res = []
-        left = left - right
-        for cha in first:
+        left -= right
+        for cha in firstpass:
             if cha == "(":
                 if left > 0:
                     left -= 1
                 else:
                     continue
             res.append(cha)
-        return ''.join(res)
+        return res
 
 
 if __name__ == "__main__":
