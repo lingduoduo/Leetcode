@@ -2,7 +2,7 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
         valid = set()
-
+        
         for i, w in enumerate(s):
             if w == "(":
                 stack.append(i)
@@ -10,14 +10,14 @@ class Solution:
                 valid.add(i)
                 valid.add(stack[-1])
                 stack.pop()
-
+        
         res = []
         for i, w in enumerate(s):
             if w not in "()":
                 res.append(w)
             elif i in valid:
                 res.append(w)
-
+        
         return "".join(res)
 
 
@@ -35,7 +35,7 @@ class Solution:
                     res.append(cha)
             else:
                 res.append(cha)
-
+        
         for i in reversed(range(len(res))):
             if cnt == 0:
                 break
