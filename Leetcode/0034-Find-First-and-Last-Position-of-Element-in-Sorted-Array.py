@@ -122,21 +122,21 @@ class Solution:
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        left = self.lower_bound(nums, target)
-        right = self.lower_bound(nums, target + 1) - 1
+        def lower_bound(nums, target):
+            left, right = 0, len(nums)
+            while left < right:
+                mid = left + (right - left) // 2
+                if nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid
+            return left
+        
+        left = lower_bound(nums, target)
+        right = lower_bound(nums, target + 1) - 1
         if left <= right:
             return [left, right]
         return [-1, -1]
-
-    def lower_bound(self, nums, target):
-        left, right = 0, len(nums)
-        while left < right:
-            mid = left + (right - left) // 2
-            if nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid
-        return left
 
 
 if __name__ == "__main__":
