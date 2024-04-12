@@ -3,12 +3,12 @@ from typing import List
 
 class Solution(object):
     def removeDuplicates(self, nums):
-        count = 0
+        idx = 0
         for i in range(len(nums)):
-            if nums[count] != nums[i]:
-                count += 1
-                nums[count] = nums[i]
-        return count + 1
+            if nums[idx] != nums[i]:
+                idx += 1
+                nums[idx] = nums[i]
+        return idx + 1
 
 
 class Solution:
@@ -23,3 +23,7 @@ class Solution:
                 nums[i] = nums[j]
                 j += 1
         return i + 1
+
+if __name__ == "__main__":
+   res = Solution().removeDuplicates([1, 1, 2])
+   print(res)

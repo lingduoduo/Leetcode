@@ -1,36 +1,35 @@
+from typing import List
+
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        if nums is None:
-            return -1
-
-        i = 0
-        for j in range(len(nums)):
-            if nums[j] != val:
-                nums[i] = nums[j]
-                i = i + 1
-        return i
+        idx = 0
+        for i in range(len(nums)):
+            if nums[idx] != val:
+                nums[idx] = nums[i]
+                idx = idx + 1
+        return idx
 
 
-class Solution(object):
-    def removeElement(self, nums, val):
-        if not nums:
-            return 0
+# class Solution(object):
+#     def removeElement(self, nums, val):
+#         if not nums:
+#             return 0
 
-        if nums == [val]:
-            return 0
+#         if nums == [val]:
+#             return 0
 
-        left = 0
-        right = len(nums) - 1
-        while left < right:
-            if nums[left] != val:
-                left += 1
-            else:
-                while left < right and nums[right] == val:
-                    right -= 1
-                nums[left], nums[right] = nums[right], nums[left]
-                right -= 1
-                left += 1
-        return [num != val for num in nums].count(True)
+#         left = 0
+#         right = len(nums) - 1
+#         while left < right:
+#             if nums[left] != val:
+#                 left += 1
+#             else:
+#                 while left < right and nums[right] == val:
+#                     right -= 1
+#                 nums[left], nums[right] = nums[right], nums[left]
+#                 right -= 1
+#                 left += 1
+#         return [num != val for num in nums].count(True)
 
 
 if __name__ == "__main__":
