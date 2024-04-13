@@ -1,3 +1,5 @@
+from itertools import zip_longest
+
 class Solution(object):
     def backspaceCompare(self, S, T):
         stack1 = []
@@ -15,10 +17,7 @@ class Solution(object):
         return stack1 == stack2
 
 
-import pysnooper
 
-
-@pysnooper.snoop()
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         def finalstrs(strs) -> str:
@@ -37,7 +36,6 @@ class Solution:
         return fs == ft
 
 
-@pysnooper.snoop()
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         def finalstrs(strs: str) -> str:

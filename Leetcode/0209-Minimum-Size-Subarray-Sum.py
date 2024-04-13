@@ -1,9 +1,7 @@
 from typing import List
-import pysnooper
-
 
 class Solution:
-    @pysnooper.snoop()
+
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         if sum(nums) < target:
             return 0
@@ -18,8 +16,6 @@ class Solution:
                 left += 1
             right += 1
         return res
-
-        #
 
 
 class Solution:
@@ -40,17 +36,16 @@ class Solution:
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        presum = [0]
-        for num in nums:
-            presum.append(presum[-1] + num)
-
         start = 0
+        csum = 0
         res = float("inf")
-        for i, num in enumerate(nums):
-            while presum[i + 1] - presum[start] >= target:
-                res = min(res, i + 1 - start)
+        for i, v in enumerate(nums):
+            csum += v
+            while target <= csum:
+                res = min(res, i - start + 1)
+                csum -= nums[start]
                 start += 1
-        return 0 if res == float("inf") else res
+        return res if res != float("inf") else 0
 
 
 if __name__ == "__main__":
