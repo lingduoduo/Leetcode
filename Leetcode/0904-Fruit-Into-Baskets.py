@@ -1,10 +1,7 @@
 from typing import List
 import collections
-import pysnooper
-
 
 class Solution:
-    @pysnooper.snoop()
     def totalFruit(self, fruits: List[int]) -> int:
         d = collections.Counter()
         i = 0
@@ -21,7 +18,6 @@ class Solution:
 
 
 class Solution:
-    @pysnooper.snoop()
     def totalFruit(self, fruits: List[int]) -> int:
         d = collections.Counter()
         i = 0

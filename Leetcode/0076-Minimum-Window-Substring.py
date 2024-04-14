@@ -1,27 +1,25 @@
 import collections
-import pysnooper
 
 
 class Solution:
-    @pysnooper.snoop()
     def minWindow(self, s: str, t: str) -> str:
         res = ""
         cur = float("inf")
 
         start = 0
-        debt = len(t)
-        d = collections.Counter(t)
+        t_len = len(t)
+        t_d = collections.Counter(t)
         for i, c in enumerate(s):
-            d[c] -= 1
-            if d[c] >= 0:
-                debt -= 1
-            while debt == 0:
+            t_d[c] -= 1
+            if t_d[c] >= 0:
+                t_len -= 1
+            while t_len == 0:
                 if cur > i - start + 1:
                     cur = i - start + 1
                     res = s[start : i + 1]
-                d[s[start]] += 1
-                if d[s[start]] > 0:
-                    debt += 1
+                t_d[s[start]] += 1
+                if t_d[s[start]] > 0:
+                    t_len += 1
                 start += 1
         return res
 

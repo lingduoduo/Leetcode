@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution(object):
     def spiralOrder(self, matrix):
         """
@@ -37,13 +39,8 @@ class Solution(object):
                 res.append(matrix[i][colend])
         return res
 
-
-import pysnooper
-from typing import List
-
-
 class Solution:
-    @pysnooper.snoop()
+
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         ret = []
         m = len(matrix)
