@@ -30,39 +30,6 @@ class Solution(object):
 
 class Solution(object):
     def swapPairs(self, head):
-        if not head or not head.next:
-            return head
-
-        dummy = ListNode(0)
-        dummy.next = head
-        pre = dummy
-
-        while pre.next and pre.next.next:
-            cur, pos = pre.next, pre.next.next
-            cur.next = pos.next
-            pos.next = cur
-            pre.next = pos
-            pre = cur
-        return dummy.next
-
-
-class Solution(object):
-    def swapPairs(self, head):
-        dummy = ListNode(0)
-        res = dummy
-        dummy.next = head
-        while dummy.next and dummy.next.next:
-            first = dummy.next
-            second = dummy.next.next
-            first.next = second.next
-            second.next = first
-            dummy.next = second
-            dummy = dummy.next.next
-        return res.next
-
-
-class Solution(object):
-    def swapPairs(self, head):
         dummy = ListNode(0)
         dummy.next = head
         p1 = dummy
@@ -75,4 +42,17 @@ class Solution(object):
 
             p1.next = p3
             p1 = p2
+        return dummy.next
+
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        p0 = dummy
+        while p0.next and p0.next.next:
+            p1 = p0.next
+            p2 = p1.next
+
+            p0.next, p1.next, p2.next = p2, p2.next, p1
+            p0 = p1
         return dummy.next
