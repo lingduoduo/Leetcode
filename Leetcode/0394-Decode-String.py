@@ -10,7 +10,6 @@ class Solution(object):
         num = 0
 
         for i in range(len(s)):
-            print([s[i], res])
             if s[i] == "[":
                 rep.append(num)
                 cur.append(res)
@@ -28,20 +27,26 @@ class Solution(object):
 class Solution:
     def decodeString(self, s: str) -> str:
         stack = []
-        cur_num = cur_str = ""
-
+        curr = ""
+        num = 0
         for cha in s:
             if cha.isdigit():
-                cur_num += cha
-            elif cha.isalpha():
-                cur_str += cha
-            elif cha == "[":
-                stack.append((cur_num, cur_str))
-                cur_num = cur_str = ""
-            elif cha == "]":
-                pre_num, pre_str = stack.pop()
-                cur_str = pre_str + cur_str * int(pre_num)
-        return cur_str
+                num = num * 10 + int(cha)
+            elif cha == '[':
+                stack.append((curr, num))
+                curr = ''
+                num = 0
+            elif cha == ']':
+                prev, times = stack.pop()
+                curr = prev + curr * times
+            else:
+                curr += cha
+        return curr
+    
+# Example usage:
+sol = Solution()
+encoded_string = "3[a2[c]]"
+print(sol.decodeString(encoded_string))  # Output should be "accaccacc"
 
 
 if __name__ == "__main__":
