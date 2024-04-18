@@ -10,7 +10,3 @@ class Solution:
             if s1 != s2 and (s1, s2) not in similarPairsSet and (s2, s1) not in similarPairsSet:
                 return False 
         return True 
-    
-if __name__ == "__main__":
-    s = Solution()
-    print(s.areSentencesSimilar(sentence1 = ["great","acting","skills"], sentence2 = ["fine","drama","talent"], similarPairs = [["great","fine"],["drama","acting"],["skills","talent"]]))
