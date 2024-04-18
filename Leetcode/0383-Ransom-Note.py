@@ -5,7 +5,7 @@ class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         d_ransom = collections.Counter(ransomNote)
         d_magazine = collections.Counter(magazine)
-        return not d_ransom - d_magazine
+        return d_ransom & d_magazine == d_ransom
 
 
 class Solution:

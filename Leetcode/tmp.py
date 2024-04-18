@@ -1,20 +1,14 @@
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from typing import List
+import collections
 
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev = None
-        curr = head
-        while curr:
-            curr.next, prev, curr = prev, curr, curr.next
-        return prev
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        r = collections.Counter(ransomNote)
+        m = collections.Counter(magazine)
+        return r & m 
 
 
 
-
-
-            
-        
+if __name__ == "__main__":
+    res = Solution().canConstruct(ransomNote = "aab", magazine = "aa")
+    print(res)

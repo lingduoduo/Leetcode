@@ -17,3 +17,13 @@ class Solution:
         for k, v in curr.items():
             res.extend([k] * v)
         return res
+
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        freq = collections.Counter(words[0])
+        for word in words[1:]:
+            freq &= collections.Counter(word)
+        res = []
+        for k, v in freq.items():
+            res.extend([k] * v)
+        return res
