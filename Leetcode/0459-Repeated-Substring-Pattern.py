@@ -8,19 +8,20 @@ class Solution:
                     return True
         return False
 
-
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
-        next = [0] * len(s)
-        j = -1
-        next[0] = -1
-        for i in range(1, len(s)):
-            while j >= 0 and s[i] != s[j + 1]:
-                j = next[j]
-            if s[i] == s[j + 1]:
+        n = len(s)
+        next = [0] * n
+        j = 0
+        for i in range(1, n):
+            while j > 0 and s[i] != s[j]:
+                j = next[j - 1]
+            if s[i] == s[j]:
                 j += 1
             next[i] = j
-
-        if next[-1] != -1 and len(s) % (len(s) - (next[-1] + 1)) == 0:
+        
+        len_repeated = next[-1]
+        repeating_unit_length = n - len_repeated
+        if len_repeated > 0 and n % repeating_unit_length == 0:
             return True
         return False
