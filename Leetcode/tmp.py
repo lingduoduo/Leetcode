@@ -1,21 +1,27 @@
-from typing import List
 import collections
-import heapq
+from typing import List
+from collections import defaultdict
 
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
-        heights.append(0)
-        stack = [-1]
+    def longestWPI(self, hours: List[int]) -> int:
+        d = collections.defaultdict(int)
+        parsum = 0
         res = 0
-        for i, v in enumerate(heights):
-            while stack and v < heights[stack[-1]]:
-                h = heights[stack[-1]]
-                w = i - 1 - stack.pop()
-                res = max(res, h*w)
-            stack.append(i)
+        for i, h in enumerate(hours):
+            if h > 8:
+                parsum += 1
+            else:
+                parsum -= 1
+            if parsum > 0:
+                res = i + 1
+            if parsum not in d:
+                d[parsum] = i
+            if parsum - 1 in d:
+                res = max(res, i - d[parsum -1])
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().largestRectangleArea(heights = [2,1,5,6,2,3]) 
-    print(res)
+    res = Solution().productExceptSelf(nums = [-1,1,0,-3,3])
+    print(res)  
 

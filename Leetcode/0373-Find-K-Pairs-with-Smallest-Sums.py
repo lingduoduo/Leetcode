@@ -15,10 +15,6 @@ class Solution:
             res.append([num1, num2])
         return res
 
-
-import heapq
-
-
 class Solution:
     def kSmallestPairs(
         self, nums1: List[int], nums2: List[int], k: int

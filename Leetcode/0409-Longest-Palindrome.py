@@ -25,6 +25,7 @@ class Solution:
                 ss.add(letter)
             else:
                 ss.remove(letter)
+        print(ss)
         if len(ss) != 0:
             return len(s) - len(ss) + 1
         else:
@@ -32,9 +33,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    ###numbers = "abccccdd"
+    numbers = "abccccdd"
     ###numbers = "ccc"
-    numbers = "bananas"
+    # numbers = "bananas"
     result = Solution().longestPalindrome(numbers)
-    print(result)
+    # print(result)
     print("Done")
