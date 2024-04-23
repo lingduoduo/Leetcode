@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """
@@ -17,10 +19,6 @@ class Solution(object):
         if n > 0:
             nums1[:n] = nums2[:n]
         return nums1
-
-
-from typing import List
-
 
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -47,12 +45,8 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        # Set p1 and p2 to point to the end of their respective arrays.
         p1 = m - 1
         p2 = n - 1
-
-        # And move p backwards through the array, each time writing
-        # the smallest value pointed at by p1 or p2.
         for p in range(n + m - 1, -1, -1):
             if p2 < 0:
                 break
