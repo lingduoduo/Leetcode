@@ -82,3 +82,18 @@ class Solution:
             if node.left:
                 stack.append((node.left, path + [node.left.val]))
         return res
+
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        result = []
+        def traversal(node, tot, path):
+            nonlocal result
+            if not node:
+                return
+            tot -= node.val
+            if not node.left and not node.right and tot == 0:
+                result.append(path + [node.val])
+            traversal(node.left, tot, path + [node.val])
+            traversal(node.right, tot, path + [node.val])
+        traversal(root, targetSum, [])
+        return result

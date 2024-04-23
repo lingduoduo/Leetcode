@@ -95,3 +95,45 @@ class Solution:
 
         self.searchBST(root)
         return self.result
+
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def findMode(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+        
+        pre = None
+        node = root
+        stack = []
+        res = []
+        cnt = 0
+        max_cnt = 0
+        while stack or node:
+            while node:
+                stack.append(node)
+                node = node.left
+            node = stack.pop()
+            if pre is None:
+                cnt = 1
+            elif pre.val == node.val:
+                cnt += 1
+            else:
+                cnt = 1
+            
+            if cnt > max_cnt:
+                max_cnt = cnt
+                res = [node.val]
+            elif cnt == max_cnt:
+                res.append(node.val)
+            
+            pre = node  
+            node = node.right
+        
+        return res

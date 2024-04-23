@@ -1,3 +1,5 @@
+from typing import Optional
+
 ###Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -88,3 +90,20 @@ class Solution:
                 cur = cur.right  # 右
 
         return result
+
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        res = float("inf")
+        pre = None
+        stack = []
+        node = root
+        while stack or node:
+            while node:
+                stack.append(node)
+                node = node.left  
+            node = stack.pop()
+            if pre is not None:
+                res = min(res, node.val - pre.val)  
+            pre = node  
+            node = node.right  
+        return res
