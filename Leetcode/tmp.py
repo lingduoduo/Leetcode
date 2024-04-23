@@ -2,23 +2,24 @@ import collections
 from typing import List
 from collections import defaultdict
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def longestWPI(self, hours: List[int]) -> int:
-        d = collections.defaultdict(int)
-        parsum = 0
-        res = 0
-        for i, h in enumerate(hours):
-            if h > 8:
-                parsum += 1
-            else:
-                parsum -= 1
-            if parsum > 0:
-                res = i + 1
-            if parsum not in d:
-                d[parsum] = i
-            if parsum - 1 in d:
-                res = max(res, i - d[parsum -1])
-        return res
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not preorder:
+            return None
+        val = preorder[0]
+        root = TreeNode(val)
+        idx = inorder.index(val)
+        root.left = self.buildTree(preorder[1: 1+idx], inorder[:idx])
+        root.right = self.buildTree(preorder[idx+1:], inorder[idx+1:])
+        return root
+
+        
 
 
 if __name__ == "__main__":
