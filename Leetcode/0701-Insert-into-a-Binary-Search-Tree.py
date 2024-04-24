@@ -30,3 +30,30 @@ class Solution:
             root.right = self.insertIntoBST(root.right, val)
 
         return root
+
+class Solution:
+    def insertIntoBST(self, root, val):
+        if root is None:  # 如果根节点为空，创建新节点作为根节点并返回
+            node = TreeNode(val)
+            return node
+
+        cur = root
+        parent = root  # 记录上一个节点，用于连接新节点
+        while cur is not None:
+            parent = cur
+            if cur.val > val:
+                cur = cur.left
+            else:
+                cur = cur.right
+
+        node = TreeNode(val)
+        if val < parent.val:
+            parent.left = node  # 将新节点连接到父节点的左子树
+        else:
+            parent.right = node  # 将新节点连接到父节点的右子树
+
+        return root
+
+
+
+

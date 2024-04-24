@@ -52,3 +52,37 @@ class Solution:
         if root.val < key:
             root.right = self.deleteNode(root.right, key)
         return root
+
+class Solution:
+    def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        def deleteOneNode(target: TreeNode) -> TreeNode:
+            if target is None:
+                return None
+            if target.right is None:
+                return target.left
+            cur = target.right
+            while cur.left:
+                cur = cur.left
+            cur.left = target.left
+            return target.right
+        
+        if root is None:
+            return root
+        cur = root
+        pre = None  
+        while cur:
+            if cur.val == key:
+                break
+            pre = cur
+            if cur.val > key:
+                cur = cur.left
+            else:
+                cur = cur.right
+        if pre is None:  # 如果搜索树只有头结点
+            return deleteOneNode(cur)
+        # pre 要知道是删左孩子还是右孩子
+        if pre.left and pre.left.val == key:
+            pre.left = deleteOneNode(cur)
+        if pre.right and pre.right.val == key:
+            pre.right = deleteOneNode(cur)
+        return root

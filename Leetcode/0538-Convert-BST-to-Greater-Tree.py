@@ -74,3 +74,21 @@ class Solution:
         cur.val += self.pre
         self.pre = cur.val
         self.traversal(cur.left)
+
+class Solution:
+    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root: return None
+        stack = []
+        node = root
+        pre = 0
+        while node or stack:
+            while node:
+                stack.append(node)
+                node = node.right
+                
+            node = stack.pop()
+            pre += node.val
+            node.val = pre
+            node = node.left
+        return root
+
