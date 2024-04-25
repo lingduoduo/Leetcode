@@ -2,28 +2,36 @@ import collections
 from typing import List
 from collections import defaultdict
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-
 class Solution:
-    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root: return None
-        
-        stack = []
-        node = root
-        pre = 0
-        while node or stack:
-            while node:
-                stack.append(node)
-                node = node.right
-                
-            node = stack.pop()
-            pre += node.val
-            node.val = pre
-            node = node.left
-        return root
+    def letterCombinations(self, digits: str) -> List[str]:
+        if len(digits) == 0:
+            return None
+            
+        d = [
+            "",  # 0
+            "",  # 1
+            "abc",  # 2
+            "def",  # 3
+            "ghi",  # 4
+            "jkl",  # 5
+            "mno",  # 6
+            "pqrs",  # 7
+            "tuv",  # 8
+            "wxyz"  # 9
+        ]
+
+        res = ['']
+        for digit in digits: # '2'
+            cur = []
+            for chr in d[int(digit)]:  #"a", "b", "c"
+                for strs in res:
+                    cur.append(strs + chr)
+            res = cur   
+
+
+if __name__ == "__main__":
+    res = Solution().letterCombinations(digits="23")
+    print(res)
+            
+
 
