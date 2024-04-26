@@ -7,13 +7,13 @@ class Solution:
             return 0
 
         res = 0
-        cur = 0
-        maxreach = 0
+        steps = 0
+        reach = 0
         for i in range(len(nums) - 1):
-            maxreach = max(maxreach, i + nums[i])
-            if i == cur:
+            reach = max(reach, i + nums[i])
+            if i == steps:
                 res += 1
-                cur = maxreach
+                steps = reach
         return res
 
 

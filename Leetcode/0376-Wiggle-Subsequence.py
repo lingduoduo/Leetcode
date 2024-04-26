@@ -39,14 +39,14 @@ class Solution:
     def wiggleMaxLength(self, nums):
         if len(nums) <= 1:
             return len(nums)  
-        curDiff = 0  
-        preDiff = 0  
+        cur_diff = 0  
+        pre_diff = 0  
         res = 1 
         for i in range(len(nums) - 1):
-            curDiff = nums[i + 1] - nums[i]  
-            if (preDiff <= 0 and curDiff > 0) or (preDiff >= 0 and curDiff < 0):
+            cur_diff = nums[i + 1] - nums[i]  
+            if (pre_diff<= 0 and cur_diff > 0) or (pre_diff >= 0 and cur_diff < 0):
                 res += 1 
-                preDiff = curDiff  
+                pre_diff = cur_diff  
         return res
 
 

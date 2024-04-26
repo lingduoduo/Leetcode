@@ -45,3 +45,38 @@ class Solution:
                         ans = min(ans, (x - lastx[y1, y2]) * (y2 - y1))
                     lastx[y1, y2] = x
         return ans if ans < float("inf") else 0
+
+
+class Solution:
+    def minAreaRect(self, points: List[List[int]]) -> int:
+
+        horizontal = {}
+        vertical = {}
+        res = float('inf')
+
+        for x, y in points:
+            if y not in horizontal:
+                horizontal[y] = []
+            horizontal[y].append(x)
+            if x not in vertical:
+                vertical[x] = []
+            vertical[x].append(y)
+
+
+        for line in horizontal.values():
+            line.sort()
+        for line in vertical.values():
+            line.sort()
+
+        for x, y in points:
+            for prev_x in horizontal[y]:
+                if prev_x >= x:
+                    continue
+                for prev_y in vertical[x]:
+                    if prev_y >= y:
+                        continue
+                    if prev_y in vertical[prev_x]:
+                        res = min(res, abs(x - prev_x) * abs(y - prev_y))
+        return 0 if res == float('inf') else res
+
+        

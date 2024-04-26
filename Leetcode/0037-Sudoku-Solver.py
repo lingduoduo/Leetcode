@@ -179,3 +179,37 @@ class Solution:
 
 
 #
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def backtracking() -> bool:
+            # 若有解，返回True；若无解，返回False
+            for i in range(len(board)): # 遍历行
+                for j in range(len(board[0])):  # 遍历列
+                    # 若空格内已有数字，跳过
+                    if board[i][j] != '.': continue
+                    for k in range(1, 10):
+                        if self.is_valid(i, j, k, board):
+                            board[i][j] = str(k)
+                            if backtracking(): 
+                                return True
+                            board[i][j] = '.'
+                    # 若数字1-9都不能成功填入空格，返回False无解
+                    return False
+            return True # 有解
+
+        return backtracking()
+
+
+    def is_valid(self, row: int, col: int, val: int, board: List[List[str]]) -> bool:
+        for i in range(9):
+            if board[i][col] == str(val):
+                return False
+            if board[row][i] == str(val):
+                return False
+            if board[3*(row//3) + i//3][3*(col//3) + i%3] == str(val):
+                return False
+        return True
+

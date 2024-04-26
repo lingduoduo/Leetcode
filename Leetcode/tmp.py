@@ -1,37 +1,26 @@
-import collections
 from typing import List
 from collections import defaultdict
 
 class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
-        if len(digits) == 0:
-            return None
+    def maximumLength(self, s: str) -> int:
+        d = defaultdict(list)
+        l = 0
+        while l < len(s):
+            r = l
+            while r <  len(s) and s[l] == s[r]:
+                r += 1
+            for i in range(r-l, max(0, r-l-4), -1):
+                d[s[l]].append(i)    
+                print(d)
+            l = r 
             
-        d = [
-            "",  # 0
-            "",  # 1
-            "abc",  # 2
-            "def",  # 3
-            "ghi",  # 4
-            "jkl",  # 5
-            "mno",  # 6
-            "pqrs",  # 7
-            "tuv",  # 8
-            "wxyz"  # 9
-        ]
+        res = -1
+        for key in d:
+            if len(d[key]) >= 3:
+                res = max(res,sorted(d[key])[-3])
+        return res       
 
-        res = ['']
-        for digit in digits: # '2'
-            cur = []
-            for chr in d[int(digit)]:  #"a", "b", "c"
-                for strs in res:
-                    cur.append(strs + chr)
-            res = cur   
-
-
-if __name__ == "__main__":
-    res = Solution().letterCombinations(digits="23")
+if __name__ == '__main__':
+    obj = Solution()
+    res = obj.maximumLength(s = "aaaa")
     print(res)
-            
-
-
