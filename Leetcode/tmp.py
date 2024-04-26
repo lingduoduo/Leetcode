@@ -1,26 +1,25 @@
 from typing import List
-from collections import defaultdict
+from collections import defaultdict, deque
 
 class Solution:
-    def maximumLength(self, s: str) -> int:
-        d = defaultdict(list)
-        l = 0
-        while l < len(s):
-            r = l
-            while r <  len(s) and s[l] == s[r]:
-                r += 1
-            for i in range(r-l, max(0, r-l-4), -1):
-                d[s[l]].append(i)    
-                print(d)
-            l = r 
-            
-        res = -1
-        for key in d:
-            if len(d[key]) >= 3:
-                res = max(res,sorted(d[key])[-3])
-        return res       
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        points.sort(key=lambda x: x[0])
+        res = 0
+        stack = [points[0]]
+        for point in points:
+            if stack[-1][1] < point[0]:
+                res += 1
+                stack.append(point)
+            else:
+                stack[-1][0] = max(stack[-1][0], point[0])
+                stack[-1][1] = min(stack[-1][1], point[1])
+        return res + 1
 
-if __name__ == '__main__':
-    obj = Solution()
-    res = obj.maximumLength(s = "aaaa")
-    print(res)
+
+
+
+
+
+if __name__ == "__main__":
+   res = Solution().findMinArrowShots([[10,16],[2,8],[1,6],[7,12]])
+   print(res)
