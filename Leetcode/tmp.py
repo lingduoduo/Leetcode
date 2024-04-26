@@ -2,24 +2,14 @@ from typing import List
 from collections import defaultdict, deque
 
 class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -> int:
-        points.sort(key=lambda x: x[0])
-        res = 0
-        stack = [points[0]]
-        for point in points:
-            if stack[-1][1] < point[0]:
-                res += 1
-                stack.append(point)
-            else:
-                stack[-1][0] = max(stack[-1][0], point[0])
-                stack[-1][1] = min(stack[-1][1], point[1])
-        return res + 1
-
-
-
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        t = []
+        for x, y in zip(position, speed):
+            t.append((target - x) /y)
+        print(t)
 
 
 
 if __name__ == "__main__":
-   res = Solution().findMinArrowShots([[10,16],[2,8],[1,6],[7,12]])
+   res = Solution().carFleet(target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3])
    print(res)
