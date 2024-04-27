@@ -2,14 +2,24 @@ from typing import List
 from collections import defaultdict, deque
 
 class Solution:
-    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        t = []
-        for x, y in zip(position, speed):
-            t.append((target - x) /y)
-        print(t)
-
+    def partitionLabels(self, s: str) -> List[int]:
+        d =  defaultdict(list)
+        for i, v in enumerate(s):
+            if v not in d:
+                d[v] = [i, i]
+            else:
+                d[v][1] = i
+        values = sorted(d.values())
+        stack = [values[0]]
+        for i in range(1, len(values)):
+            if values[i][0] > stack[-1][1]:
+                stack.append(values[i])
+            else:
+                stack[-1][1] = max(stack[-1][1], values[i][1])
+        res = [v[1] - v[0] + 1 for v in stack]
+        return res
 
 
 if __name__ == "__main__":
-   res = Solution().carFleet(target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3])
+   res = Solution().partitionLabels("ababcbacadefegdehijhklij")
    print(res)
