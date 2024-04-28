@@ -23,7 +23,6 @@ class Solution(object):
                 right = mid
         return False
 
-
 if __name__ == "__main__":
     matrix = [[1, 5, 9], [10, 11, 12], [13, 13, 15]]
     result = Solution().searchMatrix(matrix, 1)

@@ -11,36 +11,38 @@ class TreeNode:
 
 class Solution:
     def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
-        Depth, Height = collections.defaultdict(int), collections.defaultdict(int)
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
+        d_depth, d_height = collections.defaultdict(int), collections.defaultdict(int)
 
         def dfs(node, depth):
             if not node:
                 return -1
-            Depth[node.val] = depth
-            cur = max(dfs(node.left, depth + 1), dfs(node.right, depth + 1)) + 1
-            Height[node.val] = cur
-            return cur
-
+            d_depth[node.val] = depth
+            d_height[node.val] = max(dfs(node.left, depth + 1), dfs(node.right, depth + 1)) + 1
+            return d_height[node.val]
         dfs(root, 0)
 
-        cousins = collections.defaultdict(
-            list
-        )  # Group nodes according to their depth. Keep the top 2 heights.
-        for val, depth in Depth.items():
-            cousins[depth].append((-Height[val], val))
+        cousins = collections.defaultdict(list)  
+        for val, depth in d_depth.items():
+            cousins[depth].append((-d_height[val], val))
             cousins[depth].sort()
             if len(cousins[depth]) > 2:
                 cousins[depth].pop()
 
-        ans = []
+        res = []
         for q in queries:
-            depth = Depth[q]
-            if len(cousins[depth]) == 1:  # No cousin, path length equals depth - 1.
-                ans.append(depth - 1)
-            elif (
-                cousins[depth][0][1] == q
-            ):  # The removed node has the largest height, look for the node with 2nd largest height.
-                ans.append(-cousins[depth][1][0] + depth)
-            else:  # Look for the node with the largest height.
-                ans.append(-cousins[depth][0][0] + depth)
-        return ans
+            depth = d_depth[q]
+            if len(cousins[depth]) == 1:  
+                res.append(depth - 1)
+            elif cousins[depth][0][1] == q:  
+                res.append(-cousins[depth][1][0] + depth)
+            else:  
+                res.append(-cousins[depth][0][0] + depth)
+        return res
