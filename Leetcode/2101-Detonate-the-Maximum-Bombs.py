@@ -1,32 +1,33 @@
+from collections import defaultdict
+
 class Solution:
     def maximumDetonation(self, bombs: List[List[int]]) -> int:
-        N = len(bombs)
-
+        n = len(bombs)
         # construct directed graph
-        G = defaultdict(list)
-        for i in range(N):
-            for j in range(N):
+        d = defaultdict(list)
+        for i in range(n):
+            for j in range(n):
                 if i == j:
                     continue
                 bi = bombs[i]
                 bj = bombs[j]
                 if (bi[0] - bj[0]) ** 2 + (bi[1] - bj[1]) ** 2 <= bi[2] ** 2:
-                    G[i].append(j)
+                    d[i].append(j)
 
         # apply DFS with every bomb as start point
-        max_ans = 1
+        res = 1
         for start in range(N):
             queue = [start]
             visited = set([start])
-            this_ans = 0
+            curr = 0
             while queue:
                 pos = queue.pop()
-                this_ans += 1
-                for neib in G[pos]:
-                    if neib not in visited:
-                        queue.append(neib)
-                        visited.add(neib)
-            max_ans = max(this_ans, max_ans)
-            if max_ans == N:
-                return N
-        return max_ans
+                curr += 1
+                for neighbor in d[pos]:
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+                        visited.add(neighbor)
+            res = max(curr, res)
+            if res == n:
+                return n
+        return res
