@@ -46,41 +46,33 @@ class Solution:
 
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
-        """
-        Do not return anything, modify board in-place instead.
-        """
-        # 如果数组长或宽小于等于2，则不需要替换
-        if len(board) <= 2 or len(board[0]) <= 2:
-            return
+        n, m = len(board), len(board[0])
+        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-        row, col = len(board), len(board[0])
-
-        def dfs(i, j):
-            """
-            深度优先算法，如果符合条件，替换为A并进一步测试，否则停止
-            """
-            if i < 0 or j < 0 or i >= row or j >= col or board[i][j] != "O":
+        def dfs_explore(r, c):
+            if (r < 0 or r >= n or c < 0 or c >= m or board[r][c] != 'O'):
                 return
-            board[i][j] = "A"
 
-            dfs(i - 1, j)
-            dfs(i + 1, j)
-            dfs(i, j - 1)
-            dfs(i, j + 1)
+            board[r][c] = 'D'
+            for dr, dc in dirs:
+                dfs_explore(r + dr, c + dc)
 
-        # 从外围开始
-        for i in range(row):
-            dfs(i, 0)
-            dfs(i, col - 1)
+        for r in range(n):
+            if board[r][0] == 'O':
+                dfs_explore(r, 0)
+            if board[r][m - 1] == 'O':
+                dfs_explore(r, m - 1)
 
-        for j in range(col):
-            dfs(0, j)
-            dfs(row - 1, j)
+        for c in range(m):
+            if board[0][c] == 'O':
+                dfs_explore(0, c)
+            if board[n - 1][c] == 'O':
+                dfs_explore(n - 1, c)
 
-        # 最后完成替换
-        for i in range(row):
-            for j in range(col):
-                if board[i][j] == "O":
-                    board[i][j] = "X"
-                elif board[i][j] == "A":
-                    board[i][j] = "O"
+        # Flip all 'O' to 'X' unless they've been marked as 'D'
+        for row in range(n):
+            for col in range(m):
+                if board[row][col] == 'O':
+                    board[row][col] = 'X'  # Flip
+                elif board[row][col] == 'D':
+                    board[row][col] = 'O'  # Restore

@@ -13,3 +13,9 @@ class Solution:
             t = r1 + (r2 - 1) * 7
             if t <= 40:
                 return t % 10 + 1
+
+class Solution:
+    def rand10(self):
+        l = [rand7() for _ in range(10)]
+        return sum(l) % 10 + 1
+        

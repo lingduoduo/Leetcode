@@ -75,3 +75,37 @@ class Solution:
                         q.append((tmpx, tmpy))
                         ret.add((tmpx, tmpy))
         return res
+
+
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        def dfs(row: int, col: int, sign: int):
+            position = [[-1, 0], [0, 1], [1, 0], [0, -1]]
+            for current in position:
+                curRow, curCol = row + current[0], col + current[1]
+                if curRow < 0 or curRow >= len(heights) or curCol < 0 or curCol >= len(heights[0]):
+                    continue
+
+                if heights[curRow][curCol] < heights[row][col] or visited[curRow][curCol][sign]: 
+                    continue
+                visited[curRow][curCol][sign] = True
+                dfs(curRow, curCol, sign)
+
+
+        n, m = len(heights), len(heights[0])
+        res, visited = [], [[[False for _ in range(2)] for _ in range(m)] for _ in range(n)]
+        for row in range(n):
+            visited[row][0][1] = True
+            visited[row][m - 1][0] = True
+            dfs(row, 0, 1)
+            dfs(row, m - 1, 0)
+        for col in range(0, m):
+            visited[0][col][1] = True
+            visited[n - 1][col][0] = True
+            dfs(0, col, 1)
+            dfs(n - 1, col, 0)
+        for row in range(n):
+            for col in range(m):
+                if visited[row][col][0] and visited[row][col][1]:
+                    res.append([row, col])
+        return res
