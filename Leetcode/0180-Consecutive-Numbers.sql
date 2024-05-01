@@ -1,6 +1,6 @@
-###Write your MySQL query statement below
-
-SELECT distinct a.Num as ConsecutiveNums
-FROM Logs a, Logs b, Logs c
-WHERE a.Id = b.Id-1 and b.Id=c.Id-1
-and a.Num = b.Num and b.Num = c.Num
+# Write your MySQL query statement below
+SELECT first.num AS ConsecutiveNums
+FROM Logs first, Logs second, Logs third
+WHERE first.id + 1 = second.id and second.id + 1 = third.id 
+AND first.num = second.num and second.num = third.num
+GROUP BY 1
