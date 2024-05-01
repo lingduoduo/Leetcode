@@ -1,26 +1,29 @@
 from typing import List, Optional
 # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
 class Solution:
-    def printTree(self, root: Optional[TreeNode]) -> List[List[str]]:
-        def height(node):
-            return 0 if not node else 1 + max(height(node.left), height(node.right))
+  def judgePoint24(self, nums: List[int]) -> bool:
+    def generate(a: float, b: float) -> List[float]:
+      return [a * b,
+              math.inf if b == 0 else a / b,
+              math.inf if a == 0 else b / a,
+              a + b, a - b, b - a]
 
-        def fill(node, h, l, r):
-            if not node:
-                return
-            mid = (l + r) // 2
-            res[h][mid] = str(node.val)
-            fill(node.left, h + 1, l, mid - 1)
-            fill(node.right, h + 1, mid + 1, r)
+    def dfs(nums: List[float]) -> bool:
+      if len(nums) == 1:
+        return abs(nums[0] - 24.0) < 0.001
 
-        h = height(root)
-        w = 2 ** h - 1
-        res = [[''] * w for _ in range(h)]
-        fill(root, 0, 0, w - 1)
-        return res
+      for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+          for num in generate(nums[i], nums[j]):
+            nextRound = [num]
+            for k in range(len(nums)):
+              if k == i or k == j:
+                continue
+              nextRound.append(nums[k])
+            if dfs(nextRound):
+              return True
+
+      return False
+
+    return dfs(nums)
+    
