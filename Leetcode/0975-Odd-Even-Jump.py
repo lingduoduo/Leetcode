@@ -16,8 +16,10 @@ class Solution:
         
         sortedIdx = sorted(range(len(arr)), key= lambda x: arr[x])
         oddIndexes = getNextIndex(sortedIdx)
+        print(oddIndexes)
         sortedIdx.sort(key=lambda x: -arr[x])
         evenIndexes = getNextIndex(sortedIdx)
+        print(evenIndexes)
         
 		# [odd, even], the 0th jump is even
         dp = [[0,1] for _ in range(len(arr))]
