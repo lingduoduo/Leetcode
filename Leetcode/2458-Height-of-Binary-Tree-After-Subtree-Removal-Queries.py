@@ -11,14 +11,6 @@ class TreeNode:
 
 class Solution:
     def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
         d_depth, d_height = collections.defaultdict(int), collections.defaultdict(int)
 
         def dfs(node, depth):
@@ -28,6 +20,7 @@ class Solution:
             d_height[node.val] = max(dfs(node.left, depth + 1), dfs(node.right, depth + 1)) + 1
             return d_height[node.val]
         dfs(root, 0)
+        print(d_depth, d_height)
 
         cousins = collections.defaultdict(list)  
         for val, depth in d_depth.items():
@@ -35,6 +28,7 @@ class Solution:
             cousins[depth].sort()
             if len(cousins[depth]) > 2:
                 cousins[depth].pop()
+        print(cousins)
 
         res = []
         for q in queries:
@@ -46,3 +40,14 @@ class Solution:
             else:  
                 res.append(-cousins[depth][0][0] + depth)
         return res
+
+if __name__ == "__main__":
+    root = TreeNode(1)
+    root.left = TreeNode(3)
+    root.left.left = TreeNode(2)
+    root.right = TreeNode(4)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(5)
+    root.right.right.right = TreeNode(7)
+    res = Solution().treeQueries(root, queries = [4])
+    print(res)

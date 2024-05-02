@@ -1,29 +1,29 @@
-from typing import List, Optional
-# Definition for a binary tree node.
+from typing import List
+
 class Solution:
-  def judgePoint24(self, nums: List[int]) -> bool:
-    def generate(a: float, b: float) -> List[float]:
-      return [a * b,
-              math.inf if b == 0 else a / b,
-              math.inf if a == 0 else b / a,
-              a + b, a - b, b - a]
-
-    def dfs(nums: List[float]) -> bool:
-      if len(nums) == 1:
-        return abs(nums[0] - 24.0) < 0.001
-
-      for i in range(len(nums)):
-        for j in range(i + 1, len(nums)):
-          for num in generate(nums[i], nums[j]):
-            nextRound = [num]
-            for k in range(len(nums)):
-              if k == i or k == j:
-                continue
-              nextRound.append(nums[k])
-            if dfs(nextRound):
-              return True
-
-      return False
-
-    return dfs(nums)
+    def maxSubarrayLength(self, nums: List[int]) -> int:
+        stack = []
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if not stack or nums[i] < nums[stack[-1]]:
+                stack.append(i)
+        print(stack)
+        
+        res = 0
+        cur = float('-inf')
+        for i in range(n):
+            while stack and stack[-1] <= i:
+                stack.pop()
+            if nums[i] > cur:
+                cur = nums[i]
+                while stack and nums[stack[-1]] < cur:
+                    res = max(res, stack[-1] - i + 1)
+                    stack.pop()
+        
+        return res
     
+
+if __name__ == '__main__':
+    res = Solution().maxSubarrayLength(nums = [7,6,5,4,3,2,1,6,10,11])
+    print(res)
+        
