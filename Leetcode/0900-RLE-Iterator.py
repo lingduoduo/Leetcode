@@ -16,3 +16,14 @@ class RLEIterator:
             self.encoding.append(num)
             self.encoding.append(acc - n)
         return num
+
+if __name__ == "__main__":
+    obj = RLEIterator(encoding = [3,8,0,9,2,5])
+    res = obj.next(2)
+    print(res)
+    res = obj.next(1)
+    print(res)
+    res = obj.next(1)
+    print(res)
+    res = obj.next(2)
+    print(res)
