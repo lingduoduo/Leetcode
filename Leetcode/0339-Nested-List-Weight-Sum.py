@@ -59,15 +59,13 @@
 
 class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
-        def depthProdSum(nestedList, depth=1):
-            if nestedList.isInteger():
-                return nestedList.getInteger() * depth
-            prodSum = 0
-            for nl in nestedList.getList():
-                prodSum += depthProdSum(nl, depth + 1)
-            return prodSum
+        def dfs(nums, depth):
+            tot = 0
+            for x in nums:
+                if x.isInteger():
+                    tot += x.getInteger() * depth
+                else:
+                    tot += dfs(x.getList(), depth + 1) 
+            return tot
 
-        res = 0
-        for nl in nestedList:
-            res += depthProdSum(nl)
-        return res
+        return dfs(nestedList, 1)
