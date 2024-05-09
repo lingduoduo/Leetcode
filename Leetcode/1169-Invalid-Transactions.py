@@ -1,17 +1,12 @@
-from typing import List, Optional
-import heapq
-from collections import defaultdict
-
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         ret = set()
-        dic = defaultdict(list)
+        dic = collections.defaultdict(list)
         for i,item in enumerate(transactions):
             name, time, amount, city = item.split(",")
             dic[name].append((int(time),city,i))
             if int(amount) > 1000:
                 ret.add(i)
-
         for k,v in dic.items():
             v.sort()
             vleng = len(v)
@@ -26,11 +21,4 @@ class Solution:
                             ret.add(new[2])
                     else:
                         break
-                    
         return [transactions[x] for x in ret]
-    
-# Test the code        
-if __name__ == '__main__':
-    s = Solution()
-    transactions = ["alice,20,1220,mtv","alice,20,1220,mtv"]
-    print(s.invalidTransactions(transactions))
