@@ -3,34 +3,13 @@ import heapq
 from collections import defaultdict
 
 class Solution:
-    def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        ret = set()
-        dic = defaultdict(list)
-        for i,item in enumerate(transactions):
-            name, time, amount, city = item.split(",")
-            dic[name].append((int(time),city,i))
-            if int(amount) > 1000:
-                ret.add(i)
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        costs_a = heapq.heapify([(cost[0], i) for i, cost in enumerate(costs)])
+        costs_b = heapq.heapify([(cost[1], i) for i, cost in enumerate(costs)])
+        cnt_a
 
-        for k,v in dic.items():
-            v.sort()
-            vleng = len(v)
-            for i in range(vleng):
-                old = v[i]
-                for j in range(i+1,vleng):
-                    new = v[j]
-                    diff = new[0]-old[0]
-                    if diff <= 60:
-                        if new[1] != old[1]:
-                            ret.add(old[2])
-                            ret.add(new[2])
-                    else:
-                        break
-                    
-        return [transactions[x] for x in ret]
     
 # Test the code        
 if __name__ == '__main__':
-    s = Solution()
-    transactions = ["alice,20,1220,mtv","alice,20,1220,mtv"]
-    print(s.invalidTransactions(transactions))
+    res = Solution().twoCitySchedCost(costs = [[10,20],[30,200],[400,50],[30,20]])
+    print(res)

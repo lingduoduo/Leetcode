@@ -1,24 +1,25 @@
+from typing import List
+from collections import defaultdict
+
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        ret = set()
-        dic = collections.defaultdict(list)
-        for i,item in enumerate(transactions):
-            name, time, amount, city = item.split(",")
-            dic[name].append((int(time),city,i))
+        res = set()
+        d = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+        for i, transaction in enumerate(transactions):
+            name, time, amount, city = transaction.split(',')
+            d[name][city][time] = i
             if int(amount) > 1000:
-                ret.add(i)
-        for k,v in dic.items():
-            v.sort()
-            vleng = len(v)
-            for i in range(vleng):
-                old = v[i]
-                for j in range(i+1,vleng):
-                    new = v[j]
-                    diff = new[0]-old[0]
-                    if diff <= 60:
-                        if new[1] != old[1]:
-                            ret.add(old[2])
-                            ret.add(new[2])
-                    else:
-                        break
-        return [transactions[x] for x in ret]
+                res.add(i)
+        
+            for c in d[name].keys():
+                if city != c:
+                    for t in sorted(d[name][c].keys()):
+                        if abs(int(t) - int(time)) <= 60:
+                            res.add(i)
+                            res.add(d[name][city][t])
+        return [transactions[i] for i in list(res)]
+
+if __name__ == '__main__':
+    s = Solution()
+    transactions = ["alice,20,800,mtv","alice,50,100,beijing"]
+    print(s.invalidTransactions(transactions))
