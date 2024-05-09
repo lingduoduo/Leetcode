@@ -7,26 +7,28 @@ class Node(object):
         self.next = next
         self.child = child
 """
-if not head:
-    return
+class Solution:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:
+            return
 
-dummy = Node(0, None, head, None)
-stack = []
-stack.append(head)
-prev = dummy
+        dummy = Node(0, None, head, None)
+        stack = []
+        stack.append(head)
+        prev = dummy
+        
+        while stack:
+            curr = stack.pop()
+            curr.prev = prev
+            prev.next = curr
 
-while stack:
-    curr = stack.pop()
-    curr.prev = prev
-    prev.next = curr
+            if curr.next:
+                stack.append(curr.next)
+                curr.next = None
+            if curr.child:
+                stack.append(curr.child)
+                curr.child = None
+            prev = curr
 
-    if curr.next:
-        stack.append(curr.next)
-        curr.next = None
-    if curr.child:
-        stack.append(curr.child)
-        curr.child = None
-    prev = curr
-
-dummy.next.prev = None
-return dummy.next
+        dummy.next.prev = None
+        return dummy.next
