@@ -1,7 +1,10 @@
+from  collections import defaultdict
+
+
 class UndergroundSystem:
     def __init__(self):
         self.user = {}
-        self.station = collections.defaultdict(list)
+        self.station = defaultdict(lambda: defaultdict(list))
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
         self.user[id] = (stationName, t)
