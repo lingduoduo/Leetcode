@@ -4,38 +4,28 @@ from collections import defaultdict
 
 
 # Definition for a Node.
-class Node:
-    def __init__(self, val, prev, next, child):
-        self.val = val
-        self.prev = prev
-        self.next = next
-        self.child = child
-
 class Solution:
-    def child(self,node,bottom,nexx):
-        curr=bottom
-        while curr.next:
-            if curr.child:
-                self.child(curr,curr.child,curr.next)
-            curr=curr.next
-        node.next=bottom
-        bottom.prev=node
-        node.child=None
-        curr.next=nexx
-        if nexx:
-            nexx.prev=curr
-        
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]': 
-        p = head
-        while p:
-            if p.child:
-                nexx = p.next
-                self.child(p, p.child, nexx)
-            temp=temp.next
-        return head
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+        res = []
+        i, j = 0, 0
 
+        while i < len(firstList) and j < len(secondList):
+            x1, y1 = firstList[i]
+            x2, y2 = secondList[j]
+
+            left = max(x1, x2)
+            right = min(y1, y2)
+
+            if left <= right:
+                res.append([left, right])
+            
+            if y1 < y2:
+                i += 1
+            else:
+                j += 1
+        return res
     
 # Test the code        
 if __name__ == '__main__':
-    res = Solution().twoCitySchedCost(costs = [[10,20],[30,200],[400,50],[30,20]])
+    res = Solution().intervalIntersection(firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]])
     print(res)
