@@ -27,10 +27,10 @@ class Solution:
         for i in range(n):
             for j in range(n):
                 if grid[i][j] == 0:
-                    tmp = set()
+                    explore = set()
                     for dx, dy in directions:
                         tx, ty = i + dx, j + dy
                         if 0 <= tx < n and 0 <= ty < n and grid[tx][ty] > 1:
                             tmp.add(grid[tx][ty])
-                    res = max(res, 1 + sum(area[t] for t in tmp))
+                    res = max(res, 1 + sum(area[t] for t in explore))
         return res
