@@ -4,35 +4,16 @@ import heapq
 import collections
 
 class Solution:
-    def equalFrequency(self, word: str) -> bool:
-        d = collections.Counter(word)
+    def maxScore(self, s: str) -> int:
+        res = 0
+        for i in range(len(s)):
+            left = sum([1 for c in s[:i] if c == '0'])
+            right = sum([1 for c in s[i:] if c == '1'])
+            res = max(res, left + right)
+        return res
 
-        f = collections.Counter(d.values())
-
-        l = len(f)
-        if l >= 3:
-            return False
-
-        if l == 1:
-            if len(d.keys()) == 1:
-                return True
-            
-            return list(f.keys())[0] == 1
-        
-        for v, freq in f.items():
-            if v == 1 and freq == 1:
-                return True
-
-        values = list(f.keys())
-        if values[0] - values[1] == 1 and f[values[0]] == 1:
-            return True
-
-        if values[1] - values[0] == 1 and f[values[1]] == 1:
-            return True
-        
-        return False
 
 # Test the code        
 if __name__ == '__main__':
-    res = Solution().equalFrequency("abcc")
+    res = Solution().maxScore("011101")
     print(res)
