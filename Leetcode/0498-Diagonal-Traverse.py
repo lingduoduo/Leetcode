@@ -65,7 +65,7 @@ class Solution:
 
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        d= collections.defaultdict(list)
+        d = collections.defaultdict(list)
         for i in range(len(mat)):
             for j in range(len(mat[i])):
                 d[i+j].append(mat[i][j])
