@@ -1,67 +1,45 @@
-from typing import List
 
+from typing import List, Tuple, Dict
 
 class Solution:
-    def __init__(self):
-        self.empty, self.building = 0, 1
-        self.direction = [(0, -1), (-1, 0), (0, 1), (1, 0)]
 
-    def shortestDistance(self, grid: List[List[int]]) -> int:
-        buildings = []
-        candidate_lands = {}  # {position: distance}
-        building_reach = {}  # {position: number of buildings reached}
+    def shortest_distance(self, grid: List[List[int]]) -> int:
+        bldgs = []
+        lands = {}  # {position: distance}
+        reach = {}  # {position: number of buildings reached}
 
         for r in range(len(grid)):
             for c in range(len(grid[0])):
-                if grid[r][c] == self.building:
-                    buildings.append((r, c))
-                elif grid[r][c] == self.empty:
-                    candidate_lands[(r, c)] = 0
-                    building_reach[(r, c)] = 0
+                if grid[r][c] == 1:
+                    bldgs.append((r, c))
+                elif grid[r][c] == 0:
+                    lands[(r, c)] = 0
+                    reach[(r, c)] = 0
 
-        for building_position in buildings:
-            self.compute_shortest_distances_bfs(
-                candidate_lands, building_reach, building_position, grid
-            )
+        for bldg in bldgs:
+            self.bfs(lands, reach, bldg, grid)
 
-        # Filter lands that are reachable by all buildings
-        results = [
-            candidate_lands[pos]
-            for pos, count in building_reach.items()
-            if count == len(buildings)
-        ]
-        return min(results) if results else -1
+        results = [dist for pos, dist in lands.items() if reach[pos] == len(bldgs)]
+        return min(results, default=-1)
 
-    def compute_shortest_distances_bfs(
-        self,
-        candidate_lands: dict,
-        building_reach: dict,
-        position: Tuple[int, int],
-        grid: List[List[int]],
-    ):
+    def bfs(self, lands: Dict[Tuple[int, int], int], reach: Dict[Tuple[int, int], int], start: Tuple[int, int], grid: List[List[int]]):
         rows, cols = len(grid), len(grid[0])
-        distance = 0
-        visited = set()
-        curr_level = [position]
+        dist = 0
+        visited = set([start])
+        curr_level = [start]
 
         while curr_level:
-            distance += 1
+            dist += 1
             next_level = []
 
-            for pos in curr_level:
-                for direction in self.direction:
-                    adjacent_position = (pos[0] + direction[0], pos[1] + direction[1])
+            for r, c in curr_level:
+                for dr, dc in  [(0, -1), (-1, 0), (0, 1), (1, 0)]:
+                    nr, nc = r + dr, c + dc
 
-                    if (
-                        0 <= adjacent_position[0] < rows
-                        and 0 <= adjacent_position[1] < cols
-                        and grid[adjacent_position[0]][adjacent_position[1]]
-                        == self.empty
-                        and adjacent_position not in visited
-                    ):
-                        visited.add(adjacent_position)
-                        next_level.append(adjacent_position)
-                        candidate_lands[adjacent_position] += distance
-                        building_reach[adjacent_position] += 1
+                    if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 0 and (nr, nc) not in visited:
+                        visited.add((nr, nc))
+                        next_level.append((nr, nc))
+                        lands[(nr, nc)] += dist
+                        reach[(nr, nc)] += 1
 
             curr_level = next_level

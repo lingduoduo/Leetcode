@@ -1,19 +1,22 @@
-from typing import List, Optional
 import heapq
-
-import collections
+from typing import List
 
 class Solution:
-    def maxScore(self, s: str) -> int:
-        res = 0
-        for i in range(len(s)):
-            left = sum([1 for c in s[:i] if c == '0'])
-            right = sum([1 for c in s[i:] if c == '1'])
-            res = max(res, left + right)
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        if not intervals:
+            return 0
+        intervals.sort(key=lambda x: x[0])
+        que = []
+        heapq.heappush(que, intervals[0][1])
+        res = 1
+        for i in range(1, len(intervals)):
+            while que and intervals[i][0] >= que[0]:
+                heapq.heappop(que)
+            heapq.heappush(que, intervals[i][1])
+            res = max(res, len(que))
         return res
-
-
+    
 # Test the code        
 if __name__ == '__main__':
-    res = Solution().maxScore("011101")
+    res = Solution().minMeetingRooms([[0,30],[5,10],[9,15],[15,18],[16,18],[19,20],[40,41]])
     print(res)
