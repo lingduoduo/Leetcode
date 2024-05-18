@@ -1,22 +1,30 @@
 import heapq
+from multiprocessing import heap
 from typing import List
-
 class Solution:
-    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        if not intervals:
-            return 0
-        intervals.sort(key=lambda x: x[0])
-        que = []
-        heapq.heappush(que, intervals[0][1])
-        res = 1
-        for i in range(1, len(intervals)):
-            while que and intervals[i][0] >= que[0]:
-                heapq.heappop(que)
-            heapq.heappush(que, intervals[i][1])
-            res = max(res, len(que))
-        return res
-    
-# Test the code        
-if __name__ == '__main__':
-    res = Solution().minMeetingRooms([[0,30],[5,10],[9,15],[15,18],[16,18],[19,20],[40,41]])
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        l = 0
+        r = len(arr) - k
+        while l < r:
+            mid= l + (r - l) // 2
+            if x <= arr[mid]:
+                r = mid
+            elif arr[mid + k] <= x:
+                l = mid + 1
+            else:
+                mid_l = abs(x - arr[mid])
+                mid_r = abs(x - arr[mid + k])
+                if mid_l <= mid_r:
+                    r = mid
+                else:
+                    l = mid + 1
+        return arr[l:l + k]
+
+
+if __name__ == "__main__":
+    res = Solution().findClosestElements(arr = [1,2,3,4,5], k = 4, x = -1)
     print(res)
+
+
+
+
