@@ -8,17 +8,17 @@ class Solution:
 
         start = 0
         t_len = len(t)
-        t_d = collections.Counter(t)
+        t_dic = collections.Counter(t)
         for i, c in enumerate(s):
-            t_d[c] -= 1
-            if t_d[c] >= 0:
+            t_dic[c] -= 1
+            if t_dic[c] >= 0:
                 t_len -= 1
             while t_len == 0:
                 if cur > i - start + 1:
                     cur = i - start + 1
                     res = s[start : i + 1]
-                t_d[s[start]] += 1
-                if t_d[s[start]] > 0:
+                t_dic[s[start]] += 1
+                if t_dic[s[start]] > 0:
                     t_len += 1
                 start += 1
         return res
