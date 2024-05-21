@@ -1,59 +1,86 @@
 import random
 
+class ListNode:
+    __slots__ = ('val', 'next', 'down')
 
-class Node:
-    def __init__(self, val=-1, right=None, down=None):
+    def __init__(self, val):
         self.val = val
-        self.right = right
-        self.down = down
-
+        self.next = None
+        self.down = None
 
 class Skiplist:
+
     def __init__(self):
-        self.head = Node()  # Dummy head
+        node = ListNode(float('-inf'))
+        node.next = ListNode(float('inf'))
+        self.levels = [node]
 
     def search(self, target: int) -> bool:
-        node = self.head
-        while node:
-            while node.right and node.right.val < target:
-                node = node.right
-            if node.right and node.right.val == target:
+        level = self.levels[-1]
+        while level:
+            node = level
+            while node.next.val < target:
+                node = node.next
+            if node.next.val == target:
                 return True
-            node = node.down
+            level = node.down
         return False
 
-    def erase(self, num: int) -> bool:
-        node = self.head
-        found = False
-        while node:
-            while node.right and node.right.val < num:
-                node = node.right
-            if node.right and node.right.val == num:
-                node.right = node.right.right
-                found = True
-            node = node.down
-        return found
-
     def add(self, num: int) -> None:
-        nodes = []
-        node = self.head
-        while node:
-            while node.right and node.right.val < num:
-                node = node.right
-            nodes.append(node)
-            node = node.down
+        stack = []
+        level = self.levels[-1]
+        while level:
+            node = level
+            while node.next.val < num:
+                node = node.next
+            stack.append(node)
+            level = node.down
 
-        insert = True
+        heads = True
         down = None
-        while insert and nodes:
-            node = nodes.pop()
-            node.right = Node(num, node.right, down)
-            down = node.right
-            insert = random.getrandbits(1) == 0
-        if insert:
-            self.head = Node(-1, None, self.head)
+        while stack and heads:
+            prev = stack.pop()
+            node = ListNode(num)
+            node.next = prev.next
+            node.down = down
+            prev.next = node
+            down = node
+            # flip a coin to stop or continue with the next level
+            heads = random.randint(0, 1)
 
+        # add a new level if we got to the top with heads
+        if not stack and heads:
+            node = ListNode(float('-inf'))
+            node.next = ListNode(num)
+            node.down = self.levels[-1]
+            node.next.next = ListNode(float('inf'))
+            node.next.down = down
+            self.levels.append(node)
+        
 
+    def erase(self, num: int) -> bool:
+        stack = []
+        level = self.levels[-1]
+        while level:
+            node = level
+            while node.next.val < num:
+                node = node.next
+            if node.next.val == num:
+                stack.append(node)
+            level = node.down
+
+        if not stack:
+            return False
+
+        for node in stack:
+            node.next = node.next.next
+
+        # remove the top level if it's empty
+        while len(self.levels) > 1 and self.levels[-1].next.next is None:
+            self.levels.pop()
+
+        return True   
+    
 # Your Skiplist object will be instantiated and called as such:
 # obj = Skiplist()
 # param_1 = obj.search(target)
