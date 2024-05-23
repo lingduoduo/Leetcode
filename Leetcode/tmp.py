@@ -1,43 +1,42 @@
-import collections
-import functools
-import heapq
-from multiprocessing import heap
-from typing import List
-from itertools import accumulate
-import operator
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 class Solution:
-    def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
-        grid = [[] for i in range(n)]
-        for i, j in edges:
-            grid[i].append(j)
-            grid[j].append(i)
-        visited = [0] * n
-        x = self.dfs(0, grid, hasApple, visited)
-        if x == -1:
-            return 0
-        return x
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def dfs(node: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+            if node == None:
+                return None
 
-    def dfs(self, node, grid, hasApple, visited):
-        visited[node] = 1
-        ct = 0
-        for i in grid[node]:
-            if visited[i] == 1:
-                continue
-            x = self.dfs(i, grid, hasApple, visited)
-            if x != -1:
-                ct += x
-                ct += 2
-        if ct > 0 or hasApple[node] == True:
-            return ct
-        return -1
+            if node == p:
+                return p
+            if node == q:
+                return q
+
+            left = dfs(node.left, p, q)
+            right = dfs(node.right, p, q)
+
+            if right == None:
+                return left
+            elif left == None:
+                return right
+            else:
+                return node
+
+        result = dfs(root, p, q)
+        if result == None or (result != p and result != q):
+            return result
+        else:
+            if (result == p and dfs(result, q, q) == None) or (result == q and dfs(result, p, p) == None):
+                return None
+            else:
+                return result
 
 
 if __name__ == "__main__":
-    res = Solution().findDiagonalOrder(nums = [[1,2,3,4,5],[6,7],[8],[9,10,11],[12,13,14,15,16]])
+    res = Solution().numFriendRequests(ages=[16, 17, 18])
     print(res)
-
-
-
-
