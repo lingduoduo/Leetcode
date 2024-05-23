@@ -66,3 +66,29 @@ class Solution:
         directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
         visited = set()
         backtrack()
+
+
+class Solution:
+    def cleanRoom(self, robot):
+        """
+        :type robot: Robot
+        :rtype: None
+        """
+        moves = [(0,1),(1,0),(0,-1),(-1,0)]
+        cleaned = set()
+        def dfs(x, y, direction):
+            robot.clean()
+            cleaned.add((x,y))
+            direction = (direction - 1) % 4
+            robot.turnLeft()
+            # 3 directions since already cleaned the cell robot just came from  except for at root of DFS where robot has not come from anywhere 
+            for _ in range(3 if len(cleaned) > 1 else 4):
+                new_x, new_y = x + moves[direction][0], y + moves[direction][1]
+                if (new_x, new_y) not in cleaned and robot.move():
+                    dfs(new_x, new_y, direction)
+                    robot.turnLeft()
+                else:
+                    robot.turnRight()
+                direction = (direction+1) % 4
+            robot.move()
+        dfs(0,0, 0)
