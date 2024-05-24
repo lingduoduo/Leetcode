@@ -14,37 +14,22 @@
 ###这道题小心重复
 
 
-class Solution(object):
-    def shortestDeistance(self, words, word1, word2):
-        d = dict()
-        for i in range(len(words)):
-            d[words[i]] = d.get(words[i], []) + [i]
-        print(d)
+import collections
+from typing import List
+class WordDistance:
 
-        l1 = d[word1]
-        l2 = d[word2]
+    def __init__(self, wordsDict: List[str]):
+        self.dict = collections.defaultdict(list)
+        for i, w in enumerate(wordsDict):
+            self.dict[w].append(i)
 
-        if len(l1) > len(l2):
-            l1, l2 = l2, l1
+    def shortest(self, word1: str, word2: str) -> int:
+        w1 = self.dict[word1]
+        w2 = self.dict[word2]
+        res = min(abs(word1-word2)for word1 in w1 for word2 in w2)
+        return res
 
-        res = float("inf")
-        for i in l1:
-            res = min(res, min([abs(i - j) for j in l2]))
+wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
+obj = WordDistance(wordsDict)
+print(obj.shortest("makes", "coding"))
 
-        if res == float("inf"):
-            return -1
-        else:
-            return res
-
-
-if __name__ == "__main__":
-    words = ["practice", "makes", "perfect", "coding", "makes"]
-    word1 = "coding"
-    word2 = "practice"
-    result = Solution().shortestDeistance(words, word1, word2)
-    print(result)
-
-    word1 = "makes"
-    word2 = "coding"
-    result = Solution().shortestDeistance(words, word1, word2)
-    print(result)
