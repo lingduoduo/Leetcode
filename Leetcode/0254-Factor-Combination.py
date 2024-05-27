@@ -1,7 +1,4 @@
-# Definition for a binary tree node.
-import collections
-from typing import Optional, List
-
+from typing import List
 class Solution:
     def getFactors(self, n: int) -> List[List[int]]:
         if n <= 1: return []
@@ -17,9 +14,3 @@ class Solution:
 
         dfs(n, 2,[])
         return res
-
-if __name__ == '__main__':
-    res = Solution().getFactors(n=12)
-    print(res)
-
-

@@ -17,3 +17,7 @@ class Solution:
             return res
 
         return recurse(n, True)
+
+if __name__ == "__main__":
+    res = Solution().findStrobogrammatic(3)
+    print(res)
