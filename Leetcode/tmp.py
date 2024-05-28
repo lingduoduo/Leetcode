@@ -3,20 +3,30 @@ import collections
 from typing import Optional, List
 
 class Solution:
-    def getFactors(self, n: int) -> List[List[int]]:
-        if n <= 1: return []
+    def verifyPreorder(self, preorder: List[int]) -> bool:
+        if len(preorder) <= 1:
+            return True
+        idx = 1
+        while idx < len(preorder) and preorder[0] > preorder[idx]:
+            idx += 1
+        return self.verifyPreorder(preorder[1:idx]) and self.verifyPreorder(preorder[idx + 1:])
 
-        res = []
-        def dfs(n, start, path):
-            if n == 1:
-                res.append(path)
-            for i in range(start, int(n**(0.5)) + 1):
-                if n % i == 0:
-                    res.append(path + [i, n // i])
-                    dfs(n//i, i, path+[i])
+class Solution:
+    def verifyPreorder(self, preorder: List[int]) -> bool:
+        def helper(preorder, low, high):
+            if not preorder:
+                return True
+            root = preorder[0]
+            if root <= low or root >= high:
+                return False
+            idx = 1
+            while idx < len(preorder) and preorder[idx] < root:
+                idx += 1
+            left_valid = helper(preorder[1:idx], low, root)
+            right_valid = helper(preorder[idx:], root, high)
+            return left_valid and right_valid
 
-        dfs(n, 2,[])
-        return res
+        return helper(preorder, float('-inf'), float('inf'))
 
 if __name__ == '__main__':
     res = Solution().getFactors(n=12)
