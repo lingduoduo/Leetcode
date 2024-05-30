@@ -1,9 +1,10 @@
-from  collections import Counter
-from collections import Counter
-
 class Solution:
     def minWindow(self, s1: str, s2: str) -> str:
-        # Find - Get ending point of subsequence starting after s1[s]
+        if len(s2) == 1:
+            for i in range(len(s1)):
+                if s1[i] == s2:
+                    return s2
+
         def find_subseq(s):
             t = 0
             while s < len(s1):
@@ -34,19 +35,4 @@ class Solution:
                 res = s1[start:end + 1]
             s = start + 1  # Start next subsequence search
 
-        # Handle the case when s2 has only one character separately
-        if len(s2) == 1:
-            for i in range(len(s1)):
-                if s1[i] == s2:
-                    return s2
-
         return res
-
-if __name__ == "__main__":
-    res = Solution().minWindow(s1 =
-"ngpkbrofkbkoacqjqjmfohikc",
-s2 =
-"n")
-    print(res)  # Output should be "bcde"
-
-
