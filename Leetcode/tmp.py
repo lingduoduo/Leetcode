@@ -41,12 +41,3 @@ class Solution:
                     return s2
 
         return res
-
-if __name__ == "__main__":
-    res = Solution().minWindow(s1 =
-"ngpkbrofkbkoacqjqjmfohikc",
-s2 =
-"n")
-    print(res)  # Output should be "bcde"
-
-
