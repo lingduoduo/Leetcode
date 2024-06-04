@@ -1,20 +1,23 @@
+from typing import List
+
 class Solution:
-    def shipWithinDays(self, weights: List[int], D: int) -> int:
-        left = max(weights)
-        right = sum(weights)
-
-        while left < right:
-            mid = left + (right - left) // 2
-            count = 1
-            total = 0
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        def helper(cap):
+            day_need, cur_load = 1, 0
             for weight in weights:
-                total += weight
-                if total > mid:
-                    count += 1
-                    total = weight
+                cur_load += weight
+                if cur_load > cap:
+                    cur_load = weight
+                    day_need += 1
+                    if day_need > days:
+                        return False
+            return True
 
-            if count > D:
-                left = mid + 1
+        l, r = max(weights), sum(weights)
+        while l < r:
+            m = (l + r) // 2
+            if helper(m):
+                r = m
             else:
-                right = mid
-        return left
+                l = m + 1
+        return l
