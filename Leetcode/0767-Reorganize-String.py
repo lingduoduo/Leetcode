@@ -5,22 +5,28 @@ import heapq
 class Solution:
     def reorganizeString(self, S: str) -> str:
         d = collections.Counter(S)
-        pq = [(-v, k) for k, v in d.items()]
-        heapq.heapify(pq)
 
-        if -pq[0][0] > (1 + len(S)) // 2:
-            return ""
+        max_heap = [(-freq, char) for char, freq in d.items()]
+        heapq.heapify(max_heap)
 
         res = []
-        while len(pq) >= 2:
-            v1, k1 = heapq.heappop(pq)
-            v2, k2 = heapq.heappop(pq)
-            res.extend([k1, k2])
-            if v1 != -1:
-                heapq.heappush(pq, (v1 + 1, k1))
-            if v2 != -1:
-                heapq.heappush(pq, (v2 + 1, k2))
-        return "".join(res) + (pq[0][1] if pq else "")
+        while len(max_heap) >= 2:
+            freq1, char1 = heapq.heappop(max_heap)
+            freq2, char2 = heapq.heappop(max_heap)
+
+            res.extend([char1, char2])
+            if freq1 + 1 < 0:
+                heapq.heappush(max_heap, (freq1 + 1, char1))
+            if freq2 + 1 < 0:
+                heapq.heappush(max_heap, (freq2 + 1, char2))
+
+        if max_heap:
+            freq, char = heapq.heappop(max_heap)
+            if -freq > 1:
+                return ""
+            res.append(char)
+
+        return "".join(res)
 
 
 if __name__ == "__main__":
