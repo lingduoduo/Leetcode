@@ -7,31 +7,6 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
-
-class Solution(object):
-    def pathSum(self, root, sum):
-        """
-        :type root: TreeNode
-        :type sum: int
-        :rtype: List[List[int]]
-        """
-        if not root:
-            return []
-        self.res = []
-        self.search(root, sum, [])
-        return self.res
-
-    def search(self, root, sum, path):
-        if not root:
-            return
-        if not root.left and not root.right:
-            if root.val == sum:
-                self.res.append(path + [root.val])
-        newsum = sum - root.val
-        self.search(root.left, newsum, path + [root.val])
-        self.search(root.right, newsum, path + [root.val])
-
-
 class Solution:
     def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
         if not root:
@@ -83,17 +58,23 @@ class Solution:
                 stack.append((node.left, path + [node.left.val]))
         return res
 
+
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
-        result = []
-        def traversal(node, tot, path):
-            nonlocal result
+        if not root:
+            return []
+
+        def dfs(node, path):
             if not node:
                 return
-            tot -= node.val
-            if not node.left and not node.right and tot == 0:
-                result.append(path + [node.val])
-            traversal(node.left, tot, path + [node.val])
-            traversal(node.right, tot, path + [node.val])
-        traversal(root, targetSum, [])
-        return result
+            if not node.left and not node.right:
+                if targetSum == sum(path) + node.val:
+                    res.append(path + [node.val])
+            else:
+                dfs(node.left, path + [node.val])
+                dfs(node.right, path + [node.val])
+
+        res = []
+        dfs(root, [])
+        return res
+
