@@ -1,5 +1,5 @@
 import collections
-
+from typing import List
 
 class MagicDictionary:
     """
@@ -69,6 +69,35 @@ class MagicDictionary:
             self.d[nei] > 1 or self.d[nei] == 1 and searchWord not in self.words
             for nei in self._genneighbors(searchWord)
         )
+
+
+class MagicDictionary:
+
+    def __init__(self):
+        self.d = collections.defaultdict(set)
+
+    def buildDict(self, dictionary: List[str]) -> None:
+        for word in dictionary:
+            n = len(word)
+            self.d[n].add(word)
+
+    def search(self, searchWord: str) -> bool:
+        n = len(searchWord)
+        if n not in self.d: return False
+
+        def diff(word1, word2):
+            res = 0
+            for i in range(len(word1)):
+                if word1[i] != word2[i]:
+                    res += 1
+                if res > 1:
+                    return res
+            return res
+
+        for word in self.d[n]:
+            if diff(word, searchWord) == 1:
+                return True
+        return False
 
 
 if __name__ == "__main__":

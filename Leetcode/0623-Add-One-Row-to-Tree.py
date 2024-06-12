@@ -1,3 +1,5 @@
+from typing import Optional
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -27,14 +29,6 @@ class Solution:
             node.left = TreeNode(v, node.left, None)
             node.right = TreeNode(v, None, node.right)
         return root
-
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
 
 class Solution:
