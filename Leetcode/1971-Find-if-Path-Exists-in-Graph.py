@@ -3,23 +3,44 @@ import collections
 
 
 class Solution:
-    def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
-        d = collections.defaultdict(list)
-        for x, y in edges:
-            d[x].append(y)
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        graph = collections.defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
 
-        stack = d[start]
-        visited = [0] * n
-        visited[start] = 1
-        while stack:
-            node = stack.pop(0)
-            if node == end:
+        def dfs(node, visited):
+            if node == destination:
                 return True
-            elif visited[node] == 1:
-                continue
-            stack.extend(d[node])
-            visited[node] = 1
+            visited.add(node)
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    if dfs(neighbor, visited):
+                        return True
+            return False
+
+        visited = set()
+        return dfs(source, visited)
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        d = collections.defaultdict(list)
+        for e in edges:
+            d[e[0]].append(e[1])
+            d[e[1]].append(e[0])
+
+        stack = [source]
+        seen = set([source])
+        while stack:
+            node = stack.pop()
+            if node == destination:
+                return True
+            for new_node in d[node]:
+                if new_node not in seen:
+                    seen.add(new_node)
+                    stack.append(new_node)
         return False
+
 
 
 if __name__ == "__main__":
