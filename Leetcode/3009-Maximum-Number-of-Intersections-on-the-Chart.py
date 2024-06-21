@@ -2,8 +2,9 @@ from collections import defaultdict
 from typing import List
 class Solution:
     def maxIntersectionCount(self, y: List[int]) -> int:
-        y_cnt = defaultdict(int)
+        d = defaultdict(int)
         for i, (left, right) in enumerate(zip(y, y[1:])):
+            print(d)
             if i == 0:
                 start = min(left, right)
                 end = max(left, right)
@@ -16,11 +17,15 @@ class Solution:
                     start = left + 0.5
                     end = right + 0.5
 
-            y_cnt[start] += 1
-            y_cnt[end] -= 1
+            d[start] += 1
+            d[end] -= 1
         preSum = 0
         res = 0
-        for key in sorted(y_cnt.keys()):
-            preSum += y_cnt[key]
+        for key in sorted(d.keys()):
+            preSum += d[key]
             res = max(res, preSum)
         return res
+
+if __name__ == "__main__":
+    res = Solution().maxIntersectionCount(y = [1,2,1,2,1,3,2])
+    print(res)

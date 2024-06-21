@@ -8,6 +8,7 @@ class Solution:
     "   testing */",
     "a = b + c;", "}"]
     """
+from typing import List
 
     def removeComments(self, source: List[str]) -> List[str]:
         res = []
