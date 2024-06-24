@@ -63,93 +63,34 @@ class Solution(object):
 
 class Solution:
     def numberToWords(self, num: int) -> str:
-        """
-        :type num: int
-        :rtype: str
-        """
+        if num == 0: return "Zero"
 
-        def one(num):
-            switcher = {
-                1: "One",
-                2: "Two",
-                3: "Three",
-                4: "Four",
-                5: "Five",
-                6: "Six",
-                7: "Seven",
-                8: "Eight",
-                9: "Nine",
-            }
-            return switcher.get(num)
+        ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+        tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+        teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen","Nineteen"]
+        suffixes = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion","Septillion", "Octillion", "Nonillion", "Decillion"]
 
-        def two_less_20(num):
-            switcher = {
-                10: "Ten",
-                11: "Eleven",
-                12: "Twelve",
-                13: "Thirteen",
-                14: "Fourteen",
-                15: "Fifteen",
-                16: "Sixteen",
-                17: "Seventeen",
-                18: "Eighteen",
-                19: "Nineteen",
-            }
-            return switcher.get(num)
-
-        def ten(num):
-            switcher = {
-                2: "Twenty",
-                3: "Thirty",
-                4: "Forty",
-                5: "Fifty",
-                6: "Sixty",
-                7: "Seventy",
-                8: "Eighty",
-                9: "Ninety",
-            }
-            return switcher.get(num)
-
-        def two(num):
-            if not num:
-                return ""
-            elif num < 10:
-                return one(num)
-            elif num < 20:
-                return two_less_20(num)
+        words = []
+        i = 0
+        while num > 0:
+            triplet = num % 1000
+            num = num // 1000
+            if triplet == 0:
+                i += 1
+                continue
+            curr = []
+            if triplet // 100 > 0:
+                curr.append(ones[triplet // 100])
+                curr.append("Hundred")
+            if triplet % 100 >= 10 and triplet % 100 <= 19:
+                curr.append(teens[triplet % 10])
             else:
-                tenner = num // 10
-                rest = num - tenner * 10
-                return ten(tenner) + " " + one(rest) if rest else ten(tenner)
-
-        def three(num):
-            hundred = num // 100
-            rest = num - hundred * 100
-            if hundred and rest:
-                return one(hundred) + " Hundred " + two(rest)
-            elif not hundred and rest:
-                return two(rest)
-            elif hundred and not rest:
-                return one(hundred) + " Hundred"
-
-        billion = num // 1000000000
-        million = (num - billion * 1000000000) // 1000000
-        thousand = (num - billion * 1000000000 - million * 1000000) // 1000
-        rest = num - billion * 1000000000 - million * 1000000 - thousand * 1000
-
-        if not num:
-            return "Zero"
-
-        result = ""
-        if billion:
-            result = three(billion) + " Billion"
-        if million:
-            result += " " if result else ""
-            result += three(million) + " Million"
-        if thousand:
-            result += " " if result else ""
-            result += three(thousand) + " Thousand"
-        if rest:
-            result += " " if result else ""
-            result += three(rest)
-        return result
+                if triplet % 100 >= 20:
+                    curr.append(tens[triplet % 100 // 10])
+                if triplet % 10 > 0:
+                    curr.append(ones[triplet % 10])
+            if i > 0:
+                curr.append(suffixes[i])
+            words = curr + words
+            i += 1
+        return " ".join(words)
