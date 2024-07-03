@@ -1,5 +1,3 @@
-from typing import List
-
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         nums.sort()
@@ -10,7 +8,3 @@ class Solution:
                 res = tot + num
             tot += num
         return -1 if res == 0 else res
-
-if __name__ == "__main__":
-    res = Solution().largestPerimeter(nums = [5, 5, 5])
-    print(res)
