@@ -16,6 +16,21 @@ class Solution:
 
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        @lru_cache(None)
+        def dfs(idx, tot):
+            if idx == len(nums):
+                return 1 if tot == target else 0
+
+            # Add current number
+            count1 = dfs(idx + 1, tot + nums[idx])
+            # Subtract current number
+            count2 = dfs(idx + 1, tot - nums[idx])
+
+            return count1 + count2
+
+        return dfs(0, 0)
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
         total_sum = sum(nums)  # 计算nums的总和
         if abs(target) > total_sum:
             return 0  # 此时没有方案
