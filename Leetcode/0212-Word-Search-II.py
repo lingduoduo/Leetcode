@@ -77,7 +77,7 @@ class Solution:
 
         return self.trie.result
 
-
+from typing import List
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         trie = {}
@@ -112,3 +112,40 @@ class Solution:
         board[x][y] = letter
         if not cur:
             trie.pop(letter)
+
+
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        def dfs(x, y, trie):
+            letter = board[x][y]
+            m, n = len(board), len(board[0])
+            cur = trie[letter]
+            word = cur.pop("#", False)
+            if word:
+                res.append(word)
+            board[x][y] = "*"
+            for dirx, diry in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                curx, cury = x + dirx, y + diry
+                if 0 <= curx < m and 0 <= cury < n and board[curx][cury] in cur:
+                    dfs(curx, cury, cur)
+            board[x][y] = letter
+            if not cur:
+                trie.pop(letter)
+
+        trie = {}
+        for word in words:
+            cur = trie
+            for letter in word:
+                if letter not in cur:
+                    cur[letter] = {}
+                cur = cur[letter]
+            cur["#"] = word
+
+        m, n = len(board), len(board[0])
+        res = []
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] in trie:
+                    dfs(i, j, trie)
+        return res
+
