@@ -1,0 +1,4 @@
+pylint
+pytest
+pytest-cov
+black==24.3.0
