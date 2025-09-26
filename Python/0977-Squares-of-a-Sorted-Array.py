@@ -47,6 +47,19 @@ class Solution:
             i -= 1  # 存放结果的指针需要往前平移一位
         return res
 
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        left, right = 0, len(nums) - 1
+        result = []
+        while left <= right:
+            if abs(nums[left]) < abs(nums[right]):
+                result.append(nums[right] ** 2)
+                right -= 1
+            else:
+                result.append(nums[left] ** 2)
+                left += 1
+        return result[::-1]
+
 
 if __name__ == "__main__":
     res = Solution().sortedSquares(nums=[-4, -1, 0, 3, 10])
