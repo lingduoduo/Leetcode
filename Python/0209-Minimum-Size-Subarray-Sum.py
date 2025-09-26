@@ -33,18 +33,17 @@ class Solution:
             q.append(i)
         return 0 if res == float("inf") else res
 
-
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         start = 0
         csum = 0
         res = float("inf")
-        for i, v in enumerate(nums):
-            csum += v
-            while target <= csum:
+        for i in range(len(nums)):
+            csum += nums[i]
+            while csum >= target:
                 res = min(res, i - start + 1)
-                csum -= nums[start]
                 start += 1
+                csum -= nums[start]
         return res if res != float("inf") else 0
 
 
