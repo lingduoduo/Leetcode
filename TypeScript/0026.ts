@@ -16,20 +16,11 @@ class Solution {
 
 // ---------------------- Tests ----------------------
 
-function runCase(input: number[]) {
-  const sol = new Solution();
-  const arr = [...input]; // copy so we can show original
-  const k = sol.removeDuplicatesfromSortedArray(arr);
-  console.log(`input:  ${JSON.stringify(input)}`);
-  console.log(`k:      ${k}`);
-  console.log(`output: ${JSON.stringify(arr.slice(0, k))}`);
-  console.log("-".repeat(40));
-}
-
+const sol = new Solution();
 // Test cases
-runCase([]);                            // empty
-runCase([1]);                           // single element
-runCase([1,1,1,1]);                     // all duplicates
-runCase([1,2,3,4]);                     // no duplicates
-runCase([0,0,1,1,1,2,2,3,3,4]);         // mixed (LeetCode example)
-runCase([-3,-3,-2,-2,-1,-1,0,0,1,1]);   // negatives and zeros
+console.log(sol.removeDuplicatesfromSortedArray([]));                            // empty
+console.log(sol.removeDuplicatesfromSortedArray([1]));                           // single element
+console.log(sol.removeDuplicatesfromSortedArray([1,1,1,1]));                     // all duplicates
+console.log(sol.removeDuplicatesfromSortedArray([1,2,3,4]));                     // no duplicates
+console.log(sol.removeDuplicatesfromSortedArray([0,0,1,1,1,2,2,3,3,4]));         // mixed (LeetCode example)
+console.log(sol.removeDuplicatesfromSortedArray([-3,-3,-2,-2,-1,-1,0,0,1,1]));   // negatives and zeros
