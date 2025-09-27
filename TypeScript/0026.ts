@@ -1,5 +1,3 @@
-// leetcode_26_remove_duplicates.ts
-
 class Solution {
   // Returns the new length after removing duplicates in-place.
   removeDuplicatesfromSortedArray(nums: number[]): number {
