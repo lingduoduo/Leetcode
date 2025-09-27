@@ -41,14 +41,19 @@ class Solution:
         return True
 
 
+# class Solution:
+#     def isAnagram(self, s: str, t: str) -> bool:
+#         h = [0] * 26
+#         for i in s:
+#             h[ord(i) - ord("a")] += 1
+#         for i in t:
+#             h[ord(i) - ord("a")] -= 1
+#         return all(i == 0 for i in h)
+
+import collections
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        h = [0] * 26
-        for i in s:
-            h[ord(i) - ord("a")] += 1
-        for i in t:
-            h[ord(i) - ord("a")] -= 1
-        return all(i == 0 for i in h)
+        return collections.Counter(s) == collections.Counter(t)
 
 
 if __name__ == "__main__":
