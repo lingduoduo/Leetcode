@@ -25,4 +25,4 @@ class Solution {
 }
 
 const sol = new Solution();
-console.log(sol.applyOperations(nums = [1,2,2,1,1,0]))
+console.log(sol.applyOperations([1,2,2,1,1,0]))
