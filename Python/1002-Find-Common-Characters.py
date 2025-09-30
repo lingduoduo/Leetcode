@@ -1,22 +1,25 @@
+from typing import List
+import collections
+
+
 class Solution:
-    def commonChars(self, A: List[str]) -> List[str]:
-        prev = dict()
-        curr = dict()
-        for i in range(len(A)):
-            d = collections.Counter(A[i])
-            if i == 0:
-                prev = d
-                curr = d
-            else:
-                prev = curr
-                keys = curr.keys() & d.keys()
-                curr = dict()
-                for key in keys:
-                    curr[key] = min(prev[key], d[key])
-        res = []
-        for k, v in curr.items():
-            res.extend([k] * v)
-        return res
+    def commonChars(self, words: List[str]) -> List[str]:
+        result = []
+        freq = [0] * 26
+        for c in words[0]:
+            freq[ord(c) - ord('a')] += 1
+        for i in range(1, len(words)):
+            current_freq = [0] * 26
+            for c in words[i]:
+                current_freq[ord(c) - ord('a')] += 1
+            for k in range(26):
+                freq[k] = min(freq[k], current_freq[k])
+        for i in range(26):
+            while freq[i] != 0:
+                result.extend(chr(i + ord('a')))
+                freq[i] -= 1
+        return result
+
 
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
