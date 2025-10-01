@@ -1,4 +1,4 @@
-class Node:
+class ListNode:
     def __init__(self, val, _next=None):
         self.val = val
         self.next = _next
@@ -6,7 +6,7 @@ class Node:
 
 class MyLinkedList:
     def __init__(self):
-        self.dummy_head = ListNode()
+        self.dummy_head = ListNode(-1)
         self.size = 0
 
     def get(self, index: int) -> int:
