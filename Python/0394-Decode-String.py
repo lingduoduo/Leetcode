@@ -42,17 +42,12 @@ class Solution:
             else:
                 curr += cha
         return curr
-    
-# Example usage:
-sol = Solution()
-encoded_string = "3[a2[c]]"
-print(sol.decodeString(encoded_string))  # Output should be "accaccacc"
-
 
 if __name__ == "__main__":
     ###s='3[a]2[bc]'
     ###s = "3[a2[c]]" #"accaccacc"
     s = "2[abc]3[cd]ef"  ###"abcabccdcdcdef"
     s = "100[leetcode]"
+    s = "10[a]"
     result = Solution().decodeString(s)
     print(result)
