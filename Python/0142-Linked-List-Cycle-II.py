@@ -1,3 +1,5 @@
+from typing import Optional
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -33,18 +35,3 @@ class Solution(object):
             slow = slow.next
             fast = fast.next
         return fast
-
-
-class Solution:
-    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        f, s = head, head
-        while f and f.next:
-            f = f.next.next
-            s = s.next
-            if f == s:
-                s = head
-                while s != f:
-                    s = s.next
-                    f = f.next
-                return s
-        return None
