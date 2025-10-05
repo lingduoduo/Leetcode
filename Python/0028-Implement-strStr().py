@@ -42,60 +42,35 @@ class Solution:
                 return i - len(needle) + 1
         return -1
 
-class Solution:
-    def strStr(self, haystack: str, needle: str) -> int:
-        if len(needle) == 0:
-            return 0
-        
-        def getNext(s: str) -> List:
-            next = [0] * len(s)
-            j = 0
-            for i in range(1, len(s)):
-                while j > 0 and s[i] != s[j]:
-                    j = next[j - 1]
-                if s[i] == s[j]:
-                    j += 1
-                next[i] = j
-            return next
-
-        next  = getNext(needle)
-        j = 0
-        for i in range(1, len(haystack)):
-            while j > 0 and haystack[i] != needle[j]:
-                j = next[j - 1]
-            if haystack[i] == needle[j]:
-                j += 1
-            if j == len(needle):
-                return i - len(needle) + 1
-        return -1
-
+from typing import List
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         if not needle:
             return 0
 
-        def get_next(s: str) -> List:
-            next = [0] * len(s)
-            j = 0
-            for i in range(1,len(s)):
-                while j > 0 and s[i] != s[j]:
-                    j = next[j-1]
-                if s[i] == s[j]:
+        def get_next(s: str) -> List[int]:
+            next = [-1] * len(s)
+            j = -1
+            for i in range(1, len(s)):
+                while j >= 0 and s[i] != s[j + 1]:
+                    j = next[j]
+                if s[i] == s[j + 1]:
                     j += 1
                 next[i] = j
             return next
 
-        j = 0
+        j = -1
         next_pos = get_next(needle)
         for i in range(len(haystack)):
-            while j > 0 and haystack[i] != needle[j]:
-                j = next_pos[j - 1]
-            if haystack[i] == needle[j]:
+            while j >= 0 and haystack[i] != needle[j + 1]:
+                j = next_pos[j]
+            if haystack[i] == needle[j + 1]:
                 j += 1
-            if j == len(needle):
-                return i - len(needle) + 1  
-        return -1  
+            if j == len(needle) - 1:
+                return i - len(needle) + 1
+        return -1
+
 
 if __name__ == "__main__":
     res = Solution().strStr(haystack="sadbutsad", needle="sad")
