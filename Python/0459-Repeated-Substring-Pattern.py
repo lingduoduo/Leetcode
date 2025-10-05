@@ -25,3 +25,7 @@ class Solution:
         if len_repeated > 0 and n % repeating_unit_length == 0:
             return True
         return False
+
+
+if __name__ == '__main__':
+    print(Solution().repeatedSubstringPattern("abab"))
