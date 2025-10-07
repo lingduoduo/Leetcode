@@ -10,5 +10,18 @@ class TreeNode {
 }
 
 function binaryTreePaths(root: TreeNode | null): string[] {
+  function trace(node: TreeNode, path: string, res: string[]) {
+    path += String(node.val);
+    if (node.left === null && node.right === null) {
+      res.push(path);
+      return;
+    }
+    if (node.left !== null) trace(node.left, path + '->', res);
+    if (node.right !== null) trace(node.right, path + '->', res);
+  }
 
-};
+  const res: string[] = [];
+  if (root === null) return res;
+  trace(root, '', res);
+  return res;
+}
