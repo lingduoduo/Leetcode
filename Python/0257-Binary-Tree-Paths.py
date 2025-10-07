@@ -93,3 +93,20 @@ class Solution:
                 path_st.append(path + "->" + str(cur.left.val))
 
         return result
+
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        if not root: return []
+
+        stack = [(root, [])]
+        res = []
+        while stack:
+            cur, path = stack.pop()
+            path = path + [cur.val]  # <-- clone instead of in-place append
+            if not cur.left and not cur.right:
+                res.append('->'.join(map(str, path)))
+            if cur.left:
+                stack.append((cur.left, path))
+            if cur.right:
+                stack.append((cur.right, path))
+        return res
