@@ -1,21 +1,19 @@
 function combine(n: number, k: number): number[][] {
-    const res: number[][] = [];
-    const path: number[] = [];
+    let res: number[][] = [];
 
-    function backtrack(start: number): void {
+    function backtrack(idx: number, path: number[]): void {
         if (path.length === k) {
-            res.push([...path]);     // push a copy
-            return;
+            res.push([...path]);   // push a copy
+            return;                   // <-- keep return inside the if
         }
 
-        // pruning: stop early if not enough numbers left
-        for (let i = start; i <= n - (k - path.length) + 1; i++) {
-            path.push(i);            // choose
-            backtrack(i + 1);        // explore
-            path.pop();              // un-choose
+        for (let i = idx; i <= n; i++) { // iterate 1..n
+            path.push(i);                // push element
+            backtrack(i + 1, path); // next start is i + 1
+            path.pop();                  // undo
         }
     }
 
-    backtrack(1);
+    backtrack(1, []);  // start from 1 with empty path
     return res;
 }
