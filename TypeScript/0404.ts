@@ -12,6 +12,6 @@ class TreeNode {
 function sumOfLeftLeaves(root: TreeNode | null): number {
     if (root === null) return 0;
     if (root.left === null && root.right === null) return 0;
-    if (root.left.left == null && root.left.left == null) return root.left.val;
+    if (root.left !== null && root.left.left === null && root.left.right === null) return root.left.val;
     return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
 };
