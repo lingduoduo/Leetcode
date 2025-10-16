@@ -41,5 +41,5 @@ function solveSudoku(board: string[][]): void {
     return true;                                 // all cells filled
   }
 
-  dfs(); 
+  dfs();
 }
