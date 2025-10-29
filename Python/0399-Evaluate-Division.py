@@ -1,7 +1,11 @@
+from collections import defaultdict
+from typing import List
+
 class Solution:
     def calcEquation(
         self, equations: List[List[str]], values: List[float], queries: List[List[str]]
     ) -> List[float]:
+        
         edge = defaultdict(list)
         for i in range(len(equations)):
             x, y = equations[i]
@@ -25,6 +29,7 @@ class Solution:
                             q.append(n)
                             dic[n] = dic[cur] * v
             clusters.append(dic)
+
         res = []
         for x, y in queries:
             for cluster in clusters:
