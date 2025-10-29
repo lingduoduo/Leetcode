@@ -1,21 +1,20 @@
+from typing import List
+import heapq
+
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
         n = len(grid)
-        visited = set((0, 0))
-        pq = [(grid[0][0], 0, 0)]
-
-        res = 0
+        directions = [(1,0), (-1,0), (0,1), (0,-1)]
+        pq = [(grid[0][0], 0, 0)]     # (time_so_far, x, y)
+        visited = {(0, 0)}
 
         while pq:
-            T, i, j = heapq.heappop(pq)
-            res = max(res, T)
-            directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-            if i == n - 1 and j == n - 1:
-                break
-            for direction in directions:
-                x, y = i + direction[0], j + direction[1]
-                if x < 0 or x >= n or y < 0 or y >= n or (x, y) in visited:
-                    continue
-                heapq.heappush(pq, (grid[x][y], x, y))
-                visited.add((x, y))
-        return res
+            t, x, y = heapq.heappop(pq)
+            if (x, y) == (n - 1, n - 1):
+                return t
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < n and 0 <= ny < n and (nx, ny) not in visited:
+                    visited.add((nx, ny))
+                    nt = max(t, grid[nx][ny])  # time needed to enter neighbor
+                    heapq.heappush(pq, (nt, nx, ny))
