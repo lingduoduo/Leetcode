@@ -31,50 +31,6 @@ class Solution:
             return 2**31 - 1
         return result
 
-
-class Solution:
-    def myAtoi(self, str: str) -> int:
-        # if not s: return 0
-        ls = list(str.strip())
-        if not ls:
-            return 0
-        sign = 1
-        if ls[0] in ["-", "+"]:
-            if ls[0] == "-":
-                sign = -1
-            ls = ls[1:]
-
-        res, i = 0, 0
-        while i < len(ls) and ls[i].isdigit():
-            res = res * 10 + ord(ls[i]) - ord("0")
-            i += 1
-        return max(-(2**31), min(sign * res, 2**31 - 1))
-
-
-class Solution:
-    def myAtoi(self, s: str) -> int:
-        res = 0
-        f = 1
-        s = s.lstrip(" ")
-        if len(s) == 0:
-            return 0
-        elif s[0] == "-":
-            f = -1
-        elif s[0] == "+":
-            f = 1
-        elif s[0].isalpha() or s[0] == ".":
-            return 0
-        else:
-            res += int(s[0])
-
-        for ch in s[1:]:
-            if ch.isdigit():
-                res = res * 10 + int(ch)
-            else:
-                break
-        return min(max(-(2**31), res * f), 2**31 - 1)
-
-
 if __name__ == "__main__":
     print(Solution().myAtoi("+-12"))
     print(Solution().myAtoi("    -41"))
