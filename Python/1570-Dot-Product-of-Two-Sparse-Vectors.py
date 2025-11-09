@@ -17,21 +17,23 @@ class SparseVector:
         return res
 
 
+from typing import List
+
 class SparseVector:
     def __init__(self, nums: List[int]):
+        # Store only non-zero entries to save space
         self.d = {i: v for i, v in enumerate(nums) if v != 0}
-
-    # Return the dotProduct of two sparse vectors
+    
     def dotProduct(self, vec: "SparseVector") -> int:
         res = 0
-        if len(self.d.keys()) < len(vec.d.keys()):
-            for k, v in self.d.items():
-                if k in vec.d:
-                    res += v * vec.d[k]
+        if len(self.d) < len(vec.d):
+            small_d, large_d = self.d, vec.d
         else:
-            for k, v in vec.d.items():
-                if k in self.d:
-                    res += v * self.d[k]
+            small_d, large_d = vec.d, self.d
+
+        for k, v in small_d.items():
+            if k in large_d:
+                res += v * large_d[k]
         return res
 
 
