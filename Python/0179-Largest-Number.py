@@ -14,12 +14,12 @@ class Solution:
         res = ""
         nums = [str(num) for num in nums]
         while nums:
-            for i in nums:
+            for num in nums:
                 if not cur:
-                    cur = i
+                    cur = num
                 else:
-                    if int(i + cur) > int(cur + i):
-                        cur = i
+                    if int(num + cur) > int(cur + num):
+                        cur = num
             res += cur
             nums.remove(cur)
             cur = ""
@@ -42,6 +42,13 @@ class Solution:
         custom_sorted_nums = sorted(str_nums, key=functools.cmp_to_key(custom_sort), reverse=True)
         return ''.join(custom_sorted_nums).lstrip('0') or "0"
 
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        array = list(map(str, nums))
+        array.sort(key=lambda x: x*10, reverse=True)
+        if array[0] == "0":
+            return "0"
+        return ''.join(array)
 
 if __name__ == "__main__":
     result = Solution().largestNumber(nums=[3, 30, 34, 5, 9])
