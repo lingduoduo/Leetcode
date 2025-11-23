@@ -81,27 +81,42 @@ def findMedianSortedArrays(self, nums1, nums2):
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        # Ensure nums1 is the shorter array so we binary search on it
         if len(nums1) > len(nums2):
-            return self.findMedianSortedArrays(nums2, nums1)
+            nums1, nums2 = nums2, nums1
 
         m, n = len(nums1), len(nums2)
-        left, right = 0, m
+        half = (m + n + 1) // 2  # size of the left partition
+
+        left, right = 0, m  # binary search on nums1
 
         while left <= right:
-            partitionA = (left + right) // 2
-            partitionB = (m + n + 1) // 2 - partitionA
+            # mid1: how many elements we take from nums1 into the left partition
+            mid1 = left + (right - left) // 2
+            # mid2: how many elements from nums2
+            mid2 = half - mid1
 
-            maxLeftA = float("-inf") if partitionA == 0 else nums1[partitionA - 1]
-            minRightA = float("inf") if partitionA == m else nums1[partitionA]
-            maxLeftB = float("-inf") if partitionB == 0 else nums2[partitionB - 1]
-            minRightB = float("inf") if partitionB == n else nums2[partitionB]
+            # Borders on left and right side of the partition for both arrays
+            left1 = float("-inf") if mid1 == 0 else nums1[mid1 - 1]
+            right1 = float("inf") if mid1 == m else nums1[mid1]
 
-            if maxLeftA <= minRightB and maxLeftB <= minRightA:
-                if (m + n) % 2 == 0:
-                    return (max(maxLeftA, maxLeftB) + min(minRightA, minRightB)) / 2
+            left2 = float("-inf") if mid2 == 0 else nums2[mid2 - 1]
+            right2 = float("inf") if mid2 == n else nums2[mid2]
+
+            # Check if we found the correct partition:
+            # all elements on the left ≤ all elements on the right
+            if left1 <= right2 and left2 <= right1:
+                if (n + m) % 2 == 0:
+                    # Even length: median is the average of the two middle values
+                    return (max(left1, left2) + min(right1, right2)) / 2.0
                 else:
-                    return max(maxLeftA, maxLeftB)
-            elif maxLeftA > minRightB:
-                right = partitionA - 1
+                    # Odd length: median is the max of the left side
+                    return float(max(left1, left2))
+
+            # If nums1's left part is too big, move partition left
+            if left1 > right2:
+                right = mid1 - 1
             else:
-                left = partitionA + 1
+                # nums1's left part is too small, move partition right
+                left = mid1 + 1
+
