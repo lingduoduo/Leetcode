@@ -109,6 +109,42 @@ class Solution:
         return head.next
 
 
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        l1 = self.reverse(l1)
+        l2 = self.reverse(l2)
+
+        dummy = ListNode(-1)
+        p = dummy
+        p1 = l1
+        p2 = l2
+        tot = 0
+        while p1 or p2 or tot:
+            if p1:
+                tot += p1.val
+                p1 = p1.next
+            if p2:
+                tot += p2.val
+                p2 = p2.next
+            p.next = ListNode(tot % 10)
+            p = p.next
+            tot = tot // 10
+            
+        return self.reverse(dummy.next)
+
+
+    def reverse(self, l: Optional[ListNode]):
+        dummy = ListNode(-1)
+        dummy.next = l
+
+        p1 = None
+        p2 = dummy.next
+        while p2:
+            p2.next, p1, p2 = p1, p2, p2.next
+
+        return p1
+
+
 if __name__ == "__main__":
     l = [7, 2, 4, 3]
     head1 = ListNode(-1)
