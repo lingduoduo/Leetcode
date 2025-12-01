@@ -1,22 +1,21 @@
 from typing import List
-class Solution:
-    def findMin(self, nums: List[int]) -> int:
-        left = 0
-        right = len(nums) - 1
-        if left == right: break
 
-        while left < right:
-            while left < right and nums[left] == nums[left + 1]:
-                left += 1
-            while left < right and nums[right] == nums[right - 1]:
-                right -= 1
-            mid = left + (right - left) // 2
-            if nums[mid] < nums[right]:
-                right = mid
+class Solution:
+    def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
+        envelopes = sorted(envelopes, key=lambda x: x[0])
+        res = 1
+        cur = 1
+        stack = [envelopes[0]]
+        for x, y in envelopes[1:]:
+            if stack[-1][1] < y:
+                cur += 1
+                res = max(res, cur)
             else:
-                left = mid + 1
-        return nums[left]
+                cur = 1
+            stack.append([x, y])
+        return res
+
 
 if __name__ == "__main__":
-    res = Solution().findMin(nums = [1, 1])
+    res = Solution().maxEnvelopes(envelopes = [[5,4],[6,4],[6,7],[2,3]])
     print(res)
