@@ -1,3 +1,11 @@
+### Binary Search
+
+- LeetCode 410. Split Array Largest Sum
+- LeetCode 1552. Magnetic Force Between Two Balls
+- LeetCode 1482. Minimum Number of Days to Make m Bouquets
+- LeetCode 1283. Find the Smallest Divisor Given a Threshold
+- LeetCode 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
@@ -361,7 +369,7 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 
 [14 Patterns to Ace Any Coding Interview Question]
 
-Disclaimer
+### Disclaimer
 
 This repository and its contents are collected and shared solely for academic and research purposes.
 All code, data, and related materials are intended to support independent study, experimentation, and learning.
