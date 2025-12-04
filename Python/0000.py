@@ -1,27 +1,27 @@
 from typing import List
-class Solution:
-    def maxDistance(self, position: List[int], m: int) -> int:
-        position.sort()
-        left = 1
-        right = max(position) - min(position) + 1
-        while left < right:
-            mid = left + (right - left)//2 
-            cnt = 1
-            start = position[0]
-            for p in position:
-                if p - start >= mid:
-                    cnt += 1
-                    start = p
-                    if cnt >= m:
-                        break
+from collections import Counter
+import heapq
+import re
+from collections import defaultdict, deque
 
-            if cnt < m:
-                right = mid
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        d = {}
+        res = 0
+        start = 0
+        for i, chr in enumerate(s):
+            if chr in d:
+                d[chr] += 1
             else:
-                left = mid + 1
-                
-        return left - 1
+                d[chr] = 1
+            while len(d.keys()) > k:
+                d[s[start]] -= 1
+                if d[s[start]] == 0:
+                    del d[s[start]]
+                start += 1
+            res = max(res, i - start + 1)
+        return res
 
 if __name__ == "__main__":
-    res = Solution().maxDistance(position = [1,2,3,4,7], m = 3)
+    res = Solution().lengthOfLongestSubstringKDistinct(s = "eceba", k = 2)
     print(res)
