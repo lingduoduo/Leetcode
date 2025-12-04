@@ -5,21 +5,20 @@ import re
 from collections import defaultdict, deque
 
 class Solution:
-    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
-        d = {}
+    def numIslands(self, grid: List[List[str]]) -> int:
+        def dfs(i, j):
+            if i < 0 or i >= len(grid) or j < 0 or j>= len(grid[0]) or grid[i][j] == "0": return 
+
+            grid[i][j] == "0"
+            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+                dfs(i + dx, j + dy)
+
         res = 0
-        start = 0
-        for i, chr in enumerate(s):
-            if chr in d:
-                d[chr] += 1
-            else:
-                d[chr] = 1
-            while len(d.keys()) > k:
-                d[s[start]] -= 1
-                if d[s[start]] == 0:
-                    del d[s[start]]
-                start += 1
-            res = max(res, i - start + 1)
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    dfs(i, j)
+                    res += 1
         return res
 
 if __name__ == "__main__":
