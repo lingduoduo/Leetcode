@@ -23,29 +23,29 @@ class Solution:
         return len(visited) == n
 
 
-class DSU:
+class UnionFind:
     def __init__(self, n):
-        self.root = [i for i in range(n)]
-
+        self.par = list(range(n))
+    
     def find(self, x):
-        if x != self.root[x]:
-            self.root[x] = self.find(self.root[x])
-        return self.root[x]
+        if x != self.par[x]:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
 
     def union(self, x, y):
-        self.root[self.find(x)] = self.root[self.find(y)]
-
+        rx, ry = self.find(x), self.find(y)
+        self.par[rx] = ry
 
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        if len(edges) != n - 1:
-            return False
-        uf = DSU(n)
-        for r, c in edges:
-            if uf.find(r) != uf.find(c):
-                uf.union(r, c)
-            else:
+        if len(edges) != n - 1: return False
+
+        uf = UnionFind(n)
+        for x, y in edges:
+            if uf.find(x) == uf.find(y):
                 return False
+            uf.union(x, y)
+        
         return True
 
 
