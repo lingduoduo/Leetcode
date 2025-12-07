@@ -5,22 +5,37 @@ import re
 from collections import defaultdict, deque
 
 class Solution:
-    def maxScore(self, cardPoints: List[int], k: int) -> int:
-        res = 0
-        def dfs(idx, path):
-            print(path)
-            nonlocal res
-            if len(path) == k: 
-                res = max(res, sum(path))
-                return
-            
-            dfs(idx + 1, path + [cardPoints[idx]])
-            dfs(idx + 1, path + [cardPoints[-idx-1]])
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        uf = UnionFind(len(accounts))
+        d = {}
+        for i, (_, *emails) in enumerate(accounts):
+            for email in emails:
+                if email in d:
+                    uf.union(i, d[email])
+                d[email] = i
 
-        dfs(0, [])
-        return res
+        res = defaultdict(list)
+        for email, account in d.items():
+            res[uf.find(account)].append(email)
+        print(res)
+        
+        return [[accounts[i][0]] + sorted(emails) for i, emails in res.items()]
+        
+
+class UnionFind:
+    def __init__(self, n):
+        self.par = list(range(n))
+    
+    def find(self, x):
+        if self.par[x] == x:
+            return x
+        else:
+            return self.find(self.par[x])
+    
+    def union(self, x, y):
+        self.par[self.find(x)] =self.find(y)
 
 
 if __name__ == "__main__":
-    res = Solution().maxScore(cardPoints = [1,79,80,1,1,1,200,1], k = 3)
+    res = Solution().accountsMerge(accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]])
     print(res)
