@@ -31,6 +31,24 @@ class Solution:
                 res.append([name] + emails)
         return res
 
+class UnionFind:
+    def __init__(self, n):
+        self.par = list(range(n))
+    
+    def find(self, x):
+        if x != self.par[x]:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
+
+    def union(self, x, y):
+        rx, ry = self.find(x), self.find(y)
+        self.par[rx] = ry
+        # union by size
+        if self.size[rx] < self.size[ry]:
+            rx, ry = ry, rx
+        self.par[ry] = rx
+        self.size[rx] += self.size[ry]
+        
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         uf = UnionFind(len(accounts))

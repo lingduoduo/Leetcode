@@ -17,18 +17,22 @@ class UnionFind:
     def union(self, x, y):
         rx, ry = self.find(x), self.find(y)
         self.par[rx] = ry
+        # union by size
+        if self.size[rx] < self.size[ry]:
+            rx, ry = ry, rx
+        self.par[ry] = rx
+        self.size[rx] += self.size[ry]
+
 
 class Solution:
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        uf = UnionFind(len(isConnected))
-
-        for i in range(len(isConnected)):
-            for j in range(i):
-                print(i, j, isConnected[i][j])
-                if isConnected[i][j] == 1:
-                    uf.union(i, j)
-
-        return sum(i == v for i, v in enumerate(uf.par))
+    def longestConsecutive(self, nums: List[int]) -> int:
+        nums = list(set(nums))
+        uf = UnionFind(len(nums))
+        index = {v: i for i, v in enumerate(nums)}
+        for v in nums:
+            if v + 1 in index:
+                uf.union(index[v], index[v + 1])
+        return max(uf.size)
 
 if __name__ == "__main__":
     res = Solution().findCircleNum(isConnected = [[1,0,0],[0,1,0],[0,0,1]])
