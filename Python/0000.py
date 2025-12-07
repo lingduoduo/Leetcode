@@ -5,22 +5,22 @@ import re
 from collections import defaultdict, deque
 
 class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
-        def dfs(i, j):
-            if i < 0 or i >= len(grid) or j < 0 or j>= len(grid[0]) or grid[i][j] == "0": return 
-
-            grid[i][j] == "0"
-            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
-                dfs(i + dx, j + dy)
-
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
         res = 0
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if grid[i][j] == "1":
-                    dfs(i, j)
-                    res += 1
+        def dfs(idx, path):
+            print(path)
+            nonlocal res
+            if len(path) == k: 
+                res = max(res, sum(path))
+                return
+            
+            dfs(idx + 1, path + [cardPoints[idx]])
+            dfs(idx + 1, path + [cardPoints[-idx-1]])
+
+        dfs(0, [])
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().lengthOfLongestSubstringKDistinct(s = "eceba", k = 2)
+    res = Solution().maxScore(cardPoints = [1,79,80,1,1,1,200,1], k = 3)
     print(res)
