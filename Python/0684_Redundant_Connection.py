@@ -1,35 +1,6 @@
 import collections
 from typing import List
 
-
-# Union Find Method
-class UnionFindSet:
-    def __init__(self, n):
-        self._parents = [i for i in range(n + 1)]
-        self._ranks = [1 for i in range(n + 1)]
-
-    def find(self, u):
-        while u != self._parents[u]:
-            self._parents[u] = self._parents[self._parents[u]]
-            u = self._parents[u]
-        return u
-
-    def union(self, u, v):
-        pu, pv = self.find(u), self.find(v)
-        if pu == pv:
-            return False
-
-        if self._ranks[pu] < self._ranks[pv]:
-            self._parents[pu] = pv
-        elif self._ranks[pu] > self._ranks[pv]:
-            self._parents[pv] = pu
-        else:
-            self._parents[pv] = pu
-            self._ranks[pu] += 1
-
-        return True
-
-
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         graph = collections.defaultdict(set)
@@ -48,6 +19,38 @@ class Solution:
             graph[u].add(v)
             graph[v].add(u)
 
+
+class UnionFind:
+    def __init__(self, n):
+        self.par = list(range(n))
+    
+    def find(self, i):
+        if i != self.par[i]:
+            self.par[i] = self.find(self.par[i])
+        return self.par[i]
+        
+    def union(self, i, j):
+        ri, rj = self.find(i), self.find(j)
+        self.par[ri] = rj
+
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        nodes = set()
+        for x, y in edges:
+            nodes.add(x)
+            nodes.add(y)
+
+        d = {}
+        for i, v in enumerate(sorted(nodes)):
+            d[v] = i
+
+        uf = UnionFind(len(nodes))
+
+        for x, y in edges:
+            a, b = d[x], d[y]
+            if uf.find(a) == uf.find(b):
+                return [x, y]
+            uf.union(a, b)
 
 if __name__ == "__main__":
     edges = [[1, 2], [1, 3], [2, 3]]
