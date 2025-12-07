@@ -51,57 +51,24 @@ class Solution:
 
 class UnionFind:
     def __init__(self, n):
-        self.parents = [x for x in range(n)]
-        self.rank = [1 for _ in range(n)]
-        self.groups = n
-
+        self.par = list(range(n))
+    
     def find(self, x):
-        while x != self.parents[x]:
-            self.parents[x] = self.parents[self.parents[x]]
-            x = self.parents[x]
-        return x
+        if x != self.par[x]:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
 
     def union(self, x, y):
-        x_root, y_root = self.find(x), self.find(y)
+        rx, ry = self.find(x), self.find(y)
+        self.par[rx] = ry
 
-        if x_root == y_root:
-            return True
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        uf = UnionFind(len(isConnected))
 
-        if self.rank[x_root] > self.rank[y_root]:
-            self.parents[y_root] = x_root
-            self.rank[x_root] += self.rank[y_root]
-        else:
-            self.parents[x_root] = y_root
-            self.rank[y_root] += self.rank[x_root]
-        self.groups -= 1
+        for i in range(len(isConnected)):
+            for j in range(i):
+                if isConnected[i][j] == 1:
+                    uf.union(i, j)
 
-        return False
-
-
-class UnionFind:
-    def __init__(self, n):
-        self.parents = [x for x in range(n)]
-        self.rank = [1 for _ in range(n)]
-        self.groups = n
-
-    def find(self, x):
-        while x != self.parents[x]:
-            self.parents[x] = self.parents[self.parents[x]]
-            x = self.parents[x]
-        return x
-
-    def union(self, x, y):
-        x_root, y_root = self.find(x), self.find(y)
-
-        if x_root == y_root:
-            return True
-
-        if self.rank[x_root] > self.rank[y_root]:
-            self.parents[y_root] = x_root
-            self.rank[x_root] += self.rank[y_root]
-        else:
-            self.parents[x_root] = y_root
-            self.rank[y_root] += self.rank[x_root]
-        self.groups -= 1
-
-        return False
+        return sum(i == v for i, v in enumerate(uf.par))

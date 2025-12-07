@@ -19,17 +19,17 @@ class UnionFind:
         self.par[rx] = ry
 
 class Solution:
-    def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        if len(edges) != n - 1: return False
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        uf = UnionFind(len(isConnected))
 
-        uf = UnionFind(n)
-        for x, y in edges:
-            if uf.find(x) == uf.find(y):
-                return False
-            uf.union(x, y)
-        
-        return True
+        for i in range(len(isConnected)):
+            for j in range(i):
+                print(i, j, isConnected[i][j])
+                if isConnected[i][j] == 1:
+                    uf.union(i, j)
+
+        return sum(i == v for i, v in enumerate(uf.par))
 
 if __name__ == "__main__":
-    res = Solution().accountsMerge(accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]])
+    res = Solution().findCircleNum(isConnected = [[1,0,0],[0,1,0],[0,0,1]])
     print(res)
