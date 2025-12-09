@@ -2,38 +2,34 @@ from typing import List
 from collections import Counter
 import heapq
 import re
-from collections import defaultdict, deque
-
-
-class UnionFind:
-    def __init__(self, n):
-        self.par = list(range(n))
-    
-    def find(self, x):
-        if x != self.par[x]:
-            self.par[x] = self.find(self.par[x])
-        return self.par[x]
-
-    def union(self, x, y):
-        rx, ry = self.find(x), self.find(y)
-        self.par[rx] = ry
-        # union by size
-        if self.size[rx] < self.size[ry]:
-            rx, ry = ry, rx
-        self.par[ry] = rx
-        self.size[rx] += self.size[ry]
-
+from collections import deque
 
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-        nums = list(set(nums))
-        uf = UnionFind(len(nums))
-        index = {v: i for i, v in enumerate(nums)}
-        for v in nums:
-            if v + 1 in index:
-                uf.union(index[v], index[v + 1])
-        return max(uf.size)
+    def shortestWay(self, source: str, target: str) -> int:
+        # 1. Feasibility check: every char in target must be in source
+        if not set(target).issubset(set(source)):
+            return -1
 
+        i = 0
+        j = 0
+        n = len(source)
+
+        while True:
+            # Try to match as many chars as possible in this "run"
+            while j < len(target) and source[i % n] == target[j]:
+                i += 1
+                j += 1
+
+            # If we’ve matched the whole target, compute how many subsequences we used
+            if j == len(target):
+                # i characters of source have been consumed in a cyclic way
+                # number of full passes over source = ceil(i / n)
+                return i // n + (1 if i % n else 0)
+
+            # Otherwise, skip this mismatching character in the cyclic source
+            if source[i % n] != target[j]:
+                i += 1
+        
 if __name__ == "__main__":
-    res = Solution().findCircleNum(isConnected = [[1,0,0],[0,1,0],[0,0,1]])
+    res = Solution().shortestWay(source = "aaaaa", target = "aaaaaaaaaaaaa")
     print(res)
