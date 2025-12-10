@@ -42,13 +42,34 @@ class Solution:
         return False
 
 
+class UnionFind:
+    def __init__(self, n):
+        self.par = list(range(n))
+    
+    def find(self, i):
+        if self.par[i] != i:
+            self.par[i] = self.find(self.par[i])
+        return self.par[i]
+    
+    def union(self, i, j):
+        ri = self.find(i)
+        rj = self.find(j)
+        self.par[ri] = rj
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        uf = UnionFind(n)
+        for e in edges:
+            uf.union(e[0], e[1])
+        return uf.find(source) == uf.find(destination)
+
 
 if __name__ == "__main__":
     # res = Solution().validPath(n = 3, edges = [[0,1],[1,2],[2,0]], start = 0, end = 2)
     # print(res)
 
     res = Solution().validPath(
-        n=6, edges=[[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]], start=0, end=5
+        n=6, edges=[[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]], source=0, destination=5
     )
     print(res)
 
