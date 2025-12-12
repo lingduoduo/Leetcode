@@ -35,18 +35,26 @@ class Solution:
             self.dfs(n, visited, d, end, dst, K - 1, path + price)
             visited.remove(src)
 
-    # def dfs(self, graph, src, dst, k, cost, visited, ans):
-    #     if src == dst:
-    #         ans[0] = cost
-    #         return
-    #     if k == 0:
-    #         return
-    #     for v, e in graph[src].items():
-    #         if visited[v]: continue
-    #         if cost + e > ans[0]: continue
-    #         visited[v] = 1
-    #         self.dfs(graph, v, dst, k - 1, cost + e, visited, ans)
-    #         visited[v] = 0
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        dist = [float("inf")] * n
+        dist[src] = 0
+        for _ in range(k + 1):
+            nxt = dist[:]  
+            changed = False
+            for u, v, w in flights:
+                if dist[u] == float("inf"):
+                    continue
+                cand = dist[u] + w
+                if cand < nxt[v]:
+                    nxt[v] = cand
+                    changed = True
+
+            dist = nxt
+            if not changed:  # early exit if no relaxation happened
+                break
+
+        return -1 if dist[dst] == float("inf") else dist[dst]
 
 
 if __name__ == "__main__":
