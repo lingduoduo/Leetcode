@@ -1,18 +1,20 @@
+import heapq
+from typing import List
+
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
         m, n = len(heights), len(heights[0])
-        distances = defaultdict(lambda: float("inf"))
-        dirs = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-        q = []
-        heappush(q, (0, 0, 0))
-        while q:
-            effort, curx, cury = heappop(q)
-            if (curx, cury) == (m - 1, n - 1):
-                return effort
-            for dx, dy in dirs:
-                tx, ty = curx + dx, cury + dy
-                if 0 <= tx < m and 0 <= ty < n:
-                    tmp = max(effort, abs(heights[tx][ty] - heights[curx][cury]))
-                    if distances[(tx, ty)] > tmp:
-                        distances[(tx, ty)] = tmp
-                        heappush(q, (tmp, tx, ty))
+        dist = [[float("inf")] * n for _ in range(m)]
+        dist[0][0] = 0
+        pq = [(0, 0, 0)]
+        while pq:
+            distance, i, j = heapq.heappop(pq)
+            if i == m - 1 and j == n - 1:
+                return distance
+            for dx, dy in [(-1,0), (1,0), (0,-1), (0,1)]:
+                x, y = i + dx, j + dy
+                if 0 <= x < m and 0 <= y < n:
+                    new_distance = max(distance, abs(heights[i][j] - heights[x][y]))
+                    if new_distance < dist[x][y]:
+                        dist[x][y] = new_distance
+                        heapq.heappush(pq, (new_distance, x, y))
