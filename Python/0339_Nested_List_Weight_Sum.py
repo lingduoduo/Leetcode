@@ -1,52 +1,55 @@
-from typing import List
-"""
-This is the interface that allows for creating nested lists.
-You should not implement it, or speculate about its implementation
-"""
+from typing import List, Optional
+
+
 class NestedInteger:
     def __init__(self, value=None):
         """
         If value is not specified, initializes an empty list.
         Otherwise initializes a single integer equal to value.
         """
-        pass
+        if value is None:
+            self._integer = None
+            self._list = []
+        else:
+            self._integer = value
+            self._list = None
 
-    def isInteger(self):
+    def isInteger(self) -> bool:
         """
-        @return True if this NestedInteger holds a single integer, rather than a nested list.
-        :rtype bool
+        @return True if this NestedInteger holds a single integer,
+        rather than a nested list.
         """
-        pass
+        return self._integer is not None
 
-    def add(self, elem):
+    def add(self, elem: "NestedInteger") -> None:
         """
-        Set this NestedInteger to hold a nested list and adds a nested integer elem to it.
-        :rtype void
+        Set this NestedInteger to hold a nested list and add a nested integer elem to it.
         """
-        pass
+        if self._list is None:
+            self._list = []
+            self._integer = None
+        self._list.append(elem)
 
-    def setInteger(self, value):
+    def setInteger(self, value: int) -> None:
         """
         Set this NestedInteger to hold a single integer equal to value.
-        :rtype void
         """
-        pass
+        self._integer = value
+        self._list = None
 
-    def getInteger(self):
+    def getInteger(self) -> Optional[int]:
         """
-        @return the single integer that this NestedInteger holds, if it holds a single integer
-        Return None if this NestedInteger holds a nested list
-        :rtype int
+        @return the single integer that this NestedInteger holds,
+        or None if it holds a nested list.
         """
-        pass
+        return self._integer
 
-    def getList(self):
+    def getList(self) -> Optional[List["NestedInteger"]]:
         """
-        @return the nested list that this NestedInteger holds, if it holds a nested list
-        Return None if this NestedInteger holds a single integer
-        :rtype List[NestedInteger]
+        @return the nested list that this NestedInteger holds,
+        or None if it holds a single integer.
         """
-        pass
+        return self._list
 
 
 class Solution:
