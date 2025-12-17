@@ -27,9 +27,6 @@ class Solution:
             # move on to the next level
             steps += 1
 
-
-from collections import deque
-
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
         x, y = abs(x), abs(y)

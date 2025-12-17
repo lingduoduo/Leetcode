@@ -1,14 +1,17 @@
 class Solution:
     def isValidPalindrome(self, s: str, k: int) -> bool:
-        dp = [[0 for _ in s] for _ in s]
+        n = len(s)
+        # dp[left][right] = minimum deletions needed to make s[left:right+1] a palindrome
+        dp = [[0] * n for _ in range(n)]
 
-        for i in range(len(dp) - 1, -1, -1):
-            for j in range(i + 1, len(dp)):
-                if s[i] == s[j]:
-                    dp[i][j] = dp[i + 1][j - 1]
+        # Build from shorter substrings to longer ones
+        for left in range(n - 1, -1, -1):
+            for right in range(left + 1, n):
+                if s[left] == s[right]:
+                    dp[left][right] = dp[left + 1][right - 1]  # inner substring
                 else:
-                    dp[i][j] = min(
-                        1 + dp[i][j - 1], 1 + dp[i + 1][j], 2 + dp[i + 1][j - 1]
-                    )
-        # print(dp)
-        return dp[0][-1] <= k
+                    delete_left = 1 + dp[left + 1][right]
+                    delete_right = 1 + dp[left][right - 1]
+                    dp[left][right] = min(delete_left, delete_right)
+
+        return dp[0][n - 1] <= k
