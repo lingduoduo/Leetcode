@@ -1,28 +1,30 @@
 from typing import List, Dict, Tuple
 import itertools
+from collections import defaultdict
 
 
 class Solution:
     def minTransfers(self, transactions: List[List[int]]) -> int:
-        balance_map = collections.defaultdict(int)
+        d = defaultdict(int)
         for a, b, amount in transactions:
-            balance_map[a] += amount
-            balance_map[b] -= amount
+            d[a] += amount
+            d[b] -= amount
 
-        balance_list = [amount for amount in balance_map.values() if amount]
-        n = len(balance_list)
+        balance = [v for v in d.values() if v != 0]
+        n = len(balance)
 
-        def dfs(cur):
-            while cur < n and not balance_list[cur]:
-                cur += 1
-            if cur == n:
+        def dfs(idx: int) -> int:
+            while idx < n and balance[idx] == 0:
+                idx += 1
+            if idx == n:
                 return 0
+
             res = float('inf')
-            for nxt in range(cur + 1, n):
-                if balance_list[nxt] * balance_list[cur] < 0:
-                    balance_list[nxt] += balance_list[cur]
-                    cost = min(res, 1 + dfs(cur + 1))
-                    balance_list[nxt] -= balance_list[cur]
+            for nxt in range(idx + 1, n):
+                if balance[idx] * balance[nxt] < 0:
+                    balance[nxt] += balance[idx]
+                    res = min(res, 1 + dfs(idx + 1))
+                    balance[nxt] -= balance[idx]
             return res
 
         return dfs(0)
@@ -48,8 +50,6 @@ class Solution:
         memo: Dict[Tuple[Tuple[int, int], ...], int] = {}
 
         def dfs(state: Tuple[Tuple[int, int], ...]) -> int:
-            print(state)
-            print(memo)
             """state 是 tuplify 后的 (person, balance) 列表。返回最少交易数。"""
             if not state:
                 return 0
