@@ -4,18 +4,23 @@
 
 
 class Solution:
+
     def rand10(self):
-        """
-        :rtype: int
-        """
         while True:
-            r1, r2 = rand7(), rand7()
-            t = r1 + (r2 - 1) * 7
-            if t <= 40:
-                return t % 10 + 1
+            row = self.rand7() 
+            col = self.rand7()
+            idx = (row - 1) * 7 + col
+            if idx > 40:
+                continue
+            return (idx - 1) % 10 + 1
+            
 
 class Solution:
     def rand10(self):
         l = [rand7() for _ in range(10)]
         return sum(l) % 10 + 1
+
+if __name__ == "__main__":
+    res = Solution().rand10()
+    print(res)
         
