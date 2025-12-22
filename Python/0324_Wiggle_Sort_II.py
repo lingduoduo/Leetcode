@@ -18,10 +18,24 @@ class Solution:
                 nums[i] = right.pop(0)
         return nums
 
-        # mid = (len(nums)-1)//2
-        # nums.sort()
-        # nums[::2], nums[1::2] = nums[mid::-1], nums[:mid:-1]
+class Solution:
+    def wiggleSort(self, nums: List[int]) -> None:
+        n = len(nums)
+        if n <= 1:
+            return
 
+        # max-heap via negatives
+        maxh = [-x for x in nums]
+        heapq.heapify(maxh)
+
+        # Fill odd indices first (1,3,5,...) with the largest values,
+        # then fill even indices (0,2,4,...) with the remaining.
+        idx_order = list(range(1, n, 2)) + list(range(0, n, 2))
+        print(idx_order)
+
+        for idx in idx_order:
+            nums[idx] = -heapq.heappop(maxh)
+        return nums
 
 if __name__ == "__main__":
     # nums = [5,1,1,6,2]
