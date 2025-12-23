@@ -1,10 +1,5 @@
-from typing import List, Optional
-from collections import Counter
-import heapq
-import re
-from collections import deque, defaultdict
 from typing import List
-import random
+from collections import deque, defaultdict
 
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
