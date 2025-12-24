@@ -5,39 +5,28 @@ import re
 from collections import deque, defaultdict
 from typing import List
 import random
+import bisect
 
 class Solution:
-    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        if source == target:
-            return 0
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        # sort jobs by start time
+        jobs = sorted(zip(startTime, endTime, profit))  # (s, e, p)
+        n = len(jobs)
+        starts = [s for s, _, _ in jobs]
 
-        to_routes = defaultdict(set)
-        for i, route in enumerate(routes):
-            for stop in route:
-                to_routes[stop].add(i)
+        # nxt[i] = first index j > i such that jobs[j].start >= jobs[i].end
+        nxt = [n] * n
+        for i in range(n):
+            e = jobs[i][1]
+            nxt[i] = bisect.bisect_left(starts, e)
 
-        q = deque([(source, 0)])  # (current_stop, buses_taken)
-        seen_stops = {source}
-        used_routes = set()
+        dp = [0] * (n + 1)  # dp[i] = max profit from jobs[i:]
+        for i in range(n - 1, -1, -1):
+            dp[i] = max(dp[i + 1], jobs[i][2] + dp[nxt[i]])
 
-        while q:
-            stop, cnt = q.popleft()
-            if stop == target:
-                return cnt
-
-            for r in to_routes[stop]:
-                if r in used_routes:
-                    continue
-                used_routes.add(r)
-
-                # boarding route r costs +1 bus
-                for nxt_stop in routes[r]:
-                    if nxt_stop not in seen_stops:
-                        seen_stops.add(nxt_stop)
-                        q.append((nxt_stop, cnt + 1))
-        return -1
-
+        return dp[0]
+        
 if __name__ == "__main__":
-    res = Solution().numBusesToDestination(routes = [[1,2,7],[3,6,7]], source = 1, target = 6)
+    res = Solution().jobScheduling(startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70])
     print(res)
 
