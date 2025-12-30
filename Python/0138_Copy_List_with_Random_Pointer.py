@@ -120,3 +120,24 @@ class Solution:
                 d[p].random = d[p.random]
             p = p.next
         return d[head]
+
+
+class Solution:
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
+        d = {None: None}
+        def copy(node):
+            if node not in d:
+                d[node] = Node(node.val)
+            return d[node]
+        p = head
+        while p:
+            node = copy(p)
+            next = copy(p.next) 
+            random = copy(p.random) 
+            node.next = next
+            node.random = random
+            p = p.next
+        return d[head]
+
+
+
