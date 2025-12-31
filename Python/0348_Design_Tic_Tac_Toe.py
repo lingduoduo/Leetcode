@@ -43,3 +43,34 @@ class TicTacToe:
             return player
         else:
             return 0
+
+
+class TicTacToe:
+    def __init__(self, n: int):
+        self.n = n
+        self.row = [0] * n
+        self.col = [0] * n
+        self.dia = 0
+        self.off_dia = 0
+
+    def move(self, row: int, col: int, player: int) -> int:
+        delta = 1 if player == 1 else -1
+
+        self.row[row] += delta
+        self.col[col] += delta
+        if row == col:
+            self.dia += delta
+        if row + col == self.n - 1:
+            self.off_dia += delta
+
+        if (abs(self.row[row]) == self.n or
+            abs(self.col[col]) == self.n or
+            abs(self.dia) == self.n or
+            abs(self.off_dia) == self.n):
+            return player
+
+        return 0
+
+# Your TicTacToe object will be instantiated and called as such:
+# obj = TicTacToe(n)
+# param_1 = obj.move(row,col,player)

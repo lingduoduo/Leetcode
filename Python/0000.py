@@ -8,20 +8,40 @@ import random
 import bisect
 import math
 
-class Solution:
-    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        tot, cur, start = 0, 0, 0
-        n = len(gas)
-        for i in range(n):
-            print(i, cur, tot)
-            tot += gas[(i + 1) % n] - cost[i]
-            cur += gas[(i + 1) % n] - cost[i]
-            if cur < 0:
-                start = i + 1
-                cur = 0
-        return -1 if tot < 0 else start
+
+class TicTacToe:
+    def __init__(self, n: int):
+        self.n = n
+        self.row = [0] * n
+        self.col = [0] * n
+        self.dia = 0
+        self.off_dia = 0
+
+    def move(self, row: int, col: int, player: int) -> int:
+        if player == 1:
+            self.row[row] += 1
+            self.col[col] += 1
+            if row == col:
+                self.dia += 1
+            if row + col == self.n:
+                self.dia += 1
+            if self.row == self.n or self.col == self.n or self.dia == self.n or self.off_dia == self.n:
+                return 1
+            else:
+                return 0
+        else:
+            self.row[row] -= 1
+            self.col[col] -= 1
+            if row == col:
+                self.dia -= 1
+            if row + col == self.n:
+                self.dia -= 1
+            if self.row == self.n or self.col == self.n or self.dia == self.n or self.off_dia == self.n:
+                return 1
+            else:
+                return 2
+
 
 if __name__ == "__main__":
-    res = Solution().canCompleteCircuit(gas = [5,1,2,3,4], cost = [4,4,1,5,1])
+    res = Solution().monotoneIncreasingDigits(n = 668841)
     print(res)
-
