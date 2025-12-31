@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         def dfs(i):
@@ -52,14 +54,19 @@ class Solution:
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        wordSet = set(wordDict)
-        dp = [[]] * (len(s) + 1)
+        words = set(wordDict)
+        n = len(s)
+
+        dp = [[] for _ in range(n + 1)]
         dp[0] = [""]
-        for j in range(1, len(s) + 1):
-            sublist = []
-            for i in range(j):
-                if s[i:j] in wordSet:
-                    for words in dp[i]:
-                        sublist.append((words + " " + s[i:j]).strip())
-            dp[j] = sublist
-        return dp[-1]
+        for i in range(n):
+            if not dp[i]:
+                continue
+            for j in range(i + 1, n + 1):
+                if s[i:j] in words:
+                    for prev in dp[i]:
+                        dp[j].append((prev + " " + s[i:j]).strip())
+
+        return dp[n]
+
+
