@@ -30,33 +30,27 @@ class Solution:
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         n = len(nums)
-
-        if n == 0 or n == 1:
-            return nums
-
-        nums = sorted(nums)
-
-        dp = [0] * n
-        max_num = 0
-        max_index = 0
-        child = [0] * n
-        result = []
-
-        for i in range(n - 1, -1, -1):
-            for j in range(i, n):
-                if nums[j] % nums[i] == 0 and dp[i] < dp[j] + 1:
+        if n == 0:
+            return []
+        nums.sort()
+        dp = [1] * n
+        pre = [-1] * n
+        best_len = 1
+        best_end = 0
+        for i in range(n):
+            for j in range(i - 1, -1, -1):
+                if nums[i] % nums[j] == 0 and dp[j] + 1 > dp[i]:
                     dp[i] = dp[j] + 1
-                    child[i] = j
+                    pre[i] = j
 
-                    # To store max subset length and relative start point index
-                    if max_num < dp[i]:
-                        max_num = dp[i]
-                        max_index = i
+            if dp[i] > best_len:
+                best_len = dp[i]
+                best_end = i
 
-        # Construct output subset
-        i = max_index
-        for j in range(max_num):
-            result.append(nums[i])
-            i = child[i]
-
-        return result
+        res = []
+        idx = best_end
+        while idx != -1:
+            res.append(nums[idx])
+            idx = pre[idx]
+        res.reverse()
+        return res
