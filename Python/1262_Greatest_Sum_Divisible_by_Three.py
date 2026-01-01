@@ -1,33 +1,4 @@
-# class Solution:
-#     def maxSumDivThree(self, nums) -> int:
-#         res = 0
-#         nums2 = []
-#         self.res2 = []
-#         for num in nums:
-#             if num % 3 == 0:
-#                 res += num
-#             else:
-#                 nums2.append(num)
-
-#         for i in range(1+len(nums2)):
-#             self.dfs(nums2, i, 0, [])
-#         print(self.res2)
-
-#         tmp = 0
-#         for l in self.res2:
-#             if sum(l) % 3 == 0:
-#                 tmp = max(tmp, sum(l))
-#         return tmp + res
-
-#     def dfs(self, nums, n, start, path):
-#         if n == len(path):
-#             self.res2.append(path.copy())
-#             return
-#         for i in range(start, len(nums)):
-#             path.append(nums[i])
-#             self.dfs(nums, n, i+1, path)
-#             path.pop()
-
+from typing import List
 
 class Solution:
     def maxSumDivThree(self, nums):
@@ -68,6 +39,18 @@ class Solution:
                 return s - t2
 
             return s - t1
+
+class Solution:
+    def maxSumDivThree(self, nums: List[int]) -> int:
+        dp = [0, float("-inf"), float("-inf")]  # 不可达用 -inf
+        for num in nums:
+            prev = dp[:]
+            for r in range(3):
+                if prev[r] == float("-inf"):
+                    continue
+                nr = (r + num) % 3
+                dp[nr] = max(dp[nr], prev[r] + num)
+        return dp[0]
 
 
 if __name__ == "__main__":
