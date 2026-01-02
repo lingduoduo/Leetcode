@@ -25,3 +25,26 @@ class Solution:
                     visit.add((tx, ty))
                     stack.append((tx, ty))
         return False
+
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        n = len(maze)
+        m = len(maze[0])
+        visited = set()
+        def dfs(x, y):
+            if not (0 <= x < n and 0 <= y < m and maze[x][y] == 0):
+                return False
+            if [x, y] == destination: return True      
+            if (x, y) in visited: return False
+            visited.add((x, y))
+            for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                nx, ny = x, y
+                # roll until hitting wall
+                while 0 <= nx + dx < n and 0 <= ny + dy < m and maze[nx + dx][ny + dy] == 0:
+                    nx += dx
+                    ny += dy
+                # stop position (nx, ny)
+                if dfs(nx, ny):
+                    return True
+            return False
+        return dfs(start[0], start[1])
