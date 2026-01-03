@@ -32,22 +32,28 @@ class Solution:
         return res
 
 class UnionFind:
-    def __init__(self, n):
+    def __init__(self, n: int):
         self.par = list(range(n))
-    
-    def find(self, x):
+        self.size = [1] * n  # initialize sizes
+
+    def find(self, x: int) -> int:
         if x != self.par[x]:
-            self.par[x] = self.find(self.par[x])
+            self.par[x] = self.find(self.par[x])  # path compression
         return self.par[x]
 
-    def union(self, x, y):
+    def union(self, x: int, y: int) -> bool:
         rx, ry = self.find(x), self.find(y)
-        self.par[rx] = ry
-        # union by size
+        if rx == ry:
+            return False  # already connected
+
+        # union by size: attach smaller root to larger root
         if self.size[rx] < self.size[ry]:
             rx, ry = ry, rx
+
         self.par[ry] = rx
         self.size[rx] += self.size[ry]
+        return True
+
         
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
