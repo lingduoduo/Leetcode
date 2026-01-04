@@ -31,23 +31,24 @@ class BSTIterator:
 
 
 class BSTIterator:
-    def __init__(self, root: TreeNode):
+    def __init__(self, root: Optional[TreeNode]):
         self.stack = []
-        self.do_left(root)
+        self.push_left(root)
 
-    def do_left(self, root):
-        while root:
-            self.stack.append(root)
-            root = root.left
+    def push_left(self, node: Optional[TreeNode]):
+        while node:
+            self.stack.append(node)
+            node = node.left
 
     def next(self) -> int:
-        ret = self.stack.pop()
-        if ret.right:
-            self.do_left(ret.right)
-        return ret.val
+        node = self.stack.pop()
+        val = node.val
+        if node.right:
+            self.push_left(node.right)
+        return val
 
     def hasNext(self) -> bool:
-        return len(self.stack) > 0
+        return True if self.stack else False
 
 
 # Your BSTIterator object will be instantiated and called as such:

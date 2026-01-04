@@ -8,40 +8,36 @@ import random
 import bisect
 import math
 
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
-class TicTacToe:
-    def __init__(self, n: int):
-        self.n = n
-        self.row = [0] * n
-        self.col = [0] * n
-        self.dia = 0
-        self.off_dia = 0
+class BSTIterator:
 
-    def move(self, row: int, col: int, player: int) -> int:
-        if player == 1:
-            self.row[row] += 1
-            self.col[col] += 1
-            if row == col:
-                self.dia += 1
-            if row + col == self.n:
-                self.dia += 1
-            if self.row == self.n or self.col == self.n or self.dia == self.n or self.off_dia == self.n:
-                return 1
-            else:
-                return 0
-        else:
-            self.row[row] -= 1
-            self.col[col] -= 1
-            if row == col:
-                self.dia -= 1
-            if row + col == self.n:
-                self.dia -= 1
-            if self.row == self.n or self.col == self.n or self.dia == self.n or self.off_dia == self.n:
-                return 1
-            else:
-                return 2
+    def __init__(self, root: Optional[TreeNode]):
+        self.stack = []
+        self.push_left(root)
+    
+    # Push all left children starting from node
+    def push_left(self, node: Optional[TreeNode]):
+        while node:
+            self.stack.append(node)
+            node = node.left
 
-
+    def next(self) -> int:
+        node = self.stack.pop()
+        val = node.val
+        if node.right:
+            self.push_left(node.right)
+        return val
+    
+    def hasNext(self) -> bool:
+        if self.stack:
+            return True
+        return False
+    
 if __name__ == "__main__":
-    res = Solution().monotoneIncreasingDigits(n = 668841)
+    res = Solution().kthFactor(n = 12, k = 3)
     print(res)
