@@ -1,13 +1,37 @@
-###Write your MySQL query statement below
-select a.id, min(a.visit_date) visit_date, min(a.people) people
-from stadium a
-join stadium b 
-join stadium c 
-where 
-((a.id = b.id-1 and a.id = c.id -2) or
-(a.id = b.id+1 and a.id = c.id -1) or
-(a.id = b.id+2 and a.id = c.id +1))
-and a.people >=100
-and b.people >=100
-and c.people >=100
-group by a.id
+-- Write your MySQL query statement below
+SELECT DISTINCT
+    a.id,
+    a.visit_date,
+    a.people
+FROM stadium a
+CROSS JOIN stadium b
+CROSS JOIN stadium c
+WHERE
+(
+    (a.id = b.id - 1 AND a.id = c.id - 2) OR
+    (a.id = b.id + 1 AND a.id = c.id - 1) OR
+    (a.id = b.id + 2 AND a.id = c.id + 1)
+)
+AND a.people >= 100
+AND b.people >= 100
+AND c.people >= 100
+ORDER BY a.visit_date;
+
+
+WITH t AS (
+  SELECT
+    id, visit_date, people,
+    LAG(people, 1) OVER (ORDER BY id) AS p1,
+    LAG(people, 2) OVER (ORDER BY id) AS p2,
+    LEAD(people, 1) OVER (ORDER BY id) AS n1,
+    LEAD(people, 2) OVER (ORDER BY id) AS n2
+  FROM stadium
+)
+SELECT id, visit_date, people
+FROM t
+WHERE people >= 100 AND (
+      (p1 >= 100 AND p2 >= 100)
+   OR (p1 >= 100 AND n1 >= 100)
+   OR (n1 >= 100 AND n2 >= 100)
+)
+ORDER BY visit_date;
