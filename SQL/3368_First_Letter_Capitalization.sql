@@ -25,6 +25,7 @@ titled AS (
     pos,
     CASE
       WHEN word = '' THEN ''
+      WHEN '-' in word upperword(split(word)) concat by '-'
       ELSE CONCAT(UPPER(SUBSTRING(word, 1, 1)), LOWER(SUBSTRING(word, 2)))
     END AS new_word
   FROM words
