@@ -37,24 +37,38 @@ class Solution:
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        dist = [float("inf")] * n
-        dist[src] = 0
-        for _ in range(k + 1):
-            nxt = dist[:]  
-            changed = False
-            for u, v, w in flights:
-                if dist[u] == float("inf"):
+        graph = defaultdict(list)
+        for u, v, price in flights:
+            graph[u].append((v, price))
+
+        # (cost, node, stops)
+        queue = deque([(0, src, 0)])
+        
+        # best[node][stops] = min cost
+        best = dict()
+        res = float("inf")
+
+        while queue:
+            cost, node, stops = queue.popleft()
+
+            if node == dst:
+                res = min(res, cost)
+                continue
+
+            if stops > k:
+                continue
+
+            for nxt, price in graph[node]:
+                new_cost = cost + price
+
+                if new_cost >= res:
                     continue
-                cand = dist[u] + w
-                if cand < nxt[v]:
-                    nxt[v] = cand
-                    changed = True
 
-            dist = nxt
-            if not changed:  # early exit if no relaxation happened
-                break
+                if (nxt, stops + 1) not in best or new_cost < best[(nxt, stops + 1)]:
+                    best[(nxt, stops + 1)] = new_cost
+                    queue.append((new_cost, nxt, stops + 1))
 
-        return -1 if dist[dst] == float("inf") else dist[dst]
+        return -1 if res == float("inf") else res
 
 
 if __name__ == "__main__":
