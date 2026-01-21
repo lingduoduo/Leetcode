@@ -1,8 +1,10 @@
-###Definition for singly-linked list.
-###class ListNode(object):
-###    def __init__(self, x):
-###        self.val = x
-###        self.next = None
+from typing import Optional
+
+# Definition for singly-linked list.
+class ListNode(object):
+   def __init__(self, x):
+       self.val = x
+       self.next = None
 
 
 class Solution(object):
@@ -11,16 +13,6 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        ###dummy = ListNode(0)
-        ###dummy.next = head
-        #
-        ###curr = dummy
-        ###while curr.next and curr.next.next:
-        ###    if curr.next.val == curr.next.next.val:
-        ###        curr.next = curr.next.next
-        ###    else:
-        ###        curr = curr.next
-        ###return dummy.next
         current = head
         while current:
             runner = current.next
@@ -41,17 +33,19 @@ class Solution:
             p = q
         return head
 
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
         head.next = self.deleteDuplicates(head.next)
         return head.next if head.val == head.next.val else head
+
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        p = head
+        while p and p.next:
+            if p.val == p.next.val:
+                p.next = p.next.next
+                continue
+            p = p.next
+        return head
