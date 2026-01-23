@@ -39,17 +39,22 @@ class Solution:
         backtrack()
         return ans
 
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        dp = [[] for _ in range(n + 1)]
+        dp[0] = [""]
 
-class Solution(object):
-    def generateParenthesis(self, n):
-        if n == 0:
-            return [""]
-        ans = []
-        for c in range(n):
-            for left in self.generateParenthesis(c):
-                for right in self.generateParenthesis(n - 1 - c):
-                    ans.append("({}){}".format(left, right))
-        return ans
+        for k in range(1, n + 1):
+            cur = []
+            for i in range(k):  # i pairs go inside the first ()
+                for inside in dp[i]:
+                    print(f"inside: {inside}")
+                    for outside in dp[k - 1 - i]:
+                        print(f"outsid: {outside}")
+                        cur.append("(" + inside + ")" + outside)
+            dp[k] = cur
+
+        return dp[n]
 
 
 if __name__ == "__main__":
