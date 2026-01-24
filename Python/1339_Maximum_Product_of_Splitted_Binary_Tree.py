@@ -6,23 +6,19 @@
 #         self.right = right
 class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
-        s = 0
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            s += node.val
-            if node.left:
-                stack.append(node.left)
-            if node.right:
-                stack.append(node.right)
-        self.s = s
-        self.res = 0
-        self.dfs(root)
-        return self.res % (10**9 + 7)
+        MOD = 10**9 + 7
+        subtotal = []
+        def dfs(node):
+            if not node:
+                return 0
+            s = node.val + dfs(node.left) + dfs(node.right)
+            subtotal.append(s)
+            return s
 
-    def dfs(self, root):
-        if not root:
-            return 0
-        left, right = self.dfs(root.left), self.dfs(root.right)
-        self.res = max(self.res, left * (self.s - left), right * (self.s - right))
-        return left + right + root.val
+        total = dfs(root)
+        res = 0
+        for s in subtotal:
+            res = max(res, s * (total - s))
+
+        return res % MOD
+
