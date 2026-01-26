@@ -24,35 +24,20 @@ class Solution:
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        old_set = set([0])
-        for c in s:
-            new_set = set()
-            if c == "(":
-                for t in old_set:
-                    new_set.add(t + 1)
-            elif c == ")":
-                for t in old_set:
-                    if t > 0:
-                        new_set.add(t - 1)
-            elif c == "*":
-                for t in old_set:
-                    new_set.add(t + 1)
-                    new_set.add(t)
-                    if t > 0:
-                        new_set.add(t - 1)
-            old_set = new_set
-        return 0 in old_set
-
-
-class Solution(object):
-    def checkValidString(self, s):
         lo = hi = 0
-        for c in s:
-            lo += 1 if c == "(" else -1
-            hi += 1 if c != ")" else -1
+        for ch in s:
+            if ch == '(':
+                lo += 1; hi += 1
+            elif ch == ')':
+                lo -= 1; hi -= 1
+            else:  # '*'
+                lo -= 1      # treat as ')'
+                hi += 1      # treat as '('
+
             if hi < 0:
-                break
-            lo = max(lo, 0)
+                return False
+            if lo < 0:
+                lo = 0
 
         return lo == 0
 
