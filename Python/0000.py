@@ -10,29 +10,34 @@ import math
 
 
 class Solution:
-    def largestNumber(self, nums: List[int]) -> str:
+    def minWindow(self, s: str, t: str) -> str:
+        d = Counter(t)
+        l = 0
+        r = 0                  # how many chars matched
+        size = float("inf")
+        res = ""
 
-        def pivotsort(nums):
-            if len(nums) <= 1: return nums
+        for i, ch in enumerate(s):
+            if ch in d:
+                d[ch] -= 1
+                if d[ch] >= 0:
+                    r += 1
 
-            pivot = random.choice(nums)
-            l, m, r = [], [], []
+            while r == len(t):
+                if i - l + 1 < size:
+                    size = i - l + 1
+                    res = s[l:i + 1]
 
-            for num in nums:
-                if int(str(num) + str(pivot)) < int(str(pivot) + str(num)):
-                    l.append(num)
-                elif int(str(num) + str(pivot)) == int(str(pivot) + str(num)):
-                    m.append(num)
-                else:
-                    r.append(num)
-            return pivotsort(l) + m + pivotsort(r)
+                if s[l] in d:
+                    d[s[l]] += 1
+                    if d[s[l]] > 0:
+                        r -= 1
+                l += 1
 
-        nums = pivotsort(nums)[::-1]
-        strs = list(map(str, nums))  
-        return ''.join(strs)
-    
+        return res
+
+
 
 if __name__ == "__main__":
-    res = Solution().largestNumber(nums = [3,30,34,5,9])
+    res = Solution().minWindow(s = "ADOBECODEBANC", t = "ABC")
     print(res)
-
