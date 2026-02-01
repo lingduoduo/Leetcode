@@ -9,11 +9,11 @@
 
 ### Sliding Window
 
-- Longest Substring Without Repeating Characters
-- Longest Repeating Character Replacement
-- Maximum Sum of Subarrays of Size K
-- Maximum Points YOu Can Obtain From Cards
-- Maximum Sum of Distinct Subarrys Length K
+- LeetCode 3. Longest Substring Without Repeating Characters 
+- LeetCode 325. Maximum Size Subarray Sum Equals k
+- LeetCode 424. Longest Repeating Character Replacement
+- LeetCode 739. Daily Temperatures
+- LeetCode 1423. Maximum Points You Can Obtain from Cards
 
 ### Interval
 
