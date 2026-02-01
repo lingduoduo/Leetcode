@@ -3,7 +3,27 @@
 - LeetCode 167. Two Sum II - Input Array Is Sorted
 - LeetCode 15. 3Sum
 - LeetCode 611. Triangle Numbers
+- LeetCode 283. Move Zeroes
+- LeetCode 75. Sort Colors
+- LeetCode 42. Trapping Rain Water
 
+### Sliding Window
+
+- Longest Substring Without Repeating Characters
+- Longest Repeating Character Replacement
+- Maximum Sum of Subarrays of Size K
+- Maximum Points YOu Can Obtain From Cards
+- Maximum Sum of Distinct Subarrys Length K
+
+### Interval
+
+- [Insert Interval](https://leetcode.com/problems/insert-interval/)
+- [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
+- [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
+  
+------
 
 ### Binary Search
 
@@ -326,14 +346,6 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 - [Remove Nth Node From End Of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 - [Reorder List](https://leetcode.com/problems/reorder-list/)
-
-### Interval
-
-- [Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
-- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
-- [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
-- [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
 
 ### Matrix
 
