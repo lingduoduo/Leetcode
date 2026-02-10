@@ -8,36 +8,39 @@ import random
 import bisect
 import math
 
+# class Solution:
+    # def maxLength(self, arr: List[str]) -> int:
+    #     res = 0
+    #     for i in range(len(arr)):
+    #         for  j in range(i + 1):
+    #             res = max(res, len(set(arr[i] + arr[j])))
+    #     return res
 
-class Solution:
-    def minWindow(self, s: str, t: str) -> str:
-        d = Counter(t)
-        l = 0
-        r = 0                  # how many chars matched
-        size = float("inf")
-        res = ""
 
-        for i, ch in enumerate(s):
-            if ch in d:
-                d[ch] -= 1
-                if d[ch] >= 0:
-                    r += 1
-
-            while r == len(t):
-                if i - l + 1 < size:
-                    size = i - l + 1
-                    res = s[l:i + 1]
-
-                if s[l] in d:
-                    d[s[l]] += 1
-                    if d[s[l]] > 0:
-                        r -= 1
-                l += 1
-
+class SparseVector:
+    def __init__(self, nums: List[int]):
+        self.d = {i: v for i, v in enumerate(nums) if v != 0}
+    
+    def prod(self, vec: "SparseVector"):
+        res = 0
+        if len(vec.d.keys) <= len(self.d):
+            small = vec.d
+            large = self.d
+        else:
+            small = self.d
+            large = vec.d
+        for i in small:
+            if i in large:
+                res += small[i] * large[i]
         return res
+        
 
 
 
 if __name__ == "__main__":
-    res = Solution().minWindow(s = "ADOBECODEBANC", t = "ABC")
+    res = Solution().subarraySum(nums = [1,2,3], k = 3)
     print(res)
+
+
+
+
