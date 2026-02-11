@@ -1,12 +1,4 @@
-from typing import List, Optional
-from collections import Counter
-import heapq
-import re
-from collections import deque, defaultdict
 from typing import List
-import random
-import bisect
-import math
 
 class Solution:
     def minBitwiseArray(self, nums: List[int]) -> List[int]:
@@ -32,7 +24,3 @@ class Solution:
 if __name__ == "__main__":
     res = Solution().minBitwiseArray(nums = [2,3,5,7])
     print(res)
-
-
-
-
