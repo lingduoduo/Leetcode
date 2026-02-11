@@ -1,8 +1,5 @@
 from typing import List
 
-
-from typing import List
-
 class Solution:
     def multiply(self, mat1: List[List[int]], mat2: List[List[int]]) -> List[List[int]]:
         m1, n1 = len(mat1), len(mat1[0])

@@ -41,22 +41,22 @@ class Solution:
 
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
+        # dp[i] = "(" + dp[j] + ")" + dp[i-1-j] for all j in [0, i-1]
         dp = [[] for _ in range(n + 1)]
         dp[0] = [""]
-
-        for k in range(1, n + 1):
+        for i in range(1, n + 1):
             cur = []
-            for i in range(k):  # i pairs go inside the first ()
-                for inside in dp[i]:
+            for j in range(i):  # i pairs go inside the first ()
+                for inside in dp[j]:
                     print(f"inside: {inside}")
-                    for outside in dp[k - 1 - i]:
+                    for outside in dp[i - j - 1]:
                         print(f"outsid: {outside}")
                         cur.append("(" + inside + ")" + outside)
-            dp[k] = cur
+            dp[i] = cur
 
         return dp[n]
 
 
 if __name__ == "__main__":
-    results = Solution().generateParenthesis(1)
+    results = Solution().generateParenthesis(2)
     print(results)
