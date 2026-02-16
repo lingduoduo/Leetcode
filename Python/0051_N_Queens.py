@@ -113,6 +113,32 @@ class Solution:
         return True  # 当前位置合法
 
 
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        res = []
+        
+        def dfs(r, cols, diag1, diag2, path):
+            if r == n:
+                res.append(path)
+                return
+
+            for c in range(n):
+                if c in cols or (r - c) in diag1 or (r + c) in diag2:
+                    continue
+
+                row_str = "." * c + "Q" + "." * (n - c - 1)
+
+                dfs(
+                    r + 1,
+                    cols | {c},
+                    diag1 | {r - c},
+                    diag2 | {r + c},
+                    path + [row_str]
+                )
+
+        dfs(0, set(), set(), set(), [])
+        return res
+
 if __name__ == "__main__":
     res = Solution().solveNQueens(n=4)
     print(res)
