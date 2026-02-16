@@ -27,6 +27,29 @@ class Solution:
         return construct_bst(0, len(path) - 1, path)
 
 
+class Solution:
+    def balanceBST(self, root: TreeNode) -> TreeNode:
+        nodes = []
+
+        def inorder(node):
+            if not node:
+                return
+            inorder(node.left)
+            nodes.append(node)
+            inorder(node.right)
+
+        def build(l, r):
+            if l > r:
+                return None
+            m = (l + r) // 2
+            node = nodes[m]
+            node.left = build(l, m - 1)
+            node.right = build(m + 1, r)
+            return node
+
+        inorder(root)
+        return build(0, len(nodes) - 1)
+    
 if __name__ == "__main__":
     res = Solution().taskSchedulerII(tasks = [5,8,8,5], space = 2)
     print(res)
