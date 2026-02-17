@@ -17,4 +17,3 @@ class Solution:
 if __name__ == "__main__":
     res = Solution().longestBalanced(s = "zzabccy")
     print(res)
-
