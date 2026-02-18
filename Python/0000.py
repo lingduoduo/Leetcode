@@ -1,52 +1,67 @@
+import heapq
 from typing import List
-from collections import defaultdict
+import collections
+from typing import List, Tuple, Optional
 
-from typing import List
+def min_round_trip(depart: List[int], ret: List[int]) -> Tuple[Optional[int], Optional[Tuple[int, int]]]:
+    n = min(len(depart), len(ret))
+    if n < 2:
+        return None, None  # no valid j > i
 
-class Solution:
-    def maxSumTrionic(self, nums: List[int]) -> int:
-        n = len(nums)
-        if n < 4:
-            return float("-inf")
+    best_cost_from = [0] * n
+    best_day_from = [0] * n
 
-        inc = dec = inc2 = float("-inf")
-        ans = float("-inf")
+    best_cost_from[n - 1] = ret[n - 1]
+    best_day_from[n - 1] = n - 1
 
-        for i in range(1, n):
-            a, b = nums[i - 1], nums[i]
+    # build suffix min for return
+    for d in range(n - 2, -1, -1):
+        if ret[d] <= best_cost_from[d + 1]:
+            best_cost_from[d] = ret[d]
+            best_day_from[d] = d
+        else:
+            best_cost_from[d] = best_cost_from[d + 1]
+            best_day_from[d] = best_day_from[d + 1]
 
-            inc_prev, dec_prev, inc2_prev = inc, dec, inc2
+    ans = float("inf")
+    best_pair = None
 
-            # 每轮默认断开（因为必须严格单调）
-            inc = dec = inc2 = float("-inf")
+    for i in range(n - 1):  # i cannot be last day because need j > i
+        total = depart[i] + best_cost_from[i + 1]
+        j = best_day_from[i + 1]
+        if total < ans:
+            ans = total
+            best_pair = (i, j)
 
-            if a < b:
-                # 第一段：严格上升
-                inc = max(
-                    a + b,
-                    inc_prev + b if inc_prev != float("-inf") else float("-inf")
-                )
+    return ans, best_pair
 
-                # 第三段：严格上升
-                inc2 = max(
-                    inc2_prev + b if inc2_prev != float("-inf") else float("-inf"),
-                    dec_prev + b if dec_prev != float("-inf") else float("-inf")
-                )
 
-            elif a > b:
-                # 第二段：严格下降
-                dec = max(
-                    dec_prev + b if dec_prev != float("-inf") else float("-inf"),
-                    inc_prev + b if inc_prev != float("-inf") else float("-inf")
-                )
+def run_example(depart: List[int], ret: List[int]) -> None:
+    cost, pair = min_round_trip(depart, ret)
+    print("depart =", depart)
+    print("ret    =", ret)
 
-            res = max(res, inc2)
+    if cost is None:
+        print("No valid round trip (need return day > depart day).")
+        return
 
-        return res
-
+    i, j = pair
+    print(f"Best cost = {cost}")
+    print(f"Best pair = (depart_day={i}, return_day={j})")
+    print(f"Check: depart[{i}]={depart[i]} + ret[{j}]={ret[j]} = {depart[i] + ret[j]}")
+    print("-" * 50)
 
 
 if __name__ == "__main__":
-    res = Solution().longestBalanced(s = "zzabccy")
-    print(res)
+    # Example 1
+    run_example([5, 3, 4, 8], [6, 10, 2, 7])
 
+    # Example 2 (tie case, return any optimal pair)
+    run_example([3, 3, 10, 1], [5, 2, 2, 2])
+
+    # Example 3 (no valid, length < 2)
+    run_example([4], [1])
+
+
+
+ 
