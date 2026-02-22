@@ -1,8 +1,105 @@
-### 2258
+### maxIslandPerimeter
 
+For every land cell:
+
+it contributes 4
+
+subtract 1 for each neighboring land cell (up/down/left/right)
+
+If you sum that over an island you get its perimeter. To get maximum perimeter among all islands, you do a BFS/DFS per island and compute that island’s perimeter, then take max.
+
+```
+from typing import List
+from collections import deque
+
+class Solution:
+    def maxIslandPerimeter(self, grid: List[List[str]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+
+        m, n = len(grid), len(grid[0])
+        visited = [[False] * n for _ in range(m)]
+        DIRS = [(1,0), (-1,0), (0,1), (0,-1)]
+
+        def island_perimeter(sr: int, sc: int) -> int:
+            q = deque([(sr, sc)])
+            visited[sr][sc] = True
+            perim = 0
+
+            while q:
+                r, c = q.popleft()
+                # each land cell starts with 4 edges
+                perim += 4
+
+                for dr, dc in DIRS:
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == '1':
+                        # shared edge with land removes 1 from perimeter
+                        perim -= 1
+                        if not visited[nr][nc]:
+                            visited[nr][nc] = True
+                            q.append((nr, nc))
+            return perim
+
+        res = 0
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c] == '1' and not visited[r][c]:
+                    res = max(res, island_perimeter(r, c))
+
+        return res
 ```
 
 ```
+from typing import List, Tuple
+from collections import deque
+
+class Solution:
+    def islandAreaAndBorderZeros(self, grid: List[List[str]]) -> List[Tuple[int, int]]:
+        """
+        return: list of (area, border_zero_edges) for each island
+        if you only want max or sum, you can aggregate results.
+        """
+        if not grid or not grid[0]:
+            return []
+
+        m, n = len(grid), len(grid[0])
+        visited = [[False] * n for _ in range(m)]
+        DIRS = [(1,0), (-1,0), (0,1), (0,-1)]
+
+        def bfs(sr: int, sc: int) -> Tuple[int, int]:
+            q = deque([(sr, sc)])
+            visited[sr][sc] = True
+            area = 0
+            border_zero_edges = 0  # “周边0”的边计数（和 perimeter 一样）
+
+            while q:
+                r, c = q.popleft()
+                area += 1
+
+                for dr, dc in DIRS:
+                    nr, nc = r + dr, c + dc
+                    # 出界：如果你想把“边界外”也算作0，可以在这里 border_zero_edges += 1
+                    if not (0 <= nr < m and 0 <= nc < n):
+                        continue
+
+                    if grid[nr][nc] == '0':
+                        border_zero_edges += 1
+                    else:  # '1'
+                        if not visited[nr][nc]:
+                            visited[nr][nc] = True
+                            q.append((nr, nc))
+
+            return area, border_zero_edges
+
+        res = []
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c] == '1' and not visited[r][c]:
+                    res.append(bfs(r, c))
+        return res
+```
+
 
 ### Basic Calculator
 
