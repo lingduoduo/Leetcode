@@ -1,139 +1,215 @@
-**9/1/2022**
+```
+from collections import deque
+from dataclasses import dataclass
+from typing import List, Tuple, Dict, Optional, Set
 
-1762 - Buildings With an Ocean View
-314	- Binary Tree Vertical Order Traversal
-1570 - Dot Product of Two Sparse Vectors
 
-1249 - Minimum Remove to Make Valid Parentheses	
-408	- Valid Word Abbreviation
-1650 - Lowest Common Ancestor of a Binary Tree III
+# -----------------------------
+# Configuration / Conventions
+# -----------------------------
+# Grid symbols (customize as needed)
+WALL = "#"
+EMPTY = "."
+START = "S"
+END = "E"
 
-680	- Valid Palindrome II	
-249	- Group Shifted Strings
-71	- Simplify Path	
+# Keys: 'a'..'z'
+# Locks: 'A'..'Z'
+# One-way doors (example):
+#   '>' : can enter this cell only if you move RIGHT into it
+#   '<' : only if you move LEFT into it
+#   '^' : only if you move UP into it
+#   'v' : only if you move DOWN into it
+ONE_WAY = {">", "<", "^", "v"}
 
-65	- Valid Number	
-708	- Insert into a Sorted Circular Linked List
-921	- Minimum Add to Make Parentheses Valid
+DIRS = [
+    (1, 0, "D"),
+    (-1, 0, "U"),
+    (0, 1, "R"),
+    (0, -1, "L"),
+]
 
-1091 - Shortest Path in Binary Matrix	
-2060	- Check if an Original String Exists Given Two Encoded Strings	
-236	- Lowest Common Ancestor of a Binary Tree	
+# For entering a one-way door cell, the move direction must match:
+# If you move RIGHT (dc=+1) into the next cell, that next cell must be '>' (or not a one-way door).
+REQUIRED_DOOR_BY_MOVE = {
+    "R": ">",
+    "L": "<",
+    "U": "^",
+    "D": "v",
+}
 
-227	- Basic Calculator II	
-215	- Kth Largest Element in an Array	
-339	- Nested List Weight Sum
 
-301	- Remove Invalid Parentheses	
-1216 - Valid Palindrome III
-346	- Moving Average from Data Stream
+@dataclass(frozen=True)
+class State:
+    r: int
+    c: int
+    keys_mask: int  # bitmask for keys a-z
 
-938	- Range Sum of BST	
-791 - Custom Sort String	
-691	- Stickers to Apell Word
 
-987	- Vertical Order Traversal of a Binary Tree	
-636	- Exclusive Time of Functions	
-162	- Find Peak Element
+def in_bounds(r: int, c: int, m: int, n: int) -> bool:
+    return 0 <= r < m and 0 <= c < n
 
-199	- Binary Tree Right Side View	
-523	- Continuous Subarray Sum	
-1891 - Cutting Ribbons
 
-**10/1/2022**
+def key_bit(ch: str) -> int:
+    """'a' -> bit0, 'b' -> bit1, ..."""
+    return 1 << (ord(ch) - ord("a"))
 
-56	- Merge Intervals	
-973	- K Closest Points to Origin	
-1428	- Leftmost Column with at Least a One
 
-827	- Making A Large Island	
-138	- Copy List with Random Pointer	
-50 -	Pow(x, n)	
+def can_enter(
+    grid: List[List[str]],
+    r: int,
+    c: int,
+    move_code: str,
+    keys_mask: int,
+) -> bool:
+    """
+    Decide if we can enter cell (r,c) given:
+    - move_code: 'U','D','L','R' (direction of movement into this cell)
+    - keys_mask: keys currently held
+    """
+    cell = grid[r][c]
 
-498	- Diagonal Traverse	
-163	- Missing Ranges
-689 - Maximum Sum of 3 Non-Overlapping Subarrays
+    # Wall blocks always
+    if cell == WALL:
+        return False
 
-129	- Sum Root to Leaf Numbers	
-670	- Maximum Swap
-560	- Subarray Sum Equals K	
+    # One-way door: must match direction
+    if cell in ONE_WAY:
+        # You can only enter if the door symbol matches the direction you moved into it
+        if REQUIRED_DOOR_BY_MOVE[move_code] != cell:
+            return False
 
-416	- Partition Equal Subset Sum	
-426	- Convert Binary Search Tree to Sorted Doubly Linked List
-1123	- Lowest Common Ancestor of Deepest Leaves
+    # Lock: require corresponding key
+    if "A" <= cell <= "Z":
+        needed = cell.lower()
+        if (keys_mask & key_bit(needed)) == 0:
+            return False
 
-529	- Minesweeper
-825	- Friends Of Appropriate Ages	
-347	- Top K Frequent Elements	
+    # Otherwise ok
+    return True
 
-173	- Binary Search Tree Iterator	
-489	- Robot Room Cleaner
-125	- Valid Palindrome
 
-1340 - Jump Game V
-543	- Diameter of Binary Tree	
-766 - Toeplitz Matrix	
+def apply_cell_effect(
+    grid: List[List[str]],
+    r: int,
+    c: int,
+    keys_mask: int,
+) -> int:
+    """
+    If the cell contains a key, pick it up (update keys_mask).
+    """
+    cell = grid[r][c]
+    if "a" <= cell <= "z":
+        keys_mask |= key_bit(cell)
+    return keys_mask
 
-779	- K-th Symbol in Grammar	
-958	- Check Completeness of a Binary Tree
-1004 - Max Consecutive Ones III
 
-271	- Encode and Decode Strings
-298	- Binary Tree Longest Consecutive Sequence
-1192	- Critical Connections in a Network	
+def find_start_end(grid: List[List[str]]) -> Tuple[Tuple[int, int], Tuple[int, int]]:
+    m, n = len(grid), len(grid[0])
+    s = e = None
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == START:
+                s = (i, j)
+            elif grid[i][j] == END:
+                e = (i, j)
+    if s is None or e is None:
+        raise ValueError("Grid must contain 'S' and 'E'.")
+    return s, e
 
-**11/1/2022**
 
-1644	- Lowest Common Ancestor of a Binary Tree II
-939	- Minimum Area Rectangle	
-1424	- Diagonal Traverse II	
+def reconstruct_path(
+    parent: Dict[State, Optional[State]],
+    parent_move: Dict[State, str],
+    end_state: State,
+) -> str:
+    """
+    Return path as a string of moves, e.g. "RRUULD".
+    If you prefer returning coordinates, you can reconstruct states instead.
+    """
+    moves = []
+    cur = end_state
+    while parent[cur] is not None:
+        moves.append(parent_move[cur])
+        cur = parent[cur]
+    moves.reverse()
+    return "".join(moves)
 
-2210 - Count Hills and Valleys in an Array
-266- Palindrome Permutation
-528 - Random Pick with Weight	
 
-270	- Closest Binary Search Tree Value
-415	- Add Strings	
-88 - Merge Sorted Array	
+def bfs_solve_maze(grid_strs: List[str]) -> Tuple[int, str]:
+    """
+    Returns (steps, path_moves).
+    If unreachable, returns (-1, "").
+    """
+    grid = [list(row) for row in grid_strs]
+    m, n = len(grid), len(grid[0])
 
-953	- Verifying an Alien Dictionary	
-398	- Random Pick Index	
-31	- Next Permutation	
+    (sr, sc), (er, ec) = find_start_end(grid)
 
-159 - Lingest Substring with At Most Two Distinct Characters
-1047 - Remove All Adjacent Duplicates In String	
-1539 - Kth Missing Positive Number	
+    # Initial keys: if start cell itself contains a key (rare), apply effect
+    init_keys = apply_cell_effect(grid, sr, sc, 0)
+    start = State(sr, sc, init_keys)
 
-1060 - Missing Element in Sorted Array
-161	- One Edit Distance
-146	- LRU Cache	
+    q = deque([start])
 
-78	- Subsets	
-977	- Squares of a Sorted Array	
-23	- Merge k Sorted Lists	
+    # visited must include keys_mask, because reaching same cell with different keys differs
+    visited: Set[State] = set([start])
 
-2024	- Maximize the Confusion of an Exam	
-1209	- Remove All Adjacent Duplicates in String II	
-34	- Find First and Last Position of Element in Sorted Array	
+    parent: Dict[State, Optional[State]] = {start: None}
+    parent_move: Dict[State, str] = {}
 
-896	- Monotonic Array	
-623	- Add One Row to Tree
-824	- Goat Latin	
+    steps = 0
+    while q:
+        for _ in range(len(q)):
+            cur = q.popleft()
+            if (cur.r, cur.c) == (er, ec):
+                return steps, reconstruct_path(parent, parent_move, cur)
 
-779	- K-th Symbol in Grammar	
-246	- Strobogrammatic Number
+            for dr, dc, mv in DIRS:
+                nr, nc = cur.r + dr, cur.c + dc
+                if not in_bounds(nr, nc, m, n):
+                    continue
 
-863	- All Nodes Distance K in Binary Tree	
-583	- Delete Operation for Two Strings
-1213	- Intersection of Three Sorted Arrays
+                if not can_enter(grid, nr, nc, mv, cur.keys_mask):
+                    continue
 
-319	- Bulb Switcher	
-266	- Palindrome Permutation
-463	- Island Perimeter
+                new_keys = apply_cell_effect(grid, nr, nc, cur.keys_mask)
+                nxt = State(nr, nc, new_keys)
 
-378	- Kth Smallest Element in a Sorted Matrix	
-139	- Word Break	
-283	- Move Zeroes
+                if nxt in visited:
+                    continue
+                visited.add(nxt)
+
+                parent[nxt] = cur
+                parent_move[nxt] = mv
+                q.append(nxt)
+
+        steps += 1
+
+    return -1, ""
+
+
+# -----------------------------
+# Example usage
+# -----------------------------
+if __name__ == "__main__":
+    # Legend:
+    #  S start, E end, # wall, . empty
+    #  a key, A lock (need key a)
+    #  > < ^ v one-way doors (can only ENTER in that direction)
+    grid = [
+        "S..#....",
+        ".##.>..E",
+        ".a..#..#",
+        ".##.A..#",
+        "....#..#",
+    ]
+
+    dist, path = bfs_solve_maze(grid)
+    print("dist =", dist)
+    print("path =", path)
+```
+
 
 ```
 import heapq
