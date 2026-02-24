@@ -1,3 +1,63 @@
+
+```
+class UnionFind:
+    def __init__(self):
+        self.parent = {}
+
+    def find(self, x):
+        if x not in self.parent:
+            self.parent[x] = x
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union(self, x, y):
+        px = self.find(x)
+        py = self.find(y)
+        if px != py:
+            self.parent[px] = py
+
+
+def are_sentences_similar(sent1, sent2, groups_of_syns):
+    words1 = sent1.split()
+    words2 = sent2.split()
+
+    if len(words1) != len(words2):
+        return False
+
+    uf = UnionFind()
+
+    # Build synonym connections
+    for group in groups_of_syns:
+        first = group[0]
+        for word in group[1:]:
+            uf.union(first, word)
+
+    # Compare word by word
+    for w1, w2 in zip(words1, words2):
+        if w1 == w2:
+            continue
+        if uf.find(w1) != uf.find(w2):
+            return False
+
+    return True
+
+
+sent1 = "the photo is pretty"
+sent2 = "the image is beautiful"
+sent3 = "that photo is pretty"
+
+groups_of_syns = [
+    ["photo", "image"],
+    ["pretty", "nice", "amazing"],
+    ["amazing", "good-looking"],
+    ["good-looking", "beautiful"]
+]
+
+print(are_sentences_similar(sent1, sent2, groups_of_syns))  # True
+print(are_sentences_similar(sent1, sent3, groups_of_syns))  # False
+```
+
 ### maxIslandPerimeter
 
 For every land cell:
