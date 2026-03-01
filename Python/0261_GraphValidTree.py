@@ -6,21 +6,23 @@ class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         if len(edges) != n - 1:
             return False
-        dist = collections.defaultdict(list)
-        for n1, n2 in edges:
-            dist[n1].append(n2)
-            dist[n2].append(n1)
-
-        visited = set()
-        queue = collections.deque([0])
-        while queue:
-            node = queue.popleft()
-            visited.add(node)
-            for related in dist[node]:
-                if related not in visited:
-                    visited.add(related)
-                    queue.append(related)
-        return len(visited) == n
+        
+        graph = collections.defaultdict(list)
+        for x, y in edges:
+            graph[x].append(y)
+            graph[y].append(x)
+        
+        seen = set()
+        seen.add(0)
+        que = collections.deque([0])
+        while que:
+            node = que.popleft()
+            for nei in graph[node]:
+                if nei in seen:
+                    return False
+                que.push(nei)
+                seen.add(nei)
+        return len(seen) == n
 
 
 class UnionFind:
