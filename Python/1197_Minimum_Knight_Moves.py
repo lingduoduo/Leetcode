@@ -2,30 +2,22 @@ from collections import deque
 
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
-        # the offsets in the eight directions
-        offsets = [(1, 2), (2, 1), (2, -1), (1, -2),
-                   (-1, -2), (-2, -1), (-2, 1), (-1, 2)]
-
-        visited = set()
-        queue = deque([(0, 0)])
-        steps = 0
-
-        while queue:
-            curr_level_cnt = len(queue)
-            # iterate through the current level
-            for i in range(curr_level_cnt):
-                curr_x, curr_y = queue.popleft()
-                if (curr_x, curr_y) == (x, y):
-                    return steps
-
-                for offset_x, offset_y in offsets:
-                    next_x, next_y = curr_x + offset_x, curr_y + offset_y
-                    if (next_x, next_y) not in visited:
-                        visited.add((next_x, next_y))
-                        queue.append((next_x, next_y))
-
-            # move on to the next level
-            steps += 1
+        que = deque([])
+        que.append((0, 0))
+        step = 0
+        visited = set((0, 0))
+        while que:
+            for _ in range(len(que)):
+                i, j = que.popleft()
+                if (i, j) == (x, y):
+                    return step
+                for dx, dy in [(1, 2), (2, 1), (2, -1), (1, -2),(-1, -2), (-2, -1), (-2, 1), (-1, 2)]:
+                    nx, ny = i + dx, j + dy
+                    if (nx, ny) not in visited:
+                        que.append([nx, ny])
+                        visited.add((nx, ny))
+            step += 1
+        return step
 
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
