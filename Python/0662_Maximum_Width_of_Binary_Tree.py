@@ -1,4 +1,6 @@
-###Definition for a binary tree node.
+from collections import deque
+
+#Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -6,38 +8,30 @@ class TreeNode(object):
         self.right = None
 
 
-class Solution(object):
-    def widthOfBinaryTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        q = list()
-        q.append(root)
-        idx = list()
-        idx.append(1)
-        result = 0
+
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        q = deque([(root, 0)])  # (node, index)
+        res = 0
 
         while q:
-            size = len(q)
+            level_len = len(q)
+            _, first = q[0]
+            _, last = q[-1]
+            res = max(res, last - first + 1)
 
-            for i in range(size):
-                node = q.pop(0)
-                index = idx.pop(0)
-                if i == 0:
-                    left = index
-                if i == size - 1:
-                    right = index
-
+            for _ in range(level_len):
+                node, idx = q.popleft()
+                idx -= first  # normalize to keep numbers small
                 if node.left:
-                    q.append(node.left)
-                    idx.append(index * 2)
+                    q.append((node.left, 2 * idx))
                 if node.right:
-                    q.append(node.right)
-                    idx.append(index * 2 + 1)
-            result = max(result, right - left + 1)
-        return result
+                    q.append((node.right, 2 * idx + 1))
 
+        return res
 
 if __name__ == "__main__":
     p = TreeNode(1)
