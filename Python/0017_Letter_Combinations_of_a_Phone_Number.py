@@ -1,34 +1,29 @@
 from typing import List
 
-class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
-        if digits == "":
-            return []
+def letterCombinations(digits):
+    phone = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    }
 
-        d = dict()
-        d["0"] = ""
-        d["1"] = ""
-        d["2"] = "abc"
-        d["3"] = "def"
-        d["4"] = "ghi"
-        d["5"] = "jkl"
-        d["6"] = "mno"
-        d["7"] = "pqrs"
-        d["8"] = "tuv"
-        d["9"] = "wxyz"
+    def backtrack(path, idx):
+        if idx == len(digits):
+            res.append(path)
+            return
+        
+        for letter in phone[digits[idx]]:
+            backtrack(path + letter, idx + 1)
 
-        res = []
-        def dfs(idx, path):
-            nonlocal res
-            if path == len(digits):
-                res.append("".join(path))
-            if idx >= len(digits):
-                return
-            for cha in d[digits[idx]]:
-                path.append(cha)
-                dfs(idx + 1, path)
-        dfs(0, [])
-        return res
+    res = []
+    if digits:
+        backtrack("", 0)
+    return res
 
 
 class Solution:
