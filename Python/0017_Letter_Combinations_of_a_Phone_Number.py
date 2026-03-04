@@ -1,36 +1,5 @@
 from typing import List
 
-
-class Solution(object):
-    def letterCombinations(self, digits: str) -> List[str]:
-        if digits == "":
-            return []
-
-        d = dict()
-        d[0] = "0"
-        d[1] = "1"
-        d[2] = "abc"
-        d[3] = "def"
-        d[4] = "ghi"
-        d[5] = "jkl"
-        d[6] = "mno"
-        d[7] = "pqrs"
-        d[8] = "tuv"
-        d[9] = "wxyz"
-
-        res = [""]
-        if not digits:
-            return res
-
-        for digit in digits:
-            tmp = []
-            for ch in d[int(digit)]:
-                for str in res:
-                    tmp.append(str + ch)
-            res = tmp
-        return res
-
-
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if digits == "":
@@ -59,36 +28,6 @@ class Solution:
                 path.append(cha)
                 dfs(idx + 1, path)
         dfs(0, [])
-        return res
-
-
-class Solution(object):
-    def letterCombinations(self, digits: str) -> List[str]:
-        if digits == "":
-            return []
-
-        d = dict()
-        d[0] = "0"
-        d[1] = "1"
-        d[2] = "abc"
-        d[3] = "def"
-        d[4] = "ghi"
-        d[5] = "jkl"
-        d[6] = "mno"
-        d[7] = "pqrs"
-        d[8] = "tuv"
-        d[9] = "wxyz"
-
-        res = [""]
-        if not digits:
-            return res
-
-        for cha in digits:
-            cur = res
-            part = []
-            for strs in cur:
-                part += [strs + cha for cha in d[int(cha)]]
-            res = part
         return res
 
 
@@ -123,6 +62,31 @@ class Solution:
         getCombinations(digits, 0, "")
         return result
 
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if len(digits) == 0:
+            return None
+            
+        letterMap = [
+            "abc",  # 2
+            "def",  # 3
+            "ghi",  # 4
+            "jkl",  # 5
+            "mno",  # 6
+            "pqrs",  # 7
+            "tuv",  # 8
+            "wxyz"  # 9
+        ]
+
+        res = [""]
+        for digit in digits: #"23"
+            cur = []
+            for pre in res:
+                for ch in letterMap[ord(digit) - ord("2")]:
+                    cur.append(pre + ch)
+            res = cur[:]
+        return res
 
 if __name__ == "__main__":
     digits = "23"
