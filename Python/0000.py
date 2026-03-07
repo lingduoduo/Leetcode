@@ -1,45 +1,22 @@
 import heapq
-from typing import List
+from typing import List, Optional, Tuple, Optional
 from collections import defaultdict, deque, Counter
-from typing import List, Tuple, Optional
 import math
 
-from typing import Optional
-
-
 class Solution:
-    def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
-        def dfs(node, cnt):
-            if not node: return 0
+    def climbStairs(self, n: int, costs: List[int]) -> int:
 
-            if node.left:
-                if node.left.val == node.val:
-                    left = dfs(node.left, cnt + 1)
-                else:
-                    left = dfs(node.left, cnt)
-            
-            if node.right:
-                if node.right.val == node.val:
-                    right = dfs(node.right, cnt + 1)
-                else:
-                    right = dfs(node.right, cnt)
-            
-            if node.left and node.right:
-                if node.left.val == node.right.val:
-                    return left + right
-                else:
-                    return max(left, right)
-            else:
-                return left or right
+        costs = [0] + costs
+        dp = [0] * (1 + n)
+        dp[1] = costs[1] +  1
+        dp[2] = min(costs[1] + dp[1], costs[2] + 2 ** 2)
+        dp[3] = min(costs[2] + dp[1], costs[1] + dp[2], costs[3] + 3 ** 2)
+
+        for i in range(4, n):
+            dp[i] = min(costs[i - 1] + dp[i - 2], costs[i - 2] + dp[i - 1], costs[i - 3] + 3 ** 2)
         
-        dfs(root, 0)
-            
-
-
-                
-
-
+        return dp[-1]
 
 if __name__ == "__main__":
-    res = Solution().concatenatedBinary(n=3)
+    res = Solution().networkDelayTime(times = [[1,2,1]], n = 2, k = 1)
     print(res)
