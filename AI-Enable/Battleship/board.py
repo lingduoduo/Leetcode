@@ -54,8 +54,8 @@ class Board:
 
         for name, cells in self._ships.items():
             if (row, col) in cells and name not in self._sunk:
-                hit_count = sum(1 for c in cells if c in self._hits)
-                if hit_count == len(cells):
+                hit_count = sum(1 for c in cells if c in self._hits)  # Remove [1:]
+                if hit_count == len(cells):  # Change from: len(cells) - 1
                     self._sunk.add(name)
                     return ShotResult.SUNK
                 return ShotResult.HIT
