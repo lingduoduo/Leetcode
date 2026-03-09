@@ -3,12 +3,10 @@ import collections
 
 
 class Solution:
-    def customSortString(self, S: str, T: str) -> str:
-        pos = collections.defaultdict(int)
-        for i in range(len(S)):
-            pos[S[i]] = i
-        res = sorted(T, key=lambda x: pos[x])
-        return "".join(res)
+    def customSortString(self, order: str, s: str) -> str:
+        rank = {ch: i for i, ch in enumerate(order)}
+        n = len(order)
+        return "".join(sorted(s, key=lambda ch: rank.get(ch, n)))
 
 
 class Solution:

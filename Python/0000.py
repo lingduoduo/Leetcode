@@ -1,22 +1,13 @@
-import heapq
-from typing import List, Optional, Tuple, Optional
-from collections import defaultdict, deque, Counter
-import math
+from typing import List
 
 class Solution:
-    def simplifyPath(self, path: str) -> str:
-        stack = []
-        for ch in path.split('/'):
-            if ch == ".":
-                continue
-            elif ch == "..":
-                if stack:
-                    stack.pop()
-            elif ch:
-                stack.append(ch)
-        return "/" + "/".join(stack)
+    def customSortString(self, order: str, s: str) -> str:
+        rank = {ch: i for i, ch in enumerate(order)}
+        n = len(order)
+        return "".join(sorted(s, key=lambda ch: rank.get(ch, n)))
+
 
 
 if __name__ == "__main__":
-    res = Solution().simplifyPath("/home/user/Documents/../Pictures")
+    res = Solution().customSortString(order = "cba", s = "abcd")
     print(res)
