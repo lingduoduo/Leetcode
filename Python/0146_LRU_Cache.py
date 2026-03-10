@@ -1,95 +1,6 @@
 import collections
 
 
-class ListNode:
-    def __init__(self, key, value):
-        self.key = key
-        self.value = value
-        self.prev = self
-        self.next = self
-
-
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.dic = dict()
-        self.capacity = capacity
-        self.size = 0
-        self.root = ListNode(0, 0)
-
-    def get(self, key: int) -> int:
-        if key in self.dic:
-            node = self.dic[key]
-            self.removeFromList(node)
-            self.insertIntoHead(node)
-            return node.value
-        else:
-            return -1
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.dic:
-            node = self.dic[key]
-            self.removeFromList(node)
-            self.insertIntoHead(node)
-            node.value = value
-        else:
-            if self.size >= self.capacity:
-                self.removeFromTail()
-                self.size -= 1
-            node = ListNode(key, value)
-            self.insertIntoHead(node)
-            self.dic[key] = node
-            self.size += 1
-
-    def removeFromList(self, node):
-        if node == self.root:
-            return
-        prev_node = node.prev
-        next_node = node.next
-        prev_node.next = next_node
-        next_node.prev = prev_node
-        node.prev = node.next = None
-
-    def insertIntoHead(self, node):
-        head_node = self.root.next
-        head_node.prev = node
-        node.prev = self.root
-        self.root.next = node
-        node.next = head_node
-
-    def removeFromTail(self):
-        if self.size == 0:
-            return
-        tail_node = self.root.prev
-        del self.dic[tail_node.key]
-        self.removeFromList(tail_node)
-
-
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.dict = collections.OrderedDict()
-        self.size = 0
-
-    def get(self, key: int) -> int:
-        if key in self.dict:
-            self.dict.move_to_end(key)
-            return self.dict[key]
-        else:
-            return -1
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.dict:
-            self.dict[key] = value
-            self.dict.move_to_end(key)
-        else:
-            if self.size < self.capacity:
-                self.dict[key] = value
-                self.size += 1
-            else:
-                self.dict.popitem(False)
-                self.dict[key] = value
-
-
 class LRUCache:
     def __init__(self, capacity: int):
         self.dict = {}
@@ -110,54 +21,83 @@ class LRUCache:
                 del self.dict[next(iter(self.dict))]
         self.dict[key] = value
 
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = collections.OrderedDict()
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        self.cache.move_to_end(key)   # mark as recently used
+        return self.cache[key]
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)   # remove least recently used
+
 
 class ListNode:
-    def __init__(self, key, val):
+    def __init__(self, key=0, val=0):
         self.key = key
         self.val = val
-        self.next = None
         self.prev = None
-
+        self.next = None
 
 class LRUCache:
     def __init__(self, capacity: int):
-        self.d = {}
         self.capacity = capacity
-        self.head = ListNode(-1, -1)
-        self.tail = ListNode(-1, -1)
+        self.cache = {}
+
+        self.head = ListNode()
+        self.tail = ListNode()
         self.head.next = self.tail
         self.tail.prev = self.head
+    
+    def _remove(self, node: ListNode):
+        prev_node = node.prev
+        next_node = node.next
+        prev_node.next = next_node
+        next_node.prev = prev_node
+    
+    def _add_to_tail(self, node: ListNode):
+        prev_node = self.tail.prev
+        prev_node.next = node
+        node.prev = prev_node
 
-    def add(self, node):
-        p = self.tail.prev
-        p.next = node
-        node.prev = p
-        node.next = self.tail
         self.tail.prev = node
-
-    def delete(self, node):
-        node.prev.next = node.next
-        node.next.prev = node.prev
+        node.next = self.tail
+    
+    def _move_to_tail(self, node: ListNode):
+        self._remove(node)
+        self._add_to_tail(node)
+    
 
     def get(self, key: int) -> int:
-        if key not in self.d:
+        if key not in self.cache:
             return -1
-
-        node = self.d[key]
-        self.delete(node)
-        self.add(node)
+        
+        node = self.cache[key]
+        self._move_to_tail(node)
         return node.val
 
-    def put(self, key: int, value: int) -> int:
-        if key in self.d:
-            old_node = self.d[key]
-            self.delete(old_node)
+    def put(self, key: int, value: int) -> None:
+        if key not in self.cache:
+            node = ListNode(key, value)
+            self.cache[key] = node
+            self._add_to_tail(node)
+        else:
+            node = self.cache[key]
+            node.val = value
+            self._move_to_tail(node)
+        
+        if len(self.cache) > self.capacity:
+            lru = self.head.next
+            self._remove(lru)
+            del self.cache[lru.key]
 
-        node = ListNode(key, value)
-        self.d[key] = node
-        self.add(node)
 
-        if len(self.d) > self.capacity:
-            node = self.head.next
-            self.delete(node)
-            del self.d[node.key]
