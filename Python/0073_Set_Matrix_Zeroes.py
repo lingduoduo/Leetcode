@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def setZeroes(self, matrix) -> None:
         """
@@ -25,57 +27,29 @@ class Solution:
 
 
 class Solution:
-    def setZeroes(self, matrix) -> None:
-        nrow = len(matrix)
-        ncol = len(matrix[0])
-        zero_row, zero_col = False, False
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        n, m = len(matrix), len(matrix[0])
+        first_row_zero = any(matrix[0][j] == 0 for j in range(m))
+        first_col_zero = any(matrix[i][0] == 0 for i in range(n))
 
-        for i in range(nrow):
-            for j in range(ncol):
+        for i in range(1, n):
+            for j in range(1, m):
                 if matrix[i][j] == 0:
-                    matrix[i][0] = matrix[0][j] = 0
-                    zero_row = True if i == 0 else zero_row
-                    zero_col = True if j == 0 else zero_col
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
 
-        for j in range(1, ncol):
-            if matrix[0][j] == 0:
-                for i in range(1, nrow):
+        for i in range(1, n):
+            for j in range(1, m):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
                     matrix[i][j] = 0
 
-        for i in range(1, nrow):
-            if matrix[i][0] == 0:
-                for j in range(1, ncol):
-                    matrix[i][j] = 0
-
-        if zero_row:
-            for j in range(ncol):
+        if first_row_zero:
+            for j in range(m):
                 matrix[0][j] = 0
 
-        if zero_col:
-            for i in range(nrow):
+        if first_col_zero:
+            for i in range(n):
                 matrix[i][0] = 0
-
-        return matrix
-
-
-class Solution:
-    def setZeroes(self, matrix: List[List[int]]) -> None:
-        """
-        Do not return anything, modify matrix in-place instead.
-        """
-        zero_rows = set()
-        zero_columns = set()
-
-        for i in range(0, len(matrix)):
-            for j in range(0, len(matrix[0])):
-                if matrix[i][j] == 0:
-                    zero_rows.add(i)
-                    zero_columns.add(j)
-
-        for i in range(0, len(matrix)):
-            for j in range(0, len(matrix[0])):
-                if i in zero_rows or j in zero_columns:
-                    matrix[i][j] = 0
 
 
 if __name__ == "__main__":
