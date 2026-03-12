@@ -1,31 +1,26 @@
 from typing import List
 import heapq
 from collections import defaultdict
-
+import random
 
 class Solution:
-    def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
-        m = len(mat)
-        n = len(mat[0])
+    def __init__(self, w: List[int]):
+        self.presum = [w[0]]
+        for v in w[1:]:
+            self.presum.append(self.presum[-1] + v)
+        self.total = self.presum[-1]
 
-        def dfs(i, j):
-            nei = []
-            for dx, dy in [[-1, 0], [1, 0], [0, 1], [0, -1]]:
-                nx, ny = i + dx, j + dy
-                if 0 <= nx < m and 0 <= ny < n:
-                    nei.append(mat[nx][ny])
-                    
-            if not nei or mat[i][j] > max(nei):
-                return [i, j]
-                
-            
-            for dx, dy in [[-1, 0], [1, 0], [0, 1], [0, -1]]:
-                nx, ny = i + dx, j + dy
-                if 0 <= nx < m and 0 <= ny < n and mat[i][j] < mat[nx][ny]:
-                    return dfs(nx, ny)
+    def pickIndex(self) -> int:
+        target = random.random() * self.total
+        l, r = 0, len(self.presum)
         
-        return dfs(0, 0)
-
+        while l < r:
+            m = l + (r - l)//2
+            if self.presum[m] < target:
+                l = m + 1
+            else:
+                r = m
+        return l 
 
 if __name__ == "__main__":
     res = Solution().findPeakGrid(mat = [[10,20,15],[21,30,14],[7,16,32]])
