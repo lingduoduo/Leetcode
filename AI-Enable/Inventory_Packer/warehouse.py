@@ -1,27 +1,30 @@
 """Read this first."""
 
+from dataclasses import dataclass, field
 from typing import List
 
 from item import Item
 
 
+@dataclass(slots=True)
 class Bin:
-    def __init__(self, bin_id: int, weight_limit: int, size_limit: int):
-        self.bin_id = bin_id
-        self.weight_limit = weight_limit
-        self.size_limit = size_limit
-        self._items: List[Item] = []
+    bin_id: int
+    weight_limit: int
+    size_limit: int
+    _items: List[Item] = field(default_factory=list)
+    _current_weight: int = 0
+    _current_size: int = 0
 
     def current_weight(self) -> int:
-        return sum(item.weight for item in self._items)
+        return self._current_weight
 
     def current_size(self) -> int:
-        return sum(item.size for item in self._items)
+        return self._current_size
 
     def can_fit(self, item: Item) -> bool:
         return (
-            (self.current_weight() + item.weight) <= self.weight_limit
-            and (self.current_size() + item.size) <= self.size_limit
+            self._current_weight + item.weight <= self.weight_limit
+            and self._current_size + item.size <= self.size_limit
         )
 
     def add_item(self, item: Item) -> None:
@@ -30,15 +33,17 @@ class Bin:
                 f"'{item.name}' does not fit in bin {self.bin_id}"
             )
         self._items.append(item)
+        self._current_weight += item.weight
+        self._current_size += item.size
 
     def get_items(self) -> List[Item]:
         return list(self._items)
 
     def remaining_weight(self) -> int:
-        return self.weight_limit - self.current_weight()
+        return self.weight_limit - self._current_weight
 
     def remaining_size(self) -> int:
-        return self.size_limit - self.current_size()
+        return self.size_limit - self._current_size
 
 
 class Warehouse:

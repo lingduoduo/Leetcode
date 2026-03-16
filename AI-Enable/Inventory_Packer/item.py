@@ -5,7 +5,10 @@ get_test_items() is useful when developing your Packer.
 
 from typing import List, NamedTuple
 
+from dataclasses import dataclass
 
+
+@dataclass
 class Item(NamedTuple):
     name: str
     weight: int
