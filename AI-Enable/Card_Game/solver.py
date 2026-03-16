@@ -1,6 +1,7 @@
 """You'll implement this."""
 
-from functools import lru_cache
+from collections import defaultdict
+from itertools import combinations
 from typing import Dict, List, Optional
 
 from card_game import CardGame
@@ -30,17 +31,40 @@ class Solver:
     def find_all_triples(self) -> List[List[int]]:
         """Find all valid triples in the current grid."""
         grid = self.game.get_grid()
-        positions = list(grid.keys())
-        n = len(positions)
-        valid_triples: List[List[int]] = []
+        positions_by_value = defaultdict(list)
+        for pos, card in grid.items():
+            positions_by_value[card.value].append(pos)
 
-        for i in range(n):
-            for j in range(i + 1, n):
-                for k in range(j + 1, n):
-                    pos1, pos2, pos3 = positions[i], positions[j], positions[k]
-                    total = grid[pos1].value + grid[pos2].value + grid[pos3].value
-                    if total == 15:
-                        valid_triples.append([pos1, pos2, pos3])
+        valid_triples: List[List[int]] = []
+        values = sorted(positions_by_value)
+
+        for first_index, first in enumerate(values):
+            for second in values[first_index:]:
+                third = 15 - first - second
+                if third < second or third not in positions_by_value:
+                    continue
+
+                if first == second == third:
+                    for triple in combinations(positions_by_value[first], 3):
+                        valid_triples.append(list(triple))
+                    continue
+
+                if first == second:
+                    for same_value_pair in combinations(positions_by_value[first], 2):
+                        for third_pos in positions_by_value[third]:
+                            valid_triples.append([same_value_pair[0], same_value_pair[1], third_pos])
+                    continue
+
+                if second == third:
+                    for first_pos in positions_by_value[first]:
+                        for same_value_pair in combinations(positions_by_value[second], 2):
+                            valid_triples.append([first_pos, same_value_pair[0], same_value_pair[1]])
+                    continue
+
+                for first_pos in positions_by_value[first]:
+                    for second_pos in positions_by_value[second]:
+                        for third_pos in positions_by_value[third]:
+                            valid_triples.append([first_pos, second_pos, third_pos])
         return valid_triples
 
     def play_game(self) -> int:
@@ -105,19 +129,24 @@ class Solver:
 
         return turns
 
-    @lru_cache(maxsize=1000)
     def _count_combinations_with_value(self, target: int, available_values: tuple, count: int) -> int:
         """Count how many ways to make target using exactly count values."""
+        if count < 0 or target < 0:
+            return 0
         if count == 0:
             return 1 if target == 0 else 0
-        if not available_values or target < 0:
-            return 0
 
-        first_val = available_values[0]
-        remaining = available_values[1:]
-        with_first = self._count_combinations_with_value(target - first_val, remaining, count - 1)
-        without_first = self._count_combinations_with_value(target, remaining, count)
-        return with_first + without_first
+        dp = [[0] * (target + 1) for _ in range(count + 1)]
+        dp[0][0] = 1
+
+        for value in available_values:
+            if value > target:
+                continue
+            for used in range(count - 1, -1, -1):
+                for total in range(target - value, -1, -1):
+                    dp[used + 1][total + value] += dp[used][total]
+
+        return dp[count][target]
 
     def play_game_dp_enhanced(self) -> int:
         """Backward-compatible alias for the optimized strategy."""

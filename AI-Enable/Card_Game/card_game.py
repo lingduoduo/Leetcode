@@ -4,7 +4,9 @@ from typing import Dict, List, Optional, Set
 
 from deck import Card, create_deck, shuffle_deck
 
+from dataclasses import dataclass
 
+@dataclass
 class CardGame:
     def __init__(self, grid_rows: int = 3, grid_cols: int = 4, seed: Optional[int] = None,
                  deck: Optional[List[Card]] = None):
@@ -94,14 +96,18 @@ class CardGame:
         return picked
 
     def has_valid_move(self) -> bool:
-        positions = list(self._grid.keys())
-        n = len(positions)
-        for i in range(n):
-            for j in range(i + 1, n):
-                for k in range(j + 1, n):
-                    total = (self._grid[positions[i]].value +
-                             self._grid[positions[j]].value +
-                             self._grid[positions[k]].value)
-                    if total == 15:
-                        return True
+        values = sorted(card.value for card in self._grid.values())
+        n = len(values)
+
+        for i in range(n - 2):
+            j = i + 1
+            k = n - 1
+            while j < k:
+                total = values[i] + values[j] + values[k]
+                if total == 15:
+                    return True
+                if total < 15:
+                    j += 1
+                else:
+                    k -= 1
         return False

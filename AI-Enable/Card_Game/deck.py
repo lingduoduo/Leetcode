@@ -4,8 +4,9 @@ get_test_deck() is useful when developing your Solver.
 """
 
 import random
+from dataclasses import dataclass
 from enum import Enum
-from typing import List, NamedTuple, Optional
+from typing import List, Optional
 
 
 class Suit(Enum):
@@ -15,7 +16,8 @@ class Suit(Enum):
     SPADES = "♠"
 
 
-class Card(NamedTuple):
+@dataclass(frozen=True, slots=True)
+class Card:
     value: int
     suit: Suit
 
@@ -24,11 +26,7 @@ class Card(NamedTuple):
 
 
 def create_deck() -> List[Card]:
-    cards: List[Card] = []
-    for value in range(1, 10):
-        for suit in Suit:
-            cards.append(Card(value, suit))
-    return cards
+    return [Card(value, suit) for value in range(1, 10) for suit in Suit]
 
 
 def shuffle_deck(cards: List[Card], seed: Optional[int] = None) -> List[Card]:
