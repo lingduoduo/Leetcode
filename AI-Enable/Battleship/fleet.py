@@ -3,10 +3,12 @@ Provides ship definitions and standard fleet configurations.
 get_test_fleet() is useful when developing your Solver.
 """
 
-from typing import List, NamedTuple
+from dataclasses import dataclass
+from typing import List
 
 
-class Ship(NamedTuple):
+@dataclass(frozen=True, slots=True)
+class Ship:
     name: str
     size: int
 

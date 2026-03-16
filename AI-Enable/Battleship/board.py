@@ -1,9 +1,12 @@
 """Read this first."""
 
+from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Set, Tuple
 
 from fleet import Ship
+
+Cell = Tuple[int, int]
 
 
 class ShotResult(Enum):
@@ -12,13 +15,20 @@ class ShotResult(Enum):
     SUNK = "SUNK"
 
 
+@dataclass(slots=True)
+class ShipPlacement:
+    ship: Ship
+    cells: Tuple[Cell, ...]
+    hits_remaining: int
+
+
 class Board:
     def __init__(self, grid_size: int = 10):
         self._grid_size = grid_size
-        self._ships: Dict[str, List[Tuple[int, int]]] = {}
-        self._hits: Set[Tuple[int, int]] = set()
-        self._misses: Set[Tuple[int, int]] = set()
-        self._occupied: Set[Tuple[int, int]] = set()
+        self._ships: Dict[str, ShipPlacement] = {}
+        self._hits: Set[Cell] = set()
+        self._misses: Set[Cell] = set()
+        self._ship_cells: Dict[Cell, ShipPlacement] = {}
         self._sunk: Set[str] = set()
 
     @property
@@ -26,7 +36,10 @@ class Board:
         return self._grid_size
 
     def place_ship(self, ship: Ship, row: int, col: int, horizontal: bool) -> None:
-        cells: List[Tuple[int, int]] = []
+        if ship.name in self._ships:
+            raise ValueError(f"{ship.name} has already been placed")
+
+        cells: List[Cell] = []
         for i in range(ship.size):
             if horizontal:
                 r, c = row, col + i
@@ -34,32 +47,34 @@ class Board:
                 r, c = row + i, col
             if r < 0 or r >= self._grid_size or c < 0 or c >= self._grid_size:
                 raise ValueError(f"{ship.name} out of bounds at ({r}, {c})")
-            if (r, c) in self._occupied:
+            if (r, c) in self._ship_cells:
                 raise ValueError(f"{ship.name} overlaps at ({r}, {c})")
             cells.append((r, c))
 
+        placement = ShipPlacement(
+            ship=ship,
+            cells=tuple(cells),
+            hits_remaining=ship.size,
+        )
         for cell in cells:
-            self._occupied.add(cell)
-        self._ships[ship.name] = cells
+            self._ship_cells[cell] = placement
+        self._ships[ship.name] = placement
 
     def check_shot(self, row: int, col: int) -> ShotResult:
-        if (row, col) in self._hits or (row, col) in self._misses:
+        cell = (row, col)
+        if cell in self._hits or cell in self._misses:
             return ShotResult.MISS
 
-        if (row, col) not in self._occupied:
-            self._misses.add((row, col))
+        placement = self._ship_cells.get(cell)
+        if placement is None:
+            self._misses.add(cell)
             return ShotResult.MISS
 
-        self._hits.add((row, col))
-
-        for name, cells in self._ships.items():
-            if (row, col) in cells and name not in self._sunk:
-                hit_count = sum(1 for c in cells if c in self._hits)  # Remove [1:]
-                if hit_count == len(cells):  # Change from: len(cells) - 1
-                    self._sunk.add(name)
-                    return ShotResult.SUNK
-                return ShotResult.HIT
-
+        self._hits.add(cell)
+        placement.hits_remaining -= 1
+        if placement.hits_remaining == 0:
+            self._sunk.add(placement.ship.name)
+            return ShotResult.SUNK
         return ShotResult.HIT
 
     def all_sunk(self) -> bool:
