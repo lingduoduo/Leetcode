@@ -1,8 +1,16 @@
 """You'll implement this."""
 
-from typing import List
+from dataclasses import dataclass
+from typing import Dict, List, Tuple
 
 from word_list import WordList
+
+
+@dataclass(frozen=True, slots=True)
+class WordMask:
+    mask: int
+    char_count: int
+    word_index: int
 
 
 class MaxUniqueSolver:
@@ -13,78 +21,81 @@ class MaxUniqueSolver:
 
     def solve(self) -> List[str]:
         """Find the subset of words that maximizes total unique characters.
-        
-        Uses optimized DP with pruning for efficiency.
+
+        Uses branch-and-bound with memoization to prune states that
+        cannot beat the current best solution.
         """
         valid_words = self.word_list.valid_words()
         if not valid_words:
             return []
-        
+
         # Convert alphabet to list for bit indexing
         alphabet = sorted(list(self.word_list.alphabet()))
         char_to_bit = {char: i for i, char in enumerate(alphabet)}
-        
-        # Convert words to (mask, char_count, word_index)
-        word_data = []
+
+        # Keep one representative per unique character mask.
+        mask_to_word: Dict[int, WordMask] = {}
         for i, word in enumerate(valid_words):
             mask = 0
-            char_count = 0
             for char in self.word_list.char_set(word):
                 if char in char_to_bit:
                     mask |= (1 << char_to_bit[char])
-                    char_count += 1
-            word_data.append((mask, char_count, i))
-        
-        # Sort by efficiency (chars per word) descending
-        word_data.sort(key=lambda x: x[1], reverse=True)
-        
-        # Use iterative deepening with early termination
-        best_result = []
+            char_count = mask.bit_count()
+            existing = mask_to_word.get(mask)
+            if existing is None:
+                mask_to_word[mask] = WordMask(mask=mask, char_count=char_count, word_index=i)
+
+        word_data = list(mask_to_word.values())
+
+        # Explore higher-value words first so the bound becomes strong quickly.
+        word_data.sort(key=lambda word: (word.char_count, word.mask.bit_count()), reverse=True)
+
+        best_result: List[int] = []
         best_chars = 0
-        
+
         # Try greedy first for a good baseline
-        used_chars = set()
-        greedy_result = []
-        for mask, char_count, word_idx in word_data:
-            word_chars = self.word_list.char_set(valid_words[word_idx])
-            if not (word_chars & used_chars):
-                greedy_result.append(word_idx)
-                used_chars |= word_chars
-                best_chars += char_count
-        
+        used_mask = 0
+        greedy_result: List[int] = []
+        for word_mask in word_data:
+            if used_mask & word_mask.mask == 0:
+                greedy_result.append(word_mask.word_index)
+                used_mask |= word_mask.mask
+                best_chars += word_mask.char_count
+
         best_result = greedy_result
-        
-        # Now try DP with limited states to improve on greedy
-        max_states = 50000  # Limit memory usage
-        dp = {0: (0, [])}  # mask -> (max_chars, word_indices)
-        
-        for mask, char_count, word_idx in word_data:
-            if len(dp) > max_states:
-                # Keep only the best states
-                sorted_states = sorted(dp.items(), key=lambda x: x[1][0], reverse=True)
-                dp = dict(sorted_states[:max_states//2])
-            
-            new_dp = {}
-            
-            for used_mask, (max_chars, word_indices) in dp.items():
-                # Keep existing state
-                if used_mask not in new_dp or new_dp[used_mask][0] < max_chars:
-                    new_dp[used_mask] = (max_chars, word_indices)
-                
-                # Try adding current word if no conflict
-                if used_mask & mask == 0:
-                    new_mask = used_mask | mask
-                    new_chars = max_chars + char_count
-                    new_indices = word_indices + [word_idx]
-                    
-                    if new_mask not in new_dp or new_dp[new_mask][0] < new_chars:
-                        new_dp[new_mask] = (new_chars, new_indices)
-                        
-                        # Update best result if improved
-                        if new_chars > best_chars:
-                            best_chars = new_chars
-                            best_result = new_indices
-            
-            dp = new_dp
-        
+
+        suffix_union = [0] * (len(word_data) + 1)
+        for i in range(len(word_data) - 1, -1, -1):
+            suffix_union[i] = suffix_union[i + 1] | word_data[i].mask
+
+        seen: Dict[Tuple[int, int], int] = {}
+        current_result: List[int] = []
+
+        def search(start: int, current_mask: int, current_chars: int) -> None:
+            nonlocal best_chars, best_result
+
+            remaining_bound = (suffix_union[start] & ~current_mask).bit_count()
+            if current_chars + remaining_bound <= best_chars:
+                return
+
+            state = (start, current_mask)
+            if seen.get(state, -1) >= current_chars:
+                return
+            seen[state] = current_chars
+
+            if current_chars > best_chars:
+                best_chars = current_chars
+                best_result = list(current_result)
+
+            for i in range(start, len(word_data)):
+                word_mask = word_data[i]
+                if current_mask & word_mask.mask != 0:
+                    continue
+
+                current_result.append(word_mask.word_index)
+                search(i + 1, current_mask | word_mask.mask, current_chars + word_mask.char_count)
+                current_result.pop()
+
+        search(0, 0, 0)
+
         return [valid_words[i] for i in best_result]

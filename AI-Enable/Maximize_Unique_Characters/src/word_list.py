@@ -1,14 +1,19 @@
 """Read this first."""
 
+from dataclasses import InitVar, dataclass, field
 from typing import Dict, List, Set
 
 
+@dataclass
 class WordList:
-    def __init__(self, words: List[str], alphabet: str):
-        self._words = words
+    _words: List[str]
+    alphabet: InitVar[str]
+    _alphabet: Set[str] = field(init=False)
+    _char_sets: Dict[str, Set[str]] = field(init=False, default_factory=dict)
+    _valid: List[str] = field(init=False, default_factory=list)
+
+    def __post_init__(self, alphabet: str) -> None:
         self._alphabet = set(alphabet)
-        self._char_sets: Dict[str, Set[str]] = {}
-        self._valid: List[str] = []
         self._build()
 
     def _build(self) -> None:
