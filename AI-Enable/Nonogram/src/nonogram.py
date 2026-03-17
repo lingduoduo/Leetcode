@@ -1,7 +1,8 @@
 """Read this first."""
 
+from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, Optional, Tuple
+from typing import List, Sequence, Tuple
 
 
 class CellState(str, Enum):
@@ -10,29 +11,27 @@ class CellState(str, Enum):
     EMPTY = "."
 
 
+@dataclass(slots=True)
 class Nonogram:
-    def __init__(self, rows: int, cols: int, row_clues: List[List[int]], col_clues: List[List[int]]) -> None:
-        self._rows: int = rows
-        self._cols: int = cols
-        self._row_clues: List[List[int]] = row_clues
-        self._col_clues: List[List[int]] = col_clues
-        self._grid: List[List[CellState]] = [
-            [CellState.UNKNOWN for _ in range(cols)] for _ in range(rows)
+    rows: int
+    cols: int
+    row_clues: Sequence[Sequence[int]]
+    col_clues: Sequence[Sequence[int]]
+    _grid: List[List[CellState]] = field(init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self.row_clues = tuple(tuple(clue) for clue in self.row_clues)
+        self.col_clues = tuple(tuple(clue) for clue in self.col_clues)
+        self._grid = [
+            [CellState.UNKNOWN for _ in range(self.cols)]
+            for _ in range(self.rows)
         ]
 
-    @property
-    def rows(self) -> int:
-        return self._rows
-
-    @property
-    def cols(self) -> int:
-        return self._cols
-
     def get_row_clues(self, row: int) -> List[int]:
-        return self._row_clues[row]
+        return list(self.row_clues[row])
 
     def get_col_clues(self, col: int) -> List[int]:
-        return self._col_clues[col]
+        return list(self.col_clues[col])
 
     def get_cell(self, row: int, col: int) -> CellState:
         return self._grid[row][col]
@@ -44,25 +43,28 @@ class Nonogram:
         return list(self._grid[row])
 
     def get_col(self, col: int) -> List[CellState]:
-        return [self._grid[r][col] for r in range(self._rows)]
+        return [self._grid[r][col] for r in range(self.rows)]
 
     def is_solved(self) -> bool:
-        for r in range(self._rows):
-            if self.extract_runs(self.get_row(r)) != self._row_clues[r]:
-                return False
-        for c in range(self._cols):
-            if self.extract_runs(self.get_col(c)) != self._col_clues[c]:
-                return False
-        return True
+        rows_solved = all(
+            self.extract_runs(self.get_row(r)) == list(self.row_clues[r])
+            for r in range(self.rows)
+        )
+        cols_solved = all(
+            self.extract_runs(self.get_col(c)) == list(self.col_clues[c])
+            for c in range(self.cols)
+        )
+        return rows_solved and cols_solved
 
     def has_unknown_cells(self) -> bool:
-        for r in range(self._rows):
-            for c in range(self._cols):
-                if self._grid[r][c] == CellState.UNKNOWN:
-                    return True
-        return False
+        return any(
+            cell == CellState.UNKNOWN
+            for row in self._grid
+            for cell in row
+        )
 
-    def extract_runs(self, line: List[CellState]) -> List[int]:
+    @staticmethod
+    def extract_runs(line: Sequence[CellState]) -> List[int]:
         runs: List[int] = []
         length: int = 0
         for cell in line:
@@ -78,18 +80,19 @@ class Nonogram:
         
         return runs if runs else [0]
 
-    def min_line_length(self, clues: List[int]) -> int:
-        if not clues or clues == [0]:
+    @staticmethod
+    def min_line_length(clues: Sequence[int]) -> int:
+        if not clues or list(clues) == [0]:
             return 0
         number_of_runs = len(clues)
         return sum(clues) + (number_of_runs - 1)
 
-    def is_line_valid(self, line: List[CellState], clues: List[int]) -> bool:
+    def is_line_valid(self, line: Sequence[CellState], clues: Sequence[int]) -> bool:
         if CellState.UNKNOWN in line:
             return self._is_partial_line_valid(line, clues)
-        return self.extract_runs(line) == clues
+        return self.extract_runs(line) == list(clues)
 
-    def _is_partial_line_valid(self, line: List[CellState], clues: List[int]) -> bool:
+    def _is_partial_line_valid(self, line: Sequence[CellState], clues: Sequence[int]) -> bool:
         if self.min_line_length(clues) > len(line):
             return False
 
@@ -126,40 +129,32 @@ class Nonogram:
         return True
 
     def clone(self) -> "Nonogram":
-        new = Nonogram(self._rows, self._cols, self._row_clues, self._col_clues)
-        for r in range(self._rows):
-            for c in range(self._cols):
-                new._grid[r][c] = self._grid[r][c]
+        new = Nonogram(self.rows, self.cols, self.row_clues, self.col_clues)
+        new._grid = [row.copy() for row in self._grid]
         return new
 
     def render(self) -> List[str]:
-        result: List[str] = []
-        for r in range(self._rows):
-            row_str = ""
-            for c in range(self._cols):
-                row_str += self._grid[r][c].value
-            result.append(row_str)
-        return result
+        return ["".join(cell.value for cell in row) for row in self._grid]
 
     def render_with_clues(self) -> str:
         max_row_clue_len = max(
-            len(" ".join(str(x) for x in clue)) for clue in self._row_clues
+            len(" ".join(str(x) for x in clue)) for clue in self.row_clues
         )
         lines: List[str] = []
-        for r in range(self._rows):
-            clue_str = " ".join(str(x) for x in self._row_clues[r])
+        for r in range(self.rows):
+            clue_str = " ".join(str(x) for x in self.row_clues[r])
             padding = " " * (max_row_clue_len - len(clue_str))
-            row_str = " ".join(self._grid[r][c].value for c in range(self._cols))
+            row_str = " ".join(self._grid[r][c].value for c in range(self.cols))
             lines.append(f"{padding}{clue_str} | {row_str}")
 
         margin = " " * (max_row_clue_len + 3)
-        lines.append(margin + "-" * (self._cols * 2 - 1))
+        lines.append(margin + "-" * (self.cols * 2 - 1))
 
-        max_depth = max(len(self._col_clues[c]) for c in range(self._cols))
+        max_depth = max(len(self.col_clues[c]) for c in range(self.cols))
         for d in range(max_depth):
             parts: List[str] = []
-            for c in range(self._cols):
-                clue_list = self._col_clues[c]
+            for c in range(self.cols):
+                clue_list = self.col_clues[c]
                 offset = d - (max_depth - len(clue_list))
                 if offset >= 0:
                     parts.append(str(clue_list[offset]))
