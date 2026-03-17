@@ -1,9 +1,9 @@
 """Tests for Solver implementation."""
 
-import time
 import unittest
+import time
 
-from maze import Position
+from maze import Maze, Position
 from mazes import (
     get_simple_maze,
     get_small_maze,
@@ -64,6 +64,19 @@ class SolverTest(unittest.TestCase):
         expected = [Position(row=1, col=1)]
         self.assertEqual(path, expected)
 
+    def test_directional_chute_blocks_wrong_entry_side(self) -> None:
+        maze = Maze(
+            [
+                "#######",
+                "#S.#..#",
+                "##>.E##",
+                "#######",
+            ]
+        )
+        solver = Solver(maze)
+        path = solver.solve()
+        self.assertEqual(path, [maze.get_start()])
+
     def test_anywhere_start_end(self) -> None:
         solver = Solver(get_anywhere_start_end_maze())
         path = solver.solve()
@@ -72,6 +85,34 @@ class SolverTest(unittest.TestCase):
         self.assertEqual(path[-1], solver.maze.get_end())
         expected_length = 5
         self.assertEqual(len(path), expected_length)
+
+    def test_key_unlocks_door_after_backtracking(self) -> None:
+        maze = Maze(
+            [
+                "########",
+                "#S.A..E#",
+                "#..#.#.#",
+                "#a.....#",
+                "########",
+            ]
+        )
+        solver = Solver(maze)
+        path = solver.solve()
+        self.assertEqual(path[0], maze.get_start())
+        self.assertEqual(path[-1], maze.get_end())
+        self.assertIn(Position(3, 1), path)
+        self.assertIn(Position(1, 3), path)
+
+    def test_locked_door_blocks_when_key_missing(self) -> None:
+        maze = Maze(
+            [
+                "#####",
+                "#SAE#",
+                "#####",
+            ]
+        )
+        solver = Solver(maze)
+        self.assertEqual(solver.solve(), [maze.get_start()])
 
     def test_huge_maze_75x75(self) -> None:
         maze = get_huge_maze(75, seed=42)

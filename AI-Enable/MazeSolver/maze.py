@@ -1,10 +1,12 @@
 """Read this first."""
 
+from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, NamedTuple
+from typing import List, Tuple
 
 
-class Position(NamedTuple):
+@dataclass(frozen=True, slots=True)
+class Position:
     row: int
     col: int
 
@@ -19,13 +21,28 @@ class CellType(str, Enum):
     LEFT_ONLY = "<"
 
 
+@dataclass
 class Maze:
-    def __init__(self, grid: List[str]) -> None:
-        self._grid: List[List[str]] = [list(row) for row in grid]
-        self._rows: int = len(self._grid)
-        self._cols: int = len(self._grid[0]) if self._rows > 0 else 0
-        self._start: Position = self._find_cell(CellType.START)
-        self._end: Position = self._find_cell(CellType.END)
+    grid: List[str]
+    _grid: List[List[str]] = field(init=False, repr=False)
+    _rows: int = field(init=False, repr=False)
+    _cols: int = field(init=False, repr=False)
+    _start: Position = field(init=False, repr=False)
+    _end: Position = field(init=False, repr=False)
+
+    _DIRECTIONS: Tuple[Position, ...] = (
+        Position(-1, 0),
+        Position(1, 0),
+        Position(0, -1),
+        Position(0, 1),
+    )
+
+    def __post_init__(self) -> None:
+        self._grid = [list(row) for row in self.grid]
+        self._rows = len(self._grid)
+        self._cols = len(self._grid[0]) if self._rows > 0 else 0
+        self._start = self._find_cell(CellType.START)
+        self._end = self._find_cell(CellType.END)
 
     def _find_cell(self, cell_type: CellType) -> Position:
         for r in range(self._rows):
@@ -53,10 +70,19 @@ class Maze:
             CellType.END.value,
             CellType.RIGHT_ONLY.value,
             CellType.LEFT_ONLY.value,
-        )
+        ) or self.is_key(cell) or self.is_door(cell)
 
     def _can_mark_as_path(self, cell: str) -> bool:
         return cell != CellType.WALL.value
+
+    def is_key(self, cell: str) -> bool:
+        return len(cell) == 1 and cell.islower()
+
+    def is_door(self, cell: str) -> bool:
+        return len(cell) == 1 and cell.isupper() and cell not in (
+            CellType.START.value,
+            CellType.END.value,
+        )
 
     def is_valid_move(self, from_pos: Position, to_pos: Position) -> bool:
         if not (0 <= to_pos.row < self._rows and 0 <= to_pos.col < self._cols):
@@ -77,16 +103,10 @@ class Maze:
         return True
 
     def get_neighbors(self, pos: Position) -> List[Position]:
-        directions = [
-            (Position(-1, 0), "up"),
-            (Position(1, 0), "down"),
-            (Position(0, -1), "left"),
-            (Position(0, 1), "right"),
-        ]
         neighbors: List[Position] = []
 
-        for (dr, dc), _ in directions:
-            new_pos = Position(pos.row + dr, pos.col + dc)
+        for direction in self._DIRECTIONS:
+            new_pos = Position(pos.row + direction.row, pos.col + direction.col)
             if self.is_valid_move(pos, new_pos):
                 neighbors.append(new_pos)
 
