@@ -23,6 +23,17 @@ class SolverTest(unittest.TestCase):
         self.assertGreater(turns, 0, "should play at least one turn")
         self.assertFalse(game.has_valid_move(), "game should end with no valid moves")
 
+    def test_find_all_triples_use_only_current_grid_positions(self) -> None:
+        game = CardGame(seed=42)
+        solver = Solver(game)
+        grid = game.get_grid()
+
+        for triple in solver.find_all_triples():
+            self.assertEqual(len(triple), 3)
+            self.assertEqual(len(set(triple)), 3)
+            self.assertTrue(all(pos in grid for pos in triple))
+            self.assertEqual(sum(grid[pos].value for pos in triple), 15)
+
     def test_play_game_optimized(self) -> None:
         total_turns = 0
         trials = 50
@@ -32,6 +43,17 @@ class SolverTest(unittest.TestCase):
             total_turns += solver.play_game_optimized()
         average = total_turns / trials
         self.assertGreaterEqual(average, 11.5, "optimized should average at least 11.5 turns")
+
+    def test_play_game_optimized_full_score_count_over_100_games(self) -> None:
+        perfect_scores = 0
+
+        for seed in range(100):
+            game = CardGame(seed=seed)
+            solver = Solver(game)
+            turns = solver.play_game_optimized()
+            perfect_scores += turns == 12
+
+        self.assertEqual(perfect_scores, 90, "optimized solver should get 90 perfect games over 100 seeds")
 
 
 if __name__ == "__main__":

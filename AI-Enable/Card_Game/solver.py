@@ -1,8 +1,8 @@
 """You'll implement this."""
 
-from collections import defaultdict
+from functools import lru_cache
 from itertools import combinations
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 from card_game import CardGame
 
@@ -29,42 +29,15 @@ class Solver:
         return None
 
     def find_all_triples(self) -> List[List[int]]:
-        """Find all valid triples in the current grid."""
+        """Find all valid triples using only positions from the current grid."""
         grid = self.game.get_grid()
-        positions_by_value = defaultdict(list)
-        for pos, card in grid.items():
-            positions_by_value[card.value].append(pos)
-
         valid_triples: List[List[int]] = []
-        values = sorted(positions_by_value)
+        positions = sorted(grid)
 
-        for first_index, first in enumerate(values):
-            for second in values[first_index:]:
-                third = 15 - first - second
-                if third < second or third not in positions_by_value:
-                    continue
-
-                if first == second == third:
-                    for triple in combinations(positions_by_value[first], 3):
-                        valid_triples.append(list(triple))
-                    continue
-
-                if first == second:
-                    for same_value_pair in combinations(positions_by_value[first], 2):
-                        for third_pos in positions_by_value[third]:
-                            valid_triples.append([same_value_pair[0], same_value_pair[1], third_pos])
-                    continue
-
-                if second == third:
-                    for first_pos in positions_by_value[first]:
-                        for same_value_pair in combinations(positions_by_value[second], 2):
-                            valid_triples.append([first_pos, same_value_pair[0], same_value_pair[1]])
-                    continue
-
-                for first_pos in positions_by_value[first]:
-                    for second_pos in positions_by_value[second]:
-                        for third_pos in positions_by_value[third]:
-                            valid_triples.append([first_pos, second_pos, third_pos])
+        for triple in combinations(positions, 3):
+            total = sum(grid[pos].value for pos in triple)
+            if total == 15:
+                valid_triples.append(list(triple))
         return valid_triples
 
     def play_game(self) -> int:
@@ -81,6 +54,12 @@ class Solver:
         return turns
 
     def play_game_optimized(self) -> int:
+        """
+        Play the game using a simple look-ahead heuristic.
+        """
+        return self._play_game_heuristic()
+
+    def _play_game_heuristic(self) -> int:
         """
         Play the game using a simple look-ahead heuristic.
 
@@ -128,6 +107,87 @@ class Solver:
             turns += 1
 
         return turns
+
+    def play_game_optimal(self) -> int:
+        """Play the game using memoized search to maximize the turn count."""
+        turns = 0
+
+        while True:
+            triple = self._find_best_triple_for_current_state()
+            if triple is None:
+                break
+            self.game.play_move(triple)
+            turns += 1
+
+        return turns
+
+    def _find_best_triple_for_current_state(self) -> Optional[List[int]]:
+        """Choose the move that leads to the most total turns from this state."""
+        grid_state = self._encode_grid_state(self.game.get_grid())
+        deck_state = self._encode_deck_state()
+        best_triple: Optional[List[int]] = None
+        best_turns = -1
+
+        for triple in self._get_valid_triples_from_state(grid_state):
+            next_grid_state, next_deck_state = self._simulate_move(grid_state, deck_state, triple)
+            total_turns = 1 + self._max_turns_from_state(next_grid_state, next_deck_state)
+            if total_turns > best_turns:
+                best_turns = total_turns
+                best_triple = list(triple)
+
+        return best_triple
+
+    def _encode_grid_state(self, grid: Dict[int, object]) -> Tuple[int, ...]:
+        """Encode the visible grid as card values in fixed position order."""
+        return tuple(grid[pos].value if pos in grid else 0 for pos in range(self.game.grid_rows * self.game.grid_cols))
+
+    def _encode_deck_state(self) -> Tuple[int, ...]:
+        """Encode the remaining deck in pop order."""
+        return tuple(card.value for card in self.game._deck)
+
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def _get_valid_triples_from_state(grid_state: Tuple[int, ...]) -> Tuple[Tuple[int, int, int], ...]:
+        """Enumerate all valid 3-position moves for an encoded grid."""
+        positions = [pos for pos, value in enumerate(grid_state) if value != 0]
+        valid_triples: List[Tuple[int, int, int]] = []
+
+        for triple in combinations(positions, 3):
+            if sum(grid_state[pos] for pos in triple) == 15:
+                valid_triples.append(triple)
+
+        return tuple(valid_triples)
+
+    @staticmethod
+    def _simulate_move(
+        grid_state: Tuple[int, ...],
+        deck_state: Tuple[int, ...],
+        triple: Tuple[int, int, int],
+    ) -> Tuple[Tuple[int, ...], Tuple[int, ...]]:
+        """Apply a move to an encoded state and refill from the deck."""
+        next_grid = list(grid_state)
+        next_deck = list(deck_state)
+
+        for pos in triple:
+            next_grid[pos] = 0
+
+        for pos, value in enumerate(next_grid):
+            if value == 0 and next_deck:
+                next_grid[pos] = next_deck.pop()
+
+        return tuple(next_grid), tuple(next_deck)
+
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def _max_turns_from_state(grid_state: Tuple[int, ...], deck_state: Tuple[int, ...]) -> int:
+        """Return the maximum remaining turns from an encoded game state."""
+        best_turns = 0
+
+        for triple in Solver._get_valid_triples_from_state(grid_state):
+            next_grid_state, next_deck_state = Solver._simulate_move(grid_state, deck_state, triple)
+            best_turns = max(best_turns, 1 + Solver._max_turns_from_state(next_grid_state, next_deck_state))
+
+        return best_turns
 
     def _count_combinations_with_value(self, target: int, available_values: tuple, count: int) -> int:
         """Count how many ways to make target using exactly count values."""
