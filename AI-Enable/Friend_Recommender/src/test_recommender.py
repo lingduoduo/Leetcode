@@ -101,20 +101,28 @@ class RecommenderTest(unittest.TestCase):
 
     def test_should_be_fast(self) -> None:
         from data import get_huge_network
+
         users, friendships = get_huge_network()
         net = SocialNetwork()
         for user in users:
             net.add_user(user)
         for a, b in friendships:
             net.add_friendship(a, b)
+
         rec = Recommender(net)
         test_users = net.get_all_users()[:200]
+
         start = time.time()
         for user in test_users:
             rec.recommend(user)
         elapsed = time.time() - start
-        expected_max = 1
-        self.assertLess(elapsed, expected_max, f"took {elapsed:.2f}s for 200 queries, need < {expected_max}s")
+
+        expected_max = 0.05
+        self.assertLess(
+            elapsed,
+            expected_max,
+            f"took {elapsed:.3f}s for 200 queries, need < {expected_max}s",
+        )
 
 
 if __name__ == "__main__":

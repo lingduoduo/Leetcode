@@ -1,27 +1,37 @@
 """Read this first."""
 
+from dataclasses import dataclass, field
 from typing import Dict, List, Set
+
+
+@dataclass(slots=True)
+class User:
+    name: str
+    friends: Set[str] = field(default_factory=set)
 
 
 class SocialNetwork:
     def __init__(self) -> None:
-        self._friends: Dict[str, Set[str]] = {}
+        self._users: Dict[str, User] = {}
 
     def add_user(self, name: str) -> None:
-        if name not in self._friends:
-            self._friends[name] = set()
+        if name not in self._users:
+            self._users[name] = User(name=name)
 
     def add_friendship(self, user_a: str, user_b: str) -> None:
         self.add_user(user_a)
         self.add_user(user_b)
-        self._friends[user_a].add(user_b)
-        self._friends[user_b].add(user_a)
+        self._users[user_a].friends.add(user_b)
+        self._users[user_b].friends.add(user_a)
 
     def get_friends(self, user: str) -> Set[str]:
-        return self._friends.get(user, set())
+        user_record = self._users.get(user)
+        if user_record is None:
+            return set()
+        return user_record.friends
 
     def get_all_users(self) -> List[str]:
-        return list(self._friends.keys())
+        return list(self._users.keys())
 
     def mutual_friends_count(self, user_a: str, user_b: str) -> int:
         friends_a = self.get_friends(user_a)
