@@ -4,30 +4,25 @@ from collections import defaultdict
 import random
 
 class Solution:
-    def minRemoveToMakeValid(self, s: str) -> str:
-        l = 0
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        left = [1]
+        right = [1]
+        for num in nums:
+            left.append(num * left[-1])
+        left.pop(0)
+        
+        for num in nums[::-1]:
+            right.append(num * right[-1])
+        right = right[::-1]
+        right.pop(0)
+        
         res = []
-        for ch in s:
-            if ch == "(":
-                l += 1
-                res.append(ch)
-            elif ch == ")":
-                if l > 0:
-                    l -= 1
-                    res.append(ch)
-            else:
-                res.append(ch)
-
-        for i in reversed(range(len(res))):
-            if res[i] == "(" and l > 0:
-                res[i] = ""
-                cnt -= 1
-        return ''.join(res)
-
-    
-
+        for i in range(len(nums)):
+            res.append(left[i] * right[i])
+        return res
+        
 
 
 if __name__ == "__main__":
-    res = Solution().minRemoveToMakeValid(s = "lee(t(c)o)de)")
+    res = Solution().productExceptSelf(nums = [1,2,3,4])
     print(res)
