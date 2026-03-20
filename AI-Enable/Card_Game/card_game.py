@@ -87,9 +87,9 @@ class CardGame:
 
     def play_move(self, positions: List[int]) -> List[Card]:
         self.validate_move(positions)
-        picked: List[Card] = []
+        picked = [self._grid[pos] for pos in positions]
         for pos in positions:
-            picked.append(self._grid.pop(pos))
+            del self._grid[pos]
         self._turns_played += 1
         self._history.append(picked)
         self._fill_grid()

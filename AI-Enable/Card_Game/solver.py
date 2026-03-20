@@ -16,16 +16,21 @@ class Solver:
     def find_triple(self) -> Optional[List[int]]:
         """Find any 3 grid positions whose cards sum to 15."""
         grid = self.game.get_grid()
-        positions = list(grid.keys())
-        n = len(positions)
+        cards = sorted((card.value, pos) for pos, card in grid.items())
+        n = len(cards)
 
-        for i in range(n):
-            for j in range(i + 1, n):
-                for k in range(j + 1, n):
-                    pos1, pos2, pos3 = positions[i], positions[j], positions[k]
-                    total = grid[pos1].value + grid[pos2].value + grid[pos3].value
-                    if total == 15:
-                        return [pos1, pos2, pos3]
+        for i in range(n - 2):
+            j = i + 1
+            k = n - 1
+
+            while j < k:
+                total = cards[i][0] + cards[j][0] + cards[k][0]
+                if total == 15:
+                    return [cards[i][1], cards[j][1], cards[k][1]]
+                if total < 15:
+                    j += 1
+                else:
+                    k -= 1
         return None
 
     def find_all_triples(self) -> List[List[int]]:
@@ -55,7 +60,7 @@ class Solver:
 
     def play_game_optimized(self) -> int:
         """
-        Play the game using a simple look-ahead heuristic.
+        Play the game using a fast look-ahead heuristic.
         """
         return self._play_game_heuristic()
 
@@ -73,7 +78,6 @@ class Solver:
             valid_triples = self.find_all_triples()
             if not valid_triples:
                 break
-
             grid = self.game.get_grid()
             best_triple: Optional[List[int]] = None
             best_score: Optional[tuple[int, int, int]] = None
@@ -189,7 +193,8 @@ class Solver:
 
         return best_turns
 
-    def _count_combinations_with_value(self, target: int, available_values: tuple, count: int) -> int:
+    @staticmethod
+    def _count_combinations_with_value_static(target: int, available_values: tuple, count: int) -> int:
         """Count how many ways to make target using exactly count values."""
         if count < 0 or target < 0:
             return 0
@@ -208,14 +213,18 @@ class Solver:
 
         return dp[count][target]
 
+    def _count_combinations_with_value(self, target: int, available_values: tuple, count: int) -> int:
+        """Count how many ways to make target using exactly count values."""
+        return self._count_combinations_with_value_static(target, available_values, count)
+
     def play_game_dp_enhanced(self) -> int:
         """Backward-compatible alias for the optimized strategy."""
         return self.play_game_optimized()
 
     def play_game_bitmask_dp(self) -> int:
-        """Backward-compatible alias for the optimized strategy."""
-        return self.play_game_optimized()
+        """Backward-compatible alias for the global memoized strategy."""
+        return self.play_game_optimal()
 
     def play_game_memoized(self) -> int:
-        """Backward-compatible alias for the optimized strategy."""
-        return self.play_game_optimized()
+        """Backward-compatible alias for the global memoized strategy."""
+        return self.play_game_optimal()
