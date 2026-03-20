@@ -1,33 +1,50 @@
+from typing import List
+from collections import Counter, defaultdict
+
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        if len(words) == 0:
+        if not s or not words:
             return []
-        wordsDict = {}
-        for word in words:  # 统计每个单词出现的个数
-            if word not in wordsDict:
-                wordsDict[word] = 1
-            else:
-                wordsDict[word] += 1
 
-        n, m, k = len(s), len(words[0]), len(words)  # n, m, k 分别表示，字符串的长度，单词的长度，单词的个数
+        word_len = len(words[0])
+        word_count = len(words)
+        total_len = word_len * word_count
+        n = len(s)
+
+        if n < total_len:
+            return []
+
+        target = Counter(words)
         res = []
 
-        for i in range(n - m * k + 1):  # 选择一个区间或者窗口
-            j = 0
-            cur_dict = {}
+        for start in range(word_len):
+            left = start
+            seen = defaultdict(int)
+            count = 0
 
-            while j < k:
-                word = s[i + m * j : i + m * j + m]  # 区间内选择一个单词
-                if word not in wordsDict:  # 出现不存在的单词，直接结束本此区间
-                    break
-                if word not in cur_dict:
-                    cur_dict[word] = 1
+            for right in range(start, n - word_len + 1, word_len):
+                word = s[right:right + word_len]
+
+                if word in target:
+                    seen[word] += 1
+                    count += 1
+
+                    while seen[word] > target[word]:
+                        left_word = s[left:left + word_len]
+                        seen[left_word] -= 1
+                        left += word_len
+                        count -= 1
+
+                    if count == word_count:
+                        res.append(left)
+
+                        left_word = s[left:left + word_len]
+                        seen[left_word] -= 1
+                        left += word_len
+                        count -= 1
                 else:
-                    cur_dict[word] += 1
-                if cur_dict[word] > wordsDict[word]:  # 某个单词大于所需，则直接结束本此区间
-                    break
-                j += 1  # 单词数加一
-            if j == k:
-                res.append(i)  # 记录起始位置
+                    seen.clear()
+                    count = 0
+                    left = right + word_len
 
         return res
