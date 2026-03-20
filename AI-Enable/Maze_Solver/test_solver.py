@@ -77,6 +77,19 @@ class SolverTest(unittest.TestCase):
         path = solver.solve()
         self.assertEqual(path, [maze.get_start()])
 
+    def test_directional_chute_blocks_wrong_exit_side(self) -> None:
+        maze = Maze(
+            [
+                "######",
+                "#S>###",
+                "##.E##",
+                "######",
+            ]
+        )
+        solver = Solver(maze)
+        path = solver.solve()
+        self.assertEqual(path, [maze.get_start()])
+
     def test_anywhere_start_end(self) -> None:
         solver = Solver(get_anywhere_start_end_maze())
         path = solver.solve()

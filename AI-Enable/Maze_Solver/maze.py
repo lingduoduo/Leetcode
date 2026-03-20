@@ -75,6 +75,11 @@ class Maze:
     def _can_mark_as_path(self, cell: str) -> bool:
         return cell != CellType.WALL.value
 
+    def _render_cell(self, cell: str) -> str:
+        if not cell or cell.isspace():
+            return CellType.WALL.value
+        return cell
+
     def is_key(self, cell: str) -> bool:
         return len(cell) == 1 and cell.islower()
 
@@ -83,6 +88,9 @@ class Maze:
             CellType.START.value,
             CellType.END.value,
         )
+
+    def is_chute(self, cell: str) -> bool:
+        return cell in (CellType.RIGHT_ONLY.value, CellType.LEFT_ONLY.value)
 
     def is_valid_move(self, from_pos: Position, to_pos: Position) -> bool:
         if not (0 <= to_pos.row < self._rows and 0 <= to_pos.col < self._cols):
@@ -113,7 +121,7 @@ class Maze:
         return neighbors
 
     def render(self) -> List[str]:
-        return ["".join(row) for row in self._grid]
+        return ["".join(self._render_cell(cell) for cell in row) for row in self._grid]
 
     def render_with_path(self, path: List[Position]) -> List[str]:
         result = [row[:] for row in self._grid]
@@ -123,7 +131,7 @@ class Maze:
             if self._can_mark_as_path(cell):
                 result[pos.row][pos.col] = CellType.PATH.value
 
-        return ["".join(row) for row in result]
+        return ["".join(self._render_cell(cell) for cell in row) for row in result]
 
     @property
     def rows(self) -> int:

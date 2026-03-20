@@ -31,7 +31,9 @@ class Solver:
         if self.maze.is_door(neighbor_cell) and not self._can_open_door(neighbor_cell, key_mask):
             return False
 
-        # Chutes are one-way passages: you must enter from the open side.
+        # Chutes are one-way passages: for ">" you may only enter from the left,
+        # and for "<" you may only enter from the right. Exiting is enforced by
+        # Maze.is_valid_move() based on the current cell.
         if neighbor_cell == CellType.RIGHT_ONLY.value:
             return (dr, dc) == (0, 1)
         if neighbor_cell == CellType.LEFT_ONLY.value:

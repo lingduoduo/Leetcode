@@ -69,6 +69,17 @@ class MazeTest(unittest.TestCase):
         maze = Maze(grid)
         self.assertEqual(maze.render(), grid)
 
+    def test_render_replaces_blank_cells_with_walls(self) -> None:
+        grid = [
+            "#####",
+            "#S .#",
+            "#..E#",
+            "#####",
+        ]
+        maze = Maze(grid)
+        rendered = maze.render()
+        self.assertEqual(rendered[1], "#S#.#")
+
     def test_render_with_path_preserves_start_end(self) -> None:
         grid = [
             "#####",
