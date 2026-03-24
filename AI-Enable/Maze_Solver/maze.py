@@ -18,7 +18,6 @@ class CellType(str, Enum):
     END = "E"
     PATH = "*"
     RIGHT_ONLY = ">"
-    LEFT_ONLY = "<"
 
 
 @dataclass
@@ -69,7 +68,6 @@ class Maze:
             CellType.START.value,
             CellType.END.value,
             CellType.RIGHT_ONLY.value,
-            CellType.LEFT_ONLY.value,
         ) or self.is_key(cell) or self.is_door(cell)
 
     def _can_mark_as_path(self, cell: str) -> bool:
@@ -90,7 +88,7 @@ class Maze:
         )
 
     def is_chute(self, cell: str) -> bool:
-        return cell in (CellType.RIGHT_ONLY.value, CellType.LEFT_ONLY.value)
+        return cell == CellType.RIGHT_ONLY.value
 
     def is_valid_move(self, from_pos: Position, to_pos: Position) -> bool:
         if not (0 <= to_pos.row < self._rows and 0 <= to_pos.col < self._cols):
@@ -100,8 +98,6 @@ class Maze:
         dc = to_pos.col - from_pos.col
         from_cell = self.get_cell(from_pos)
         if from_cell == CellType.RIGHT_ONLY.value and (dr, dc) != (0, 1):
-            return False
-        if from_cell == CellType.LEFT_ONLY.value and (dr, dc) != (0, -1):
             return False
 
         to_cell = self.get_cell(to_pos)

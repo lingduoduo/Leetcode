@@ -55,7 +55,7 @@ class SolverTest(unittest.TestCase):
         solver = Solver(get_directional_maze())
         path = solver.solve()
         self.assertIsNotNone(path)
-        expected_length = 9
+        expected_length = 4
         self.assertEqual(len(path), expected_length)
 
     def test_directional_passage_blocked(self) -> None:

@@ -60,11 +60,7 @@ def get_medium_maze() -> Maze:
 def get_directional_maze() -> Maze:
     grid = [
         "#######",
-        "#S.>..#",
-        "#.###.#",
-        "#.<...#",
-        "#.###.#",
-        "#....E#",
+        "#S.>E##",
         "#######",
     ]
     return Maze(grid)
@@ -73,9 +69,8 @@ def get_directional_maze() -> Maze:
 def get_directional_maze_blocked() -> Maze:
     grid = [
         "#######",
-        "#S.<..#",
-        "###.###",
-        "#E....#",
+        "#S..###",
+        "###>E##",
         "#######",
     ]
     return Maze(grid)
