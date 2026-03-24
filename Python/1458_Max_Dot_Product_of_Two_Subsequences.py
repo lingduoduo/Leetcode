@@ -24,24 +24,21 @@ class Solution:
 class Solution:
     def maxDotProduct(self, nums1: List[int], nums2: List[int]) -> int:
         m, n = len(nums1), len(nums2)
-
-        # dp[i][j] = max dot product of subsequences
-        dp = [[float("-inf")] * (n + 1) for _ in range(m + 1)]
-
-        m, n = len(nums1), len(nums2)
-        dp = [[float("-inf")] * n for _ in range(m)]
-
-        # fill from top-left to bottom-right
-        for i in range(m):
-            for j in range(n):
-                prod = nums1[i] * nums2[j]
-
+        neg_inf = float("-inf")
+        
+        # dp[i][j] = max dot product using nums1[:i], nums2[:j]
+        dp = [[neg_inf] * (n + 1) for _ in range(m + 1)]
+        
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                prod = nums1[i - 1] * nums2[j - 1]
                 dp[i][j] = max(
-                    prod,  # start new subsequence
-                    prod + (max(dp[i - 1][j - 1], 0) if i and j else 0),  # extend
-                    dp[i - 1][j] if i else float("-inf"),  # skip nums1[i]
-                    dp[i][j - 1] if j else float("-inf"),  # skip nums2[j]
+                    prod,                           # start new subsequence here
+                    prod + max(dp[i - 1][j - 1], 0),  # extend previous subsequence
+                    dp[i - 1][j],                  # skip nums1[i - 1]
+                    dp[i][j - 1],                  # skip nums2[j - 1]
                 )
 
         return dp[-1][-1]
+
    
