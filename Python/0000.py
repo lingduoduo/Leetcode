@@ -4,25 +4,29 @@ from collections import defaultdict
 import random
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        left = [1]
-        right = [1]
-        for num in nums:
-            left.append(num * left[-1])
-        left.pop(0)
-        
-        for num in nums[::-1]:
-            right.append(num * right[-1])
-        right = right[::-1]
-        right.pop(0)
-        
-        res = []
-        for i in range(len(nums)):
-            res.append(left[i] * right[i])
+    def longestBalanced(self, s: str) -> int:
+        n = len(s)
+        res = 0
+
+        for i in range(n):
+            d = defaultdict(int)
+            distinct = 0
+            max_freq = 0
+
+            for j in range(i, n):
+                d[s[j]] += 1
+
+                if d[s[j]] == 1:
+                    distinct += 1
+                max_freq = max(max_freq, d[s[j]])
+
+                if (j - i + 1) == distinct * max_freq:
+                    res = max(res, j - i + 1)
+
         return res
         
 
 
 if __name__ == "__main__":
-    res = Solution().productExceptSelf(nums = [1,2,3,4])
+    res = Solution().longestBalanced(s = "abbac")
     print(res)

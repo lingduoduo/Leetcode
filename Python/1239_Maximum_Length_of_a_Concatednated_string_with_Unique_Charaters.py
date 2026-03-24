@@ -11,3 +11,14 @@ class Solution:
             return res
 
         return dfs(0, "") 
+
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        dp = [set()]
+        for word in arr:
+            if len(set(word)) < len(word): continue
+            word = set(word)
+            for ch in dp[:]:
+                if not ch & word: 
+                    dp.append(word | ch)
+        return max(len(ch) for ch in dp)
