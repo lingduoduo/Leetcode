@@ -32,6 +32,18 @@ def main() -> None:
         values_str = " + ".join(str(c.value) for c in picked)
         print(f"  Turn {i + 1}: [{cards_str}] ({values_str} = {sum(c.value for c in picked)})")
 
+    print()
+    stats = Solver.simulate_games(
+        num_games=100,
+        strategy="play_game",
+        grid_rows=4,
+        grid_cols=6,
+    )
+    print("Greedy strategy over 100 seeded 4x6 games:")
+    print(f"  Perfect games: {stats.perfect_games}/{stats.games_played}")
+    print(f"  Perfect rate: {stats.perfect_rate:.0%}")
+    print(f"  Average score: {stats.average_score:.1f}/{game.perfect_score}")
+
     banner("END CODE OUTPUT")
 
 

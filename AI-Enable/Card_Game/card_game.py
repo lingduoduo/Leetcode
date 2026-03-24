@@ -1,10 +1,9 @@
 """Read this first."""
 
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Set
 
 from deck import Card, create_deck, shuffle_deck
-
-from dataclasses import dataclass
 
 @dataclass
 class CardGame:
@@ -21,6 +20,7 @@ class CardGame:
         self._turns_played: int = 0
         self._history: List[List[Card]] = []
         self._fill_grid()
+        self._initial_card_count = len(self._grid) + len(self._deck)
 
     @property
     def grid_rows(self) -> int:
@@ -51,6 +51,18 @@ class CardGame:
 
     def cards_remaining_in_deck(self) -> int:
         return len(self._deck)
+
+    @property
+    def max_turns_possible(self) -> int:
+        return self._initial_card_count // 3
+
+    @property
+    def perfect_score(self) -> int:
+        return self.max_turns_possible * 15
+
+    @property
+    def score(self) -> int:
+        return self._turns_played * 15
 
     def display_grid(self) -> str:
         lines: List[str] = []

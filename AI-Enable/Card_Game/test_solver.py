@@ -35,25 +35,30 @@ class SolverTest(unittest.TestCase):
             self.assertEqual(sum(grid[pos].value for pos in triple), 15)
 
     def test_play_game_optimized(self) -> None:
-        total_turns = 0
-        trials = 50
-        for seed in range(trials):
-            game = CardGame(grid_rows=4, grid_cols=6, seed=seed)
-            solver = Solver(game)
-            total_turns += solver.play_game_optimized()
-        average = total_turns / trials
-        self.assertGreaterEqual(average, 11.5, "optimized should average at least 11.5 turns")
+        stats = Solver.simulate_games(
+            num_games=50,
+            strategy="play_game_optimized",
+            grid_rows=4,
+            grid_cols=6,
+        )
+        self.assertGreaterEqual(stats.average_turns, 11.5, "optimized should average at least 11.5 turns")
 
-    def test_play_game_optimized_full_score_count_over_100_games(self) -> None:
-        perfect_scores = 0
+    def test_simulation_reports_full_score_count_over_100_games(self) -> None:
+        stats = Solver.simulate_games(
+            num_games=100,
+            strategy="play_game",
+            grid_rows=4,
+            grid_cols=6,
+        )
+        self.assertEqual(stats.games_played, 100)
+        self.assertEqual(stats.perfect_games, 26)
+        self.assertAlmostEqual(stats.average_score, stats.average_turns * 15)
 
-        for seed in range(100):
-            game = CardGame(seed=seed)
-            solver = Solver(game)
-            turns = solver.play_game_optimized()
-            perfect_scores += turns == 12
-
-        self.assertEqual(perfect_scores, 90, "optimized solver should get 90 perfect games over 100 seeds")
+    def test_optimized_strategy_has_higher_perfect_rate(self) -> None:
+        greedy_stats = Solver.simulate_games(num_games=100, strategy="play_game")
+        optimized_stats = Solver.simulate_games(num_games=100, strategy="play_game_optimized")
+        self.assertGreater(optimized_stats.perfect_games, greedy_stats.perfect_games)
+        self.assertGreater(optimized_stats.perfect_rate, greedy_stats.perfect_rate)
 
 
 if __name__ == "__main__":

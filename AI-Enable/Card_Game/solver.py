@@ -1,10 +1,20 @@
 """You'll implement this."""
 
+from dataclasses import dataclass
 from functools import lru_cache
 from itertools import combinations
 from typing import Dict, List, Optional, Tuple
 
 from card_game import CardGame
+
+
+@dataclass(frozen=True, slots=True)
+class SimulationStats:
+    games_played: int
+    perfect_games: int
+    average_turns: float
+    average_score: float
+    perfect_rate: float
 
 
 class Solver:
@@ -228,3 +238,44 @@ class Solver:
     def play_game_memoized(self) -> int:
         """Backward-compatible alias for the global memoized strategy."""
         return self.play_game_optimal()
+
+    @classmethod
+    def simulate_games(
+        cls,
+        num_games: int = 100,
+        strategy: str = "play_game",
+        grid_rows: int = 3,
+        grid_cols: int = 4,
+    ) -> SimulationStats:
+        """
+        Run a strategy across multiple seeded games and summarize its performance.
+
+        A perfect game means reaching the theoretical maximum score for that deck,
+        which is equivalent to clearing the maximum possible number of 15-point turns.
+        """
+        if num_games <= 0:
+            raise ValueError("num_games must be positive")
+
+        perfect_games = 0
+        total_turns = 0
+        total_score = 0
+
+        for seed in range(num_games):
+            game = CardGame(grid_rows=grid_rows, grid_cols=grid_cols, seed=seed)
+            solver = cls(game)
+            play_method = getattr(solver, strategy, None)
+            if play_method is None or not callable(play_method):
+                raise ValueError(f"Unknown strategy: {strategy}")
+
+            turns = play_method()
+            total_turns += turns
+            total_score += game.score
+            perfect_games += game.score == game.perfect_score
+
+        return SimulationStats(
+            games_played=num_games,
+            perfect_games=perfect_games,
+            average_turns=total_turns / num_games,
+            average_score=total_score / num_games,
+            perfect_rate=perfect_games / num_games,
+        )
