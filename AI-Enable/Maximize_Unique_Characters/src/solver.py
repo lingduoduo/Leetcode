@@ -23,6 +23,8 @@ class MaxUniqueSolver:
         """Find the subset of words that maximizes total unique characters.
 
         Uses dynamic programming over reachable character bitmasks.
+        Equivalent words with the same character set share the same mask,
+        so only one representative is kept.
         """
         valid_words = self.word_list.valid_words()
         if not valid_words:
@@ -32,6 +34,7 @@ class MaxUniqueSolver:
         char_to_bit = {char: i for i, char in enumerate(self.word_list.alphabet())}
 
         # Keep one representative per unique character mask.
+        # This removes anagrams like "abc" and "cba" from the search.
         mask_to_word: Dict[int, WordMask] = {}
         for i, word in enumerate(valid_words):
             mask = 0
@@ -48,7 +51,11 @@ class MaxUniqueSolver:
         # Consider denser words first so high-value masks are discovered early.
         word_data.sort(key=lambda word: word.char_count, reverse=True)
 
-        # Each reachable mask stores the previous mask and chosen word index.
+        # visited tracks every reachable character-state we have already built.
+        visited = {0}
+
+        # parents[new_mask] = (previous_mask, chosen_word_index)
+        # so we can reconstruct the chosen subset at the end.
         parents: Dict[int, tuple[int, int]] = {0: (-1, -1)}
         reachable_masks = [0]
         best_mask = 0
@@ -60,15 +67,17 @@ class MaxUniqueSolver:
                     continue
 
                 new_mask = used_mask | word_mask.mask
-                if new_mask in parents:
+                if new_mask in visited:
                     continue
 
+                visited.add(new_mask)
                 parents[new_mask] = (used_mask, word_mask.word_index)
                 reachable_masks.append(new_mask)
                 if new_mask.bit_count() > best_mask.bit_count():
                     best_mask = new_mask
 
         best_result: List[int] = []
+        # Reconstruct the subset by following parent pointers backward.
         while best_mask:
             previous_mask, word_index = parents[best_mask]
             best_result.append(word_index)
