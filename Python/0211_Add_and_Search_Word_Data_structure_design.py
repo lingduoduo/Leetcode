@@ -1,5 +1,4 @@
-import collections
-
+from collections import defaultdict
 
 class WordDictionary:
     def __init__(self):
@@ -35,31 +34,36 @@ class WordDictionary:
 
 
 class WordDictionary:
+
     def __init__(self):
-        self.d = {}
+        self.d = defaultdict(dict)
+        
 
     def addWord(self, word: str) -> None:
         d = self.d
-        for cha in word:
-            if cha not in d:
-                d[cha] = {}
-            d = d[cha]
+        for ch in word:
+            if ch not in d:
+                d[ch] = {}
+            d = d[ch]
         d["#"] = True
-
+    
     def search(self, word: str) -> bool:
-        return self.dfs(self.d, word)
+        def dfs(d, i):
+            if i == len(word):
+                return "#" in d
 
-    def dfs(self, d, word):
-        for i, cha in enumerate(word):
-            if cha in d:
-                d = d[cha]
-            else:
-                if cha == ".":
-                    for x in d:
-                        if x != "#" and self.dfs(d[x], word[i + 1 :]):
-                            return True
+            ch = word[i]
+            if ch == ".":
+                for c in d:
+                    if c != "#" and dfs(d[c], i + 1):
+                        return True
                 return False
-        return "#" in d
+            else:
+                if ch not in d:
+                    return False
+                return dfs(d[ch], i + 1)
+
+        return dfs(self.d, 0)
 
 
 if __name__ == "__main__":
