@@ -1,22 +1,24 @@
-class MyCalendar(object):
+from bisect import bisect_left
+
+class MyCalendar:
+
     def __init__(self):
-        self.start_lists = list()
-        self.end_lists = list()
+        self.starts = []
+        self.ends = []
 
-    def book(self, start, end):
-        """
-        :type start: int
-        :type end: int
-        :rtype: bool
-        """
+    def book(self, start: int, end: int) -> bool:
+        idx = bisect_left(self.starts, start)
 
-        if start_lists is None and end_lists is None:
-            start_lists.append(start)
-            end_lists.append(end)
+        # check previous interval
+        if idx > 0 and self.ends[idx - 1] > start:
+            return False
 
-        for i in range(len(start_lists)):
-            if max(start_lists[i], start) < min(end_lists[i], end):
-                return False
+        # check next interval
+        if idx < len(self.starts) and self.starts[idx] < end:
+            return False
+
+        self.starts.insert(idx, start)
+        self.ends.insert(idx, end)
         return True
 
 

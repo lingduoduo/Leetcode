@@ -1,32 +1,31 @@
 from typing import List
-import heapq
 from collections import defaultdict
-import random
 
-class Solution:
-    def longestBalanced(self, s: str) -> int:
-        n = len(s)
-        res = 0
+from bisect import bisect_left
 
-        for i in range(n):
-            d = defaultdict(int)
-            distinct = 0
-            max_freq = 0
 
-            for j in range(i, n):
-                d[s[j]] += 1
+class MyCalendar:
 
-                if d[s[j]] == 1:
-                    distinct += 1
-                max_freq = max(max_freq, d[s[j]])
+    def __init__(self):
+        self.intervals = []
 
-                if (j - i + 1) == distinct * max_freq:
-                    res = max(res, j - i + 1)
+    def book(self, startTime: int, endTime: int) -> bool:
+        starts = [s for s, e in self.intervals]
+        idx = bisect_left(starts, startTime)
 
-        return res
-        
+        if idx > 0 and self.intervals[idx - 1][1] > startTime:
+            return False
+
+        if idx < len(self.intervals) and self.intervals[idx][0] < endTime:
+            return False
+
+        self.intervals.insert(idx, [startTime, endTime])
+        return True
+
+
+     
 
 
 if __name__ == "__main__":
-    res = Solution().longestBalanced(s = "abbac")
+    res = Solution().replaceWords(dictionary=["cat", "bat", "rat"], sentence="the cattle was rattled by the battery")
     print(res)
