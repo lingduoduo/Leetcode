@@ -8,19 +8,19 @@ class Interval:
 class Solution:
     def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
         intervals = []
-        for i in schedule:
-            [intervals.append(x) for x in i]
+        for interval in schedule:
+            intervals.extend(interval)
         
-
-        intervals.sort(key = lambda x: x.start)
-        merged = []
-        for i in intervals:
-            if not merged or i.start > merged[-1].end:
-                merged.append(i)
+        intervals.sort(key=lambda x: x[0])
+        merged = [intervals[0]]
+        for x, y in intervals:
+            px, py = merged[-1]
+            if py < x:
+                merged.append([x, y])
             else:
-                merged[-1].end = max(i.end, merged[-1].end)
-
-        free = []
+                merged[-1][1] = max(py, y)
+        
+        res = []
         for i in range(1, len(merged)):
-            free.append(Interval(start=merged[i-1].end, end=merged[i].start))
-        return free
+            res.append([merged[i-1][1], merged[i][0]])
+        return res
