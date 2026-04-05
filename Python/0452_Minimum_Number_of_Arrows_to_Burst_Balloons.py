@@ -32,16 +32,15 @@ class Solution:
 
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        points = sorted(points, key=lambda x: x[0])
-        stack = [points[0]]
-        res = 1
-        for point in points[1:]:
-            if stack[-1][1] < point[0]:
-                res += 1
-                stack.append(point)
+        points.sort(key=lambda x: x[0])
+        res = [ points[0] ]
+        for x, y in points[1:]:
+            px, py = res[-1]
+            if py < x:
+                res.append([x, y])
             else:
-                stack[-1][1] = min(stack[-1][1], point[1])
-        return res
+                res[-1][1] = min(py, y)
+        return len(res)
 
 
 if __name__ == "__main__":

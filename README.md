@@ -23,6 +23,7 @@
 - LeetCode 56. Merge Intervals
 - LeetCode 57. Insert Interval
 - LeetCode 435. Non-overlapping Intervals
+- LeetCode 452. Minimum Number of Arrows to Burst Balloons
 - LeetCode 759. Employee Free Time
 
 ### Stack
@@ -30,16 +31,16 @@
 - LeetCode 20 Valid Parentheses
 - LeetCode 394. Decode String
 - LeetCode 32.Longest Valid Parentheses
-- ...
+- LeetCode 503. Next Greater Element II
+- LeetCode 739. Daily Temperatures
+- LeetCode 84. Largest Rectangle in Histogram
+...
 - LeetCode 433 Minimum Genetic Mutation
 - LeetCode 921 Minimum Add to Make Paraentheses Valid
 - LeetCode 1209 Remove All Adjacent Duplicates in String II
 - LeetCode 71 Simplify Path
 - LeetCode 227 Basic Calculator II
 - LeetCode 1762 Buildings with an Ocean View
-- LeetCode 394 Decode String
-- LeetCode 503 Next Greater Element II
-- LeetCode 739 Daily Temperatures
 - LeetCode 347 Top K Frequent Elements
 - LeetCode 150 Evaluate Reverse Polish Notation
 - LeetCode 85 Maximal Retangle

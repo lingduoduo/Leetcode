@@ -1,31 +1,19 @@
-from typing import List
 from collections import defaultdict
+from typing import List
 
-from bisect import bisect_left
-
-
-class MyCalendar:
-
-    def __init__(self):
-        self.intervals = []
-
-    def book(self, startTime: int, endTime: int) -> bool:
-        starts = [s for s, e in self.intervals]
-        idx = bisect_left(starts, startTime)
-
-        if idx > 0 and self.intervals[idx - 1][1] > startTime:
-            return False
-
-        if idx < len(self.intervals) and self.intervals[idx][0] < endTime:
-            return False
-
-        self.intervals.insert(idx, [startTime, endTime])
-        return True
-
-
-     
-
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        points.sort(key=lambda x: x[0])
+        res = [ points[0] ]
+        for x, y in points[1:]:
+            px, py = res[-1]
+            if py < x:
+                res.append([x, y])
+            else:
+                res[-1][1] = min(py, y)
+        
+        return len(res)
 
 if __name__ == "__main__":
-    res = Solution().replaceWords(dictionary=["cat", "bat", "rat"], sentence="the cattle was rattled by the battery")
+    res = Solution().findMinArrowShots(points = [[10,16],[2,8],[1,6],[7,12]])
     print(res)
