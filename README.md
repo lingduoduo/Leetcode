@@ -32,7 +32,6 @@
 - LeetCode 394. Decode String
 - LeetCode 32.Longest Valid Parentheses
 - LeetCode 503. Next Greater Element II
-- LeetCode 739. Daily Temperatures
 - LeetCode 84. Largest Rectangle in Histogram
 ...
 - LeetCode 433 Minimum Genetic Mutation

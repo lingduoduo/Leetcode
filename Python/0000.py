@@ -2,18 +2,22 @@ from collections import defaultdict
 from typing import List
 
 class Solution:
-    def nextGreaterElements(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        nums = nums + nums
-        res = [-1] * len(nums)
-        stack = []
-        for i, v in enumerate(nums):
-            while stack and nums[stack[-1]] < v:
-                p = stack.pop()
-                res[p] = v
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        stack = [-1]
+        heights.append(0)
+        res = 0
+
+        for i, h in enumerate(heights):
+            while stack[-1] != -1 and heights[stack[-1]] > h:
+                cur = stack.pop()
+                height = heights[cur]
+                width = i - stack[-1] - 1
+                res = max(res, height * width)
             stack.append(i)
-        return res[:n]
+
+        return res
+
                 
 if __name__ == "__main__":
-    res = Solution().nextGreaterElements(nums = [1,2,3,4,3])
+    res = Solution().largestRectangleArea(heights = [2,1,5,6,2,3])
     print(res)

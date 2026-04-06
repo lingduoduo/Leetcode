@@ -16,3 +16,7 @@ join (
 ) bb
 on aa.Score = bb.Score
 order by aa.Score desc
+
+SELECT Score,
+       DENSE_RANK() OVER (ORDER BY Score DESC) AS `Rank`
+FROM Scores;
