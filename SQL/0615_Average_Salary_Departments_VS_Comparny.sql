@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+-- # Write your MySQL query statement below
 SELECT DISTINCT pay_month, department_id, 
 (
     CASE

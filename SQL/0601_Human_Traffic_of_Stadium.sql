@@ -18,7 +18,7 @@ AND c.people >= 100
 ORDER BY a.visit_date;
 
 
-WITH t AS (
+WITH tbl AS (
   SELECT
     id, visit_date, people,
     LAG(people, 1) OVER (ORDER BY id) AS p1,
@@ -28,7 +28,7 @@ WITH t AS (
   FROM stadium
 )
 SELECT id, visit_date, people
-FROM t
+FROM tbl
 WHERE people >= 100 AND (
       (p1 >= 100 AND p2 >= 100)
    OR (p1 >= 100 AND n1 >= 100)

@@ -1,9 +1,11 @@
-SELECT Name
-FROM Employee
-JOIN (
-	SELECT ManangerId
+with tbl as (
+    SELECT managerId
 	FROM Employee
-	GROUP BY ManangerId
-	HAVING count(ManangerId) >= 5
-) FREQ
-ON Employee.Id = FREQ.ManangerId
+	GROUP BY 1
+	HAVING count(*) >= 5
+)
+
+select e.name
+from Employee e
+inner join tbl
+on e.id = tbl.managerId

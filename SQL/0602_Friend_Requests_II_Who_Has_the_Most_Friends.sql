@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+-- # Write your MySQL query statement below
 with tbl as (
 select requester_id id, count(*) as cnt
 from RequestAccepted
