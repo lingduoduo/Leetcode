@@ -2,20 +2,18 @@ from collections import defaultdict
 from typing import List
 
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
-        stack = [-1]
-        heights.append(0)
-        res = 0
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(-1)
+        dummy.next = head
 
-        for i, h in enumerate(heights):
-            while stack[-1] != -1 and heights[stack[-1]] > h:
-                cur = stack.pop()
-                height = heights[cur]
-                width = i - stack[-1] - 1
-                res = max(res, height * width)
-            stack.append(i)
+        p1 = dummy
+        p2 = p1.next
 
-        return res
+        while p2 and p2.next:
+                p3 = p2.next
+                p1.next, p3.next, p2.next = p3, p2, p3.next
+                p1, p2 = p2, p2.next
+        return dummy.next
 
                 
 if __name__ == "__main__":

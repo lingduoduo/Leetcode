@@ -113,36 +113,28 @@ class Solution:
             while p2:
                 p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
 
-
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        if head and head.next and head.next.next:
-            # find mid
-            fast, slow = head, head
-            while fast.next and fast.next.next:
-                fast = fast.next.next
-                slow = slow.next
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        if not head or not head.next:
+            return
 
-            head1 = head
-            head2 = slow.next
-            slow.next = None
+        s, f = head, head
+        while f and f.next:
+            f = f.next.next
+            s = s.next
 
-            # reverse second list
-            pre = None
-            cur = head2
-            while cur:
-                post = cur.next
-                cur.next = pre
-                pre = cur
-                cur = post
-
-            head2 = pre
-
-            # merge two linked list head1 and head2
-            p1 = head1
-            p2 = head2
-            while p2:
-                p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
+        prv, nxt = None, s.next
+        s.next = None
+        while nxt:
+            nxt.next, prv, nxt = prv, nxt, nxt.next
+        
+        p1 = head
+        p2 = prv
+        while p2:
+            p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
 
 
 if __name__ == "__main__":

@@ -30,9 +30,6 @@ class Solution(object):
         return True
 
 
-from typing import Optional
-
-
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -42,65 +39,23 @@ class ListNode:
 
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        if not head or not head.next:
-            return True
-
-        slow = head
-        fast = head.next
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        if fast:
-            slow = slow.next
-
-        self.cut(head, slow)
-        # return self.reverse(slow)
-        return self.check(head, self.reverse(slow))
-
-    def cut(self, p1, p2):
-        while p1.next != p2:
-            p1 = p1.next
-        p1.next = None
-
-    def reverse(self, p1):
-        print(p1.val)
-        dummy = ListNode(-1)
-        dummy.next = ListNode(p1.val)
-
-        p1 = p1.next
-        while p1:
-            p2 = p1.next
-            p1.next = dummy.next
-            dummy.next = p1
-            p1 = p2
-        return dummy.next
-
-    def check(self, p1, p2):
-        while p1 and p2:
+        s, f = head, head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+        
+        prv, nxt = None, s
+        while nxt:
+            nxt.next, prv, nxt = prv, nxt, nxt.next
+        
+        p1 = head
+        p2 = prv
+        while p2:
             if p1.val != p2.val:
                 return False
             p1 = p1.next
             p2 = p2.next
-        return True
-
-
-class Solution:
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        slow, fast = head, head
-        while fast and fast.next:
-            slow, fast = slow.next, fast.next.next
-
-        prev, prev.next, slow = slow, None, slow.next
-        while slow:
-            slow.next, prev, slow = prev, slow, slow.next
-
-        fast, slow = head, prev
-        while slow:
-            if fast.val != slow.val:
-                return False
-            fast = fast.next
-            slow = slow.next
+        
         return True
 
 

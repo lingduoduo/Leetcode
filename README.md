@@ -28,7 +28,7 @@
 
 ### Stack
 
-- LeetCode 20 Valid Parentheses
+- LeetCode 20. Valid Parentheses
 - LeetCode 394. Decode String
 - LeetCode 32.Longest Valid Parentheses
 - LeetCode 503. Next Greater Element II
@@ -49,14 +49,15 @@
 
 ## LinkedList
 
-- LeetCode 2 Add Two Numbers
-- LeetCode 92 Reverse Linked List II 
-- LeetCode 142 Linked List Cycle II
-- LeetCode 234 Palindrome Linked List
-- LeetCode 234 Palindrome Linked List
-- LeetCode 19 Remove Nth Node From End of List
-- LeetCode 143 Reorder List
-- LeetCode 24 Swap Nodes in Pairs
+- LeetCode 141. Linked List Cycle
+- LeetCode 142. Linked List Cycle II
+- LeetCode 206. Reverse Linked List
+- LeetCode 92. Reverse Linked List II 
+- LeetCode 234. Palindrome Linked List
+- LeetCode 19. Remove Nth Node From End of List
+- LeetCode 143. Reorder List
+- LeetCode 24. Swap Nodes in Pairs
+...
 - LeetCode 138 Copy List with Random Pointer
 - LeetCode 426 Convert Binary Search Tree to Sorted Doubly Linked List
 - LeetCode 707 Design Linked List

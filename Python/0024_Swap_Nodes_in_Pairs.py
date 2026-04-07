@@ -6,32 +6,16 @@ class ListNode(object):
         self.next = None
 
 
-class Solution(object):
-    def swapPairs(self, head):
-        dummy = ListNode(0)
-        dummy.next = head
-        p0 = dummy
-        while p0.next and p0.next.next:
-            p1 = p0.next
-            p2 = p1.next
-
-            # swap
-            p0.next = p2
-            p1.next = p2.next
-            p2.next = p1
-
-            # move p0 forward
-            p0 = p1
-
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = ListNode(0)
+        dummy = ListNode(-1)
         dummy.next = head
-        p0 = dummy
-        while p0.next and p0.next.next:
-            p1 = p0.next
-            p2 = p1.next
 
-            p0.next, p1.next, p2.next = p2, p2.next, p1
-            p0 = p1
+        p1 = dummy
+        p2 = p1.next
+
+        while p2 and p2.next:
+                p3 = p2.next
+                p1.next, p3.next, p2.next = p3, p2, p3.next
+                p1, p2 = p2, p2.next
         return dummy.next

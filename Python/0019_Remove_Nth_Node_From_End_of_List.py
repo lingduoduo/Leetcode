@@ -24,3 +24,18 @@ class Solution:
 
         slow.next = slow.next.next
         return dummy.next
+
+
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        f = head
+        for i in range(n):
+            f = f.next
+        if not f:
+            return head.next
+        s = head
+        while f.next:
+            f = f.next
+            s = s.next
+        s.next = s.next.next
+        return head
