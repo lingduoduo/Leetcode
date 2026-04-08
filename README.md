@@ -1,4 +1,5 @@
 ### Two Pointers
+
 - LeetCode 11. Container With Most Water
 - LeetCode 167. Two Sum II - Input Array Is Sorted
 - LeetCode 15. 3Sum
@@ -72,7 +73,12 @@
 
 ### Binary Search
 
+- LeetCode 875. Koko Eating Bananas
+- LeetCode 33. Search in Rotated Sorted Array
 - LeetCode 410. Split Array Largest Sum
+- LeetCode 378. Kth Smallest Element in a Sorted Matrix
+- LeetCode 2064. Minimized Maximum of Products Distributed to Any Store
+...
 - LeetCode 1552. Magnetic Force Between Two Balls
 - LeetCode 1482. Minimum Number of Days to Make m Bouquets
 - LeetCode 1283. Find the Smallest Divisor Given a Threshold
