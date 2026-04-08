@@ -8,6 +8,8 @@
 - LeetCode 75. Sort Colors
 - LeetCode 42. Trapping Rain Water
 
+------
+
 ### Sliding Window
 
 - LeetCode 3. Longest Substring Without Repeating Characters 
@@ -16,6 +18,8 @@
 - LeetCode 739. Daily Temperatures
 - LeetCode 1423. Maximum Points You Can Obtain from Cards
 - LeetCode 2461. Maximum Sum of Distinct Subarrays With Length K
+
+------
 
 ### Interval
 
@@ -26,6 +30,8 @@
 - LeetCode 435. Non-overlapping Intervals
 - LeetCode 452. Minimum Number of Arrows to Burst Balloons
 - LeetCode 759. Employee Free Time
+
+------
 
 ### Stack
 
@@ -83,6 +89,9 @@
 - LeetCode 1482. Minimum Number of Days to Make m Bouquets
 - LeetCode 1283. Find the Smallest Divisor Given a Threshold
 - LeetCode 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+
+------
+
 
 ## LeetCode Medium+Hard 200 Questions 
 
