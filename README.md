@@ -54,6 +54,8 @@
 - LeetCode 155 Min Stack
 - LeetCode 88 Merge Sorted Array
 
+------
+
 ## LinkedList
 
 - LeetCode 141. Linked List Cycle
@@ -91,6 +93,24 @@
 - LeetCode 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 
 ------
+
+### HEAP
+
+- LeetCode 215. Kth Largest Element in an Array
+- LeetCode 973. K Closest Points to Origin
+- LeetCode 658. Find K Closest Elements
+- LeetCode 23. Merge k Sorted Lists
+- LeetCode 295. Find Median from Data Stream
+
+------
+
+### DFS
+
+- LeetCode 104. Maximum Depth of Binary Tree
+- LeetCode 112. Path Sum
+- LeetCode 1448. Count Good Nodes in Binary Tree
+- LeetCode 98. Validate Binary Search Tree
+- LeetCode 563. Binary Tree Tilt
 
 
 ## LeetCode Medium+Hard 200 Questions 
