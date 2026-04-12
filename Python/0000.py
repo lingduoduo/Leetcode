@@ -2,31 +2,30 @@ from collections import defaultdict
 from typing import List
 import math
 import heapq
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+import deque
 
 class Solution:
-    def findTilt(self, root: Optional[TreeNode]) -> int:
-        res = 0
-        def dfs(node):
-            if not node:
-                return 0
-            if not node.left and not node.right:
-                return node.val
-            
-            left = dfs(node.left) if node.left else 0
-            right = dfs(node.right) if node.right else 0
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        res = []
 
-            res += abs(left - right)
+        que = deque([root])
 
-        dfs(root)
+        while que:
+            cur = []
+            for _ in range(len(que)):
+                node = que.popleft()
+                cur.append(node.val)
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+            res.append(cur)
         return res
-        
+                
+            
 
+
+ 
 
 
         

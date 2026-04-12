@@ -46,33 +46,33 @@ class Solution:
 
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
-        n, m = len(board), len(board[0])
-        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        if not board or not board[0]:
+            return
 
-        def dfs_explore(r, c):
-            if (r < 0 or r >= n or c < 0 or c >= m or board[r][c] != 'O'):
+        m, n = len(board), len(board[0])
+
+        def dfs(x, y):
+            if x < 0 or x >= m or y < 0 or y >= n or board[x][y] != "O":
                 return
 
-            board[r][c] = 'D'
-            for dr, dc in dirs:
-                dfs_explore(r + dr, c + dc)
+            board[x][y] = "I"
 
-        for r in range(n):
-            if board[r][0] == 'O':
-                dfs_explore(r, 0)
-            if board[r][m - 1] == 'O':
-                dfs_explore(r, m - 1)
+            dfs(x - 1, y)
+            dfs(x + 1, y)
+            dfs(x, y - 1)
+            dfs(x, y + 1)
 
-        for c in range(m):
-            if board[0][c] == 'O':
-                dfs_explore(0, c)
-            if board[n - 1][c] == 'O':
-                dfs_explore(n - 1, c)
+        for i in range(m):
+            dfs(i, 0)
+            dfs(i, n - 1)
 
-        # Flip all 'O' to 'X' unless they've been marked as 'D'
-        for row in range(n):
-            for col in range(m):
-                if board[row][col] == 'O':
-                    board[row][col] = 'X'  # Flip
-                elif board[row][col] == 'D':
-                    board[row][col] = 'O'  # Restore
+        for j in range(n):
+            dfs(0, j)
+            dfs(m - 1, j)
+
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == "O":
+                    board[i][j] = "X"
+                elif board[i][j] == "I":
+                    board[i][j] = "O"
