@@ -1,36 +1,32 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 from typing import List
 import math
 import heapq
-import deque
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        res = []
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m = len(mat)
+        n = len(mat[0])
+        que = deque([])
 
-        que = deque([root])
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 0:
+                    que.append((i, j))
+                if mat[i][j] == 1:
+                    mat[i][j] = float("inf")
 
         while que:
-            cur = []
-            for _ in range(len(que)):
-                node = que.popleft()
-                cur.append(node.val)
-                if node.left:
-                    que.append(node.left)
-                if node.right:
-                    que.append(node.right)
-            res.append(cur)
-        return res
-                
-            
+            for i in range(len(que)):
+                x, y = que.popleft()
+                for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < m and 0 <= ny < n and mat[nx][ny] > mat[x][y] + 1:
+                        mat[nx][ny] == mat[nx][ny] + 1
+                        que.append((nx, ny))
+        return mat
 
 
- 
-
-
-        
-
-
-# if __name__ == "__main__":
-#     res = Solution().mergeKLists(lists = [[1,4,5],[1,3,4],[2,6]])
-#     print(res)
+if __name__ == "__main__":
+    res = Solution().updateMatrix(mat = [[0,0,0],[0,1,0],[0,0,0]])
+    print(res)

@@ -126,6 +126,11 @@
 ### BFS
 
 - LeetCode 102. Binary Tree Level Order Traversal
+- LeetCode 103. Binary Tree Zigzag Level Order Traversal
+- LeetCode 199. Binary Tree Right Side View
+- LeetCode 662. Maximum Width of Binary Tree
+- LeetCode 994. Rotting Oranges
+- LeetCode 542. 01 Matrix
 
 ------
 
