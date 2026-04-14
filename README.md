@@ -131,6 +131,17 @@
 - LeetCode 662. Maximum Width of Binary Tree
 - LeetCode 994. Rotting Oranges
 - LeetCode 542. 01 Matrix
+- LeetCode 815. Bus Routes
+
+------
+
+### Backtracking
+
+- LeetCode 79. Word Search
+- LeetCode 212. Word Search II
+- LeetCode 17. Letter Combinations of a Phone Number
+- LeetCode 78. Subsets
+- LeetCode 90. Subsets II
 
 ------
 

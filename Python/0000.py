@@ -3,30 +3,29 @@ from typing import List
 import math
 import heapq
 
+
 class Solution:
-    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        m = len(mat)
-        n = len(mat[0])
-        que = deque([])
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        res = [[]]
+        prev = []  # store last round's subsets
+        
+        for i, num in enumerate(nums):
+            cur = []
 
-        for i in range(m):
-            for j in range(n):
-                if mat[i][j] == 0:
-                    que.append((i, j))
-                if mat[i][j] == 1:
-                    mat[i][j] = float("inf")
+            if i > 0 and nums[i] == nums[i - 1]:
+                for pre in prev:   # ✅ use prev instead of cur
+                    cur.append(pre + [num])
+            else:
+                for pre in res:
+                    cur.append(pre + [num])
+            
+            prev = cur            # ✅ update prev
+            res += cur
+        
+        return res
 
-        while que:
-            for i in range(len(que)):
-                x, y = que.popleft()
-                for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
-                    nx, ny = x + dx, y + dy
-                    if 0 <= nx < m and 0 <= ny < n and mat[nx][ny] > mat[x][y] + 1:
-                        mat[nx][ny] == mat[nx][ny] + 1
-                        que.append((nx, ny))
-        return mat
-
-
+                    
 if __name__ == "__main__":
-    res = Solution().updateMatrix(mat = [[0,0,0],[0,1,0],[0,0,0]])
+    res = Solution().subsetsWithDup(nums = [1,2,2])
     print(res)

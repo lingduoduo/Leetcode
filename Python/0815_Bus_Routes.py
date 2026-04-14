@@ -1,38 +1,41 @@
+from collections import defaultdict, deque
 from typing import List
-from collections import deque, defaultdict
+import math
+import heapq
 
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        if source == target:
-            return 0
+        if source == target: return 0
 
-        to_routes = defaultdict(set)
-        for i, route in enumerate(routes):
+        d = defaultdict(list)
+        for bus, route in enumerate(routes):
             for stop in route:
-                to_routes[stop].add(i)
+                d[stop].append(bus)
 
-        q = deque([(source, 0)])  # (current_stop, buses_taken)
-        seen_stops = {source}
-        used_routes = set()
+        que = deque([source])
+        visited_stops = {source}
+        visited_buses = set()
+        res = 0
+        while que:
+            res += 1
+            for _ in range(len(que)):
+                node = que.popleft()
+                for bus in d[node]:
+                    if bus in visited_buses:
+                        continue
+                    visited_buses.add(bus)
 
-        while q:
-            stop, cnt = q.popleft()
-            if stop == target:
-                return cnt
-
-            for r in to_routes[stop]:
-                if r in used_routes:
-                    continue
-                used_routes.add(r)
-
-                # boarding route r costs +1 bus
-                for nxt_stop in routes[r]:
-                    if nxt_stop not in seen_stops:
-                        seen_stops.add(nxt_stop)
-                        q.append((nxt_stop, cnt + 1))
+                    for nei in routes[bus]:
+                        if nei == target:
+                            return res
+                        
+                        if nei not in visited_stops:
+                            visited_stops.add(nei)
+                            que.append(nei)
         return -1
+
+
 
 if __name__ == "__main__":
     res = Solution().numBusesToDestination(routes = [[1,2,7],[3,6,7]], source = 1, target = 6)
     print(res)
-

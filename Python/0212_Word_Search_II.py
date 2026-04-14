@@ -113,39 +113,52 @@ class Solution:
         if not cur:
             trie.pop(letter)
 
+from collections import defaultdict, deque
+from typing import List
+import math
+import heapq
+
 
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        def dfs(x, y, trie):
-            letter = board[x][y]
-            m, n = len(board), len(board[0])
-            cur = trie[letter]
-            word = cur.pop("#", False)
-            if word:
-                res.append(word)
-            board[x][y] = "*"
-            for dirx, diry in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
-                curx, cury = x + dirx, y + diry
-                if 0 <= curx < m and 0 <= cury < n and board[curx][cury] in cur:
-                    dfs(curx, cury, cur)
-            board[x][y] = letter
-            if not cur:
-                trie.pop(letter)
+        m = len(board)
+        n = len(board[0])
+        res = []
 
+        def dfs(i, j, trie):    
+            ch = board[i][j]
+            cur = trie[ch]
+
+            if "#" in cur:
+                res.append(cur["#"])
+                del cur["#"]   # avoid duplicates
+
+            board[i][j] = ""
+
+            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+                nx, ny = i + dx, j + dy
+                if 0 <= nx < m and 0 <= ny < n and board[nx][ny] in cur:
+                    dfs(nx, ny, cur)
+
+            board[i][j] = ch
+        
         trie = {}
         for word in words:
             cur = trie
-            for letter in word:
-                if letter not in cur:
-                    cur[letter] = {}
-                cur = cur[letter]
+            for ch in word:
+                if ch not in cur:
+                    cur[ch] = {}
+                cur = cur[ch]
             cur["#"] = word
 
-        m, n = len(board), len(board[0])
-        res = []
         for i in range(m):
             for j in range(n):
                 if board[i][j] in trie:
                     dfs(i, j, trie)
+
         return res
+
+if __name__ == "__main__":
+    res = Solution().exist(board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED")
+    print(res)
 
