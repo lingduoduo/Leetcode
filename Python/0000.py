@@ -3,29 +3,32 @@ from typing import List
 import math
 import heapq
 
-
 class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
-        res = [[]]
-        prev = []  # store last round's subsets
-        
-        for i, num in enumerate(nums):
-            cur = []
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        res = []
 
-            if i > 0 and nums[i] == nums[i - 1]:
-                for pre in prev:   # ✅ use prev instead of cur
-                    cur.append(pre + [num])
-            else:
-                for pre in res:
-                    cur.append(pre + [num])
+        def dfs(r, cols, digs, odigs, path):
+            if r == n:
+                res.append(path)
+                return 
             
-            prev = cur            # ✅ update prev
-            res += cur
+            for c in range(n):
+                if c in cols or (r - c) in digs or (r + c) in odigs:
+                    continue
+                row = "." * c + "Q" + "." * (n - c - 1)
+                dfs(
+                    r + 1,
+                    cols | {c},
+                    digs | {r - c},
+                    odigs | {r + c},
+                    path + [row]
+                )
         
+        dfs(0, set(), set(), set(), [])
         return res
 
-                    
+
+
 if __name__ == "__main__":
-    res = Solution().subsetsWithDup(nums = [1,2,2])
+    res = Solution().solveNQueens(n=4)
     print(res)

@@ -142,6 +142,12 @@
 - LeetCode 17. Letter Combinations of a Phone Number
 - LeetCode 78. Subsets
 - LeetCode 90. Subsets II
+- LeetCode 22. Generate Parentheses
+- LeetCode 39. Combination Sum
+- LeetCode 40. Combination Sum II
+- LeetCode 216. Combination Sum III
+- LeetCode 131. Palindrome Partitioning
+- LeetCode 51. N-Queens
 
 ------
 
