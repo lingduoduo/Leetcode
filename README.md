@@ -151,6 +151,16 @@
 
 ------
 
+### Graphs
+
+- LeetCode 207. Course Schedule
+- LeetCode 210. Course Schedule-ii
+- LeetCode 743. Network Delay Time
+- LeetCode 787. Cheapest Flights Within K Stops
+- LeetCode 1631. Path With Minimum Effort
+
+------
+
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
