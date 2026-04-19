@@ -2,17 +2,22 @@ from collections import defaultdict, deque
 from typing import List
 import math
 import heapq
+import bisect
 
 class Solution:
-    def countBits(self, n: int) -> List[int]:
-        dp = [0] * (1 + n)
-        for i in range(1 + n):
-            dp[i] = dp[i//2] + i % 2
-        return sum(dp)
+    def maxProfit(self, prices: List[int]) -> int:
+        res = 0
+        min_price = prices[0]
+
+        for price in prices[1:]:
+            res = max(res, price - min_price)
+            min_price = min(min_price, price)
+        return res
+
 
 
 
 
 if __name__ == "__main__":
-    res = Solution().countBits(n = 5)
+    res = Solution().maxProfit(prices = [7,1,5,3,6,4])
     print(res)

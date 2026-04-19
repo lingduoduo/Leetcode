@@ -36,3 +36,29 @@ class Solution:
             s = start + 1  # Start next subsequence search
 
         return res
+
+
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        dp = [[-1] * n for _ in range(m)]
+
+        for i in range(m):
+            for j in range(n):
+                if s1[i] == s2[j]:
+                    dp[i][j] = i if j == 0 else (dp[i - 1][j - 1] if i > 0 else -1)
+                else:
+                    dp[i][j] = dp[i - 1][j] if i > 0 else -1
+
+        start = -1
+        min_len = float("inf")
+
+        for i in range(m):
+            if dp[i][n - 1] != -1:
+                cur_len = i - dp[i][n - 1] + 1
+                if cur_len < min_len:
+                    min_len = cur_len
+                    start = dp[i][n - 1]
+
+        return "" if start == -1 else s1[start:start + min_len]
+                    

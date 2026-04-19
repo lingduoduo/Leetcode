@@ -168,6 +168,17 @@
 - LeetCode 3693. Climbing Stairs II
 - LeetCode 198. House Robber
 - LeetCode 228. Counting Bits
+- LeetCode 91. Decode Ways
+- LeetCode 62. Unique Paths
+- LeetCode  221. Maximal Square
+- LeetCode 300. Longest Increasing Subsequence
+- LeetCode 139. Word Break
+- LeetCode 1235. Maximum Profit in Job Scheduling
+- LeetCode 256. Paint House
+- LeetCode 265. Paint House II
+- LeetCode727. Minimum Window Subsequence
+- LeetCode 121. Best Time to Buy and Sell Stock
+- LeetCode 122. Best Time to Buy and Sell Stock II
 
 
 ## LeetCode Medium+Hard 200 Questions 
