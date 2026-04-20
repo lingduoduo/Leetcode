@@ -1,3 +1,5 @@
+## LeetCode Questions 
+
 ### Two Pointers
 
 - LeetCode 11. Container With Most Water
@@ -56,7 +58,7 @@
 
 ------
 
-## LinkedList
+### LinkedList
 
 - LeetCode 141. Linked List Cycle
 - LeetCode 142. Linked List Cycle II
@@ -180,12 +182,13 @@
 - LeetCode 121. Best Time to Buy and Sell Stock
 - LeetCode 122. Best Time to Buy and Sell Stock II
 
+------
 
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
 
-## Array
+### Array
 https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
 
 - LeetCode 308 Range Sum Query 2D — Mutable
@@ -208,6 +211,8 @@ https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
 - LeetCode 75 Sort Colors
 - LeetCode 283 Move Zeros
 
+------
+
 ## String
 https://medium.com/@linghuang_76674/list/leetcode-string-01754356c17a
 
@@ -227,7 +232,9 @@ https://medium.com/@linghuang_76674/list/leetcode-string-01754356c17a
 - LeetCode 28 Find the index of the First Occurrence in a String
 - LeetCode 151 Reverse Words in a String
 
-## Tree
+------
+
+### Tree
 https://medium.com/@linghuang_76674/list/leetcode-tree-fa2285b00353
 
 - LeetCode 2265 Count Nodes Equal to Average of Subtree
@@ -257,8 +264,9 @@ https://medium.com/@linghuang_76674/list/leetcode-tree-fa2285b00353
 - LeetCode 236 Lowest Common Ancestor of a Binary Tree
 - LeetCode 654 Maximum Binary Tree
 
+------
 
-## Graph
+### Graph
 https://medium.com/@linghuang_76674/list/leetcode-graph-573e24adb547
 
 - LeetCode 133 Clone Graph
@@ -280,7 +288,7 @@ https://medium.com/@linghuang_76674/list/leetcode-graph-573e24adb547
 - LeetCode 200 Number of Islands
 - LeetCode 797 All Paths From Source to Target
 
-## Queue
+### Queue
 https://medium.com/@linghuang_76674/list/leetcode-queue-09d7bdb754db
 
 - LeetCode 253 Meeting Rooms II
@@ -297,7 +305,7 @@ https://medium.com/@linghuang_76674/list/leetcode-queue-09d7bdb754db
 - LeetCode 239 Sliding Window Maximum
 - LeetCode 84 Largest Rectangle in Histogram
 
-## Dynamic Programming
+### Dynamic Programming
 https://medium.com/@linghuang_76674/list/leetcode-dynamic-programming-ac33f84e49fb
 
 - Leetcode 1186 Maximum Subarray Sum with One Deletion
@@ -316,7 +324,7 @@ https://medium.com/@linghuang_76674/list/leetcode-dynamic-programming-ac33f84e49
 - LeetCode 10 Regular Expression Matching
 - LeetCode 139 Word Break
 
-## HashTable and HashSet
+### HashTable and HashSet
 https://medium.com/@linghuang_76674/list/leetcode-hashtable-and-hashset-7b2680e25519
 
 - LeetCode 380 Insert Delete GetRandom O(1)
@@ -331,7 +339,9 @@ https://medium.com/@linghuang_76674/list/leetcode-hashtable-and-hashset-7b2680e2
 - LeetCode 49 Group Anagrams
 - LeetCode 811 Subdomain Visit Count
 
-## BackTracking
+------
+
+### BackTracking
 https://medium.com/@linghuang_76674/list/leetcode-backtracking-3336ec4bcc12
 
 - LeetCode 490 The Maze
@@ -355,7 +365,9 @@ https://medium.com/@linghuang_76674/list/leetcode-backtracking-3336ec4bcc12
 - LeetCode 216 Combination Sum III
 - LeetCode 77 Combinations
 
-## Math
+------
+
+### Math
 https://medium.com/@linghuang_76674/list/leetcode-math-9ed3e8faec69
 
 - LeetCode 31 Next Permutation
@@ -369,7 +381,7 @@ https://medium.com/@linghuang_76674/list/leetcode-math-9ed3e8faec69
 - LeetCode 43 Multiply Strings
 - LeetCode 50 Pow(x,n)
 
-## Greedy
+### Greedy
 https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 
 - LeetCode 309 Best Time to Buy and Sell Stock with Cooldown
@@ -392,8 +404,9 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - LeetCode 15 3Sum
 - LeetCode 16 3Sum Closest
 
+------
 
-[Leetcode 75]
+## [Leetcode 75]
 
 ### Array
 
@@ -408,6 +421,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [3 Sum](https://leetcode.com/problems/3sum/)
 - [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
+------
+
 ### Binary
 
 - [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)
@@ -415,6 +430,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Counting Bits](https://leetcode.com/problems/counting-bits/)
 - [Missing Number](https://leetcode.com/problems/missing-number/)
 - [Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+
+------
 
 ### String
 
@@ -428,6 +445,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 - [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
 - [Encode and Decode Strings (Leetcode Premium)](https://leetcode.com/problems/encode-and-decode-strings/)
+
+------
 
 ### Tree
 
@@ -446,6 +465,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Add and Search Word](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
 - [Word Search II](https://leetcode.com/problems/word-search-ii/)
 
+------
+
 ### Linked List
 
 - [Reverse a Linked List](https://leetcode.com/problems/reverse-linked-list/)
@@ -455,6 +476,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Remove Nth Node From End Of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 - [Reorder List](https://leetcode.com/problems/reorder-list/)
 
+------
+
 ### Matrix
 
 - [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
@@ -462,10 +485,14 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Rotate Image](https://leetcode.com/problems/rotate-image/)
 - [Word Search](https://leetcode.com/problems/word-search/)
 
+------
+
 ### Heap
 
 - [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+
+------
 
 ### Graph
 
@@ -477,6 +504,8 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Alien Dictionary (Leetcode Premium)](https://leetcode.com/problems/alien-dictionary/)
 - [Graph Valid Tree (Leetcode Premium)](https://leetcode.com/problems/graph-valid-tree/)
 - [Number of Connected Components in an Undirected Graph (Leetcode Premium)](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
+
+------
 
 ### Dynamic Programming
 
@@ -492,9 +521,7 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - [Unique Paths](https://leetcode.com/problems/unique-paths/)
 - [Jump Game](https://leetcode.com/problems/jump-game/)
 
-### Important Link:
-
-[14 Patterns to Ace Any Coding Interview Question]
+------
 
 ### Disclaimer
 
