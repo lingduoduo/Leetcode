@@ -1,3 +1,15 @@
+## Repository Snapshot
+
+| Area | Contents |
+| --- | --- |
+| `Python/` | 1,176 Python solution files, plus `Makefile` and `requirements.txt` for formatting and linting |
+| `TypeScript/` | 303 TypeScript solution files |
+| `SQL/` | 45 SQL problem solutions |
+| `AI-Enable/` | Standalone algorithm projects with tests, sample data, and runnable entry points |
+| `coding-notes/` | Chinese-language coding notes and 66 topic writeups |
+| `data-structures/` | Data-structure summaries and reference notes |
+| `onsites/` | Company-specific interview notes and prep material |
+
 ## LeetCode Questions 
 
 ### Two Pointers
