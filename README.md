@@ -196,6 +196,16 @@
 
 ------
 
+### Greedy
+
+- LeetCode 134. Gas Station
+- LeetCode 135. Candy
+- LeetCode 55. Jump Game
+- LeetCode  45. Jump Game II
+- LeetCode 763. Partition Labels
+
+------
+
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764

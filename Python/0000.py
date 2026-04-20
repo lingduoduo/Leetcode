@@ -5,19 +5,19 @@ import heapq
 import bisect
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        res = 0
-        min_price = prices[0]
-
-        for price in prices[1:]:
-            res = max(res, price - min_price)
-            min_price = min(min_price, price)
-        return res
-
-
-
+    def candy(self, ratings: List[int]) -> int:
+        n = len(ratings)
+        res = [1] * n
+        for i in range(n):
+            if i > 0 and ratings[i] > ratings[i-1]:
+                res[i] = res[i - 1] + 1
+        for i in range(n, -1, -1):
+            if i < n - 2 and ratings[i] > ratings[i+1]:
+                res[i] = max(res[i], res[i + 1] + 1)
+        return sum(res)              
 
 
 if __name__ == "__main__":
-    res = Solution().maxProfit(prices = [7,1,5,3,6,4])
+    res = Solution().candy(ratings = [1,0,2])
+
     print(res)
