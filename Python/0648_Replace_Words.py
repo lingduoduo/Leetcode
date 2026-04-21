@@ -76,3 +76,40 @@ class Solution:
                 res += " "
             res += trie.search(word)
         return res
+
+
+class WordDictionary:
+
+    def __init__(self):
+        self.d = {}
+    
+
+    def addWord(self, word: str) -> None:
+        d = self.d
+        for ch in word:
+            if ch not in d:
+                d[ch] = {}
+            d = d[ch]
+        d["#"] = word
+
+    def search(self, word: str):
+        d = self.d
+        for ch in word:
+            if "#" in d:
+                return d["#"]
+            if ch not in d:
+                return word
+            d = d[ch]
+        return d['#'] if '#' in d else word
+
+
+class Solution:
+    def replaceWords(self, dictionary: List[str], sentence: str) -> str:
+        trie = WordDictionary()
+        for word in dictionary:
+            trie.addWord(word)
+        
+        res = []
+        for word in sentence.split():
+            res.append(trie.search(word))
+        return ' '.join(res)

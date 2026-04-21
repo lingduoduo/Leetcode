@@ -206,6 +206,15 @@
 
 ------
 
+### Trie
+
+- LeetCode 208. Trie Tree
+- LeetCode 211. Design Add and Search Words Data Structure
+- LeetCode 648. Replace Words 
+- LeetCode 676. Implement Magic Dictionary
+
+------
+
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764

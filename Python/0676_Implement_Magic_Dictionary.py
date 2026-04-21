@@ -100,9 +100,6 @@ class MagicDictionary:
         return False
 
 
-import collections
-from typing import List
-
 class MagicDictionary:
 
     def __init__(self):
