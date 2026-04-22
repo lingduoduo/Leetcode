@@ -23,6 +23,17 @@ class Solution:
                 res += sum(arr[i : i + l])
         return res
 
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        res = 0
+        n = len(arr)
+        
+        for i, x in enumerate(arr):
+            total = (i + 1) * (n - i)
+            odd = (total + 1) // 2
+            res += x * odd
+        
+        return res
 
 if __name__ == "__main__":
     arr = [1, 4, 2, 5, 3]

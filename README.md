@@ -215,6 +215,18 @@
 
 ------
 
+### Prefix Sum
+
+- LeetCode 2559. Count Vowel Strings in Ranges
+- LeetCode 560. Subarray Sum Equals K
+- LeetCode 1248. Count Number of Nice Subarrays
+...
+- LeetCode 303. Range Sum Query - Immutable
+- LeetCode 1588. Sum of All Odd Length Subarrays
+- LeetCode 724. Find Pivot Index
+
+------
+
 ## LeetCode Medium+Hard 200 Questions 
 
 https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2764
@@ -222,6 +234,7 @@ https://medium.com/@linghuang_76674/leetcode-medium-hard-200-questions-50811f3c2
 ### Array
 https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
 
+- LeetCode 307. Range Sum Query - Mutable
 - LeetCode 308 Range Sum Query 2D — Mutable
 - LeetCode 238 Product of Array Except Self
 - LeetCode 54 Spiral Matrix
