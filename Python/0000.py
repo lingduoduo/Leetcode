@@ -5,21 +5,23 @@ import heapq
 import bisect 
 
 
-
 class Solution:
-    def minAbsoluteDifference(self, nums: List[int], x: int) -> int:
-        res = float("inf")
-        sorted_list = []
-        for i, num in enumerate(nums):
-            if i >= x:
-                bisect.insort(sorted_list, nums[i - x])
-                pos = bisect.bisect_left(sorted_list, num)
-                if pos > 0:
-                    res = min(res, abs(num - sorted_list[pos - 1]))
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row = len(matrix)
+        col = len(matrix[0])
 
-                if pos < len(sorted_list):
-                    res = min(res, abs(num - sorted_list[pos]))
-        return res
+        l, r = 0, row * col
+        while l < r:
+            m = l + (r - l)//2
+            mr = m // col
+            mc = m % col
+            if matrix[mr][mc] == target:
+                return True
+            elif matrix[mr][mc] < target:
+                l = m + 1
+            else:
+                r = m
+        return False
 
 if __name__ == "__main__":
-    print(Solution().minAbsoluteDifference(nums = [4,3,2,4], x = 2))
+    print(Solution().searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3))

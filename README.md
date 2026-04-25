@@ -58,18 +58,18 @@
 - LeetCode 503. Next Greater Element II
 - LeetCode 84. Largest Rectangle in Histogram
 ...
-- LeetCode 433 Minimum Genetic Mutation
-- LeetCode 921 Minimum Add to Make Paraentheses Valid
-- LeetCode 1209 Remove All Adjacent Duplicates in String II
-- LeetCode 71 Simplify Path
-- LeetCode 227 Basic Calculator II
-- LeetCode 1762 Buildings with an Ocean View
-- LeetCode 347 Top K Frequent Elements
-- LeetCode 150 Evaluate Reverse Polish Notation
-- LeetCode 85 Maximal Retangle
-- LeetCode 42 Trapping Rain Water
-- LeetCode 155 Min Stack
-- LeetCode 88 Merge Sorted Array
+- LeetCode 433. Minimum Genetic Mutation
+- LeetCode 921. Minimum Add to Make Paraentheses Valid
+- LeetCode 1209. Remove All Adjacent Duplicates in String II
+- LeetCode 71. Simplify Path
+- LeetCode 227. Basic Calculator II
+- LeetCode 1762. Buildings with an Ocean View
+- LeetCode 347. Top K Frequent Elements
+- LeetCode 150. Evaluate Reverse Polish Notation
+- LeetCode 85. Maximal Retangle
+- LeetCode 42. Trapping Rain Water
+- LeetCode 155. Min Stack
+- LeetCode 88. Merge Sorted Array
 
 ------
 
@@ -84,15 +84,15 @@
 - LeetCode 143. Reorder List
 - LeetCode 24. Swap Nodes in Pairs
 ...
-- LeetCode 138 Copy List with Random Pointer
-- LeetCode 426 Convert Binary Search Tree to Sorted Doubly Linked List
-- LeetCode 707 Design Linked List
-- LeetCode 25 Reverse Nodes in k-Group
-- LeetCode 328 Odd Even Linked List
-- LeetCode 82 Remove Duplicates from Sorted List II
-- LeetCode 23 Merge k Sorted List
-- LeetCode 61 Rotate List
-- LeetCode 148 Sort List
+- LeetCode 138. Copy List with Random Pointer
+- LeetCode 426. Convert Binary Search Tree to Sorted Doubly Linked List
+- LeetCode 707. Design Linked List
+- LeetCode 25. Reverse Nodes in k-Group
+- LeetCode 32. Odd Even Linked List
+- LeetCode 82. Remove Duplicates from Sorted List II
+- LeetCode 23. Merge k Sorted List
+- LeetCode 61. Rotate List
+- LeetCode 148. Sort List
 
 ------
 
@@ -108,6 +108,11 @@
 - LeetCode 1482. Minimum Number of Days to Make m Bouquets
 - LeetCode 1283. Find the Smallest Divisor Given a Threshold
 - LeetCode 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+- LeetCode 240. Search a 2D Matrix II
+- LeetCode 162. Find Peak Element
+- LeetCode 33. Search in Rotated Sorted Array
+- LeetCode 34. Find First and Last Position of Element in Sorted Array
+- LeetCode 74. Search a 2D Matrix 
 
 ------
 
@@ -228,8 +233,8 @@
 - LeetCode 304. Range Sum Query 2D - Immutable
 - LeetCode 1588. Sum of All Odd Length Subarrays
 - LeetCode 724. Find Pivot Index
-- LeetCode 307 Range Sum Query - Mutable → Prefix Sum (Fenwick Tree / Segment Tree)
-- LeetCode 308 Range Sum Query 2D — Mutable → Prefix Sum (2D BIT / Segment Tree)
+- LeetCode 307. Range Sum Query - Mutable → Prefix Sum (Fenwick Tree / Segment Tree)
+- LeetCode 308. Range Sum Query 2D — Mutable → Prefix Sum (2D BIT / Segment Tree)
 
 ------
 
@@ -241,6 +246,12 @@
 - LeetCode 73. Set Matrix Zeroes
 
 ---
+
+### Math
+
+- LeetCode 1492. The Kth Factor of n
+
+-------
 
 ## LeetCode Medium+Hard 200 Questions 
 
@@ -349,6 +360,8 @@ https://medium.com/@linghuang_76674/list/leetcode-graph-573e24adb547
 - LeetCode 200 Number of Islands
 - LeetCode 797 All Paths From Source to Target
 
+-------
+
 ### Queue
 https://medium.com/@linghuang_76674/list/leetcode-queue-09d7bdb754db
 
@@ -365,6 +378,8 @@ https://medium.com/@linghuang_76674/list/leetcode-queue-09d7bdb754db
 - LeetCode 76 Minimum Window Substring
 - LeetCode 239 Sliding Window Maximum
 - LeetCode 84 Largest Rectangle in Histogram
+
+ -------
 
 ### Dynamic Programming
 https://medium.com/@linghuang_76674/list/leetcode-dynamic-programming-ac33f84e49fb
@@ -384,6 +399,8 @@ https://medium.com/@linghuang_76674/list/leetcode-dynamic-programming-ac33f84e49
 - LeetCode 32 Longest Valid Parentheses
 - LeetCode 10 Regular Expression Matching
 - LeetCode 139 Word Break
+
+-------
 
 ### HashTable and HashSet
 https://medium.com/@linghuang_76674/list/leetcode-hashtable-and-hashset-7b2680e25519
@@ -441,6 +458,8 @@ https://medium.com/@linghuang_76674/list/leetcode-math-9ed3e8faec69
 - LeetCode 7 Reverse Integer
 - LeetCode 43 Multiply Strings
 - LeetCode 50 Pow(x,n)
+
+-------
 
 ### Greedy
 https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
