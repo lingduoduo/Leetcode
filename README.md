@@ -21,6 +21,8 @@
 - LeetCode 283. Move Zeroes
 - LeetCode 75. Sort Colors
 - LeetCode 42. Trapping Rain Water
+...
+- LeetCode 680. Valid Palindrome II
 
 ------
 
@@ -112,7 +114,9 @@
 - LeetCode 162. Find Peak Element
 - LeetCode 33. Search in Rotated Sorted Array
 - LeetCode 34. Find First and Last Position of Element in Sorted Array
-- LeetCode 74. Search a 2D Matrix 
+- LeetCode 74. Search a 2D Matrix
+- LeetCode 4. Median of Two Sorted Arrays
+- LeetCode 287. Find the Duplicate Number
 
 ------
 
