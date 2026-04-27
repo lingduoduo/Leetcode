@@ -56,22 +56,26 @@
 
 - LeetCode 20. Valid Parentheses
 - LeetCode 394. Decode String
-- LeetCode 32.Longest Valid Parentheses
+- LeetCode 32. Longest Valid Parentheses
 - LeetCode 503. Next Greater Element II
 - LeetCode 84. Largest Rectangle in Histogram
 ...
-- LeetCode 433. Minimum Genetic Mutation
-- LeetCode 921. Minimum Add to Make Paraentheses Valid
-- LeetCode 1209. Remove All Adjacent Duplicates in String II
 - LeetCode 71. Simplify Path
+- LeetCode 224. Basic Calculator 
 - LeetCode 227. Basic Calculator II
 - LeetCode 1762. Buildings with an Ocean View
 - LeetCode 347. Top K Frequent Elements
 - LeetCode 150. Evaluate Reverse Polish Notation
-- LeetCode 85. Maximal Retangle
 - LeetCode 42. Trapping Rain Water
 - LeetCode 155. Min Stack
 - LeetCode 88. Merge Sorted Array
+- LeetCode 921. Minimum Add to Make Paraentheses Valid
+- LeetCode 1249. Minimum Remove to Make Valid Parentheses
+- LeetCode 1047. Remove All Adjacent Duplicates In String
+- LeetCode 1209. Remove All Adjacent Duplicates in String II
+- LeetCode 433. Minimum Genetic Mutation
+- LeetCode 85. Maximal Retangle
+- LeetCode 1944. Number of Visible People in a Queue (monotonic stack)
 
 ------
 

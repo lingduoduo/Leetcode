@@ -4,23 +4,20 @@ import math
 import heapq
 import bisect 
 
-
 class Solution:
-    def triangleNumber(self, nums: List[int]) -> int:
-        nums.sort(reverse=True)
-        res = 0
-        for i in range(len(nums) - 2):
-            j = i + 1
-            k = len(nums) - 1
-            while j < k:
-                if nums[i] < nums[j] + nums[k]:
-                    res += k - j
-                    j += 1
+    def minAddToMakeValid(self, s: str) -> int:
+        l, r = 0, 0
+
+        for ch in s:
+            if ch == "(":
+                l += 1
+            else:
+                if l > 0:
+                    l -= 1
                 else:
-                    k -= 1
+                    r += 1
+        return l + r
 
-        return res
-
-        
+            
 if __name__ == "__main__":
-    print(Solution().isPalindrome(s = "A man, a plan, a canal: Panama"))
+    print(Solution().minAddToMakeValid(s = "((("))
