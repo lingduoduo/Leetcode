@@ -59,6 +59,7 @@
 - LeetCode 32. Longest Valid Parentheses
 - LeetCode 503. Next Greater Element II
 - LeetCode 84. Largest Rectangle in Histogram
+- LeetCode 85. Maximal Retangle
 ...
 - LeetCode 71. Simplify Path
 - LeetCode 224. Basic Calculator 
@@ -73,9 +74,7 @@
 - LeetCode 1249. Minimum Remove to Make Valid Parentheses
 - LeetCode 1047. Remove All Adjacent Duplicates In String
 - LeetCode 1209. Remove All Adjacent Duplicates in String II
-- LeetCode 433. Minimum Genetic Mutation
-- LeetCode 85. Maximal Retangle
-- LeetCode 1944. Number of Visible People in a Queue (monotonic stack)
+- LeetCode 1944. Number of Visible People in a Queue
 
 ------
 
@@ -83,11 +82,11 @@
 
 - LeetCode 141. Linked List Cycle
 - LeetCode 142. Linked List Cycle II
+- LeetCode 143. Reorder List
 - LeetCode 206. Reverse Linked List
 - LeetCode 92. Reverse Linked List II 
 - LeetCode 234. Palindrome Linked List
 - LeetCode 19. Remove Nth Node From End of List
-- LeetCode 143. Reorder List
 - LeetCode 24. Swap Nodes in Pairs
 ...
 - LeetCode 138. Copy List with Random Pointer
@@ -99,6 +98,7 @@
 - LeetCode 23. Merge k Sorted List
 - LeetCode 61. Rotate List
 - LeetCode 148. Sort List
+- LeetCode 146. LRU Cache
 
 ------
 
@@ -162,6 +162,8 @@
 - LeetCode 994. Rotting Oranges
 - LeetCode 542. 01 Matrix
 - LeetCode 815. Bus Routes
+...
+- LeetCode 433. Minimum Genetic Mutation
 
 ------
 
