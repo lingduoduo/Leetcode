@@ -1,25 +1,21 @@
 from typing import List, Optional
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 class Solution:
-    def canSeePersonsCount(self, heights: List[int]) -> List[int]:
-        n = len(heights)
-        res = [0] * n
-        stack = []
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
 
-        for i in range(n - 1, -1, -1):
-            count = 0
-            while stack and stack[-1] < heights[i]:
-                stack.pop()
-                count += 1
+        if len(postorder) == 0 or len(inorder) == 0: return None
 
-            # see one taller person if exists
-            if stack:
-                count += 1
-
-            res[i] = count
-            stack.append(heights[i])
-
-        return res
+        root = TreeNode(postorder[-1])
+        i = inorder.index(postorder[-1])
+        root.left = self.buildTree(inorder[:i], postorder[:i])
+        root.right = self.buildTree(inorder[i + 1:], postorder[i:-1])
+        return root
 
 if __name__ == "__main__":
     res = Solution().canSeePersonsCount(heights = [10,6,8,5,11,9])

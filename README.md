@@ -23,6 +23,8 @@
 - LeetCode 42. Trapping Rain Water
 ...
 - LeetCode 680. Valid Palindrome II
+- LeetCode 1004. Max Consecutive Ones III
+- LeetCode 151. Reverse Words in a String
 
 ------
 
@@ -131,6 +133,9 @@
 - LeetCode 658. Find K Closest Elements
 - LeetCode 23. Merge k Sorted Lists
 - LeetCode 295. Find Median from Data Stream
+...
+- LeetCode 347. Top K Frequent Elements
+- LeetCode 378. Kth Smallest Element in a Sorted Matrix
 
 ------
 
@@ -150,6 +155,12 @@
 - LeetCode 200. Number of Islands
 - LeetCode 130. Surrounded Regions
 - LeetCode 417. Pacific Atlantic Water Flow
+---
+- LeetCode 129. Sum Root to Leaf Numbers
+- LeetCode 105. Construct Binary Tree (Preorder + Inorder)
+- LeetCode 106. Construct Binary Tree (Inorder + Postorder)
+- LeetCode 2265. Count Nodes Equal to Average of Subtree
+- LeetCode 654. Maximum Binary Tree
 
 ------
 
@@ -164,6 +175,7 @@
 - LeetCode 815. Bus Routes
 ...
 - LeetCode 433. Minimum Genetic Mutation
+
 
 ------
 
@@ -180,6 +192,9 @@
 - LeetCode 216. Combination Sum III
 - LeetCode 131. Palindrome Partitioning
 - LeetCode 51. N-Queens
+
+--- 
+282. Expression Add Operators
 
 ------
 
@@ -208,7 +223,7 @@
 - LeetCode 1235. Maximum Profit in Job Scheduling
 - LeetCode 256. Paint House
 - LeetCode 265. Paint House II
-- LeetCode727. Minimum Window Subsequence
+- LeetCode 727. Minimum Window Subsequence
 - LeetCode 121. Best Time to Buy and Sell Stock
 - LeetCode 122. Best Time to Buy and Sell Stock II
 
@@ -275,10 +290,8 @@ https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
 - LeetCode 238. Product of Array Except Self
 - LeetCode 54. Spiral Matrix
 - LeetCode 48. Rotate Image
----
 - LeetCode 74. Search a 2D Matrix
 - LeetCode 240. Search a 2D Matrix II
----
 - LeetCode 1492 The Kth Factor of n
 - LeetCode 162 Find Peark Element
 - LeetCode 33 Search in Rotated Sorted Array
