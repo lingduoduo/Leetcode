@@ -6,16 +6,46 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
-    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+class Codec:
 
-        if len(postorder) == 0 or len(inorder) == 0: return None
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: str
+        """
+        res = []
+        def preorder(node):
+            if not node: 
+                res.append("#")
+                return 
+            res.append(str(node.val))
+            preorder(node.left)
+            preorder(node.right)
+        return ','.join(res)
 
-        root = TreeNode(postorder[-1])
-        i = inorder.index(postorder[-1])
-        root.left = self.buildTree(inorder[:i], postorder[:i])
-        root.right = self.buildTree(inorder[i + 1:], postorder[i:-1])
-        return root
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        if not data: return None
+
+        vals = data.split(",")
+
+        def preorder():      
+            val = vals.pop(0)
+            if val == "#":
+                return None
+            
+            node = TreeNode(int(val))
+            node.left = preorder()
+            node.right = preorder()
+            return node
+
+        return preorder(data)
+
 
 if __name__ == "__main__":
     res = Solution().canSeePersonsCount(heights = [10,6,8,5,11,9])
