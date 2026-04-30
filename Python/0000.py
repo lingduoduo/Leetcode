@@ -6,47 +6,29 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Codec:
+from collections import defaultdict
 
-    def serialize(self, root):
-        """Encodes a tree to a single string.
-        
-        :type root: TreeNode
-        :rtype: str
-        """
-        res = []
-        def preorder(node):
-            if not node: 
-                res.append("#")
-                return 
-            res.append(str(node.val))
-            preorder(node.left)
-            preorder(node.right)
-        return ','.join(res)
 
-    def deserialize(self, data):
-        """Decodes your encoded data to tree.
-        
-        :type data: str
-        :rtype: TreeNode
-        """
-        if not data: return None
+class Solution:
+    def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
 
-        vals = data.split(",")
+        def dfs(nums):
+            if len(nums) == 0: return None
 
-        def preorder():      
-            val = vals.pop(0)
-            if val == "#":
-                return None
-            
-            node = TreeNode(int(val))
-            node.left = preorder()
-            node.right = preorder()
+            maxv = max(nums)
+            idxm = nums.index(maxv)
+
+            node = TreeNode(maxv)
+            node.left = dfs(nums[:idxm])
+            node.right = dfs(nums[idxm + 1:])
             return node
+        
+        return dfs(nums)
 
-        return preorder(data)
 
 
+
+        
 if __name__ == "__main__":
     res = Solution().canSeePersonsCount(heights = [10,6,8,5,11,9])
     print(res)
