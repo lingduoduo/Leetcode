@@ -10,25 +10,23 @@ from collections import defaultdict
 
 
 class Solution:
-    def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
+    def rob(self, root: Optional[TreeNode]) -> int:
 
-        def dfs(nums):
-            if len(nums) == 0: return None
+        def dfs(node):
+            if not node:
+                return 0, 0  # (not_rob, rob)
 
-            maxv = max(nums)
-            idxm = nums.index(maxv)
+            left_no, left_yes = dfs(node.left)
+            right_no, right_yes = dfs(node.right)
 
-            node = TreeNode(maxv)
-            node.left = dfs(nums[:idxm])
-            node.right = dfs(nums[idxm + 1:])
-            return node
-        
-        return dfs(nums)
+            no_rob = max(left_no, left_yes) + max(right_no, right_yes)
+            rob = node.val + left_no + right_no
 
+            return no_rob, rob
 
+        return max(dfs(root))
 
 
-        
 if __name__ == "__main__":
     res = Solution().canSeePersonsCount(heights = [10,6,8,5,11,9])
     print(res)
