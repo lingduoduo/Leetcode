@@ -7,32 +7,26 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
 from collections import deque
+class Solution:
+    def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:
 
-class BSTIterator:
+        que = deque([(startGene, 0)])
+        seen = {startGene}
+        while que:
+            node, step = que.popleft()
+            if node == endGene:
+                return step
+            
+            for nxt in ["A", "C", "G", "T"]:
+                for i in range(len(node)):
+                    nei = node[:i] + nxt + node[i+1:]
+                    if nei in bank and nei not in seen:
+                        que.append((nei, step + 1))
+                        seen.add(nei)
+        return -1
 
-    def __init__(self, root: Optional[TreeNode]):
-        self.nums = []
-        self.idx = 0
-
-        def dfs(node):
-            if not node:
-                return
-            dfs(node.left)
-            self.nums.append(node.val)
-            dfs(node.right)
-        dfs(root)
-        
-    def next(self) -> int:
-        val = self.nums[self.idx]
-        self.idx += 1
-        return val
-        
-    def hasNext(self) -> bool:
-        return self.idx < len(self.nums)
-        
 
 if __name__ == "__main__":
-    res = Solution().canSeePersonsCount(heights = [10,6,8,5,11,9])
+    res = Solution().minMutation(startGene = "AACCGGTT", endGene = "AACCGGTA", bank = ["AACCGGTA"])
     print(res)

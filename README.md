@@ -172,6 +172,7 @@
 - LeetCode 337. House Robber III
 - LeetCode 236. Lowest Common Ancestor of a Binary Tree
 - LeetCode 1650. Lowest Common Ancestor of a Binary Tree III
+- LeetCode 282. Expression Add Operators
 
 ------
 
@@ -190,6 +191,11 @@
 - LeetCode 987. Vertical Order Traversal of a Binary Tree
 - LeetCode 513. Find Bottom Left Tree Value 
 
+- LeetCode 269 – Alien Dictionary → Graphs, BFS (Topo sort)
+- LeetCode 207 - Course Schedule
+- LeetCode 1970. Last Day Where You Can Still Cross (BFS + binary search / DSU)
+- LeetCode 2812. Find the Safest Path in a Grid (multi-source BFS + maximin path / PQ)
+
 ------
 
 ### Backtracking
@@ -206,7 +212,6 @@
 - LeetCode 131. Palindrome Partitioning
 - LeetCode 51. N-Queens
 ...
-- 282. Expression Add Operators
 - 95 Unique Binary Search Trees II
 - 96 Unique Binary Search Trees
 
