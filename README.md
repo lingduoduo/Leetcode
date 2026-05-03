@@ -173,6 +173,7 @@
 - LeetCode 236. Lowest Common Ancestor of a Binary Tree
 - LeetCode 1650. Lowest Common Ancestor of a Binary Tree III
 - LeetCode 282. Expression Add Operators
+- LeetCode 95. Unique Binary Search Trees II
 
 ------
 
@@ -186,15 +187,12 @@
 - LeetCode 542. 01 Matrix
 - LeetCode 815. Bus Routes
 ...
-- LeetCode 433. Minimum Genetic Mutation
 - LeetCode 314. Binary Tree Vertical Order Traversal
 - LeetCode 987. Vertical Order Traversal of a Binary Tree
 - LeetCode 513. Find Bottom Left Tree Value 
-
-- LeetCode 269 – Alien Dictionary → Graphs, BFS (Topo sort)
-- LeetCode 207 - Course Schedule
-- LeetCode 1970. Last Day Where You Can Still Cross (BFS + binary search / DSU)
-- LeetCode 2812. Find the Safest Path in a Grid (multi-source BFS + maximin path / PQ)
+- LeetCode 433. Minimum Genetic Mutation
+- LeetCode 269. Alien Dictionary 
+- LeetCode 2812. Find the Safest Path in a Grid
 
 ------
 
@@ -211,19 +209,35 @@
 - LeetCode 216. Combination Sum III
 - LeetCode 131. Palindrome Partitioning
 - LeetCode 51. N-Queens
-...
-- 95 Unique Binary Search Trees II
-- 96 Unique Binary Search Trees
 
 ------
 
 ### Graphs
 
 - LeetCode 207. Course Schedule
-- LeetCode 210. Course Schedule-ii
+- LeetCode 210. Course Schedule-II
 - LeetCode 743. Network Delay Time
 - LeetCode 787. Cheapest Flights Within K Stops
 - LeetCode 1631. Path With Minimum Effort
+...
+- LeetCode 200 Number of Islands 
+- LeetCode 695 Max Area of Island → DFS, Graph
+- LeetCode 1020 Number of Enclaves → DFS, BFS, Graph
+- LeetCode 130 Surrounded Regions → DFS, BFS, Graph
+- LeetCode 417 Pacific Atlantic Water Flow → DFS, BFS, Graph
+- LeetCode 827 Making A Large Island → DFS, Graph
+- LeetCode 127 Word Ladder → BFS, Graph
+- LeetCode 743 Network Delay Time → BFS, HEAP, Graph
+- LeetCode 863 All Nodes Distance K in Binary Tree → BFS, Graph
+- LeetCode 133 Clone Graph → Graph, DFS, BFS
+- LeetCode 721 Account Merge → Graph, DFS, BFS
+- LeetCode 399 Evaluation Division → Graph, DFS, BFS
+- LeetCode 743 Network Delay Time → Graph, BFS, HEAP
+- LeetCode 841 Keys and Rooms → Graph, DFS, BFS
+- LeetCode 797 All Paths From Source to Target → Graph, DFS, Backtracking
+- LeetCode 684 Redundant Connection → Graph, Union-Find
+- LeetCode 685 Redundant Connection II → Graph, Union-Find
+- LeetCode 1584 Min Cost to Connect All Points → Graph, Union-Find, HEAP
 
 ------
 
@@ -246,7 +260,16 @@
 - LeetCode 121. Best Time to Buy and Sell Stock
 - LeetCode 122. Best Time to Buy and Sell Stock II
 ...
+- LeetCode 96. Unique Binary Search Trees
 - 894 All Possible Full Binary Tree → DFS, Dynamic Programming
+- LeetCode 647 – Palindromic Substrings → Dynamic Programming (or Two Pointers expand)
+- LeetCode 5 – Longest Palindromic Substring → Dynamic Programming (or Two Pointers expand)
+- 1458. Max Dot Product of Two Subsequences
+- 956. Tallest Billboard
+- 354. Russian Doll Envelopes (LIS trick)
+- 3573. Best Time to Buy and Sell Stock V
+- 3562. Maximum Profit from Trading Stocks with Discounts
+- 3578. Count Partitions With Max-Min Difference ≤ K
 
 ------
 
