@@ -39,6 +39,8 @@
 ...
 - LeetCode 209. Minimum Size Subarray Sum 
 - LeetCode 2817. Minimum Absolute Difference With Constraint
+- LeetCode 713. Subarray Product Less Than K
+- LeetCode 239. Sliding Window Maximum
 
 ------
 
@@ -225,13 +227,13 @@
 - LeetCode 695. Max Area of Island
 - LeetCode 1020. Number of Enclaves
 - LeetCode 827. Making A Large Island
+- LeetCode 127. Word Ladder
+- LeetCode 863. All Nodes Distance K in Binary Tree 
+- LeetCode 684. Redundant Connection
 
-- LeetCode 127 Word Ladder → BFS, Graph
-- LeetCode 863 All Nodes Distance K in Binary Tree → BFS, Graph
-- LeetCode 721 Account Merge → Graph, DFS, BFS
+- LeetCode 721. Account Merge → Graph, DFS, BFS
 - LeetCode 399 Evaluation Division → Graph, DFS, BFS
-- LeetCode 841 Keys and Rooms → Graph, DFS, BFS
-- LeetCode 684 Redundant Connection → Graph, Union-Find
+- LeetCode 841 Keys and Rooms → Graph, DFS, BF
 - LeetCode 685 Redundant Connection II → Graph, Union-Find
 - LeetCode 1584 Min Cost to Connect All Points → Graph, Union-Find, HEAP
 
