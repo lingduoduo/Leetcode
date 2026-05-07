@@ -25,6 +25,8 @@
 - LeetCode 680. Valid Palindrome II
 - LeetCode 1004. Max Consecutive Ones III
 - LeetCode 151. Reverse Words in a String
+...
+- LeetCode 202. Happy Number 
 
 ------
 
@@ -233,7 +235,7 @@
 - LeetCode 684. Redundant Connection
 - LeetCode 685. Redundant Connection II
 - LeetCode 721. Account Merge
-
+...
 - LeetCode 399 Evaluation Division → Graph, DFS, BFS
 - LeetCode 841 Keys and Rooms → Graph, DFS, BF
 - LeetCode 1584 Min Cost to Connect All Points → Graph, Union-Find, HEAP
@@ -246,10 +248,10 @@
 - LeetCode 70. Climbing Stairs
 - LeetCode 3693. Climbing Stairs II
 - LeetCode 198. House Robber
-- LeetCode 228. Counting Bits
+- LeetCode 338. Counting Bits
 - LeetCode 91. Decode Ways
 - LeetCode 62. Unique Paths
-- LeetCode  221. Maximal Square
+- LeetCode 221. Maximal Square
 - LeetCode 300. Longest Increasing Subsequence
 - LeetCode 139. Word Break
 - LeetCode 1235. Maximum Profit in Job Scheduling
@@ -261,15 +263,9 @@
 ...
 - LeetCode 96. Unique Binary Search Trees
 - LeetCode 647. Palindromic Substrings
-
 - LeetCode 5. Longest Palindromic Substring
-
-- 1458. Max Dot Product of Two Subsequences
-- 956. Tallest Billboard
-- 354. Russian Doll Envelopes (LIS trick)
-- 3573. Best Time to Buy and Sell Stock V
-- 3562. Maximum Profit from Trading Stocks with Discounts
-- 3578. Count Partitions With Max-Min Difference ≤ K
+- LeetCode 1458. Max Dot Product of Two Subsequences
+- LeetCode 3578. Count Partitions With Max-Min Difference ≤ K
 
 ------
 
@@ -280,6 +276,7 @@
 - LeetCode 55. Jump Game
 - LeetCode  45. Jump Game II
 - LeetCode 763. Partition Labels
+...
 
 ------
 
@@ -316,11 +313,15 @@
 
 ---
 
-### Math
+### Others (Math, Simulation, State Machine, etc)
 
 - LeetCode 1492. The Kth Factor of n
+- LeetCode 38. Count and Say
+...
+- LeetCode 65. Valid Number
+- LeetCode 2235. Add Two Integers
 
--------
+----
 
 ## LeetCode Medium+Hard 200 Questions 
 
