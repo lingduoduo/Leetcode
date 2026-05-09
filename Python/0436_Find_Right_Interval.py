@@ -1,24 +1,26 @@
 class Solution:
     def findRightInterval(self, intervals):
-        res = [-1] * len(intervals)
-        d = {}
-        for idx, val in enumerate(intervals):
-            d[val[0], val[1]] = idx
+        n = len(intervals)
 
-        s = sorted(intervals, key=lambda x: (x[1], x[0]))
-        x0, y0 = s[0]
+        starts = sorted((interval[0], i) for i, interval in enumerate(intervals))
+        res = [-1] * n
 
-        for x1, y1 in s[1:]:
-            if y0 <= x1:
-                res[d[x0, y0]] = d[x1, y1]
-                x0 = x1
-                y0 = y1
-            elif y1 < y0:
-                x0 = x1
-                y0 = y1
+        for i, (start, end) in enumerate(intervals):
+            l, r = 0, n  
+
+            while l < r:
+                mid = (l + r) // 2
+
+                if starts[mid][0] >= end:
+                    r = mid
+                else:
+                    l = mid + 1
+
+            if l < n:
+                res[i] = starts[l][1]
 
         return res
-
+        
 
 if __name__ == "__main__":
     # intervals = [[3,4],[2,3],[1,2]]

@@ -1,5 +1,6 @@
 from typing import List, Optional
 from collections import deque, defaultdict
+import heapq
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -7,19 +8,18 @@ class TreeNode:
         self.left = left
         self.right = right
 
-import heapq
 
 class Solution:
-    def wiggleMaxLength(self, nums: List[int]) -> int:
-        prev = 0
-        res = 1
-        for i in range(1, len(nums)):
-            cur = nums[i] - nums[i-1]
-            if (prev >= 0 and cur <= 0) or (prev <= 0 and cur >= 0):
-                res += 1
-                prev = cur
-        return res
+    def maxProfit(self, prices: List[int]) -> int:
+        length = len(prices)
+        dp = [[0] * 4 for _ in range(length)]
+        dp[0][0] = -prices[0]
+        dp[0][1] = 0
+        for i in range(1, length):
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1] - prices[i] - fee) 
+            dp[i][1] = max(dp[i-1][1], dp[i-1][0] + prices[i])
+        return dp[-1][1]
 
 
 if __name__ == "__main__":
-    print(Solution().wiggleMaxLength(nums = [1,17,5,10,13,15,10,5,16,8]))
+    print(Solution().monotoneIncreasingDigits(n = 332))
