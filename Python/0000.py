@@ -8,18 +8,15 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        length = len(prices)
-        dp = [[0] * 4 for _ in range(length)]
-        dp[0][0] = -prices[0]
-        dp[0][1] = 0
-        for i in range(1, length):
-            dp[i][0] = max(dp[i-1][0], dp[i-1][1] - prices[i] - fee) 
-            dp[i][1] = max(dp[i-1][1], dp[i-1][0] + prices[i])
-        return dp[-1][1]
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
+        people.sort(key=lambda x: (-x[0], x[1]))
+        res = []
+        for i, v in enumerate(people):
+            _, idx = v
+            res = res[:idx] + [people[i]] + res[idx:]
+        return res
 
 
 if __name__ == "__main__":
-    print(Solution().monotoneIncreasingDigits(n = 332))
+    print(Solution().reconstructQueue(people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]))

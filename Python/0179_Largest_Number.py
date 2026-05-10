@@ -44,6 +44,13 @@ class Solution:
         return "0" if ans[0] == "0" else ans
 
 
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        nums = list(map(str, nums))
+        nums.sort(key=lambda x: x * 10, reverse=True)
+        res =  ''.join(nums)
+        return '0' if res[0] == '0' else res
+
 if __name__ == "__main__":
     result = Solution().largestNumber(nums=[3, 30, 34, 5, 9])
     print(result)
