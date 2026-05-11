@@ -41,6 +41,12 @@
 - LeetCode 2817. Minimum Absolute Difference With Constraint
 - LeetCode 713. Subarray Product Less Than K
 - LeetCode 239. Sliding Window Maximum
+- LeetCode 1456. Maximum Number of Vowels in a Substring of Given Length         
+- LeetCode 76. Minimum Window Substring    
+
+- 438. Find All Anagrams in a String	Sliding Window, Two Pointers            
+- 1695. Maximum Erasure Value       	Sliding Window, Two Pointers, Prefix Sum
+
 
 ------
 
@@ -81,6 +87,7 @@
 - LeetCode 1047. Remove All Adjacent Duplicates In String
 - LeetCode 1209. Remove All Adjacent Duplicates in String II
 - LeetCode 1944. Number of Visible People in a Queue
+- LeetCode 853. Car Fleet
 
 ------
 
@@ -215,7 +222,7 @@
 - LeetCode 131. Palindrome Partitioning
 - LeetCode 51. N-Queens
 ...
-- LeetCode 797 All Paths From Source to Target → Graph, DFS, Backtracking
+- LeetCode 797. All Paths From Source to Target
 
 ------
 
@@ -263,12 +270,15 @@
 - LeetCode 121. Best Time to Buy and Sell Stock
 - LeetCode 122. Best Time to Buy and Sell Stock II
 ...
+- LeetCode 714. Best Time to Buy and Sell Stock with Transaction Fee
+- LeetCode 309. Best Time to Buy and Sell Stock with Cooldown
 - LeetCode 96. Unique Binary Search Trees
 - LeetCode 647. Palindromic Substrings
-- LeetCode 5. Longest Palindromic Substring
 - LeetCode 1458. Max Dot Product of Two Subsequences
 - LeetCode 3578. Count Partitions With Max-Min Difference ≤ K
 - LeetCode 53. Maximum Subarray
+- LeetCode 5. Longest Palindromic Substring
+- LeetCode 72. Edit Distance
 
 ------
 
@@ -285,10 +295,9 @@
 - LeetCode 179. Largest Number
 - LeetCode 881. Boats to Save People
 - LeetCode 406. Queue Reconstruction by Height
-
-- LeetCode 588. Design In-Memory File System
-- LeetCode 853. Car Fleet
-- LeetCode 1456. Maximum Number of Vowels in a Substring of Given Length
+- LeetCode 68. Text Justification
+              
+  2141. Maximum Running Time of N Computers	Binary Search, Greedy
 
 ------
 
@@ -298,6 +307,8 @@
 - LeetCode 211. Design Add and Search Words Data Structure
 - LeetCode 648. Replace Words 
 - LeetCode 676. Implement Magic Dictionary
+...
+- LeetCode 588. Design In-Memory File System
 
 ------
 
@@ -322,6 +333,8 @@
 - LeetCode 59. Spiral Matrix II
 - LeetCode 48. Rotate Image
 - LeetCode 73. Set Matrix Zeroes
+...
+- LeetCode 64. Minimum Path Sum
 
 ---
 

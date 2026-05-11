@@ -9,14 +9,21 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
-        people.sort(key=lambda x: (-x[0], x[1]))
-        res = []
-        for i, v in enumerate(people):
-            _, idx = v
-            res = res[:idx] + [people[i]] + res[idx:]
+    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+        res, cur= [], []
+
+        for word in words:
+            strs = ' '.join(cur)
+            if len(strs) + len(word) < maxWidth:
+                cur.append(word)
+            else:
+                res.append(strs + ' ' * (maxWidth - len(strs)))
+                cur = [word]
+
+        strs = ' '.join(cur)        
+        res.append(strs + ' ' * (maxWidth - len(strs)))     
+        
         return res
 
-
 if __name__ == "__main__":
-    print(Solution().reconstructQueue(people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]))
+    print(Solution().fullJustify(words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16))
