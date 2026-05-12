@@ -1,5 +1,5 @@
 from typing import List, Optional
-from collections import deque, defaultdict
+from collections import deque, defaultdict, Counter
 import heapq
 
 class TreeNode:
@@ -9,21 +9,77 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
-        res, cur= [], []
+    def strStr(self, haystack: str, needle: str) -> int:
+        if not needle:
+            return 0
 
-        for word in words:
-            strs = ' '.join(cur)
-            if len(strs) + len(word) < maxWidth:
-                cur.append(word)
-            else:
-                res.append(strs + ' ' * (maxWidth - len(strs)))
-                cur = [word]
-
-        strs = ' '.join(cur)        
-        res.append(strs + ' ' * (maxWidth - len(strs)))     
+        def get_next(s: str) -> List[int]:
+            nxt = [0] * len(s)
+            j = 0
+            for i in range(len(s)):
+                while j > 0 and s[i] != s[j]:
+                    j = nxt[j - 1]
+                
+                if s[i] == s[j]:
+                    j += 1
+                
+                nxt[i] = j
+            return nxt
         
-        return res
+        
+        nxt = get_next(needle)
+        n = len(needle)
+        j = 0
+        for i in range(len(haystack)):
+            while j > 0 and haystack[i] != needle[j]:
+                j = nxt[j - 1]
+            
+            if haystack[i] == needle[j]:
+                j += 1
+            
+            if j == n - 1:
+                return i - n + 1
+        return -1
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if not needle:
+            return 0
+
+        def get_next(s):
+            nxt = [0] * len(s)
+            j = 0
+
+            for i in range(1, len(s)):
+
+                while j > 0 and s[i] != s[j]:
+                    j = nxt[j - 1]
+
+                if s[i] == s[j]:
+                    j += 1
+
+                nxt[i] = j
+
+            return nxt
+
+        nxt = get_next(needle)
+
+        j = 0
+
+        for i in range(len(haystack)):
+
+            while j > 0 and haystack[i] != needle[j]:
+                j = nxt[j - 1]
+
+            if haystack[i] == needle[j]:
+                j += 1
+
+            if j == len(needle):
+                return i - len(needle) + 1
+
+        return -1
+
 
 if __name__ == "__main__":
-    print(Solution().fullJustify(words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16))
+    print(Solution().repeatedSubstringPattern(s = "abcabcabcabc"))

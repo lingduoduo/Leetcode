@@ -25,6 +25,8 @@
 - LeetCode 680. Valid Palindrome II
 - LeetCode 1004. Max Consecutive Ones III
 - LeetCode 151. Reverse Words in a String
+- LeetCode 459. Repeated Substring Pattern
+- LeetCode 28. Find First Occurrence in String
 
 ------
 
@@ -43,10 +45,8 @@
 - LeetCode 239. Sliding Window Maximum
 - LeetCode 1456. Maximum Number of Vowels in a Substring of Given Length         
 - LeetCode 76. Minimum Window Substring    
-
-- 438. Find All Anagrams in a String	Sliding Window, Two Pointers            
-- 1695. Maximum Erasure Value       	Sliding Window, Two Pointers, Prefix Sum
-
+- LeetCode 438. Find All Anagrams in a String
+- LeetCOde 1695. Maximum Erasure Value	          
 
 ------
 
@@ -76,7 +76,6 @@
 - LeetCode 224. Basic Calculator 
 - LeetCode 227. Basic Calculator II
 - LeetCode 1762. Buildings with an Ocean View
-- LeetCode 347. Top K Frequent Elements
 - LeetCode 150. Evaluate Reverse Polish Notation
 - LeetCode 42. Trapping Rain Water
 - LeetCode 155. Min Stack
@@ -296,8 +295,6 @@
 - LeetCode 881. Boats to Save People
 - LeetCode 406. Queue Reconstruction by Height
 - LeetCode 68. Text Justification
-              
-  2141. Maximum Running Time of N Computers	Binary Search, Greedy
 
 ------
 
