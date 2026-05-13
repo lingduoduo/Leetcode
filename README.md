@@ -247,6 +247,8 @@
 - LeetCode 797. All Paths From Source to Target
 - LeetCode 841. Keys and Rooms
 - LeetCode 1584. Min Cost to Connect All Points
+- LeetCode 691. Stickers to Spell Word
+- LeetCode 1091. Shortest Path in Binary Matrix                           
 
 ------
 

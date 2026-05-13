@@ -34,3 +34,32 @@ class Solution:
                     queue.append(new_s)
             level += 1
         return -1
+
+
+class Solution:
+    def minStickers(self, stickers: List[str], target: str) -> int:
+        sticker_counts = [Counter(s) for s in stickers]
+        def get_word_diff(t, sticker_count):
+            ft = Counter(t)
+            diff = ft - sticker_count
+            # Sort to normalize state, so "abc" and "bca" are treated the same
+            return ''.join(ch * diff[ch] for ch in sorted(diff))
+
+        que = deque([''.join(sorted(target))])
+        visited = {''.join(sorted(target))}
+        step = 0
+        while que:
+            step += 1
+            for _ in range(len(que)):
+                curr_t = que.popleft()
+                for sticker_count in sticker_counts:
+                    # pruning: if sticker cannot reduce curr_t's first char, skip
+                    if sticker_count[curr_t[0]] == 0:
+                        continue
+                    new_t = get_word_diff(curr_t, sticker_count)
+                    if not new_t:
+                        return step
+                    if new_t not in visited:
+                        visited.add(new_t)
+                        que.append(new_t)
+        return -1
