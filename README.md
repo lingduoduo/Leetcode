@@ -221,7 +221,9 @@
 - LeetCode 131. Palindrome Partitioning
 - LeetCode 51. N-Queens
 ...
-- LeetCode 797. All Paths From Source to Target
+- LeetCode 46. Permutations
+- LeetCode 47. Permutations II
+- LeetCode 491. Non-decreasing Subsequences
 
 ------
 

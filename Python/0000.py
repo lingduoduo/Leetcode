@@ -9,27 +9,23 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        n = len(grid)
-        if grid[0][0] == 1 or grid[n - 1][n - 1] == 1:
-            return -1
-        
-        heap = []
-        heapq.heappush(heap, (1, 0, 0))
-        grid[0][0] = 1
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = []
 
-        while heap:
-            step, i, j = heapq.heappop(heap)
-            if i == n - 1 and j == n - 1:
-                return step
+        def dfs(cand, path):
+            if len(path) >= 2:
+                res.append(path)
             
-            for dx, dy in [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]:
-                nx = i + dx
-                ny = j + dy
-                if 0 <= nx < n and 0 <= ny < n and grid[nx][ny] == 0:
-                    grid[nx][ny] = 1
-                    heapq.heappush(heap, (step + 1, nx, ny))
-        return -1
+            used = set()
+            for i in range(len(cand)):
+                if cand[i] in used:
+                    continue
+                if path and cand[i] < path[-1]:
+                    continue
+                used.add(cand[i])
+                dfs(cand[i+1:], path + [cand[i]])
+        dfs(nums, [])
+        return res
 
 if __name__ == "__main__":
-    print(Solution().shortestPathBinaryMatrix(grid = [[0,0,0],[1,1,0],[1,1,0]]))
+    print(Solution().findSubsequences())
