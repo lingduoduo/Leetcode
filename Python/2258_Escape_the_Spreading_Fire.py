@@ -1,7 +1,7 @@
 class Solution:
     def maximumMinutes(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
-        DIRS = [(1,0), (-1,0), (0,1), (0,-1)]
+        DIRS = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         INF = 10**15
 
         # 1) fire_time: earliest time fire reaches each cell
@@ -85,4 +85,4 @@ class Solution:
             else:
                 hi = mid - 1
 
-        return lo if can(lo) else -1        
+        return lo if can(lo) else -1

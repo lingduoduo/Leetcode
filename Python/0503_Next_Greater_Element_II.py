@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         res = [-1] * len(nums)
@@ -12,7 +13,8 @@ class Solution:
                 res[prev % n] = nums[i]
             stack.append(i)
         return res
-    
+
+
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         n = len(nums)
@@ -25,6 +27,7 @@ class Solution:
                 res[p] = v
             stack.append(i)
         return res[:n]
+
 
 if __name__ == "__main__":
     # nums = [1,2,1]

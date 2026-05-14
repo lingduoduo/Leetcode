@@ -1,12 +1,16 @@
 from typing import Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 import collections
+
 
 class CBTInserter:
     def __init__(self, root: TreeNode):
@@ -35,6 +39,7 @@ class CBTInserter:
     def get_root(self) -> TreeNode:
         return self.tree[0]
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -46,8 +51,10 @@ class CBTInserter:
     def __init__(self, root: Optional[TreeNode]):
         self.tree = [root]
         for i in self.tree:
-            if i.left: self.tree.append(i.left)
-            if i.right: self.tree.append(i.right)
+            if i.left:
+                self.tree.append(i.left)
+            if i.right:
+                self.tree.append(i.right)
 
     def insert(self, val: int) -> int:
         n = len(self.tree)

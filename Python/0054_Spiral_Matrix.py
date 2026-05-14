@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution(object):
     def spiralOrder(self, matrix):
         """
@@ -38,6 +39,7 @@ class Solution(object):
             for i in range(rowstart, rowend + 1):
                 res.append(matrix[i][colend])
         return res
+
 
 class Solution:
 

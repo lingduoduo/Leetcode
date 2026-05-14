@@ -116,7 +116,7 @@ class Solution:
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         res = []
-        
+
         def dfs(r, cols, diag1, diag2, path):
             if r == n:
                 res.append(path)
@@ -133,11 +133,12 @@ class Solution:
                     cols | {c},
                     diag1 | {r - c},
                     diag2 | {r + c},
-                    path + [row_str]
+                    path + [row_str],
                 )
 
         dfs(0, set(), set(), set(), [])
         return res
+
 
 if __name__ == "__main__":
     res = Solution().solveNQueens(n=4)

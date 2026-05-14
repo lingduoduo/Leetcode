@@ -1,6 +1,7 @@
 import collections
 from typing import List
 
+
 class MagicDictionary:
     """
     Input: buildDict(["hello", "leetcode"]), Output: Null
@@ -83,7 +84,8 @@ class MagicDictionary:
 
     def search(self, searchWord: str) -> bool:
         n = len(searchWord)
-        if n not in self.d: return False
+        if n not in self.d:
+            return False
 
         def diff(word1, word2):
             res = 0
@@ -103,8 +105,8 @@ class MagicDictionary:
 class MagicDictionary:
 
     def __init__(self):
-        self.root = {}   # trie root
-    
+        self.root = {}  # trie root
+
     def buildDict(self, dictionary: List[str]) -> None:
         for word in dictionary:
             cur = self.root
@@ -112,7 +114,7 @@ class MagicDictionary:
                 if c not in cur:
                     cur[c] = {}
                 cur = cur[c]
-            cur["#"] = True   # end marker
+            cur["#"] = True  # end marker
 
     # DFS search allowing exactly 1 difference
     def dfs(self, node, word, index, used_diff):

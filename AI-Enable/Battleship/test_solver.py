@@ -36,9 +36,7 @@ class SolverTest(unittest.TestCase):
         solver.solve()
         self.assertTrue(board.all_sunk(), "didn't sink all ships")
         self.assertEqual(
-            len(solver.get_shots()),
-            board.total_shots(),
-            "shot count mismatch"
+            len(solver.get_shots()), board.total_shots(), "shot count mismatch"
         )
         self.assertLess(board.total_shots(), 36, "too many shots on a 6x6 board")
 
@@ -55,7 +53,11 @@ class SolverTest(unittest.TestCase):
             total_shots += board.total_shots()
         average = total_shots / trials
         expected_max = 50  # Answer: 50
-        self.assertLess(average, expected_max, f"averaged {average:.1f} shots, need < {expected_max}")
+        self.assertLess(
+            average,
+            expected_max,
+            f"averaged {average:.1f} shots, need < {expected_max}",
+        )
 
 
 if __name__ == "__main__":

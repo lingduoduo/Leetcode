@@ -42,7 +42,6 @@ class Solution:
         return res
 
 
-
 class Solution:
     def maxSumTrionic(self, nums: List[int]) -> int:
         n = len(nums)
@@ -63,21 +62,20 @@ class Solution:
             if a < b:
                 # 第一段：严格上升
                 inc = max(
-                    a + b,
-                    inc_prev + b if inc_prev != float("-inf") else float("-inf")
+                    a + b, inc_prev + b if inc_prev != float("-inf") else float("-inf")
                 )
 
                 # 第三段：严格上升
                 inc2 = max(
                     inc2_prev + b if inc2_prev != float("-inf") else float("-inf"),
-                    dec_prev + b if dec_prev != float("-inf") else float("-inf")
+                    dec_prev + b if dec_prev != float("-inf") else float("-inf"),
                 )
 
             elif a > b:
                 # 第二段：严格下降
                 dec = max(
                     dec_prev + b if dec_prev != float("-inf") else float("-inf"),
-                    inc_prev + b if inc_prev != float("-inf") else float("-inf")
+                    inc_prev + b if inc_prev != float("-inf") else float("-inf"),
                 )
 
             res = max(res, inc2)

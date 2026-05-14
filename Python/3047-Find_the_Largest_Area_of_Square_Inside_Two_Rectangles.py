@@ -1,8 +1,10 @@
-
 from typing import List
 
+
 class Solution:
-    def largestSquareArea(self, bottomLeft: List[List[int]], topRight: List[List[int]]) -> int:
+    def largestSquareArea(
+        self, bottomLeft: List[List[int]], topRight: List[List[int]]
+    ) -> int:
         res = 0
         n = len(bottomLeft)
 
@@ -22,5 +24,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().largestSquareArea(bottomLeft = [[1,1],[1,3],[1,5]], topRight = [[5,5],[5,7],[5,9]])
+    res = Solution().largestSquareArea(
+        bottomLeft=[[1, 1], [1, 3], [1, 5]], topRight=[[5, 5], [5, 7], [5, 9]]
+    )
     print(res)

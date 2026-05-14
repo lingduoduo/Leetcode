@@ -1,5 +1,6 @@
 from collections import deque
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -7,6 +8,8 @@ class TreeNode:
         self.left = left
 
         self.right = right
+
+
 class Solution:
     def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
         def dfs(root):
@@ -27,7 +30,8 @@ class Solution:
 
 class Solution:
     def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
-        if not root: return None
+        if not root:
+            return None
         parent = {root: None}
         q = deque([root])
 
@@ -45,5 +49,5 @@ class Solution:
         cur = set(deepest)
         while len(cur) > 1:
             cur = {parent[node] for node in cur}
-            
+
         return next(iter(cur))

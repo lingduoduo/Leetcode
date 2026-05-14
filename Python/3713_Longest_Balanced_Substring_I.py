@@ -1,6 +1,7 @@
 from typing import List
 from collections import defaultdict
 
+
 class Solution:
     def longestBalanced(self, s: str) -> int:
         n = len(s)
@@ -13,14 +14,15 @@ class Solution:
                     res = max(res, j - i + 1)
         return res
 
+
 class Solution:
     def longestBalanced(self, s: str) -> int:
         n = len(s)
         res = 0
 
         for i in range(n):
-            char_count = defaultdict(int)   # 每个字符出现次数
-            freq_count = defaultdict(int)   # 某个频次有多少字符
+            char_count = defaultdict(int)  # 每个字符出现次数
+            freq_count = defaultdict(int)  # 某个频次有多少字符
 
             for j in range(i, n):
                 ch = s[j]
@@ -43,6 +45,7 @@ class Solution:
 
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().longestBalanced(s = "zzabccy")
+    res = Solution().longestBalanced(s="zzabccy")
     print(res)

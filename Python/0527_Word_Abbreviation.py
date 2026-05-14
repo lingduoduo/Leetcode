@@ -1,6 +1,7 @@
 from typing import List
 from collections import defaultdict
 
+
 class Solution:
     def wordsAbbreviation(self, words: List[str]) -> List[str]:
         def abbr(word: str, k: int) -> str:

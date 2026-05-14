@@ -1,10 +1,12 @@
 from typing import Optional
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def recoverFromPreorder(self, traversal: str) -> Optional[TreeNode]:
@@ -13,13 +15,13 @@ class Solution:
         while i < len(traversal):
             # calculate the depth
             depth = 0
-            while traversal[i] == '-':
+            while traversal[i] == "-":
                 depth += 1
                 i += 1
 
             # calculate the value
-            value = ''
-            while i < len(traversal) and traversal[i] != '-':
+            value = ""
+            while i < len(traversal) and traversal[i] != "-":
                 value += traversal[i]
                 i += 1
             value = int(value)

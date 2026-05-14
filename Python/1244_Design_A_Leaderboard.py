@@ -3,7 +3,7 @@ class Leaderboard:
         self.d = Counter()
 
     def addScore(self, playerId: int, score: int) -> None:
-        self.d[playerId] += score    
+        self.d[playerId] += score
 
     def top(self, K: int) -> int:
         return sum(score for _, score in self.d.most_common(K))
@@ -11,4 +11,3 @@ class Leaderboard:
     def reset(self, playerId: int) -> None:
         if playerId in self.d:
             del self.d[playerId]
-        

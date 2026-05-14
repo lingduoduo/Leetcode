@@ -8,6 +8,7 @@ class ListNode:
         self.val = val
         self.next = next
 
+
 def list_to_linked(lists):
     """Convert a list of values into a linked list."""
     dummy = ListNode(0)
@@ -16,6 +17,7 @@ def list_to_linked(lists):
         current.next = ListNode(value)
         current = current.next
     return dummy.next
+
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
@@ -34,6 +36,7 @@ class Solution:
             if node.next:
                 heapq.heappush(q, (node.next.val, i, node.next))
         return dummy.next
+
 
 if __name__ == "__main__":
     numbers = [[1, 4, 5], [1, 3, 4], [2, 6]]

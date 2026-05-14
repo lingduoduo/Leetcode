@@ -59,9 +59,10 @@ class FileSystem(object):
             else:
                 return node, "file"
         return node, "dir"
-    
+
 
 from collections import defaultdict
+
 
 class TrieNode:
     def __init__(self, name):
@@ -70,9 +71,11 @@ class TrieNode:
         self.content = ""
         self.next = defaultdict(TrieNode)
 
+
 class FileSystem:
     def __init__(self):
         self.head = TrieNode("")
+
     def ls(self, path: str) -> List[str]:
         cur = self.findPath(path)
         if cur.is_file:
@@ -92,7 +95,7 @@ class FileSystem:
     def readContentFromFile(self, filePath: str) -> str:
         cur = self.findPath(filePath)
         return cur.content
-        
+
     def findPath(self, filepath: str) -> TrieNode:
         cur = self.head
         if filepath == "/":
@@ -102,7 +105,7 @@ class FileSystem:
             if p not in cur.next:
                 cur.next[p] = TrieNode(p)
             cur = cur.next[p]
-        
+
         return cur
 
 

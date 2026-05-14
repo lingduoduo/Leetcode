@@ -1,5 +1,6 @@
 from typing import List
-    
+
+
 class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
         presum = 0

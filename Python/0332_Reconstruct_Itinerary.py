@@ -37,7 +37,9 @@ class Solution:
                 return True
 
             for i, ticket in enumerate(tickets):  # 遍历机票列表
-                if ticket[0] == cur and used[i] == 0:  # 找到起始机场为cur且未使用过的机票
+                if (
+                    ticket[0] == cur and used[i] == 0
+                ):  # 找到起始机场为cur且未使用过的机票
                     used[i] = 1  # 标记该机票为已使用
                     state = backtracking(path + [ticket[1]], ticket[1])  # 递归搜索
                     used[i] = 0  # 标记该机票为未使用

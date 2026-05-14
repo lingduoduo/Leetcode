@@ -6,12 +6,12 @@ class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         if len(edges) != n - 1:
             return False
-        
+
         graph = collections.defaultdict(list)
         for x, y in edges:
             graph[x].append(y)
             graph[y].append(x)
-        
+
         seen = set()
         seen.add(0)
         que = collections.deque([0])
@@ -28,7 +28,7 @@ class Solution:
 class UnionFind:
     def __init__(self, n):
         self.par = list(range(n))
-    
+
     def find(self, x):
         if x != self.par[x]:
             self.par[x] = self.find(self.par[x])
@@ -38,16 +38,18 @@ class UnionFind:
         rx, ry = self.find(x), self.find(y)
         self.par[rx] = ry
 
+
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        if len(edges) != n - 1: return False
+        if len(edges) != n - 1:
+            return False
 
         uf = UnionFind(n)
         for x, y in edges:
             if uf.find(x) == uf.find(y):
                 return False
             uf.union(x, y)
-        
+
         return True
 
 

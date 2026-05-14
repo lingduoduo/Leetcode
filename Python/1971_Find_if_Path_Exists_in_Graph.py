@@ -3,7 +3,9 @@ import collections
 
 
 class Solution:
-    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    def validPath(
+        self, n: int, edges: List[List[int]], source: int, destination: int
+    ) -> bool:
         graph = collections.defaultdict(list)
         for u, v in edges:
             graph[u].append(v)
@@ -22,8 +24,11 @@ class Solution:
         visited = set()
         return dfs(source, visited)
 
+
 class Solution:
-    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    def validPath(
+        self, n: int, edges: List[List[int]], source: int, destination: int
+    ) -> bool:
         d = collections.defaultdict(list)
         for e in edges:
             d[e[0]].append(e[1])
@@ -45,19 +50,22 @@ class Solution:
 class UnionFind:
     def __init__(self, n):
         self.par = list(range(n))
-    
+
     def find(self, i):
         if self.par[i] != i:
             self.par[i] = self.find(self.par[i])
         return self.par[i]
-    
+
     def union(self, i, j):
         ri = self.find(i)
         rj = self.find(j)
         self.par[ri] = rj
 
+
 class Solution:
-    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    def validPath(
+        self, n: int, edges: List[List[int]], source: int, destination: int
+    ) -> bool:
         uf = UnionFind(n)
         for e in edges:
             uf.union(e[0], e[1])

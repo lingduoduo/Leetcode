@@ -119,4 +119,3 @@ class Solution:
             else:
                 # nums1's left part is too small, move partition right
                 left = mid1 + 1
-

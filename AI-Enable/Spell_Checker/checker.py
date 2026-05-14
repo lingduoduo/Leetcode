@@ -12,7 +12,9 @@ class Checker:
         self.dictionary = dictionary
         self.ed = EditDistance()
 
-    def suggest(self, word: str, max_distance: int = 2, max_suggestions: int = 5) -> List[str]:
+    def suggest(
+        self, word: str, max_distance: int = 2, max_suggestions: int = 5
+    ) -> List[str]:
         if max_suggestions <= 0:
             return []
         if word in self.dictionary:

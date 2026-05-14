@@ -19,7 +19,7 @@ class Solution:
             if idx == n:
                 return 0
 
-            res = float('inf')
+            res = float("inf")
             for nxt in range(idx + 1, n):
                 if balance[idx] * balance[nxt] < 0:
                     balance[nxt] += balance[idx]
@@ -34,6 +34,7 @@ def tuplify(m: Dict[int, int]) -> Tuple[Tuple[int, int], ...]:
     """把 dict 变成可哈希的 tuple，便于做 memo key。"""
     # 排序保证 key 稳定（否则 dict 顺序可能导致缓存失效）
     return tuple(sorted((k, v) for k, v in m.items() if v != 0))
+
 
 class Solution:
     def minTransfers(self, transactions: List[List[int]]) -> int:
@@ -92,6 +93,7 @@ class Solution:
 
         return dfs(tuplify(balances))
 
+
 if __name__ == "__main__":
-    res = Solution().minTransfers(transactions = [[0,1,10],[2,0,5]])
+    res = Solution().minTransfers(transactions=[[0, 1, 10], [2, 0, 5]])
     print(res)

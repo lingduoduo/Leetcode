@@ -1,6 +1,7 @@
-
 class Solution:
-    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+    def findTheCity(
+        self, n: int, edges: List[List[int]], distanceThreshold: int
+    ) -> int:
 
         def compute_dist(start: int) -> List[float]:
             INF = float("inf")

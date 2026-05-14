@@ -1,5 +1,6 @@
 from bisect import bisect_left
 
+
 class MyCalendar:
 
     def __init__(self):

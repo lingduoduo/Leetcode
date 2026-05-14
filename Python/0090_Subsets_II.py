@@ -45,28 +45,29 @@ class Solution:
             res += cur
         return res
 
+
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         res = [[]]
         prev = []  # store last round's subsets
-        
+
         for i, num in enumerate(nums):
             cur = []
 
             if i > 0 and nums[i] == nums[i - 1]:
-                for pre in prev:   # ✅ use prev instead of cur
+                for pre in prev:  # ✅ use prev instead of cur
                     cur.append(pre + [num])
             else:
                 for pre in res:
                     cur.append(pre + [num])
-            
-            prev = cur            # ✅ update prev
+
+            prev = cur  # ✅ update prev
             res += cur
-        
+
         return res
-    
-    
+
+
 if __name__ == "__main__":
     Input = [1, 2, 2]
     result = Solution().subsetsWithDup(Input)

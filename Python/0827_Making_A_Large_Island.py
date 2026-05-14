@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def largestIsland(self, grid: List[List[int]]) -> int:
         n = len(grid)
@@ -46,5 +47,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().largestIsland(grid = [[1,0],[0,1]])
+    res = Solution().largestIsland(grid=[[1, 0], [0, 1]])
     print(res)

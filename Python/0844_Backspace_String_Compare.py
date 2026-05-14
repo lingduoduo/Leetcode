@@ -1,5 +1,6 @@
 from itertools import zip_longest
 
+
 class Solution(object):
     def backspaceCompare(self, S, T):
         stack1 = []
@@ -15,7 +16,6 @@ class Solution(object):
             elif s != "#":
                 stack2.append(s)
         return stack1 == stack2
-
 
 
 class Solution:

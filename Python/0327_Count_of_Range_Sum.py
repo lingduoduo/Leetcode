@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def countRangeSum(self, nums: List[int], lower: int, upper: int) -> int:
         pre = [0]
@@ -28,9 +29,11 @@ class Solution:
             i, r = lo, mid
             while i < mid and r < hi:
                 if pre[i] <= pre[r]:
-                    res.append(pre[i]); i += 1
+                    res.append(pre[i])
+                    i += 1
                 else:
-                    res.append(pre[r]); r += 1
+                    res.append(pre[r])
+                    r += 1
             res.extend(pre[i:mid])
             res.extend(pre[r:hi])
             pre[lo:hi] = res

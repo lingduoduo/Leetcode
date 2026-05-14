@@ -43,7 +43,7 @@ class Solution:
             result.append(smaller_count)
             update(num + offset, 1, tree, size)
         return reversed(result)
-    
+
 
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
@@ -75,7 +75,7 @@ class Solution:
             num_idxs.append((num, i))
         countAndMergeSort(num_idxs, 0, len(num_idxs) - 1, counts)
         return counts
-    
+
 
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:

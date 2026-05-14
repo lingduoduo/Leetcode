@@ -6,7 +6,7 @@ class Solution:
         res = [-1] * n
 
         for i, (start, end) in enumerate(intervals):
-            l, r = 0, n  
+            l, r = 0, n
 
             while l < r:
                 mid = (l + r) // 2
@@ -20,7 +20,7 @@ class Solution:
                 res[i] = starts[l][1]
 
         return res
-        
+
 
 if __name__ == "__main__":
     # intervals = [[3,4],[2,3],[1,2]]

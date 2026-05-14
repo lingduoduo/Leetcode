@@ -23,8 +23,7 @@ class Nonogram:
         self.row_clues = tuple(tuple(clue) for clue in self.row_clues)
         self.col_clues = tuple(tuple(clue) for clue in self.col_clues)
         self._grid = [
-            [CellState.UNKNOWN for _ in range(self.cols)]
-            for _ in range(self.rows)
+            [CellState.UNKNOWN for _ in range(self.cols)] for _ in range(self.rows)
         ]
 
     def get_row_clues(self, row: int) -> List[int]:
@@ -57,11 +56,7 @@ class Nonogram:
         return rows_solved and cols_solved
 
     def has_unknown_cells(self) -> bool:
-        return any(
-            cell == CellState.UNKNOWN
-            for row in self._grid
-            for cell in row
-        )
+        return any(cell == CellState.UNKNOWN for row in self._grid for cell in row)
 
     @staticmethod
     def extract_runs(line: Sequence[CellState]) -> List[int]:
@@ -73,11 +68,11 @@ class Nonogram:
             elif length > 0:
                 runs.append(length)
                 length = 0
-        
+
         # Handle case where line ends with filled cells
         if length > 0:
             runs.append(length)
-        
+
         return runs if runs else [0]
 
     @staticmethod
@@ -92,7 +87,9 @@ class Nonogram:
             return self._is_partial_line_valid(line, clues)
         return self.extract_runs(line) == list(clues)
 
-    def _is_partial_line_valid(self, line: Sequence[CellState], clues: Sequence[int]) -> bool:
+    def _is_partial_line_valid(
+        self, line: Sequence[CellState], clues: Sequence[int]
+    ) -> bool:
         if self.min_line_length(clues) > len(line):
             return False
 

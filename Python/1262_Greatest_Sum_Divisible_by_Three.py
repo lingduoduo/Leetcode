@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxSumDivThree(self, nums):
         from collections import defaultdict
@@ -39,6 +40,7 @@ class Solution:
                 return s - t2
 
             return s - t1
+
 
 class Solution:
     def maxSumDivThree(self, nums: List[int]) -> int:

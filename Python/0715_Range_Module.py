@@ -42,6 +42,8 @@ class RangeModule:
 # param_2 = obj.queryRange(left,right)
 # obj.removeRange(left,right)
 import collections
+
+
 class SegmentTree:
     def __init__(self):
         # store values
@@ -89,7 +91,10 @@ class SegmentTree:
         # partially overlap
         self.push_down(idx)
         mid = root_start + (root_end - root_start) // 2
-        return self.query(query_start, query_end, root_start, mid, 2 * idx) and self.query(query_start, query_end, mid + 1, root_end, 2 * idx + 1)
+        return self.query(
+            query_start, query_end, root_start, mid, 2 * idx
+        ) and self.query(query_start, query_end, mid + 1, root_end, 2 * idx + 1)
+
 
 class RangeModule:
 

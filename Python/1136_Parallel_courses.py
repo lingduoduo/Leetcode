@@ -30,4 +30,3 @@ class Solution:
                         next_queue.append(end_node)
             queue = next_queue
         return step if studied_count == n else -1
-    

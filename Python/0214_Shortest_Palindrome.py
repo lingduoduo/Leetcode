@@ -1,7 +1,7 @@
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
         def kmp(txt, pattern):
-            curr = pattern + '#' + txt
+            curr = pattern + "#" + txt
             next_arr = [0 for _ in range(len(curr))]
             i = 1
             j = 0

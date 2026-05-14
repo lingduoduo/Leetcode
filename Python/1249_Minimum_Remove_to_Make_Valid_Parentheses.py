@@ -2,7 +2,7 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
         valid = set()
-        
+
         for i, w in enumerate(s):
             if w == "(":
                 stack.append(i)
@@ -10,14 +10,14 @@ class Solution:
                 valid.add(i)
                 valid.add(stack[-1])
                 stack.pop()
-        
+
         res = []
         for i, w in enumerate(s):
             if w not in "()":
                 res.append(w)
             elif i in valid:
                 res.append(w)
-        
+
         return "".join(res)
 
 
@@ -35,7 +35,7 @@ class Solution:
                     res.append(cha)
             else:
                 res.append(cha)
-        
+
         for i in reversed(range(len(res))):
             if cnt == 0:
                 break
@@ -80,21 +80,21 @@ class Solution:
 
         # First pass: mark excess closing parentheses with '*'
         for i in range(len(arr)):
-            if arr[i] == '(':
+            if arr[i] == "(":
                 cnt += 1
-            elif arr[i] == ')':
+            elif arr[i] == ")":
                 if cnt == 0:
-                    arr[i] = '*' 
+                    arr[i] = "*"
                 else:
                     cnt -= 1
 
         for i in range(len(arr) - 1, -1, -1):
-            if cnt > 0 and arr[i] == '(':
-                arr[i] = '*' 
+            if cnt > 0 and arr[i] == "(":
+                arr[i] = "*"
                 cnt -= 1
-        return ''.join(c for c in arr if c != '*')
-    
-    
+        return "".join(c for c in arr if c != "*")
+
+
 if __name__ == "__main__":
     s = "))(("
     results = Solution().minRemoveToMakeValid(s)

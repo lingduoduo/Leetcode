@@ -1,6 +1,7 @@
 from typing import List, Tuple
 from collections import deque
 
+
 class Solution:
     def shortestBridge(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
@@ -25,8 +26,13 @@ class Solution:
             i, j = stack.pop()
             for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                 x, y = i + dx, j + dy
-                if 0 <= x < m and 0 <= y < n and grid[x][y] == 1 and (x, y) not in visited:
-                    stack.append((x, y))      # <-- tuple, not list
+                if (
+                    0 <= x < m
+                    and 0 <= y < n
+                    and grid[x][y] == 1
+                    and (x, y) not in visited
+                ):
+                    stack.append((x, y))  # <-- tuple, not list
                     visited.add((x, y))
 
         # 3) BFS expansion layer by layer from the first island until hitting the second

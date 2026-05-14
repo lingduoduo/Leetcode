@@ -1,7 +1,8 @@
 from typing import List
 
+
 class Solution:
-    def threeSumClosest(self, nums: List[int], target: int) -> int:        
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
         n = len(nums)
         res = nums[0] + nums[1] + nums[2]
@@ -25,7 +26,6 @@ class Solution:
                     while j < k and nums[k] == nums[k + 1]:
                         k -= 1
         return res
-
 
 
 if __name__ == "__main__":

@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def applyOperations(self, nums: List[int]) -> List[int]:
         for i in range(len(nums) - 1):
@@ -12,9 +14,9 @@ class Solution:
                 idx += 1
         return nums
 
-if __name__ == '__main__':
-    res = Solution().applyOperations(nums = [1,2,2,1,1,0])
-    print(res)
-    res = Solution().applyOperations(nums = [0,1])
-    print(res)
 
+if __name__ == "__main__":
+    res = Solution().applyOperations(nums=[1, 2, 2, 1, 1, 0])
+    print(res)
+    res = Solution().applyOperations(nums=[0, 1])
+    print(res)

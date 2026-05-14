@@ -13,7 +13,7 @@ class Solution:
                 while s > x:
                     s -= nums[left]
                     left += 1
-                cnt += (right - left + 1)
+                cnt += right - left + 1
             return cnt
 
         while lo < hi:

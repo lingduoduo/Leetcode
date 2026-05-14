@@ -6,7 +6,13 @@ from typing import List, Set
 
 from solver import MaxUniqueSolver
 from word_list import WordList
-from words import get_small_words, get_months, get_primes, get_wordle_words, get_large_words
+from words import (
+    get_small_words,
+    get_months,
+    get_primes,
+    get_wordle_words,
+    get_large_words,
+)
 
 
 class SolverTest(unittest.TestCase):
@@ -18,7 +24,9 @@ class SolverTest(unittest.TestCase):
             self.assertIn(word, valid, f"'{word}' is not a valid word")
             chars = wl.char_set(word)
             overlap = used_chars & chars
-            self.assertEqual(len(overlap), 0, f"'{word}' shares chars {overlap} with prior words")
+            self.assertEqual(
+                len(overlap), 0, f"'{word}' shares chars {overlap} with prior words"
+            )
             used_chars |= chars
 
     # ===== Phase 2: Implement Solver =====

@@ -1,5 +1,6 @@
 import random
 
+
 class Solution:
 
     def __init__(self, head: Optional[ListNode]):
@@ -18,7 +19,6 @@ class Solution:
             curr = curr.next
             scope += 1
         return chosen_value
-        
 
 
 # Your Solution object will be instantiated and called as such:

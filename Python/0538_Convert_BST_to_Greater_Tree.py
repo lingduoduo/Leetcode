@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -77,9 +78,11 @@ class Solution:
         self.pre = cur.val
         self.traversal(cur.left)
 
+
 class Solution:
     def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root: return None
+        if not root:
+            return None
         stack = []
         node = root
         pre = 0
@@ -87,10 +90,9 @@ class Solution:
             while node:
                 stack.append(node)
                 node = node.right
-                
+
             node = stack.pop()
             pre += node.val
             node.val = pre
             node = node.left
         return root
-

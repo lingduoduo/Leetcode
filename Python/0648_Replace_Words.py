@@ -82,7 +82,6 @@ class WordDictionary:
 
     def __init__(self):
         self.d = {}
-    
 
     def addWord(self, word: str) -> None:
         d = self.d
@@ -100,7 +99,7 @@ class WordDictionary:
             if ch not in d:
                 return word
             d = d[ch]
-        return d['#'] if '#' in d else word
+        return d["#"] if "#" in d else word
 
 
 class Solution:
@@ -108,8 +107,8 @@ class Solution:
         trie = WordDictionary()
         for word in dictionary:
             trie.addWord(word)
-        
+
         res = []
         for word in sentence.split():
             res.append(trie.search(word))
-        return ' '.join(res)
+        return " ".join(res)

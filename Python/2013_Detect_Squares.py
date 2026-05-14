@@ -5,7 +5,6 @@ class DetectSquares:
 
     def add(self, point: List[int]) -> None:
         self.d[tuple(point)] += 1
-        
 
     def count(self, point: List[int]) -> int:
         res = 0
@@ -20,7 +19,6 @@ class DetectSquares:
                     res += n * self.d[corner1] * self.d[corner2]
 
         return res
-        
 
 
 # Your DetectSquares object will be instantiated and called as such:

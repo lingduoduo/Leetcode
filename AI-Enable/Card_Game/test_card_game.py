@@ -22,8 +22,12 @@ class CardGameTest(unittest.TestCase):
 
     def test_grid_refills_after_move(self) -> None:
         deck = [
-            Card(7, Suit.CLUBS), Card(6, Suit.CLUBS), Card(4, Suit.CLUBS),
-            Card(9, Suit.CLUBS), Card(5, Suit.DIAMONDS), Card(1, Suit.HEARTS),
+            Card(7, Suit.CLUBS),
+            Card(6, Suit.CLUBS),
+            Card(4, Suit.CLUBS),
+            Card(9, Suit.CLUBS),
+            Card(5, Suit.DIAMONDS),
+            Card(1, Suit.HEARTS),
         ]
         game = CardGame(grid_rows=1, grid_cols=3, deck=deck)
         game.play_move([0, 1, 2])
@@ -58,7 +62,9 @@ class CardGameTest(unittest.TestCase):
         picked = game.play_move([3, 4, 5])
 
         self.assertEqual(picked, [original_grid[3], original_grid[4], original_grid[5]])
-        self.assertEqual(game.history[0], [original_grid[3], original_grid[4], original_grid[5]])
+        self.assertEqual(
+            game.history[0], [original_grid[3], original_grid[4], original_grid[5]]
+        )
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
-
 from typing import List
+
+
 class Solution:
     def minRemoval(self, nums: List[int], k: int) -> int:
         nums.sort()
@@ -14,5 +15,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().minRemoval(nums = [1,6,2,9], k = 2)
+    res = Solution().minRemoval(nums=[1, 6, 2, 9], k=2)
     print(res)

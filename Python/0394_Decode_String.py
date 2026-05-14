@@ -32,16 +32,17 @@ class Solution:
         for cha in s:
             if cha.isdigit():
                 num = num * 10 + int(cha)
-            elif cha == '[':
+            elif cha == "[":
                 stack.append((curr, num))
-                curr = ''
+                curr = ""
                 num = 0
-            elif cha == ']':
+            elif cha == "]":
                 prev, times = stack.pop()
                 curr = prev + curr * times
             else:
                 curr += cha
         return curr
+
 
 if __name__ == "__main__":
     ###s='3[a]2[bc]'

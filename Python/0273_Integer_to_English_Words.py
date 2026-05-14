@@ -63,12 +63,59 @@ class Solution(object):
 
 class Solution:
     def numberToWords(self, num: int) -> str:
-        if num == 0: return "Zero"
+        if num == 0:
+            return "Zero"
 
-        ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-        tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
-        teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen","Nineteen"]
-        suffixes = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion","Septillion", "Octillion", "Nonillion", "Decillion"]
+        ones = [
+            "",
+            "One",
+            "Two",
+            "Three",
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eight",
+            "Nine",
+        ]
+        tens = [
+            "",
+            "Ten",
+            "Twenty",
+            "Thirty",
+            "Forty",
+            "Fifty",
+            "Sixty",
+            "Seventy",
+            "Eighty",
+            "Ninety",
+        ]
+        teens = [
+            "Ten",
+            "Eleven",
+            "Twelve",
+            "Thirteen",
+            "Fourteen",
+            "Fifteen",
+            "Sixteen",
+            "Seventeen",
+            "Eighteen",
+            "Nineteen",
+        ]
+        suffixes = [
+            "",
+            "Thousand",
+            "Million",
+            "Billion",
+            "Trillion",
+            "Quadrillion",
+            "Quintillion",
+            "Sextillion",
+            "Septillion",
+            "Octillion",
+            "Nonillion",
+            "Decillion",
+        ]
 
         words = []
         i = 0

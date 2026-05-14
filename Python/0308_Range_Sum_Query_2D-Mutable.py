@@ -5,11 +5,11 @@ class NumMatrix:
             self.m = 0
             self.n = 0
             return
-        
+
         self.m, self.n = len(matrix), len(matrix[0])
         self.matrix = [[0] * self.n for _ in range(self.m)]
         self.bit = [[0] * (self.n + 1) for _ in range(self.m + 1)]
-        
+
         for i in range(self.m):
             for j in range(self.n):
                 self.update(i, j, matrix[i][j])

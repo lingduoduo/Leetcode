@@ -7,8 +7,10 @@ class Node(object):
         self.next = next
         self.child = child
 """
+
+
 class Solution:
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def flatten(self, head: "Optional[Node]") -> "Optional[Node]":
         if not head:
             return
 
@@ -16,7 +18,7 @@ class Solution:
         stack = []
         stack.append(head)
         prev = dummy
-        
+
         while stack:
             curr = stack.pop()
             curr.prev = prev

@@ -20,6 +20,7 @@ class Solution:
             a, b = (a ^ b) & mask, ((a & b) << 1) & mask
         return a if a <= MAX else ~(a ^ mask)
 
+
 class Solution:
     def getSum(self, a: int, b: int) -> int:
         res = 0
@@ -38,4 +39,4 @@ class Solution:
             a >>= 1
             b >>= 1
 
-        return res  
+        return res

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
         que = deque([])
@@ -11,13 +12,23 @@ class Solution:
                 i, j = que.popleft()
                 if (i, j) == (x, y):
                     return step
-                for dx, dy in [(1, 2), (2, 1), (2, -1), (1, -2),(-1, -2), (-2, -1), (-2, 1), (-1, 2)]:
+                for dx, dy in [
+                    (1, 2),
+                    (2, 1),
+                    (2, -1),
+                    (1, -2),
+                    (-1, -2),
+                    (-2, -1),
+                    (-2, 1),
+                    (-1, 2),
+                ]:
                     nx, ny = i + dx, j + dy
                     if (nx, ny) not in visited:
                         que.append([nx, ny])
                         visited.add((nx, ny))
             step += 1
         return step
+
 
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
@@ -33,8 +44,7 @@ class Solution:
         if x == 2 and y == 2:
             return 4
 
-        moves = [(1, 2), (2, 1), (2, -1), (1, -2),
-                 (-1, -2), (-2, -1), (-2, 1), (-1, 2)]
+        moves = [(1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1), (-2, 1), (-1, 2)]
 
         # Bidirectional BFS: expand from start and target
         front = {(0, 0)}

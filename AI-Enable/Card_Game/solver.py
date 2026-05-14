@@ -102,8 +102,12 @@ class Solver:
                     if pos not in simulated_grid and simulated_deck:
                         simulated_grid[pos] = simulated_deck.pop()
 
-                future_values = tuple(sorted(card.value for card in simulated_grid.values()))
-                removed_values = sorted((grid[pos].value for pos in triple), reverse=True)
+                future_values = tuple(
+                    sorted(card.value for card in simulated_grid.values())
+                )
+                removed_values = sorted(
+                    (grid[pos].value for pos in triple), reverse=True
+                )
                 score = (
                     self._count_combinations_with_value(15, future_values, 3),
                     sum(removed_values),
@@ -143,8 +147,12 @@ class Solver:
         best_turns = -1
 
         for triple in self._get_valid_triples_from_state(grid_state):
-            next_grid_state, next_deck_state = self._simulate_move(grid_state, deck_state, triple)
-            total_turns = 1 + self._max_turns_from_state(next_grid_state, next_deck_state)
+            next_grid_state, next_deck_state = self._simulate_move(
+                grid_state, deck_state, triple
+            )
+            total_turns = 1 + self._max_turns_from_state(
+                next_grid_state, next_deck_state
+            )
             if total_turns > best_turns:
                 best_turns = total_turns
                 best_triple = list(triple)
@@ -153,7 +161,10 @@ class Solver:
 
     def _encode_grid_state(self, grid: Dict[int, object]) -> Tuple[int, ...]:
         """Encode the visible grid as card values in fixed position order."""
-        return tuple(grid[pos].value if pos in grid else 0 for pos in range(self.game.grid_rows * self.game.grid_cols))
+        return tuple(
+            grid[pos].value if pos in grid else 0
+            for pos in range(self.game.grid_rows * self.game.grid_cols)
+        )
 
     def _encode_deck_state(self) -> Tuple[int, ...]:
         """Encode the remaining deck in pop order."""
@@ -161,7 +172,9 @@ class Solver:
 
     @staticmethod
     @lru_cache(maxsize=None)
-    def _get_valid_triples_from_state(grid_state: Tuple[int, ...]) -> Tuple[Tuple[int, int, int], ...]:
+    def _get_valid_triples_from_state(
+        grid_state: Tuple[int, ...],
+    ) -> Tuple[Tuple[int, int, int], ...]:
         """Enumerate all valid 3-position moves for an encoded grid."""
         positions = [pos for pos, value in enumerate(grid_state) if value != 0]
         valid_triples: List[Tuple[int, int, int]] = []
@@ -193,18 +206,27 @@ class Solver:
 
     @staticmethod
     @lru_cache(maxsize=None)
-    def _max_turns_from_state(grid_state: Tuple[int, ...], deck_state: Tuple[int, ...]) -> int:
+    def _max_turns_from_state(
+        grid_state: Tuple[int, ...], deck_state: Tuple[int, ...]
+    ) -> int:
         """Return the maximum remaining turns from an encoded game state."""
         best_turns = 0
 
         for triple in Solver._get_valid_triples_from_state(grid_state):
-            next_grid_state, next_deck_state = Solver._simulate_move(grid_state, deck_state, triple)
-            best_turns = max(best_turns, 1 + Solver._max_turns_from_state(next_grid_state, next_deck_state))
+            next_grid_state, next_deck_state = Solver._simulate_move(
+                grid_state, deck_state, triple
+            )
+            best_turns = max(
+                best_turns,
+                1 + Solver._max_turns_from_state(next_grid_state, next_deck_state),
+            )
 
         return best_turns
 
     @staticmethod
-    def _count_combinations_with_value_static(target: int, available_values: tuple, count: int) -> int:
+    def _count_combinations_with_value_static(
+        target: int, available_values: tuple, count: int
+    ) -> int:
         """Count how many ways to make target using exactly count values."""
         if count < 0 or target < 0:
             return 0
@@ -223,9 +245,13 @@ class Solver:
 
         return dp[count][target]
 
-    def _count_combinations_with_value(self, target: int, available_values: tuple, count: int) -> int:
+    def _count_combinations_with_value(
+        self, target: int, available_values: tuple, count: int
+    ) -> int:
         """Count how many ways to make target using exactly count values."""
-        return self._count_combinations_with_value_static(target, available_values, count)
+        return self._count_combinations_with_value_static(
+            target, available_values, count
+        )
 
     def play_game_dp_enhanced(self) -> int:
         """Backward-compatible alias for the optimized strategy."""

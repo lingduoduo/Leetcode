@@ -14,7 +14,7 @@ class Solution:
                     que.append((i, j))
                 else:
                     mat[i][j] = float("inf")
-                    
+
         while que:
             for _ in range(len(que)):
                 i, j = que.popleft()

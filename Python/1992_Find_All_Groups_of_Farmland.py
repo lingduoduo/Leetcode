@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def findFarmland(self, land: List[List[int]]) -> List[List[int]]:
         m = len(land)
@@ -21,4 +23,3 @@ class Solution:
                     coordinates = explore(r1, c1)
                     res.append(coordinates)
         return res
-

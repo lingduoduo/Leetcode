@@ -1,7 +1,7 @@
 class Solution:
     def numberOfPatterns(self, m: int, n: int) -> int:
         skip = [[0] * 10 for _ in range(10)]
-        
+
         skip[1][3] = skip[3][1] = 2
         skip[1][7] = skip[7][1] = 4
         skip[3][9] = skip[9][3] = 6

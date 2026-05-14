@@ -113,6 +113,7 @@ class Solution:
             while p2:
                 p1.next, p2.next, p1, p2 = p2, p1.next, p1.next, p2.next
 
+
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         """
@@ -130,7 +131,7 @@ class Solution:
         s.next = None
         while nxt:
             nxt.next, prv, nxt = prv, nxt, nxt.next
-        
+
         p1 = head
         p2 = prv
         while p2:

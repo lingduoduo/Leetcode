@@ -52,7 +52,7 @@ class Solution:
 
         horizontal = {}
         vertical = {}
-        res = float('inf')
+        res = float("inf")
 
         for x, y in points:
             if y not in horizontal:
@@ -61,7 +61,6 @@ class Solution:
             if x not in vertical:
                 vertical[x] = []
             vertical[x].append(y)
-
 
         for line in horizontal.values():
             line.sort()
@@ -77,6 +76,4 @@ class Solution:
                         continue
                     if prev_y in vertical[prev_x]:
                         res = min(res, abs(x - prev_x) * abs(y - prev_y))
-        return 0 if res == float('inf') else res
-
-        
+        return 0 if res == float("inf") else res

@@ -35,15 +35,18 @@ class Solution:
             self.dfs(n, visited, d, end, dst, K - 1, path + price)
             visited.remove(src)
 
+
 class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def findCheapestPrice(
+        self, n: int, flights: List[List[int]], src: int, dst: int, k: int
+    ) -> int:
         graph = defaultdict(list)
         for u, v, price in flights:
             graph[u].append((v, price))
 
         # (cost, node, stops)
         queue = deque([(0, src, 0)])
-        
+
         # best[node][stops] = min cost
         best = dict()
         res = float("inf")

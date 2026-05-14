@@ -1,6 +1,8 @@
 import collections
 from typing import List
 from collections import defaultdict
+
+
 class Solution:
     def numSplits(self, s: str) -> int:
         d_left = defaultdict(int)
@@ -24,6 +26,7 @@ class Solution:
 
         return res
 
-if __name__ == '__main__':
-    res = Solution().numSplits(s = "abcd")
+
+if __name__ == "__main__":
+    res = Solution().numSplits(s="abcd")
     print(res)

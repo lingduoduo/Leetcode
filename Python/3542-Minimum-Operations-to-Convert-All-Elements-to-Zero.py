@@ -1,5 +1,5 @@
 class Solution:
-    def minOperations(self, nums: List[int]) -> int:        
+    def minOperations(self, nums: List[int]) -> int:
         stack = []
         res = 0
         for num in nums:

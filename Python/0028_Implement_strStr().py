@@ -1,8 +1,10 @@
 from typing import List
 
+
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         return haystack.find(needle)
+
 
 class Solution(object):
     def strStr(self, haystack, needle):
@@ -15,6 +17,7 @@ class Solution(object):
             if haystack[i : (i + len(needle))] == needle:
                 return i
         return -1
+
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
@@ -42,7 +45,9 @@ class Solution:
                 return i - len(needle) + 1
         return -1
 
+
 from typing import List
+
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:

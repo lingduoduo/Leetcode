@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
 
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
@@ -32,6 +33,7 @@ class Solution:
                 q.pop(0)
             q.append(i)
         return 0 if res == float("inf") else res
+
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:

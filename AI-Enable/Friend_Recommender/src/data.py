@@ -27,8 +27,20 @@ def get_huge_network() -> Tuple[List[str], List[Tuple[str, str]]]:
 
 
 def get_small_network() -> Tuple[List[str], List[Tuple[str, str]]]:
-    users = ["Alice", "Bob", "Charlie", "Diana", "Eve", "Frank",
-             "Grace", "Heidi", "Ivan", "Judy", "Karl", "Liam"]
+    users = [
+        "Alice",
+        "Bob",
+        "Charlie",
+        "Diana",
+        "Eve",
+        "Frank",
+        "Grace",
+        "Heidi",
+        "Ivan",
+        "Judy",
+        "Karl",
+        "Liam",
+    ]
     friendships = [
         ("Alice", "Bob"),
         ("Alice", "Charlie"),

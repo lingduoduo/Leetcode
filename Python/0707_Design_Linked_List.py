@@ -57,6 +57,7 @@ class ListNode:
         self.prev = prev
         self.next = next
 
+
 class MyLinkedList:
     def __init__(self):
         self.head = None
@@ -66,7 +67,7 @@ class MyLinkedList:
     def getNode(self, index: int) -> ListNode:
         if index < 0 or index >= self.size:
             return None
-        
+
         if index < self.size // 2:
             current = self.head
             for i in range(index):

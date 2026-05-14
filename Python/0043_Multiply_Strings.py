@@ -31,12 +31,12 @@ def multiply(num1: str, num2: str) -> str:
         return "0"
 
     n1, n2 = len(num1), len(num2)
-    res = [0] * (n1 + n2)  
+    res = [0] * (n1 + n2)
 
     for i in range(n1 - 1, -1, -1):
-        d1 = ord(num1[i]) - ord('0')
+        d1 = ord(num1[i]) - ord("0")
         for j in range(n2 - 1, -1, -1):
-            d2 = ord(num2[j]) - ord('0')
+            d2 = ord(num2[j]) - ord("0")
             pos_low = i + j + 1
             pos_high = i + j
 
@@ -48,8 +48,7 @@ def multiply(num1: str, num2: str) -> str:
     while i < len(res) and res[i] == 0:
         i += 1
 
-    return ''.join(map(str, res[i:]))
-
+    return "".join(map(str, res[i:]))
 
 
 if __name__ == "__main__":

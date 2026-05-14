@@ -15,7 +15,7 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid
-                
+
         first = left
         if first == n or nums[first] != target:
             return [-1, -1]
@@ -30,7 +30,7 @@ class Solution:
                 right = mid
         last = left - 1
         return [first, last]
-    
+
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
@@ -43,7 +43,7 @@ class Solution:
                 else:
                     right = mid
             return left
-        
+
         left = lower_bound(nums, target)
         right = lower_bound(nums, target + 1) - 1
         if left <= right:

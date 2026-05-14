@@ -35,7 +35,4 @@ def recommend_by_mutual_friends(
         mutual_counts.items(),
         key=lambda item: (-item[1], item[0]),
     )
-    return [
-        candidate
-        for candidate, _ in ranked_candidates[:max_recommendations]
-    ]
+    return [candidate for candidate, _ in ranked_candidates[:max_recommendations]]

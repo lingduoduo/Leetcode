@@ -49,7 +49,9 @@ class SolverTest(unittest.TestCase):
             path = solver.solve()
             elapsed = time.time() - t0
             self.assertIsNotNone(path, f"No path found in {maze.rows}x{maze.cols} maze")
-            self.assertLess(elapsed, max_time, f"Took {elapsed:.2f}s, expected < {max_time}s")
+            self.assertLess(
+                elapsed, max_time, f"Took {elapsed:.2f}s, expected < {max_time}s"
+            )
 
     def test_directional_passage_right_only(self) -> None:
         solver = Solver(get_directional_maze())
@@ -137,7 +139,9 @@ class SolverTest(unittest.TestCase):
         self.assertEqual(path[0], solver.maze.get_start())
         self.assertEqual(path[-1], solver.maze.get_end())
         expected_time = 5
-        self.assertLess(elapsed, expected_time, f"75x75: {elapsed:.3f}s, need < {expected_time}s")
+        self.assertLess(
+            elapsed, expected_time, f"75x75: {elapsed:.3f}s, need < {expected_time}s"
+        )
 
     def test_huge_maze_100x100(self) -> None:
         maze = get_huge_maze(100, seed=42)
@@ -149,7 +153,9 @@ class SolverTest(unittest.TestCase):
         self.assertEqual(path[0], solver.maze.get_start())
         self.assertEqual(path[-1], solver.maze.get_end())
         expected_time = 5
-        self.assertLess(elapsed, expected_time, f"100x100: {elapsed:.3f}s, need < {expected_time}s")
+        self.assertLess(
+            elapsed, expected_time, f"100x100: {elapsed:.3f}s, need < {expected_time}s"
+        )
 
     def test_huge_maze_150x150(self) -> None:
         maze = get_huge_maze(150, seed=99)
@@ -161,7 +167,9 @@ class SolverTest(unittest.TestCase):
         self.assertEqual(path[0], solver.maze.get_start())
         self.assertEqual(path[-1], solver.maze.get_end())
         expected_time = 5
-        self.assertLess(elapsed, expected_time, f"150x150: {elapsed:.3f}s, need < {expected_time}s")
+        self.assertLess(
+            elapsed, expected_time, f"150x150: {elapsed:.3f}s, need < {expected_time}s"
+        )
 
 
 if __name__ == "__main__":

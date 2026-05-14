@@ -2,6 +2,8 @@ import collections
 import heapq
 
 from typing import List
+
+
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
         def dfs(node):

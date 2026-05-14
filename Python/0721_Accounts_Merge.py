@@ -2,6 +2,8 @@ from typing import List
 import collections
 
 from collections import defaultdict
+
+
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         edge = defaultdict(list)
@@ -31,6 +33,7 @@ class Solution:
                 res.append([name] + emails)
         return res
 
+
 class UnionFind:
     def __init__(self, n: int):
         self.par = list(range(n))
@@ -54,7 +57,7 @@ class UnionFind:
         self.size[rx] += self.size[ry]
         return True
 
-        
+
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         uf = UnionFind(len(accounts))
@@ -69,7 +72,7 @@ class Solution:
         for email, account in d.items():
             res[uf.find(account)].append(email)
         print(res)
-        
+
         return [[accounts[i][0]] + sorted(emails) for i, emails in res.items()]
 
 

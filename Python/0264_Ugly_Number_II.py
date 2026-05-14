@@ -32,11 +32,15 @@ class Solution:
 
             dp[i] = min(next2, next3, next5)
 
-            if dp[i] == next2: p2 += 1
-            if dp[i] == next3: p3 += 1
-            if dp[i] == next5: p5 += 1
+            if dp[i] == next2:
+                p2 += 1
+            if dp[i] == next3:
+                p3 += 1
+            if dp[i] == next5:
+                p5 += 1
 
         return dp[-1]
+
 
 import heapq
 

@@ -1,6 +1,7 @@
 from typing import List
 from collections import Counter, defaultdict
 
+
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         if not s or not words:
@@ -23,14 +24,14 @@ class Solution:
             count = 0
 
             for right in range(start, n - word_len + 1, word_len):
-                word = s[right:right + word_len]
+                word = s[right : right + word_len]
 
                 if word in target:
                     seen[word] += 1
                     count += 1
 
                     while seen[word] > target[word]:
-                        left_word = s[left:left + word_len]
+                        left_word = s[left : left + word_len]
                         seen[left_word] -= 1
                         left += word_len
                         count -= 1
@@ -38,7 +39,7 @@ class Solution:
                     if count == word_count:
                         res.append(left)
 
-                        left_word = s[left:left + word_len]
+                        left_word = s[left : left + word_len]
                         seen[left_word] -= 1
                         left += word_len
                         count -= 1

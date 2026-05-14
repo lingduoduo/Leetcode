@@ -1,6 +1,9 @@
 class Solution:
-    def processQueries(self, c: int, connections: List[List[int]], queries: List[List[int]]) -> List[int]:
+    def processQueries(
+        self, c: int, connections: List[List[int]], queries: List[List[int]]
+    ) -> List[int]:
         from collections import defaultdict
+
         # Build graph
         G = [[] for _ in range(c + 1)]
         for u, v in connections:
@@ -15,7 +18,7 @@ class Solution:
             stack = [u]
             while stack:
                 x = stack.pop()
-                if seen[x]: 
+                if seen[x]:
                     continue
                 seen[x] = cid
                 for nxt in G[x]:

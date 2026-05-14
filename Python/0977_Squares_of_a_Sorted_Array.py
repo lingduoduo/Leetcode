@@ -47,6 +47,7 @@ class Solution:
             i -= 1  # 存放结果的指针需要往前平移一位
         return res
 
+
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         left, right = 0, len(nums) - 1

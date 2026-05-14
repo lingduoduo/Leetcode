@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def countAlternatingSubarrays(self, nums: List[int]) -> int:
         res = 0

@@ -1,5 +1,6 @@
 from typing import List
 
+
 def letterCombinations(digits):
     phone = {
         "2": "abc",
@@ -9,14 +10,14 @@ def letterCombinations(digits):
         "6": "mno",
         "7": "pqrs",
         "8": "tuv",
-        "9": "wxyz"
+        "9": "wxyz",
     }
 
     def backtrack(path, idx):
         if idx == len(digits):
             res.append(path)
             return
-        
+
         for letter in phone[digits[idx]]:
             backtrack(path + letter, idx + 1)
 
@@ -62,7 +63,7 @@ class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if len(digits) == 0:
             return None
-            
+
         letterMap = [
             "abc",  # 2
             "def",  # 3
@@ -71,17 +72,18 @@ class Solution:
             "mno",  # 6
             "pqrs",  # 7
             "tuv",  # 8
-            "wxyz"  # 9
+            "wxyz",  # 9
         ]
 
         res = [""]
-        for digit in digits: #"23"
+        for digit in digits:  # "23"
             cur = []
             for pre in res:
                 for ch in letterMap[ord(digit) - ord("2")]:
                     cur.append(pre + ch)
             res = cur[:]
         return res
+
 
 if __name__ == "__main__":
     digits = "23"

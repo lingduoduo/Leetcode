@@ -18,6 +18,7 @@ class Solution:
                 nums[i] = right.pop(0)
         return nums
 
+
 class Solution:
     def wiggleSort(self, nums: List[int]) -> None:
         n = len(nums)
@@ -36,6 +37,7 @@ class Solution:
         for idx in idx_order:
             nums[idx] = -heapq.heappop(maxh)
         return nums
+
 
 if __name__ == "__main__":
     # nums = [5,1,1,6,2]

@@ -16,7 +16,9 @@ class Solution:
                 dfs(node.left, node)
                 dfs(node.right, node)
 
-                if (par is None and node not in covered) or (node.left not in covered or node.right not in covered):
+                if (par is None and node not in covered) or (
+                    node.left not in covered or node.right not in covered
+                ):
                     self.res += 1
                     covered.update({node, par, node.left, node.right})
 
@@ -28,7 +30,7 @@ class Solution:
 
 class Solution:
     def minCameraCover(self, root: TreeNode) -> int:
-        result = [0]  
+        result = [0]
 
         def traversal(cur: TreeNode, result: List[int]) -> int:
             if not cur:
@@ -44,7 +46,7 @@ class Solution:
                 return 1
             else:
                 return 2
-            
+
         if traversal(root, result) == 0:
             result[0] += 1
 

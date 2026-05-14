@@ -8,6 +8,7 @@ class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
         MOD = 10**9 + 7
         subtotal = []
+
         def dfs(node):
             if not node:
                 return 0
@@ -21,4 +22,3 @@ class Solution:
             res = max(res, s * (total - s))
 
         return res % MOD
-

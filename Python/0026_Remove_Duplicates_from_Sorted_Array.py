@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         i = 0
@@ -23,6 +24,7 @@ class Solution(object):
                 nums[idx] = nums[i]
         return idx + 1
 
+
 if __name__ == "__main__":
-   res = Solution().removeDuplicates([1, 1, 2])
-   print(res)
+    res = Solution().removeDuplicates([1, 1, 2])
+    print(res)

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         last_occurrence = {}  # 存储每个字符最后出现的位置
@@ -17,9 +18,10 @@ class Solution:
 
         return result
 
+
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        d =  defaultdict(list)
+        d = defaultdict(list)
         for i, v in enumerate(s):
             if v not in d:
                 d[v] = [i, i]
@@ -34,6 +36,7 @@ class Solution:
                 stack[-1][1] = max(stack[-1][1], values[i][1])
         res = [v[1] - v[0] + 1 for v in stack]
         return res
+
 
 if __name__ == "__main__":
     S = "ababcbacadefegdehijhklij"

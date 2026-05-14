@@ -15,7 +15,7 @@ class WordList:
 
     def is_valid_word(self, word: str) -> bool:
         """Check if a word is valid (non-empty, no spaces)."""
-        if not word or ' ' in word:
+        if not word or " " in word:
             return False
         return True
 

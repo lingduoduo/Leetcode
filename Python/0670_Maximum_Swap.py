@@ -16,16 +16,17 @@ class Solution:
         nums[left], nums[right] = nums[right], nums[left]
         return int("".join(nums))
 
+
 class Solution:
     def maximumSwap(self, num: int) -> int:
         strs = list(str(num))
         last = [-1] * 10
 
         for i, v in enumerate(strs):
-            last[ord(v) - ord('0')] = i
-        
+            last[ord(v) - ord("0")] = i
+
         for i, ch in enumerate(strs):
-            cur = ord(ch) - ord('0')
+            cur = ord(ch) - ord("0")
             for d in range(9, cur, -1):
                 if last[d] > i:
                     j = last[d]

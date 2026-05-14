@@ -90,7 +90,10 @@ class Solver:
                 if (row, col) in self._tried:
                     continue
             else:
-                while hunt_index < len(hunt_cells) and hunt_cells[hunt_index] in self._tried:
+                while (
+                    hunt_index < len(hunt_cells)
+                    and hunt_cells[hunt_index] in self._tried
+                ):
                     hunt_index += 1
                 if hunt_index >= len(hunt_cells):
                     break

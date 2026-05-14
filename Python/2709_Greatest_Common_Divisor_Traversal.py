@@ -7,7 +7,7 @@ class Solution:
         if min(nums) == 1:
             return False
         factorArray = self.factorsCalculator(maxElement)
-        
+
         parent = list(range(maxElement + 1))
         rank = [1] * (maxElement + 1)
 

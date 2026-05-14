@@ -19,11 +19,12 @@ class SparseVector:
 
 from typing import List
 
+
 class SparseVector:
     def __init__(self, nums: List[int]):
         # Store only non-zero entries to save space
         self.d = {i: v for i, v in enumerate(nums) if v != 0}
-    
+
     def dotProduct(self, vec: "SparseVector") -> int:
         res = 0
         if len(self.d) < len(vec.d):

@@ -9,6 +9,7 @@ class Solution:
         m, n = len(matrix), len(matrix[0])
         res = 0
         visited = [[-1] * n for _ in range(m)]
+
         def dfs(m, n, i, j):
             if visited[i][j] != -1:
                 return visited[i][j]
@@ -29,6 +30,7 @@ class Solution:
                 res = max(res, path)
         return res
 
-if __name__ == '__main__':
-    res = Solution().longestIncreasingPath(matrix = [[9,9,4],[6,6,8],[2,1,1]])
+
+if __name__ == "__main__":
+    res = Solution().longestIncreasingPath(matrix=[[9, 9, 4], [6, 6, 8], [2, 1, 1]])
     print(res)

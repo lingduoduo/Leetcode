@@ -31,6 +31,7 @@ class Solution(object):
         self.fillValue(root.left, result, h + 1, l, mid - 1)
         self.fillValue(root.right, result, h + 1, mid + 1, r)
 
+
 class Solution:
     def printTree(self, root: Optional[TreeNode]) -> List[List[str]]:
         def height(node):
@@ -45,10 +46,11 @@ class Solution:
             fill(node.right, h + 1, mid + 1, r)
 
         h = height(root)
-        w = 2 ** h - 1
-        res = [[''] * w for _ in range(h)]
+        w = 2**h - 1
+        res = [[""] * w for _ in range(h)]
         fill(root, 0, 0, w - 1)
-        return res     
+        return res
+
 
 if __name__ == "__main__":
     print(Solution().matrixReshape([[1, 2], [3, 4]], 4, 1))

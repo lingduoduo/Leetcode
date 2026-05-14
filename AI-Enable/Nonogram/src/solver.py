@@ -4,7 +4,6 @@ from typing import Dict, List, Optional, Tuple
 
 from nonogram import CellState, Nonogram
 
-
 Pattern = Tuple[CellState, ...]
 
 
@@ -75,7 +74,11 @@ class NonogramSolver:
 
             for row in range(puzzle.rows):
                 line = tuple(puzzle.get_row(row))
-                filtered = [pattern for pattern in row_domains[row] if self._matches(line, pattern)]
+                filtered = [
+                    pattern
+                    for pattern in row_domains[row]
+                    if self._matches(line, pattern)
+                ]
                 if not filtered:
                     return None
                 if len(filtered) != len(row_domains[row]):
@@ -91,7 +94,11 @@ class NonogramSolver:
 
             for col in range(puzzle.cols):
                 line = tuple(puzzle.get_col(col))
-                filtered = [pattern for pattern in col_domains[col] if self._matches(line, pattern)]
+                filtered = [
+                    pattern
+                    for pattern in col_domains[col]
+                    if self._matches(line, pattern)
+                ]
                 if not filtered:
                     return None
                 if len(filtered) != len(col_domains[col]):
@@ -117,13 +124,17 @@ class NonogramSolver:
         best_candidates: List[Pattern] = []
 
         for row, domain in enumerate(row_domains):
-            if 1 < len(domain) and (not best_candidates or len(domain) < len(best_candidates)):
+            if 1 < len(domain) and (
+                not best_candidates or len(domain) < len(best_candidates)
+            ):
                 best_axis = "row"
                 best_index = row
                 best_candidates = domain
 
         for col, domain in enumerate(col_domains):
-            if 1 < len(domain) and (not best_candidates or len(domain) < len(best_candidates)):
+            if 1 < len(domain) and (
+                not best_candidates or len(domain) < len(best_candidates)
+            ):
                 best_axis = "col"
                 best_index = col
                 best_candidates = domain
@@ -144,7 +155,10 @@ class NonogramSolver:
         return forced
 
     def _matches(self, line: Pattern, pattern: Pattern) -> bool:
-        return all(cell == CellState.UNKNOWN or cell == state for cell, state in zip(line, pattern))
+        return all(
+            cell == CellState.UNKNOWN or cell == state
+            for cell, state in zip(line, pattern)
+        )
 
     def _generate_patterns(self, length: int, clues: List[int]) -> List[Pattern]:
         key = (length, tuple(clues))

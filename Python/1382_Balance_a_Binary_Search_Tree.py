@@ -1,11 +1,14 @@
-from  collections import Counter
+from collections import Counter
 from typing import List
 import collections
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
@@ -21,7 +24,6 @@ class Solution:
             path[middle].left = construct_bst(left, middle - 1, path)
             path[middle].right = construct_bst(middle + 1, right, path)
             return path[middle]
-
 
         path = inorder_bts(root)
         return construct_bst(0, len(path) - 1, path)
@@ -49,7 +51,8 @@ class Solution:
 
         inorder(root)
         return build(0, len(nodes) - 1)
-    
+
+
 if __name__ == "__main__":
-    res = Solution().taskSchedulerII(tasks = [5,8,8,5], space = 2)
+    res = Solution().taskSchedulerII(tasks=[5, 8, 8, 5], space=2)
     print(res)

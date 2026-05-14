@@ -1,8 +1,10 @@
 class Solution:
-    def findRLEArray(self, encoded1: List[List[int]], encoded2: List[List[int]]) -> List[List[int]]:
+    def findRLEArray(
+        self, encoded1: List[List[int]], encoded2: List[List[int]]
+    ) -> List[List[int]]:
         res = []
         i, j = 0, 0
-        while i<len(encoded1) and j<len(encoded2):
+        while i < len(encoded1) and j < len(encoded2):
             val1, freq1 = encoded1[i]
             val2, freq2 = encoded2[j]
             freq = min(freq1, freq2)

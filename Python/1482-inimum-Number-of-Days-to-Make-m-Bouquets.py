@@ -7,7 +7,7 @@ class Solution:
         right = max(bloomDay) + 1
 
         while left < right:
-            mid = left + (right - left)// 2
+            mid = left + (right - left) // 2
 
             num = 0
             count = 0
@@ -20,7 +20,6 @@ class Solution:
                 if count == k:
                     num += 1
                     count = 0
-
 
             if num >= m:
                 right = mid

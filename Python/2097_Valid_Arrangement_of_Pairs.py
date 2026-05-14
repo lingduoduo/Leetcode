@@ -1,5 +1,7 @@
 from typing import List
 from collections import defaultdict
+
+
 class Solution:
     def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:
         graph = defaultdict(list)
@@ -15,9 +17,11 @@ class Solution:
                 break
 
         res = []
+
         def fn(x):
             """Return Eulerian path via dfs."""
-            while graph[x]: fn(graph[x].pop())
+            while graph[x]:
+                fn(graph[x].pop())
             res.append(x)
 
         fn(x)

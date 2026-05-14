@@ -25,7 +25,7 @@ class Solution:
         res = 0
         for i in range(len(grid) - 2):
             for j in range(len(grid[0]) - 2):
-                mat = [row[j:j+3] for row in grid[i:i+3]]  # correct 3x3
+                mat = [row[j : j + 3] for row in grid[i : i + 3]]  # correct 3x3
                 if checker(mat):
                     res += 1
         return res

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
         def dfs(idx: int, path: str) -> int:
@@ -10,15 +11,17 @@ class Solution:
                 res = max(res, dfs(i + 1, path + arr[i]))
             return res
 
-        return dfs(0, "") 
+        return dfs(0, "")
+
 
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
         dp = [set()]
         for word in arr:
-            if len(set(word)) < len(word): continue
+            if len(set(word)) < len(word):
+                continue
             word = set(word)
             for ch in dp[:]:
-                if not ch & word: 
+                if not ch & word:
                     dp.append(word | ch)
         return max(len(ch) for ch in dp)

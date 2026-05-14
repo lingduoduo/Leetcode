@@ -43,11 +43,11 @@ class Solution:
 
 class Solution:
     def maxSubArray(self, nums):
-        res = float("-inf") 
+        res = float("-inf")
         tot = 0
         for i in range(len(nums)):
             tot += nums[i]
-            if tot > res:  
+            if tot > res:
                 res = tot
             if tot <= 0:  #
                 tot = 0

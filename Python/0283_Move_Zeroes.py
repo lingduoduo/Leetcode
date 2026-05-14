@@ -3,7 +3,8 @@ from typing import List
 
 class Solution(object):
     def moveZeroes(self, nums):
-        if len(nums) <= 1: return nums
+        if len(nums) <= 1:
+            return nums
         l = 0
         r = len(nums) - 1
         while l < r:

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
         idx1 = -1
@@ -14,6 +15,7 @@ class Solution:
                 res = min(res, abs(idx1 - idx2))
 
         return res
+
 
 class Solution:
     def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:

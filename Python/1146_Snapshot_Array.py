@@ -1,5 +1,6 @@
 from bisect import bisect_right
 
+
 class SnapshotArray:
     def __init__(self, length: int):
         self.dif = {}
@@ -17,6 +18,7 @@ class SnapshotArray:
             return self.snaps[snap_id][index]
         else:
             return 0
+
 
 class SnapshotArray:
     def __init__(self, length: int):
@@ -39,7 +41,8 @@ class SnapshotArray:
         h = self.snapshots[index]
         i = bisect_right(h, (snap_id, 10**18)) - 1
         return h[i][1]
-    
+
+
 # Your SnapshotArray object will be instantiated and called as such:
 # obj = SnapshotArray(length)
 # obj.set(index,val)

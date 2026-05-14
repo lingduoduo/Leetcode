@@ -21,8 +21,12 @@ class Network:
             self._stations[name] = []
 
     def add_connection(
-        self, from_station: str, to_station: str,
-        travel_time: int, line: str, one_way: bool = False
+        self,
+        from_station: str,
+        to_station: str,
+        travel_time: int,
+        line: str,
+        one_way: bool = False,
     ) -> None:
         self.add_station(from_station)
         self.add_station(to_station)
@@ -30,7 +34,7 @@ class Network:
         self._stations[from_station].append(
             Connection(to_station, travel_time, line, one_way)
         )
-        
+
         # Only add reverse connection if it's not one-way
         if not one_way:
             self._stations[to_station].append(

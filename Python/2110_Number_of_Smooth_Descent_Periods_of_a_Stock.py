@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def getDescentPeriods(self, prices: List[int]) -> int:
         res = 0
@@ -11,7 +12,8 @@ class Solution:
                 res += 1
                 start = i
         return res
-    
+
+
 if __name__ == "__main__":
-    res = Solution().getDescentPeriods(prices = [8,6,7,7,6])
+    res = Solution().getDescentPeriods(prices=[8, 6, 7, 7, 6])
     print(res)

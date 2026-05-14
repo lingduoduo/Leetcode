@@ -1,4 +1,3 @@
-
 # Definition for a Node.
 class Node:
     def __init__(self, val):
@@ -9,7 +8,7 @@ class Node:
 
 
 class Solution:
-    def inorderSuccessor(self, node: 'Node') -> 'Optional[Node]':
+    def inorderSuccessor(self, node: "Node") -> "Optional[Node]":
         # the successor is somewhere lower in the right subtree
         if node.right:
             node = node.right

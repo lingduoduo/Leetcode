@@ -20,7 +20,9 @@ class Solver:
         key_bit = 1 << (ord(door.lower()) - ord("a"))
         return (key_mask & key_bit) != 0
 
-    def _is_valid_step(self, current: Position, neighbor: Position, key_mask: int) -> bool:
+    def _is_valid_step(
+        self, current: Position, neighbor: Position, key_mask: int
+    ) -> bool:
         if not self.maze.is_valid_move(current, neighbor):
             return False
 
@@ -28,7 +30,9 @@ class Solver:
         dc = neighbor.col - current.col
         neighbor_cell = self.maze.get_cell(neighbor)
 
-        if self.maze.is_door(neighbor_cell) and not self._can_open_door(neighbor_cell, key_mask):
+        if self.maze.is_door(neighbor_cell) and not self._can_open_door(
+            neighbor_cell, key_mask
+        ):
             return False
 
         # ">" is a one-way passage: you may only enter from the left.

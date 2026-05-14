@@ -5,10 +5,11 @@ class Solution:
         x = f * x
         while x:
             res = res * 10 + x % 10
-            res = 0 if res <= -2**31 or res >= 2**31-1 else res
+            res = 0 if res <= -(2**31) or res >= 2**31 - 1 else res
             x = x // 10
         return res * f
 
+
 if __name__ == "__main__":
-    res = Solution().reverse(x = 123)
+    res = Solution().reverse(x=123)
     print(res)

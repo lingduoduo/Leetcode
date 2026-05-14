@@ -20,7 +20,13 @@ class NonogramTest(unittest.TestCase):
 
     def test_extract_runs_with_trailing_empty(self) -> None:
         puzzle = Nonogram(1, 5, [[2, 1]], [[1], [1], [0], [1], [0]])
-        line = [CellState.FILLED, CellState.FILLED, CellState.EMPTY, CellState.FILLED, CellState.EMPTY]
+        line = [
+            CellState.FILLED,
+            CellState.FILLED,
+            CellState.EMPTY,
+            CellState.FILLED,
+            CellState.EMPTY,
+        ]
         self.assertEqual(puzzle.extract_runs(line), [2, 1])
 
     def test_extract_runs_empty_line(self) -> None:
@@ -38,7 +44,13 @@ class NonogramTest(unittest.TestCase):
 
     def test_is_line_valid_complete(self) -> None:
         puzzle = Nonogram(1, 5, [[2, 1]], [[1], [1], [0], [1], [0]])
-        line = [CellState.FILLED, CellState.FILLED, CellState.EMPTY, CellState.FILLED, CellState.EMPTY]
+        line = [
+            CellState.FILLED,
+            CellState.FILLED,
+            CellState.EMPTY,
+            CellState.FILLED,
+            CellState.EMPTY,
+        ]
         self.assertTrue(puzzle.is_line_valid(line, [2, 1]))
 
     # def test_extract_runs_trailing_filled(self) -> None:

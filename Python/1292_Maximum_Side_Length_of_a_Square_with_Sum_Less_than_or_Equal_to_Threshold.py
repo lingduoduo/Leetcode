@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxSideLength(self, mat: List[List[int]], threshold: int) -> int:
         m = len(mat)
@@ -45,4 +46,3 @@ class Solution:
                 right = mid
 
         return res
-

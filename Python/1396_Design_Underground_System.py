@@ -1,4 +1,6 @@
 import collections
+
+
 class UndergroundSystem:
     def __init__(self):
         self.checkin = {}

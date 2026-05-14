@@ -6,7 +6,7 @@ class Allocator:
             self.next = None
 
     def __init__(self, n: int):
-        #self.memo = [0] * n
+        # self.memo = [0] * n
         self.available = n
         self.allocated = dict()
         self.head = self.Block(0, 0)

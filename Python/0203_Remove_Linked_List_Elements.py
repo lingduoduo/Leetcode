@@ -24,6 +24,7 @@ class Solution(object):
             curr = curr.next
         return dummy.next
 
+
 class Solution(object):
     def removeElements(self, head, val):
         """
@@ -33,7 +34,7 @@ class Solution(object):
         """
         dummy = ListNode(-1)
         dummy.next = head
-        
+
         p = dummy
         while p.next:
             if p.next.val == val:

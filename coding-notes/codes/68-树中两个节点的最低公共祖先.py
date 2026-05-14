@@ -1,3 +1,4 @@
+"""
 68. 树中两个节点的最低公共祖先
 
 1 二叉查找树
@@ -19,18 +20,17 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
     return root;
 }
 ```
-
 ```
 class treeNode:
     def __init__(self, val):
         self.val = val
-        self.left = None 
-        self.right = None 
+        self.left = None
+        self.right = None
 
 class Solution:
     def lowestCommonAncestor(self, root, p, q):
         if not root:
-            return root 
+            return root
 
         if root.val > p.val and root.val > q.val:
             return self.lowestCommonAncestor(root.left, p, q)
@@ -74,21 +74,21 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 class treeNode:
     def __init__(self, val):
         self.val = val
-        self.left = None 
-        self.right = None 
+        self.left = None
+        self.right = None
 
 class Solution:
     def lowestCommonAncestor(self, root, p, q):
         if not root or root == p or root == q:
-            return root 
-            
+            return root
+
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
         if not left and right:
             return right
         if not right and left:
-            return left 
+            return left
         if left and right:
             return root
 
@@ -104,3 +104,4 @@ if __name__ == '__main__':
     res = Solution().lowestCommonAncestor(root, root.left.left, root.left.right)
     print(res.val)
 ```
+"""

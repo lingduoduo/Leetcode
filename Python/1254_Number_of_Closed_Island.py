@@ -3,7 +3,7 @@ class Solution:
         position = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
         def dfs(x, y):
-            grid[x][y] = 1   # mark visited land
+            grid[x][y] = 1  # mark visited land
             for i, j in position:
                 nx = x + i
                 ny = y + j
@@ -31,7 +31,7 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 if grid[i][j] == 0:
-                    count += 1     # one closed island found
-                    dfs(i, j)      # mark whole island
+                    count += 1  # one closed island found
+                    dfs(i, j)  # mark whole island
 
         return count

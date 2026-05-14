@@ -1,6 +1,7 @@
 from typing import List
 import collections
 
+
 class Solution:
     def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
         return self.atMost(nums, k) - self.atMost(nums, k - 1)

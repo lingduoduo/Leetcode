@@ -1,10 +1,11 @@
 import random
 
+
 class RandomizedSet:
 
     def __init__(self):
         self.nums = []
-        self.d = {}   
+        self.d = {}
 
     def insert(self, val: int) -> bool:
         if val in self.d:
@@ -16,7 +17,7 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self.d:
             return False
-        
+
         idx = self.d[val]
         last = self.nums[-1]
 

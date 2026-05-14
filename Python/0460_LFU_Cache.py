@@ -104,7 +104,9 @@ class DLL:
         self.removeNode(tail)
         return tail
 
+
 import collections
+
 
 class LFUCache:
 
@@ -143,6 +145,7 @@ class LFUCache:
         if prevFreq == self.minFreq and self.freqTable[prevFreq].size == 0:
             self.minFreq += 1
         return node.val
+
 
 # Your LFUCache object will be instantiated and called as such:
 # obj = LFUCache(capacity)

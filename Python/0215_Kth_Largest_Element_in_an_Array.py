@@ -13,6 +13,7 @@ class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return heapq.nlargest(k, nums)[-1]
 
+
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heap = []
@@ -21,6 +22,7 @@ class Solution:
             if len(heap) > k:
                 heapq.heappop(heap)
         return heap[0]
+
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -43,6 +45,7 @@ class Solution:
 
         return quick_select(nums, k)
 
+
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         min_value = min(nums)
@@ -51,9 +54,9 @@ class Solution:
 
         for num in nums:
             freq[num - min_value] += 1
-        
+
         remain = k
-        for num in range(len(freq) -1, -1, -1):
+        for num in range(len(freq) - 1, -1, -1):
             remain -= freq[num]
             if remain <= 0:
                 return num + min_value

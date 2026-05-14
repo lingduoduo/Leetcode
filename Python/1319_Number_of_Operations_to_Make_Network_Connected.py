@@ -5,11 +5,12 @@ import re
 from collections import deque
 from collections import defaultdict
 
+
 class UnionFind:
     def __init__(self, n):
         self.par = list(range(n))
         self.rank = [1] * n
-    
+
     def find(self, x):
         if x != self.par[x]:
             self.par[x] = self.find(self.par[x])
@@ -19,12 +20,13 @@ class UnionFind:
         rx, ry = self.find(x), self.find(y)
         if rx == ry:
             return False
-        
+
         if self.rank[rx] < self.rank[ry]:
             rx, ry = ry, rx
         self.par[ry] = rx
         self.rank[rx] += 1
         return True
+
 
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
@@ -41,6 +43,7 @@ class Solution:
 
         return len(roots) - 1
 
+
 if __name__ == "__main__":
-    res = Solution().makeConnected(n = 4, connections = [[0,1],[0,2],[1,2]])
+    res = Solution().makeConnected(n=4, connections=[[0, 1], [0, 2], [1, 2]])
     print(res)

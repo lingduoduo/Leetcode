@@ -19,13 +19,17 @@ class PlannerTest(unittest.TestCase):
 
     def test_transfer_limit(self) -> None:
         planner = Planner(get_standard_map())
-        route = planner.find_route_with_max_transfers("Downtown", "Uptown", max_transfers=0)
+        route = planner.find_route_with_max_transfers(
+            "Downtown", "Uptown", max_transfers=0
+        )
         self.assertIsNotNone(route)
         self.assertEqual(route.total_time, 7)
 
     def test_no_route_within_transfer_limit(self) -> None:
         planner = Planner(get_standard_map())
-        route = planner.find_route_with_max_transfers("Downtown", "Uptown", max_transfers=-1)
+        route = planner.find_route_with_max_transfers(
+            "Downtown", "Uptown", max_transfers=-1
+        )
         self.assertIsNone(route)
 
     def test_efficiency_on_large_network(self) -> None:

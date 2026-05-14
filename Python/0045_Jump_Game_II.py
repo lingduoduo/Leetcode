@@ -25,7 +25,9 @@ class Solution:
         for i in range(len(nums)):  # 遍历数组
             for j in range(nums[i] + 1):  # 在当前位置能够跳跃的范围内遍历
                 if i + j < len(nums):  # 确保下一跳的位置不超过数组范围
-                    result[i + j] = min(result[i + j], result[i] + 1)  # 更新到达下一跳位置的最小步数
+                    result[i + j] = min(
+                        result[i + j], result[i] + 1
+                    )  # 更新到达下一跳位置的最小步数
 
         return result[-1]  # 返回到达最后一个位置的最小步数
 

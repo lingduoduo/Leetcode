@@ -1,11 +1,14 @@
 from typing import List
 
+
 class Solution:
-    def findReplaceString(self, s: str, indices: List[int], sources: List[str], targets: List[str]) -> str:
+    def findReplaceString(
+        self, s: str, indices: List[int], sources: List[str], targets: List[str]
+    ) -> str:
         toReplace = {}
         for i in range(len(sources)):
             s_idx = indices[i]
-            if s[s_idx:s_idx+len(sources[i])] == sources[i]:
+            if s[s_idx : s_idx + len(sources[i])] == sources[i]:
                 toReplace[s_idx] = i
 
         res = []
@@ -17,8 +20,7 @@ class Solution:
             else:
                 res.append(s[i])
                 i += 1
-        return ''.join(res)
-
+        return "".join(res)
 
 
 if __name__ == "__main__":

@@ -43,11 +43,11 @@ class Solution:
         while f and f.next:
             s = s.next
             f = f.next.next
-        
+
         prv, nxt = None, s
         while nxt:
             nxt.next, prv, nxt = prv, nxt, nxt.next
-        
+
         p1 = head
         p2 = prv
         while p2:
@@ -55,7 +55,7 @@ class Solution:
                 return False
             p1 = p1.next
             p2 = p2.next
-        
+
         return True
 
 

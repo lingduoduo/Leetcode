@@ -1,6 +1,7 @@
 from typing import List
 from collections import deque
 
+
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
@@ -16,7 +17,7 @@ class Solution:
 
         if fresh == 0:
             return 0
-        
+
         res = 0
         while que:
             for _ in range(len(que)):

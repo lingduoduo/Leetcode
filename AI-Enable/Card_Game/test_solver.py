@@ -41,7 +41,9 @@ class SolverTest(unittest.TestCase):
             grid_rows=4,
             grid_cols=6,
         )
-        self.assertGreaterEqual(stats.average_turns, 11.5, "optimized should average at least 11.5 turns")
+        self.assertGreaterEqual(
+            stats.average_turns, 11.5, "optimized should average at least 11.5 turns"
+        )
 
     def test_simulation_reports_full_score_count_over_100_games(self) -> None:
         stats = Solver.simulate_games(
@@ -56,7 +58,9 @@ class SolverTest(unittest.TestCase):
 
     def test_optimized_strategy_has_higher_perfect_rate(self) -> None:
         greedy_stats = Solver.simulate_games(num_games=100, strategy="play_game")
-        optimized_stats = Solver.simulate_games(num_games=100, strategy="play_game_optimized")
+        optimized_stats = Solver.simulate_games(
+            num_games=100, strategy="play_game_optimized"
+        )
         self.assertGreater(optimized_stats.perfect_games, greedy_stats.perfect_games)
         self.assertGreater(optimized_stats.perfect_rate, greedy_stats.perfect_rate)
 

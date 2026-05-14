@@ -16,6 +16,7 @@ class FileSystem:
             return self.d[path]
         return -1
 
+
 class FileSystem:
 
     def __init__(self):
@@ -23,7 +24,7 @@ class FileSystem:
 
     def createPath(self, path: str, value: int) -> bool:
         ch = self.d
-        directories = path.split('/')[1:]
+        directories = path.split("/")[1:]
 
         for d in directories[:-1]:
             if d not in ch:
@@ -44,13 +45,14 @@ class FileSystem:
 
     def get(self, path: str) -> int:
         ch = self.d
-        for d in path.split('/')[1:]:
+        for d in path.split("/")[1:]:
             if d not in ch:
                 return -1
             ch = ch[d]
 
         return ch.get("#", -1)
-    
+
+
 # Your FileSystem object will be instantiated and called as such:
 # obj = FileSystem()
 # param_1 = obj.createPath(path,value)

@@ -53,6 +53,7 @@ class Solution:
             root.right = self.deleteNode(root.right, key)
         return root
 
+
 class Solution:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
         def deleteOneNode(target: TreeNode) -> TreeNode:
@@ -65,11 +66,11 @@ class Solution:
                 cur = cur.left
             cur.left = target.left
             return target.right
-        
+
         if root is None:
             return root
         cur = root
-        pre = None  
+        pre = None
         while cur:
             if cur.val == key:
                 break

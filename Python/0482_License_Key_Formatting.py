@@ -9,6 +9,6 @@ class Solution(object):
         result = ""
         for i in range(len(S2)):
             result += S2[i]
-            if (i + 1) % K == 0 and (i + 1) <> len(S2):
+            if (i + 1) % K == 0 and (i + 1) != len(S2):
                 result += "-"
         return result[::-1]

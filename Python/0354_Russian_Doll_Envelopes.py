@@ -1,5 +1,6 @@
 from bisect import bisect_left
 
+
 class Solution:
     def maxEnvelopes(self, arr: List[List[int]]) -> int:
         res = sorted(arr, key=lambda x: (x[0], -x[1]))

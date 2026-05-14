@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def verifyPreorder(self, preorder: List[int]) -> bool:
         def helper(i, min_limit, max_limit):

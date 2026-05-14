@@ -1,6 +1,7 @@
 from typing import List
 import collections
 
+
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
         d = collections.Counter()

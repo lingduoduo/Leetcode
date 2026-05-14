@@ -140,13 +140,14 @@ class NumArray:
 
         return rangeSum(self.root, left, right)
 
+
 class NumArray:
 
     def __init__(self, nums):
         self.n = len(nums)
         self.bit = [0] * (self.n + 1)
-        self.arr = nums[:]   
-        
+        self.arr = nums[:]
+
         for i in range(self.n):
             self._add(i + 1, nums[i])
 
@@ -169,7 +170,8 @@ class NumArray:
 
     def sumRange(self, l, r):
         return self._query(r + 1) - self._query(l)
-    
+
+
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # obj.update(index,val)

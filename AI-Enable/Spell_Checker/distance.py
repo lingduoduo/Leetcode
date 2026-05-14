@@ -4,7 +4,9 @@ from typing import Dict, List, Optional, Tuple
 
 
 class EditDistance:
-    def compute(self, source: str, target: str, max_distance: Optional[int] = None) -> int:
+    def compute(
+        self, source: str, target: str, max_distance: Optional[int] = None
+    ) -> int:
         m = len(source)
         n = len(target)
 
@@ -44,9 +46,9 @@ class EditDistance:
                 for j in range(j_start, j_end + 1):
                     cost = 0 if source[i - 1] == target[j - 1] else 1
                     curr[j] = min(
-                        curr[j - 1] + 1,      # insert
-                        prev[j] + 1,          # delete
-                        prev[j - 1] + cost,   # substitute/match
+                        curr[j - 1] + 1,  # insert
+                        prev[j] + 1,  # delete
+                        prev[j - 1] + cost,  # substitute/match
                     )
                 prev = curr
             return prev[n]
@@ -58,9 +60,9 @@ class EditDistance:
             for j in range(1, n + 1):
                 cost = 0 if source[i - 1] == target[j - 1] else 1
                 curr[j] = min(
-                    curr[j - 1] + 1,      # insert
-                    prev[j] + 1,          # delete
-                    prev[j - 1] + cost,   # substitute/match
+                    curr[j - 1] + 1,  # insert
+                    prev[j] + 1,  # delete
+                    prev[j - 1] + cost,  # substitute/match
                 )
             prev = curr
         return prev[n]
@@ -72,15 +74,15 @@ class EditDistance:
         max_distance: int,
     ) -> List[Tuple[str, int, int]]:
         results: List[Tuple[str, int, int]] = []
-        
+
         for candidate, freq in candidates.items():
             # This will skip most "xword123" entries since they're much longer
             if abs(len(word) - len(candidate)) > max_distance:
                 continue
-                
+
             dist = self.compute(word, candidate, max_distance=max_distance)
             if dist <= max_distance:
                 results.append((candidate, dist, freq))
-        
+
         results.sort(key=lambda x: (x[1], -x[2]))
         return results

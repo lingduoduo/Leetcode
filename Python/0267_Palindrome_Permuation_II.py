@@ -1,6 +1,7 @@
 from typing import List
 from collections import Counter
 
+
 class Solution:
     def generatePalindromes(self, s: str) -> List[str]:
         counter = Counter(s)

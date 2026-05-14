@@ -31,6 +31,7 @@ class Solution:
 
         return root
 
+
 class Solution:
     def insertIntoBST(self, root, val):
         if root is None:  # 如果根节点为空，创建新节点作为根节点并返回
@@ -53,7 +54,3 @@ class Solution:
             parent.right = node  # 将新节点连接到父节点的右子树
 
         return root
-
-
-
-

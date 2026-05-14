@@ -41,7 +41,7 @@ class Solution:
     def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
         if not matrix or not matrix[0]:
             return []
-        
+
         n, m = len(matrix), len(matrix[0])
         row, col = 0, 0
         direction = 1
@@ -63,12 +63,13 @@ class Solution:
                 column = new_column
         return res
 
+
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
         d = collections.defaultdict(list)
         for i in range(len(mat)):
             for j in range(len(mat[i])):
-                d[i+j].append(mat[i][j])
+                d[i + j].append(mat[i][j])
         res = []
         for entry in d.items():
             if entry[0] % 2 == 0:

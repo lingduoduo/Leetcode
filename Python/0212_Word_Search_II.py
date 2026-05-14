@@ -77,7 +77,10 @@ class Solution:
 
         return self.trie.result
 
+
 from typing import List
+
+
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         trie = {}
@@ -113,6 +116,7 @@ class Solution:
         if not cur:
             trie.pop(letter)
 
+
 from collections import defaultdict, deque
 from typing import List
 import math
@@ -125,13 +129,13 @@ class Solution:
         n = len(board[0])
         res = []
 
-        def dfs(i, j, trie):    
+        def dfs(i, j, trie):
             ch = board[i][j]
             cur = trie[ch]
 
             if "#" in cur:
                 res.append(cur["#"])
-                del cur["#"]   # avoid duplicates
+                del cur["#"]  # avoid duplicates
 
             board[i][j] = ""
 
@@ -141,7 +145,7 @@ class Solution:
                     dfs(nx, ny, cur)
 
             board[i][j] = ch
-        
+
         trie = {}
         for word in words:
             cur = trie
@@ -158,7 +162,10 @@ class Solution:
 
         return res
 
-if __name__ == "__main__":
-    res = Solution().exist(board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED")
-    print(res)
 
+if __name__ == "__main__":
+    res = Solution().exist(
+        board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+        word="ABCCED",
+    )
+    print(res)

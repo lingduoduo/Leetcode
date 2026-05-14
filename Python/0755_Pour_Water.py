@@ -1,15 +1,16 @@
 from typing import List
 
+
 class Solution:
     def pourWater(self, heights: List[int], volume: int, k: int) -> List[int]:
         for _ in range(volume):
-            mark = k   # where to fall water
+            mark = k  # where to fall water
 
-            l = k - 1   #   search left
+            l = k - 1  #   search left
             while l >= 0:
                 if heights[l] < heights[mark]:
                     mark = l
-                elif  heights[l] > heights[mark]:  
+                elif heights[l] > heights[mark]:
                     break
                 l -= 1
             if mark < k:

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class UnionFind:
     def __init__(self, n: int) -> None:
         # parent[i] = parent of node i
@@ -33,7 +34,9 @@ class UnionFind:
 
 
 class Solution:
-    def findCriticalAndPseudoCriticalEdges(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+    def findCriticalAndPseudoCriticalEdges(
+        self, n: int, edges: List[List[int]]
+    ) -> List[List[int]]:
         # Copy edges and attach original index: [u, v, w] -> [u, v, w, idx]
         edges_with_index = [edge[:] for edge in edges]
         for idx, edge in enumerate(edges_with_index):

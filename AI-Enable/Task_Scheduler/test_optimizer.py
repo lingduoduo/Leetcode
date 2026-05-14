@@ -40,5 +40,6 @@ class OptimizerTest(unittest.TestCase):
             task = scheduler.get_task(name)
             self.assertEqual(end - start, task.duration)
 
+
 if __name__ == "__main__":
     unittest.main()

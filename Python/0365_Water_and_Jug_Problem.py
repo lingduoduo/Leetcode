@@ -6,7 +6,10 @@ class Solution:
         print([x, y])
         return x if y == 0 else self.gcd(y, x % y)
 
+
 from collections import deque
+
+
 class Solution:
     def canMeasureWater(self, x: int, y: int, target: int) -> bool:
         q = deque([0])
@@ -16,13 +19,14 @@ class Solution:
         while q:
             cur = q.popleft()
             for step in steps:
-                tot = cur + step 
+                tot = cur + step
                 if tot == target:
                     return True
                 if tot not in seen and 0 <= tot <= x + y:
                     seen.add(tot)
                     q.append(tot)
-        return False        
+        return False
+
 
 if __name__ == "__main__":
     g = Solution().gcd(3, 5)

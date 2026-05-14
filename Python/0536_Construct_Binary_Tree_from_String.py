@@ -36,20 +36,21 @@ class Solution:
                         stack[-1].right = node
         return stack[-1] if stack else TreeNode(num) if s else None
 
+
 class Solution:
     def str2tree(self, s: str) -> Optional[TreeNode]:
         if not s:
             return None
-        stack, number = [], ''
+        stack, number = [], ""
         for c in s:
-            if c in '()':
-                if c == '(' and number:
+            if c in "()":
+                if c == "(" and number:
                     stack.append(TreeNode(number))
-                    number = ''
-                elif c== ')':
+                    number = ""
+                elif c == ")":
                     if number:
                         node, parent = TreeNode(number), stack[-1]
-                        number = ''
+                        number = ""
                     else:
                         node, parent = stack.pop(), stack[-1]
                     if parent.left:

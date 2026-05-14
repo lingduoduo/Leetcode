@@ -30,7 +30,9 @@ def main() -> None:
     for i, picked in enumerate(game.history):
         cards_str = ", ".join(str(c) for c in picked)
         values_str = " + ".join(str(c.value) for c in picked)
-        print(f"  Turn {i + 1}: [{cards_str}] ({values_str} = {sum(c.value for c in picked)})")
+        print(
+            f"  Turn {i + 1}: [{cards_str}] ({values_str} = {sum(c.value for c in picked)})"
+        )
 
     print()
     stats = Solver.simulate_games(

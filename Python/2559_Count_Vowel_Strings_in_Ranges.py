@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
         presum = [0]
@@ -16,5 +17,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().vowelStrings(words = ["aba","bcb","ece","aa","e"], queries = [[0,2],[1,4],[1,1]])
+    res = Solution().vowelStrings(
+        words=["aba", "bcb", "ece", "aa", "e"], queries=[[0, 2], [1, 4], [1, 1]]
+    )
     print(res)

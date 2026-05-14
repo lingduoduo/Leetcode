@@ -3,9 +3,13 @@ from typing import List
 import math
 import heapq
 
+
 class Solution:
-    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        if source == target: return 0
+    def numBusesToDestination(
+        self, routes: List[List[int]], source: int, target: int
+    ) -> int:
+        if source == target:
+            return 0
 
         d = defaultdict(list)
         for bus, route in enumerate(routes):
@@ -28,14 +32,15 @@ class Solution:
                     for nei in routes[bus]:
                         if nei == target:
                             return res
-                        
+
                         if nei not in visited_stops:
                             visited_stops.add(nei)
                             que.append(nei)
         return -1
 
 
-
 if __name__ == "__main__":
-    res = Solution().numBusesToDestination(routes = [[1,2,7],[3,6,7]], source = 1, target = 6)
+    res = Solution().numBusesToDestination(
+        routes=[[1, 2, 7], [3, 6, 7]], source=1, target=6
+    )
     print(res)

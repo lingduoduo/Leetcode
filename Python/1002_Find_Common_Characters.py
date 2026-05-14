@@ -7,16 +7,16 @@ class Solution:
         result = []
         freq = [0] * 26
         for c in words[0]:
-            freq[ord(c) - ord('a')] += 1
+            freq[ord(c) - ord("a")] += 1
         for i in range(1, len(words)):
             current_freq = [0] * 26
             for c in words[i]:
-                current_freq[ord(c) - ord('a')] += 1
+                current_freq[ord(c) - ord("a")] += 1
             for k in range(26):
                 freq[k] = min(freq[k], current_freq[k])
         for i in range(26):
             while freq[i] != 0:
-                result.extend(chr(i + ord('a')))
+                result.extend(chr(i + ord("a")))
                 freq[i] -= 1
         return result
 

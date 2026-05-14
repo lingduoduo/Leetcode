@@ -12,7 +12,7 @@ class Solution:
             graph[v].append((u, cost))
 
         in_mst = [False] * n
-        heap = [(0, 0)]        # (cost, node), start from node 0 (city 1)
+        heap = [(0, 0)]  # (cost, node), start from node 0 (city 1)
         res = 0
         added = 0
 

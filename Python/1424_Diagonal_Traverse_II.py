@@ -8,7 +8,7 @@ class BSTIterator:
 
     def __init__(self, root: Optional[TreeNode]):
         self.stack = []
-        
+
         def inOrder(root):
             if not root:
                 return
@@ -21,6 +21,7 @@ class BSTIterator:
                 node = stack.pop()
                 self.stack.append(node.val)
                 node = node.right
+
 
 if __name__ == "__main__":
     res = Solution().findDiagonalOrder(nums=[[1, 2, 3], [4, 5, 6], [7, 8, 9]])

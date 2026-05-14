@@ -39,6 +39,7 @@ class Solution:
 
 from typing import List
 
+
 class UF:
     def __init__(self, n: int):
         # 0..n, but we usually use 1..n for this problem
@@ -72,14 +73,14 @@ class Solution:
             else:
                 # v already has a parent -> we found two incoming edges to v
                 cand1 = [parent[v], v]  # the earlier edge
-                cand2 = [u, v]          # the later edge
+                cand2 = [u, v]  # the later edge
                 # Invalidate the later edge so it's skipped in UF cycle check
                 edges[i][1] = 0
 
         # 2. Union-Find to detect cycle, ignoring the invalidated edge
         uf = UF(n)
         for u, v in edges:
-            if v == 0:   # skip invalidated edge (cand2)
+            if v == 0:  # skip invalidated edge (cand2)
                 continue
             if not uf.union(u, v):  # found a cycle
                 # If there was a node with two parents, the first edge is redundant
@@ -91,6 +92,7 @@ class Solution:
         # 3. If we never saw a cycle, then the second parent edge is redundant
         return cand2
 
+
 if __name__ == "__main__":
-    res = Solution().findRedundantDirectedConnection(edges = [[1,2],[1,3],[2,3]])
+    res = Solution().findRedundantDirectedConnection(edges=[[1, 2], [1, 3], [2, 3]])
     print(res)

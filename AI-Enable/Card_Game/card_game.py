@@ -5,10 +5,16 @@ from typing import Dict, List, Optional, Set
 
 from deck import Card, create_deck, shuffle_deck
 
+
 @dataclass
 class CardGame:
-    def __init__(self, grid_rows: int = 3, grid_cols: int = 4, seed: Optional[int] = None,
-                 deck: Optional[List[Card]] = None):
+    def __init__(
+        self,
+        grid_rows: int = 3,
+        grid_cols: int = 4,
+        seed: Optional[int] = None,
+        deck: Optional[List[Card]] = None,
+    ):
         self._grid_rows = grid_rows
         self._grid_cols = grid_cols
         self._grid_size = grid_rows * grid_cols

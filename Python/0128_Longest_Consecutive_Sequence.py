@@ -27,11 +27,12 @@ class Solution:
             res = max(res, current_length)
         return res
 
+
 class UnionFind:
     def __init__(self, n):
         self.par = list(range(n))
         self.size = [1] * n
-    
+
     def find(self, x):
         if x != self.par[x]:
             self.par[x] = self.find(self.par[x])

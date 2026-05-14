@@ -63,13 +63,16 @@ class TicTacToe:
         if row + col == self.n - 1:
             self.off_dia += delta
 
-        if (abs(self.row[row]) == self.n or
-            abs(self.col[col]) == self.n or
-            abs(self.dia) == self.n or
-            abs(self.off_dia) == self.n):
+        if (
+            abs(self.row[row]) == self.n
+            or abs(self.col[col]) == self.n
+            or abs(self.dia) == self.n
+            or abs(self.off_dia) == self.n
+        ):
             return player
 
         return 0
+
 
 # Your TicTacToe object will be instantiated and called as such:
 # obj = TicTacToe(n)

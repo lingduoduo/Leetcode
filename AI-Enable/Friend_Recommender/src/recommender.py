@@ -46,10 +46,7 @@ class Recommender:
             mutual_counts.items(),
             key=lambda item: (-item[1], item[0]),
         )
-        return [
-            candidate
-            for candidate, _ in top_candidates
-        ]
+        return [candidate for candidate, _ in top_candidates]
 
     def random_recommend(
         self,

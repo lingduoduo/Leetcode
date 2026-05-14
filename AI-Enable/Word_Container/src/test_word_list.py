@@ -32,7 +32,7 @@ class WordListTest(unittest.TestCase):
 
     def test_contains_same_word(self) -> None:
         wl = WordList([])
-        expected = False  
+        expected = False
         self.assertEqual(wl.contains_as_substring("apple", "apple"), expected)
 
     def test_contains_longer_word(self) -> None:

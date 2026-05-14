@@ -105,12 +105,20 @@ def get_large_maze(size: int = 20, seed: int = 0) -> Maze:
                 mix = (r * 7 + c * 13 + seed * 31) % 100
 
                 if is_corridor_row or is_corridor_col:
-                    if mix < 3 and not (r <= 1 and c <= 1) and not (r >= size - 2 and c >= size - 2):
+                    if (
+                        mix < 3
+                        and not (r <= 1 and c <= 1)
+                        and not (r >= size - 2 and c >= size - 2)
+                    ):
                         row.append("#")
                     else:
                         row.append(".")
                 else:
-                    if mix < 20 and not (r <= 1 and c <= 1) and not (r >= size - 2 and c >= size - 2):
+                    if (
+                        mix < 20
+                        and not (r <= 1 and c <= 1)
+                        and not (r >= size - 2 and c >= size - 2)
+                    ):
                         row.append("#")
                     else:
                         row.append(".")
@@ -145,8 +153,8 @@ def get_huge_maze(size: int = 100, seed: int = 42) -> Maze:
             else:
                 # Create a maze pattern with guaranteed connectivity
                 # Horizontal corridors every 4 rows, vertical passages
-                is_corridor_row = (r % 4 == 0)
-                is_corridor_col = (c % 4 == 0)
+                is_corridor_row = r % 4 == 0
+                is_corridor_col = c % 4 == 0
 
                 # Add some randomness but keep paths open
                 mix = (r * 7 + c * 13 + seed * 31) % 100

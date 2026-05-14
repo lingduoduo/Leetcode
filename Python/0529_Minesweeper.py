@@ -1,6 +1,6 @@
 class Solution:
     def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
-        (row, col) = click
+        row, col = click
         directions = [
             (-1, 0),
             (1, 0),

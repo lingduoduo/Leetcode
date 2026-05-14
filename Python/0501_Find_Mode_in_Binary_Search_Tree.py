@@ -82,7 +82,9 @@ class Solution:
 
         if self.count > self.maxCount:  # 如果计数大于最大值频率
             self.maxCount = self.count  # 更新最大频率
-            self.result = [cur.val]  # 很关键的一步，不要忘记清空result，之前result里的元素都失效了
+            self.result = [
+                cur.val
+            ]  # 很关键的一步，不要忘记清空result，之前result里的元素都失效了
 
         self.searchBST(cur.right)  # 右
         return
@@ -104,11 +106,12 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def findMode(self, root: TreeNode) -> List[int]:
         if not root:
             return []
-        
+
         pre = None
         node = root
         stack = []
@@ -126,14 +129,14 @@ class Solution:
                 cnt += 1
             else:
                 cnt = 1
-            
+
             if cnt > max_cnt:
                 max_cnt = cnt
                 res = [node.val]
             elif cnt == max_cnt:
                 res.append(node.val)
-            
-            pre = node  
+
+            pre = node
             node = node.right
-        
+
         return res

@@ -29,9 +29,7 @@ class Bin:
 
     def add_item(self, item: Item) -> None:
         if not self.can_fit(item):
-            raise ValueError(
-                f"'{item.name}' does not fit in bin {self.bin_id}"
-            )
+            raise ValueError(f"'{item.name}' does not fit in bin {self.bin_id}")
         self._items.append(item)
         self._current_weight += item.weight
         self._current_size += item.size

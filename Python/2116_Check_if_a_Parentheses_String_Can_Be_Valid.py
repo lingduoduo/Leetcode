@@ -10,4 +10,9 @@ class Solution:
                 if wild + bal < 0:
                     return False
             return bal <= wild
-        return len(s) % 2 == 0 and validate(s, locked, '(') and validate(s[::-1], locked[::-1], ')')
+
+        return (
+            len(s) % 2 == 0
+            and validate(s, locked, "(")
+            and validate(s[::-1], locked[::-1], ")")
+        )

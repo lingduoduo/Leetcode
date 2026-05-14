@@ -20,6 +20,7 @@ class Solution:
                 p2 = headA
         return p1
 
+
 if __name__ == "__main__":
     headA = ListNode(4)
     headA.next = ListNode(1)

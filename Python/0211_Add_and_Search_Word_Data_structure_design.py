@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class WordDictionary:
     def __init__(self):
         """Initialize your data structure here."""
@@ -37,7 +38,6 @@ class WordDictionary:
 
     def __init__(self):
         self.d = defaultdict(dict)
-        
 
     def addWord(self, word: str) -> None:
         d = self.d
@@ -46,7 +46,7 @@ class WordDictionary:
                 d[ch] = {}
             d = d[ch]
         d["#"] = True
-    
+
     def search(self, word: str) -> bool:
         def dfs(d, i):
             if i == len(word):

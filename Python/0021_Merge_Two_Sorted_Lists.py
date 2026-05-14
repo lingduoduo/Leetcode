@@ -47,8 +47,11 @@ class Solution:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
 
+
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         p1 = list1
         p2 = list2
         dummy = ListNode(-1)

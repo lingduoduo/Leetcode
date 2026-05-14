@@ -35,7 +35,7 @@ class Solver:
 
                 max_start = word_length - candidate_length + 1
                 for start in range(max_start):
-                    if word[start:start + candidate_length] in word_set:
+                    if word[start : start + candidate_length] in word_set:
                         containers.append(word)
                         break
                 else:

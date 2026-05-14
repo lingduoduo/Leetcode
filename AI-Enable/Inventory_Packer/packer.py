@@ -15,7 +15,11 @@ class Packer:
     def pack(self, items: List[Item]) -> Dict[str, int]:
         """Returns a mapping of item name -> bin_id."""
         result: Dict[str, int] = {}
-        ordered_items = sorted(items, key=lambda item: (item.weight + item.size, item.weight, item.size), reverse=True)
+        ordered_items = sorted(
+            items,
+            key=lambda item: (item.weight + item.size, item.weight, item.size),
+            reverse=True,
+        )
 
         for item in ordered_items:
             best_bin = None

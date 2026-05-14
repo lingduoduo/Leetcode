@@ -40,11 +40,13 @@ class MaxUniqueSolver:
             mask = 0
             for char in self.word_list.char_set(word):
                 if char in char_to_bit:
-                    mask |= (1 << char_to_bit[char])
+                    mask |= 1 << char_to_bit[char]
             char_count = mask.bit_count()
             existing = mask_to_word.get(mask)
             if existing is None:
-                mask_to_word[mask] = WordMask(mask=mask, char_count=char_count, word_index=i)
+                mask_to_word[mask] = WordMask(
+                    mask=mask, char_count=char_count, word_index=i
+                )
 
         word_data = list(mask_to_word.values())
 

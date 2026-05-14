@@ -31,6 +31,7 @@ class Solution:
             return 2**31 - 1
         return result
 
+
 if __name__ == "__main__":
     print(Solution().myAtoi("+-12"))
     print(Solution().myAtoi("    -41"))

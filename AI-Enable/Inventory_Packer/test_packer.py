@@ -20,8 +20,6 @@ class PackerTest(unittest.TestCase):
             self.assertLessEqual(b.current_weight(), b.weight_limit)
             self.assertLessEqual(b.current_size(), b.size_limit)
 
-
-
     def test_large_catalog(self) -> None:
         warehouse = Warehouse(weight_limit=15, size_limit=15)
         packer = Packer(warehouse)

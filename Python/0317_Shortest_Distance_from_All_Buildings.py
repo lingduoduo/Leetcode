@@ -1,5 +1,5 @@
-
 from typing import List, Tuple, Dict
+
 
 class Solution:
 
@@ -22,7 +22,13 @@ class Solution:
         results = [dist for pos, dist in lands.items() if reach[pos] == len(bldgs)]
         return min(results, default=-1)
 
-    def bfs(self, lands: Dict[Tuple[int, int], int], reach: Dict[Tuple[int, int], int], start: Tuple[int, int], grid: List[List[int]]):
+    def bfs(
+        self,
+        lands: Dict[Tuple[int, int], int],
+        reach: Dict[Tuple[int, int], int],
+        start: Tuple[int, int],
+        grid: List[List[int]],
+    ):
         rows, cols = len(grid), len(grid[0])
         dist = 0
         visited = set([start])
@@ -33,10 +39,15 @@ class Solution:
             next_level = []
 
             for r, c in curr_level:
-                for dr, dc in  [(0, -1), (-1, 0), (0, 1), (1, 0)]:
+                for dr, dc in [(0, -1), (-1, 0), (0, 1), (1, 0)]:
                     nr, nc = r + dr, c + dc
 
-                    if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 0 and (nr, nc) not in visited:
+                    if (
+                        0 <= nr < rows
+                        and 0 <= nc < cols
+                        and grid[nr][nc] == 0
+                        and (nr, nc) not in visited
+                    ):
                         visited.add((nr, nc))
                         next_level.append((nr, nc))
                         lands[(nr, nc)] += dist

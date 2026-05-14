@@ -29,6 +29,8 @@ class Solution:
             return count1 + count2
 
         return dfs(0, 0)
+
+
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         total_sum = sum(nums)  # 计算nums的总和

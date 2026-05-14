@@ -28,7 +28,9 @@ class Scheduler:
             dependencies = tuple(task.depends_on)
             for dep in dependencies:
                 if dep not in self._tasks:
-                    raise ValueError(f"unknown dependency '{dep}' in task '{task.name}'")
+                    raise ValueError(
+                        f"unknown dependency '{dep}' in task '{task.name}'"
+                    )
 
             dependency_map[task.name] = dependencies
             if not dependencies:
@@ -96,7 +98,10 @@ class Scheduler:
             task_bit = self._task_bits[task_name]
             if completed_mask & task_bit:
                 continue
-            if self._dependency_masks[task_name] & completed_mask == self._dependency_masks[task_name]:
+            if (
+                self._dependency_masks[task_name] & completed_mask
+                == self._dependency_masks[task_name]
+            ):
                 ready.append(task_name)
         return tuple(ready)
 

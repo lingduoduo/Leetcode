@@ -24,7 +24,7 @@ class Solution:
                 s -= 1
             return s + 1
 
-        s, min_len, res = 0, float('inf'), ''
+        s, min_len, res = 0, float("inf"), ""
         while s < len(s1):
             end = find_subseq(s)  # Find end-point of subsequence
             if not end:
@@ -32,7 +32,7 @@ class Solution:
             start = improve_subseq(end)  # Improve start-point of subsequence
             if end - start + 1 < min_len:  # Track min length
                 min_len = end - start + 1
-                res = s1[start:end + 1]
+                res = s1[start : end + 1]
             s = start + 1  # Start next subsequence search
 
         return res
@@ -60,5 +60,4 @@ class Solution:
                     min_len = cur_len
                     start = dp[i][n - 1]
 
-        return "" if start == -1 else s1[start:start + min_len]
-                    
+        return "" if start == -1 else s1[start : start + min_len]

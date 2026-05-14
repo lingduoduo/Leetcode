@@ -1,9 +1,11 @@
 from typing import List
 
+
 class Solution:
     def minimumPairRemoval(self, nums: List[int]) -> int:
         def is_sorted(a: List[int]) -> bool:
             return all(a[i] <= a[i + 1] for i in range(len(a) - 1))
+
         res = 0
         while not is_sorted(nums):
             # find index i that minimizes nums[i] + nums[i+1]

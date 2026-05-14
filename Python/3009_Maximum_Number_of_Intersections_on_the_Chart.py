@@ -1,5 +1,7 @@
 from collections import defaultdict
 from typing import List
+
+
 class Solution:
     def maxIntersectionCount(self, y: List[int]) -> int:
         d = defaultdict(int)
@@ -26,6 +28,7 @@ class Solution:
             res = max(res, preSum)
         return res
 
+
 if __name__ == "__main__":
-    res = Solution().maxIntersectionCount(y = [1,2,1,2,1,3,2])
+    res = Solution().maxIntersectionCount(y=[1, 2, 1, 2, 1, 3, 2])
     print(res)

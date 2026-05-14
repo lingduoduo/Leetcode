@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     UNGUARDED = 0
     GUARDED = 1

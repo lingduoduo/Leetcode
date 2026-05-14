@@ -4,13 +4,14 @@ class Solution:
         for i, e in enumerate(s):
             if e == "(":
                 stack.append(i)
-            elif e == ")":  
+            elif e == ")":
                 stack.pop()
-                if not stack:  
+                if not stack:
                     stack.append(i)
                 else:
-                    res = max(res, i - stack[-1])  
+                    res = max(res, i - stack[-1])
         return res
+
 
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
@@ -20,7 +21,7 @@ class Solution:
 
         # Scan from left to right
         for char in s:
-            if char == '(':
+            if char == "(":
                 left += 1
             else:
                 right += 1
@@ -34,7 +35,7 @@ class Solution:
 
         # Scan from right to left
         for char in reversed(s):
-            if char == '(':
+            if char == "(":
                 left += 1
             else:
                 right += 1
@@ -45,4 +46,3 @@ class Solution:
                 left = right = 0
 
         return res
-

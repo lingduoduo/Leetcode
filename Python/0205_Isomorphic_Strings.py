@@ -10,6 +10,7 @@ class Solution:
             res.append(d[w])
         return res
 
+
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
@@ -27,6 +28,7 @@ class Solution:
             map_t_s[ct] = cs
 
         return True
+
 
 if __name__ == "__main__":
     s = "ab"

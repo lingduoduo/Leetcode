@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     """
     source = ["/*Test program */",
@@ -8,7 +11,6 @@ class Solution:
     "   testing */",
     "a = b + c;", "}"]
     """
-from typing import List
 
     def removeComments(self, source: List[str]) -> List[str]:
         res = []
@@ -26,7 +28,7 @@ from typing import List
                     else:
                         line += s[i]
                 else:
-                    if s[i] == "*" and s[i + 1] == "/" and i < len(s) - 1:
+                    if i < len(s) - 1 and s[i] == "*" and s[i + 1] == "/":
                         multiline = False
                         i += 1
                 i += 1

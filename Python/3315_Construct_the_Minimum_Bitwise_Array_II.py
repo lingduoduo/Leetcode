@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def minBitwiseArray(self, nums: List[int]) -> List[int]:
         res = []
@@ -7,7 +8,7 @@ class Solution:
             if num == 2:
                 res.append(-1)
                 continue
-            
+
             if (num & 1) == 0:
                 res.append(-1)
                 continue
@@ -22,5 +23,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    res = Solution().minBitwiseArray(nums = [2,3,5,7])
+    res = Solution().minBitwiseArray(nums=[2, 3, 5, 7])
     print(res)

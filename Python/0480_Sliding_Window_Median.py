@@ -3,6 +3,7 @@ from itertools import pairwise
 from typing import List
 from heapq import heappush, heappop, heappushpop
 
+
 def medianSlidingWindow(self, nums, k):
     if k == 0:
         return []
@@ -18,23 +19,25 @@ def medianSlidingWindow(self, nums, k):
         bisect.insort_left(window, nums[i])
     return res
 
+
 class Solution:
     def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
         if k == 1:
             return nums
         if k == 2:
-            return [(p + q) / 2 for p,q in pairwise(nums)]
+            return [(p + q) / 2 for p, q in pairwise(nums)]
         kodd = k % 2
         ref = sorted(nums[:k])
-        hl = [-x for x in ref[:k//2]]
+        hl = [-x for x in ref[: k // 2]]
         hl.reverse()
-        hr = ref[k//2:]
+        hr = ref[k // 2 :]
         if kodd:
             out = [hr[0]]
         else:
             out = [(hr[0] - hl[0]) / 2]
         hrd = []
         hld = []
+
         def cleanr():
             while hrd and hrd[0] == hr[0]:
                 heappop(hrd)
@@ -45,7 +48,7 @@ class Solution:
                 heappop(hld)
                 heappop(hl)
 
-        for idx,x in enumerate(nums[k:]):
+        for idx, x in enumerate(nums[k:]):
             y = nums[idx]
             mid = hr[0]
             if y >= mid:
@@ -67,8 +70,11 @@ class Solution:
             else:
                 out.append((hr[0] - hl[0]) / 2)
         return out
+
+
 import heapq
 from typing import List
+
 
 class Solution:
     def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
@@ -92,8 +98,8 @@ class Solution:
 
         def rebalance():
             """Make sure:
-               - large_size == small_size      (even k)
-               - large_size == small_size + 1  (odd k, extra in large)
+            - large_size == small_size      (even k)
+            - large_size == small_size + 1  (odd k, extra in large)
             """
             nonlocal small_size, large_size
             # small has too many -> move one to large
@@ -154,8 +160,8 @@ class Solution:
 
         # 2) Slide the window
         for i in range(k, len(nums)):
-            add(nums[i], i)                  # add new element
-            remove(nums[i - k], i - k)       # remove element leaving the window
+            add(nums[i], i)  # add new element
+            remove(nums[i - k], i - k)  # remove element leaving the window
             res.append(get_median())
 
         return res

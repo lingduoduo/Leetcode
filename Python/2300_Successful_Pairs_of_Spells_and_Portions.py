@@ -1,5 +1,7 @@
 class Solution:
-    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+    def successfulPairs(
+        self, spells: List[int], potions: List[int], success: int
+    ) -> List[int]:
         n = len(spells)
         m = len(potions)
         pairs = [0] * n

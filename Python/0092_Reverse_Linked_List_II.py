@@ -57,4 +57,3 @@ class Solution:
             cur.next.next, prev.next, cur.next = prev.next, cur.next, cur.next.next
 
         return dummy.next
-

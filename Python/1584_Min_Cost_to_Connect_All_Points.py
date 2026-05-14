@@ -8,9 +8,9 @@ class Solution:
         def dist(i: int, j: int) -> int:
             return abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])
 
-        in_mst = [False] * n          # whether point i is already in the tree
-        min_edge = [math.inf] * n     # min cost edge to connect each point to MST
-        min_edge[0] = 0               # start from point 0 with cost 0
+        in_mst = [False] * n  # whether point i is already in the tree
+        min_edge = [math.inf] * n  # min cost edge to connect each point to MST
+        min_edge[0] = 0  # start from point 0 with cost 0
         res = 0
 
         for _ in range(n):

@@ -1,10 +1,12 @@
 from collections import deque
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
@@ -19,4 +21,6 @@ class Solution:
 
             return leftSum + rightSum + rootVal
 
-        return helper(root, -1, -1)  # Initial call with invalid parent and grandparent values
+        return helper(
+            root, -1, -1
+        )  # Initial call with invalid parent and grandparent values

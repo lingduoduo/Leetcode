@@ -60,7 +60,7 @@ class Solution:
                 if x.isInteger():
                     tot += x.getInteger() * depth
                 else:
-                    tot += dfs(x.getList(), depth + 1) 
+                    tot += dfs(x.getList(), depth + 1)
             return tot
 
         return dfs(nestedList, 1)

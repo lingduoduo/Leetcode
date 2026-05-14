@@ -5,7 +5,7 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         d = collections.Counter(t)
         l = 0
-        r = 0                 
+        r = 0
         size = float("inf")
         res = ""
 
@@ -18,7 +18,7 @@ class Solution:
             while r == len(t):
                 if i - l + 1 < size:
                     size = i - l + 1
-                    res = s[l:i + 1]
+                    res = s[l : i + 1]
 
                 if s[l] in d:
                     d[s[l]] += 1

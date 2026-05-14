@@ -1,8 +1,11 @@
 from typing import List
+
+
 class Solution:
     def maximumInvitations(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
         res = {}  # Stores matches formed. key = girl, value = boy.
+
         def dfs(boy: int, visited: set) -> bool:
             for girl in range(n):
                 if grid[boy][girl] and girl not in visited:
@@ -18,8 +21,7 @@ class Solution:
 
         return len(res)
 
+
 if __name__ == "__main__":
-    res = Solution().maximumInvitations(grid = [[1,1,1],
-               [1,0,1],
-               [0,0,1]])
+    res = Solution().maximumInvitations(grid=[[1, 1, 1], [1, 0, 1], [0, 0, 1]])
     print(res)

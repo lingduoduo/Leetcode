@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """
@@ -19,6 +20,7 @@ class Solution(object):
         if n > 0:
             nums1[:n] = nums2[:n]
         return nums1
+
 
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:

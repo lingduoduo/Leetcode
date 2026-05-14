@@ -24,7 +24,9 @@ class Solution:
 
 
 class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+    def jobScheduling(
+        self, startTime: List[int], endTime: List[int], profit: List[int]
+    ) -> int:
         # sort jobs by start time
         jobs = sorted(zip(startTime, endTime, profit))  # (s, e, p)
         n = len(jobs)

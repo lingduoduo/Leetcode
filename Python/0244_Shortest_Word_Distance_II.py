@@ -16,6 +16,8 @@
 
 import collections
 from typing import List
+
+
 class WordDistance:
 
     def __init__(self, wordsDict: List[str]):
@@ -26,10 +28,10 @@ class WordDistance:
     def shortest(self, word1: str, word2: str) -> int:
         w1 = self.dict[word1]
         w2 = self.dict[word2]
-        res = min(abs(word1-word2)for word1 in w1 for word2 in w2)
+        res = min(abs(word1 - word2) for word1 in w1 for word2 in w2)
         return res
+
 
 wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
 obj = WordDistance(wordsDict)
 print(obj.shortest("makes", "coding"))
-

@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Solution:
     def maximumDetonation(self, bombs: List[List[int]]) -> int:
         n = len(bombs)

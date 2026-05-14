@@ -4,7 +4,7 @@ from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        que= deque()  # [[i, num]]
+        que = deque()  # [[i, num]]
         res = []
         for i, num in enumerate(nums):
             if que and i - que[0][0] >= k:
@@ -31,4 +31,3 @@ class Solution:
             if i >= k - 1:
                 res.append(nums[q[0]])
         return res
-

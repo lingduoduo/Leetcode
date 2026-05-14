@@ -1,5 +1,6 @@
 from queue import Queue
 
+
 class Solution:
     def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
         q = deque()

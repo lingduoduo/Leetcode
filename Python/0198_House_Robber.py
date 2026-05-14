@@ -32,7 +32,9 @@ class Solution:
         # 创建一个动态规划数组，用于存储最大金额
         dp = [0] * len(nums)
         dp[0] = nums[0]  # 将dp的第一个元素设置为第一个房屋的金额
-        dp[1] = max(nums[0], nums[1])  # 将dp的第二个元素设置为第一二个房屋中的金额较大者
+        dp[1] = max(
+            nums[0], nums[1]
+        )  # 将dp的第二个元素设置为第一二个房屋中的金额较大者
 
         # 遍历剩余的房屋
         for i in range(2, len(nums)):

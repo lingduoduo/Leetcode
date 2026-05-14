@@ -101,7 +101,7 @@ class MazeTest(unittest.TestCase):
             "######",
         ]
         maze = Maze(grid)
-        expected =  Position(0, 1)
+        expected = Position(0, 1)
         self.assertEqual(maze.get_start(), expected)
 
 

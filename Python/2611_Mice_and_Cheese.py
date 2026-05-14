@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def miceAndCheese(self, reward1: List[int], reward2: List[int], k: int) -> int:
         res = 0
@@ -19,12 +21,14 @@ class Solution:
 
 import heapq
 
+
 class Solution:
     def miceAndCheese(self, reward1: List[int], reward2: List[int], k: int) -> int:
         base = sum(reward2)
         diffs = [a - b for a, b in zip(reward1, reward2)]
         return base + sum(heapq.nlargest(k, diffs))
 
-if __name__ == '__main__':
-    res = Solution().miceAndCheese(reward1 = [2,1], reward2 = [1,2], k = 1)
+
+if __name__ == "__main__":
+    res = Solution().miceAndCheese(reward1=[2, 1], reward2=[1, 2], k=1)
     print(res)

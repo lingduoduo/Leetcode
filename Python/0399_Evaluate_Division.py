@@ -1,11 +1,12 @@
 from collections import defaultdict, deque
 from typing import List
 
+
 class Solution:
     def calcEquation(
         self, equations: List[List[str]], values: List[float], queries: List[List[str]]
     ) -> List[float]:
-        
+
         edge = defaultdict(list)
         for i in range(len(equations)):
             x, y = equations[i]
@@ -42,7 +43,9 @@ class Solution:
 
 
 class Solution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         graph = defaultdict(list)
         for (a, b), v in zip(equations, values):
             graph[a].append((b, v))
@@ -68,10 +71,12 @@ class Solution:
             return -1.0
 
         return [bfs(a, b) for a, b in queries]
-    
+
 
 class Solution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         # 1) Build mapping: variable -> index
         idx_set = set()
         for a, b in equations:

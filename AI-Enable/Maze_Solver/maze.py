@@ -63,12 +63,17 @@ class Maze:
         return pos == self._end
 
     def _is_walkable(self, cell: str) -> bool:
-        return cell in (
-            CellType.OPEN.value,
-            CellType.START.value,
-            CellType.END.value,
-            CellType.RIGHT_ONLY.value,
-        ) or self.is_key(cell) or self.is_door(cell)
+        return (
+            cell
+            in (
+                CellType.OPEN.value,
+                CellType.START.value,
+                CellType.END.value,
+                CellType.RIGHT_ONLY.value,
+            )
+            or self.is_key(cell)
+            or self.is_door(cell)
+        )
 
     def _can_mark_as_path(self, cell: str) -> bool:
         return cell != CellType.WALL.value
@@ -82,9 +87,14 @@ class Maze:
         return len(cell) == 1 and cell.islower()
 
     def is_door(self, cell: str) -> bool:
-        return len(cell) == 1 and cell.isupper() and cell not in (
-            CellType.START.value,
-            CellType.END.value,
+        return (
+            len(cell) == 1
+            and cell.isupper()
+            and cell
+            not in (
+                CellType.START.value,
+                CellType.END.value,
+            )
         )
 
     def is_chute(self, cell: str) -> bool:

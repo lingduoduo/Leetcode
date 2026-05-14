@@ -41,7 +41,8 @@ class Solution:
         nums[first], nums[second] = nums[second], nums[first]
 
         # reverse suffix (in-place slice assignment)
-        nums[first + 1:] = nums[first + 1:][::-1]
+        nums[first + 1 :] = nums[first + 1 :][::-1]
+
 
 if __name__ == "__main__":
     nums = [1, 4, 3, 2]

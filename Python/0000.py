@@ -2,6 +2,7 @@ from typing import List, Optional
 from collections import deque, defaultdict, Counter
 import heapq
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val

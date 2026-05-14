@@ -21,6 +21,7 @@ class LRUCache:
                 del self.dict[next(iter(self.dict))]
         self.dict[key] = value
 
+
 class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
@@ -29,7 +30,7 @@ class LRUCache:
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        self.cache.move_to_end(key)   # mark as recently used
+        self.cache.move_to_end(key)  # mark as recently used
         return self.cache[key]
 
     def put(self, key: int, value: int) -> None:
@@ -38,7 +39,7 @@ class LRUCache:
         self.cache[key] = value
 
         if len(self.cache) > self.capacity:
-            self.cache.popitem(last=False)   # remove least recently used
+            self.cache.popitem(last=False)  # remove least recently used
 
 
 class ListNode:
@@ -47,6 +48,7 @@ class ListNode:
         self.val = val
         self.prev = None
         self.next = None
+
 
 class LRUCache:
     def __init__(self, capacity: int):
@@ -57,13 +59,13 @@ class LRUCache:
         self.tail = ListNode()
         self.head.next = self.tail
         self.tail.prev = self.head
-    
+
     def _remove(self, node: ListNode):
         prev_node = node.prev
         next_node = node.next
         prev_node.next = next_node
         next_node.prev = prev_node
-    
+
     def _add_to_tail(self, node: ListNode):
         prev_node = self.tail.prev
         prev_node.next = node
@@ -71,16 +73,15 @@ class LRUCache:
 
         self.tail.prev = node
         node.next = self.tail
-    
+
     def _move_to_tail(self, node: ListNode):
         self._remove(node)
         self._add_to_tail(node)
-    
 
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        
+
         node = self.cache[key]
         self._move_to_tail(node)
         return node.val
@@ -94,10 +95,8 @@ class LRUCache:
             node = self.cache[key]
             node.val = value
             self._move_to_tail(node)
-        
+
         if len(self.cache) > self.capacity:
             lru = self.head.next
             self._remove(lru)
             del self.cache[lru.key]
-
-

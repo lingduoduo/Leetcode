@@ -8,6 +8,7 @@ class Solution:
                     return True
         return False
 
+
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
         n = len(s)
@@ -19,7 +20,7 @@ class Solution:
             if s[i] == s[j]:
                 j += 1
             next[i] = j
-        
+
         len_repeated = next[-1]
         repeating_unit_length = n - len_repeated
         if len_repeated > 0 and n % repeating_unit_length == 0:
@@ -27,6 +28,5 @@ class Solution:
         return False
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(Solution().repeatedSubstringPattern("abab"))

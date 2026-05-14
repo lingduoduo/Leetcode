@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def maximumCandies(self, candies: List[int], k: int) -> int:
         def canDistribute(mid: int) -> bool:
@@ -20,7 +22,8 @@ class Solution:
 
         return result
 
-if __name__ == "__main__":    # Example test cases
+
+if __name__ == "__main__":  # Example test cases
     solution = Solution()
     print(solution.maximumCandies([5, 8, 6], 3))  # Output: 5
-    print(solution.maximumCandies([2, 5], 11))    # Output: 0
+    print(solution.maximumCandies([2, 5], 11))  # Output: 0

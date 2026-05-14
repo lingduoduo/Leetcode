@@ -24,7 +24,8 @@ class Solution:
                     dp[i] = (dp[i] + dp[j]) % MOD
 
         return dp[n]
-    
+
+
 class Solution:
     def countPartitions(self, nums: List[int], k: int) -> int:
         MOD = 10**9 + 7

@@ -21,7 +21,7 @@ class SolverTest(unittest.TestCase):
         wl = WordList(["apple", "app", "banana", "nana"])
         solver = Solver(wl)
         result = solver.find_containers()
-        expected = ['apple', 'banana']
+        expected = ["apple", "banana"]
         self.assertEqual(sorted(result), sorted(expected))
 
     def test_no_containers(self) -> None:
@@ -67,8 +67,12 @@ class SolverTest(unittest.TestCase):
         result = solver.find_containers()
         elapsed = time.time() - t0
         self.assertIsInstance(result, list)
-        expected_time = .05
-        self.assertLess(elapsed, expected_time, f"500 words: {elapsed:.2f}s, need < {expected_time}s")
+        expected_time = 0.05
+        self.assertLess(
+            elapsed,
+            expected_time,
+            f"500 words: {elapsed:.2f}s, need < {expected_time}s",
+        )
 
     def test_large_wordlist(self) -> None:
         """5,000 words - requires optimization to pass in time."""
@@ -79,8 +83,12 @@ class SolverTest(unittest.TestCase):
         result = solver.find_containers()
         elapsed = time.time() - t0
         self.assertIsInstance(result, list)
-        expected_time = .05
-        self.assertLess(elapsed, expected_time, f"5000 words: {elapsed:.2f}s, need < {expected_time}s")
+        expected_time = 0.05
+        self.assertLess(
+            elapsed,
+            expected_time,
+            f"5000 words: {elapsed:.2f}s, need < {expected_time}s",
+        )
 
     def test_huge_wordlist(self) -> None:
         """10,000 words - stress test for optimized implementation."""
@@ -91,8 +99,12 @@ class SolverTest(unittest.TestCase):
         result = solver.find_containers()
         elapsed = time.time() - t0
         self.assertIsInstance(result, list)
-        expected_time = .1
-        self.assertLess(elapsed, expected_time, f"10000 words: {elapsed:.2f}s, need < {expected_time}s")
+        expected_time = 0.1
+        self.assertLess(
+            elapsed,
+            expected_time,
+            f"10000 words: {elapsed:.2f}s, need < {expected_time}s",
+        )
 
 
 if __name__ == "__main__":

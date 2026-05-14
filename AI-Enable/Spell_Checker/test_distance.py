@@ -40,7 +40,9 @@ class EditDistanceTest(unittest.TestCase):
             {"bat": 200, "hat": 300, "mat": 50, "cat": 100},
             max_distance=1,
         )
-        self.assertEqual(len(top_result), 4)  # Changed from top_result[0][0] to len(top_result)
+        self.assertEqual(
+            len(top_result), 4
+        )  # Changed from top_result[0][0] to len(top_result)
 
 
 if __name__ == "__main__":

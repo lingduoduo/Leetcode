@@ -5,10 +5,12 @@ from typing import Dict, List, Set, Tuple
 
 from fleet import Ship
 
+
 class ShotResult(Enum):
     HIT = "HIT"
     MISS = "MISS"
     SUNK = "SUNK"
+
 
 class Board:
     def __init__(self, grid_size: int = 10):

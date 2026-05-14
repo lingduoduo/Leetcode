@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         def dfs(i):
@@ -68,5 +69,3 @@ class Solution:
                         dp[j].append((prev + " " + s[i:j]).strip())
 
         return dp[n]
-
-

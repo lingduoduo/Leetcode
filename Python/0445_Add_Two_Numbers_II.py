@@ -110,7 +110,9 @@ class Solution:
 
 
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         l1 = self.reverse(l1)
         l2 = self.reverse(l2)
 
@@ -129,9 +131,8 @@ class Solution:
             p.next = ListNode(tot % 10)
             p = p.next
             tot = tot // 10
-            
-        return self.reverse(dummy.next)
 
+        return self.reverse(dummy.next)
 
     def reverse(self, l: Optional[ListNode]):
         dummy = ListNode(-1)

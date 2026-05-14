@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution(object):
     def search(self, nums, target):
         """
@@ -19,6 +20,7 @@ class Solution(object):
                 return mid
         return -1
 
+
 class Solution(object):
     def search(self, nums, target):
         """
@@ -37,6 +39,7 @@ class Solution(object):
             else:
                 return mid
         return -1
+
 
 if __name__ == "__main__":
     nums = [-1, 0, 3, 5, 9, 12]

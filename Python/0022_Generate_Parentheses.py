@@ -39,6 +39,7 @@ class Solution:
         backtrack()
         return ans
 
+
 if __name__ == "__main__":
     results = Solution().generateParenthesis(2)
     print(results)

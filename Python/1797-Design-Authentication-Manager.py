@@ -19,7 +19,6 @@ class AuthenticationManager:
             if start <= currentTime < end:
                 res += 1
         return res
-        
 
 
 # Your AuthenticationManager object will be instantiated and called as such:

@@ -71,7 +71,9 @@ class Solution:
 
         def neighbors(r, c):
             for nr, nc in ((r - 1, c), (r, c - 1), (r + 1, c), (r, c + 1)):
-                if 0 <= nr < R and 0 <= nc < C and grid[nr][nc] % 2 == 0:  # 返回可以到达的位置
+                if (
+                    0 <= nr < R and 0 <= nc < C and grid[nr][nc] % 2 == 0
+                ):  # 返回可以到达的位置
                     yield nr, nc
 
         todo = 0

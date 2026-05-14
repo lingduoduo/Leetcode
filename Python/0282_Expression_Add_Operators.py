@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def addOperators(self, num: str, target: int):
         """
@@ -22,6 +24,7 @@ class Solution:
             i += 1
         return result
 
+
 class Solution:
     def addOperators(self, num: str, target: int) -> List[str]:
         n = len(num)
@@ -44,11 +47,15 @@ class Solution:
                 else:
                     dfs(i + 1, path + ["+", num[idx : i + 1]], value + cur, cur)
                     dfs(i + 1, path + ["-", num[idx : i + 1]], value - cur, -cur)
-                    dfs(i + 1, path + ["*", num[idx : i + 1]], value - last + last * cur, last * cur)
+                    dfs(
+                        i + 1,
+                        path + ["*", num[idx : i + 1]],
+                        value - last + last * cur,
+                        last * cur,
+                    )
 
         dfs(0, [], 0, 0)
         return res
-
 
 
 if __name__ == "__main__":

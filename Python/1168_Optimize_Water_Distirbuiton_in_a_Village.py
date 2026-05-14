@@ -2,8 +2,11 @@ from typing import List
 import heapq
 from collections import defaultdict
 
+
 class Solution:
-    def minCostToSupplyWater(self, n: int, wells: List[int], pipes: List[List[int]]) -> int:
+    def minCostToSupplyWater(
+        self, n: int, wells: List[int], pipes: List[List[int]]
+    ) -> int:
         graph = defaultdict(list)
         for i, c in enumerate(wells):
             graph[0].append((c, i + 1))
@@ -25,7 +28,6 @@ class Solution:
                     if neighbor not in mst_set:
                         heapq.heappush(edges_heap, (new_c, neighbor))
         return res
-
 
 
 class UnionFind:
@@ -54,11 +56,14 @@ class UnionFind:
             self.rank[group_2] += 1
         return True
 
+
 class Solution:
-    def minCostToSupplyWater(self, n: int, wells: List[int], pipes: List[List[int]]) -> int:
+    def minCostToSupplyWater(
+        self, n: int, wells: List[int], pipes: List[List[int]]
+    ) -> int:
         ordered_edges = []
         for index, weight in enumerate(wells):
-            ordered_edges.append((weight, 0, index+1))
+            ordered_edges.append((weight, 0, index + 1))
 
         for house_1, house_2, weight in pipes:
             ordered_edges.append((weight, house_1, house_2))
@@ -71,6 +76,9 @@ class Solution:
                 total_cost += cost
         return total_cost
 
+
 if __name__ == "__main__":
-    res = Solution().minCostToSupplyWater(n = 3, wells = [1,2,2], pipes = [[1,2,1],[2,3,1]])
+    res = Solution().minCostToSupplyWater(
+        n=3, wells=[1, 2, 2], pipes=[[1, 2, 1], [2, 3, 1]]
+    )
     print(res)

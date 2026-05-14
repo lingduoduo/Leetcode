@@ -8,6 +8,5 @@ class Solution:
             while left <= right and tot * (right - left + 1) >= k:
                 tot -= nums[left]
                 left += 1
-            res += (right - left + 1)
+            res += right - left + 1
         return res
-    

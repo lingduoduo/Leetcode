@@ -3,6 +3,7 @@ S = "abcde"
 words = ["a", "bb", "acd", "ace"]
 Output: 3
 """
+
 import collections
 import bisect
 

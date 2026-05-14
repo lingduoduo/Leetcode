@@ -23,10 +23,10 @@ class Solution:
                 curr.append(i)
                 backtrack(i + 1, curr)
                 curr.pop()
+
         output = []
         backtrack()
         return output
-
 
 
 class Solution:

@@ -1,6 +1,7 @@
 import collections
 from typing import List
 
+
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         graph = collections.defaultdict(set)
@@ -23,15 +24,16 @@ class Solution:
 class UnionFind:
     def __init__(self, n):
         self.par = list(range(n))
-    
+
     def find(self, i):
         if i != self.par[i]:
             self.par[i] = self.find(self.par[i])
         return self.par[i]
-        
+
     def union(self, i, j):
         ri, rj = self.find(i), self.find(j)
         self.par[ri] = rj
+
 
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
@@ -51,6 +53,7 @@ class Solution:
             if uf.find(a) == uf.find(b):
                 return [x, y]
             uf.union(a, b)
+
 
 if __name__ == "__main__":
     edges = [[1, 2], [1, 3], [2, 3]]

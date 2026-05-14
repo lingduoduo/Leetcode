@@ -1,6 +1,7 @@
 from typing import List
 from collections import Counter
 
+
 class Solution:
     def maxFrequency(self, nums: List[int], k: int, numOperations: int) -> int:
         nums.sort()
@@ -18,7 +19,7 @@ class Solution:
         # can be converted into target (each with one operation)
         # ------------------------------------------------------
         left = 0
-        window_freq = Counter()      # frequency of values currently in the window
+        window_freq = Counter()  # frequency of values currently in the window
         right = 0
 
         for target in nums:
@@ -32,14 +33,13 @@ class Solution:
                 window_freq[nums[left]] -= 1
                 left += 1
 
-            total_in_range = right - left              # number of elements in [target - k, target + k]
-            already_target = window_freq[target]       # elements already equal to target
+            total_in_range = (
+                right - left
+            )  # number of elements in [target - k, target + k]
+            already_target = window_freq[target]  # elements already equal to target
 
             # We can convert at most numOperations additional elements into target
-            best_for_target = min(
-                total_in_range,
-                already_target + numOperations
-            )
+            best_for_target = min(total_in_range, already_target + numOperations)
 
             max_freq = max(max_freq, best_for_target)
 

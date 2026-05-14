@@ -41,16 +41,11 @@ def recommend_by_jaccard(
         for candidate in candidates
     ]
     scored_candidates = [
-        (candidate, score)
-        for candidate, score in scored_candidates
-        if score > 0
+        (candidate, score) for candidate, score in scored_candidates if score > 0
     ]
 
     ranked_candidates = sorted(
         scored_candidates,
         key=lambda item: (-item[1], item[0]),
     )
-    return [
-        candidate
-        for candidate, _ in ranked_candidates[:max_recommendations]
-    ]
+    return [candidate for candidate, _ in ranked_candidates[:max_recommendations]]

@@ -24,8 +24,18 @@ class CheckerTest(unittest.TestCase):
 
     def test_large_dictionary_performance(self) -> None:
         checker = Checker(get_large_dictionary())
-        misspelled = ["teh", "helo", "thier", "hourse", "knwo",
-                      "abotu", "thign", "peple", "knowl", "herat"]
+        misspelled = [
+            "teh",
+            "helo",
+            "thier",
+            "hourse",
+            "knwo",
+            "abotu",
+            "thign",
+            "peple",
+            "knowl",
+            "herat",
+        ]
         start = time.time()
         for word in misspelled:
             suggestions = checker.suggest(word, max_suggestions=5)

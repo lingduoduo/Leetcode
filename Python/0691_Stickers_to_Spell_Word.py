@@ -39,14 +39,15 @@ class Solution:
 class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
         sticker_counts = [Counter(s) for s in stickers]
+
         def get_word_diff(t, sticker_count):
             ft = Counter(t)
             diff = ft - sticker_count
             # Sort to normalize state, so "abc" and "bca" are treated the same
-            return ''.join(ch * diff[ch] for ch in sorted(diff))
+            return "".join(ch * diff[ch] for ch in sorted(diff))
 
-        que = deque([''.join(sorted(target))])
-        visited = {''.join(sorted(target))}
+        que = deque(["".join(sorted(target))])
+        visited = {"".join(sorted(target))}
         step = 0
         while que:
             step += 1

@@ -1,10 +1,11 @@
 from typing import Optional
 
+
 # Definition for singly-linked list.
 class ListNode(object):
-   def __init__(self, x):
-       self.val = x
-       self.next = None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 
 class Solution(object):
@@ -33,12 +34,14 @@ class Solution:
             p = q
         return head
 
+
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
         head.next = self.deleteDuplicates(head.next)
         return head.next if head.val == head.next.val else head
+
 
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:

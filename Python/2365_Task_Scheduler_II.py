@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def taskSchedulerII(self, tasks: List[int], space: int) -> int:
         res = 0

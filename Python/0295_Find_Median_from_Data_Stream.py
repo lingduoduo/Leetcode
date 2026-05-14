@@ -93,7 +93,7 @@ class MedianFinder:
         if len(self.lo) == len(self.hi):
             return (-self.lo[0] + self.hi[0]) / 2
         return float(-self.lo[0])
-    
+
 
 if __name__ == "__main__":
     obj = MedianFinder()

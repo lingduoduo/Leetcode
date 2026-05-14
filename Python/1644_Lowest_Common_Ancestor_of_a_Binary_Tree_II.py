@@ -32,8 +32,10 @@ class Solution:
 
 
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        def dfs(node: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        def dfs(node: "TreeNode", p: "TreeNode", q: "TreeNode") -> "TreeNode":
             if node == None:
                 return None
 
@@ -56,7 +58,9 @@ class Solution:
         if result == None or (result != p and result != q):
             return result
         else:
-            if (result == p and dfs(result, q, q) == None) or (result == q and dfs(result, p, p) == None):
+            if (result == p and dfs(result, q, q) == None) or (
+                result == q and dfs(result, p, p) == None
+            ):
                 return None
             else:
                 return result
