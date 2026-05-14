@@ -146,6 +146,7 @@
 ...
 - LeetCode 347. Top K Frequent Elements
 - LeetCode 378. Kth Smallest Element in a Sorted Matrix
+- LeetCode 692. Top K Frequent Words
 
 ------
 
