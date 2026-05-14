@@ -1,4 +1,256 @@
-### Q1 
+### Question
+
+Write a program to check if a given password complies with the following rules:
+- It must be longer than 15 characters.
+- It cannot contain the word "password", case insensitive.
+- It must contain at least one uppercase and one lowercase letter.
+- It must include at least one of these special symbols: !@#.
+- A character cannot be repeated more than four times consecutively.
+
+```
+def solution(psw):
+    res = []
+
+    # Rule 1: longer than 15 characters
+    if len(psw) <= 15:
+        res.append("Must be longer than 15 characters.")
+
+    # Rule 2: cannot contain "password" (case insensitive)
+    if "password" in psw.lower():
+        res.append("Cannot contain the word 'password', case insensitive.")
+
+    # Rule 3: at least one uppercase and one lowercase
+    has_upper = False
+    has_lower = False
+
+    # Rule 4: at least one special symbol !@#
+    has_special = False
+
+    for ch in psw:
+        if ch.isupper():
+            has_upper = True
+        if ch.islower():
+            has_lower = True
+        if ch in "!@#":
+            has_special = True
+
+    if not (has_upper and has_lower):
+        res.append(
+            "Must contain at least one uppercase letter and one lowercase letter."
+        )
+
+    if not has_special:
+        res.append(
+            "Must include at least one of these special symbols: !@#"
+        )
+
+    # Rule 5: no character repeated more than 4 times consecutively
+    count = 1
+
+    for i in range(1, len(psw)):
+        if psw[i] == psw[i - 1]:
+            count += 1
+            if count > 4:
+                res.append(
+                    "A character cannot be repeated more than four times consecutively."
+                )
+                break
+        else:
+            count = 1
+
+    return res
+```
+
+------
+
+### Question
+
+Design a bus scheduling system where there is a folder dedicated to storing multiple logs. Priority boarding needs to be implemented, starting with higher priority passengers. Consider using a queue structure for optimization.
+
+```
+import os
+import heapq
+
+
+def solution(log_folder):
+    boarding_queue = []
+
+    for filename in os.listdir(log_folder):
+        file_path = os.path.join(log_folder, filename)
+
+        if not os.path.isfile(file_path):
+            continue
+
+        with open(file_path, "r") as f:
+            for line in f:
+                # Example log format:
+                # passenger_id,name,priority
+                passenger_id, name, priority = line.strip().split(",")
+
+                # heapq is min-heap, so use negative priority
+                heapq.heappush(
+                    boarding_queue,
+                    (-int(priority), passenger_id, name)
+                )
+
+    boarding_order = []
+
+    while boarding_queue:
+        priority, passenger_id, name = heapq.heappop(boarding_queue)
+        boarding_order.append({
+            "passenger_id": passenger_id,
+            "name": name,
+            "priority": -priority
+        })
+
+    return boarding_order
+
+
+if __name__ == "__main__":
+    res = solution("logs")
+    print(res)
+```
+
+------
+
+### Question
+Implement a bus route simulation system. In this system, you need to provide the following functionalities:
+
+- Reduce the number of simulated passengers: Design a method to decrease the number of passenger simulations in the system.
+
+- Design the bus boarding and alighting mechanism: The bus should be able to choose where passengers get on and off based on the route map, ensuring it does not exceed maximum passenger capacity.
+
+- Log analysis: Analyze system logs to identify potential bugs.
+
+- Support priority pass: Incorporate a feature to support priority boarding passes, ensuring the passengers with this pass can board first.
+
+Please provide the following information:
+
+- What is the input format for the system?
+- How do you define the data structures for buses and passengers?
+- How to record and analyze log information?
+- Provide at least one sample test case to verify your implementation.
+
+Example
+
+Input
+
+capacity: 2
+passengers: [(StopA, False), (StopB, True), (StopC, False)]
+
+
+```
+from collections import defaultdict, deque
+import heapq
+
+
+class Passenger:
+    def __init__(self, pid, start, end, priority=False):
+        self.pid = pid
+        self.start = start
+        self.end = end
+        self.priority = priority
+
+
+class Bus:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.onboard = []
+
+
+class BusRouteSimulator:
+    def __init__(self, route, capacity, passengers, sample_rate=1.0):
+        self.route = route
+        self.bus = Bus(capacity)
+        self.logs = []
+
+        # Reduce simulated passengers by sampling
+        self.passengers = [
+            p for i, p in enumerate(passengers)
+            if i % int(1 / sample_rate) == 0
+        ] if sample_rate < 1.0 else passengers
+
+        self.waiting = defaultdict(list)
+
+        for idx, p in enumerate(self.passengers):
+            # priority passenger boards first
+            priority_score = 0 if p.priority else 1
+            heapq.heappush(self.waiting[p.start], (priority_score, idx, p))
+
+    def log(self, msg):
+        self.logs.append(msg)
+
+    def run(self):
+        for stop in self.route:
+            self.log(f"Arrived at {stop}")
+
+            # passengers get off
+            remaining = []
+            for p in self.bus.onboard:
+                if p.end == stop:
+                    self.log(f"Passenger {p.pid} got off at {stop}")
+                else:
+                    remaining.append(p)
+            self.bus.onboard = remaining
+
+            # passengers get on
+            while self.waiting[stop] and len(self.bus.onboard) < self.bus.capacity:
+                _, _, p = heapq.heappop(self.waiting[stop])
+                self.bus.onboard.append(p)
+                self.log(
+                    f"Passenger {p.pid} boarded at {stop}, priority={p.priority}"
+                )
+
+            # capacity check
+            if len(self.bus.onboard) > self.bus.capacity:
+                self.log("BUG: Bus exceeded max capacity")
+
+        return self.logs
+
+    def analyze_logs(self):
+        bugs = []
+
+        for log in self.logs:
+            if "BUG" in log:
+                bugs.append(log)
+
+        # Check passengers still waiting
+        for stop, queue in self.waiting.items():
+            if queue:
+                bugs.append(f"Warning: passengers still waiting at {stop}")
+
+        return bugs
+
+if __name__ == "__main__":
+    capacity = 2
+
+    route = ["StopA", "StopB", "StopC", "StopD"]
+
+    passengers = [
+        Passenger(1, "StopA", "StopC", False),
+        Passenger(2, "StopA", "StopB", True),
+        Passenger(3, "StopA", "StopD", False),
+    ]
+
+    simulator = BusRouteSimulator(
+        route=route,
+        capacity=capacity,
+        passengers=passengers
+    )
+
+    logs = simulator.run()
+
+    print("=== Logs ===")
+    for log in logs:
+        print(log)
+
+    print("\n=== Bug Analysis ===")
+    print(simulator.analyze_logs())
+
+```
+
+------
+### Question 
 找 bug：missing float()
 原代码把 timestamp 当成 string 存了。
 修复：self.timestamp = float(tokens[0])
@@ -44,7 +296,6 @@ class LogEntry:
         return (f"<LogEntry timestamp: {self.timestamp} license: {self.license_plate} "
                 f"location: {self.location} direction: {self.direction} "
                 f"booth type: {self.booth_type}>")
-
 
 class LogFile:
     def __init__(self, file_contents):
@@ -182,7 +433,7 @@ if __name__ == '__main__':
     print("\nAll tests passed!")
 ```
 
-### Q2
+### Question
 
 Course：障碍数量
 
