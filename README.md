@@ -147,6 +147,7 @@
 - LeetCode 347. Top K Frequent Elements
 - LeetCode 378. Kth Smallest Element in a Sorted Matrix
 - LeetCode 692. Top K Frequent Words
+- LeetCode 230. Kth Smallest Element in a BST
 
 ------
 
@@ -173,6 +174,7 @@
 - LeetCode 114. Flatten Binary Tree to Linked List
 - LeetCode 297. Serialize and Deserialize Binary Tree
 - LeetCode 235. LCA of BST
+- LeetCode 124. Binary Tree Maximum Path Sum
 - LeetCode 2265. Count Nodes Equal to Average of Subtree
 - LeetCode 654. Maximum Binary Tree
 - LeetCode 701. Insert into BST
@@ -199,6 +201,7 @@
 - LeetCode 542. 01 Matrix
 - LeetCode 815. Bus Routes
 ...
+- LeetCode 429. N-ary Tree Level Order Traversal
 - LeetCode 314. Binary Tree Vertical Order Traversal
 - LeetCode 987. Vertical Order Traversal of a Binary Tree
 - LeetCode 513. Find Bottom Left Tree Value 
@@ -225,6 +228,8 @@
 - LeetCode 46. Permutations
 - LeetCode 47. Permutations II
 - LeetCode 491. Non-decreasing Subsequences
+- LeetCode 37. Sudoku Solver
+- LeetCode 93. Restore IP Addresses
 
 ------
 
