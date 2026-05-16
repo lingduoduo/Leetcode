@@ -27,6 +27,9 @@
 - LeetCode 151. Reverse Words in a String
 - LeetCode 459. Repeated Substring Pattern
 - LeetCode 28. Find First Occurrence in String
+- LeetCode 953. Verifying an Alien Dictionary
+- LeetCode 1570. Dot Product of Two Sparse Vectors
+- LeetCode 18. 4Sum 
 
 ------
 
@@ -46,7 +49,8 @@
 - LeetCode 1456. Maximum Number of Vowels in a Substring of Given Length         
 - LeetCode 76. Minimum Window Substring    
 - LeetCode 438. Find All Anagrams in a String
-- LeetCOde 1695. Maximum Erasure Value	          
+- LeetCode 1695. Maximum Erasure Value	
+- LeetCode 30. Substring with Concatenation of All Words          
 
 ------
 
@@ -60,6 +64,18 @@
 - LeetCode 436. Find Right Interval
 - LeetCode 452. Minimum Number of Arrows to Burst Balloons
 - LeetCode 759. Employee Free Time
+
+------
+
+### HashMap
+
+- LeetCode 454. 4Sum II              
+- LeetCode 874. Walking Robot Simulation    
+- LeetCode 49. Group Anagrams    
+- LeetCode 811. Subdomain Visit Count              
+- LeetCode 380. Insert Delete GetRandom O(1)
+- LeetCode 249. Group Shifted Strings 
+- LeetCode 128. Longest Consecutive Sequence         
 
 ------
 
@@ -352,6 +368,7 @@
 ...
 - LeetCode 65. Valid Number
 - LeetCode 2235. Add Two Integers
+- LeetCode 874. Walking Robot Simulation
 
 ----
 

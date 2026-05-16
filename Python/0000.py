@@ -14,28 +14,35 @@ class Node:
         self.children = children
 
 class Solution:
-    def restoreIpAddresses(self, s: str) -> List[str]:
+    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
+        obstacles = set(map(tuple, obstacles))
+        res = 0
+        x, y = 0, 0
+        dx, dy = 0, 1
+        for command in commands:
+            if command == -2:      # turn left
+                dx, dy = -dy, dx
+            elif command == -1:    # turn right
+                dx, dy = dy, -dx
+            else:
+                for _ in range(command):
+                    nx, ny = x + dx, y + dy
 
-        def check(start, end):
-            if start > end: return False
-            if start == "0" and start != end: return False
-            num = int(s[start: end + 1])
-            return 0 <= num < 256
+                    if (nx, ny) in obstacles:
+                        break
+
+                    x, y = nx, ny
+                    res = max(res, x * x + y * y)
+        return res
+
+
+
+
+
+
+
+
         
-        def dfs(idx, path):
-            if idx == len(s) and len(path) == 4:
-                return '.'.join(res)
-            
-            if len(path) > 4:
-                return 
-            
-            for i in range(idx, min(idx+3, len(s))):
-                if check(idx, i):
-                    dfs(i + 1, path + [s[idx: i+1]])
-        
-        res = []
-        dfs(0)
-        return None
 
 if __name__ == "__main__":
     print(Solution().getMinimumDifference()))
