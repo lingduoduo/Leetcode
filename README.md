@@ -30,6 +30,7 @@
 - LeetCode 953. Verifying an Alien Dictionary
 - LeetCode 1570. Dot Product of Two Sparse Vectors
 - LeetCode 18. 4Sum 
+- LeetCode 189. Rotate Array
 
 ------
 
@@ -345,8 +346,9 @@
 - LeetCode 304. Range Sum Query 2D - Immutable
 - LeetCode 1588. Sum of All Odd Length Subarrays
 - LeetCode 724. Find Pivot Index
-- LeetCode 307. Range Sum Query - Mutable → Prefix Sum (Fenwick Tree / Segment Tree)
-- LeetCode 308. Range Sum Query 2D — Mutable → Prefix Sum (2D BIT / Segment Tree)
+- LeetCode 238. Product of Array Except Self
+- LeetCode 307. Range Sum Query (Fenwick Tree / Segment Tree)
+- LeetCode 308. Range Sum Query 2D (2D Fenwick Tree / Segment Tree)
 
 ------
 
@@ -369,6 +371,7 @@
 - LeetCode 65. Valid Number
 - LeetCode 2235. Add Two Integers
 - LeetCode 874. Walking Robot Simulation
+- LeetCode 1492. The kth Factor of n
 
 ----
 
@@ -386,19 +389,19 @@ https://medium.com/@linghuang_76674/list/leetcode-array-8bedd9056818
 - LeetCode 48. Rotate Image
 - LeetCode 74. Search a 2D Matrix
 - LeetCode 240. Search a 2D Matrix II
-- LeetCode 1492 The Kth Factor of n
-- LeetCode 162 Find Peark Element
-- LeetCode 33 Search in Rotated Sorted Array
-- LeetCode 287 Find the Duplicate Number
-- LeetCode 4 Median of Two Sorted Arrays
-- LeetCode 34 Find First and Last Position of Element in Sorted Array
-- LeetCode 189 Rotate Array
-- LeetCode 59 Spiral Matrix II
-- LeetCode 209 Minimum Size Subarray Sum
-- LeetCode 560 Subarray Sum Equals K
-- LeetCode 26 Remove Duplicates from Sorted Array
-- LeetCode 75 Sort Colors
-- LeetCode 283 Move Zeros
+- LeetCode 1492. The Kth Factor of n
+- LeetCode 162. Find Peark Element
+- LeetCode 33. Search in Rotated Sorted Array
+- LeetCode 287. Find the Duplicate Number
+- LeetCode 4. Median of Two Sorted Arrays
+- LeetCode 34. Find First and Last Position of Element in Sorted Array
+- LeetCode 189. Rotate Array
+- LeetCode 59. Spiral Matrix II
+- LeetCode 209. Minimum Size Subarray Sum
+- LeetCode 560. Subarray Sum Equals K
+- LeetCode 26. Remove Duplicates from Sorted Array
+- LeetCode 75. Sort Colors
+- LeetCode 283. Move Zeros
 
 ------
 

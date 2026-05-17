@@ -13,36 +13,33 @@ class Node:
         self.val = val
         self.children = children
 
+
 class Solution:
-    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
-        obstacles = set(map(tuple, obstacles))
-        res = 0
-        x, y = 0, 0
-        dx, dy = 0, 1
-        for command in commands:
-            if command == -2:      # turn left
-                dx, dy = -dy, dx
-            elif command == -1:    # turn right
-                dx, dy = dy, -dx
+    def isNumber(self, s: str) -> bool:
+        digit = exponent = dot = False
+        for i, ch in enumerate(s):
+            if ch.isdigit():
+                digit = True
+            elif ch in '+-':
+                if i > 0 and s[i-1] not in 'eE':
+                    return False
+            elif ch in 'eE':
+                if exponent or not digit:
+                    return False
+                exponent = True
+                digit = False
+            elif ch == '.':
+                if dot or exponent: 
+                    return False
+                dot = True
             else:
-                for _ in range(command):
-                    nx, ny = x + dx, y + dy
+                return False
+        return digit
 
-                    if (nx, ny) in obstacles:
-                        break
-
-                    x, y = nx, ny
-                    res = max(res, x * x + y * y)
-        return res
+            
 
 
 
 
-
-
-
-
-        
-
-if __name__ == "__main__":
-    print(Solution().getMinimumDifference()))
+# if __name__ == "__main__":
+#     print(Solution().getMinimumDifference()))
