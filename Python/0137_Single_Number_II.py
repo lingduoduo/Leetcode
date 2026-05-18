@@ -1,5 +1,5 @@
 from typing import List
-
+import collections
 
 class Solution:
     def singleNumber(self, nums) -> int:
@@ -19,9 +19,6 @@ class Solution:
             seen_once = ~seen_twice & (seen_once ^ num)
             seen_twice = ~seen_once & (seen_twice ^ num)
         return seen_once
-
-
-import collections
 
 
 class Solution:

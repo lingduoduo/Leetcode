@@ -8,3 +8,7 @@ class Solution(object):
         for num in nums:
             res ^= num
         return res
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        return reduce(lambda x, y: x ^ y, nums)

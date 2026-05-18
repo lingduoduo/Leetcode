@@ -150,6 +150,7 @@
 - LeetCode 74. Search a 2D Matrix
 - LeetCode 4. Median of Two Sorted Arrays
 - LeetCode 287. Find the Duplicate Number
+- LeetCode 153. Find Minimum in Rotated Sorted Array
 
 ------
 
@@ -305,6 +306,8 @@
 - LeetCode 53. Maximum Subarray
 - LeetCode 5. Longest Palindromic Substring
 - LeetCode 72. Edit Distance
+- LeetCode 10. Regular Expression Matching
+- LeetCode 152. Maximum Product Subarray
 
 ------
 
@@ -313,7 +316,7 @@
 - LeetCode 134. Gas Station
 - LeetCode 135. Candy
 - LeetCode 55. Jump Game
-- LeetCode  45. Jump Game II
+- LeetCode 45. Jump Game II
 - LeetCode 763. Partition Labels
 ...
 - LeetCode 376. Wiggle Subsequence
@@ -332,7 +335,10 @@
 - LeetCode 648. Replace Words 
 - LeetCode 676. Implement Magic Dictionary
 ...
+- LeetCode 2416. Sum of Prefix Scores of Strings
+- LeetCode 1166. Design File System
 - LeetCode 588. Design In-Memory File System
+- LeetCode 642. Design Search Autocomplete System
 
 ------
 
@@ -344,11 +350,11 @@
 ...
 - LeetCode 303. Range Sum Query - Immutable
 - LeetCode 304. Range Sum Query 2D - Immutable
+- LeetCode 307. Range Sum Query (Fenwick Tree / Segment Tree)
+- LeetCode 308. Range Sum Query 2D (2D Fenwick Tree / Segment Tree)
 - LeetCode 1588. Sum of All Odd Length Subarrays
 - LeetCode 724. Find Pivot Index
 - LeetCode 238. Product of Array Except Self
-- LeetCode 307. Range Sum Query (Fenwick Tree / Segment Tree)
-- LeetCode 308. Range Sum Query 2D (2D Fenwick Tree / Segment Tree)
 
 ------
 
@@ -367,11 +373,9 @@
 
 - LeetCode 1492. The Kth Factor of n
 - LeetCode 38. Count and Say
-...
 - LeetCode 65. Valid Number
-- LeetCode 2235. Add Two Integers
 - LeetCode 874. Walking Robot Simulation
-- LeetCode 1492. The kth Factor of n
+- LeetCode 137. Single Number II
 
 ----
 
