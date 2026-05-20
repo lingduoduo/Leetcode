@@ -118,16 +118,18 @@
 - LeetCode 19. Remove Nth Node From End of List
 - LeetCode 24. Swap Nodes in Pairs
 ...
-- LeetCode 138. Copy List with Random Pointer
-- LeetCode 426. Convert Binary Search Tree to Sorted Doubly Linked List
-- LeetCode 707. Design Linked List
 - LeetCode 25. Reverse Nodes in k-Group
-- LeetCode 32. Odd Even Linked List
-- LeetCode 82. Remove Duplicates from Sorted List II
-- LeetCode 23. Merge k Sorted List
-- LeetCode 61. Rotate List
 - LeetCode 148. Sort List
+- LeetCode 82. Remove Duplicates from Sorted List II
+- LeetCode 61. Rotate List
+- LeetCode 426. Convert Binary Search Tree to Sorted Doubly Linked List
+- LeetCode 138. Copy List with Random Pointer
+- LeetCode 707. Design Linked List
 - LeetCode 146. LRU Cache
+
+
+234. Palindrome Linked List
+328. Odd Even Linked List
 
 ------
 
@@ -162,6 +164,7 @@
 - LeetCode 23. Merge k Sorted Lists
 - LeetCode 295. Find Median from Data Stream
 ...
+- LeetCode 23. Merge k Sorted List
 - LeetCode 347. Top K Frequent Elements
 - LeetCode 378. Kth Smallest Element in a Sorted Matrix
 - LeetCode 692. Top K Frequent Words
@@ -378,6 +381,7 @@
 - LeetCode 137. Single Number II
 
 ----
+
 
 ## LeetCode Medium+Hard 200 Questions 
 

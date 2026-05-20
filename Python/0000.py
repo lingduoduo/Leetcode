@@ -14,8 +14,21 @@ class Node:
         self.children = children
 
 class Solution:
-    def singleNumber(self, nums: List[int]) -> int:
-        return reduce(lambda x, y: x ^ y, nums)
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-if __name__ == "__main__":
-    print(Solution().findMin(nums = [4,5,6,7,0,1,2]))
+        if not head: return head
+
+        dummy = ListNode(-1)
+        dummy.next = head
+        p1 = dummy
+
+        p0 = head
+        while p0.next:
+            if p0.val == p1.val:
+                p0 = p0.next
+            else:
+                p1.next = p0
+                p1 = p0
+                p0 = p0.next
+        p1.next = None
+        return dummy.next

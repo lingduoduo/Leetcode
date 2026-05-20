@@ -53,27 +53,20 @@ class Solution:
 
 
 class Solution:
-    def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if head is None or head.next is None:
-            return head
-
-        dummy = ListNode(0)
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(-1)
         dummy.next = head
-        pre = dummy
-        cur = head
-        post = head.next
 
-        while post:
-            while post and post.val != cur.val:  # 没有重复的时候
-                post = post.next
-                cur = cur.next
-                pre = pre.next
-            while post and post.val == cur.val:  # 有重复的时候
-                post = post.next
-            if post != cur.next:  # 只有在有重复的时候这么做
-                pre.next = post
-                cur = post
-                if post is not None:
-                    post = post.next
 
-        return dummy.next
+        curr, prev = head, dummy
+        while curr:
+            while curr.next and curr.val == curr.next.val:
+                curr = curr.next
+            if prev.next == curr:
+                prev = prev.next
+                curr = curr.next
+            else:
+                prev.next = curr.next
+                curr = prev.next
+        return dummy.next 
+
