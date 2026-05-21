@@ -71,7 +71,6 @@
 ### HashMap
 
 - LeetCode 454. 4Sum II              
-- LeetCode 874. Walking Robot Simulation    
 - LeetCode 49. Group Anagrams    
 - LeetCode 811. Subdomain Visit Count              
 - LeetCode 380. Insert Delete GetRandom O(1)
@@ -126,10 +125,7 @@
 - LeetCode 138. Copy List with Random Pointer
 - LeetCode 707. Design Linked List
 - LeetCode 146. LRU Cache
-
-
-234. Palindrome Linked List
-328. Odd Even Linked List
+- LeetCode 328. Odd Even Linked List
 
 ------
 
@@ -275,6 +271,7 @@
 - LeetCode 261. Graph Valid Tree
 - LeetCode 797. All Paths From Source to Target
 - LeetCode 841. Keys and Rooms
+- LeetCode 874. Walking Robot Simulation
 - LeetCode 1584. Min Cost to Connect All Points
 - LeetCode 691. Stickers to Spell Word
 - LeetCode 1091. Shortest Path in Binary Matrix                           
@@ -379,6 +376,7 @@
 - LeetCode 65. Valid Number
 - LeetCode 874. Walking Robot Simulation
 - LeetCode 137. Single Number II
+- LeetCode 41. First Missing Positive
 
 ----
 
