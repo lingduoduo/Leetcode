@@ -22,6 +22,8 @@
 - LeetCode 75. Sort Colors
 - LeetCode 42. Trapping Rain Water
 ...
+- LeetCode 16. 3Sum Closest
+- LeetCode 18. 4Sum 
 - LeetCode 680. Valid Palindrome II
 - LeetCode 1004. Max Consecutive Ones III
 - LeetCode 151. Reverse Words in a String
@@ -29,8 +31,8 @@
 - LeetCode 28. Find First Occurrence in String
 - LeetCode 953. Verifying an Alien Dictionary
 - LeetCode 1570. Dot Product of Two Sparse Vectors
-- LeetCode 18. 4Sum 
 - LeetCode 189. Rotate Array
+- LeetCode 670. Maximum Swap
 
 ------
 
@@ -297,6 +299,7 @@
 - LeetCode 121. Best Time to Buy and Sell Stock
 - LeetCode 122. Best Time to Buy and Sell Stock II
 ...
+- LeetCode 123. Best Time to Buy and Sell Stock III
 - LeetCode 714. Best Time to Buy and Sell Stock with Transaction Fee
 - LeetCode 309. Best Time to Buy and Sell Stock with Cooldown
 - LeetCode 96. Unique Binary Search Trees
@@ -325,6 +328,7 @@
 - LeetCode 881. Boats to Save People
 - LeetCode 406. Queue Reconstruction by Height
 - LeetCode 68. Text Justification
+- LeetCode 2611. Mice and Cheese
 
 ------
 
@@ -366,6 +370,7 @@
 - LeetCode 73. Set Matrix Zeroes
 ...
 - LeetCode 64. Minimum Path Sum
+- LeetCode 1424. Diagonal Traverse II 
 
 ---
 
@@ -611,6 +616,7 @@ https://medium.com/@linghuang_76674/list/leetcode-greedy-d02da9729235
 - LeetCode 16 3Sum Closest
 
 ------
+
 
 ## [Leetcode 75]
 
