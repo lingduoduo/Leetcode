@@ -227,6 +227,7 @@
 - LeetCode 433. Minimum Genetic Mutation
 - LeetCode 269. Alien Dictionary 
 - LeetCode 2812. Find the Safest Path in a Grid
+- LeetCode 865. Smallest Subtree with all the Deepest Nodes
 
 ------
 
@@ -249,6 +250,7 @@
 - LeetCode 491. Non-decreasing Subsequences
 - LeetCode 37. Sudoku Solver
 - LeetCode 93. Restore IP Addresses
+- LeetCode 1239. Maximum Length of a Concatenated String with Unique Characters
 
 ------
 
@@ -311,6 +313,7 @@
 - LeetCode 72. Edit Distance
 - LeetCode 10. Regular Expression Matching
 - LeetCode 152. Maximum Product Subarray
+- LeetCode 712. Minimum ASCII Delete Sum for Two Strings
 
 ------
 
@@ -352,6 +355,7 @@
 - LeetCode 560. Subarray Sum Equals K
 - LeetCode 1248. Count Number of Nice Subarrays
 ...
+- LeetCode 523. Continuous Subarray Sum
 - LeetCode 303. Range Sum Query - Immutable
 - LeetCode 304. Range Sum Query 2D - Immutable
 - LeetCode 307. Range Sum Query (Fenwick Tree / Segment Tree)
