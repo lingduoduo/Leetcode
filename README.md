@@ -53,7 +53,8 @@
 - LeetCode 76. Minimum Window Substring    
 - LeetCode 438. Find All Anagrams in a String
 - LeetCode 1695. Maximum Erasure Value	
-- LeetCode 30. Substring with Concatenation of All Words          
+- LeetCode 30. Substring with Concatenation of All Words   
+- LeetCode 3346. Maximum Frequency of an Element After Performing Operations I       
 
 ------
 
@@ -153,6 +154,7 @@
 - LeetCode 4. Median of Two Sorted Arrays
 - LeetCode 287. Find the Duplicate Number
 - LeetCode 153. Find Minimum in Rotated Sorted Array
+- LeetCode 2226. Maximum Candies Allocated to K Children
 
 ------
 
@@ -209,6 +211,7 @@
 - LeetCode 282. Expression Add Operators
 - LeetCode 95. Unique Binary Search Trees II
 - LeetCode 894. All Possible Full Binary Tree
+- LeetCode 529. Minesweeper 
 
 ------
 
@@ -280,7 +283,8 @@
 - LeetCode 874. Walking Robot Simulation
 - LeetCode 1584. Min Cost to Connect All Points
 - LeetCode 691. Stickers to Spell Word
-- LeetCode 1091. Shortest Path in Binary Matrix                           
+- LeetCode 1091. Shortest Path in Binary Matrix
+- LeetCode 2257. Count Unguarded Cells in the Grid                           
 
 ------
 
@@ -316,6 +320,7 @@
 - LeetCode 10. Regular Expression Matching
 - LeetCode 152. Maximum Product Subarray
 - LeetCode 712. Minimum ASCII Delete Sum for Two Strings
+- LeetCode 174. Dungeon Game
 
 ------
 
