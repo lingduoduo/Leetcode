@@ -9,18 +9,26 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
-        intervals = firstList + secondList     
-        intervals.sort(key=lambda x: (x[0], x[1]))
-        stack = [intervals[0]]
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        d = defaultdict(list)
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                d[i+j].append(mat[i][j])
+
         res = []
-        for x, y in intervals[1:]:
-            px, py = stack[-1]
-            if x <= py:
-                res.append([max(x, px), min(y, py)])
-            stack.append([x, y])
+        for k, v in d.items():
+            if k % 2 == 0:
+                res += v[::-1]
+            else:
+                res += v
         return res
 
+        
+                
+
+
+
+
 if __name__ == "__main__":
-    res = Solution().intervalIntersection(firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]])
+    res = Solution().findDiagonalOrder(mat = [[1,2,3],[4,5,6],[7,8,9]])
     print(res)

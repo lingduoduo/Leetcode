@@ -69,6 +69,7 @@
 - LeetCode 759. Employee Free Time
 - LeetCode 986. Interval List Intersections
 
+
 ------
 
 ### HashMap
@@ -364,6 +365,7 @@
 - LeetCode 1588. Sum of All Odd Length Subarrays
 - LeetCode 724. Find Pivot Index
 - LeetCode 238. Product of Array Except Self
+- LeetCode 1094. Car Pooling
 
 ------
 
@@ -375,6 +377,7 @@
 - LeetCode 73. Set Matrix Zeroes
 ...
 - LeetCode 64. Minimum Path Sum
+- LeetCode 498. Diagonal Traverse
 - LeetCode 1424. Diagonal Traverse II 
 
 ---
