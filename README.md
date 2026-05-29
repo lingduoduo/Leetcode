@@ -70,7 +70,6 @@
 - LeetCode 759. Employee Free Time
 - LeetCode 986. Interval List Intersections
 
-
 ------
 
 ### HashMap
@@ -196,6 +195,7 @@
 - LeetCode 106. Construct Binary Tree (Inorder + Postorder)
 - LeetCode 114. Flatten Binary Tree to Linked List
 - LeetCode 297. Serialize and Deserialize Binary Tree
+- LeetCode 428. Serialize and Deserialized N-ary Tree
 - LeetCode 235. LCA of BST
 - LeetCode 124. Binary Tree Maximum Path Sum
 - LeetCode 2265. Count Nodes Equal to Average of Subtree
@@ -207,11 +207,13 @@
 - LeetCode 337. House Robber III
 - LeetCode 968. Binary Tree Cameras
 - LeetCode 236. Lowest Common Ancestor of a Binary Tree
+- LeetCode 1644. Lowest Common Ancestor of a Binary Tree II
 - LeetCode 1650. Lowest Common Ancestor of a Binary Tree III
 - LeetCode 282. Expression Add Operators
 - LeetCode 95. Unique Binary Search Trees II
 - LeetCode 894. All Possible Full Binary Tree
-- LeetCode 529. Minesweeper 
+- LeetCode 529. Minesweeper
+- LeetCode 1443. Minimum Time to Collect All Apples in a Tree
 
 ------
 
@@ -233,6 +235,7 @@
 - LeetCode 269. Alien Dictionary 
 - LeetCode 2812. Find the Safest Path in a Grid
 - LeetCode 865. Smallest Subtree with all the Deepest Nodes
+- LeetCode 116. Populating Next Right Pointers in Each Node
 
 ------
 
@@ -321,6 +324,7 @@
 - LeetCode 152. Maximum Product Subarray
 - LeetCode 712. Minimum ASCII Delete Sum for Two Strings
 - LeetCode 174. Dungeon Game
+- LeetCode 140. Word Break II
 
 ------
 
@@ -395,9 +399,9 @@
 - LeetCode 874. Walking Robot Simulation
 - LeetCode 137. Single Number II
 - LeetCode 41. First Missing Positive
+- LeetCode 1352. Product of the Last K Numbers
 
 ----
-
 
 ## LeetCode Medium+Hard 200 Questions 
 

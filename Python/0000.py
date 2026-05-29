@@ -8,38 +8,31 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
-    def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
 
-        def dfs(x, y):
-            if not (0 <= nx < len(board) and 0 <= ny < len(board[0])):
-                return 
-            if board[nx][ny] != "E":
-                return 
-            
-            count = 0
-            for dx, dy in [(0, 1), (0, -1), (1, 0), (1, -1)(1, 1), (-1, -1), (-1, 0), (-1, 1)]:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < len(board) and 0 <= ny < len(board[0]):
-                    if board[nx][ny] == "M":
-                        count += 1
-            if count > 0:
-                board[x][y] = str(count)
-            else:
-                board[x][y] = "B"
-                dfs(nx, ny)
+class ProductOfNumbers:
 
-        x, y = click
-        if board[x][y] == "M":
-            board[x][y] = "X"
-            return board
-        elif board[x][y] == "E":
-            dfs(x, y)
-            
-        return board
-    
+    def __init__(self):
+        self.prod = [1]
+        
+
+    def add(self, num: int) -> None:
+        if num == 0:
+            self.prod = [1]
+        else:
+            self.prod.append(self.prod[-1] * num)
+        
+    def getProduct(self, k: int) -> int:
+        if k >= len(self.prod):
+            return 0
+        else:
+            return self[-1] / self.prod[-k-1]
+
+productOfNumbers = ProductOfNumbers()
+productOfNumbers.add(3)
+productOfNumbers.add(0)
 
 
-if __name__ == "__main__":
-    res = Solution().updateBoard(board = [["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]], click = [3,0])
-    print(res)
+
+# if __name__ == "__main__":
+#     res = Solution().minInsertions(s = "())")
+#     print(res)
