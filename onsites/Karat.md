@@ -1,5 +1,318 @@
 ### Question
 
+A Python decorator is a function that takes another function as input and returns a new function with additional behavior. Decorators allow us to extend or modify a function's behavior without changing its source code. They are commonly used for logging, timing, authentication, caching, and access control, and are applied using the @decorator_name syntax.
+
+
+A Python generator is a function that uses yield to produce values lazily, one at a time, rather than returning all values at once. Its primary purpose is to improve memory efficiency and enable processing of large or potentially infinite datasets. Generators are commonly used for file processing, data pipelines, streaming applications, and iterating over large collections.
+
+
+The Global Interpreter Lock (GIL) is a mutex in CPython that allows only one thread to execute Python bytecode at a time. It simplifies memory management and makes reference counting thread-safe. The GIL limits parallelism for CPU-bound multithreaded programs, but it has little impact on I/O-bound applications because Python releases the GIL during blocking I/O operations. For CPU-intensive workloads, multiprocessing or native libraries that release the GIL are commonly used to achieve true parallelism.
+
+
+## Data Model
+
+### Stock
+
+```python
+class Stock:
+    symbol
+    name
+```
+
+### PriceRecord
+
+```python
+class PriceRecord:
+    stock
+    price
+    date
+```
+
+### StockCollection
+
+```python
+class StockCollection:
+    stock
+    price_records
+```
+
+### Transaction
+
+```python
+class Transaction:
+    stock
+    transaction_type
+    date
+    quantity
+```
+
+### Tradebook
+
+```python
+class Tradebook:
+    transactions
+```
+
+---
+
+## Bug Fix: Empty Collection
+
+### Problem
+
+```python
+max(...)
+```
+
+raises
+
+```text
+ValueError: max() iterable argument is empty
+```
+
+### Solution
+
+```python
+def get_max_price(self):
+    if not self.price_records:
+        return None
+    return max(r.price for r in self.price_records)
+```
+
+```python
+def get_min_price(self):
+    if not self.price_records:
+        return None
+    return min(r.price for r in self.price_records)
+```
+
+```python
+def get_avg_price(self):
+    if not self.price_records:
+        return None
+
+    return (
+        sum(r.price for r in self.price_records)
+        / len(self.price_records)
+    )
+```
+
+---
+
+## Feature: get_biggest_change()
+
+### Requirement
+
+Find the largest price movement between consecutive dates.
+
+Example:
+
+| Date | Price |
+|------|------|
+| 2023-06-25 | 90 |
+| 2023-06-29 | 110 |
+| 2023-07-01 | 112 |
+| 2023-07-06 | 105 |
+
+Changes:
+
+- +20
+- +2
+- -7
+
+Return:
+
+```python
+[20, "2023-06-25", "2023-06-29"]
+```
+
+### Solution
+
+```python
+def get_biggest_change(self):
+    if len(self.price_records) < 2:
+        return None
+
+    records = sorted(
+        self.price_records,
+        key=lambda x: x.date
+    )
+
+    biggest_change = records[1].price - records[0].price
+    start_date = records[0].date
+    end_date = records[1].date
+
+    for i in range(1, len(records)):
+        change = records[i].price - records[i-1].price
+
+        if abs(change) > abs(biggest_change):
+            biggest_change = change
+            start_date = records[i-1].date
+            end_date = records[i].date
+
+    return [biggest_change, start_date, end_date]
+```
+
+---
+
+## Feature: get_latest_price()
+
+### Requirement
+
+Return price associated with the latest date.
+
+### Solution
+
+```python
+def get_latest_price(self):
+    if not self.price_records:
+        return None
+
+    latest_record = max(
+        self.price_records,
+        key=lambda x: x.date
+    )
+
+    return latest_record.price
+```
+
+---
+
+## Feature: Tradebook.get_total()
+
+### Requirement
+
+Calculate portfolio value using latest stock prices.
+
+Example:
+
+```text
+Buy 10 shares
+Latest price = 105
+Value = 1050
+```
+
+After:
+
+```text
+Buy 5 more
+Sell 3
+```
+
+Net shares:
+
+```text
+10 + 5 - 3 = 12
+```
+
+Portfolio value:
+
+```text
+12 * 105 = 1260
+```
+
+### Correct Solution
+
+```python
+def get_total(self, stock_collections):
+
+    shares = {}
+
+    for transaction in self.transactions:
+
+        symbol = transaction.stock.symbol
+
+        if symbol not in shares:
+            shares[symbol] = 0
+
+        if transaction.transaction_type == "buy":
+            shares[symbol] += transaction.quantity
+        else:
+            shares[symbol] -= transaction.quantity
+
+    total = 0
+
+    for stock_collection in stock_collections:
+
+        symbol = stock_collection.stock.symbol
+        latest_price = stock_collection.get_latest_price()
+
+        quantity = shares.get(symbol, 0)
+
+        total += quantity * latest_price
+
+    return total
+```
+
+---
+
+## Common Bugs
+
+### Bug #1
+
+Wrong:
+
+```python
+records = sorted(
+    self.add_price_record,
+    key=lambda x: x.date
+)
+```
+
+Error:
+
+```text
+TypeError: 'method' object is not iterable
+```
+
+Correct:
+
+```python
+records = sorted(
+    self.price_records,
+    key=lambda x: x.date
+)
+```
+
+---
+
+### Bug #2
+
+Wrong:
+
+```python
+if stock_collection == stock:
+```
+
+Reason:
+
+```python
+stock_collection
+```
+
+is a StockCollection object while
+
+```python
+stock
+```
+
+is a Stock object.
+
+Correct:
+
+```python
+if stock_collection.stock == stock:
+```
+or
+
+```python
+if stock_collection.stock.symbol == stock.symbol:
+```
+
+
+------
+
+### Question
+
 Write a program to check if a given password complies with the following rules:
 - It must be longer than 15 characters.
 - It cannot contain the word "password", case insensitive.
