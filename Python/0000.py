@@ -1,6 +1,7 @@
 from typing import List, Optional
 from collections import deque, defaultdict, Counter
 import heapq
+import random
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -8,31 +9,31 @@ class TreeNode:
         self.left = left
         self.right = right
 
+class Solution:
+    def nextGreaterElement(self, n: int) -> int:
+        strs = list(str(n))
 
-class ProductOfNumbers:
+        m = len(strs)
+        i = m - 1
+        while i > 0 and strs[i - 1] >= strs[i]:
+            i -= 1
+        if i == 0 : 
+            return -1
+        
+        j = m - 1
+        while j > i - 1 and strs[j] <= strs[i - 1]:
+            j -= 1
+        
+        strs[j], strs[i - 1] = strs[i - 1], strs[j]
+        strs[i:] = strs[i:][::-1]
+        num = int(''.join(strs))
+        return res if res < 2**31 else -1
 
-    def __init__(self):
-        self.prod = [1]
         
 
-    def add(self, num: int) -> None:
-        if num == 0:
-            self.prod = [1]
-        else:
-            self.prod.append(self.prod[-1] * num)
-        
-    def getProduct(self, k: int) -> int:
-        if k >= len(self.prod):
-            return 0
-        else:
-            return self[-1] / self.prod[-k-1]
-
-productOfNumbers = ProductOfNumbers()
-productOfNumbers.add(3)
-productOfNumbers.add(0)
 
 
-
-# if __name__ == "__main__":
-#     res = Solution().minInsertions(s = "())")
-#     print(res)
+                
+if __name__ == "__main__":
+    res = Solution().maximumSubarraySum(nums = [1,5,4,2,9,9,9], k = 3)
+    print(res)

@@ -33,6 +33,7 @@
 - LeetCode 1570. Dot Product of Two Sparse Vectors
 - LeetCode 189. Rotate Array
 - LeetCode 670. Maximum Swap
+- LeetCode 689. Maximum Sum of 3 Non-Overlapping Subarrays
 
 ------
 
@@ -107,6 +108,7 @@
 - LeetCode 1209. Remove All Adjacent Duplicates in String II
 - LeetCode 1944. Number of Visible People in a Queue
 - LeetCode 853. Car Fleet
+- LeetCode 556. Next Greater Element III
 
 ------
 
@@ -214,6 +216,7 @@
 - LeetCode 894. All Possible Full Binary Tree
 - LeetCode 529. Minesweeper
 - LeetCode 1443. Minimum Time to Collect All Apples in a Tree
+- LeetCode 1315. Sum of Nodes with Even-Valued Grandparent
 
 ------
 
@@ -231,11 +234,13 @@
 - LeetCode 314. Binary Tree Vertical Order Traversal
 - LeetCode 987. Vertical Order Traversal of a Binary Tree
 - LeetCode 513. Find Bottom Left Tree Value 
+- LeetCode 515. Find Largest Value in Each Tree Row
 - LeetCode 433. Minimum Genetic Mutation
 - LeetCode 269. Alien Dictionary 
 - LeetCode 2812. Find the Safest Path in a Grid
 - LeetCode 865. Smallest Subtree with all the Deepest Nodes
 - LeetCode 116. Populating Next Right Pointers in Each Node
+- LeetCode 919. Complete Binary Tree Inserter
 
 ------
 
@@ -325,6 +330,7 @@
 - LeetCode 712. Minimum ASCII Delete Sum for Two Strings
 - LeetCode 174. Dungeon Game
 - LeetCode 140. Word Break II
+- LeetCode 1043. Partition Array for Maximum Sum
 
 ------
 
