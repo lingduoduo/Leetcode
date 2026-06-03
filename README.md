@@ -109,6 +109,7 @@
 - LeetCode 1944. Number of Visible People in a Queue
 - LeetCode 853. Car Fleet
 - LeetCode 556. Next Greater Element III
+- LeetCode 1028. Recover a Tree From Preorder Traversal
 
 ------
 
@@ -292,7 +293,8 @@
 - LeetCode 1584. Min Cost to Connect All Points
 - LeetCode 691. Stickers to Spell Word
 - LeetCode 1091. Shortest Path in Binary Matrix
-- LeetCode 2257. Count Unguarded Cells in the Grid                           
+- LeetCode 2257. Count Unguarded Cells in the Grid   
+- LeetCode 2097. Valid Arrangement of Pairs                        
 
 ------
 
