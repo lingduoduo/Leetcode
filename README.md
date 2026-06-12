@@ -243,6 +243,7 @@
 - LeetCode 865. Smallest Subtree with all the Deepest Nodes
 - LeetCode 116. Populating Next Right Pointers in Each Node
 - LeetCode 919. Complete Binary Tree Inserter
+- LeetCode 623. Add One Row to Tree
 
 ------
 
