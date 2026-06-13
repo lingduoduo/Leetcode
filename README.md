@@ -296,7 +296,8 @@
 - LeetCode 691. Stickers to Spell Word
 - LeetCode 1091. Shortest Path in Binary Matrix
 - LeetCode 2257. Count Unguarded Cells in the Grid   
-- LeetCode 2097. Valid Arrangement of Pairs                        
+- LeetCode 2097. Valid Arrangement of Pairs  
+- LeetCode 332. Reconstruct Itinerary                    
 
 ------
 

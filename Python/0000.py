@@ -10,39 +10,32 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
-        if depth == 1:
-            new_root = TreeNode(val)
-            new_root.left = root
-            return new_root
-        
-        cur = 1
-        que = deque([root])
-        while que:
-            for _ in range(len(que)):
-                node = que.popleft()
-                if cur == depth - 1:
-                    old_left = node.left
-                    old_right = node.right
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        g = defaultdict(list)
 
-                    node.left = TreeNode(val)
-                    node.left.left = old_left
+        for s, e in tickets:
+            g[s].append(e)
 
-                    node.right = TreeNode(val)
-                    node.right.right = old_right
-                    return root
-                else:
-                    if node.left:
-                        que.append(node.left)
-                    if node.right:
-                        que.append(node.right)
-            cur += 1
-        return root
+        for s in g:
+            g[s].sort(reverse=True)
+
+        stack = ["JFK"]
+        res = []
+
+        while stack:
+            while g[stack[-1]]:
+                stack.append(g[stack[-1]].pop())
+            res.append(stack.pop())
+
+        return res[::-1]
+
+
+
 
 
 
 
 
 if __name__ == "__main__":
-    res = Solution().eraseOverlapIntervals(intervals = [[1,2],[2,3],[3,4],[1,3]])
+    res = Solution().findItinerary(tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]])
     print(res)
