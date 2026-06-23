@@ -34,6 +34,7 @@
 - LeetCode 189. Rotate Array
 - LeetCode 670. Maximum Swap
 - LeetCode 689. Maximum Sum of 3 Non-Overlapping Subarrays
+- LeetCode 825. Friends Of Appropriate Ages
 
 ------
 
@@ -55,7 +56,9 @@
 - LeetCode 438. Find All Anagrams in a String
 - LeetCode 1695. Maximum Erasure Value	
 - LeetCode 30. Substring with Concatenation of All Words   
-- LeetCode 3346. Maximum Frequency of an Element After Performing Operations I       
+- LeetCode 3346. Maximum Frequency of an Element After Performing Operations I
+- LeetCode 1004. Max Consecutive Ones III
+    
 
 ------
 
@@ -219,6 +222,7 @@
 - LeetCode 529. Minesweeper
 - LeetCode 1443. Minimum Time to Collect All Apples in a Tree
 - LeetCode 1315. Sum of Nodes with Even-Valued Grandparent
+- LeetCode 1110. Delete Nodes And Return Forest
 
 ------
 
@@ -297,7 +301,8 @@
 - LeetCode 1091. Shortest Path in Binary Matrix
 - LeetCode 2257. Count Unguarded Cells in the Grid   
 - LeetCode 2097. Valid Arrangement of Pairs  
-- LeetCode 332. Reconstruct Itinerary                    
+- LeetCode 332. Reconstruct Itinerary
+- LeetCode 133. Clone Graph                    
 
 ------
 

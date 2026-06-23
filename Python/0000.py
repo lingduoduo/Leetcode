@@ -3,6 +3,11 @@ from collections import deque, defaultdict, Counter
 import heapq
 import random
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -10,32 +15,22 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        g = defaultdict(list)
-
-        for s, e in tickets:
-            g[s].append(e)
-
-        for s in g:
-            g[s].sort(reverse=True)
-
-        stack = ["JFK"]
-        res = []
-
-        while stack:
-            while g[stack[-1]]:
-                stack.append(g[stack[-1]].pop())
-            res.append(stack.pop())
-
-        return res[::-1]
-
-
-
-
-
-
+    def longestOnes(self, nums: List[int], k: int) -> int:
+        start = 0
+        res = 0
+        zeros = 0
+        for i, v in enumerate(nums):
+            if v == 0:
+                zeros += 1
+                while zeros > k:
+                    if nums[start] == 0:
+                        zeros -= 1
+                    start += 1
+            res = max(res, i - start + 1)
+        return res
+        
 
 
 if __name__ == "__main__":
-    res = Solution().findItinerary(tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]])
+    res = Solution().longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2)
     print(res)
