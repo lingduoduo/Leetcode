@@ -3,10 +3,12 @@ from collections import deque, defaultdict, Counter
 import heapq
 import random
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -14,23 +16,36 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
-    def longestOnes(self, nums: List[int], k: int) -> int:
-        start = 0
-        res = 0
-        zeros = 0
-        for i, v in enumerate(nums):
-            if v == 0:
-                zeros += 1
-                while zeros > k:
-                    if nums[start] == 0:
-                        zeros -= 1
-                    start += 1
-            res = max(res, i - start + 1)
-        return res
+    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        if n == 1:
+            return [0]
+        
+        g = defaultdict(set)
+        for u, v in edges:
+            g[u].add(v)
+            g[v].add(u)
+        
+        que = deque([])
+        for k, v in g.items():
+            if len(v) == 1:
+                que.append(k)
+        
+        remain = n
+        while remain > 2:
+            size = len(que)
+            remain -= size
+
+            for _ in range(size):
+                leaf = que.popleft()
+                nei = g[leaf].pop()
+                g[nei].remove(leaf)
+
+                if len(g[nei]) == 1:
+                    que.append(nei)
+        return list(que)
         
 
-
 if __name__ == "__main__":
-    res = Solution().longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2)
-    print(res)
+
