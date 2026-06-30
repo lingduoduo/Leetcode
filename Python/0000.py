@@ -18,34 +18,40 @@ class TreeNode:
 
 
 class Solution:
-    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-        if n == 1:
-            return [0]
-        
-        g = defaultdict(set)
-        for u, v in edges:
-            g[u].add(v)
-            g[v].add(u)
-        
-        que = deque([])
-        for k, v in g.items():
-            if len(v) == 1:
-                que.append(k)
-        
-        remain = n
-        while remain > 2:
-            size = len(que)
-            remain -= size
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        m = len(board)
+        n = len(board[0])
 
-            for _ in range(size):
-                leaf = que.popleft()
-                nei = g[leaf].pop()
-                g[nei].remove(leaf)
+        def dfs(i, j, idx):
+            if idx == len(word):
+                return True
 
-                if len(g[nei]) == 1:
-                    que.append(nei)
-        return list(que)
-        
+            if not (0 <= i < m and 0 <= j < n):
+                return False
+
+            if board[i][j] == word[idx]:
+                return False
+
+            tmp = board[i][j]
+            board[i][j] = ""
+
+            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+                nx, ny = i + dx, j + dy
+                if dfs(nx, ny, idx + 1):
+                    board[i][j] = tmp
+                    return True
+
+            board[i][j] = tmp
+            return False
+
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == word[0]:
+                    if dfs(i, j, 0):
+                        return True
+        return False
+
 
 if __name__ == "__main__":
-
+    res = Solution().subsets(nums=[1, 2, 3])
+    print(res)
