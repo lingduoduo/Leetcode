@@ -4,6 +4,12 @@ import heapq
 import random
 
 
+class Node:
+    def __init__(self, val=0, neighbors=None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -17,41 +23,33 @@ class TreeNode:
         self.right = right
 
 
+class Node:
+    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+
+
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        m = len(board)
-        n = len(board[0])
 
-        def dfs(i, j, idx):
-            if idx == len(word):
-                return True
+    def __init__(self, w: List[int]):
+        self.w = [w[0]]
+        for v in w[1:]:
+            self.w.append(self.w[-1] + v)
+        self.tot = self.w[-1]
 
-            if not (0 <= i < m and 0 <= j < n):
-                return False
-
-            if board[i][j] == word[idx]:
-                return False
-
-            tmp = board[i][j]
-            board[i][j] = ""
-
-            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
-                nx, ny = i + dx, j + dy
-                if dfs(nx, ny, idx + 1):
-                    board[i][j] = tmp
-                    return True
-
-            board[i][j] = tmp
-            return False
-
-        for i in range(m):
-            for j in range(n):
-                if board[i][j] == word[0]:
-                    if dfs(i, j, 0):
-                        return True
-        return False
+    def pickIndex(self) -> int:
+        target = self.tot * random.random()
+        l, r = 0, len(self.w)
+        while l < r:
+            m = l + (r - l) // 2
+            if self.w[m] < target:
+                l = m + 1
+            else:
+                r = m
+        return l
 
 
 if __name__ == "__main__":
-    res = Solution().subsets(nums=[1, 2, 3])
+    res = Solution().copyRandomList(head=[[7, null], [13, 0], [11, 4], [10, 2], [1, 0]])
     print(res)

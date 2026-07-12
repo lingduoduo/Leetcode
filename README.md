@@ -161,6 +161,7 @@
 - LeetCode 287. Find the Duplicate Number
 - LeetCode 153. Find Minimum in Rotated Sorted Array
 - LeetCode 2226. Maximum Candies Allocated to K Children
+- LeetCode 528. Random Pick with Weight
 
 ------
 
