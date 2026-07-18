@@ -30,26 +30,35 @@ class Node:
         self.random = random
 
 
+class Node:
+    def __init__(
+        self, val: Optional[int] = None, children: Optional[List["Node"]] = None
+    ):
+        self.val = val
+        self.children = children
+
+
 class Solution:
+    def findKthNumber(self, m: int, n: int, k: int) -> int:
+        if m > n:
+            m, n = n, m
 
-    def __init__(self, w: List[int]):
-        self.w = [w[0]]
-        for v in w[1:]:
-            self.w.append(self.w[-1] + v)
-        self.tot = self.w[-1]
-
-    def pickIndex(self) -> int:
-        target = self.tot * random.random()
-        l, r = 0, len(self.w)
+        l, r = 0, m * n
         while l < r:
-            m = l + (r - l) // 2
-            if self.w[m] < target:
-                l = m + 1
+            mid = l + (r - l) // 2
+
+            count = 0
+            for i in range(1, m + 1):
+                count += min(n, mid // i)
+
+            if count < k:
+                l = mid + 1
             else:
-                r = m
+                r = mid
+
         return l
 
 
 if __name__ == "__main__":
-    res = Solution().copyRandomList(head=[[7, null], [13, 0], [11, 4], [10, 2], [1, 0]])
+    res = Solution().findKthNumber(m=2, n=3, k=6)
     print(res)
