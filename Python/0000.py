@@ -39,89 +39,29 @@ class Node:
 
 
 class Solution:
-    def validTicTacToe(self, board: List[str]) -> bool:
-        x_count = sum([row.count("X") for row in board])
-        o_count = sum([row.count("O") for row in board])
-        if x_count not in (o_count, o_count + 1):
-            return False
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        g = defaultdict(list)
 
-        def wins(player: str) -> bool:
-            # Check rows.
-            for i in range(3):
-                if all(board[i][j] == player for j in range(3)):
-                    return True
+        for s, e, v in roads:
+            g[s].append((v, e))
+            g[e].append((v, s))
 
-            # Check columns.
-            for j in range(3):
-                if all(board[i][j] == player for i in range(3)):
-                    return True
+        que = deque([1])
+        visited = {1}
+        res = float("inf")
+        while que:
+            node = que.popleft()
 
-            # Check main diagonal.
-            if all(board[i][i] == player for i in range(3)):
-                return True
+            for v, nei in g[node]:
+                res = min(res, v)
 
-            # Check anti-diagonal.
-            if all(board[i][2 - i] == player for i in range(3)):
-                return True
+                if nei not in visited:
+                    visited.add(nei)
+                    que.append(nei)
 
-            return False
-
-        x_wins = wins("X")
-        o_wins = wins("O")
-        if x_wins and o_wins:
-            return False
-
-        if x_wins and x_count != o_count + 1:
-            return False
-
-        if o_wins and x_count != o_count:
-            return False
-
-        return True
-
-
-class Solution:
-    def tictactoe(self, moves: List[List[int]]) -> str:
-        board = [[" "] * 3 for _ in range(3)]
-
-        def wins(player: str) -> bool:
-            # Check rows.
-            for i in range(3):
-                if all(board[i][j] == player for j in range(3)):
-                    return True
-
-            # Check columns.
-            for j in range(3):
-                if all(board[i][j] == player for i in range(3)):
-                    return True
-
-            # Check main diagonal.
-            if all(board[i][i] == player for i in range(3)):
-                return True
-
-            # Check anti-diagonal.
-            if all(board[i][2 - i] == player for i in range(3)):
-                return True
-
-            return False
-
-        i = 0
-        for row, col in moves:
-            if i % 2 == 0:
-                board[row][col] = "X"
-            else:
-                board[row][col] = "O"
-            i += 1
-            print(board)
-
-        if wins("X"):
-            return "A"
-        elif wins("O"):
-            return "B"
-        else:
-            return "Draw"
+        return res
 
 
 if __name__ == "__main__":
-    res = Solution().tictactoe(moves=[[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]])
+    res = Solution().minScore(n=4, roads=[[1, 2, 2], [1, 3, 4], [3, 4, 7]])
     print(res)
