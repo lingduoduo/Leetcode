@@ -38,30 +38,68 @@ class Node:
         self.children = children
 
 
+class Node:
+    def __init__(self, val=0, neighbors=None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
+class UF:
+    def __init__(self, n):
+        self.par = list(range(1 + n))
+
+    def find(self, x):
+        if self.par[x] != x:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
+
+    def union(self, x, y):
+        par_x = self.find(x)
+        par_y = self.find(y)
+
+        if par_x == par_y:
+            return False
+        self.par[par_x] = par_y
+        return True
+
+
+class Node:
+    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+
+
+class ListNode:
+    def __init__(self, val, prev=None, next=None):
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+
 class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
-        g = defaultdict(list)
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        d = defaultdict(set)
+        for i, v1 in enumerate(nums):
+            for j, v2 in enumerate(nums[i + 1 :]):
+                d[v1 + v2].add((v1, v2))
 
-        for s, e, v in roads:
-            g[s].append((v, e))
-            g[e].append((v, s))
-
-        que = deque([1])
-        visited = {1}
-        res = float("inf")
-        while que:
-            node = que.popleft()
-
-            for v, nei in g[node]:
-                res = min(res, v)
-
-                if nei not in visited:
-                    visited.add(nei)
-                    que.append(nei)
-
+        res = set()
+        for i, v1 in enumerate(nums):
+            for j, v2 in enumerate(nums[i + 1 :]):
+                val = target - (v1 + v2)
+                if val in d:
+                    for v3, v4 in d[val]:
+                        res.add(tuple(sorted([v1, v2, v3, v4])))
         return res
+
+        # res = []
+        # for i in range(len(nums)):
+        #     for j in range(i + 1, len(nums)):
+        #         if target - nums[i] - nums[j] in d:
+        #             res.append([nums[i], nums[j]] + d[])
 
 
 if __name__ == "__main__":
-    res = Solution().minScore(n=4, roads=[[1, 2, 2], [1, 3, 4], [3, 4, 7]])
+    res = Solution().fourSum(nums=[1, 0, -1, 0, -2, 2], target=0)
     print(res)
