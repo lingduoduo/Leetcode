@@ -63,43 +63,22 @@ class UF:
         return True
 
 
-class Node:
-    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
-        self.val = int(x)
-        self.next = next
-        self.random = random
-
-
-class ListNode:
-    def __init__(self, val, prev=None, next=None):
-        self.val = val
-        self.prev = prev
-        self.next = next
-
-
 class Solution:
-    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        d = defaultdict(set)
-        for i, v1 in enumerate(nums):
-            for j, v2 in enumerate(nums[i + 1 :]):
-                d[v1 + v2].add((v1, v2))
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        diff = 0
+        for num in nums:
+            diff ^= num
+        diff &= -diff
+        first = 0
+        second = 0
+        for num in nums:
+            if num & diff == 1:
+                first ^= num
+            else:
+                second ^= num
+        return [first, second]
 
-        res = set()
-        for i, v1 in enumerate(nums):
-            for j, v2 in enumerate(nums[i + 1 :]):
-                val = target - (v1 + v2)
-                if val in d:
-                    for v3, v4 in d[val]:
-                        res.add(tuple(sorted([v1, v2, v3, v4])))
-        return res
-
-        # res = []
-        # for i in range(len(nums)):
-        #     for j in range(i + 1, len(nums)):
-        #         if target - nums[i] - nums[j] in d:
-        #             res.append([nums[i], nums[j]] + d[])
 
 
 if __name__ == "__main__":
-    res = Solution().fourSum(nums=[1, 0, -1, 0, -2, 2], target=0)
-    print(res)
+
