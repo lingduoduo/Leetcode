@@ -1,5 +1,21 @@
-先说整体感受。领英的面试节奏比较克制，不像有些家一轮塞两三道题。基本是一轮一道主题目，把它做扎实，然后往数据规模上延伸。面试官普遍很有耐心，会等你自己把话说完，不太打断。另外有一轮是 Host Manager，不考代码，专门聊经历和文化契合，这一轮的比重比我预想的要高。
+---
+Part 1: BQ（3个问题）
+Unblocking oneself from critical path
+Drove something to improve quality
+Influencing design decisions
+Part 2: Coding — Weighted Probability Sampling
+一个不公平的N面骰子，每面概率经过softmax归一化。实现一个sampler。
+楼主的方案：把概率做cumulative sum，头尾分别是0和1，然后从[0,1)均匀采样，用binary search找第一个大于采样值的cumulative threshold。这是标准的inverse CDF sampling，O(log N)。
+Part 3: System Design — Personalized Recruiter Message Generation
+设计一个系统：recruiter登录后看到候选人列表，选择一个候选人，系统拉取候选人信息、职位信息、recruiter历史发送的消息，综合生成个性化的招聘消息。
+---
+
+先说整体感受。领英的面试节奏比较克制，不像有些家一轮塞两三道题。
+基本是一轮一道主题目，把它做扎实，然后往数据规模上延伸。
+面试官普遍很有耐心，会等你自己把话说完，不太打断。
+另外有一轮是 Host Manager，不考代码，专门聊经历和文化契合，这一轮的比重比我预想的要高。
 以下按面试顺序记录。
+
 一、Coding 第一轮
 题目是舞灵，实现 pow(x, n)。
 看起来是道简单题，但面试官关心的完全不是能不能做出来，而是几个细节：
@@ -69,6 +85,9 @@ Round 3
 这一轮是整个面试的核心，题目是设计一个「本地体育资讯推荐系统」，但实际考察的是你对 LLM 应用落地（RAG） 的理解。
 首先得讨论架构选型，比如是用 Azure AI Search 做向量检索，还是自己搭 Milvus；是用 Fine-tuning 还是 Prompt Engineering。接着会深入到模型部署层面，比如如何在保证效果的同时降低延迟，这里通常会涉及到量化（Quantization）、蒸馏（Distillation）等优化手段。
 然后一定会聊到一个关键问题：Hallucination（模型幻觉）。你需要说明如何降低错误信息，比如通过引入检索增强（RAG）增加事实依据、增加校验层，甚至设计类似 Red Teaming 的机制去做输出审核。
+
+
+
 
 ### All O`one Data Structure
 

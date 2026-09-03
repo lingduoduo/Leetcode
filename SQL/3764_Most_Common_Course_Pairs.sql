@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+-- Write your MySQL query statement below
 WITH users AS (
     SELECT user_id
     FROM course_completions
