@@ -16,33 +16,31 @@ class ListNode:
         self.next = next
 
 
-class Solution:
-    def trap(self, height: List[int]) -> int:
-        stack = []
-        res = 0
-        for i, v in enumerate(height):
-            while stack and height[stack[-1]] < v:
-                m = stack.pop()
-                if stack:
-                    h = min(v, height[stack[-1]]) - height[m]
-                    w = i = stack[-1] - 1
-                    res += h * w
-            stack.append(i)
-        return res
+class MinStack:
 
-        stack = []
-        res = 0
-        for i, v in enumerate(height):
-            while stack and height[stack[-1]] < v:
-                m = stack.pop()
-                if stack:
-                    h = min(height[stack[-1]], v) - height[m]
-                    w = i - stack[-1] - 1
-                    res += h * w
-            stack.append(i)
-        return res
+    def __init__(self):
+        self.minstack = []
+        self.stack = []
+
+    def push(self, value: int) -> None:
+        if not self.stack:
+            self.stack.append(value)
+            self.minstack.append(value)
+        else:
+            self.stack.append(value)
+            self.stack.append(min(value, self.minstack[-1]))
+
+    def pop(self) -> None:
+        self.minstack.pop()
+        return self.stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minstack[-1]
 
 
-if __name__ == "__main__":
-    res = Solution().trap(height=[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
-    print(res)
+# if __name__ == "__main__":
+#     res = Solution().trap(height=[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
+#     print(res)
