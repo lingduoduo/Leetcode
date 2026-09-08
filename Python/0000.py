@@ -16,31 +16,25 @@ class ListNode:
         self.next = next
 
 
-class MinStack:
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        s, f = head, head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+            if f == s:
+                break
 
-    def __init__(self):
-        self.minstack = []
-        self.stack = []
+        if not f or not f.next:
+            return None
 
-    def push(self, value: int) -> None:
-        if not self.stack:
-            self.stack.append(value)
-            self.minstack.append(value)
-        else:
-            self.stack.append(value)
-            self.stack.append(min(value, self.minstack[-1]))
-
-    def pop(self) -> None:
-        self.minstack.pop()
-        return self.stack.pop()
-
-    def top(self) -> int:
-        return self.stack[-1]
-
-    def getMin(self) -> int:
-        return self.minstack[-1]
+        s = head
+        while s != f:
+            s = s.next
+            f = f.next
+        return s
 
 
-# if __name__ == "__main__":
-#     res = Solution().trap(height=[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
-#     print(res)
+if __name__ == "__main__":
+    res = Solution().maximalSquare(matrix=[["0", "1"], ["1", "0"]])
+    print(res)

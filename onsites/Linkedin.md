@@ -1,14 +1,488 @@
+
+## LeetCode 528 — Random Pick with Weight
+```
+import random
+import bisect
+
+class Solution:
+
+    def __init__(self, w):
+        self.prefix = []
+
+        cur = 0
+        for x in w:
+            cur += x
+            self.prefix.append(cur)
+
+        self.total = cur
+
+    def pickIndex(self):
+        target = random.randint(1, self.total)
+        return bisect.bisect_left(self.prefix, target)
+```
+
 ---
-Part 1: BQ（3个问题）
-Unblocking oneself from critical path
-Drove something to improve quality
-Influencing design decisions
-Part 2: Coding — Weighted Probability Sampling
-一个不公平的N面骰子，每面概率经过softmax归一化。实现一个sampler。
-楼主的方案：把概率做cumulative sum，头尾分别是0和1，然后从[0,1)均匀采样，用binary search找第一个大于采样值的cumulative threshold。这是标准的inverse CDF sampling，O(log N)。
-Part 3: System Design — Personalized Recruiter Message Generation
-设计一个系统：recruiter登录后看到候选人列表，选择一个候选人，系统拉取候选人信息、职位信息、recruiter历史发送的消息，综合生成个性化的招聘消息。
----
+
+## System Design — Personalized Recruiter Message Generation
+LinkedIn's recommendation tasks can be modeled as information retrieval and relevance scoring. With member profiles as a significant source of textual information, it is possible to build powerful recommender systems with only textual embedding features. The code snippets below contain boilerplate code that implements a basic recommender training pipeline. Implement this pipeline by writing all TODO methods. Feel free to add more helper methods or classes as needed.
+
+
+```
+from dataclasses import dataclass, field
+from typing import List, Optional
+
+import json
+import os
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from torch.utils.data import Dataset, DataLoader
+
+
+# ============================================================
+# Data schema
+# ============================================================
+
+@dataclass
+class Position:
+    company: str
+    description: str
+    start_date: str
+    end_date: Optional[str] = None
+
+
+@dataclass
+class Education:
+    school: str
+    description: str
+    start_date: str
+    end_date: Optional[str] = None
+
+
+@dataclass
+class Profile:
+    memberId: int
+    headline: str
+    title: str
+    positions: List[Position] = field(default_factory=list)
+    educations: List[Education] = field(default_factory=list)
+
+    def to_text(self):
+        parts = [
+            self.headline,
+            self.title
+        ]
+
+        for p in self.positions:
+            parts.extend([
+                p.company,
+                p.description
+            ])
+
+        for e in self.educations:
+            parts.extend([
+                e.school,
+                e.description
+            ])
+
+        return " ".join(
+            x for x in parts if x
+        )
+
+
+@dataclass
+class Item:
+    itemId: int
+    text: str
+
+
+@dataclass
+class Label:
+    memberId: int
+    itemId: int
+    label: str
+
+    @property
+    def target(self):
+        return 1.0 if self.label == "clicked" else 0.0
+
+
+# ============================================================
+# Assume provided
+# ============================================================
+
+class LocalLLM:
+
+    def __init__(self, model_path):
+        self.model_path = model_path
+
+    def generate_embeddings(self, texts):
+        raise NotImplementedError
+
+
+# ============================================================
+# PyTorch Dataset
+# ============================================================
+
+class RecommenderDataset(Dataset):
+
+    def __init__(
+        self,
+        member_embeddings,
+        item_embeddings,
+        labels
+    ):
+        self.member_embeddings = torch.tensor(
+            member_embeddings,
+            dtype=torch.float32
+        )
+
+        self.item_embeddings = torch.tensor(
+            item_embeddings,
+            dtype=torch.float32
+        )
+
+        self.labels = torch.tensor(
+            labels,
+            dtype=torch.float32
+        )
+
+    def __len__(self):
+        return len(self.labels)
+
+    def __getitem__(self, idx):
+        return (
+            self.member_embeddings[idx],
+            self.item_embeddings[idx],
+            self.labels[idx]
+        )
+
+
+# ============================================================
+# Two-tower model
+# ============================================================
+
+class RecommenderModel(nn.Module):
+
+    def __init__(
+        self,
+        embedding_dim,
+        hidden_dim=64
+    ):
+        super().__init__()
+
+        self.member_tower = nn.Sequential(
+            nn.Linear(embedding_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
+
+        self.item_tower = nn.Sequential(
+            nn.Linear(embedding_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
+
+    def forward(
+        self,
+        member_embedding,
+        item_embedding
+    ):
+        member_vec = self.member_tower(
+            member_embedding
+        )
+
+        item_vec = self.item_tower(
+            item_embedding
+        )
+
+        member_vec = F.normalize(
+            member_vec,
+            dim=1
+        )
+
+        item_vec = F.normalize(
+            item_vec,
+            dim=1
+        )
+
+        return (
+            member_vec * item_vec
+        ).sum(dim=1)
+
+
+# ============================================================
+# Trainer
+# ============================================================
+
+class RecommenderTrainer:
+
+    def __init__(
+        self,
+        model_path,
+        batch_size=32,
+        epochs=10,
+        learning_rate=1e-3,
+        hidden_dim=64
+    ):
+        self.llm = LocalLLM(
+            model_path
+        )
+
+        self.batch_size = batch_size
+        self.epochs = epochs
+        self.learning_rate = learning_rate
+        self.hidden_dim = hidden_dim
+
+        self.profiles = {}
+        self.items = {}
+        self.labels = []
+
+        self.member_embedding_map = {}
+        self.item_embedding_map = {}
+
+        self.embedding_dim = None
+        self.model = None
+
+
+    # ========================================================
+    # Load data
+    # ========================================================
+
+    def load_data(
+        self,
+        profile_text_path,
+        item_text_path,
+        labeled_dataset_folder
+    ):
+
+        with open(profile_text_path) as f:
+            profile_json = json.load(f)
+
+        with open(item_text_path) as f:
+            item_json = json.load(f)
+
+        self.profiles = {
+            row["memberId"]: Profile(
+                memberId=row["memberId"],
+                headline=row.get("headline", ""),
+                title=row.get("title", ""),
+                positions=[
+                    Position(**p)
+                    for p in row.get(
+                        "positions",
+                        []
+                    )
+                ],
+                educations=[
+                    Education(**e)
+                    for e in row.get(
+                        "educations",
+                        []
+                    )
+                ]
+            )
+            for row in profile_json
+        }
+
+        self.items = {
+            row["itemId"]: Item(**row)
+            for row in item_json
+        }
+
+        self.labels = []
+
+        for filename in os.listdir(
+            labeled_dataset_folder
+        ):
+            if not filename.endswith(".json"):
+                continue
+
+            path = os.path.join(
+                labeled_dataset_folder,
+                filename
+            )
+
+            with open(path) as f:
+                rows = json.load(f)
+
+            self.labels.extend(
+                Label(**row)
+                for row in rows
+            )
+
+
+    # ========================================================
+    # Prepare features
+    # ========================================================
+
+    def prepare_features(self):
+
+        # --------------------------------
+        # Member embeddings
+        # --------------------------------
+
+        member_ids = list(
+            self.profiles.keys()
+        )
+
+        member_texts = [
+            self.profiles[mid].to_text()
+            for mid in member_ids
+        ]
+
+        member_embeddings = (
+            self.llm.generate_embeddings(
+                member_texts
+            )
+        )
+
+        self.member_embedding_map = dict(
+            zip(
+                member_ids,
+                member_embeddings
+            )
+        )
+
+        # --------------------------------
+        # Item embeddings
+        # --------------------------------
+
+        item_ids = list(
+            self.items.keys()
+        )
+
+        item_texts = [
+            self.items[iid].text
+            for iid in item_ids
+        ]
+
+        item_embeddings = (
+            self.llm.generate_embeddings(
+                item_texts
+            )
+        )
+
+        self.item_embedding_map = dict(
+            zip(
+                item_ids,
+                item_embeddings
+            )
+        )
+
+        self.embedding_dim = (
+            member_embeddings.shape[1]
+        )
+
+        # --------------------------------
+        # Join labels + embeddings
+        # --------------------------------
+
+        member_features = []
+        item_features = []
+        targets = []
+
+        for row in self.labels:
+
+            if (
+                row.memberId
+                not in self.member_embedding_map
+                or
+                row.itemId
+                not in self.item_embedding_map
+            ):
+                continue
+
+            member_features.append(
+                self.member_embedding_map[
+                    row.memberId
+                ]
+            )
+
+            item_features.append(
+                self.item_embedding_map[
+                    row.itemId
+                ]
+            )
+
+            targets.append(
+                row.target
+            )
+
+        return RecommenderDataset(
+            member_features,
+            item_features,
+            targets
+        )
+
+
+    # ========================================================
+    # Train
+    # ========================================================
+
+    def train(self):
+
+        dataset = self.prepare_features()
+
+        dataloader = DataLoader(
+            dataset,
+            batch_size=self.batch_size,
+            shuffle=True
+        )
+
+        self.model = RecommenderModel(
+            embedding_dim=self.embedding_dim,
+            hidden_dim=self.hidden_dim
+        )
+
+        optimizer = torch.optim.Adam(
+            self.model.parameters(),
+            lr=self.learning_rate
+        )
+
+        criterion = nn.BCEWithLogitsLoss()
+
+        for epoch in range(
+            self.epochs
+        ):
+
+            self.model.train()
+            total_loss = 0.0
+
+            for (
+                member_emb,
+                item_emb,
+                labels
+            ) in dataloader:
+
+                optimizer.zero_grad()
+
+                logits = self.model(
+                    member_emb,
+                    item_emb
+                )
+
+                loss = criterion(
+                    logits,
+                    labels
+                )
+
+                loss.backward()
+
+                optimizer.step()
+
+                total_loss += loss.item()
+
+            print(
+                f"Epoch {epoch + 1}: "
+                f"loss="
+                f"{total_loss / len(dataloader):.4f}"
+            )
+
+        return self.model
+```
+
 
 先说整体感受。领英的面试节奏比较克制，不像有些家一轮塞两三道题。
 基本是一轮一道主题目，把它做扎实，然后往数据规模上延伸。
@@ -24,6 +498,7 @@ Part 3: System Design — Personalized Recruiter Message Generation
 递归和迭代两种写法都被要求写了。递归版更好读，迭代版不用担心栈深度。
 最后一个坑是 n 取 INT_MIN 时，取负数会溢出。我一开始没注意到，是面试官问「n 等于最小的负整数会怎样」才发现的。处理办法是先转成 long，或者单独处理这一种情况。
 结论：这一轮考的不是算法难度，是严谨程度。建议大家写简单题的时候也把边界过一遍。
+
 二、Coding 第二轮
 题目是溜舞拔，在一个有序数组里找离 x 最近的 k 个数，结果要保持有序。
 我给了两个方案并做了比较：
@@ -33,6 +508,7 @@ Part 3: System Design — Personalized Recruiter Message Generation
 follow up 有两个：
 如果数组不是有序的呢。答：那就退化成用大小为 k 的堆，O(n log k)。
 如果数组特别大、大到放不进内存呢。答：可以先用索引或者分块的方式定位到大致区间，只把那一段读进内存。这里我答得不算深入。
+
 三、Coding 第三轮
 这一轮题目不在刷题网上，是一道设计感更强的题。
 题目：给一个非常大的有序数组，统计里面有多少个不同的值。已知不同值的个数 k 远小于数组长度 n。
@@ -41,6 +517,7 @@ follow up 有两个：
 面试官还提了另一种等价写法，用分治：
 def countUnique(arr, start, end): if start == end: return 1 if arr[start] == arr[end]: return 1 mid = (start + end) // 2 if arr[mid] == arr[mid+1]: return countUnique(arr, start, mid) + countUnique(arr, mid+1, end) - 1 else: return countUnique(arr, start, mid) + countUnique(arr, mid+1, end)
 两种写法的核心是同一件事：利用有序性，让相同的元素一次跳过而不是逐个访问。他让我分析了分治写法在最坏情况（全都不同）下会退化成 O(n)，这个我答上来了。
+
 四、System Design
 题目是设计信息流（feed）。
 我按下面的顺序推进：
@@ -54,6 +531,7 @@ def countUnique(arr, start, end): if start == end: return 1 if arr[start] == arr
 缓存怎么设计。答：活跃用户的收件箱常驻缓存，非活跃用户按需加载，用 LRU 淘汰。
 最后聊了一致性。用户自己发的内容必须立刻在自己的 feed 里可见，这一点不能靠异步，需要读自己写的时候做特殊处理。
 这一轮我准备得比较充分，推进得比较顺。
+
 五、Host Manager
 不考代码，四十五分钟全在聊。问题如下：
 介绍一个你最近主导的项目，你的角色具体是什么
@@ -69,6 +547,8 @@ def countUnique(arr, start, end): if start == end: return 1 if arr[start] == arr
 三、把「数据规模变大」当成默认 follow up。我这次三轮 coding 有两轮都问到了「如果放不进内存怎么办」。
 四、Host Manager 轮不要当水轮准备。它在整体评估里的权重不低，而且问的东西和纯 BQ 不完全一样，会涉及动机和长期规划。
 五、SD 轮建议先把混合方案的取舍讲清楚再往下铺，不要一上来就画组件图。
+
+---
 
 Round 1
 第一轮是经典的数组处理题，题目是 LeetCode 56（Merge Intervals）。
@@ -86,8 +566,7 @@ Round 3
 首先得讨论架构选型，比如是用 Azure AI Search 做向量检索，还是自己搭 Milvus；是用 Fine-tuning 还是 Prompt Engineering。接着会深入到模型部署层面，比如如何在保证效果的同时降低延迟，这里通常会涉及到量化（Quantization）、蒸馏（Distillation）等优化手段。
 然后一定会聊到一个关键问题：Hallucination（模型幻觉）。你需要说明如何降低错误信息，比如通过引入检索增强（RAG）增加事实依据、增加校验层，甚至设计类似 Red Teaming 的机制去做输出审核。
 
-
-
+---
 
 ### All O`one Data Structure
 
