@@ -483,6 +483,25 @@ class RecommenderTrainer:
         return self.model
 ```
 
+N个人站在路上，找meeting point，使得每个人走过去的距离和最小（L1距离）。  
+Follow up: N个房子在整数位置，放K个路由器（只能放在房子位置），要最小化L2距离，这个L2算起来很坑爹  
+Answer: median
+
+Coding 2  
+n个用户看m部电影的评分，怎么估计其中一个用户对某一部电影的评分？就是用kNN，但可能需要想想怎么设计data structure啥的
+Answer:  size-K 的 min heap
+
+```
+heap = []
+
+for v, rating in movie_ratings[movie_id].items():
+    sim = similarity(user_id, v)
+
+    if len(heap) < K:
+        heappush(heap, (sim, v))
+    elif sim > heap[0][0]:
+        heapreplace(heap, (sim, v))
+```
 
 先说整体感受。领英的面试节奏比较克制，不像有些家一轮塞两三道题。
 基本是一轮一道主题目，把它做扎实，然后往数据规模上延伸。
