@@ -17,24 +17,31 @@ class ListNode:
 
 
 class Solution:
-    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        s, f = head, head
-        while f and f.next:
-            s = s.next
-            f = f.next.next
-            if f == s:
-                break
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = []
 
-        if not f or not f.next:
-            return None
+        def dfs(idx, path):
+            if idx > len(nums):
+                return
+            elif len(path) >= 2:
+                res.append(path)
 
-        s = head
-        while s != f:
-            s = s.next
-            f = f.next
-        return s
+            visited = set()
+            for i in range(idx, len(nums)):
+                if nums[i] in visited:
+                    continue
+                if len(path) == 0:
+                    visited.add(nums[i])
+                    dfs(i + 1, path + [nums[i]])
+                elif path and path[-1] <= nums[i]:
+                    if path + [nums[i]]:
+                        visited.add(nums[i])
+                        dfs(i + 1, path + [nums[i]])
+
+        dfs(0, [])
+        return res
 
 
 if __name__ == "__main__":
-    res = Solution().maximalSquare(matrix=[["0", "1"], ["1", "0"]])
+    res = Solution().findSubsequences(nums=[4, 6, 7, 7])
     print(res)
