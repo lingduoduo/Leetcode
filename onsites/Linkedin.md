@@ -52,6 +52,40 @@ for _ in range(10):
 
 ---
 
+输入是存储在 json 里的 training samples 每个 class 对应各自的 labels
+输出要求从这些 class 里做 uniform random sample 主要考察对 stratified sampling logic 的理解和实现
+
+I would first sample a class uniformly, then sample an example uniformly within that class. This gives equal probability to each class regardless of class size, which is the key idea behind stratified sampling. If I need a batch, I would allocate approximately batch_size / num_classes samples per class, and decide whether to sample with replacement when some classes are too small.
+
+```
+def stratified_sample_k(data, k):
+    classes = list(data.keys())
+    n_classes = len(classes)
+
+    result = []
+
+    base = k // n_classes
+    remainder = k % n_classes
+
+    for i, cls in enumerate(classes):
+        n = base + (1 if i < remainder else 0)
+
+        samples = data[cls]
+
+        # sample without replacement
+        n = min(n, len(samples))
+
+        result.extend(
+            random.sample(samples, n)
+        )
+
+    random.shuffle(result)
+    return result
+```
+
+
+---
+
 ## System Design — Personalized Recruiter Message Generation
 LinkedIn's recommendation tasks can be modeled as information retrieval and relevance scoring. With member profiles as a significant source of textual information, it is possible to build powerful recommender systems with only textual embedding features. The code snippets below contain boilerplate code that implements a basic recommender training pipeline. Implement this pipeline by writing all TODO methods. Feel free to add more helper methods or classes as needed.
 
