@@ -2,23 +2,52 @@
 ## LeetCode 528 — Random Pick with Weight
 ```
 import random
-import bisect
+import math
 
-class Solution:
 
-    def __init__(self, w):
-        self.prefix = []
+class WeightedSampler:
+    def __init__(self, weights):
+        # numerically stable softmax
+        m = max(weights)
 
-        cur = 0
-        for x in w:
-            cur += x
-            self.prefix.append(cur)
+        exps = [math.exp(w - m) for w in weights]
+        total = sum(exps)
 
-        self.total = cur
+        probs = [x / total for x in exps]
 
-    def pickIndex(self):
-        target = random.randint(1, self.total)
-        return bisect.bisect_left(self.prefix, target)
+        # cumulative probability
+        self.cdf = []
+        curr = 0.0
+
+        for p in probs:
+            curr += p
+            self.cdf.append(curr)
+
+        # avoid floating point issues
+        self.cdf[-1] = 1.0
+
+    def sample(self):
+        x = random.random()  # [0, 1)
+
+        left, right = 0, len(self.cdf) - 1
+
+        # Find first cdf[i] > x
+        while left < right:
+            mid = (left + right) // 2
+
+            if x < self.cdf[mid]:
+                right = mid
+            else:
+                left = mid + 1
+
+        return left
+
+
+weights = [1.0, 2.0, 3.0, 4.0]
+sampler = WeightedSampler(weights)
+
+for _ in range(10):
+    print(sampler.sample())
 ```
 
 ---
@@ -111,9 +140,7 @@ class Label:
 # ============================================================
 # Assume provided
 # ============================================================
-
 class LocalLLM:
-
     def __init__(self, model_path):
         self.model_path = model_path
 
@@ -124,7 +151,6 @@ class LocalLLM:
 # ============================================================
 # PyTorch Dataset
 # ============================================================
-
 class RecommenderDataset(Dataset):
 
     def __init__(
@@ -162,9 +188,7 @@ class RecommenderDataset(Dataset):
 # ============================================================
 # Two-tower model
 # ============================================================
-
 class RecommenderModel(nn.Module):
-
     def __init__(
         self,
         embedding_dim,
@@ -192,21 +216,17 @@ class RecommenderModel(nn.Module):
         member_vec = self.member_tower(
             member_embedding
         )
-
         item_vec = self.item_tower(
             item_embedding
         )
-
         member_vec = F.normalize(
             member_vec,
             dim=1
         )
-
         item_vec = F.normalize(
             item_vec,
             dim=1
         )
-
         return (
             member_vec * item_vec
         ).sum(dim=1)

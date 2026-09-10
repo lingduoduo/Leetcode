@@ -17,31 +17,34 @@ class ListNode:
 
 
 class Solution:
-    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+    def restoreIpAddresses(self, s: str) -> List[str]:
         res = []
 
-        def dfs(idx, path):
-            if idx > len(nums):
-                return
-            elif len(path) >= 2:
-                res.append(path)
+        def check(start, end):
+            if start > end:
+                return False
+            if s[start] == "0" and start != end:
+                return False
 
-            visited = set()
-            for i in range(idx, len(nums)):
-                if nums[i] in visited:
-                    continue
-                if len(path) == 0:
-                    visited.add(nums[i])
-                    dfs(i + 1, path + [nums[i]])
-                elif path and path[-1] <= nums[i]:
-                    if path + [nums[i]]:
-                        visited.add(nums[i])
-                        dfs(i + 1, path + [nums[i]])
+            num = int(s[start : end + 1])
+            return 0 <= num < 256
+
+        def dfs(idx, path):
+            if idx == len(s) and len(path) == 4:
+                res.append(".".join(path))
+                return
+
+            if len(path) >= 4:
+                return False
+
+            for i in range(idx, len(s)):
+                if check(idx, i):
+                    dfs(i + 1, path + [s[idx : i + 1]])
 
         dfs(0, [])
         return res
 
 
 if __name__ == "__main__":
-    res = Solution().findSubsequences(nums=[4, 6, 7, 7])
+    res = Solution().restoreIpAddresses(s="25525511135")
     print(res)
