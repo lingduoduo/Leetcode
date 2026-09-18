@@ -1,4 +1,20 @@
 
+## 给你一个 biased coin，P(0)=p, P(1)=1-p，但不知道 \(p\)。如何生成 uniform 0/1？
+Von Neumann trick: sample the biased coin twice, discard 00 and 11, and map 01 and 10 to fair outcomes because they have equal probability \(p(1-p)\). Then I use fair bits plus rejection sampling to generate a uniform integer over the desired range.
+``
+def biased_coin():
+    # given API
+    ...
+
+def uniform_coin():
+    while True:
+        a = biased_coin()
+        b = biased_coin()
+
+        if a != b:
+            return a
+```
+
 ## LeetCode 528 — Random Pick with Weight
 ```
 import random

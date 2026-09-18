@@ -17,34 +17,22 @@ class ListNode:
 
 
 class Solution:
-    def restoreIpAddresses(self, s: str) -> List[str]:
-        res = []
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        if sum(gas) < sum(cost):
+            return -1
 
-        def check(start, end):
-            if start > end:
-                return False
-            if s[start] == "0" and start != end:
-                return False
+        rest = 0
+        start = 0
 
-            num = int(s[start : end + 1])
-            return 0 <= num < 256
+        for i in range(len(gas)):
+            rest += gas[i] - cost[i]
+            if rest < 0:
+                start = i + 1
+                rest = 0
 
-        def dfs(idx, path):
-            if idx == len(s) and len(path) == 4:
-                res.append(".".join(path))
-                return
-
-            if len(path) >= 4:
-                return False
-
-            for i in range(idx, len(s)):
-                if check(idx, i):
-                    dfs(i + 1, path + [s[idx : i + 1]])
-
-        dfs(0, [])
-        return res
+        return start
 
 
 if __name__ == "__main__":
-    res = Solution().restoreIpAddresses(s="25525511135")
+    res = Solution().canCompleteCircuit(gas=[1, 2, 3, 4, 5], cost=[3, 4, 5, 1, 2])
     print(res)
