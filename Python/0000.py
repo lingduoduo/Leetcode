@@ -17,22 +17,21 @@ class ListNode:
 
 
 class Solution:
-    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        if sum(gas) < sum(cost):
-            return -1
+    def combine(self, n: int, k: int) -> list[list[int]]:
+        res = []
 
-        rest = 0
-        start = 0
+        def dfs(idx, path):
+            if len(path) == k:
+                res.append(path)
+                return
 
-        for i in range(len(gas)):
-            rest += gas[i] - cost[i]
-            if rest < 0:
-                start = i + 1
-                rest = 0
+            for i in range(idx, n + 1):
+                dfs(i + 1, path + [i])
 
-        return start
+        dfs(1, [])
+        return res
 
 
 if __name__ == "__main__":
-    res = Solution().canCompleteCircuit(gas=[1, 2, 3, 4, 5], cost=[3, 4, 5, 1, 2])
+    res = Solution().combine(n=1, k=1)
     print(res)
