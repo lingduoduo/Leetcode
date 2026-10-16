@@ -10,28 +10,31 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 class Solution:
-    def combine(self, n: int, k: int) -> list[list[int]]:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        m = len(board)
+        n = len(board[0])
         res = []
 
-        def dfs(idx, path):
-            if len(path) == k:
-                res.append(path)
-                return
-
-            for i in range(idx, n + 1):
-                dfs(i + 1, path + [i])
-
-        dfs(1, [])
-        return res
+        trie = {}
+        for word in words:
+            cur = trie
+            for ch in word:
+                if ch not in cur:
+                    cur[ch] = {}
+                cur = cur[ch]
+            cur["#"] = word
+        print(trie)
 
 
 if __name__ == "__main__":
-    res = Solution().combine(n=1, k=1)
+    res = Solution().findWords(
+        board=[
+            ["o", "a", "a", "n"],
+            ["e", "t", "a", "e"],
+            ["i", "h", "k", "r"],
+            ["i", "f", "l", "v"],
+        ],
+        words=["oath", "pea", "eat", "rain"],
+    )
     print(res)
